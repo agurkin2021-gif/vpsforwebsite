@@ -1,0 +1,44 @@
+baseURL = "https://vpsforwebsite.com/"
+title = "VPS for Website"
+timeZone = "America/Argentina/Buenos_Aires"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    disableWatch = true
+    source = "hugo_stats.json"
+    target = "assets/notwatching/hugo_stats.json"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[imaging]
+  quality = 82
+  resampleFilter = "Lanczos"
+
+[caches]
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true

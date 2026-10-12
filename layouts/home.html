@@ -1,0 +1,62 @@
+{{ define "main" }}
+<section class="section vps-hero">
+  <div class="container text-center">
+    <div class="mx-auto lg:col-9">
+      <p class="mb-4 font-semibold text-primary">WORKLOAD-FIRST VPS SIZING</p>
+      <h1 class="mb-6 text-h2 lg:text-h1">VPS for Website</h1>
+      <p class="lead mb-8">Choose a VPS by what your website actually runs: PHP workers, database queries, background jobs, storage, traffic and the number of sites sharing the server.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a class="btn btn-primary" href="#configurations">Compare configurations</a>
+        <a class="btn btn-outline-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" rel="sponsored nofollow">Choose a VPS</a>
+      </div>
+      <p class="vps-note mt-5">Partner link: this site may earn a commission from qualifying purchases.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm bg-light dark:bg-darkmode-light" id="requirements">
+  <div class="container">
+    <div class="mx-auto mb-10 lg:col-8 text-center">
+      <h2 class="mb-4">Do you need a VPS for your website?</h2>
+      <p>Use a VPS when you need isolated resources, server-level control, a custom stack, multiple sites, background services or more predictable headroom than shared hosting gives you. Stay on shared hosting when the site is light and you do not want server administration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="configurations">
+  <div class="container">
+    <div class="mx-auto mb-10 lg:col-8 text-center">
+      <h2 class="mb-4">Four real VPS configurations</h2>
+      <p>These are current Standard configurations used as factual reference points. The website-use labels are editorial sizing guidance, not visitor-capacity guarantees.</p>
+    </div>
+    <div class="vps-grid">
+      <article class="vps-card"><span>LEAN / TEST</span><strong>1 CPU · 1 GB RAM</strong><p>10 GB storage · 1 TB traffic</p><p class="vps-price">$0.07/day</p></article>
+      <article class="vps-card"><span>SMALL WEBSITE</span><strong>1 CPU · 2 GB RAM</strong><p>40 GB storage · 32 TB traffic</p><p class="vps-price">$0.50/day</p></article>
+      <article class="vps-card"><span>BUSINESS / WORDPRESS</span><strong>2 CPU · 4 GB RAM</strong><p>80 GB storage · 32 TB traffic</p><p class="vps-price">$0.67/day</p></article>
+      <article class="vps-card"><span>HEAVIER WORKLOAD</span><strong>4 CPU · 8 GB RAM</strong><p>160 GB storage · 32 TB traffic</p><p class="vps-price">$1.34/day</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm bg-light dark:bg-darkmode-light" id="vps-vs-shared">
+  <div class="container">
+    <div class="row items-start">
+      <div class="md:col-6 mb-8 md:mb-0"><h2 class="mb-4">VPS vs shared hosting</h2><p>A VPS gives more control and isolation, but a self-managed server also transfers operating-system updates, web stack configuration, monitoring, backups and recovery to you.</p></div>
+      <div class="md:col-6"><h2 class="mb-4">What we size next</h2><p>The English master site will add dedicated pages for WordPress, WooCommerce, multiple websites, control panels and the shared-vs-VPS decision after this Hugoplate base passes deployment QA.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="mx-auto lg:col-8">
+      <h2 class="mb-6 text-center">Common VPS-for-website questions</h2>
+      <div class="content">
+        <h3>Is 1 GB RAM enough for a website VPS?</h3><p>It can be enough for a lean, carefully configured workload, but it leaves little room for a database, control panel, multiple PHP workers or several sites. Treat it as the constrained tier, not a universal recommendation.</p>
+        <h3>Should WordPress always run on a VPS?</h3><p>No. Shared or managed WordPress hosting can be the simpler choice for small sites. A VPS becomes useful when control, isolation, custom software or resource headroom matters.</p>
+        <h3>Does a VPS automatically make a website faster?</h3><p>No. Performance still depends on application code, caching, PHP/database configuration, storage, network conditions and the resources assigned to the server.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,50 @@
+favicon = "images/favicon.svg"
+logo = "images/logo.svg"
+logo_darkmode = "images/logo-darkmode.svg"
+logo_width = "190px"
+logo_height = "36px"
+logo_webp = false
+logo_text = "VPS for Website"
+
+navbar_fixed = true
+theme_switcher = true
+theme_default = "system"
+mainSections = []
+contact_form_action = ""
+google_tag_manager = ""
+google_adsense = ""
+custom_script = ""
+copyright = "VPSforWebsite.com"
+
+[navigation_button]
+enable = false
+label = ""
+link = ""
+
+[search]
+enable = false
+
+[announcement]
+enable = false
+expire_days = 7
+content = ""
+
+[metadata]
+keywords = ["vps for website", "website vps hosting", "vps hosting"]
+description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
+author = "VPSforWebsite.com"
+twitter = ""
+image = ""
+
+[site_verification]
+google = ""
+bing = ""
+baidu = ""
+facebook = ""
+mastodon = ""
+
+[cookies]
+enable = false
+
+[open_remark]
+enable = false

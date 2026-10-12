@@ -1,0 +1,34 @@
+[[main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[main]]
+name = "Configurations"
+url = "/#configurations"
+weight = 2
+
+[[main]]
+name = "Requirements"
+url = "/#requirements"
+weight = 3
+
+[[main]]
+name = "VPS vs Shared"
+url = "/#vps-vs-shared"
+weight = 4
+
+[[main]]
+name = "FAQ"
+url = "/#faq"
+weight = 5
+
+[[footer]]
+name = "About"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "Privacy"
+url = "/privacy-policy/"
+weight = 2
