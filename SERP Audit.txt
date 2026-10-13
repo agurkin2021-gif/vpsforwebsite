@@ -206,8 +206,13 @@ Role:
 Security owns hardening. Monitoring and backups stay separate.
 
 12. VPS Backup Strategy
-Provisional URL: /vps-backup-strategy/
-Status: PLANNED / PAGE-LEVEL SERP BEFORE BUILD
+URL: /vps-backup-strategy/
+Status: BUILT / FROZEN
+Exact SERP decision (2026-10-13):
+Primary keyword: VPS Backup Strategy
+Title: VPS Backup Strategy
+H1: VPS Backup Strategy
+URL: /vps-backup-strategy/
 Role:
 - 3-2-1 thinking;
 - off-server copies;
@@ -380,9 +385,9 @@ DONE / FROZEN
 - VPS for WooCommerce
 - VPS for Multiple Websites
 - VPS Security Checklist
+- VPS Backup Strategy
 
 NOT BUILT YET
-- VPS Backup Strategy
 - VPS Monitoring
 - How to Choose VPS Location
 
@@ -390,10 +395,9 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Build VPS Backup Strategy.
-2. Run exact-query SERP and build VPS Monitoring.
-3. Run exact-query SERP and build How to Choose VPS Location.
-4. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Run exact-query SERP and build VPS Monitoring.
+2. Run exact-query SERP and build How to Choose VPS Location.
+3. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
