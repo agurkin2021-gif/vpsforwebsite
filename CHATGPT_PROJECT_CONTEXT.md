@@ -155,6 +155,8 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- VDSina panel screenshot confirms current balance top-up bonuses: from $100 -> +10% bonus; from $1,000 -> +20% bonus. This is a top-up bonus, not a VPS tariff discount; payment systems may still charge extra processing fees. Use only as compact conversion copy and re-verify before future major rewrites because terms can change.
+
 - Payment screenshot bonus confirmation: VDSina finance interface shows 10% bonus on balance top-ups from $100 and 20% bonus from $1,000; interface also warns payment systems may charge extra fees. Treat as conversion copy, not as a claimed server-plan discount.
 
 - Payment screenshot confirmation: VDSina interface visibly lists International card, USDT TRC20, TRX, Bitcoin, Litecoin, Ethereum, BNB, Other cryptocurrencies, SBP, Russian bank card, Other payment methods and SWIFT; crypto minimum shown as $20, international card minimum $10, SWIFT minimum $100. Treat screenshot/interface labels as authoritative current evidence.
