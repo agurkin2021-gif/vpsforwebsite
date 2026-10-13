@@ -3795,3 +3795,48 @@ Final preview artifact: f5cab165f695db299994b671a6088bff8a8f5161.
 Verified: Title=H1=VPS Backup Strategy; one H1; preview noindex/nofollow; no preview canonical; two JSON-LD blocks; Backup Strategy Checker; RPO/RTO, DB consistency, 3-2-1, VDSina and recovery-runbook sections; one sponsored/nofollow/noopener CTA; visual QA passed for top/checker/VDSina/checklist table.
 
 No known P0/P1 content/on-page/visual defect remains. Next core work item is VPS Monitoring.
+
+
+## 70. VPS Monitoring — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Fresh SERP locks:
+- Primary keyword: VPS Monitoring
+- Title/H1: VPS Monitoring
+- URL: /vps-monitoring/
+
+Current SERP strongly supports monitoring an existing VPS: uptime, CPU/RAM/disk/network, services, alerts, logs and historical trends. VPS Monitoring Guide remains a secondary semantic variant; inverse "VPS for monitoring" intent exists but is not dominant.
+
+Closed G1-G22:
+- monitoring layers separated;
+- independent external availability;
+- real-time commands != historical monitoring;
+- CPU utilization/load/steal/process context;
+- available memory/swap/OOM rather than used-RAM percentage alone;
+- disk capacity + inodes + I/O latency/wait;
+- network throughput/errors/path symptoms;
+- host-up != app-healthy;
+- HTTP content/health checks;
+- TLS/DNS;
+- DB health;
+- cron/queue/background jobs;
+- backup freshness vs RPO;
+- logs + metrics correlation;
+- no universal hard thresholds;
+- alert severity/duration/grouping/dedup;
+- independent notification path;
+- named owner/runbook;
+- trends as capacity evidence;
+- monitoring overhead/security;
+- multi-site server + hostname monitoring;
+- functional VPS Monitoring Baseline Checker.
+
+Authority/current-tool facts:
+- Prometheus Node Exporter exposes host/kernel metrics for Prometheus scraping.
+- Alertmanager groups, deduplicates and routes alerts.
+- Uptime Kuma supports external HTTP(S)/keyword/TCP/ping/DNS-style checks and notifications.
+
+Final preview artifact: 1fd2cb79c84963065a501b49f63ff76917144222.
+Verified: Title=H1=VPS Monitoring; one H1; preview noindex/nofollow; no preview canonical; two JSON-LD blocks; monitoring checker; one sponsored/nofollow/noopener CTA; intended internal links; inbound links from Security, Backup, Sizing and Multiple Websites.
+
+Visual QA passed for top, checker and checklist table. No known P0/P1 content/on-page/visual defect remains. Next core work item: How to Choose VPS Location exact-query SERP.
