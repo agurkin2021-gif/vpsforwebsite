@@ -633,3 +633,11 @@ The SEO buffer contains:
 - Verified inbound links to VPS Monitoring from Security, Backup, Sizing and Multiple Websites.
 - Preview SEO is intentionally noindex/nofollow; production canonical/hreflang are conditionally emitted by the shared head partial.
 - Live GitHub Pages deployment is currently blocked outside page content: the build job succeeds, but `actions/deploy-pages@v4` returns 404 because GitHub Pages is not enabled for the repository. Preview build remains the review path until Pages is enabled.
+
+
+### 2026-10-13 — Preview URL rewrite fix
+
+- Browser QA of VPS Monitoring exposed duplicated `raw.githack.com` in breadcrumb/base-derived preview URLs.
+- Root cause: preview workflow performed a blind replacement of `/agurkin2021-gif/vpsforwebsite/preview/` even inside URLs that were already absolute RawGitHack URLs.
+- `.github/workflows/pages.yml` now replaces only prefixes not already preceded by `https://raw.githack.com`, preserving already-correct absolute preview URLs.
+- This is preview-only infrastructure; production BaseURL remains `https://vpsforwebsite.com/`.
