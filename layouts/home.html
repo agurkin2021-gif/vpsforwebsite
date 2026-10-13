@@ -389,6 +389,70 @@
                   <strong>Infrastructure support is not the same as managed server administration.</strong>
                 </div>
               </div>
+            {{ else if eq .id "migration-preflight" }}
+              <div class="vps-migration-diagram" role="img" aria-label="Website migration preflight flow from inventory through test, sync, validation, DNS cutover and rollback">
+                <div class="vps-migration-head">
+                  <span class="vps-migration-kicker">Migration preflight</span>
+                  <strong>Map the stack before you move it</strong>
+                  <small>Build the migration plan from the current website, dependencies and rollback requirements before production traffic changes.</small>
+                </div>
+
+                <div class="vps-migration-steps">
+                  <div class="vps-migration-step">
+                    <span class="vps-migration-index">01</span>
+                    <strong>Inventory</strong>
+                    <small>CMS/framework · runtime versions · DB · cron · storage · DNS · SSL · email</small>
+                  </div>
+
+                  <div class="vps-migration-step">
+                    <span class="vps-migration-index">02</span>
+                    <strong>Find blockers</strong>
+                    <small>Extensions · runtime mismatch · DB assumptions · local file dependencies</small>
+                  </div>
+
+                  <div class="vps-migration-step">
+                    <span class="vps-migration-index">03</span>
+                    <strong>Build test copy</strong>
+                    <small>Prepare the new VPS without touching production traffic</small>
+                  </div>
+
+                  <div class="vps-migration-step">
+                    <span class="vps-migration-index">04</span>
+                    <strong>Sync & validate</strong>
+                    <small>Files · database · integrations · forms · jobs · SSL · mail behavior</small>
+                  </div>
+
+                  <div class="vps-migration-step vps-migration-step-cutover">
+                    <span class="vps-migration-index">05</span>
+                    <strong>DNS cutover</strong>
+                    <small>Move production traffic only after the new environment passes checks</small>
+                  </div>
+                </div>
+
+                <div class="vps-migration-rail" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+
+                <div class="vps-migration-safety">
+                  <div class="vps-migration-safety-card">
+                    <span>Rollback path</span>
+                    <strong>Keep the previous working environment available</strong>
+                    <small>Know exactly how to reverse the move if validation fails after cutover.</small>
+                  </div>
+
+                  <div class="vps-migration-safety-card vps-migration-safety-mail">
+                    <span>Email decision</span>
+                    <strong>Move mail only when it should move</strong>
+                    <small>Keeping email on a managed mail service can reduce deliverability and administration risk.</small>
+                  </div>
+                </div>
+
+                <div class="vps-migration-result">
+                  <span>Purchase decision</span>
+                  <strong>Choose the VPS configuration after the migration inventory shows the real requirements.</strong>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"
