@@ -71,6 +71,68 @@
       </nav>
     </div>
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("what-actually-changes-between-shared-hosting-and-vps");
+      if (!heading || heading.dataset.vsEnhanced === "true") return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var node = heading.nextElementSibling;
+      var introNodes = [];
+      var sharedNodes = [];
+      var vpsNodes = [];
+      var current = "intro";
+
+      while (node && !(node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+
+        if (node.tagName === "H3") {
+          var text = node.textContent.trim().toLowerCase();
+          if (text === "shared hosting") current = "shared";
+          else if (text === "vps") current = "vps";
+        }
+
+        if (current === "intro") introNodes.push(node);
+        else if (current === "shared") sharedNodes.push(node);
+        else if (current === "vps") vpsNodes.push(node);
+
+        node = next;
+      }
+
+      if (!sharedNodes.length || !vpsNodes.length) return;
+
+      var block = document.createElement("div");
+      block.className = "vps-vs-model-comparison";
+
+      if (introNodes.length) {
+        var intro = document.createElement("div");
+        intro.className = "vps-vs-model-intro";
+        introNodes.forEach(function (item) { intro.appendChild(item); });
+        block.appendChild(intro);
+      }
+
+      var grid = document.createElement("div");
+      grid.className = "vps-vs-model-grid";
+
+      var shared = document.createElement("section");
+      shared.className = "vps-vs-model-card vps-vs-model-card-shared";
+      sharedNodes.forEach(function (item) { shared.appendChild(item); });
+
+      var vps = document.createElement("section");
+      vps.className = "vps-vs-model-card vps-vs-model-card-vps";
+      vpsNodes.forEach(function (item) { vps.appendChild(item); });
+
+      grid.appendChild(shared);
+      grid.appendChild(vps);
+      block.appendChild(grid);
+
+      heading.insertAdjacentElement("afterend", block);
+      heading.dataset.vsEnhanced = "true";
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
