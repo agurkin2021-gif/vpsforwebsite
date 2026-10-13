@@ -2843,7 +2843,7 @@ https://www.vdsina.com/ru/qa/q/perevod-sredstv-s-akkaunta-ru-na-com
 and payment/top-up QA:
 https://www.vdsina.com/ru/qa/q/popolnenie-scheta
 
-### Exact coin/network list — NOT fully verified from official public pages
+### Exact coin/network list — CONFIRMED IN VDSina PAYMENT INTERFACE BY USER
 
 Third-party directories/reviews currently list combinations including:
 - Bitcoin (BTC)
@@ -2854,11 +2854,12 @@ Third-party directories/reviews currently list combinations including:
 - TON
 - BNB / other crypto methods
 
-However, the exact current full list and network support are not fully enumerated on VDSina's public official pages found in this audit.
+VDSina's public QA pages do not enumerate the complete list in crawlable text, but the user confirms that the exact current crypto methods are explicitly listed in the VDSina payment interface. Treat the payment interface as the authoritative current source.
 
 Rule:
-**Do not publish an exact crypto coin/network list from third-party sources.**
-Before listing exact currencies/networks on the site, verify them directly in the VDSina payment interface or official current documentation.
+- Exact currencies/networks may be published if copied literally from the current VDSina payment interface.
+- Do not normalize or guess network names (for example BEP-2 vs BEP20) from memory.
+- If the payment interface changes, update the site and this audit buffer.
 
 ### Content / conversion value
 
@@ -2905,4 +2906,4 @@ Use crypto payment as a **conversion feature**, not a primary topical cluster.
 |---|---|---|
 | USP-12 | cryptocurrency account top-up | VERIFIED GENERIC FEATURE |
 | USP-13 | $20 minimum crypto top-up | VERIFIED CURRENT SUPPORT INFO |
-| USP-14 | exact current coin/network list | REQUIRES DIRECT PANEL/OFFICIAL VERIFICATION |
+| USP-14 | exact current coin/network list | CONFIRMED IN VDSina PAYMENT INTERFACE; COPY LABELS LITERALLY |
