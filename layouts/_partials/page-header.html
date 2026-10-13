@@ -133,6 +133,49 @@
       heading.dataset.vsEnhanced = "true";
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var configs = [
+        {
+          id: "stay-on-shared-hosting-when",
+          className: "vps-vs-decision-stay",
+          index: "01"
+        },
+        {
+          id: "optimize-first-when-the-site-is-the-bottleneck",
+          className: "vps-vs-decision-optimize",
+          index: "02"
+        },
+        {
+          id: "move-to-vps-when",
+          className: "vps-vs-decision-move",
+          index: "03"
+        }
+      ];
+
+      configs.forEach(function (config) {
+        var heading = document.getElementById(config.id);
+        if (!heading || heading.closest(".vps-vs-decision-section")) return;
+
+        var parent = heading.parentElement;
+        if (!parent) return;
+
+        var section = document.createElement("section");
+        section.className = "vps-vs-decision-section " + config.className;
+        section.setAttribute("data-decision-index", config.index);
+
+        parent.insertBefore(section, heading);
+
+        var node = heading;
+        while (node && !(node !== heading && node.tagName === "H2")) {
+          var next = node.nextElementSibling;
+          section.appendChild(node);
+          node = next;
+        }
+      });
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
