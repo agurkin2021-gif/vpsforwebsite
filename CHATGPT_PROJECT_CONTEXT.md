@@ -154,6 +154,8 @@ A future ChatGPT session must read this file before modifying the repository.
 ## Context update log
 
 ### 2026-10-12
+
+- Deep SEO audit expanded: competitor coverage matrix added; confirmed internal-page Hugoplate H1 passes Title through Hugo `title` transformation and therefore exact Title/H1 equality must be verified in generated HTML; identified missing contextual return links from supporting pages and the homepage hero CTA routing too narrowly to WordPress.
 - Fixed homepage primary query as `VPS for website`.
 - Added exact SEO rule: `Title` = primary query; `H1` = identical `Title`; URL slug = same phrase in URL form; no tails in Title/H1.
 - Clarified homepage exception: homepage remains at `/`, so no duplicate `/vps-for-website/` page should be created merely to mirror the slug.
