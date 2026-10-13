@@ -155,6 +155,10 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- Ubuntu/Linux intent audited: broad `Ubuntu VPS Hosting` and `How to host a website on Ubuntu VPS` are real but heavily covered by competitors. VDSina Standard currently verifies pure Ubuntu 26.04/24.04/22.04/20.04 templates.
+- Stronger project-specific supporting angle: `VPS without Control Panel` -> pure Ubuntu/Linux over SSH with Nginx/Apache + runtime + database. Proposed exact page `/vps-without-control-panel/`, status P1/P2 boundary.
+- Homepage should eventually show a compact management fork: FASTPANEL/control panel vs pure Ubuntu/Linux over SSH. Detailed commands stay off the homepage.
+
 - FASTPANEL intent audited and promoted to a strong P1 supporting-page candidate. VDSina currently lists **FASTPANEL on Ubuntu 22** as a web-hosting-control-panel deployment option on Standard VPS/VDS. Proposed exact page: `VPS with FASTPANEL` -> `/vps-with-fastpanel/`.
 - Keep generic `VPS with Control Panel` as the comparison/choice page; FASTPANEL page should own branded commercial intent: sizing FASTPANEL + websites, verified VDSina deployment path, WordPress/site creation, domains/SSL/PHP/database/multiple-sites workflow.
 - Do not infer that FASTPANEL’s 1 GB minimum is a recommended website size; panel overhead and actual workload must be included in sizing.
