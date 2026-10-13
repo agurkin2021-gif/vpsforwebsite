@@ -1451,3 +1451,14 @@ body:has(.vps-home) footer .container {
     max-width: 740px !important;
   }
 }
+
+
+/* Homepage adjustment 01: tighter hero vertical spacing */
+@media (min-width: 768px) {
+  .vps-home .vps-hero {
+    min-height: 520px !important;
+    padding-top: 30px !important;
+    padding-bottom: 36px !important;
+    align-items: flex-start !important;
+  }
+}
