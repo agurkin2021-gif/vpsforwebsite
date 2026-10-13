@@ -213,7 +213,7 @@ A pure Linux VPS without a panel is a better fit when:
 - you need a custom stack that does not fit the panel's assumptions;
 - infrastructure-as-code or custom automation is your preferred operating model.
 
-Do not create two competing pages for this decision. The broader manual-deployment path belongs to the planned **How to host a website on VPS** guide; the generic panel choice stays on [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
+Do not create two competing pages for this decision. The broader manual-deployment path belongs to [How to host a website on VPS]({{< relref "how-to-host-a-website-on-vps.md" >}}); the generic panel choice stays on [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
 
 ## FASTPANEL vs other control panels
 
