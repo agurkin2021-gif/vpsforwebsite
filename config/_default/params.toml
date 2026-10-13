@@ -38,9 +38,9 @@ content = ""
 [metadata]
 keywords = ["vps for website", "website vps hosting", "vps hosting for websites"]
 description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
-author = "VPSforWebsite.com"
+author = ""
 twitter = ""
-image = ""
+image = "images/favicon.png"
 
 [site_verification]
 google = ""
