@@ -362,6 +362,7 @@ DONE / FROZEN
 - VPS sizing for website
 - Website migration to VPS
 - Managed vs Unmanaged VPS
+- FASTPANEL VPS Hosting
 
 EXISTS / MUST BE DEEPLY REWORKED
 - VPS for WordPress
@@ -386,16 +387,15 @@ RECOMMENDED WORK ORDER
 
 1. Run the final dense audit for FASTPANEL VPS Hosting and freeze it if no P0/P1 gaps remain.
 2. Deepen VPS with Control Panel so the generic parent and FASTPANEL child are cleanly separated.
-3. Build How to host a website on VPS with the no-control-panel/manual path inside it.
-4. Deepen VPS vs Shared Hosting.
-5. Deepen VPS for WordPress.
-6. Deepen VPS for WooCommerce.
-7. Deepen VPS for Multiple Websites.
-8. Build VPS Security Checklist.
-9. Build VPS Backup Strategy.
-10. Run exact-query SERP and build VPS Monitoring.
-11. Run exact-query SERP and build How to Choose VPS Location.
-12. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+3. Deepen VPS vs Shared Hosting.
+4. Deepen VPS for WordPress.
+5. Deepen VPS for WooCommerce.
+6. Deepen VPS for Multiple Websites.
+7. Build VPS Security Checklist.
+8. Build VPS Backup Strategy.
+9. Run exact-query SERP and build VPS Monitoring.
+10. Run exact-query SERP and build How to Choose VPS Location.
+11. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
