@@ -3400,3 +3400,23 @@ Final preview artifact: 23b73011a5cce24c9cc1a9dee244431ff91adc49.
 Verified: Title=H1, preview noindex/nofollow, no preview canonical, Management fit checker, decoder/red-flags/TCO blocks, official provider refs, affiliate CTA with sponsored/nofollow/noopener.
 
 No known P0/P1 content/on-page defect remains. Further changes require new SERP or user evidence.
+
+
+## 57. FASTPANEL exact-query decision — 2026-10-13
+Status: EXACT TARGET LOCKED / READY TO BUILD.
+
+Compared exact/current SERP variants:
+- FASTPANEL VPS Hosting
+- FASTPANEL Hosting
+- VPS with FASTPANEL
+- supporting FASTPANEL VPS query
+
+Winner: FASTPANEL VPS Hosting.
+Reason: strongest and cleanest commercial VPS-specific landing-page pattern; exact/near-exact current results include Hostinger, AccuWeb.Cloud, CloudBlast, HOSTKEY, QloudHost and Qyrax. FASTPANEL Hosting is broader/noisier; VPS with FASTPANEL is natural but less consistent as the primary commercial owner.
+
+Locked SEO elements:
+- Title: FASTPANEL VPS Hosting
+- H1: FASTPANEL VPS Hosting
+- URL: /fastpanel-vps-hosting/
+
+Research/gaps/intent map stored in research/fastpanel-vps-hosting-serp-2026-10-13.md. Parent remains VPS with Control Panel. Branded page owns FASTPANEL-specific deployment, sizing and website-management intent. Do not create a duplicate VPS with FASTPANEL page.
