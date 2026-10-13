@@ -1,4 +1,5 @@
 {{ define "main" }}
+  <div class="vps-home">
   <!-- Banner -->
   {{ with .Params.banner }}
     <section class="section vps-hero">
@@ -89,8 +90,9 @@
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
-    <section {{ with .id }}id="{{ . }}"{{ end }} class="section-sm scroll-mt-28 {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+    <section {{ with .id }}id="{{ . }}"{{ end }} class="section-sm vps-home-section scroll-mt-28 {{ if (modBool $i 2) }}bg-gradient{{ end }}">
       <div class="container">
+        <div class="vps-section-index" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</div>
         <div class="row items-center justify-between">
           <div
             class="mb:md-0 {{ if not (modBool $i 2) }}
@@ -378,4 +380,5 @@
   <!-- Call to action -->
   {{ partial "call-to-action" . }}
   <!-- /Call to action -->
+  </div>
 {{ end }}
