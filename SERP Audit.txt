@@ -1,0 +1,458 @@
+SERP Audit
+vpsforwebsite.com
+Updated: 2026-10-13
+
+PURPOSE
+
+This file is the working SERP/architecture plan for the pages that surround the homepage.
+It is the persistent plan for what we build, what each page owns, what must be merged, and what must stay on HOLD.
+
+The homepage remains the central commercial hub:
+Primary query: VPS for website
+URL: /
+Title/H1: VPS for website
+
+The homepage owns the broad commercial decision:
+- whether a website needs a VPS;
+- broad resource and management choices;
+- migration/risk summary;
+- routing users into deeper supporting pages.
+
+Do NOT create separate pages for close homepage variants such as:
+- website VPS hosting
+- VPS hosting for websites
+- VPS for a website
+- website VPS
+- VPS web hosting
+
+These belong to the homepage to avoid cannibalization.
+
+==================================================
+CORE 14-PAGE ARCHITECTURE AROUND THE HOMEPAGE
+==================================================
+
+1. VPS sizing for website
+URL: /vps-sizing-for-website/
+Status: BUILT / FROZEN
+Role:
+- resource calculation;
+- CPU / RAM / concurrency;
+- PHP/application workers;
+- storage / transfer;
+- shared-hosting limit diagnostics;
+- 1/2/4/8 GB tier mapping;
+- workload examples;
+- optimize-first vs scale decision.
+Do not create a separate High Traffic page unless later SERP/volume clearly proves separate ownership.
+
+2. Website migration to VPS
+URL: /website-migration-to-vps/
+Status: BUILT / FROZEN
+Role:
+- migration inventory;
+- destination preparation;
+- backup / restore validation;
+- files/database transfer;
+- final write/data sync;
+- DNS / TTL;
+- email;
+- TLS/CDN/webhooks;
+- same-URL SEO parity;
+- rollback and acceptance.
+Domain/URL-changing migrations are a different intent and must not be mixed into the page.
+
+3. Managed vs Unmanaged VPS
+URL: /managed-vs-unmanaged-vps/
+Status: BUILT / NEEDS FINAL DENSE FREEZE AUDIT
+Role:
+- who operates the server;
+- responsibility matrix;
+- support vs administration;
+- control panel vs management;
+- patching / security / monitoring / backups / incidents;
+- total operating cost;
+- hybrid unmanaged + paid admin model.
+Truth rule:
+VDSina technical support must NOT be described as fully managed hosting unless a separate administration scope is explicitly verified.
+
+4. VPS for WordPress
+URL: /vps-for-wordpress/
+Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Role:
+- WordPress-specific VPS workload;
+- PHP workers;
+- plugins;
+- database;
+- caching;
+- wp-cron/background work;
+- practical WordPress sizing and operations.
+Must link contextually back to the homepage and relevant sizing/migration pages.
+
+5. VPS for WooCommerce
+URL: /vps-for-woocommerce/
+Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Role:
+- WooCommerce-specific dynamic load;
+- cart / checkout / account;
+- orders / stock;
+- database writes;
+- scheduled actions;
+- payment/webhook workload;
+- WooCommerce scaling.
+Keep separate from generic WordPress because the SERP and workload are distinct.
+
+6. VPS vs Shared Hosting
+URL: /vps-vs-shared-hosting/
+Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Role:
+- when to stay on shared hosting;
+- when VPS becomes justified;
+- limits / control / isolation;
+- operational responsibility.
+Do not turn this into another generic VPS buying page.
+
+7. VPS for Multiple Websites
+URL: /vps-for-multiple-websites/
+Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Role:
+- combined multi-site resource use;
+- virtual hosts/server blocks;
+- separate users/databases;
+- overlapping peaks;
+- isolation / blast radius;
+- agency/client-site use case.
+Agency intent stays merged here unless later SERP/volume proves a separate page.
+
+8. VPS with Control Panel
+URL: /vps-with-control-panel/
+Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Role:
+- whether a control panel is needed;
+- panel overhead;
+- panel class comparison;
+- cPanel / Plesk / FASTPANEL / HestiaCP / similar choices;
+- licensing and OS compatibility.
+This page is the generic parent for the FASTPANEL branded page.
+Management ownership belongs to Managed vs Unmanaged VPS, not here.
+
+9. FASTPANEL VPS Hosting
+Provisional URL: /fastpanel-vps-hosting/
+Status: PLANNED / EXACT QUERY MUST BE REVALIDATED BEFORE BUILD
+Fresh SERP decision:
+Retarget the old planned "VPS with FASTPANEL" page toward the stronger current commercial cluster:
+- FASTPANEL VPS Hosting
+- FASTPANEL Hosting
+Before implementation, run a dedicated exact-query SERP and lock one exact primary keyword / Title / H1 / URL.
+Role:
+- FASTPANEL-specific commercial use case;
+- VDSina FASTPANEL deployment option where verified;
+- FASTPANEL + website sizing;
+- WordPress/site creation;
+- domains / SSL / PHP / database;
+- multiple websites;
+- migration;
+- when SSH/manual administration is still required.
+Do not treat FASTPANEL's own minimum hardware as a recommended production website size.
+
+10. How to host a website on VPS
+Provisional URL: /how-to-host-a-website-on-vps/
+Status: PLANNED / FINAL EXACT QUERY TO VERIFY BEFORE BUILD
+Role:
+- broad first-hour deployment guide;
+- connect to VPS;
+- SSH/admin access;
+- patch/harden baseline;
+- Nginx or Apache;
+- runtime;
+- database;
+- site files/application deployment;
+- DNS;
+- HTTPS;
+- basic monitoring/backups handoff.
+
+IMPORTANT MERGE DECISION:
+Do NOT create a separate core page "VPS without Control Panel".
+Fresh SERP shows that "without control panel" resolves to the same manual-hosting tutorial intent:
+SSH + LAMP/LEMP + virtual hosts + DNS + SSL.
+Instead, make "Host without a control panel / pure Ubuntu-Linux path" a major section inside this page.
+Link this section to VPS with Control Panel and FASTPANEL VPS Hosting.
+
+11. VPS Security Checklist
+Provisional URL: /vps-security-checklist/
+Status: PLANNED / PAGE-LEVEL SERP BEFORE BUILD
+Role:
+- SSH/RDP hardening;
+- non-root/admin policy;
+- firewall;
+- patches;
+- exposed services;
+- TLS;
+- credential hygiene;
+- malware/compromise response basics;
+- recurring security review.
+Security owns hardening. Monitoring and backups stay separate.
+
+12. VPS Backup Strategy
+Provisional URL: /vps-backup-strategy/
+Status: PLANNED / PAGE-LEVEL SERP BEFORE BUILD
+Role:
+- 3-2-1 thinking;
+- off-server copies;
+- snapshots vs backups;
+- retention;
+- encryption;
+- RPO / RTO;
+- restore testing;
+- database consistency;
+- recovery ownership.
+Backup owns recovery architecture. Do not duplicate security or monitoring.
+
+13. VPS Monitoring
+Exact Title/H1/URL: TO BE VALIDATED BY PAGE-LEVEL SERP
+Status: PLANNED / REPLACES CORE "VPS Maintenance Checklist"
+Fresh SERP decision:
+Monitoring has a clearer independent SERP than generic maintenance.
+Role:
+- CPU / RAM / disk;
+- I/O / network;
+- uptime;
+- service health;
+- external HTTP(S) checks;
+- TLS expiration;
+- database health/latency;
+- logs;
+- trends;
+- thresholds;
+- alerts;
+- capacity triggers.
+
+Do not create VPS Maintenance Checklist as a core page now.
+Maintenance cadence can live inside Security / Backup / Monitoring or become a later article if demand proves it deserves a separate URL.
+
+14. How to Choose VPS Location
+Exact Title/H1/URL: TO BE VALIDATED BY PAGE-LEVEL SERP
+Status: PLANNED / NEW CORE OWNER
+Fresh SERP decision:
+Location has a distinct current SERP around:
+- latency;
+- routing;
+- audience geography;
+- CDN vs origin;
+- legal/jurisdiction/operational fit;
+- route testing;
+- network distance.
+
+Truth rule:
+Do NOT claim server country is a direct Google ranking shortcut.
+This page owns the location decision only, not resource sizing.
+
+==================================================
+ARCHITECTURE CORRECTIONS FROM THE FRESH SERP AUDIT
+==================================================
+
+OLD PLAN:
+- VPS with FASTPANEL
+- VPS without Control Panel
+- VPS Maintenance Checklist
+
+CORRECTED PLAN:
+- FASTPANEL VPS Hosting — retarget exact branded commercial query after final query-level SERP.
+- VPS without Control Panel — MERGE into How to host a website on VPS.
+- VPS Maintenance Checklist — remove from core; replace with VPS Monitoring.
+- Add How to Choose VPS Location as a distinct core page.
+
+Reason:
+The corrected structure reduces internal cannibalization and better matches current SERP intent clusters.
+
+==================================================
+CANNIBALIZATION RULES
+==================================================
+
+HIGH OVERLAP — MERGE / DO NOT SPLIT
+
+How to host a website on VPS
+vs
+VPS without Control Panel
+Decision: MERGE into one deployment page.
+
+VPS sizing for website
+vs
+VPS for High Traffic Website
+Decision: keep high-traffic/concurrency/peak-load inside sizing for now.
+
+VPS for Multiple Websites
+vs
+VPS for Agency Websites
+Decision: agency/client-site case belongs inside Multiple Websites unless later evidence proves distinct ownership.
+
+MEDIUM OVERLAP — KEEP WITH STRICT OWNERSHIP
+
+Homepage vs VPS sizing for website
+- Homepage = broad commercial decision.
+- Sizing = resource calculation.
+
+Homepage vs VPS vs Shared Hosting
+- Homepage = central VPS-for-website hub.
+- Comparison = stay-or-move decision.
+
+VPS with Control Panel vs FASTPANEL VPS Hosting
+- Generic page = panel choice/comparison.
+- FASTPANEL page = branded FASTPANEL deployment/sizing/use case.
+
+Managed vs Unmanaged VPS vs VPS with Control Panel
+- Managed page = who owns operations.
+- Control Panel page = what administration UI/tooling is used.
+
+VPS Security Checklist vs VPS Monitoring vs VPS Backup Strategy
+- Security = hardening.
+- Monitoring = observation/alerts.
+- Backup = recovery.
+
+LOW OVERLAP / SAFE INDEPENDENT OWNERS
+
+- Website migration to VPS
+- VPS for WooCommerce
+- How to Choose VPS Location
+
+==================================================
+HOLD / DO NOT BUILD YET
+==================================================
+
+VPS for High Traffic Website
+Reason: overlaps heavily with sizing/concurrency/peak-load.
+
+VPS for Membership Website
+Reason: promising workload, but current SERP is still broader membership hosting / managed WordPress. Validate later.
+
+VPS for Website and Email
+Reason: real use case, but email deliverability/security creates a separate operational burden. Hold until demand is proven.
+
+VPS for Agency Websites
+Reason: merge into Multiple Websites first.
+
+VPS Server Location
+Reason: location intent is valid, but exact wording should be validated; current provisional owner is How to Choose VPS Location.
+
+VPS for IIS
+VPS for ASP.NET
+Reason: valid later Windows branch, not part of the current core 14.
+
+VPS for Directory Website
+VPS for News Website
+VPS for Small Business Website
+Reason: lower-priority niche/use-case candidates; validate later.
+
+Cloudflare with VPS
+Reason: operational supporting content, not core commercial architecture.
+
+Standalone SSH page
+Reason: SSH belongs inside How to host a website on VPS; hardening belongs in VPS Security Checklist.
+
+Generic VPS for AI agent
+Reason: competitive and outside the tight website cluster. Website + automation/agent may remain an architecture/sizing use case.
+
+==================================================
+CURRENT BUILD STATUS
+==================================================
+
+DONE / FROZEN
+- VPS sizing for website
+- Website migration to VPS
+
+BUILT / NEEDS FINAL FREEZE AUDIT
+- Managed vs Unmanaged VPS
+
+EXISTS / MUST BE DEEPLY REWORKED
+- VPS for WordPress
+- VPS for WooCommerce
+- VPS vs Shared Hosting
+- VPS for Multiple Websites
+- VPS with Control Panel
+
+NOT BUILT YET
+- FASTPANEL VPS Hosting
+- How to host a website on VPS
+- VPS Security Checklist
+- VPS Backup Strategy
+- VPS Monitoring
+- How to Choose VPS Location
+
+==================================================
+RECOMMENDED WORK ORDER
+==================================================
+
+1. Finish/freeze Managed vs Unmanaged VPS.
+2. Run exact-query SERP for FASTPANEL:
+   - FASTPANEL VPS Hosting
+   - FASTPANEL Hosting
+   - VPS with FASTPANEL
+   Lock the strongest natural owner, then build it.
+3. Deepen VPS with Control Panel so the generic parent and FASTPANEL child are cleanly separated.
+4. Build How to host a website on VPS with the no-control-panel/manual path inside it.
+5. Deepen VPS vs Shared Hosting.
+6. Deepen VPS for WordPress.
+7. Deepen VPS for WooCommerce.
+8. Deepen VPS for Multiple Websites.
+9. Build VPS Security Checklist.
+10. Build VPS Backup Strategy.
+11. Run exact-query SERP and build VPS Monitoring.
+12. Run exact-query SERP and build How to Choose VPS Location.
+13. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+
+==================================================
+STANDARD WORKFLOW FOR EVERY PAGE
+==================================================
+
+Before building any new page:
+
+1. Run a fresh current SERP.
+2. Record 8–10 representative competitors/results.
+3. Identify primary intent and secondary intents.
+4. Check overlap against homepage and already-built pages.
+5. Find powerful content/utility gaps.
+6. Fix the exact primary keyword.
+7. Apply project rule:
+   Title = exact primary query
+   H1 = exact same text
+   URL = same phrase in URL form
+8. Build complete page — do not publish an empty shell.
+9. Add contextual internal links:
+   - one natural link to homepage;
+   - 1–3 genuinely relevant sibling pages.
+10. Add commercial CTA only where intent supports it.
+11. Affiliate links:
+   https://www.vdsina.com/?partner=ni8gzrvz75
+   rel="sponsored nofollow noopener"
+   plus human-readable affiliate disclosure.
+12. Verify provider-specific claims against current official sources.
+13. Build Hugo preview.
+14. Verify generated HTML:
+   - exact Title/H1;
+   - one H1;
+   - preview noindex;
+   - correct production canonical behavior;
+   - JSON-LD;
+   - internal routes;
+   - affiliate rel attributes.
+15. Open the actual built page in a browser and visually verify it.
+16. Run a dense completion audit before freeze.
+17. Update CHATGPT_PROJECT_CONTEXT.md and CHATGPT_SEO_AUDIT_BUFFER.md.
+
+==================================================
+FINAL CLUSTER PRINCIPLE
+==================================================
+
+The homepage is the hub.
+Each surrounding page must own one distinct user job.
+Do not create pages just because a phrase exists.
+Create a page only when SERP intent is sufficiently distinct from existing owners.
+
+The goal is a clean hub-and-spoke structure:
+Homepage -> decision/use-case/deployment/support pages -> contextual links back to homepage and only relevant siblings.
+
+No all-to-all link farm.
+No duplicate homepage variants.
+No empty pages.
+No claims of completion until the page is built and visually checked.
+
+END OF SERP AUDIT WORK PLAN
