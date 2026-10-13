@@ -13,9 +13,13 @@
             </p>
             {{ with .button }}
               {{ if .enable }}
+                {{ $href := .link }}
+                {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
+                  {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+                {{ end }}
                 <a
                   class="btn btn-primary"
-                  href="{{ .link | absURL }}"
+                  href="{{ $href }}"
                   {{ if strings.HasPrefix .link `http` }}
                     target="_blank" rel="sponsored nofollow noopener"
                   {{ end }}>
@@ -64,9 +68,13 @@
             </ul>
             {{ with .button }}
               {{ if .enable }}
+                {{ $href := .link }}
+                {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
+                  {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+                {{ end }}
                 <a
                   class="btn btn-primary mt-6"
-                  href="{{ .link | absURL }}"
+                  href="{{ $href }}"
                   {{ if strings.HasPrefix .link `http` }}
                     target="_blank" rel="sponsored nofollow noopener"
                   {{ end }}>
