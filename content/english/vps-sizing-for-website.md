@@ -474,9 +474,9 @@ There is no reliable universal amount. A lean cached site can use little memory,
 
 It can be enough for a small, lean workload. It becomes restrictive when a control panel, database, several PHP workers, background jobs or multiple sites must run together. Measure memory pressure rather than relying on the RAM number alone.
 
-### Is 4 GB RAM enough for WordPress?
+### What does a 4 GB VPS tier fit?
 
-For many business WordPress workloads, 4 GB is a practical starting point because it provides more room for Linux, the database, PHP workers and caching. Heavy plugins, WooCommerce, imports, large databases or high dynamic concurrency can require more.
+A 4 GB VPS is a practical starting point for many business CMS workloads because it leaves more room for Linux, the database, application/PHP workers and caching. The exact fit depends on dynamic concurrency, database demand, background work and panel overhead. For the WordPress-specific decision, use [VPS for WordPress]({{< relref "vps-for-wordpress.md" >}}).
 
 ### How many visitors can a VPS handle?
 
