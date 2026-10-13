@@ -7,8 +7,8 @@ logo_webp = true
 logo_text = "VPS for website"
 
 navbar_fixed = true
-theme_switcher = true
-theme_default = "system"
+theme_switcher = false
+theme_default = "dark"
 mainSections = []
 contact_form_action = "#"
 google_tag_manager = ""
@@ -23,7 +23,7 @@ link = ""
 
 [search]
 enable = false
-primary_color = "#121212"
+primary_color = "#2dde74"
 include_sections = []
 show_image = false
 show_description = true
