@@ -155,6 +155,10 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- Novel-intent research completed: strongest under-owned opportunity is a **VPS Fit / Readiness Engine** rather than another generic article. It combines: need-VPS diagnosis, optimize-first branch, translation of real cPanel/CloudLinux usage into VPS sizing, self-managed readiness, migration-risk scoring, and mapping to verified VDSina tiers.
+- Closest competitors only cover fragments (generic calculators, cPanel-to-VPS sizing articles, readiness checklists, migration guides). Do not claim nobody has anything similar; differentiation is the combined diagnostic workflow.
+- Architecture decision: keep homepage H1 exactly `VPS for website`; use the diagnostic as a homepage supporting utility/message, with deeper routing to sizing, VPS-vs-shared, managed-vs-unmanaged, and migration pages.
+
 - Deep SEO audit expanded further in `CHATGPT_SEO_AUDIT_BUFFER.md`: added pre-purchase gaps (buying checklist, traffic-capacity misconception, RAM-tier meaning, backup vs snapshot, security responsibility, monitoring/scale triggers, location/CDN/email/staging/deployment), niche-use-case scan, authority-content layers, 22-question homepage inventory, homepage information-architecture blueprint, competitor module audit, and Google Search implementation rules.
 - Current strategic model for homepage: resolve five buyer decisions — Fit, Size, Responsibility, Risk, Action — while routing deep intents to supporting pages rather than bloating/cannibalizing the homepage.
 - New candidate priorities preserved: P1 core = sizing, migration, managed-vs-unmanaged; P2 authority = how to host a website on VPS, security checklist, backup strategy, maintenance checklist; membership-site intent is a promising HOLD candidate pending volume/SERP validation.
