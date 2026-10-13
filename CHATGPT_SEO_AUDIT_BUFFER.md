@@ -601,3 +601,508 @@ Recommended when editing homepage:
 - feature sections -> internal supporting pages;
 - final CTA -> approved affiliate URL;
 - do not add multiple visually competing CTA systems beyond native Hugoplate buttons.
+
+
+## 16. Deep gap expansion — pre-purchase questions competitors answer
+
+Research pass: 2026-10-12.
+
+### Source patterns reviewed
+
+- ServerCalc — VPS for a website or blog:
+  https://servercalc.com/vps-for/website/
+  Strong on minimum / typical / headroom sizing and a short “what to check before paying” checklist.
+- Hostinger — How to host a website on VPS:
+  https://www.hostinger.com/tutorials/host-website-on-vps/
+  Strong on when to move from shared hosting and the first deployment steps.
+- Namecheap — Beginner VPS setup:
+  https://www.namecheap.com/support/knowledgebase/article.aspx/10777/48/how-to-set-up-a-vps-beginnerfriendly-stepbystep-guide/
+  Strong on first-time setup, firewall, web server, domain and HTTPS.
+- Network Solutions / InMotion / Liquid Web managed-vs-unmanaged guides:
+  current SERP strongly separates management-responsibility intent from raw VPS sizing.
+- Current backup/snapshot SERP:
+  multiple 2026 pages explicitly distinguish snapshots (rollback) from independent backups (recovery).
+- Current security SERP:
+  dedicated VPS-hardening pages cover SSH, firewall, updates, service exposure, monitoring and backups.
+- Current agency-hosting SERP:
+  dedicated agency intent exists and emphasizes client isolation, staging, backups, monitoring and blast radius.
+- Current membership-site SERP:
+  membership hosting is treated as a distinct workload because logged-in traffic bypasses full-page cache and increases PHP/database demand.
+
+### HOME-GAP-09 — “What to check before paying” decision checklist
+Status: OPEN / high value.
+
+The homepage currently lists resources, but does not explicitly teach the buyer what must be checked before ordering.
+
+Recommended concise homepage checklist:
+- CPU / vCPU count;
+- RAM;
+- storage capacity;
+- storage type only when verified;
+- monthly transfer / bandwidth allowance;
+- public IPv4 / IPv6 terms if relevant;
+- server location and latency to target users;
+- backup and snapshot policy;
+- managed vs self-managed responsibility;
+- control-panel cost/overhead;
+- upgrade path;
+- renewal / billing model where relevant.
+
+Important:
+Do not claim a VDSina feature merely because competitors expose it. Verify each provider-specific item before presenting it as included.
+
+### HOME-GAP-10 — Traffic-capacity misconception
+Status: OPEN / high value.
+
+Current SERP repeatedly shows that “monthly visits” is a poor sizing metric by itself.
+
+Homepage should answer:
+**How much traffic can a VPS handle?**
+
+Decision answer:
+- no fixed visitor number;
+- workload cost per request matters;
+- cached/static traffic is radically cheaper than logged-in, checkout, search, API or uncached PHP traffic;
+- size by concurrency, PHP workers, database work, memory pressure and monitoring.
+
+Ownership:
+- short answer on homepage;
+- deeper explanation belongs to `VPS sizing for website`;
+- do NOT create a separate “traffic capacity” page unless volume/overlap analysis later justifies it.
+
+### HOME-GAP-11 — 1 GB / 2 GB / 4 GB meaning
+Status: OPEN / high value.
+
+Search results show repeated buyer questions around 1 GB, 2 GB and 4 GB RAM.
+
+Homepage should give concise workload meaning:
+- 1 GB: very lean/light workload; little headroom;
+- 2 GB: small website / lean CMS starting point;
+- 4 GB: stronger practical baseline for dynamic business/CMS workloads;
+- 8 GB: heavier dynamic or multi-site workloads.
+
+Do not convert these into guaranteed visitor capacities.
+
+The deep sizing page should own:
+- OS baseline memory;
+- panel overhead;
+- PHP workers;
+- database working set;
+- cache;
+- background jobs;
+- swap/OOM implications.
+
+### HOME-GAP-12 — Backup vs snapshot expectation
+Status: OPEN / trust gap.
+
+Current 2026 SERP strongly distinguishes:
+- snapshot = fast rollback point, often tied to provider/account/infrastructure;
+- backup = recovery copy, ideally independent/offsite.
+
+Homepage does not need a backup tutorial, but a self-managed/reliability section should warn:
+- do not assume snapshot = complete backup strategy;
+- verify what the provider includes;
+- keep recoverable copies outside the single VPS failure domain.
+
+Future supporting page candidate:
+`VPS backup strategy` — P2 authority/support intent.
+
+### HOME-GAP-13 — Security responsibility before purchase
+Status: OPEN / trust gap.
+
+Current hardening SERP consistently covers:
+- system updates;
+- non-root administration;
+- SSH keys;
+- firewall;
+- minimal exposed services;
+- TLS;
+- monitoring/logs;
+- backups/recovery.
+
+Homepage should not become a command tutorial.
+It should state clearly that a self-managed VPS requires these operational responsibilities.
+
+Future supporting page candidate:
+`VPS security` / `VPS security checklist` — P2.
+
+### HOME-GAP-14 — Monitoring and scale triggers
+Status: OPEN / decision gap.
+
+Current homepage mentions monitoring, but the decision logic can be sharper.
+
+Minimum signals to mention:
+- memory pressure / OOM;
+- sustained CPU saturation;
+- disk usage / growth;
+- storage I/O symptoms;
+- PHP/request queues;
+- database latency;
+- external HTTP(S) uptime;
+- certificate expiration;
+- failed backup jobs.
+
+Purpose:
+show users when to optimize first and when to upgrade.
+
+Future P2 page candidate:
+`VPS maintenance checklist` or `VPS monitoring`.
+Prefer one broader maintenance page over several thin pages.
+
+### HOME-GAP-15 — Server location / latency decision
+Status: OPEN summary; dedicated page remains HOLD.
+
+Current SERP supports a genuine location/latency decision:
+closer network paths can reduce latency, but application optimization, caching and routing still matter.
+
+Homepage/sizing page should answer:
+- choose a location reasonably close to the main audience when available;
+- a CDN can reduce edge-delivery distance for cacheable assets/content;
+- origin location still matters for uncached/application/database round trips;
+- do NOT claim location is a direct Google ranking shortcut.
+
+Potential page:
+`VPS Server Location` — HOLD until demand validation.
+
+### HOME-GAP-16 — Cloudflare / CDN as a sizing modifier
+Status: OPEN summary / no page yet.
+
+Current Cloudflare+VPS guides show a distinct operational topic:
+DNS, proxy/CDN, SSL mode, origin protection and client-IP handling.
+
+Homepage implication:
+- CDN/cache can reduce origin work for cacheable traffic;
+- it does not eliminate dynamic PHP/database workload;
+- do not size a dynamic site from bandwidth alone.
+
+Future page:
+`Cloudflare with VPS` — P3 operational guide, not core commercial priority.
+
+### HOME-GAP-17 — Website + email architecture
+Status: OPEN summary / dedicated page HOLD.
+
+Current email-on-VPS SERP confirms self-hosted mail is a materially different operational burden:
+- SPF;
+- DKIM;
+- DMARC;
+- PTR/rDNS;
+- IP reputation;
+- spam filtering;
+- mailbox security;
+- backup;
+- deliverability monitoring.
+
+Homepage should not imply that “one VPS for website + mail” is automatically best.
+
+Decision answer:
+- website and email can run on one VPS;
+- separating email to a managed mail service often reduces risk and administration;
+- if self-hosting mail, treat it as a separate service with its own deliverability/security requirements.
+
+Potential page:
+`VPS for Website and Email` — HOLD pending volume and commercial fit.
+
+### HOME-GAP-18 — Staging / safe changes
+Status: OPEN as secondary trust topic.
+
+Staging has a distinct use case for WordPress, WooCommerce and agency/client sites.
+
+Ownership recommendation:
+- mention staging under WordPress / agency / maintenance contexts;
+- do not create a generic staging VPS page yet;
+- future WordPress page can explain whether staging shares the same VPS or should be isolated.
+
+### HOME-GAP-19 — First-hour / deployment checklist
+Status: OPEN / strong supporting-page opportunity.
+
+Current SERP has a clear “I bought a VPS, now what?” intent:
+- connect securely;
+- patch;
+- non-root user;
+- firewall;
+- web server;
+- domain/DNS;
+- HTTPS;
+- backups;
+- monitoring.
+
+Candidate:
+**How to host a website on VPS**
+Proposed URL: `/how-to-host-a-website-on-vps/`
+Status: PLANNED P1/P2 boundary.
+
+Why this is valuable:
+- distinct informational intent;
+- closes the post-purchase loop;
+- supports topical authority around the commercial hub;
+- naturally links back to the homepage and to migration/control-panel/security/backup content.
+
+Do not publish until final keyword/Title/H1 phrase is chosen from search data.
+
+## 17. New use-case gap scan
+
+### Candidate — VPS for Membership Website
+Status: HOLD P2, promising under-covered use case.
+
+SERP observation:
+exact “VPS for membership website” coverage is weak; search results are dominated by broader membership-hosting comparisons.
+
+Why distinct:
+- logged-in traffic bypasses full-page cache;
+- PHP worker demand matters;
+- database reads/writes and member sessions matter;
+- object cache can matter;
+- recurring signups/payments create dynamic workload.
+
+Potential value:
+more distinct from the homepage than “small business website”.
+
+Risk:
+may overlap heavily with WordPress if most target SERP is WordPress membership plugins.
+
+Decision:
+keep as a promising niche candidate; validate volume and SERP ownership before creation.
+
+### Candidate — VPS for Directory Website
+Status: HOLD P3.
+
+SERP observation:
+results focus on hosting comparisons for directory/listing sites, not strong exact VPS ownership.
+
+Distinct workload:
+- database-heavy filtering/search;
+- user submissions;
+- maps;
+- images;
+- frequent reads/writes.
+
+Risk:
+likely low volume and significant overlap with generic dynamic-site sizing.
+
+Decision:
+do not create yet; possible future topical expansion.
+
+### Candidate — VPS for Agency Websites
+Status: MERGE-FIRST, not a new page yet.
+
+SERP confirms agency intent is real:
+- many client sites;
+- isolation;
+- cost per site;
+- staging;
+- backups;
+- monitoring;
+- client blast radius;
+- access separation.
+
+Current site already has `VPS for Multiple Websites`.
+
+Best first move:
+expand that existing page with an agency/client-sites section.
+
+Only split into a dedicated agency page if keyword volume and SERP overlap later prove separate ownership.
+
+### Candidate — VPS for High Traffic Website
+Status: MERGE into sizing first.
+
+SERP exists, but the core answer is still workload sizing:
+traffic volume alone is not enough.
+
+Do not create another page until the sizing page is built and overlap is measured.
+
+### Candidate — VPS for News Website
+Status: HOLD P3.
+
+Distinct workload:
+- sharp traffic spikes;
+- frequent publishing;
+- large archives;
+- cache/CDN importance.
+
+But this is a niche vertical. Not a near-term priority.
+
+### Candidate — VPS for PHP / Laravel Website
+Status: HOLD.
+
+Laravel has clear deployment intent, but it moves the project from “website VPS” toward developer/app hosting.
+Do not expand there until the core website cluster is complete.
+
+## 18. Authority/supporting content layer — not all pages are commercial
+
+To build topical completeness without cannibalizing the homepage, separate future content into three layers.
+
+### Layer A — Commercial / decision pages
+Highest priority.
+- VPS for website — HOME
+- VPS for WordPress
+- VPS for WooCommerce
+- VPS for Multiple Websites
+- VPS with Control Panel
+- VPS vs Shared Hosting
+- VPS sizing for website
+- Managed vs Unmanaged VPS
+- Website migration to VPS
+
+### Layer B — Deployment / operational guides
+Build after the commercial cluster is solid.
+- How to host a website on VPS
+- VPS security checklist
+- VPS backup strategy
+- VPS maintenance checklist
+
+These pages strengthen trust/topical authority and naturally link to the commercial hub, but should not compete for the same primary keywords.
+
+### Layer C — niche workload pages
+Only after volume / SERP separation validation.
+- VPS for Membership Website
+- VPS for Website and Email
+- VPS Server Location
+- VPS for Directory Website
+- VPS for News Website
+- VPS for Small Business Website
+- VPS for Agency Websites (only if distinct from Multiple Websites)
+
+## 19. Homepage question inventory — what the final homepage should answer
+
+The homepage should provide a concise direct answer to every question below, with deeper links only where needed.
+
+1. What is a VPS for a website?
+2. Do I actually need a VPS, or is shared hosting enough?
+3. What size VPS does my website need?
+4. Is 1 GB RAM enough?
+5. When should I choose 2 GB, 4 GB or 8 GB?
+6. How much traffic can a VPS handle?
+7. How many websites can I host on one VPS?
+8. WordPress vs WooCommerce vs several websites: what changes?
+9. Managed vs unmanaged/self-managed: who does what?
+10. Do I need a control panel?
+11. What should I check before buying a VPS?
+12. Does server location matter?
+13. Does a CDN/Cloudflare reduce VPS resource needs?
+14. Are snapshots the same as backups?
+15. What backups should a self-managed website have?
+16. What security work is my responsibility?
+17. How do I know when the VPS is too small?
+18. Can I host website and email on the same VPS?
+19. How do I move an existing website to a VPS?
+20. What are the first steps after buying the VPS?
+21. Which current configuration best matches my workload?
+22. What does the VPS price include vs what do I still manage myself?
+
+Rule:
+The homepage must ANSWER all of these briefly, but must NOT contain full tutorials for all of them.
+Deep intent gets a supporting page. This keeps the page commercially focused rather than turning it into an encyclopedia.
+
+## 20. Proposed homepage information architecture — audit blueprint, NOT implementation yet
+
+Preserve native Hugoplate visual language.
+
+### Block 1 — Hero
+- H1 exact primary query.
+- one-sentence commercial answer.
+- primary CTA to approved affiliate offer.
+- no narrow WordPress-only next step.
+
+### Block 2 — Do you need a VPS?
+Direct decision:
+shared hosting is still correct for many light sites; VPS is justified by control, resource limits, custom stack, several sites, background services, or isolation requirements.
+Link: VPS vs Shared Hosting.
+
+### Block 3 — Which VPS size fits?
+Use verified 4-plan mapping.
+Explain 1/2/4/8 GB as workload tiers, not visitor guarantees.
+Future link: VPS sizing for website.
+
+### Block 4 — Workload changes the answer
+Route:
+- WordPress;
+- WooCommerce;
+- multiple websites;
+- possible future membership/dynamic workloads.
+
+### Block 5 — What to check before paying
+Short buying checklist:
+resources, transfer, IP, location, backup policy, management scope, panel, upgrade path, billing/renewal where applicable.
+
+### Block 6 — Self-managed responsibility
+State clearly:
+updates, hardening, web stack, database, backups, monitoring, troubleshooting remain the customer’s work unless specifically included.
+
+Link later: Managed vs Unmanaged VPS.
+
+### Block 7 — Reliability and recovery
+Short trust block:
+- backup vs snapshot;
+- off-server copy;
+- HTTPS;
+- monitoring;
+- restore thinking.
+
+Do not turn into a command tutorial.
+
+### Block 8 — Control panel or command line
+Current page already exists.
+Explain panel overhead/licensing and stack fit.
+
+### Block 9 — Deploy / migrate safely
+High-level sequence:
+choose size -> provision -> secure -> configure web stack/panel -> migrate/deploy -> DNS -> HTTPS -> verify -> monitor.
+
+Link later: Website migration to VPS / How to host website on VPS.
+
+### Block 10 — FAQ / direct-answer layer
+Use native theme/accordion capability if retained by Hugoplate modules.
+FAQ should absorb short decision queries from Section 19 without creating thin pages.
+
+### Block 11 — Final commercial CTA
+Approved VDSina affiliate URL.
+Affiliate disclosure present.
+`rel="sponsored nofollow"`.
+
+## 21. Priority revision after deep audit
+
+### P1 — core architecture
+1. Finish homepage completely.
+2. VPS sizing for website.
+3. Website migration to VPS.
+4. Managed vs Unmanaged VPS.
+5. Deepen existing WordPress / WooCommerce / Multiple Websites / Control Panel / VPS vs Shared pages.
+6. Add intentional contextual return links to homepage.
+
+### P2 — authority/support
+7. How to host a website on VPS.
+8. VPS security checklist.
+9. VPS backup strategy.
+10. VPS maintenance checklist.
+11. Validate VPS for Membership Website.
+
+### P3 / HOLD
+- Website + Email.
+- Server Location.
+- Cloudflare with VPS.
+- Agency page split.
+- Directory website.
+- News website.
+- Small business website.
+- High traffic website as separate page.
+- PHP/Laravel verticals.
+
+## 22. New gap ledger additions
+
+| ID | Gap | Recommended owner | Status |
+|---|---|---|---|
+| GAP-25 | what to check before paying | homepage | OPEN |
+| GAP-26 | traffic capacity misconception | homepage + sizing | OPEN |
+| GAP-27 | 1/2/4/8 GB meaning | homepage + sizing | OPEN |
+| GAP-28 | snapshot vs backup | homepage summary + future backup guide | OPEN |
+| GAP-29 | VPS security responsibility | homepage summary + future security guide | OPEN |
+| GAP-30 | monitoring / upgrade triggers | homepage summary + maintenance guide | OPEN |
+| GAP-31 | first-hour deployment | future How to Host Website on VPS | OPEN P2 |
+| GAP-32 | membership-site workload | possible new page | HOLD P2 |
+| GAP-33 | agency/client-sites scenario | Multiple Websites page first | MERGE-FIRST |
+| GAP-34 | Cloudflare/CDN sizing modifier | homepage/sizing summary | OPEN summary |
+| GAP-35 | email architecture | homepage short answer / possible page | HOLD |
+| GAP-36 | location/latency explanation | homepage/sizing short answer | OPEN summary |
+| GAP-37 | backup/restore authority content | future guide | OPEN P2 |
+| GAP-38 | maintenance authority content | future guide | OPEN P2 |
+| GAP-39 | security authority content | future guide | OPEN P2 |
