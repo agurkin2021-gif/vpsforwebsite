@@ -212,48 +212,22 @@
 
             {{ with .plans }}
               {{ if .enable }}
-                <div class="mt-8 md:hidden">
-                  <div class="grid gap-4">
-                    {{ range .rows }}
-                      <div class="rounded-xl border border-border p-5 dark:border-darkmode-border">
-                        <h4 class="mb-3 text-lg font-semibold">{{ .spec }}</h4>
-                        <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-                          <dt class="font-semibold">Transfer</dt>
-                          <dd>{{ .transfer }}</dd>
-                          <dt class="font-semibold">Price</dt>
-                          <dd>{{ .price_day }} · <strong>{{ .price_month }}</strong></dd>
-                          <dt class="font-semibold">Best fit</dt>
-                          <dd>{{ .fit }}</dd>
-                          <dt class="font-semibold">Watch</dt>
-                          <dd>{{ .warning }}</dd>
-                        </dl>
-                      </div>
-                    {{ end }}
-                  </div>
-                </div>
-                <div class="mt-8 hidden overflow-x-auto md:block">
-                  <table class="w-full min-w-[760px]">
-                    <thead>
-                      <tr>
-                        <th>Configuration</th>
-                        <th>Transfer</th>
-                        <th>Price</th>
-                        <th>Best fit</th>
-                        <th>Watch</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {{ range .rows }}
-                        <tr>
-                          <td><strong>{{ .spec }}</strong></td>
-                          <td>{{ .transfer }}</td>
-                          <td>{{ .price_day }}<br /><strong>{{ .price_month }}</strong></td>
-                          <td>{{ .fit }}</td>
-                          <td>{{ .warning }}</td>
-                        </tr>
-                      {{ end }}
-                    </tbody>
-                  </table>
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                  {{ range .rows }}
+                    <div class="rounded-xl border border-border p-5 dark:border-darkmode-border">
+                      <h4 class="mb-3 text-lg font-semibold">{{ .spec }}</h4>
+                      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                        <dt class="font-semibold">Transfer</dt>
+                        <dd>{{ .transfer }}</dd>
+                        <dt class="font-semibold">Price</dt>
+                        <dd>{{ .price_day }} · <strong>{{ .price_month }}</strong></dd>
+                        <dt class="font-semibold">Best fit</dt>
+                        <dd>{{ .fit }}</dd>
+                        <dt class="font-semibold">Watch</dt>
+                        <dd>{{ .warning }}</dd>
+                      </dl>
+                    </div>
+                  {{ end }}
                 </div>
                 <p class="mt-4 text-sm">{{ .checked }}</p>
                 <p class="mt-2 text-sm">{{ .note }}</p>
