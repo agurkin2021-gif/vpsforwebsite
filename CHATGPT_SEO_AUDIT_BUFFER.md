@@ -3739,3 +3739,17 @@ Generated preview after final source change passed:
 - contextual links to homepage, deployment, managed/unmanaged, control panel, FASTPANEL, WordPress, WooCommerce and Multiple Websites.
 
 Freeze blocker: browser visual QA unavailable in this session because Opera Browser Connector is disconnected and Desktop Commander quota is exhausted. Do not call the page FROZEN until rendered top/checker/security-table QA is completed.
+
+
+## 68. VPS Security Checklist — final freeze after visual QA — 2026-10-13
+Status: BUILT / FROZEN.
+
+Visual QA completed after Browser Connector reconnection.
+Checked rendered preview artifact 6f5133ee37d1fe01a3f4096031b766b2ce016714:
+- first screen / H1 and intro;
+- VPS Security Baseline Checker form;
+- Production security checklist table.
+
+No visible layout defect was found in the inspected desktop render. Generated technical checks remain valid: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, two JSON-LD blocks, functional security checker, sponsored/nofollow/noopener CTA, DDoS truth boundary and intended internal links.
+
+No known P0/P1 content/on-page/visual defect remains. Next core work item: VPS Backup Strategy.
