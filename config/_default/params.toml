@@ -4,7 +4,7 @@ logo_darkmode = ""
 logo_width = "160px"
 logo_height = "32px"
 logo_webp = true
-logo_text = "VPS for Website"
+logo_text = "VPS for website"
 
 navbar_fixed = true
 theme_switcher = true
