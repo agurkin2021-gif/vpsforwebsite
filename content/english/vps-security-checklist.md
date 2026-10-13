@@ -445,7 +445,7 @@ At minimum watch for:
 
 Keep logs long enough to investigate incidents.
 
-The deeper threshold/alert design belongs to the planned **VPS Monitoring** page.
+The deeper threshold/alert design is covered in [VPS Monitoring]({{< relref "vps-monitoring.md" >}}).
 
 ## After a suspected compromise
 
