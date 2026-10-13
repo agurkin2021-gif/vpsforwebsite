@@ -145,6 +145,20 @@ A practical concurrency estimate is:
 
 Example: 6 uncached dynamic requests per second at 0.8 seconds p95 duration imply roughly 4.8 active requests at that moment. If the application needs one worker per active request, plan for about five busy workers plus queue/headroom. If each request consumes 0.12 CPU-seconds, 6 requests per second represent roughly 0.72 CPU-seconds of work per second before headroom. This is a workload estimate, not a universal vCPU guarantee: CPU generation, contention and provider scheduling differ.
 
+## Website workload examples
+
+The same traffic number can produce very different VPS requirements because the amount of work that reaches the origin changes by workload.
+
+| Workload | Typical pressure | Sizing implication |
+|---|---|---|
+| Mostly static or aggressively cached website | low application CPU, low worker concurrency, mostly file delivery | start small, but still budget for OS, logs, backups and unexpected uncached requests |
+| Small WordPress site | PHP workers, database reads, plugin/cron activity | RAM and worker headroom usually matter more than raw monthly visits |
+| WooCommerce or another transactional site | uncached cart, checkout, account sessions, scheduled actions and more database writes | prioritize dynamic concurrency, database latency and peak overlap; avoid treating 1–2 GB as a default production target |
+| Multiple websites | combined PHP/application workers, databases, cron jobs and overlapping peaks | size from aggregate peak demand and consider isolation when one site can starve the others |
+| Background-worker or automation-heavy site | queues, imports, exports, API calls, image processing, scheduled jobs | reserve CPU/RAM outside the user-facing request path and separate workers when bursty jobs disturb the website |
+
+These are workload patterns, not platform guarantees. Use real measurements where available.
+
 ## Translate shared-hosting limits into VPS requirements
 
 If the website already runs on shared hosting, the most useful sizing evidence may already exist in the hosting dashboard.
@@ -352,6 +366,22 @@ A practical capacity budget is:
 
 Example: 18 GB currently used + 8 GB temporary migration/update space + 18 GB temporary local backup staging + 6 GB expected growth already exceeds a 40 GB disk before safety headroom. In that scenario, an 80 GB tier is the safer starting point. Capacity is separate from IOPS and storage latency: a larger disk does not automatically make a slow database faster.
 
+## Bandwidth and monthly transfer sizing
+
+Monthly transfer is different from CPU, RAM and port speed. A server can have plenty of compute headroom and still exceed a transfer allowance if it delivers large files or uncached media directly.
+
+A rough estimate is:
+
+**monthly origin transfer ≈ average bytes sent from the VPS per request × origin requests per month + backups/exports/other outbound traffic**
+
+For a more useful estimate, separate cacheable and dynamic traffic:
+
+**origin transfer ≈ total requested bytes × (1 - CDN/cache offload share) + uncached dynamic responses + non-web outbound traffic**
+
+Example: if users request 2 TB of assets/pages in a month and a CDN serves 80% of those bytes without going back to the origin, the VPS may deliver roughly 400 GB of that cacheable traffic, plus dynamic pages, API responses, backups, exports and any cache misses.
+
+Do not assume a CDN makes origin transfer zero. Logged-in pages, checkout, APIs, cache misses, purge events, large downloads and origin-to-CDN fills can still consume transfer. Also keep **monthly transfer allowance** separate from **network port speed**: a fast port describes potential throughput, while the allowance describes how much data can be sent over the billing period.
+
 ## Multiple websites change the calculation
 
 Several websites on one VPS share the same CPU, RAM, storage and process capacity. Their peaks can overlap even if each site is small individually.
@@ -360,9 +390,13 @@ Size the server from the combined workload and reserve enough headroom that one 
 
 See [VPS for multiple websites]({{< relref "vps-for-multiple-websites.md" >}}) for the multi-site decision.
 
-## Control-panel overhead belongs in the budget
+## Control-panel and mail overhead belong in the budget
 
 A control panel simplifies domains, SSL, databases, PHP versions and account administration, but it also runs services of its own. Reserve memory and storage for the panel rather than sizing only for the website.
+
+Mail services can add another persistent resource layer: SMTP, IMAP/POP, spam filtering, antivirus scanning, queues, logs and mailbox storage. If the VPS will host website + email, include that overhead in the RAM, CPU, storage and backup budget instead of assuming mail is free.
+
+For a small website, moving mail to a managed email provider can reduce server load and operational risk. If mail remains on the VPS, verify deliverability requirements such as DNS records and provider/IP constraints separately; a larger VPS does not solve sender reputation.
 
 If you prefer panel-based administration, compare the trade-offs in [VPS with control panel]({{< relref "vps-with-control-panel.md" >}}).
 
