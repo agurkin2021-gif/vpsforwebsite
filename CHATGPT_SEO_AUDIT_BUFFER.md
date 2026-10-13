@@ -1106,3 +1106,242 @@ Affiliate disclosure present.
 | GAP-37 | backup/restore authority content | future guide | OPEN P2 |
 | GAP-38 | maintenance authority content | future guide | OPEN P2 |
 | GAP-39 | security authority content | future guide | OPEN P2 |
+
+
+## 23. Competitor module audit — what strong pages consistently surface
+
+Deep competitor pass, 2026-10-12.
+
+### ServerCalc pattern
+Source:
+https://servercalc.com/vps-for/website/
+
+Modules worth learning from:
+- immediate workload recommendation;
+- minimum / typical / headroom tiers;
+- explanation of WHY the resource recommendation exists;
+- “what to check before paying”;
+- filters for location, memory, cores, budget and requirements;
+- direct FAQ around shared hosting, 1 GB RAM and workload fit;
+- explicit affiliate disclosure.
+
+What we should copy semantically, not visually:
+- three-tier thinking;
+- buyer checklist;
+- explanation of resource logic;
+- direct-answer FAQ;
+- disclosure.
+
+What we should NOT copy:
+- provider-comparison/calculator model as the primary homepage purpose;
+- mass provider catalog;
+- dozens of filter-generated pages.
+
+### Hostinger pattern
+Current official VPS page:
+https://www.hostinger.com/vps-hosting
+
+Recurring high-conversion modules:
+- immediately visible plan/resource table;
+- bandwidth/transfer shown with CPU/RAM/storage;
+- backups/snapshots;
+- network speed;
+- locations;
+- setup/management tooling;
+- renewal price visibility;
+- “local deployment / global reach”;
+- use-case and FAQ layers.
+
+Semantic lesson:
+buyers compare more than CPU/RAM. Homepage must tell them which non-compute checks matter even if our affiliate provider does not include every feature.
+
+### Liquid Web pattern
+Current official pages:
+https://www.liquidweb.com/vps-hosting/
+https://www.liquidweb.com/vps-hosting/managed-vps/
+
+Strong modules:
+- plan table;
+- management tier;
+- OS choice;
+- control panels;
+- root access;
+- dedicated IP;
+- bandwidth;
+- backups;
+- DDoS;
+- migration;
+- scaling;
+- “when VPS is NOT the right choice”;
+- managed vs self-managed explanation;
+- FAQ.
+
+Important content lesson:
+**negative qualification increases trust.**
+A strong homepage should explain when a VPS is unnecessary or when self-managed VPS is the wrong fit.
+
+### Cybernews editorial pattern
+Source:
+https://cybernews.com/vps/best-vps-hosting/
+
+Strong research structure:
+- provider comparison;
+- “do you need VPS?”;
+- factors to consider;
+- OS choices;
+- managed vs unmanaged;
+- VPS vs shared;
+- FAQ.
+
+We should NOT become a “best VPS providers” review site.
+We SHOULD close the same user-decision questions around our narrower commercial hub.
+
+## 24. Google Search guidance — implementation rules
+
+Official sources reviewed:
+- Title links:
+  https://developers.google.com/search/docs/appearance/title-link
+- Internal link / anchor guidance:
+  https://developers.google.com/search/docs/crawling-indexing/links-crawlable
+- Qualifying sponsored links:
+  https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links
+- FAQ/HowTo rich-result change:
+  https://developers.google.com/search/blog/2023/08/howto-faq-changes
+- Site name:
+  https://developers.google.com/search/docs/appearance/site-names
+
+### Title/H1 implications
+
+Google may use:
+- `<title>`;
+- the main visual title;
+- H1;
+- `og:title`;
+- other prominent page text;
+- anchor text from internal/external links;
+- WebSite structured data.
+
+Therefore our exact Title/H1 rule is useful for consistency, but it does NOT guarantee Google will display that exact string as the SERP title.
+
+Implementation rule:
+- keep Title, H1 and OG title aligned;
+- make the first H1 visually unambiguous;
+- avoid another equally prominent “pseudo-H1”;
+- do not keyword-stuff the title;
+- keep internal anchor semantics consistent with page ownership.
+
+### Internal linking implications
+
+Google explicitly recommends contextual internal links with descriptive, concise anchor text.
+
+Our architecture remains:
+- each important page must have at least one crawlable internal link;
+- supporting pages link contextually to homepage;
+- sibling links only where they help the reader;
+- avoid mechanically repeating the exact same anchor on every page.
+
+### Affiliate-link implications
+
+Google prefers:
+`rel="sponsored"`
+for affiliate / paid-placement links.
+
+Current project usage:
+`rel="sponsored nofollow noopener"`
+
+This is acceptable.
+Keep `sponsored` as the required signal.
+
+### FAQ structured-data implication
+
+FAQ content can still be valuable to users and for direct-answer coverage.
+
+But FAQ rich results are generally restricted to well-known authoritative government and health sites.
+Therefore:
+- build FAQ for content usefulness;
+- do NOT build FAQ only to chase SERP rich-result real estate;
+- FAQ schema is optional/low priority for this affiliate site.
+
+### WebSite structured data
+
+Google documents `WebSite` structured data as a way to indicate the preferred site name.
+
+Potential technical improvement:
+- add valid WebSite JSON-LD on homepage later if theme does not already provide it;
+- site name should be treated separately from per-page Title.
+
+## 25. Additional homepage gaps derived from competitor modules
+
+### HOME-GAP-20 — Negative qualification
+Status: OPEN / high trust.
+
+Homepage should explicitly say when NOT to buy:
+- one light site running well on shared hosting;
+- no need for root/custom software;
+- no capacity problem;
+- no desire/ability to manage Linux on a self-managed offer.
+
+This prevents the page from reading like “VPS is always better”.
+
+### HOME-GAP-21 — Non-compute buying factors
+Status: OPEN.
+
+Current homepage over-focuses on CPU/RAM/storage.
+
+Short decision layer should also teach users to check:
+- transfer/bandwidth;
+- IP terms;
+- location;
+- backup policy;
+- scaling path;
+- management scope;
+- panel/licensing;
+- billing/renewal conditions.
+
+Provider-specific values must be verified before being presented as facts about VDSina.
+
+### HOME-GAP-22 — Price-context transparency
+Status: OPEN.
+
+The homepage can show verified server prices, but should make clear:
+- server price is infrastructure price;
+- panel licenses, administration, external backups, monitoring or managed services may be separate;
+- do not imply all operational requirements are included.
+
+### HOME-GAP-23 — “Why this size?” explanation
+Status: OPEN.
+
+Competitors that explain WHY a tier needs 1/2/4+ GB are stronger than pages that show plan cards without reasoning.
+
+Each homepage size tier needs one workload reason:
+- cacheability;
+- PHP workers;
+- database;
+- background jobs;
+- multiple sites;
+- panel overhead.
+
+### HOME-GAP-24 — “When VPS is not enough”
+Status: HOLD summary.
+
+Some workloads may outgrow one VPS or need another architecture:
+- very high database write load;
+- strict HA requirements;
+- workload needing horizontal scale;
+- very large bandwidth/storage demands.
+
+Homepage only needs a brief caveat.
+Do not create a dedicated page yet.
+
+## 26. Homepage completeness model — five questions the whole page must resolve
+
+The final homepage succeeds only if a buyer can answer:
+
+1. **Fit:** Do I need VPS at all?
+2. **Size:** Which CPU/RAM/storage tier matches my workload?
+3. **Responsibility:** What do I manage myself?
+4. **Risk:** What must I check for backups, security, location, transfer, IP, monitoring and recovery?
+5. **Action:** Which offer should I choose and what do I do next?
+
+Every homepage block must map to at least one of these five questions.
+If a block does not help answer one of them or route to a supporting intent, it is probably noise.
