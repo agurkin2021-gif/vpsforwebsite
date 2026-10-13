@@ -374,3 +374,58 @@ Do not replace the decision-first strategy. Strengthen it with:
 
 That gives the page both halves of current intent:
 "Should I use a VPS for this website?" + "Which configuration should I actually buy?"
+
+
+## Implementation pass — 2026-10-13
+
+Status: IMPLEMENTED / RECHECKED
+
+Implemented from the audit:
+- kept exact owner: Title = H1 = `VPS for website`, URL = `/`;
+- updated meta description to include current configurations and pre-buy decision factors;
+- added a second hero CTA: `See current VPS configurations` -> VDSina affiliate URL;
+- converted the static fit concept into a functional `VPS Fit / Readiness Checker` with five outcomes:
+  - STAY ON SHARED HOSTING;
+  - OPTIMIZE FIRST;
+  - MOVE TO VPS;
+  - MOVE WITH MANAGED / ADMIN HELP;
+  - INSUFFICIENT EVIDENCE;
+- replaced the old plan bullet list with a scannable current configuration table including:
+  - 1 vCPU / 1 GB / 10 GB / 1 TB — $0.07/day / $2.10/month;
+  - 1 vCPU / 2 GB / 40 GB / 32 TB — $0.50/day / $15/month;
+  - 2 vCPU / 4 GB / 80 GB / 32 TB — $0.67/day / $20.10/month;
+  - 4 vCPU / 8 GB / 160 GB / 32 TB — $1.34/day / $40.20/month;
+- added date-checked pricing note and kept volatile terms explicitly non-permanent;
+- added a provider-selection checklist covering compute, network, platform, operations and billing;
+- added methodology/trust block explaining evidence-first sizing and affiliate independence;
+- added direct FAQ coverage for:
+  - best VPS for a website;
+  - monthly VPS cost;
+  - whether a $5 VPS can host a website;
+  - VPS downsides;
+  - domain/email inclusion;
+- added explicit website + automation/worker/API/AI-agent split-or-share example;
+- refocused the bottom CTA on workload fit and current configurations instead of payment bonus;
+- added homepage `WebSite` and `WebPage` JSON-LD;
+- replaced all Hugoplate demo images on the homepage/CTA with local intent-specific SVG illustrations;
+- no public competitor/reference links were added.
+
+Generated-preview validation:
+- one H1;
+- Title/H1 exact and unchanged;
+- preview noindex/nofollow;
+- WebSite schema present;
+- WebPage schema present;
+- Fit Checker HTML + JS present;
+- all four monthly prices present;
+- provider checklist present;
+- methodology block present;
+- secondary hero CTA present;
+- 9 local homepage images referenced;
+- no old raw.githubusercontent Hugoplate demo asset remains on the homepage;
+- only one external destination exists in user-visible homepage links: `https://www.vdsina.com/?partner=ni8gzrvz75`;
+- all 3 VDSina affiliate links use `target="_blank" rel="sponsored nofollow noopener"`;
+- no broken internal homepage route or section anchor detected;
+- no duplicated RawGitHack preview URL defect detected.
+
+Current VDSina Standard values were reverified against the official Standard VPS page on 2026-10-13 before implementation.
