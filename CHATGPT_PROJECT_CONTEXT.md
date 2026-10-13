@@ -533,3 +533,22 @@ The SEO buffer contains:
 - Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, one sponsored affiliate CTA, official WordPress requirement text, caching/cron sections and all intended internal links.
 - SERP Audit.txt now marks VPS for WordPress BUILT / FROZEN.
 - Next planned item: deep fresh SERP + rewrite of VPS for WooCommerce.
+
+
+### 2026-10-13 — VPS for WooCommerce frozen
+- Ran a fresh page-level SERP for VPS for WooCommerce / WooCommerce VPS hosting / best VPS for WooCommerce 2026. Exact owner retained: Title = H1 = VPS for WooCommerce; URL /vps-for-woocommerce/.
+- Research saved at research/vps-for-woocommerce-serp-2026-10-13.md.
+- Current SERP confirms a distinct transactional WooCommerce workload: cart/checkout/account, order/stock writes, payment callbacks, Action Scheduler, integrations and campaign peaks.
+- Official WooCommerce facts rechecked: current recommendations include WordPress 6.9+, PHP 8.3+, MySQL 8.0+ or MariaDB 10.6+, HTTPS and 256 MB+ WordPress memory limit; the page explicitly states that 256 MB application memory is not VPS RAM.
+- Official WooCommerce caching guidance rechecked: Cart, Checkout and My Account remain dynamic and must be excluded from full-page cache.
+- HPOS coverage is accurate: dedicated order tables, enabled by default for new installs since WooCommerce 8.2, with compatibility/testing still required for existing stores/extensions.
+- Action Scheduler is treated as a first-class workload and operational signal, including failed/past-due queues.
+- Added a functional WooCommerce VPS Fit Checker covering store criticality, measured VPS constraints, external gateway/API bottlenecks, checkout concurrency, catalog/search load, background jobs/integrations, DB activity, panel/mail, sale spikes and operations ownership.
+- Checker outputs now include MANAGED/SHARED MAY STILL FIT, DIAGNOSE EXTERNAL/APPLICATION FIRST, LEAN 2 GB, PRACTICAL 4 GB, 8 GB/RECHECK ARCHITECTURE and managed/admin-help path.
+- Current VDSina Standard tiers/prices were rechecked; page does not claim a dedicated preinstalled WooCommerce image because the current visible application/template groups do not list one.
+- Closed all planned G1-G16 gaps: official requirements vs production sizing, dynamic checkout/account cache boundary, checkout concurrency, 2 GB foundation vs 4 GB practical baseline, DB writes, HPOS, Action Scheduler, Woo-aware cache layers, payment/webhook reliability, sale peaks, transaction-aware backups/RPO, external service bottlenecks, functional fit checker, migration live-write boundary, upgrade triggers and negative qualification.
+- Internal links cover homepage, WordPress parent, sizing, Managed/Unmanaged, Control Panel, FASTPANEL, migration and manual deployment.
+- Final preview build for source commit 31773d1b52178199df037286a02a306f020359ea succeeded. Preview artifact 4ce66bddb3ef8bf23db6039b464e5ed3e3b4101d visually checked at the top and fit checker.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, one sponsored affiliate CTA, official WooCommerce requirement/caching/HPOS/Action Scheduler sections and intended internal links.
+- SERP Audit.txt now marks VPS for WooCommerce BUILT / FROZEN.
+- Next planned item: deep fresh SERP + rewrite of VPS for Multiple Websites.
