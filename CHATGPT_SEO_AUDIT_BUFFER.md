@@ -3316,3 +3316,20 @@ Live production build path still reaches the known GitHub Pages deployment block
 
 ### Freeze status
 The page is implemented against its researched scope, but unlike VPS sizing it has not yet received a separate user-requested dense completion audit. Do not mark content frozen until that pass or explicit user acceptance.
+
+
+## 52. Website migration page freeze closure — 2026-10-13
+
+Status: CONTENT COMPLETE / FREEZE AFTER FINAL BUILD CHECK.
+
+Final dense-audit corrections:
+- preflight destination sizing promoted to a hard readiness requirement;
+- any unresolved applicable prerequisite now returns NOT READY;
+- email and jobs/webhooks can explicitly be Not applicable;
+- backup criterion upgraded from file/dump presence to restore/import testing plus representative-data verification;
+- TTL guidance made operational: lower at least one full previous-TTL interval before cutover when possible;
+- SRV and CAA added to DNS-record preservation;
+- same-domain/same-URL hosting moves explicitly state that the Google site-move address-change tool is not used;
+- cutover checklist mirrors the stronger backup acceptance standard.
+
+Research gaps G1–G15 are now represented on-page at the intended scope. No known P0/P1 content gap remains. Keep generic server setup, managed-vs-unmanaged, and URL-changing/domain-changing migration as separate owners rather than expanding this page further.

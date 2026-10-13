@@ -371,3 +371,14 @@ The SEO buffer contains:
 - Preview route files confirmed for homepage, sizing and migration; homepage and sizing generated HTML both link to the new migration route.
 - Live production Hugo workflow continues to fail only at GitHub Pages deployment because Pages is not enabled/configured; page build itself is successful.
 - Next continuation point after user review: dense audit of this page before freezing it, then Managed vs Unmanaged VPS.
+
+
+### 2026-10-13 — Website migration final audit
+- Final dense-audit fixes completed for /website-migration-to-vps/.
+- Preflight now requires destination sizing and every applicable unresolved item blocks READY status.
+- Email and jobs/webhooks support explicit Not applicable states.
+- Backup acceptance now requires restore/import testing where practical plus representative-data verification.
+- DNS guidance now says to lower TTL at least one full previous-TTL interval before cutover when possible, and preserves SRV and CAA records as well as mail/verification records.
+- Same-domain/same-URL hosting moves explicitly state that the Google site-move address-change tool is not used.
+- Cutover checklist uses the stronger restore-tested backup criterion.
+- Page content is frozen after final build/render verification; next planned page is Managed vs Unmanaged VPS.
