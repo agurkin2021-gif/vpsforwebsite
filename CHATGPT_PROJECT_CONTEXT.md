@@ -382,3 +382,13 @@ The SEO buffer contains:
 - Same-domain/same-URL hosting moves explicitly state that the Google site-move address-change tool is not used.
 - Cutover checklist uses the stronger restore-tested backup criterion.
 - Page content is frozen after final build/render verification; next planned page is Managed vs Unmanaged VPS.
+
+
+### 2026-10-13 — Managed vs Unmanaged VPS
+- Implemented /managed-vs-unmanaged-vps/ with exact Title/H1, responsibility matrix, Management fit checker, total operating cost, support-vs-management, panel-vs-management, incident/backup/security ownership, hybrid paid-admin path and VDSina scope boundary.
+- Research saved at research/managed-vs-unmanaged-vps-serp-2026-10-13.md; volume unverified.
+- Homepage and migration now link to the page; Guides menu includes it. Page links to homepage, sizing, control panel and migration.
+- Preview build for source commit 2445ba35805efff2b7602bebfc5abc8299e92d89 succeeded; preview artifact 77fc5ba02230b3451b38d205c5402fd839fb70a2 was visually checked at first screen and checker.
+- Generated checks: Title=H1, preview noindex/nofollow, no preview canonical, JSON-LD present, partner CTA has sponsored/nofollow/noopener.
+- VDSina is not described as fully managed: current Standard page lists 24/7 technical support while separate public QA documents administration as an additional ordered service.
+- Next planned page after freeze/audit: VPS with FASTPANEL.
