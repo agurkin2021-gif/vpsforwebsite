@@ -43,6 +43,12 @@ weight = 4
 
 [[main]]
 parent = "Guides"
+name = "Host Website on VPS"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "Guides"
 name = "VPS vs Shared Hosting"
 url = "/vps-vs-shared-hosting/"
 
