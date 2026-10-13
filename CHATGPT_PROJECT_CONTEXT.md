@@ -155,6 +155,11 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- VDSina provider-differentiator audit completed. Strongest concrete differentiator found: downloadable full server backup images; VDSina documents downloading the backup as `.img.gz`, while DigitalOcean and Vultr explicitly state provider backups/snapshots cannot be directly downloaded.
+- Strong combined positioning: **portable, cloneable, scalable VPS** — clone server, scheduled backups, restore/create server from backup, downloadable image, own ISO/VNC, API management, upward resource scaling while retaining settings.
+- Strong architecture-specific advantage: advertised 10 Gbit/s public port plus free local network up to 100 Gbit/s within a location, useful for web+DB+worker multi-VPS designs.
+- Keep homepage usage compact: scale without rebuilding; clone before risky changes; keep a portable image; split later over private networking. Do not turn homepage into a provider feature dump.
+
 - Novel-intent hunt #2 completed: strongest new rival to the Fit/Readiness Engine is a **VPS Architecture Planner / "One VPS or Split?"** tool. It decides whether website, DB, staging, workers/automation/AI agent and multi-site workloads should remain on one VPS or be split, and in what order.
 - Existing SERPs contain separate articles about DB separation, staging separation and single-vs-multi VPS, but no strong unified website-focused personalized planner was found in this pass.
 - Runner-up WOW utility: **VPS True Cost / TCO Calculator** for server + panel + backups + monitoring + admin time + per-site cost.
