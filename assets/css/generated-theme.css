@@ -1,0 +1,41 @@
+/**
+ * Project-local theme tokens.
+ * Kept in sync with data/theme.json.
+ */
+@theme {
+  --color-primary: #2dde74;
+  --color-body: #080e17;
+  --color-border: #37485c;
+  --color-light: #16212d;
+  --color-dark: #02060f;
+  --color-text: #c9d3df;
+  --color-text-dark: #ffffff;
+  --color-text-light: #93a3b5;
+
+  --color-darkmode-primary: #2dde74;
+  --color-darkmode-body: #080e17;
+  --color-darkmode-border: #37485c;
+  --color-darkmode-light: #16212d;
+  --color-darkmode-dark: #02060f;
+  --color-darkmode-text: #c9d3df;
+  --color-darkmode-text-dark: #ffffff;
+  --color-darkmode-text-light: #93a3b5;
+
+  --font-primary: Inter, sans-serif;
+  --font-secondary: Fraunces, serif;
+
+  --text-base: 16px;
+  --text-base-sm: 12.8px;
+  --text-h6: 1.2rem;
+  --text-h6-sm: 1.08rem;
+  --text-h5: 1.44rem;
+  --text-h5-sm: 1.296rem;
+  --text-h4: 1.728rem;
+  --text-h4-sm: 1.5552rem;
+  --text-h3: 2.0736rem;
+  --text-h3-sm: 1.86624rem;
+  --text-h2: 2.48832rem;
+  --text-h2-sm: 2.239488rem;
+  --text-h1: 2.985984rem;
+  --text-h1-sm: 2.6873856rem;
+}
