@@ -8,6 +8,8 @@ VPS Security Checklist is a prioritized hardening pass for an internet-facing se
 
 The safest order matters: **preserve a recovery path first, verify a second administrative login, inventory exposed services, then tighten SSH and firewall rules**.
 
+If nobody on your side owns patching, firewall policy, backup verification, monitoring and incidents, resolve the operating model first: see [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
+
 For the broader server decision, see [VPS for website]({{< relref "_index.md" >}}).
 
 [Baseline](#security-baseline-in-order) · [Checker](#vps-security-baseline-checker) · [SSH](#harden-administrative-access) · [Firewall](#firewall-only-the-services-you-need) · [Updates](#patching-and-automatic-security-updates) · [Backups](#backups-are-a-security-control) · [Incident response](#after-a-suspected-compromise) · [FAQ](#faq)
