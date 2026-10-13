@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="t d">
+<title id="t">VPS for website decision map</title><desc id="d">A website routes into a virtual private server with CPU, RAM, database and monitoring layers.</desc>
+<rect width="1200" height="675" rx="36" fill="#111827"/>
+<rect x="74" y="218" width="260" height="180" rx="24" fill="#fff"/>
+<rect x="104" y="252" width="200" height="20" rx="10" fill="#d1d5db"/><rect x="104" y="290" width="150" height="16" rx="8" fill="#e5e7eb"/><rect x="104" y="326" width="176" height="16" rx="8" fill="#e5e7eb"/>
+<text x="204" y="438" font-family="Arial,sans-serif" font-size="26" fill="#fff" text-anchor="middle">Website</text>
+<path d="M362 307h128" stroke="#fff" stroke-width="12" stroke-linecap="round"/><path d="m476 285 28 22-28 22" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="520" y="112" width="600" height="450" rx="34" fill="#f9fafb"/>
+<text x="820" y="166" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#111827" text-anchor="middle">VPS</text>
+<rect x="575" y="208" width="220" height="110" rx="20" fill="#e5e7eb"/><text x="685" y="258" font-family="Arial,sans-serif" font-size="23" fill="#111827" text-anchor="middle">CPU + RAM</text>
+<rect x="845" y="208" width="220" height="110" rx="20" fill="#e5e7eb"/><text x="955" y="258" font-family="Arial,sans-serif" font-size="23" fill="#111827" text-anchor="middle">Web stack</text>
+<rect x="575" y="356" width="220" height="110" rx="20" fill="#e5e7eb"/><text x="685" y="406" font-family="Arial,sans-serif" font-size="23" fill="#111827" text-anchor="middle">Database</text>
+<rect x="845" y="356" width="220" height="110" rx="20" fill="#e5e7eb"/><text x="955" y="406" font-family="Arial,sans-serif" font-size="23" fill="#111827" text-anchor="middle">Monitor + backup</text>
+</svg>
