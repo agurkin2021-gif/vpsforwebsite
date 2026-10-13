@@ -3661,3 +3661,34 @@ Final preview artifact: 4ce66bddb3ef8bf23db6039b464e5ed3e3b4101d.
 Verified: Title=H1=VPS for WooCommerce; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; current official server-recommendation values; Woo caching exclusions; HPOS; Action Scheduler; one sponsored/nofollow/noopener CTA; contextual links to homepage, WordPress, sizing, managed, panel, FASTPANEL, migration and deployment guide.
 
 No known P0/P1 content/on-page defect remains. Next core work item is VPS for Multiple Websites.
+
+
+## 66. VPS for Multiple Websites — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Fresh SERP retained the exact owner VPS for Multiple Websites. Current 2026 results strongly separate this intent from generic VPS sizing through multi-site routing, isolation, agency/client administration, combined-peak planning, backups and split/failure-domain decisions.
+
+Closed G1-G16:
+- domain count is not capacity;
+- one public IP can host many normal HTTPS sites via hostname routing/SNI;
+- explicit per-site system/panel user, document root, process/PHP pool, DB credential, log and backup boundaries;
+- folder-only organization is not strong isolation;
+- combined peak is the sizing unit;
+- mixed WordPress/WooCommerce/static/custom workloads need different budgets;
+- internal noisy-neighbor risk;
+- one-VPS blast radius;
+- backup scope and site-level restore granularity;
+- manual vhosts vs control panel vs containers without overclaiming containers;
+- agency/client-site use case remains merged here;
+- functional Multi-site VPS Architecture Checker;
+- measurable split criteria;
+- server-level plus per-site monitoring;
+- separate IP usually unnecessary for normal websites;
+- honest 2/4/8 GB tier mapping without website-count guarantees.
+
+Control audit added missing contextual links for operations ownership and portfolio migration.
+
+Final preview artifact: a602593b2a223fd495ec35e3e0cd15f897ec3bd9.
+Verified: Title=H1=VPS for Multiple Websites; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; architecture checker; same-IP/SNI, isolation, blast-radius, agency and split sections; one sponsored/nofollow/noopener CTA; planned contextual links including Managed vs Unmanaged and Website migration.
+
+No known P0/P1 content/on-page defect remains. Next core work item is VPS Security Checklist.
