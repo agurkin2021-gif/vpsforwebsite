@@ -729,3 +729,53 @@ The SEO buffer contains:
 - Homepage content/SEO/visual/production-output QA can now be considered CLOSED.
 - Separate infrastructure blocker remains: GitHub Pages is not enabled, so deploy-pages cannot publish the production artifact even though the production build itself passes.
 - Next page-by-page re-audit target remains `VPS sizing for website`.
+
+
+### 2026-10-13 — Open Source Pledge-inspired dark design system
+
+- Visual reference: `https://opensourcepledge.com/` and its public source repository. Use the reference as a design-system inspiration, not as branding: do not copy their logo, member marks, photos or proprietary font files.
+- Site is now DARK ONLY. `theme_switcher = false`, `theme_default = "dark"`, and the `dark` class is forced before first paint. Do not reintroduce a light-theme switcher unless explicitly requested.
+- Core palette:
+  - background `#080e17`;
+  - deepest background `#02060f`;
+  - light dark surface `#16212d`;
+  - mid dark surface `#0d131b`;
+  - primary green `#2dde74`;
+  - secondary violet `#9e86ff`;
+  - muted border `#37485c`;
+  - headings `#ffffff`;
+  - body text `#c9d3df`.
+- Typography: use open-source equivalents `Fraunces` for display/headings and `Inter` for body/UI. The reference site's proprietary font files are NOT copied or stored.
+- Local theme token overrides live in:
+  - `data/theme.json`;
+  - `assets/css/generated-theme.css`;
+  - `assets/css/custom.css`.
+- Homepage visual structure:
+  - split editorial hero (copy left, VPS visual right);
+  - green eyebrow `Fit · Size · Deploy`;
+  - green primary CTA + outlined green secondary CTA;
+  - subtle organic gradient accents;
+  - dark card/panel image treatment;
+  - horizontal workflow strip: Fit → Size → Locate → Migrate → Secure → Back up → Monitor;
+  - alternating dark section surfaces, green checks/links, OSP-like compact borders/radii.
+- Internal pages:
+  - left-aligned editorial page header;
+  - `VPS guide` eyebrow;
+  - large Fraunces H1;
+  - dark bordered header panel with restrained gradient accent;
+  - green breadcrumbs/links;
+  - H2 section separators with green rule;
+  - dark tables, code blocks, blockquotes, FAQ/details and CTA styling.
+- Homepage SVG palette and favicon were aligned to the same dark/green system while keeping VPSforWebsite-specific illustrations.
+- Visual QA passed:
+  - homepage at 1280 px and 390 px;
+  - representative internal page `VPS sizing for website` at 1280 px and 390 px.
+- Responsive result:
+  - desktop hero is two-column;
+  - mobile hero stacks cleanly;
+  - workflow strip scrolls horizontally with scrollbar hidden;
+  - navigation collapses to hamburger;
+  - internal headers and body copy remain within viewport.
+- SEO/content ownership was not changed by the design pass: homepage remains exact `VPS for website`; supporting Title/H1 owners remain frozen.
+- User-visible external link invariant remains unchanged: homepage external destination is only the VDSina affiliate URL.
+- GitHub Pages deploy remains a separate repository-setting blocker; production build/SEO assertions pass before deploy.
