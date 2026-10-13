@@ -90,7 +90,7 @@ Must link contextually back to the homepage and relevant sizing/migration pages.
 
 5. VPS for WooCommerce
 URL: /vps-for-woocommerce/
-Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Status: BUILT / FROZEN
 Role:
 - WooCommerce-specific dynamic load;
 - cart / checkout / account;
@@ -372,9 +372,9 @@ DONE / FROZEN
 - How to host a website on VPS
 - VPS vs Shared Hosting
 - VPS for WordPress
+- VPS for WooCommerce
 
 EXISTS / MUST BE DEEPLY REWORKED
-- VPS for WooCommerce
 - VPS for Multiple Websites
 
 NOT BUILT YET
@@ -387,13 +387,12 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Deepen VPS for WooCommerce.
-2. Deepen VPS for Multiple Websites.
-3. Build VPS Security Checklist.
-4. Build VPS Backup Strategy.
-5. Run exact-query SERP and build VPS Monitoring.
-6. Run exact-query SERP and build How to Choose VPS Location.
-7. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Deepen VPS for Multiple Websites.
+2. Build VPS Security Checklist.
+3. Build VPS Backup Strategy.
+4. Run exact-query SERP and build VPS Monitoring.
+5. Run exact-query SERP and build How to Choose VPS Location.
+6. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
