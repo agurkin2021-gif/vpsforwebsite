@@ -125,7 +125,7 @@ Agency intent stays merged here unless later SERP/volume proves a separate page.
 
 8. VPS with Control Panel
 URL: /vps-with-control-panel/
-Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Status: BUILT / FROZEN
 Role:
 - whether a control panel is needed;
 - panel overhead;
@@ -364,12 +364,18 @@ DONE / FROZEN
 - Managed vs Unmanaged VPS
 - FASTPANEL VPS Hosting
 
+DONE / FROZEN
+- VPS sizing for website
+- Website migration to VPS
+- Managed vs Unmanaged VPS
+- FASTPANEL VPS Hosting
+- VPS with Control Panel
+
 EXISTS / MUST BE DEEPLY REWORKED
 - VPS for WordPress
 - VPS for WooCommerce
 - VPS vs Shared Hosting
 - VPS for Multiple Websites
-- VPS with Control Panel
 
 NOT BUILT YET
 - How to host a website on VPS
