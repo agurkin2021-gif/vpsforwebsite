@@ -365,7 +365,7 @@ A useful backup design should let you answer:
 - how much data can be lost between backups?
 - can I verify restores without overwriting the other sites?
 
-A full-server image is useful for disaster recovery, but it should not be the only recovery method if restoring one compromised site would force every other site back to an older point.
+A full-server image is useful for disaster recovery, but it should not be the only recovery method if restoring one compromised site would force every other site back to an older point. For retention, offsite copies, RPO/RTO and restore testing, use [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}).
 
 ## One VPS is one failure domain
 
