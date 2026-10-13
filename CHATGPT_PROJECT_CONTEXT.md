@@ -330,3 +330,15 @@ The SEO buffer contains:
 - Verification: preview workflow for main commit 74b1ec5b0dcdd9b405433c9f876191bbacda9488 succeeded. Preview branch commit 63711e18f4936f82e42b1fa8f1b6d9c4498e5906 contains Title/H1 exact match, noindex/no canonical, no sitemap, 2 JSON-LD blocks, both interactive modules, seven affiliate links, and corrected internal routes.
 - Live Hugo production build itself succeeds, but GitHub Pages deployment still fails at actions/deploy-pages@v4 with HTTP 404: GitHub Pages is not enabled for the repository. This is a repository Pages setting blocker, not a Hugo/page build failure.
 - Review surface remains the fixed preview workflow/URL until Pages is enabled.
+
+
+### 2026-10-13 — VPS sizing finalization pass
+- Continued work on /vps-sizing-for-website/ instead of moving to the next page.
+- Made provider mapping explicit: current VDSina Standard reference tiers now include verified current prices and monthly transfer allowances; values checked against the official Standard pricing page on 2026-10-13.
+- Improved RAM estimator UX using native Hugoplate form classes and light/dark panels; arbitrary example values are now placeholders instead of silent defaults, while 25% headroom remains an editable starting assumption.
+- Improved Shared Hosting -> VPS diagnostic UX with native form styling, ARIA live result blocks and an additional NPROC/process-count pressure input.
+- Added guidance to use CloudLinux/cPanel Resource Usage history rather than a single instantaneous reading.
+- Diagnostic logic now includes process-count saturation in findings and repeated-limit scoring.
+- Pricing/transfer terms are explicitly caveated as changeable provider terms.
+- Source commit for this pass: b65676a7bb871243250550556b2c467053a92f33.
+- Verification status at time of this context update: preview workflow run 38383656385 is still running; do not call this pass complete until it succeeds and the rendered preview is checked.
