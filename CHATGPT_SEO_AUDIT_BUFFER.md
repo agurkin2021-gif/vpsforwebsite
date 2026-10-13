@@ -3692,3 +3692,50 @@ Final preview artifact: a602593b2a223fd495ec35e3e0cd15f897ec3bd9.
 Verified: Title=H1=VPS for Multiple Websites; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; architecture checker; same-IP/SNI, isolation, blast-radius, agency and split sections; one sponsored/nofollow/noopener CTA; planned contextual links including Managed vs Unmanaged and Website migration.
 
 No known P0/P1 content/on-page defect remains. Next core work item is VPS Security Checklist.
+
+
+## 67. VPS Security Checklist — implementation / visual QA pending — 2026-10-13
+Status: BUILT / FINAL VISUAL QA PENDING.
+
+Fresh SERP locks the exact owner:
+- Primary keyword: VPS Security Checklist
+- Title/H1: VPS Security Checklist
+- URL: /vps-security-checklist/
+
+Closed G1-G19:
+- lockout-safe change order and tested recovery path;
+- listening-service/port inventory before firewall changes;
+- SSH-key auth as primary control; port change treated only as noise reduction;
+- root/password SSH changes conditional on tested replacement access;
+- provider + host firewall layering;
+- DB/Redis/internal service privacy;
+- patch/update owner plus service restart/reboot verification;
+- least privilege for admin/app/DB users;
+- secrets protection;
+- Fail2ban/CrowdSec as defense-in-depth;
+- panel/admin UI hardening;
+- independent backup + restore testing;
+- logs/alerts/audit trail;
+- DDoS scope separated from application security;
+- HTTPS transport boundary;
+- CMS/runtime/dependency patching;
+- containment/known-good recovery after suspected privileged compromise;
+- functional Security Baseline Checker;
+- recurring security audit cadence.
+
+Provider truth:
+- VDSina Standard advertises free DDoS protection.
+- VDSina public QA states the free DDoS service covers L3-L4 and is not governed by SLA.
+- Page does not imply WAF/application-layer coverage or managed hardening.
+
+Generated preview after final source change passed:
+- Title=H1=VPS Security Checklist;
+- one H1;
+- preview noindex/nofollow;
+- no preview canonical;
+- two JSON-LD blocks;
+- Security Baseline Checker;
+- one VDSina CTA with sponsored/nofollow/noopener;
+- contextual links to homepage, deployment, managed/unmanaged, control panel, FASTPANEL, WordPress, WooCommerce and Multiple Websites.
+
+Freeze blocker: browser visual QA unavailable in this session because Opera Browser Connector is disconnected and Desktop Commander quota is exhausted. Do not call the page FROZEN until rendered top/checker/security-table QA is completed.
