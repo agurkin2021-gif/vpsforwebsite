@@ -29,7 +29,7 @@ features:
   - id: "vps-sizing"
     title: "Which VPS fits your website workload?"
     image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-2.png"
-    content: "Do not size a server from a monthly visitor number alone. Cacheability, simultaneous requests, PHP workers, database work, background jobs and the number of sites determine the real load. [Open the full VPS sizing guide →](vps-sizing-for-website/)"
+    content: "Do not size a server from a monthly visitor number alone. Cacheability, simultaneous requests, PHP workers, database work, background jobs and the number of sites determine the real load. [Open the full VPS sizing guide →](vps-sizing-for-website/index.html)"
     bulletpoints:
       - "**1 vCPU / 1 GB / 10 GB — $0.07/day:** lean test environment or a very light site with strict memory discipline."
       - "**1 vCPU / 2 GB / 40 GB — $0.50/day:** small site or lean CMS where the panel, PHP and database still fit with headroom."
@@ -42,7 +42,7 @@ features:
     button:
       enable: true
       label: "Size your VPS"
-      link: "/vps-sizing-for-website/"
+      link: "vps-sizing-for-website/index.html"
 
   - id: "management-path"
     title: "Choose how you will manage the server"
