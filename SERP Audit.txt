@@ -158,8 +158,13 @@ Role:
 Do not treat FASTPANEL's own minimum hardware as a recommended production website size.
 
 10. How to host a website on VPS
-Provisional URL: /how-to-host-a-website-on-vps/
-Status: PLANNED / FINAL EXACT QUERY TO VERIFY BEFORE BUILD
+URL: /how-to-host-a-website-on-vps/
+Status: BUILT / FROZEN
+Exact SERP decision (2026-10-13):
+Primary keyword: How to host a website on VPS
+Title: How to host a website on VPS
+H1: How to host a website on VPS
+URL: /how-to-host-a-website-on-vps/
 Role:
 - broad first-hour deployment guide;
 - connect to VPS;
@@ -364,6 +369,7 @@ DONE / FROZEN
 - Managed vs Unmanaged VPS
 - FASTPANEL VPS Hosting
 - VPS with Control Panel
+- How to host a website on VPS
 
 EXISTS / MUST BE DEEPLY REWORKED
 - VPS for WordPress
@@ -372,7 +378,6 @@ EXISTS / MUST BE DEEPLY REWORKED
 - VPS for Multiple Websites
 
 NOT BUILT YET
-- How to host a website on VPS
 - VPS Security Checklist
 - VPS Backup Strategy
 - VPS Monitoring
@@ -382,17 +387,15 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Run a fresh exact-query SERP for How to host a website on VPS, keeping the no-control-panel/manual path merged into that page.
-2. Build How to host a website on VPS.
-3. Deepen VPS vs Shared Hosting.
-4. Deepen VPS for WordPress.
-5. Deepen VPS for WooCommerce.
-6. Deepen VPS for Multiple Websites.
-7. Build VPS Security Checklist.
-8. Build VPS Backup Strategy.
-9. Run exact-query SERP and build VPS Monitoring.
-10. Run exact-query SERP and build How to Choose VPS Location.
-11. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Deepen VPS vs Shared Hosting.
+2. Deepen VPS for WordPress.
+3. Deepen VPS for WooCommerce.
+4. Deepen VPS for Multiple Websites.
+5. Build VPS Security Checklist.
+6. Build VPS Backup Strategy.
+7. Run exact-query SERP and build VPS Monitoring.
+8. Run exact-query SERP and build How to Choose VPS Location.
+9. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
