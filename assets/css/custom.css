@@ -1978,3 +1978,351 @@ body:has(.vps-home) footer .container {
     line-height: 52px !important;
   }
 }
+
+
+/* Homepage VPS sizing responsive workload diagram */
+.vps-home #vps-sizing .row {
+  grid-template-columns: minmax(0, 44%) minmax(0, 50%) !important;
+  gap: 6% !important;
+  align-items: start !important;
+}
+
+.vps-home #vps-sizing .row > div:first-child {
+  align-self: stretch;
+}
+
+.vps-sizing-diagram {
+  width: 100%;
+  min-height: 590px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border: 1px solid #243646;
+  border-radius: 30px 12px 12px 12px;
+  background: #0d1824;
+}
+
+.vps-sizing-head {
+  margin-bottom: 20px;
+}
+
+.vps-sizing-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--osp-green);
+  font-size: .66rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.vps-sizing-head strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: 1.25rem;
+  line-height: 1.18;
+}
+
+.vps-sizing-head small {
+  display: block;
+  max-width: 36rem;
+  margin-top: 7px;
+  color: #95a4b3;
+  font-size: .74rem;
+  line-height: 1.42;
+}
+
+.vps-sizing-input {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.vps-sizing-input-badge {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 1px solid #2b4051;
+  border-radius: 10px;
+  background: #07101a;
+  color: #94a3b2;
+  font-size: .76rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.vps-sizing-input-badge-active {
+  border-color: #1f8c5d;
+  background: #0b1d19;
+  color: #47ed91;
+}
+
+.vps-sizing-not-equal {
+  color: #64798d;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.vps-sizing-flow-line {
+  position: relative;
+  width: 2px;
+  height: 30px;
+  margin: 0 auto;
+  background: var(--osp-green);
+}
+
+.vps-sizing-flow-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--osp-green);
+  border-bottom: 2px solid var(--osp-green);
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.vps-sizing-resources {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vps-sizing-resource {
+  min-width: 0;
+  min-height: 176px;
+  padding: 14px 12px;
+  border: 1px solid #2a3e4e;
+  border-radius: 13px;
+  background: #101c28;
+}
+
+.vps-sizing-resource > div:last-child > span {
+  display: block;
+  margin-top: 12px;
+  color: var(--osp-green);
+  font-size: .67rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.vps-sizing-resource strong {
+  display: block;
+  margin-top: 5px;
+  color: #f7f6f2;
+  font-size: .84rem;
+  line-height: 1.22;
+}
+
+.vps-sizing-resource small {
+  display: block;
+  margin-top: 7px;
+  color: #95a4b3;
+  font-size: .67rem;
+  line-height: 1.35;
+}
+
+.vps-sizing-resource-icon {
+  height: 42px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.vps-sizing-cpu-icon i {
+  width: 9px;
+  border-radius: 3px 3px 2px 2px;
+  background: #8ea0b2;
+}
+
+.vps-sizing-cpu-icon i:nth-child(1) { height: 22px; }
+.vps-sizing-cpu-icon i:nth-child(2) { height: 36px; background: #b7c4d1; }
+.vps-sizing-cpu-icon i:nth-child(3) { height: 17px; background: #50667a; }
+
+.vps-sizing-ram-icon {
+  align-items: center;
+}
+
+.vps-sizing-ram-icon span {
+  position: relative;
+  width: 44px;
+  height: 28px;
+  border-radius: 7px;
+  background: #c4d0dc;
+}
+
+.vps-sizing-ram-icon span::before,
+.vps-sizing-ram-icon span::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 5px;
+  height: 12px;
+  border-radius: 2px;
+  background: #7f93a6;
+}
+
+.vps-sizing-ram-icon span::before { left: 10px; }
+.vps-sizing-ram-icon span::after { right: 10px; }
+
+.vps-sizing-db-icon {
+  position: relative;
+  width: 42px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.vps-sizing-db-icon i {
+  width: 38px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #7f93a6;
+  background: #162431;
+}
+
+.vps-sizing-db-icon i + i {
+  margin-top: -3px;
+}
+
+.vps-sizing-signals-label {
+  margin: 20px 0 10px;
+  color: #8293a4;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.vps-sizing-signals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vps-sizing-signals span {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 9px;
+  border: 1px solid #263b4b;
+  border-radius: 999px;
+  background: #07101a;
+  color: #b3bec8;
+  font-size: .65rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.vps-sizing-result {
+  margin-top: 18px;
+  padding: 15px 16px;
+  border-left: 3px solid var(--osp-green);
+  border-radius: 8px;
+  background: #07101a;
+}
+
+.vps-sizing-result > span {
+  display: block;
+  color: var(--osp-green);
+  font-size: .63rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.vps-sizing-result strong {
+  display: block;
+  margin-top: 5px;
+  color: #f7f6f2;
+  font-size: .82rem;
+  line-height: 1.25;
+}
+
+.vps-sizing-result small {
+  display: block;
+  margin-top: 5px;
+  color: #91a0ae;
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .vps-home #vps-sizing .row {
+    grid-template-columns: minmax(0, 46%) minmax(0, 48%) !important;
+    gap: 6% !important;
+  }
+
+  .vps-sizing-diagram {
+    padding: 20px;
+  }
+
+  .vps-sizing-resource {
+    min-height: 166px;
+    padding: 12px 10px;
+  }
+
+  .vps-sizing-signals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-home #vps-sizing .row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .vps-sizing-diagram {
+    min-height: 0;
+    padding: 22px;
+    border-radius: 24px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .vps-sizing-input {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .vps-sizing-not-equal {
+    transform: rotate(90deg);
+  }
+
+  .vps-sizing-flow-line {
+    height: 26px;
+  }
+
+  .vps-sizing-resources {
+    grid-template-columns: 1fr;
+  }
+
+  .vps-sizing-resource {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vps-sizing-resource > div:last-child > span {
+    margin-top: 0;
+  }
+
+  .vps-sizing-signals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

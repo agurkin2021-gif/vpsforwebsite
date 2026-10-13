@@ -203,6 +203,73 @@
                   Measure the workload first. Move only when the evidence points to infrastructure.
                 </div>
               </div>
+            {{ else if eq .id "vps-sizing" }}
+              <div class="vps-sizing-diagram" role="img" aria-label="Website VPS sizing flow based on workload signals instead of visitor counts">
+                <div class="vps-sizing-head">
+                  <span class="vps-sizing-kicker">Sizing logic</span>
+                  <strong>Size the workload, not visits</strong>
+                  <small>Traffic volume is only one signal. Resource pressure and workload shape determine the server.</small>
+                </div>
+
+                <div class="vps-sizing-input">
+                  <div class="vps-sizing-input-badge">Monthly visits</div>
+                  <div class="vps-sizing-not-equal" aria-hidden="true">≠</div>
+                  <div class="vps-sizing-input-badge vps-sizing-input-badge-active">VPS size</div>
+                </div>
+
+                <div class="vps-sizing-flow-line" aria-hidden="true"></div>
+
+                <div class="vps-sizing-resources">
+                  <div class="vps-sizing-resource">
+                    <div class="vps-sizing-resource-icon vps-sizing-cpu-icon" aria-hidden="true">
+                      <i></i><i></i><i></i>
+                    </div>
+                    <div>
+                      <span>CPU</span>
+                      <strong>Compute pressure</strong>
+                      <small>PHP workers · concurrency · uncached requests</small>
+                    </div>
+                  </div>
+
+                  <div class="vps-sizing-resource">
+                    <div class="vps-sizing-resource-icon vps-sizing-ram-icon" aria-hidden="true">
+                      <span></span>
+                    </div>
+                    <div>
+                      <span>RAM</span>
+                      <strong>Memory headroom</strong>
+                      <small>Apps · cache · panel · background services</small>
+                    </div>
+                  </div>
+
+                  <div class="vps-sizing-resource">
+                    <div class="vps-sizing-resource-icon vps-sizing-db-icon" aria-hidden="true">
+                      <i></i><i></i><i></i>
+                    </div>
+                    <div>
+                      <span>DB + jobs</span>
+                      <strong>Dynamic work</strong>
+                      <small>Queries · cron · checkout · queue activity</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="vps-sizing-signals-label">Workload signals</div>
+                <div class="vps-sizing-signals">
+                  <span>Cacheability</span>
+                  <span>Concurrent requests</span>
+                  <span>PHP workers</span>
+                  <span>Database load</span>
+                  <span>Background jobs</span>
+                  <span>Number of sites</span>
+                </div>
+
+                <div class="vps-sizing-result">
+                  <span>Result</span>
+                  <strong>Choose the smallest VPS with measured headroom</strong>
+                  <small>Validate CPU, memory, storage growth and dynamic workload together.</small>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"
