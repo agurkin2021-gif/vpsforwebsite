@@ -4040,3 +4040,47 @@ body:has(.vps-home) footer .container {
 .vps-home .vps-btn-secondary i {
   color: currentColor !important;
 }
+
+
+/* Homepage clickable affiliate visuals */
+.vps-home .vps-affiliate-visual {
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.vps-home .vps-affiliate-visual:visited {
+  color: inherit !important;
+}
+
+.vps-home .vps-affiliate-visual:focus-visible {
+  outline: 2px solid var(--vps-secondary);
+  outline-offset: 4px;
+}
+
+.vps-home .vps-fit-diagram,
+.vps-home .vps-sizing-diagram,
+.vps-home .vps-provider-diagram,
+.vps-home .vps-management-diagram,
+.vps-home .vps-migration-diagram,
+.vps-home .vps-architecture-diagram,
+.vps-home .vps-growth-diagram,
+.vps-home .vps-cta-diagram {
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.vps-home .vps-affiliate-visual:hover {
+  text-decoration: none !important;
+}
+
+.vps-home .vps-fit-diagram:hover,
+.vps-home .vps-sizing-diagram:hover,
+.vps-home .vps-provider-diagram:hover,
+.vps-home .vps-management-diagram:hover,
+.vps-home .vps-migration-diagram:hover,
+.vps-home .vps-architecture-diagram:hover,
+.vps-home .vps-growth-diagram:hover,
+.vps-home .vps-cta-diagram:hover {
+  border-color: #2a6e50;
+  box-shadow: 0 0 0 1px rgba(45, 222, 116, .08);
+}

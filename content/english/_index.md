@@ -7,7 +7,7 @@ banner:
   content: "A VPS for website hosting is an isolated virtual server where you control the operating system, web stack and allocated resources. Decide whether you actually need one, size it from real workload instead of guessed visitor counts, choose how you will manage it, and plan migration and growth before you buy."
   image: "images/home/vps-for-website-hero-v3.svg"
   button:
-    enable: true
+    enable: false
     label: "Check your VPS fit"
     link: "#fit-check"
   secondary_button:
