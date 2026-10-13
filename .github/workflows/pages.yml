@@ -41,24 +41,17 @@ jobs:
       - name: Build preview with complete Tailwind utilities
         run: hugo --gc --minify --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
 
-      - name: Make preview navigation absolute
+      - name: Make preview page links absolute
         shell: python
         run: |
           from pathlib import Path
+          import re
           prefix = "/agurkin2021-gif/vpsforwebsite/preview/"
           target = "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
-          suffixes = {".html", ".css", ".js", ".json", ".xml", ".webmanifest"}
-          for path in Path("public").rglob("*"):
-              if not path.is_file() or path.suffix.lower() not in suffixes:
-                  continue
+          pattern = re.compile(r'(<a\\b[^>]*?\\bhref=)(["\\\']?)' + re.escape(prefix))
+          for path in Path("public").rglob("*.html"):
               text = path.read_text(encoding="utf-8")
-              for attr in ("href", "src", "action"):
-                  text = text.replace(f'{attr}={prefix}', f'{attr}={target}')
-                  text = text.replace(f'{attr}="{prefix}', f'{attr}="{target}')
-                  text = text.replace(f"{attr}='{prefix}", f"{attr}='{target}")
-              text = text.replace(f"url({prefix}", f"url({target}")
-              text = text.replace(f'url("{prefix}', f'url("{target}')
-              text = text.replace(f"url('{prefix}", f"url('{target}")
+              text = pattern.sub(lambda m: m.group(1) + m.group(2) + target, text)
               path.write_text(text, encoding="utf-8")
 
       - name: Remove preview sitemap
