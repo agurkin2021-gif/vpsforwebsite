@@ -129,16 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return item[1];
     });
 
-    var criticalIds = ["mig-backup", "mig-sizing", "mig-runtime", "mig-test", "mig-dns", "mig-mail", "mig-writes", "mig-tls", "mig-jobs", "mig-rollback"];
-    var criticalMissing = criticalIds.some(function (id) {
-      return !isComplete(id);
-    });
-
     var result;
     if (missing.length === 0) {
-      result = "READY FOR A CONTROLLED CUTOVER: all listed prerequisites are marked ready. Recheck the final data sync and rollback trigger immediately before DNS changes.";
-    } else if (!criticalMissing && missing.length <= 2) {
-      result = "READY WITH NON-CRITICAL CHECKS: resolve or explicitly accept these remaining items before cutover: " + missing.join(", ") + ".";
+      result = "READY FOR A CONTROLLED CUTOVER: all required items are marked ready or explicitly not applicable. Recheck the final data sync and rollback trigger immediately before DNS changes.";
     } else {
       result = "NOT READY FOR CUTOVER: close these gaps first: " + missing.join(", ") + ".";
     }
