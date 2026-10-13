@@ -2542,3 +2542,286 @@ the search intent is less naturally phrased and may depend more on linkability/t
 4. **VPS True Cost / TCO Calculator** — strong trust/conversion utility.
 5. **FASTPANEL vs Pure Ubuntu / No Control Panel decision** — strong commercial supporting path, less novel.
 6. **Windows IIS / ASP.NET branch** — relevant supporting cluster, not a novel gap.
+
+
+## 38. VDSina provider-differentiator audit — portability, cloning, recovery, private network
+
+Research pass: 2026-10-12.
+
+Goal:
+identify provider-specific strengths that can support the site's commercial positioning without inventing claims or turning the site into generic VDSina advertising.
+
+### Finding 1 — Downloadable full server backup image
+Status: **STRONG DIFFERENTIATOR**
+
+VDSina official QA documents:
+- generate a download link for a server backup;
+- download the compressed full image as `.img.gz`;
+- unpack/use the image locally;
+- documented example restores the image in VirtualBox.
+
+Official source:
+https://www.vdsina.com/qa/q/kak-skachat-rezervnuyu-kopiyu-sozdannuyu-iz-paneli
+
+Competitive comparison checked:
+- DigitalOcean explicitly states that backups/snapshots cannot currently be downloaded.
+- Vultr documentation states snapshots/backups cannot be downloaded directly.
+
+Sources:
+- https://docs.digitalocean.com/support/can-i-download-a-backup-or-snapshot/
+- https://docs.vultr.com/vultr-data-portability-guide
+
+Conclusion:
+Do NOT call downloadable backups globally unique.
+Do say it is a **real portability advantage over major providers such as DigitalOcean and Vultr**.
+
+### Strong positioning angle
+
+Not:
+> “We have backups.”
+
+Better:
+> **“Your server image is not trapped in the provider panel.”**
+
+User benefit:
+- offline archival;
+- portability;
+- local inspection/test recovery;
+- reduced provider lock-in;
+- disaster-recovery copy under the user's control.
+
+This can become a high-trust commercial point because many provider snapshots remain account/provider-bound.
+
+### Finding 2 — Automatic server cloning in a few clicks
+Status: **USEFUL, not unique**
+
+VDSina official QA documents:
+- clone an existing server from the control panel;
+- choose the data center for the copy;
+- optionally preserve a backup;
+- cloned server is created on the same tariff;
+- VNC can be used to adjust network settings after cloning.
+
+Official source:
+https://www.vdsina.com/qa/q/kak-klonirovat-sozdat-kopiyu-sushchestvuyushchego-servera
+
+Competitors such as DigitalOcean and Hetzner also support creating servers from snapshots/images.
+
+Conclusion:
+cloning alone is not a WOW USP.
+
+Better use:
+combine it with:
+- staging creation;
+- migration testing;
+- rollback workflow;
+- architecture experiments;
+- copying a known-good website stack.
+
+### Finding 3 — Scheduled backups + restore + new server from backup
+Status: **STRONG OPERABILITY FEATURE, not unique**
+
+VDSina supports:
+- scheduled backups;
+- restore to the server;
+- creating a new server from a previously created backup/snapshot subject to location/disk constraints.
+
+Official sources:
+- https://www.vdsina.com/qa/q/kak-nastroit-rezervnoe-kopirovanie-po-raspisaniyu
+- https://www.vdsina.com/qa/q/kak-sdelat-bekap-vds-servera
+
+Important truth boundary:
+VDSina Terms state customers remain responsible for their own backups and VDSina does not guarantee recovery.
+Do not market provider backup functionality as a complete backup strategy.
+
+Source:
+https://www.vdsina.com/terms
+
+### Finding 4 — Own ISO upload + ISO library + VNC
+Status: **STRONG FLEXIBILITY FEATURE**
+
+VDSina supports:
+- upload ISO from local PC;
+- download ISO from a URL;
+- use an ISO library;
+- attach ISO when ordering/reinstalling;
+- complete installation/configuration through VNC.
+
+Official sources:
+- https://www.vdsina.com/qa/q/kak-ispolzovat-svoy-obraz-iso-v-vds
+- https://www.vdsina.com/qa/q/ispolzovanie-biblioteki-iso
+
+This is useful for:
+- custom OS;
+- specialized appliances;
+- reproducible environments;
+- recovery/manual installation paths.
+
+Not unique among advanced VPS providers, but valuable for technical buyers.
+
+### Finding 5 — Control panel + API
+Status: **STRONG AUTOMATION FOUNDATION**
+
+VDSina officially advertises:
+- self-developed control panel;
+- one-click server operations such as reboot and OS installation;
+- API-based service/server management.
+
+Sources:
+- https://www.vdsina.com/
+- https://www.vdsina.com/pricing
+
+This supports future content around:
+- automation;
+- repeatable server provisioning;
+- AI-agent/admin workflows;
+- infrastructure scripts.
+
+Do not claim a specific API action unless separately verified in API documentation.
+
+### Finding 6 — Resource upgrade without losing configuration
+Status: **USEFUL COMMERCIAL BENEFIT**
+
+VDSina official QA states:
+- tariff can be upgraded at any time;
+- configuration/settings remain;
+- disk size increases with a larger plan, after which the OS partition/filesystem may need expansion;
+- standard plans cannot generally be downgraded to a smaller disk.
+
+Sources:
+- https://www.vdsina.com/qa/q/kak-izmenit-tarif-vds
+- https://www.vdsina.com/ru/qa/q/mozhno-li-rasshirit-parametry-vds-bez-smeny-tarifnogo-plana
+
+Positioning:
+**start smaller, scale upward without rebuilding the website stack.**
+
+Do not imply seamless downgrade.
+
+### Finding 7 — 10 Gbit/s public port + free 100 Gbit/s local network
+Status: **VERY STRONG for multi-VPS architecture**
+
+VDSina advertises:
+- 10 Gbit/s internet connection per VPS;
+- free local network up to 100 Gbit/s;
+- local network can be configured between servers within a location.
+
+Sources:
+- https://www.vdsina.com/
+- https://www.vdsina.com/qa/q/lokalnaya-set
+
+This is especially relevant to the site's novel Architecture Planner.
+
+Commercial/technical use cases:
+- web VPS + DB VPS;
+- web + worker/automation VPS;
+- multiple internal services;
+- private inter-server traffic;
+- separating public-facing and data layers.
+
+Do NOT state guaranteed application throughput; present it as the advertised network capability.
+
+### Finding 8 — NVMe storage with triple replication
+Status: **INFRASTRUCTURE STRENGTH**
+
+VDSina advertises NVMe storage with triple replication.
+
+Source:
+https://www.vdsina.com/
+
+Important:
+triple replication is infrastructure redundancy, NOT a replacement for user backups.
+Keep it separate from the backup message.
+
+### Finding 9 — Free DDoS protection
+Status: **USEFUL included feature**
+
+VDSina advertises free DDoS protection for each VDS server.
+
+Source:
+https://www.vdsina.com/
+
+Do not invent attack-size/SLA guarantees.
+
+## 39. Strongest provider-specific positioning concept
+
+The most defensible VDSina-specific angle found is not one isolated feature.
+
+It is a combined concept:
+
+### **Portable, cloneable, scalable VPS**
+
+Core message:
+1. deploy a website;
+2. upgrade resources without rebuilding the stack;
+3. clone the server for staging/testing/another role;
+4. schedule backups;
+5. restore or create a new server from a backup;
+6. download a full server image for offline portability;
+7. use own ISO/VNC for custom/recovery workflows;
+8. connect multiple VPSs over the private local network;
+9. automate management through the API.
+
+This is materially more interesting than generic “cheap VPS”.
+
+### Strongest single differentiator for copy
+
+**Downloadable server backup image / lower provider lock-in.**
+
+Why:
+DigitalOcean and Vultr explicitly do not allow direct backup/snapshot downloads, while VDSina documents a downloadable full server image.
+
+Potential supporting concept:
+**Portable VPS / VPS without provider lock-in**
+
+Do NOT lock a Title/H1 yet; validate search demand first.
+
+Possible user-facing idea:
+> “Keep a copy you can actually take with you.”
+
+### Strongest differentiator for Architecture Planner
+
+**Free 100 Gbit/s local network between servers within a location.**
+
+This gives a concrete provider reason to support:
+- one VPS today;
+- split DB/worker/staging later;
+- retain fast private inter-server connectivity.
+
+### Strongest differentiator for safe experimentation
+
+**Clone + backup + downloadable image + VNC/ISO.**
+
+This supports:
+- clone production before risky changes;
+- build staging from a known-good server;
+- test migration/upgrades;
+- retain an offline recovery image.
+
+## 40. Provider-specific homepage use — compact only
+
+Do not turn the homepage into a provider feature dump.
+
+Best candidate points for the final homepage:
+- **Scale up without rebuilding** — verified upward tariff change while retaining settings.
+- **Clone before risky changes** — one-click clone workflow.
+- **Keep a portable server image** — downloadable backup image.
+- **Split later over private networking** — 100 Gbit/s local network capability.
+- **Use FASTPANEL or pure OS/own ISO** — flexible management path.
+
+Detailed proof belongs on supporting pages / FAQ.
+
+## 41. New gap / USP ledger
+
+| ID | Opportunity | Status |
+|---|---|---|
+| USP-01 | downloadable full VPS backup image | HIGH-VALUE VERIFIED |
+| USP-02 | reduced provider lock-in / portable recovery image | HIGH-VALUE POSITIONING |
+| USP-03 | one-click server clone with DC choice | VERIFIED / SUPPORTING |
+| USP-04 | scheduled backup + restore + new server from backup | VERIFIED / SUPPORTING |
+| USP-05 | own ISO + library + VNC | VERIFIED / SUPPORTING |
+| USP-06 | API/server-management automation | VERIFIED GENERIC CAPABILITY |
+| USP-07 | upgrade resources while retaining settings | VERIFIED / HIGH COMMERCIAL FIT |
+| USP-08 | free 100 Gbit/s local network inside location | VERIFIED / HIGH ARCHITECTURE FIT |
+| USP-09 | 10 Gbit/s public network port | VERIFIED |
+| USP-10 | NVMe triple replication | VERIFIED / NOT A BACKUP |
+| USP-11 | free DDoS protection | VERIFIED / NO SLA CLAIM |
