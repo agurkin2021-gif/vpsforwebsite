@@ -3207,3 +3207,32 @@ Verified in generated HTML/browser:
 
 ### Remaining page-level work
 No critical content/on-page defect from the dense audit remains open. Future work on this page should be evidence-driven refinement rather than adding more sections: real user inputs, better calculator UX, or performance/mobile polish after visual review.
+
+
+## 49. VPS sizing final completion pass — 2026-10-13
+
+Status: COMPLETE FOR CURRENT PAGE SCOPE.
+
+Final additions after the dense audit:
+- current VDSina Standard reference tiers now show verified current prices and transfer allowances;
+- provider values checked against the official Standard pricing page on 2026-10-13;
+- RAM estimator now uses native Hugoplate form styling and requires the user to enter measurements instead of silently preloading arbitrary workload values;
+- 25% headroom remains an editable starting assumption;
+- Shared Hosting -> VPS diagnostic now includes NPROC/process-count pressure;
+- diagnostic guidance explicitly tells users to use CloudLinux/cPanel history rather than one live snapshot;
+- diagnostic and calculator result regions use aria-live;
+- visual review confirmed the native light/dark panel treatment renders correctly.
+
+Verification:
+- preview build for page source commit b65676a7bb871243250550556b2c467053a92f33: SUCCESS;
+- generated Title = H1 = VPS sizing for website;
+- preview noindex,nofollow: present;
+- preview canonical: absent;
+- preview sitemap reference: absent;
+- WebPage + BreadcrumbList JSON-LD: present;
+- 7 VDSina partner links and 7 matching sponsored/nofollow/noopener attributes;
+- NPROC diagnostic field: present;
+- current price strings for all four reference tiers: present;
+- preview route files confirmed for homepage, WordPress, WooCommerce, Multiple Websites, Control Panel, VPS vs Shared Hosting and VPS sizing.
+
+No remaining P0/P1 on-page defect is known for this page. Further changes should be driven by real search/user data rather than adding more sections.
