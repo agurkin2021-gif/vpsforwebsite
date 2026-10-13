@@ -409,3 +409,13 @@ The SEO buffer contains:
 - Added root text file `SERP Audit.txt` as the persistent work plan for the homepage support cluster.
 - The file records the corrected 14-page architecture, current status, merge/retarget decisions, cannibalization rules, HOLD list, recommended work order and the standard SERP->build->audit workflow.
 - This file should be read together with CHATGPT_PROJECT_CONTEXT.md and CHATGPT_SEO_AUDIT_BUFFER.md before continuing the surrounding-page build plan.
+
+
+### 2026-10-13 — Managed vs Unmanaged VPS frozen
+- Rechecked the exact/near-exact SERP after the architecture rewrite; recent 2026 results still show a distinct managed-vs-unmanaged comparison intent. Page remains necessary and should not be merged with the homepage, VPS with Control Panel, or VPS vs Shared Hosting.
+- Final dense audit additions: management-claim decoder table, explicit unmanaged-production red flags, stronger total-operating-cost comparison worksheet, official VDSina provider references, and a stricter paid-admin warning for high-impact/custom workloads.
+- VDSina truth was revalidated: Standard VPS advertises round-the-clock technical support; separate official QA describes server administration as an additional paid service. Therefore the referred VPS is not represented as fully managed.
+- Final preview build after the page edits succeeded; preview artifact 23b73011a5cce24c9cc1a9dee244431ff91adc49. Generated checks: exact Title/H1, preview noindex/nofollow, no preview canonical, checker present, scope-decoder/red-flags/TCO sections present, official references present, sponsored affiliate rel present.
+- Browser visual review confirmed the new management-claim decoder renders correctly in native Hugoplate styling.
+- SERP Audit.txt now marks Managed vs Unmanaged VPS as BUILT / FROZEN.
+- Next work item in the revised plan: exact-query SERP for the FASTPANEL page target.
