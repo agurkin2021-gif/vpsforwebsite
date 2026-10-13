@@ -9,7 +9,7 @@ banner:
   button:
     enable: true
     label: "Check your VPS fit"
-    link: "/#fit-check"
+    link: "#fit-check"
 
 features:
   - id: "fit-check"
@@ -35,7 +35,7 @@ features:
       - "**1 vCPU / 2 GB / 40 GB — $0.50/day:** small site or lean CMS where the panel, PHP and database still fit with headroom."
       - "**2 vCPU / 4 GB / 80 GB — $0.67/day:** practical starting point for a business site or typical WordPress workload."
       - "**4 vCPU / 8 GB / 160 GB — $1.34/day:** heavier dynamic traffic, larger databases, background work or several active sites."
-      - "Different workloads need different headroom: [WordPress](/vps-for-wordpress/), [WooCommerce](/vps-for-woocommerce/) and [multiple websites](/vps-for-multiple-websites/) should not be sized with one visitor-count rule."
+      - "Different workloads need different headroom: [WordPress](vps-for-wordpress/), [WooCommerce](vps-for-woocommerce/) and [multiple websites](vps-for-multiple-websites/) should not be sized with one visitor-count rule."
       - "Before paying, also check storage growth, transfer allowance, server location, backup method, control-panel overhead and who will administer the server."
     button:
       enable: false
