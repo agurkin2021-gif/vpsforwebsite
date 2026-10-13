@@ -3700,46 +3700,64 @@ body:has(.vps-home) footer .container {
 
 
 /* Homepage final CTA responsive evidence diagram */
-.vps-home #final-cta > .container > div {
+.vps-home #final-cta {
+  padding: 76px 0 !important;
+}
+
+.vps-home #final-cta > .container {
+  width: 1040px !important;
   max-width: 1040px !important;
-  padding: 44px !important;
-}
-
-.vps-home #final-cta .row {
-  display: grid !important;
-  grid-template-columns: minmax(0, 56%) minmax(0, 40%) !important;
-  gap: 4% !important;
-  align-items: center !important;
-  margin-inline: 0 !important;
-}
-
-.vps-home #final-cta .row > * {
-  width: auto !important;
-  max-width: none !important;
+  margin-inline: auto !important;
   padding-inline: 0 !important;
 }
 
-.vps-home #final-cta .md\:order-1 {
-  order: 1 !important;
+.vps-cta-home-card {
+  width: 100%;
+  padding: 44px;
+  border: 1px solid #263746;
+  border-radius: 24px;
+  background: #101c28;
 }
 
-.vps-home #final-cta .md\:order-2 {
-  order: 2 !important;
+.vps-cta-home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 54%) minmax(0, 42%);
+  gap: 4%;
+  align-items: center;
 }
 
-.vps-home #final-cta h2 {
+.vps-cta-home-copy,
+.vps-cta-home-visual {
+  min-width: 0;
+}
+
+.vps-cta-home-copy h2 {
   max-width: 11ch;
-  margin-bottom: 16px !important;
+  margin: 0 0 16px !important;
+  color: var(--osp-text);
   font-size: clamp(2.55rem, 3.3vw, 3.3rem);
   line-height: 1;
   letter-spacing: -.045em;
 }
 
-.vps-home #final-cta p {
+.vps-cta-home-copy p {
   max-width: 560px;
-  margin-bottom: 26px !important;
+  margin: 0 0 26px !important;
+  color: var(--osp-copy);
   font-size: 1rem;
   line-height: 1.58;
+}
+
+.vps-cta-home-copy .btn {
+  min-height: 50px;
+  padding: .82rem 1.35rem;
+  border-radius: 9px !important;
+}
+
+.vps-cta-home-visual {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
 }
 
 .vps-cta-diagram {
@@ -3903,14 +3921,21 @@ body:has(.vps-home) footer .container {
   line-height: 1.3;
 }
 
+@media (max-width: 1100px) {
+  .vps-home #final-cta > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
 @media (max-width: 900px) and (min-width: 768px) {
-  .vps-home #final-cta .row {
-    grid-template-columns: minmax(0, 54%) minmax(0, 42%) !important;
-    gap: 4% !important;
+  .vps-cta-home-card {
+    padding: 34px;
   }
 
-  .vps-home #final-cta > .container > div {
-    padding: 34px !important;
+  .vps-cta-home-grid {
+    grid-template-columns: minmax(0, 52%) minmax(0, 44%);
+    gap: 4%;
   }
 
   .vps-cta-diagram {
@@ -3923,22 +3948,24 @@ body:has(.vps-home) footer .container {
 }
 
 @media (max-width: 767px) {
-  .vps-home #final-cta > .container > div {
-    padding: 22px !important;
+  .vps-home #final-cta {
+    padding: 58px 0 !important;
   }
 
-  .vps-home #final-cta .row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 28px !important;
+  .vps-home #final-cta > .container {
+    width: calc(100% - 36px) !important;
   }
 
-  .vps-home #final-cta .md\:order-1,
-  .vps-home #final-cta .md\:order-2 {
-    order: initial !important;
+  .vps-cta-home-card {
+    padding: 22px;
   }
 
-  .vps-home #final-cta h2 {
+  .vps-cta-home-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .vps-cta-home-copy h2 {
     font-size: clamp(2.25rem, 10vw, 3rem);
   }
 
@@ -3949,10 +3976,7 @@ body:has(.vps-home) footer .container {
 }
 
 @media (max-width: 520px) {
-  .vps-cta-steps {
-    grid-template-columns: 1fr;
-  }
-
+  .vps-cta-steps,
   .vps-cta-headroom > div {
     grid-template-columns: 1fr;
   }
