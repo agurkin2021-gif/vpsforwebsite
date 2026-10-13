@@ -36,7 +36,7 @@ jobs:
         run: hugo mod get
 
       - name: Build
-        run: hugo --gc --minify --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
+        run: hugo --gc --minify --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/" --canonifyURLs
 
       - name: Publish preview branch
         uses: peaceiris/actions-gh-pages@v4
