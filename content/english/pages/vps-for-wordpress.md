@@ -9,7 +9,7 @@ tiers_title = "Practical VPS tiers for WordPress"
 tiers_intro = "Start with enough room for Linux, the web stack, PHP workers and the database. Treat these as sizing directions, not guaranteed traffic capacities."
 tiers_note = "Current server specifications and daily rates reviewed 12 October 2026. WordPress sizing labels are editorial guidance."
 
-[summary]
+[tier_summary]
 label = "GENERAL WORDPRESS BASELINE"
 resources = "2 vCPU · 4 GB RAM"
 note = "A balanced starting point when WordPress, the database and normal administration share one self-managed VPS."

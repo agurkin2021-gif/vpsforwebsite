@@ -9,7 +9,7 @@ tiers_title = "Practical VPS tiers for WooCommerce"
 tiers_intro = "A store has more uncached work than a brochure site. The smaller tier can run a lean store, while 4 GB or 8 GB gives safer headroom for dynamic work and background jobs."
 tiers_note = "Current server specifications and daily rates reviewed 12 October 2026. WooCommerce workload labels are editorial sizing guidance."
 
-[summary]
+[tier_summary]
 label = "GENERAL STORE BASELINE"
 resources = "2 vCPU · 4 GB RAM"
 note = "A sensible starting point for a modest self-managed WooCommerce stack before measured load proves that more resources are needed."
