@@ -469,3 +469,17 @@ The SEO buffer contains:
 - Homepage and VPS with Control Panel generated HTML both link to /fastpanel-vps-hosting/.
 - SERP Audit.txt now marks FASTPANEL VPS Hosting BUILT / FROZEN.
 - Next work item: deepen VPS with Control Panel so generic panel selection and the FASTPANEL child remain cleanly separated.
+
+
+### 2026-10-13 — VPS with Control Panel frozen
+- Re-ran the page-level SERP for VPS with Control Panel / VPS Hosting with Control Panel / VPS Control Panel / best VPS control panel. Kept the existing exact owner: Title = H1 = VPS with Control Panel; URL /vps-with-control-panel/.
+- Fresh SERP research saved at research/vps-with-control-panel-serp-2026-10-13.md.
+- Rebuilt the page as the generic parent for panel choice, not as a duplicate FASTPANEL page.
+- Closed G1-G13: provider-dashboard vs hosting-panel ambiguity; panel-or-no-panel decision; panel classes; OS compatibility; licensing economics; panel resource overhead; mail/DNS; multi-site/client isolation; panel vs management; backup/restore; migration/exit cost; functional panel-fit checker; and current VDSina truth.
+- Added representative panel map for FASTPANEL, HestiaCP, cPanel & WHM, Plesk, DirectAdmin and CloudPanel without turning the page into a ranking list.
+- Current VDSina official Standard page was rechecked: preconfigured Web hosting control panel block lists FASTPANEL on Ubuntu 22, HestiaCP on Ubuntu 22 and BitrixVM 9.0. The page does not claim cPanel/Plesk/DirectAdmin/CloudPanel are bundled.
+- Added contextual link from VPS for Multiple Websites back to VPS with Control Panel; homepage and FASTPANEL page already link to the generic parent.
+- Final preview build for source commit 2da198bcd15c55d574f7de3d1ffa65a2221d6c96 succeeded. Preview artifact e0f752a0c4962c9675beaf69bcc67f5108b0ab8a visually checked at the top, fit checker and representative panel map.
+- Generated checks: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional panel-fit checker, two sponsored partner CTAs, all intended internal links, and inbound links from homepage/FASTPANEL/Multiple Websites.
+- SERP Audit.txt now marks VPS with Control Panel BUILT / FROZEN.
+- Next planned item: fresh exact-query SERP then build How to host a website on VPS, with the no-control-panel/manual path merged into that page.
