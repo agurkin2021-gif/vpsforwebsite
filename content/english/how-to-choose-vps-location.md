@@ -10,7 +10,7 @@ For most websites, start near the largest or most valuable audience. Then check 
 
 For the broader VPS decision, see [VPS for website]({{< relref "_index.md" >}}).
 
-[Quick answer](#quick-answer) · [Location checker](#vps-location-decision-checker) · [Audience](#start-with-the-audience) · [Route testing](#test-the-route-not-just-the-map) · [CDN](#cdn-vs-origin-location) · [Dependencies](#keep-chatty-dependencies-close) · [Global audience](#global-audience-one-origin-cdn-or-multi-region) · [SEO](#does-vps-location-affect-seo) · [Checklist](#vps-location-pre-purchase-checklist) · [FAQ](#faq)
+[Quick answer](#quick-answer) · [Location checker](#vps-location-decision-checker) · [Audience](#start-with-the-audience) · [Route testing](#test-the-route-not-just-the-map) · [CDN](#cdn-vs-origin-location) · [Dependencies](#keep-chatty-dependencies-close) · [Global audience](#global-audience-one-origin--cdn-or-multi-region) · [SEO](#does-vps-location-affect-seo) · [Checklist](#vps-location-pre-purchase-checklist) · [FAQ](#faq)
 
 ## Quick answer
 
