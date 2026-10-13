@@ -1817,3 +1817,166 @@ Future structure:
 |---|---|---|---|
 | GAP-40 | SSH connection / first access | How to Host a Website on VPS | OPEN P2 |
 | GAP-41 | SSH key hardening | VPS Security Checklist | OPEN P2 |
+
+
+## 32. FASTPANEL intent audit — strong branded commercial gap
+
+Research pass: 2026-10-12.
+
+### Key provider fact — VERIFIED
+
+VDSina currently lists:
+- **FASTPANEL on Ubuntu 22**
+under its **Web hosting control panel** deployment options on Standard VPS/VDS.
+Source:
+https://www.vdsina.com/pricing/standard
+
+This is materially stronger than a generic statement that “FASTPANEL can be installed manually”.
+
+Allowed commercial statement:
+- VDSina offers FASTPANEL on Ubuntu 22 as a web-hosting-control-panel deployment option.
+
+Do not claim broader OS/template support unless separately verified.
+
+### FASTPANEL product capability — VERIFIED from official docs
+
+FASTPANEL official documentation confirms:
+- requires a VPS or dedicated server with root access for normal manual installation;
+- minimum 1 GB RAM / 1 CPU core / 5 GB free disk for the panel itself;
+- WordPress can be created through the Site Creation Wizard;
+- automatic CMS installation is available;
+- panel manages sites, domains, HTTPS, redirects, PHP/backend settings, databases and other hosting services;
+- FASTPANEL positions itself as a website/server management panel.
+
+Sources:
+- https://kb.fastpanel.direct/quick_start/how-to-install-fastpanel/
+- https://kb.fastpanel.direct/sites/how-to-create-a-wordpress-based-site/
+- https://kb.fastpanel.direct/sites/site-settings/
+- https://fastpanel.direct/
+
+### SERP finding
+
+Queries reviewed:
+- VPS with FASTPANEL
+- FASTPANEL VPS hosting
+- install WordPress FASTPANEL VPS
+- FASTPANEL website VPS control panel
+
+Current SERP contains:
+- FASTPANEL official documentation/blog;
+- provider deployment/support pages;
+- Hostinger FASTPANEL VPS template guide;
+- CloudBlast one-click FASTPANEL VPS landing;
+- scattered hosting-provider pages.
+
+This means:
+**the intent exists, but it is not dominated by mature high-authority exact commercial landing pages.**
+
+It is NOT an “nobody has thought of this” gap.
+It IS a comparatively attractive branded commercial/use-case gap.
+
+### Recommended target
+
+Primary candidate:
+**VPS with FASTPANEL**
+
+Proposed URL:
+`/vps-with-fastpanel/`
+
+Per project exact-match rule:
+- Title: `VPS with FASTPANEL`
+- H1: `VPS with FASTPANEL`
+- URL: `/vps-with-fastpanel/`
+
+Status:
+**P1 supporting-page candidate — high commercial fit**
+
+Search volume is NOT yet verified; priority is based on intent clarity, provider fit and SERP structure.
+
+### Why this deserves a separate page from “VPS with Control Panel”
+
+Generic page:
+`/vps-with-control-panel/`
+owns:
+- whether a panel is needed;
+- panel overhead;
+- FASTPANEL vs HestiaCP vs cPanel vs Plesk;
+- licensing / OS / management considerations.
+
+Dedicated FASTPANEL page would own:
+- why choose FASTPANEL specifically;
+- verified VDSina FASTPANEL deployment path;
+- recommended VPS size for FASTPANEL + website workload;
+- first login / website creation;
+- WordPress setup;
+- domains / SSL / PHP / database;
+- multiple websites;
+- migration considerations;
+- when FASTPANEL is not enough / when SSH is still required.
+
+These intents are separable enough if written correctly.
+
+### Strong page angle
+
+Not:
+> “What is FASTPANEL?”
+
+Better:
+> **“Choose a VPS that is correctly sized for FASTPANEL and the websites you will run through it.”**
+
+This connects panel intent directly to purchase intent.
+
+### Sizing logic
+
+FASTPANEL minimum requirement is only the panel floor, not a website recommendation.
+
+Do NOT say “1 GB VPS is enough” merely because FASTPANEL lists 1 GB minimum.
+
+The VPS also needs resources for:
+- OS;
+- panel services;
+- Nginx/Apache;
+- PHP-FPM workers;
+- MySQL/MariaDB;
+- mail if enabled;
+- Redis/Memcached where used;
+- backups/jobs;
+- actual websites.
+
+Recommended content model:
+- 1 GB = panel can technically meet minimum, but little website headroom;
+- 2 GB = lean small-site starting point;
+- 4 GB = stronger practical baseline for WordPress/business/multiple light sites;
+- 8 GB = heavier dynamic/multi-site use.
+
+Final recommendations must remain workload-based.
+
+### Homepage placement
+
+FASTPANEL is good enough to appear on homepage, but only compactly.
+
+Recommended homepage use:
+under “Control panel or command line?”:
+- FASTPANEL is available on the provider’s Ubuntu 22 deployment option;
+- useful for website/domain/SSL/PHP/database management;
+- link to future dedicated `VPS with FASTPANEL` page.
+
+Do NOT give FASTPANEL a large homepage block because the homepage must remain provider/panel-neutral enough to own the broad `VPS for website` intent.
+
+### Internal linking
+
+- Homepage -> VPS with FASTPANEL
+- VPS with Control Panel -> VPS with FASTPANEL
+- VPS with FASTPANEL -> Homepage
+- VPS with FASTPANEL -> VPS for WordPress
+- VPS with FASTPANEL -> VPS for Multiple Websites
+- VPS with FASTPANEL -> How to Host a Website on VPS
+- VPS with FASTPANEL -> VPS Security Checklist / SSH section where necessary
+
+### Gap ledger addition
+
+| ID | Gap | Recommended owner | Status |
+|---|---|---|---|
+| GAP-42 | dedicated FASTPANEL commercial/use-case intent | /vps-with-fastpanel/ | OPEN P1 |
+| GAP-43 | FASTPANEL sizing beyond panel minimum | /vps-with-fastpanel/ + sizing | OPEN P1 |
+| GAP-44 | FASTPANEL website/WordPress deployment flow | /vps-with-fastpanel/ | OPEN P1 |
