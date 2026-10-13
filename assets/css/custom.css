@@ -1288,3 +1288,44 @@ body:has(.vps-home) footer .container {
     display: none !important;
   }
 }
+
+
+/* Hero artwork asset: generated VPS intent infographic */
+.vps-home .vps-hero-panel {
+  width: 100% !important;
+  max-width: 520px !important;
+  min-height: 0 !important;
+  margin-left: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 28px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.vps-home .vps-hero-panel::before,
+.vps-home .vps-hero-panel::after {
+  display: none !important;
+}
+.vps-home .vps-hero-panel img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 4 / 3;
+  object-fit: cover !important;
+  border: 0 !important;
+  border-radius: 28px !important;
+  background: transparent !important;
+}
+@media (max-width: 767px) {
+  .vps-home .vps-hero-panel {
+    max-width: 100% !important;
+    border-radius: 20px !important;
+  }
+  .vps-home .vps-hero-panel img {
+    border-radius: 20px !important;
+  }
+}

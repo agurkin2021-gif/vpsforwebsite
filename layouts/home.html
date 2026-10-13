@@ -64,6 +64,14 @@
                   decoding="async"
                   width="1200"
                   height="675" />
+              {{ else if strings.HasSuffix .image ".webp" }}
+                <img
+                  src="{{ .image | relURL }}"
+                  alt="{{ .title | plainify }}"
+                  loading="eager"
+                  decoding="async"
+                  width="1200"
+                  height="900" />
               {{ else }}
                 {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "DisplayXL" "800x" ) }}
               {{ end }}
