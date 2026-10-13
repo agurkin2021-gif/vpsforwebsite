@@ -3861,3 +3861,18 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Added inbound links from homepage, VPS sizing and Website migration.
 - Verified generated preview: exact Title/H1, one H1, noindex/nofollow, WebPage + BreadcrumbList JSON-LD, checker, affiliate rel/disclosure, clean RawGitHack URLs and successful visual render.
 - Core 14-page architecture is now complete. Next mandatory task is cluster-wide overlap/internal-link/cannibalization audit, not another new page.
+
+
+### 2026-10-13 — Core cluster cannibalization/internal-link audit
+
+- Audited homepage + all 14 frozen core pages as one cluster for primary-query ownership, semantic overlap, duplicate headings, internal-link graph, stale planned-page references, generated core routes and section anchors.
+- Final result after remediation: 0 confirmed HIGH-risk cannibalization cases; 0 primary-query H2/H3 collisions; 0 core orphan pages; 0 stale planned/future references to already-built core pages; 0 known broken core content anchors.
+- Main real collision found: generic `VPS sizing for website` and `VPS for WordPress` both owned FAQ `Is 4 GB RAM enough for WordPress?`. Generic sizing FAQ was retargeted to `What does a 4 GB VPS tier fit?` and now delegates the WordPress-specific decision.
+- Contextualized repeated generic headings on WordPress/WooCommerce/multi-site pages.
+- Replaced stale planned/future references in FASTPANEL and deployment pages with live links to Deployment, Backup and Monitoring.
+- Homepage now links contextually to Security, Backup and Monitoring, and contains routes to every one of the 14 supporting owners without adding an all-pages link farm block.
+- Fixed broken Location top-nav anchor caused by Hugo slugification of `+`.
+- Guides menu weights are now explicit/deterministic through weight 12.
+- Pair verdicts: Panel<->FASTPANEL, Sizing<->WordPress, Deployment<->Security, WordPress<->WooCommerce, Migration<->Deployment, Managed<->Shared, Security<->Backup<->Monitoring and Sizing<->Multiple are valid intentional overlaps with distinct ownership.
+- Full ledger: `research/cluster-overlap-internal-link-audit-2026-10-13.md`.
+- Do not add HOLD candidates until a fresh SERP proves a new distinct owner. Core architecture remains frozen.
