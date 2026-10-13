@@ -113,7 +113,7 @@ Do not turn this into another generic VPS buying page.
 
 7. VPS for Multiple Websites
 URL: /vps-for-multiple-websites/
-Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Status: BUILT / FROZEN
 Role:
 - combined multi-site resource use;
 - virtual hosts/server blocks;
@@ -373,8 +373,6 @@ DONE / FROZEN
 - VPS vs Shared Hosting
 - VPS for WordPress
 - VPS for WooCommerce
-
-EXISTS / MUST BE DEEPLY REWORKED
 - VPS for Multiple Websites
 
 NOT BUILT YET
@@ -387,12 +385,11 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Deepen VPS for Multiple Websites.
-2. Build VPS Security Checklist.
-3. Build VPS Backup Strategy.
-4. Run exact-query SERP and build VPS Monitoring.
-5. Run exact-query SERP and build How to Choose VPS Location.
-6. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Build VPS Security Checklist.
+2. Build VPS Backup Strategy.
+3. Run exact-query SERP and build VPS Monitoring.
+4. Run exact-query SERP and build How to Choose VPS Location.
+5. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
