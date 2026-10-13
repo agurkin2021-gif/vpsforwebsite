@@ -186,8 +186,13 @@ Instead, make "Host without a control panel / pure Ubuntu-Linux path" a major se
 Link this section to VPS with Control Panel and FASTPANEL VPS Hosting.
 
 11. VPS Security Checklist
-Provisional URL: /vps-security-checklist/
-Status: PLANNED / PAGE-LEVEL SERP BEFORE BUILD
+URL: /vps-security-checklist/
+Status: BUILT / FINAL VISUAL QA PENDING
+Exact SERP decision (2026-10-13):
+Primary keyword: VPS Security Checklist
+Title: VPS Security Checklist
+H1: VPS Security Checklist
+URL: /vps-security-checklist/
 Role:
 - SSH/RDP hardening;
 - non-root/admin policy;
@@ -375,8 +380,10 @@ DONE / FROZEN
 - VPS for WooCommerce
 - VPS for Multiple Websites
 
-NOT BUILT YET
+BUILT / FINAL VISUAL QA PENDING
 - VPS Security Checklist
+
+NOT BUILT YET
 - VPS Backup Strategy
 - VPS Monitoring
 - How to Choose VPS Location
@@ -385,7 +392,7 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Build VPS Security Checklist.
+1. Complete visual QA and freeze VPS Security Checklist.
 2. Build VPS Backup Strategy.
 3. Run exact-query SERP and build VPS Monitoring.
 4. Run exact-query SERP and build How to Choose VPS Location.
