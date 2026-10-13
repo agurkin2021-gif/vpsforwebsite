@@ -155,6 +155,11 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- Novel-intent hunt #2 completed: strongest new rival to the Fit/Readiness Engine is a **VPS Architecture Planner / "One VPS or Split?"** tool. It decides whether website, DB, staging, workers/automation/AI agent and multi-site workloads should remain on one VPS or be split, and in what order.
+- Existing SERPs contain separate articles about DB separation, staging separation and single-vs-multi VPS, but no strong unified website-focused personalized planner was found in this pass.
+- Runner-up WOW utility: **VPS True Cost / TCO Calculator** for server + panel + backups + monitoring + admin time + per-site cost.
+- Current novelty ranking is stored in `CHATGPT_SEO_AUDIT_BUFFER.md`: Fit/Readiness Engine #1; Architecture Planner #2; website+AI agent combined sizing #3; VPS TCO #4.
+
 - Windows web-stack intent audited: VDSina Standard verifies Windows Server 2025/2022/2019/2016/2012 R2 templates; automatic Windows installation is available from 2 vCPU / 4 GB RAM upward, with the Windows license included, and RDP access is supported.
 - Generic `Windows VPS Hosting` is highly competitive and should not be treated as a gap. Relevant website-focused supporting candidates are `VPS for IIS` (P1/P2) and `VPS for ASP.NET` (P2). Keep SQL Server as supporting content first. Exclude generic RDP/trading/desktop intent from the core site.
 - Future homepage OS/management fork can remain compact: FASTPANEL, pure Ubuntu/Linux, or Windows Server for IIS/ASP.NET-specific workloads.
