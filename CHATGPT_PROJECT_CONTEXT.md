@@ -154,6 +154,7 @@ A future ChatGPT session must read this file before modifying the repository.
 ## Context update log
 
 ### 2026-10-12
+- Homepage content-gap closure: filled the remaining concise-answer gaps without adding another major section. Hero now defines VPS-for-website; sizing covers WordPress/WooCommerce/multi-site workload differences plus location/CDN and fuller pre-purchase/price-scope checks; recovery explicitly distinguishes snapshot/rollback from backup; an 8-question FAQ/direct-answer section now covers remaining buyer questions including immediate post-purchase sequence. The 22-question homepage inventory is now covered at summary level. Content can be frozen once build and visual verification pass.
 
 - Deep homepage content audit: the six decision blocks are implemented, but content is not frozen yet. Against the prior 22-question inventory, 12 are sufficiently answered, 6 are partial, and 4 remain open (server-location explanation, CDN/Cloudflare effect, snapshot-vs-backup distinction, first steps after purchase). The planned FAQ/direct-answer layer is also absent from the current home layout. Close these through compact additions/FAQ; do not add another large conceptual section.
 
