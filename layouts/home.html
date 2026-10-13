@@ -234,7 +234,7 @@
 
             {{ with .plans }}
               {{ if .enable }}
-                <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <div id="vps-plan-options" class="mt-10 grid scroll-mt-28 gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {{ range .rows }}
                     <div class="rounded-xl border border-border p-5 dark:border-darkmode-border">
                       <h4 class="mb-3 text-lg font-semibold">{{ .spec }}</h4>
@@ -259,7 +259,7 @@
 
             {{ with .methodology }}
               {{ if .enable }}
-                <div class="mx-auto mt-8 max-w-5xl rounded-2xl border border-border p-6 dark:border-darkmode-border">
+                <div id="vps-methodology" class="mx-auto mt-8 max-w-5xl scroll-mt-28 rounded-2xl border border-border p-6 dark:border-darkmode-border">
                   <h3 class="mb-4">{{ .title | markdownify }}</h3>
                   <ul>
                     {{ range .items }}
