@@ -2992,3 +2992,109 @@ Do not make it a large homepage section. Treat it as a current panel-confirmed c
 - Do not say "20% cheaper VPS".
 - Do not imply payment-system fees are waived.
 - Keep the provider warning that payment processors may charge additional fees in detailed/FAQ copy if the bonus is explained there.
+
+
+## 45. Homepage assembly pass — 2026-10-12
+
+Status: **IMPLEMENTED FOR VISUAL/BUILD REVIEW — not yet frozen**
+
+The homepage has now been rebuilt around the five-question model (Fit, Size, Responsibility, Risk, Action) without turning the root page into a tutorial archive.
+
+### Implemented homepage flow
+
+1. **Hero — VPS for website**
+   - exact primary phrase in page title and H1;
+   - description now contains the exact primary phrase;
+   - hero CTA routes to the on-page Fit Check rather than a WordPress-only page.
+
+2. **Do you actually need a VPS?**
+   - negative qualification;
+   - shared-hosting stay branch;
+   - optimize-first branch;
+   - VPS-needed branch;
+   - self-managed readiness warning.
+
+3. **Which VPS fits your website workload?**
+   - current verified 1/2/4/8 GB plan examples;
+   - explicit rejection of fixed visitor-count capacity claims;
+   - concise buying factors beyond CPU/RAM;
+   - contextual links to WordPress, WooCommerce and multiple-websites pages.
+
+4. **Choose how you will manage the server**
+   - FASTPANEL/control-panel path;
+   - pure Ubuntu/Linux over SSH path;
+   - Windows/IIS/ASP.NET-specific path;
+   - clear support-vs-managed-hosting boundary;
+   - contextual link to the control-panel page.
+
+5. **Check migration risk before you move**
+   - stack inventory;
+   - blocker detection;
+   - website/email separation decision;
+   - rollback before DNS switch;
+   - sizing after migration inventory.
+   - This is a homepage decision summary only. Dedicated migration/readiness content remains a future supporting page/tool.
+
+6. **One VPS or split the workload?**
+   - one-VPS baseline;
+   - staging isolation;
+   - DB/worker separation;
+   - multi-site risk isolation;
+   - VDSina local-network capability used as architecture proof.
+
+7. **Clone, test, scale, recover**
+   - clone-before-risky-change workflow;
+   - upward scaling without rebuilding the stack;
+   - backup/restore/new-server path;
+   - downloadable full server image;
+   - monitoring-based upgrade triggers;
+   - compact provider trust/spec line.
+
+8. **Final CTA**
+   - VDSina affiliate destination retained;
+   - card/crypto funding kept compact;
+   - current +10% from $100 / +20% from $1,000 balance bonus stated as current payment-interface terms;
+   - explicit affiliate disclosure included.
+
+### Homepage gap status after implementation
+
+- HOME-GAP-01 primary CTA intent mismatch -> **CLOSED in implementation**
+- HOME-GAP-02 exact primary phrase absent from meta description -> **CLOSED**
+- HOME-GAP-05 affiliate disclosure near commercial recommendation -> **CLOSED**
+- HOME-GAP-06 generic homepage image alt text -> **CLOSED by local Hugoplate-preserving home layout override**
+- HOME-GAP-09 pre-purchase checklist -> **CLOSED as concise homepage summary**
+- HOME-GAP-10 traffic-capacity misconception -> **CLOSED**
+- HOME-GAP-11 1/2/4/8 GB meaning -> **CLOSED as concise sizing layer**
+- HOME-GAP-13 security/administration responsibility -> **CLOSED as decision summary**
+- HOME-GAP-14 monitoring and scale triggers -> **CLOSED as summary**
+- HOME-GAP-17 website + email architecture -> **CLOSED as concise decision bullet; deep page remains optional**
+- HOME-GAP-18 staging / safe changes -> **CLOSED as homepage trust summary**
+- HOME-GAP-19 first-hour/deployment checklist -> **NOT expanded on homepage; remains supporting-page opportunity**
+- HOME-GAP-20 negative qualification -> **CLOSED**
+- HOME-GAP-21 non-compute buying factors -> **CLOSED as concise checklist**
+- HOME-GAP-23 why-this-size explanation -> **CLOSED at homepage-summary level**
+- HOME-GAP-24 when one VPS is not enough -> **CLOSED via architecture decision block**
+
+### Deliberately not expanded on homepage
+
+- full Fit/Readiness Engine form and scoring;
+- full migration checker;
+- full Architecture Planner;
+- SSH tutorial;
+- backup/security/maintenance tutorials;
+- detailed FASTPANEL instructions;
+- detailed IIS/ASP.NET instructions;
+- TCO calculator.
+
+Those remain supporting-page/tool opportunities so the homepage keeps ownership of the broad `VPS for website` commercial intent.
+
+### Verification still required
+
+Do not mark the homepage fully complete until:
+- Hugo production build passes;
+- rendered page has exactly one H1;
+- title and H1 render literally as `VPS for website`;
+- internal routes return successfully;
+- affiliate button renders `rel="sponsored nofollow noopener"`;
+- mobile/desktop visual review shows no excessive section density or broken layout;
+- active public review URL is verified.
