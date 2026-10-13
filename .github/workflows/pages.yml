@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: hugo-preview
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -74,7 +78,20 @@ jobs:
       - name: Remove preview sitemap
         run: rm -f public/sitemap.xml public/sitemap.xml.gz
 
+      - name: Check preview run freshness
+        id: freshness
+        shell: bash
+        run: |
+          git fetch origin main
+          if [ "$GITHUB_SHA" = "$(git rev-parse origin/main)" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping stale preview publish for $GITHUB_SHA; current main is $(git rev-parse origin/main)"
+          fi
+
       - name: Publish preview branch
+        if: steps.freshness.outputs.current == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
