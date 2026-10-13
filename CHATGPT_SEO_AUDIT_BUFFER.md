@@ -3896,3 +3896,16 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Production workflow now asserts the generated root HTML before upload. Verified PASS for index/follow, canonical https://vpsforwebsite.com/, hreflang en/x-default, WebSite JSON-LD, WebPage JSON-LD and exactly one H1 `VPS for website`.
 - Production build succeeds; live deploy still fails only because GitHub Pages is not enabled in repository settings.
 - Temporary visual-QA HTML files were deleted after inspection.
+
+
+### 2026-10-13 — Dark design system pass
+
+- Reworked the visual system using Open Source Pledge as the design reference while preserving the VPSforWebsite information architecture and content ownership.
+- Dark-only palette: #080e17 / #02060f / #16212d / #0d131b with #2dde74 primary green and #9e86ff secondary accent.
+- Replaced Heebo/Signika with open-source Fraunces + Inter; no proprietary reference-site font files were copied.
+- Disabled theme switcher and forced dark before first paint.
+- Added local generated-theme tokens and custom CSS override.
+- Homepage now uses an editorial split hero, workflow strip, green CTA system and coordinated VPS illustrations.
+- Internal page headers and content styling now use the same editorial system.
+- 1280/390 visual QA passed on homepage and representative internal page.
+- No SEO owner changes; no additional external public links introduced.
