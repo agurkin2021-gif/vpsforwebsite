@@ -139,7 +139,9 @@
               {{ end }}
             {{ end }}
           </div>
-              {{ with .fit_checker }}
+        </div>
+
+            {{ with .fit_checker }}
               {{ if .enable }}
                 <div class="mx-auto mt-10 max-w-5xl rounded-2xl bg-light p-6 dark:bg-darkmode-light">
                   <h3 class="mb-2">{{ .title | markdownify }}</h3>
@@ -271,7 +273,6 @@
               {{ end }}
             {{ end }}
 
-      </div>
       </div>
     </section>
   {{ end }}
