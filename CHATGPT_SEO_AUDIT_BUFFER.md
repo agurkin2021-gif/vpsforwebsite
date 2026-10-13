@@ -3098,3 +3098,35 @@ Do not mark the homepage fully complete until:
 - affiliate button renders `rel="sponsored nofollow noopener"`;
 - mobile/desktop visual review shows no excessive section density or broken layout;
 - active public review URL is verified.
+
+
+## 46. Homepage content completeness audit — deep pass
+
+Date: 2026-10-12
+Scope: content/intent completeness only; technical/render QA excluded.
+
+Result: **NOT YET CONTENT-FROZEN.** The six decision blocks are implemented and the page is materially stronger, but the prior 22-question homepage inventory is not fully satisfied.
+
+### 22-question coverage against current `content/english/_index.md`
+
+- CLOSED/SUFFICIENT SUMMARY: Q2 need VPS vs shared, Q3 sizing, Q4 1 GB, Q5 2/4/8 GB, Q6 traffic-capacity caveat, Q9 responsibility/managed boundary, Q10 control panel choice, Q16 security/admin responsibility, Q17 upgrade signals, Q18 website+email decision, Q19 migration summary, Q21 current configuration mapping.
+- PARTIAL: Q1 direct definition of VPS for website; Q7 how many websites on one VPS; Q8 what materially changes between WordPress/WooCommerce/multiple-sites workloads; Q11 complete pre-purchase checklist; Q15 backup strategy for self-managed sites; Q22 what the displayed VPS price includes vs separately paid/managed items.
+- OPEN: Q12 why server location matters; Q13 whether CDN/Cloudflare changes origin resource needs; Q14 snapshot vs backup distinction; Q20 first steps immediately after purchasing/provisioning.
+
+### Missing planned homepage module
+
+The previously approved information architecture included a native Hugoplate FAQ/direct-answer layer. The current `layouts/home.html` renders Banner -> Features -> optional Testimonials -> CTA and does not render the planned FAQ/direct-answer module.
+
+### High-value content corrections before homepage freeze
+
+1. Add one-sentence direct VPS definition near the hero without changing exact H1.
+2. Strengthen workload distinction: WordPress vs WooCommerce vs multiple sites, using workload mechanics rather than traffic guarantees.
+3. Expand the pre-purchase checklist with IP terms, upgrade path, billing/renewal, panel/licensing, and explicit price-scope transparency.
+4. Add a short location/CDN answer: location affects latency; CDN can offload static/origin requests but does not remove dynamic PHP/database work.
+5. State snapshot != backup and preserve an off-server/portable recovery copy.
+6. Add a one-line post-purchase sequence: provision -> patch/harden -> stack/panel -> deploy/migrate -> DNS/HTTPS -> verify -> monitor.
+7. Restore the compact FAQ/direct-answer block to absorb these short buyer questions without turning the homepage into tutorials.
+
+### Content-freeze decision
+
+Do **not** add another large conceptual section. Close the remaining gaps through compact additions to existing sections plus the planned FAQ/direct-answer layer. Full Fit Engine, migration checker, Architecture Planner, SSH/security/backup tutorials and TCO calculator remain supporting-page/tool work.
