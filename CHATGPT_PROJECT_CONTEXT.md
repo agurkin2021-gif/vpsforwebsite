@@ -155,6 +155,8 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- Crypto payment correction: user confirms the exact current crypto methods are explicitly listed in the VDSina payment interface. Treat that interface as authoritative. Exact currency/network labels may be published if copied literally from the panel; do not guess or normalize network names from memory.
+
 - Crypto-payment intent audited: cryptocurrency top-up is a useful conversion/trust feature, not a core SEO/WOW intent. VDSina support publicly confirms crypto funding and a current $20 minimum; public support also mentions USDT TRC20. Exact full coin/network list is not fully verified from official public pages, so do not publish BTC/LTC/ETH/USDT network lists until checked directly in the payment interface or current official documentation.
 
 - VDSina provider-differentiator audit completed. Strongest concrete differentiator found: downloadable full server backup images; VDSina documents downloading the backup as `.img.gz`, while DigitalOcean and Vultr explicitly state provider backups/snapshots cannot be directly downloaded.
