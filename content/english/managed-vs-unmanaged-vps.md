@@ -341,6 +341,8 @@ Ask who owns:
 - malware or compromise investigation;
 - credential rotation.
 
+For the concrete hardening baseline, use [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}}).
+
 ### Backups
 
 Ask separately:
