@@ -2825,3 +2825,84 @@ Detailed proof belongs on supporting pages / FAQ.
 | USP-09 | 10 Gbit/s public network port | VERIFIED |
 | USP-10 | NVMe triple replication | VERIFIED / NOT A BACKUP |
 | USP-11 | free DDoS protection | VERIFIED / NO SLA CLAIM |
+
+
+## 42. Cryptocurrency payment / funding intent audit
+
+Research pass: 2026-10-12.
+
+### Verified provider facts
+
+VDSina support publicly confirms that:
+- account funding by cryptocurrency is available;
+- a support reply states the minimum crypto top-up is **$20**;
+- a recent support comment explicitly mentions **USDT TRC20** as a crypto payment method used by customers.
+
+Official source:
+https://www.vdsina.com/ru/qa/q/perevod-sredstv-s-akkaunta-ru-na-com
+and payment/top-up QA:
+https://www.vdsina.com/ru/qa/q/popolnenie-scheta
+
+### Exact coin/network list — NOT fully verified from official public pages
+
+Third-party directories/reviews currently list combinations including:
+- Bitcoin (BTC)
+- Ethereum (ETH)
+- Litecoin (LTC)
+- USDT TRC20
+- TRX
+- TON
+- BNB / other crypto methods
+
+However, the exact current full list and network support are not fully enumerated on VDSina's public official pages found in this audit.
+
+Rule:
+**Do not publish an exact crypto coin/network list from third-party sources.**
+Before listing exact currencies/networks on the site, verify them directly in the VDSina payment interface or official current documentation.
+
+### Content / conversion value
+
+Crypto payment is a useful **conversion and accessibility factor**, especially for international users who:
+- prefer not to use a bank card;
+- already hold USDT/BTC/other crypto;
+- have card/payment-processor limitations;
+- want fast account funding.
+
+It is NOT a strong standalone SEO/WOW intent because many VPS providers already accept crypto.
+
+### Homepage placement
+
+Recommended:
+- compact trust/payment line near pricing or final CTA;
+- wording should remain generic until exact methods are verified:
+  **"Crypto payment is available."**
+- optional supporting note:
+  **"Minimum crypto top-up is currently $20."**
+
+Do not create a large homepage block solely for crypto.
+
+### Supporting content
+
+Potential FAQ item:
+**Can I pay for the VPS with cryptocurrency?**
+
+Answer:
+Yes, VDSina currently supports cryptocurrency top-ups; the current minimum crypto top-up confirmed by support is $20. Exact available coins/networks should be checked in the payment interface because payment methods can change.
+
+### SEO decision
+
+Do NOT create a dedicated page like `VPS with crypto payment` for the core site at this stage.
+
+Reason:
+- generic crypto-VPS intent is already well covered by many providers and comparison sites;
+- it would pull the project toward privacy/offshore/payment-topic SERPs rather than the core `VPS for website` cluster.
+
+Use crypto payment as a **conversion feature**, not a primary topical cluster.
+
+### Gap / USP ledger addition
+
+| ID | Opportunity | Status |
+|---|---|---|
+| USP-12 | cryptocurrency account top-up | VERIFIED GENERIC FEATURE |
+| USP-13 | $20 minimum crypto top-up | VERIFIED CURRENT SUPPORT INFO |
+| USP-14 | exact current coin/network list | REQUIRES DIRECT PANEL/OFFICIAL VERIFICATION |
