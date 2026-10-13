@@ -3261,3 +3261,58 @@ Verification:
 - page remains under the same exact Title/H1/URL ownership and existing noindex preview protections.
 
 SEO/content decision: do not add more sections to this page without new SERP or real-user evidence; additional concepts belong to their own validated supporting pages/tools.
+
+
+## 51. Website migration to VPS — implementation and verification — 2026-10-13
+
+Target: /website-migration-to-vps/
+Primary query: Website migration to VPS
+Status: IMPLEMENTED / PREVIEW BUILD VERIFIED / DENSE FREEZE AUDIT STILL AVAILABLE
+
+### SERP and intent decision
+Current SERP review confirmed a practical migration/cutover intent rather than generic VPS education. Exact result wording varies among "migrate website to VPS", "move from shared hosting to VPS" and "website migration to VPS"; the planned exact target Website migration to VPS was retained because it maps cleanly to the result set and project architecture. Search volume was not verified.
+
+Competitor/source set is preserved in research/website-migration-to-vps-serp-2026-10-13.md and includes ServerManager, VPSLake, Hostperl, Getwebup, CubePath, Webhost365, Galaxy Cloud Solutions, HostingTom, USAVPS and Cloud ServerMall, plus Google Search Central as an authority source.
+
+### Implemented differentiators / gaps closed
+- same-domain/same-URL hosting migration clearly separated from URL-changing site moves;
+- explicit inventory of app/runtime/database/DNS/email/jobs/external systems/secrets;
+- destination sizing routed to the dedicated sizing page rather than duplicated;
+- independent backup + rollback sequence;
+- runtime/database/extensions/permissions/env compatibility before cutover;
+- private testing before DNS;
+- dynamic-site final write/final-delta handling;
+- dual-writer risk called out explicitly for orders/forms/members/uploads;
+- DNS TTL semantics and narrow A/AAAA/CNAME changes;
+- preservation of MX/SPF/DKIM/DMARC/verification records;
+- SSL/CDN/WAF/webhook/IP-allowlist checks;
+- cron/worker double-execution risk;
+- same-URL SEO parity: status, canonical, robots/noindex, sitemap, internal links, structured data and Search Console verification;
+- acceptance based on logs/data/tests rather than "files copied";
+- rollback data boundary after new writes land on the destination;
+- WordPress, WooCommerce and custom-app specific notes;
+- functional Migration cutover preflight checker with 10 readiness inputs.
+
+### On-page / technical verification
+Preview build for source commit 4cb87e94ef89969dbff724e0c9dc5b3ea8ad3ada: SUCCESS.
+
+Generated output:
+- Title: Website migration to VPS
+- H1: Website migration to VPS
+- robots: noindex,nofollow in preview
+- preview canonical: absent
+- JSON-LD: WebPage + BreadcrumbList
+- migration preflight form/script: present
+- VDSina partner links: 2
+- sponsored/nofollow/noopener attributes: 2
+- sizing/control-panel/WordPress/WooCommerce internal links: present
+- Google Search Central hosting-move references: present
+- homepage generated HTML links to migration page
+- sizing generated HTML links to migration page
+
+### Deployment state
+Preview build: SUCCESS.
+Live production build path still reaches the known GitHub Pages deployment blocker; the live workflow fails at Pages publication because Pages is not enabled/configured for the repository. Do not confuse this with a Hugo/page-build failure.
+
+### Freeze status
+The page is implemented against its researched scope, but unlike VPS sizing it has not yet received a separate user-requested dense completion audit. Do not mark content frozen until that pass or explicit user acceptance.

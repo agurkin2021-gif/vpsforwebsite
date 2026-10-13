@@ -352,3 +352,22 @@ The SEO buffer contains:
 - Preview build for source commit 5faa184b3f389d82b178afdab0b8ae220d86f65c succeeded.
 - Preview artifact commit 1b9064108878378eef319c460a1da15741202464 was visually checked; the three new headings render and the workload table is visible.
 - Current decision: /vps-sizing-for-website/ now contains the full material planned for its own approved scope. P2 tools such as TCO, full peak-event planner, architecture planner and migration-risk calculator remain intentionally outside this page.
+
+
+### 2026-10-13 — Website migration to VPS page
+- Next P1 page implemented at /website-migration-to-vps/.
+- Primary query, Title and H1 are fixed as: Website migration to VPS.
+- SERP/query research was committed to research/website-migration-to-vps-serp-2026-10-13.md. Query family reviewed: website migration to VPS, migrate website to VPS, move website to VPS, transfer website to VPS, shared hosting to VPS migration. Search volume remains unverified.
+- Page scope is a same-domain/same-URL hosting migration. URL-changing/domain-changing moves are explicitly separated as a different redirect/mapping problem.
+- Core flow: inventory -> destination sizing -> independent backup/rollback -> destination build -> initial copy -> private test -> final write/data sync -> DNS -> mail/HTTPS/external services -> SEO parity -> acceptance/rollback.
+- Added a functional no-login Migration cutover preflight checker covering backup, sizing, runtime compatibility, private testing, DNS/TTL, email, final writes, TLS, cron/webhooks/allowlists and rollback.
+- Strong migration gaps closed: dual-writer/data divergence risk, final delta/write-freeze logic, DNS TTL semantics, narrow DNS changes, email split risk, cron/worker double execution, webhooks/IP allowlists, same-URL SEO parity, rollback data boundary and post-cutover acceptance.
+- Internal linking added: homepage migration block -> migration page; sizing page -> migration page; migration page -> homepage, sizing, control panel, WordPress and WooCommerce.
+- Guides menu now includes Website Migration.
+- Commercial path uses VDSina partner CTA with rel=sponsored nofollow noopener and a human-readable affiliate disclosure. No claim is made that VDSina includes managed migration.
+- Preview build for source commit 4cb87e94ef89969dbff724e0c9dc5b3ea8ad3ada succeeded.
+- Generated preview verification: Title = H1 = Website migration to VPS; preview noindex,nofollow present; preview canonical absent; WebPage + BreadcrumbList JSON-LD present; migration checker rendered; 2 affiliate links with matching sponsored attributes.
+- Browser visual review completed for the first screen and Migration cutover preflight form; both render in native Hugoplate styling.
+- Preview route files confirmed for homepage, sizing and migration; homepage and sizing generated HTML both link to the new migration route.
+- Live production Hugo workflow continues to fail only at GitHub Pages deployment because Pages is not enabled/configured; page build itself is successful.
+- Next continuation point after user review: dense audit of this page before freezing it, then Managed vs Unmanaged VPS.
