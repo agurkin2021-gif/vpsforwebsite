@@ -42,10 +42,10 @@ jobs:
         run: hugo mod get
 
       - name: Warm build stats
-        run: hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+        run: hugo --gc --baseURL "https://vpsforwebsite.com/"
 
       - name: Build production site with complete Tailwind utilities
-        run: hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+        run: hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
