@@ -20,7 +20,7 @@ features:
       - "Stay on shared hosting when the site is light, stable and does not need root access or a custom stack."
       - "Optimize first when one plugin, query, bot, cron job or cache problem is creating the resource spike."
       - "Move to VPS when legitimate CPU, memory, process, I/O or software requirements repeatedly hit the current hosting boundary."
-      - "Before moving, confirm that you are ready for the operating-system, security, backup and monitoring responsibility of a self-managed VPS."
+      - "Before moving, confirm that you are ready for the operating-system responsibilities of a self-managed VPS: use the [VPS Security Checklist](vps-security-checklist/), [VPS Backup Strategy](vps-backup-strategy/) and [VPS Monitoring](vps-monitoring/) as the production baseline."
     button:
       enable: true
       label: "Compare VPS vs Shared Hosting"
