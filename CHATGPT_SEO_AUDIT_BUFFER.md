@@ -520,3 +520,84 @@ Next repository work:
 - build and verify homepage;
 - mark homepage gaps CLOSED only after verification;
 - then move to the first supporting page by priority and update this file.
+
+
+## 12. Competitor coverage matrix — deeper pass
+
+| Competitor | Strong coverage | Weakness/opportunity for us |
+|---|---|---|
+| ServerCalc | Website-specific sizing, 1/2/4 GB guidance, workload matching tool | More utility/tool than a focused affiliate purchase path; we can combine sizing with a simpler commercial decision path |
+| VPS-Mart | Direct website VPS landing, price, SSL, WordPress readiness, root access | Heavy sales orientation; weaker neutral “do you need VPS / what do you manage yourself?” guidance |
+| Hostinger | Plan table, backups, one-click apps/panels, use cases, FAQ, broad brand authority | Generic provider-first page; opportunity for independent workload-first decision architecture |
+| Liquid Web | Self-managed vs fully managed, panels, OS choice, plan table, support positioning | Broad provider catalogue; less focused on one clear website-sizing journey |
+| Cybernews | Provider comparison, “do you need VPS?”, factors, managed/unmanaged, FAQs | Editorial comparison intent; not a single-offer deployment/sizing path |
+| OVHcloud | Web-hosting use case, global locations, backups/snapshots, infrastructure options | Provider feature catalogue; less detailed page-level workload sizing |
+| Bluehost WooCommerce | Strong dedicated WooCommerce commercial intent | Vertical-specific; leaves broader website/VPS decision space open |
+| Migration guides (Hostinger/iTechGuides/etc.) | Clear migration steps and rollback logic | Often informational only; opportunity to connect migration directly to sizing and purchase decision |
+| Multi-site guides (Vanta/NootHost/etc.) | vhosts, SSL, one-IP/many-domains, isolation | Often tutorial-only; opportunity to connect operational guidance to resource selection |
+
+### Positioning decision
+
+Do NOT try to beat broad review sites by making another “Top 10 VPS providers” article.
+
+Our differentiated architecture should be:
+1. one broad commercial hub: `VPS for website`;
+2. workload-specific decision pages;
+3. honest “when you do NOT need VPS” guidance;
+4. verified plan/spec mapping;
+5. explicit self-managed responsibility;
+6. migration and sizing paths that feed back into the commercial hub.
+
+This is more coherent than a generic provider-comparison site and aligns with the VDSina affiliate model.
+
+## 13. Template-level Title/H1 risk
+
+Status: OPEN / important.
+
+Pinned Hugoplate commit used by this project:
+`4acb4365d7a86703357a9f216db149f55210fa09`
+
+Its internal-page header partial contains:
+`<h1>{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>`
+
+Implication:
+- source front-matter Title is not output literally;
+- it is passed through Hugo's `title` transform;
+- therefore future exact-match Title/H1 rules cannot be assumed from source alone.
+
+Required action before closing any internal-page SEO audit:
+- inspect generated HTML;
+- compare rendered H1 byte-for-byte / character-for-character with target Title;
+- if transformation changes the intended text, override only this partial so H1 outputs `.Title` directly while preserving every Hugoplate class and visual element.
+
+This is a template behavior fix, not a custom design.
+
+## 14. Current internal-link defect
+
+Status: OPEN.
+
+The current supporting Markdown pages are mostly standalone text and do not contain a deliberate contextual link back to the homepage.
+
+Sitewide navigation provides crawl paths, but it does not replace contextual semantic linking.
+
+Closure requirement:
+- one contextual homepage link per supporting page;
+- 1–2 relevant sibling links where useful;
+- no sitewide keyword-stuffed block;
+- homepage receives the close semantic variants assigned in Section 3.
+
+## 15. Homepage commercial-path defect
+
+Status: OPEN.
+
+Current above-the-fold button:
+- label: `See VPS sizing guides`
+- destination: `/vps-for-wordpress/`
+
+This gives WordPress ownership too much prominence and makes a narrow page act like the next step for every homepage visitor.
+
+Recommended when editing homepage:
+- hero primary button -> approved affiliate URL;
+- feature sections -> internal supporting pages;
+- final CTA -> approved affiliate URL;
+- do not add multiple visually competing CTA systems beyond native Hugoplate buttons.
