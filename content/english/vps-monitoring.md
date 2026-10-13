@@ -1,6 +1,6 @@
 ---
-title: "VPS Monitoring"
-description: "VPS Monitoring: combine external uptime checks, CPU/RAM/disk/network history, service and application health, logs, alerts and runbooks so failures are detected before users report them."
+title: "VPS Monitoring: Metrics, Uptime, Alerts & Tools"
+description: "Monitor a VPS with external uptime checks, CPU/RAM/disk/network metrics, service health, logs and actionable alerts. Includes tools, thresholds and a practical checklist."
 image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
 ---
 
