@@ -1626,3 +1626,116 @@ New potential homepage hero/support message:
   **Find out if you actually need a VPS — and which size — from real workload and hosting limits.**
 
 This is supporting copy only, not a replacement for the primary keyword/H1.
+
+
+## 30. AI-agent adjacent intent — website + agent on one VPS
+
+Research pass: 2026-10-12.
+
+### Search finding
+
+The broad intent `VPS for AI agent` already exists and is becoming competitive:
+- dedicated AI-agent VPS landing pages exist;
+- current guides cover always-on agents, Docker/systemd, RAM sizing, API-backed vs local-model workloads;
+- some hosts explicitly sell AI-agent VPS plans.
+
+Therefore **“VPS for AI agent” is NOT a novel gap** by itself.
+
+### More interesting adjacent intent
+
+A narrower website-centric job appears less directly owned:
+
+> **Run the website and its API-based AI agent / automation service on the same VPS.**
+
+Possible workloads:
+- website chatbot backend;
+- webhook processor;
+- content/SEO automation worker;
+- CRM/support agent connected to the website;
+- background agent that calls external LLM APIs;
+- n8n/automation service connected to the website;
+- scheduled jobs that read/write website data.
+
+This remains relevant to the main site topic because the VPS is still primarily hosting the website, with the agent as an adjacent service.
+
+### Provider-specific truth boundary
+
+VDSina currently documents:
+- normal VPS/VDS servers;
+- ability to install the required OS/software;
+- own ISO support;
+- API/server management;
+- current Standard tiers.
+
+No dedicated official VDSina “AI agent preinstalled” product was found in this audit.
+
+Therefore allowed wording:
+- “You can run an API-based AI agent or automation service on the VPS alongside your website, if the selected resources are sufficient.”
+- “Install the required runtime/software yourself on a self-managed VPS.”
+
+Disallowed wording unless later verified:
+- “AI agent included”
+- “AI agent preinstalled”
+- “one-click AI agent”
+- “managed AI agent”
+- “VDSina supports [specific agent]” as a provider feature.
+
+### Technical qualification
+
+Distinguish two very different workloads:
+
+1. **API-backed agent**
+   - model runs remotely at OpenAI/Anthropic/OpenRouter/etc.;
+   - VPS runs orchestration, webhooks, memory/state, queue, browser/tool processes;
+   - relatively light CPU/RAM unless browser automation, databases or many concurrent workers are added.
+
+2. **Local model inference**
+   - model itself runs on the server;
+   - CPU/RAM/GPU requirements are radically higher;
+   - Standard small VPS tiers should NOT be presented as suitable for large local LLM inference.
+
+### Same-server risk
+
+Running the website and an agent on the same VPS is convenient but increases:
+- resource contention;
+- blast radius;
+- credential exposure;
+- security risk if the agent has shell/filesystem access;
+- operational complexity.
+
+Best-practice message:
+- isolate agent with a separate Linux user and/or container;
+- minimize permissions;
+- keep production secrets scoped;
+- monitor CPU/RAM;
+- separate the agent onto another VPS when workload/security justify it.
+
+### SEO/content decision
+
+Status: **PROMISING ADJACENT INTENT / HOLD for dedicated page**.
+
+Do not create `VPS for AI agent` page merely because the topic is trendy; the SERP is already populated and it would pull the site away from the core website cluster.
+
+Better use:
+- a short “Website + AI agent / automation” use-case block on the homepage or sizing page;
+- mention it inside `VPS for Multiple Websites` / future sizing architecture where background services are discussed;
+- later validate a distinct query such as `VPS for website and AI agent` before creating a dedicated indexable page.
+
+### WOW angle
+
+The differentiated version is not:
+> “This VPS can run an AI agent.”
+
+It is:
+> **“Size one VPS for the website plus its AI workload — and know when they should be separated.”**
+
+That connects directly to the existing VPS Fit / Readiness Engine:
+- website load;
+- agent load;
+- browser/worker load;
+- database;
+- combined RAM/CPU;
+- security/isolation;
+- recommendation: one VPS vs two VPSs.
+
+This is a stronger and more defensible differentiator than generic AI-agent hosting.
