@@ -176,6 +176,94 @@
       });
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function collectSection(heading) {
+        var nodes = [];
+        var node = heading.nextElementSibling;
+        while (node && node.tagName !== "H2") {
+          var next = node.nextElementSibling;
+          nodes.push(node);
+          node = next;
+        }
+        return nodes;
+      }
+
+      var capabilityHeading = document.getElementById("capability-triggers-beyond-traffic");
+      if (capabilityHeading && !capabilityHeading.closest(".vps-vs-capability-section")) {
+        var capabilityNodes = collectSection(capabilityHeading);
+        var capabilitySection = document.createElement("section");
+        capabilitySection.className = "vps-vs-capability-section";
+        capabilityHeading.parentElement.insertBefore(capabilitySection, capabilityHeading);
+        capabilitySection.appendChild(capabilityHeading);
+        capabilityNodes.forEach(function (item) { capabilitySection.appendChild(item); });
+
+        var capabilityList = capabilitySection.querySelector("ul");
+        if (capabilityList) capabilityList.classList.add("vps-vs-capability-grid");
+
+        var capabilityParagraphs = capabilitySection.querySelectorAll(":scope > p");
+        if (capabilityParagraphs.length) {
+          capabilityParagraphs[0].classList.add("vps-vs-capability-intro");
+          capabilityParagraphs[capabilityParagraphs.length - 1].classList.add("vps-vs-capability-result");
+        }
+      }
+
+      var limitsHeading = document.getElementById("shared-limits-are-not-vps-specifications");
+      if (limitsHeading && !limitsHeading.closest(".vps-vs-limits-section")) {
+        var limitNodes = collectSection(limitsHeading);
+        var limitsSection = document.createElement("section");
+        limitsSection.className = "vps-vs-limits-section";
+        limitsHeading.parentElement.insertBefore(limitsSection, limitsHeading);
+        limitsSection.appendChild(limitsHeading);
+        limitNodes.forEach(function (item) { limitsSection.appendChild(item); });
+
+        var lists = limitsSection.querySelectorAll(":scope > ul");
+        if (lists.length >= 2) {
+          var leftLead = lists[0].previousElementSibling;
+          var rightLead = lists[1].previousElementSibling;
+
+          var compare = document.createElement("div");
+          compare.className = "vps-vs-limits-compare";
+
+          var left = document.createElement("div");
+          left.className = "vps-vs-limits-side vps-vs-limits-side-shared";
+          if (leftLead && leftLead.tagName === "P") left.appendChild(leftLead);
+          left.appendChild(lists[0]);
+
+          var mark = document.createElement("div");
+          mark.className = "vps-vs-limits-not-equal";
+          mark.setAttribute("aria-hidden", "true");
+          mark.textContent = "≠";
+
+          var right = document.createElement("div");
+          right.className = "vps-vs-limits-side vps-vs-limits-side-vps";
+          if (rightLead && rightLead.tagName === "P") right.appendChild(rightLead);
+          right.appendChild(lists[1]);
+
+          compare.appendChild(left);
+          compare.appendChild(mark);
+          compare.appendChild(right);
+
+          var firstParagraph = limitsSection.querySelector(":scope > p");
+          if (firstParagraph) {
+            firstParagraph.classList.add("vps-vs-limits-intro");
+            firstParagraph.insertAdjacentElement("afterend", compare);
+          } else {
+            limitsHeading.insertAdjacentElement("afterend", compare);
+          }
+
+          var remainingParagraphs = limitsSection.querySelectorAll(":scope > p");
+          if (remainingParagraphs.length) {
+            remainingParagraphs[0].classList.add("vps-vs-limits-warning");
+            if (remainingParagraphs.length > 1) {
+              remainingParagraphs[remainingParagraphs.length - 1].classList.add("vps-vs-limits-result");
+            }
+          }
+        }
+      }
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
