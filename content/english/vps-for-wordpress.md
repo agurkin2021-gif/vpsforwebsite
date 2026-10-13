@@ -409,7 +409,7 @@ Use separate users/database credentials where appropriate, and size from the **c
 
 See [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}).
 
-## Upgrade triggers
+## WordPress VPS upgrade triggers
 
 Upgrade only after measuring a real constraint.
 
@@ -444,7 +444,7 @@ If the website is slow while these signals remain healthy, a larger VPS may not 
 
 For an existing production site, use [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}) for cutover, final writes, DNS and rollback.
 
-## Current VPS examples
+## Current WordPress VPS examples
 
 These VDSina Standard configurations are current examples, not WordPress traffic guarantees.
 
