@@ -290,3 +290,23 @@ The SEO buffer contains:
 - Homepage owns `VPS for website` plus close semantic variants such as `website VPS hosting` and `VPS hosting for websites`; do not create duplicate pages for those variants.
 - High-priority future supporting intents currently identified: `VPS sizing for website`, `Website migration to VPS`, and `Managed vs Unmanaged VPS`.
 - Supporting pages must return contextual internal links to the homepage.
+
+
+### 2026-10-12 — Homepage assembly pass
+
+- Homepage content assembled for visual review using the original Hugoplate visual system; no new custom design system was introduced.
+- Exact homepage target is now literal everywhere relevant in page/site naming: `VPS for website`.
+- Homepage hero CTA now routes to the on-page Fit/Readiness section instead of routing narrowly to WordPress.
+- Homepage is intentionally limited to six major decision blocks:
+  1. need-VPS / optimize-first Fit Check;
+  2. workload-based sizing + pre-purchase factors;
+  3. management path (FASTPANEL/control panel vs pure Ubuntu/Linux vs Windows web stack);
+  4. migration pre-flight / rollback thinking;
+  5. one-VPS-vs-split architecture decision;
+  6. clone/test/scale/recover growth path.
+- Strong supporting intents remain supporting-page work and were not expanded into full tutorials on the homepage.
+- Provider-specific commercial proof is kept compact: local-network capability, cloning/scaling/recovery/portable backup image, 10 Gbit/s advertised public port, DDoS protection, 24/7 support, daily billing, crypto/card funding and current top-up bonus tiers.
+- Final CTA includes an affiliate disclosure and keeps the VDSina partner URL.
+- Added a local `layouts/home.html` override that preserves stock Hugoplate classes/composition while adding semantic section anchors, descriptive image alt text and `rel="sponsored nofollow noopener"` for external homepage buttons.
+- Current state after this pass: content/IA assembled; Hugo Actions build and public visual rendering must pass before the homepage is called complete/frozen.
+- Next continuation point: verify final GitHub Actions build, inspect the published homepage visually/structurally, then decide whether any section should be cut or shortened before moving to supporting pages.
