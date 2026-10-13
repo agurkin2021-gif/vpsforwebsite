@@ -423,3 +423,130 @@ footer a:hover {
     padding-bottom: 3.6rem !important;
   }
 }
+
+
+/* Internal pages use the same editorial hierarchy as the homepage. */
+.vps-page-header {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.vps-page-header-panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.2rem, 5vw, 4.2rem);
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius-md);
+  background: var(--vps-mid-bg);
+}
+
+.vps-page-header-panel::after {
+  content: "";
+  position: absolute;
+  top: -2.8rem;
+  right: -1.8rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 54% 46% 19% 81% / 41% 87% 13% 59%;
+  background: linear-gradient(135deg, var(--vps-secondary), var(--vps-primary));
+  opacity: 0.9;
+}
+
+.vps-page-header-panel h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 4.3rem);
+  line-height: 1;
+  text-align: left;
+  text-wrap: balance;
+}
+
+.vps-page-header-panel .vps-eyebrow,
+.vps-page-header-panel nav,
+.vps-page-header-panel ol {
+  position: relative;
+  z-index: 1;
+}
+
+.vps-page-header-panel nav,
+.vps-page-header-panel ol,
+.vps-page-header-panel a {
+  text-align: left;
+}
+
+.content > h2 {
+  position: relative;
+  margin-top: 4.2rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--vps-muted) 65%, transparent);
+}
+
+.content > h2::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3rem;
+  border-top: 2px solid var(--vps-primary);
+}
+
+.content h3 {
+  margin-top: 2.5rem;
+}
+
+.content blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1.2rem 1.4rem;
+  border-left: 3px solid var(--vps-primary);
+  border-radius: 0 var(--vps-radius) var(--vps-radius) 0;
+  background: var(--vps-light-bg);
+  color: var(--vps-text);
+}
+
+.content table {
+  overflow: hidden;
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius);
+  background: var(--vps-mid-bg);
+}
+
+.content th,
+.content td {
+  border-color: color-mix(in srgb, var(--vps-muted) 70%, transparent) !important;
+}
+
+.content th {
+  background: var(--vps-light-bg);
+}
+
+.content hr {
+  border-color: var(--vps-primary);
+  opacity: 0.55;
+}
+
+.content strong {
+  color: var(--vps-text);
+}
+
+@media (max-width: 767px) {
+  .vps-page-header {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .vps-page-header-panel {
+    padding: 2rem 1.4rem;
+  }
+
+  .vps-page-header-panel::after {
+    opacity: 0.5;
+  }
+
+  .content > h2 {
+    margin-top: 3.2rem;
+    padding-top: 1.6rem;
+  }
+}
