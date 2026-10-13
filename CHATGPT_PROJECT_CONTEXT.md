@@ -606,3 +606,19 @@ The SEO buffer contains:
 - Generated checks: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional checker, one sponsored affiliate CTA and intended contextual links.
 - SERP Audit.txt now marks VPS Backup Strategy BUILT / FROZEN.
 - Next planned item: fresh exact-query SERP and build of VPS Monitoring.
+
+
+### 2026-10-13 — VPS Monitoring frozen
+- Ran a fresh exact-query SERP across VPS Monitoring / VPS Monitoring Guide / VPS Server Monitoring / monitoring-tools variants. Exact owner locked: Title = H1 = VPS Monitoring; URL /vps-monitoring/.
+- Fresh research saved at research/vps-monitoring-serp-2026-10-13.md. Current 2026 SERP includes LuckVM, Simple Observability, HostMyCode, thueVPS, VPS.DO, Hostinger, ZEROX HOST, VPSWala, HostAccent and AsiaGB.
+- Exact-key decision: VPS Monitoring retained as the clean head-term owner; VPS Monitoring Guide is a secondary informational variant; VPS Server Monitoring is redundant and noisier.
+- Built the page around five monitoring layers: external availability, host metrics, service/application health, logs/events, and alerting/ownership.
+- Added a functional VPS Monitoring Baseline Checker with outcomes BLIND SPOTS, BASIC MONITORING, ALERTING / OWNERSHIP INCOMPLETE and PRODUCTION MONITORING BASELINE.
+- Closed all planned G1-G22: external-vs-internal monitoring; real-time diagnostics vs retained history; CPU/load/steal context; RAM/swap/OOM; disk capacity/inodes/I/O; network; service/app health; HTTP-content checks; TLS/DNS; DB health; cron/queues/jobs; backup freshness; logs+metrics correlation; non-universal thresholds; alert severity/debounce/grouping; independent notification path; alert owner/runbook; capacity trends; monitoring overhead/security; multi-site two-level monitoring; functional checker.
+- Technical references include Prometheus Node Exporter and Alertmanager plus the official Uptime Kuma project.
+- Added inbound links from VPS Security Checklist, VPS Backup Strategy, VPS sizing for website and VPS for Multiple Websites; Guides menu includes VPS Monitoring.
+- Hugo preview build for source head bda0506c4bdfa0f7383712e98f5893503099153d succeeded. Preview artifact 1fd2cb79c84963065a501b49f63ff76917144222.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional checker, one sponsored affiliate CTA and intended contextual links.
+- Visual QA passed for the first screen, Monitoring Baseline Checker and VPS monitoring checklist table in native Hugoplate styling.
+- SERP Audit.txt now marks VPS Monitoring BUILT / FROZEN.
+- Next planned item: fresh exact-query SERP and build of How to Choose VPS Location.
