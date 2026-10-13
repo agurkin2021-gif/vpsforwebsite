@@ -270,3 +270,14 @@ Human-readable disclosure required.
 - production canonical behavior;
 - JSON-LD;
 - browser visual QA.
+
+
+## Re-audit — 2026-10-13
+
+- Current implementation was rechecked against the saved G1-G22 gap set: all G1-G22 are represented on-page.
+- Fresh SERP recheck still confirms the same primary intent: production VPS monitoring across resource metrics, external uptime, service/application health, alerts and historical trends.
+- Additional secondary SERP pattern captured: provider-native CPU/RAM/disk/network dashboards are useful as a host-level starting layer, but they are not a substitute for independent external HTTP(S) checks or application/job/database health monitoring. This distinction is now implemented on-page.
+- Exact owner remains unchanged: Title = H1 = `VPS Monitoring`; URL = `/vps-monitoring/`.
+- The longer title `VPS Monitoring: Metrics, Uptime, Alerts & Tools` is rejected because it violates the project exact-query Title/H1 rule.
+- Inbound monitoring links are present from VPS Security Checklist, VPS Backup Strategy, VPS sizing for website and VPS for Multiple Websites.
+- Preview SEO behavior: `noindex,nofollow` is intentional; production canonical/hreflang are emitted by `layouts/_partials/essentials/head.html` when BaseURL is not the preview host.
