@@ -226,8 +226,13 @@ Role:
 Backup owns recovery architecture. Do not duplicate security or monitoring.
 
 13. VPS Monitoring
-Exact Title/H1/URL: TO BE VALIDATED BY PAGE-LEVEL SERP
-Status: PLANNED / REPLACES CORE "VPS Maintenance Checklist"
+URL: /vps-monitoring/
+Status: BUILT / FROZEN
+Exact SERP decision (2026-10-13):
+Primary keyword: VPS Monitoring
+Title: VPS Monitoring
+H1: VPS Monitoring
+URL: /vps-monitoring/
 Fresh SERP decision:
 Monitoring has a clearer independent SERP than generic maintenance.
 Role:
@@ -386,18 +391,17 @@ DONE / FROZEN
 - VPS for Multiple Websites
 - VPS Security Checklist
 - VPS Backup Strategy
+- VPS Monitoring
 
 NOT BUILT YET
-- VPS Monitoring
 - How to Choose VPS Location
 
 ==================================================
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Run exact-query SERP and build VPS Monitoring.
-2. Run exact-query SERP and build How to Choose VPS Location.
-3. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Run exact-query SERP and build How to Choose VPS Location.
+2. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
