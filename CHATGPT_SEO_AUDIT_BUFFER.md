@@ -3420,3 +3420,45 @@ Locked SEO elements:
 - URL: /fastpanel-vps-hosting/
 
 Research/gaps/intent map stored in research/fastpanel-vps-hosting-serp-2026-10-13.md. Parent remains VPS with Control Panel. Branded page owns FASTPANEL-specific deployment, sizing and website-management intent. Do not create a duplicate VPS with FASTPANEL page.
+
+
+## 58. FASTPANEL VPS Hosting — implementation — 2026-10-13
+Status: BUILT / PREVIEW VERIFIED / FINAL FREEZE AUDIT PENDING.
+
+Exact owner:
+- Primary keyword: FASTPANEL VPS Hosting
+- Title: FASTPANEL VPS Hosting
+- H1: FASTPANEL VPS Hosting
+- URL: /fastpanel-vps-hosting/
+
+Implemented scope from research G1–G11:
+- panel minimum vs real website sizing distinction;
+- VDSina FASTPANEL on Ubuntu 22 deployment path;
+- control panel != managed VPS;
+- multi-site separate-user isolation;
+- panel overhead in RAM/CPU/storage sizing;
+- concrete first-site flow;
+- SSH/root still relevant;
+- panel backups != complete recovery strategy;
+- migration summary with deep migration delegated to Website migration to VPS;
+- WordPress-specific FASTPANEL path with performance delegated to VPS for WordPress;
+- negative qualification / when FASTPANEL is the wrong fit.
+
+Additional utility:
+- functional FASTPANEL VPS fit checker based on workload class, active site count, mail and heavy background jobs; it intentionally does not treat 1 GB as the normal production recommendation.
+
+Current official facts rechecked:
+- VDSina Standard lists FASTPANEL on Ubuntu 22;
+- FASTPANEL manual-install minimums: 1 GB RAM, 5 GB free disk, 1 core / 1 GHz, clean supported OS/root access;
+- FASTPANEL supports website creation, WordPress workflow, users/access rights, backups, mail, SSL, firewall, databases, PHP and job scheduling;
+- FASTPANEL security guidance recommends separate user accounts for separate sites.
+
+Verification for preview artifact 000bf4f1621423152012eaeca225d6bebdd6bd4e:
+- exact Title/H1; one H1;
+- preview noindex,nofollow; no preview canonical;
+- WebPage + BreadcrumbList JSON-LD;
+- fit checker rendered in native Hugoplate styling;
+- two VDSina partner CTAs with sponsored/nofollow/noopener;
+- links to homepage, control-panel parent, sizing, managed-vs-unmanaged, WordPress, multiple websites and migration.
+
+Status decision: do not freeze until the separate dense completion audit is run. Parent page VPS with Control Panel remains the next page to deepen after FASTPANEL freeze.
