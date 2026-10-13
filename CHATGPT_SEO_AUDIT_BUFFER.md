@@ -3501,3 +3501,35 @@ Ownership remains strict:
 - How to host a website on VPS = future manual/no-panel deployment path.
 
 Further changes require new SERP or real-user evidence rather than more sections.
+
+
+## 60. VPS with Control Panel — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Fresh SERP retained the existing owner: VPS with Control Panel. The broader query family mixes commercial VPS-with-panel pages and editorial control-panel comparison guides; generic VPS Control Panel is noisier because it also returns provider infrastructure dashboards and virtualization tools.
+
+Closed research gaps G1-G13:
+- control-panel layer ambiguity;
+- panel-or-no-panel decision first;
+- panel class before brand;
+- OS compatibility gate;
+- free vs paid / license economics;
+- panel overhead in sizing;
+- email/DNS as architecture separator;
+- multi-site/client/reseller isolation;
+- control panel != managed VPS;
+- backup/restore workflow;
+- migration/exit cost;
+- functional panel-fit checker;
+- current VDSina preconfigured-panel truth boundary.
+
+Final preview artifact: e0f752a0c4962c9675beaf69bcc67f5108b0ab8a.
+Verified: Title=H1=VPS with Control Panel; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; panel-fit checker; representative panel map; VDSina FASTPANEL/HestiaCP/BitrixVM table; two affiliate CTAs with sponsored/nofollow/noopener; links to homepage, FASTPANEL, sizing, managed-vs-unmanaged, multiple-websites and migration; inbound links from homepage, FASTPANEL and Multiple Websites.
+
+Ownership after freeze:
+- VPS with Control Panel = generic panel/no-panel and panel-class decision.
+- FASTPANEL VPS Hosting = branded FASTPANEL deployment/sizing/use case.
+- Managed vs Unmanaged VPS = operations ownership.
+- future How to host a website on VPS = manual/no-panel deployment workflow.
+
+No known P0/P1 content/on-page defect remains. Further edits require new SERP or user evidence.
