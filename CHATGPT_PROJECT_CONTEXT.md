@@ -158,3 +158,60 @@ A future ChatGPT session must read this file before modifying the repository.
 - Added exact SEO rule: `Title` = primary query; `H1` = identical `Title`; URL slug = same phrase in URL form; no tails in Title/H1.
 - Clarified homepage exception: homepage remains at `/`, so no duplicate `/vps-for-website/` page should be created merely to mirror the slug.
 - Root `AGENTS.md` now enforces reading and updating this context before/after substantive repository work.
+
+
+## Recovered SERP / intent / gap research
+
+Recovered from prior project work on 2026-10-12. This section records what is still known even though the detailed `/research/` artifacts are not present in the current repository.
+
+### SERP / competitors
+The prior SERP review for `VPS for website` identified these recurring competitors / result types:
+- ServerCalc
+- VPS-Mart
+- Database Mart
+- Hostinger
+- Liquid Web
+- Cybernews
+- TechRadar
+- OVHcloud
+
+Observed SERP formats included:
+- use-case landing pages;
+- provider/commercial pages;
+- informational comparison/guides.
+
+### Intent ownership currently preserved
+- `/` -> `vps for website`
+- `/vps-for-wordpress/` -> WordPress VPS intent
+- `/vps-for-woocommerce/` -> WooCommerce VPS intent
+- `/vps-vs-shared-hosting/` -> VPS vs shared hosting comparison intent
+- `/vps-for-multiple-websites/` -> multiple-sites sizing/operations intent
+- `/vps-with-control-panel/` -> control-panel choice intent
+- `/managed-vps-for-website/` -> HOLD
+
+### Known open content/intent gaps from the prior audit
+The prior audit surfaced these as opportunities/gaps to cover:
+- resource-selection decision tree / comparison table / calculator;
+- when a website needs VPS vs when it does not;
+- WordPress-specific VPS guidance;
+- WooCommerce-specific VPS guidance;
+- hosting multiple websites on one VPS;
+- managed vs unmanaged VPS;
+- VPS vs shared hosting;
+- concrete resource/spec sizing guidance;
+- server/location considerations;
+- beginner-oriented deployment guidance.
+
+### Gap-closure status
+Important: no reliable explicit closed/open gap ledger is currently stored in this repository.
+The recovered prior summary did **not** explicitly mark the above gaps as closed.
+Do not claim a gap is closed unless the current page implementation is checked against the intended gap and the result is recorded here.
+
+### Missing research artifacts
+A previous project note referenced completed research artifacts such as:
+- `/research/serp-2026-10-12.md`
+- `/research/competitors.md`
+- `/research/intent-map.md`
+- `/research/content-gaps.md`
+
+These files are **not present** in current `main` or `preview` as of 2026-10-12. Treat this as a preservation defect. Future SERP/on-page research should be committed to the repository, not left only in chat/local context.
