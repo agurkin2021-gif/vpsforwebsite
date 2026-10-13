@@ -230,9 +230,14 @@ main li a:not(.btn):hover,
 
 .vps-workflow-strip {
   overflow-x: auto;
+  scrollbar-width: none;
   background: var(--vps-light-bg);
   border-top: 1px solid color-mix(in srgb, var(--vps-muted) 52%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--vps-muted) 52%, transparent);
+}
+
+.vps-workflow-strip::-webkit-scrollbar {
+  display: none;
 }
 
 .vps-workflow-strip-inner {
