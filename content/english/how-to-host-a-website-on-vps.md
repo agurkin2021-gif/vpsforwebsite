@@ -202,7 +202,7 @@ usermod -aG sudo deploy
 
 Do not lock out the only working administrative path while "hardening" the server.
 
-Deep SSH/firewall hardening belongs to the future **VPS Security Checklist** page; this guide keeps only the minimum needed for deployment.
+Deep SSH/firewall hardening is covered in [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}}); this guide keeps only the minimum needed for deployment.
 
 ## Update the server before installing the stack
 
@@ -509,7 +509,7 @@ Do not expose MySQL/PostgreSQL, Redis or internal application ports publicly jus
 
 On a server using UFW, allow the required SSH path **before** enabling restrictive rules.
 
-Deep firewall/hardening details belong to the future VPS Security Checklist.
+Deep firewall/hardening details belong to [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}}).
 
 ## Cron jobs, queues and workers
 
