@@ -436,7 +436,7 @@ Monitor at two levels.
 - cron/queue failures;
 - DB/log/storage growth.
 
-A server can be "up" while one virtual host, certificate or application is broken.
+A server can be "up" while one virtual host, certificate or application is broken. The full server + per-hostname alerting model is covered in [VPS Monitoring]({{< relref "vps-monitoring.md" >}}).
 
 ## Multi-site launch checklist
 
