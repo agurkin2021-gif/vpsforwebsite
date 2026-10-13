@@ -1526,7 +1526,7 @@ body:has(.vps-home) footer .container {
   justify-content: flex-start !important;
   gap: 0 !important;
   will-change: transform;
-  animation: vps-workflow-marquee 28s linear infinite;
+  animation: vps-workflow-marquee 58s linear infinite;
 }
 
 .vps-home .vps-workflow-run {
@@ -1560,7 +1560,7 @@ body:has(.vps-home) footer .container {
 
 @media (max-width: 767px) {
   .vps-home .vps-workflow-strip-inner {
-    animation-duration: 24s;
+    animation-duration: 48s;
   }
   .vps-home .vps-workflow-run {
     gap: 1.25rem;
