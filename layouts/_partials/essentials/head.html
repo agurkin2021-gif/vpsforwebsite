@@ -18,7 +18,12 @@
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
 {{ end }}
 
-{{ if .IsPage }}
+{{ if .IsHome }}
+  {{ $webSite := dict "@context" "https://schema.org" "@type" "WebSite" "name" site.Title "url" .Permalink "description" (.Description | default site.Params.metadata.description) "inLanguage" "en" }}
+  <script type="application/ld+json">{{ $webSite | jsonify | safeJS }}</script>
+  {{ $homePage := dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" (.Description | default site.Params.metadata.description) "url" .Permalink "inLanguage" "en" "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" .Permalink) }}
+  <script type="application/ld+json">{{ $homePage | jsonify | safeJS }}</script>
+{{ else if .IsPage }}
   {{ $webPage := dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" (.Description | default .Summary) "url" .Permalink "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" site.Home.Permalink) }}
   <script type="application/ld+json">{{ $webPage | jsonify | safeJS }}</script>
   {{ $breadcrumbItems := slice
