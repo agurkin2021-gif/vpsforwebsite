@@ -460,3 +460,10 @@ No empty pages.
 No claims of completion until the page is built and visually checked.
 
 END OF SERP AUDIT WORK PLAN
+
+
+2026-10-13 VPS Monitoring re-audit note:
+- G1-G22 verified closed in the current page.
+- Provider-native resource dashboard is now covered as a starting monitoring layer only; external/app monitoring remains required.
+- Exact Title/H1/URL remain VPS Monitoring / VPS Monitoring / /vps-monitoring/.
+- Do not restore a descriptive Title/H1 tail.
