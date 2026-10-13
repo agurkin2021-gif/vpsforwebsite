@@ -1,5 +1,5 @@
 ---
-title: "VPS Monitoring: Metrics, Uptime, Alerts & Tools"
+title: "VPS Monitoring"
 description: "Monitor a VPS with external uptime checks, CPU/RAM/disk/network metrics, service health, logs and actionable alerts. Includes tools, thresholds and a practical checklist."
 image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
 ---
@@ -460,6 +460,14 @@ For the broader operations-responsibility decision, see [Managed vs Unmanaged VP
 ## Choose the monitoring stack by complexity
 
 Do not deploy a large observability platform because it is popular.
+
+### Provider dashboard as a starting layer
+
+If the VPS provider exposes CPU, RAM, disk or network history, use it as a convenient host-level starting layer.
+
+Do not confuse provider-side infrastructure charts with complete website monitoring. They may not verify the public HTTP(S) path from outside the provider, application content, database health, background jobs, TLS renewal or alert ownership.
+
+Treat provider monitoring as one source of evidence, then add the external and application-level checks required by the workload.
 
 ### Lightweight single-VPS path
 
