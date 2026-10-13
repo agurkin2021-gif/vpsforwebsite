@@ -11,22 +11,40 @@
             <p class="mb-8">
               {{ .content | markdownify }}
             </p>
-            {{ with .button }}
-              {{ if .enable }}
-                {{ $href := .link }}
-                {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                  {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+            <div class="flex flex-wrap justify-center gap-3">
+              {{ with .button }}
+                {{ if .enable }}
+                  {{ $href := .link }}
+                  {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
+                    {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+                  {{ end }}
+                  <a
+                    class="btn btn-primary"
+                    href="{{ $href }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="sponsored nofollow noopener"
+                    {{ end }}>
+                    {{ .label }}
+                  </a>
                 {{ end }}
-                <a
-                  class="btn btn-primary"
-                  href="{{ $href }}"
-                  {{ if strings.HasPrefix .link `http` }}
-                    target="_blank" rel="sponsored nofollow noopener"
-                  {{ end }}>
-                  {{ .label }}
-                </a>
               {{ end }}
-            {{ end }}
+              {{ with .secondary_button }}
+                {{ if .enable }}
+                  {{ $href := .link }}
+                  {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
+                    {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+                  {{ end }}
+                  <a
+                    class="btn btn-outline-primary"
+                    href="{{ $href }}"
+                    {{ if strings.HasPrefix .link `http` }}
+                      target="_blank" rel="sponsored nofollow noopener"
+                    {{ end }}>
+                    {{ .label }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            </div>
           </div>
           <div class="col-12">
             {{ if strings.HasPrefix .image "http" }}
@@ -35,6 +53,15 @@
                 alt="{{ .title | plainify }}"
                 loading="eager"
                 decoding="async"
+                class="mx-auto lg:!max-w-[800px] img" />
+            {{ else if strings.HasSuffix .image ".svg" }}
+              <img
+                src="{{ .image | relURL }}"
+                alt="{{ .title | plainify }}"
+                loading="eager"
+                decoding="async"
+                width="1200"
+                height="675"
                 class="mx-auto lg:!max-w-[800px] img" />
             {{ else }}
               {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
@@ -62,6 +89,15 @@
                 loading="lazy"
                 decoding="async"
                 class="img" />
+            {{ else if strings.HasSuffix .image ".svg" }}
+              <img
+                src="{{ .image | relURL }}"
+                alt="{{ .title | plainify }}"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="520"
+                class="img" />
             {{ else }}
               {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
             {{ end }}
@@ -84,6 +120,144 @@
                 </li>
               {{ end }}
             </ul>
+
+            {{ with .fit_checker }}
+              {{ if .enable }}
+                <div class="mt-8 rounded-2xl bg-light p-6 dark:bg-darkmode-light">
+                  <h3 class="mb-2">{{ .title | markdownify }}</h3>
+                  <p class="mb-6">{{ .intro | markdownify }}</p>
+                  <form id="homepage-vps-fit-checker">
+                    <div class="mb-5">
+                      <label for="fit-limits" class="form-label">Are you repeatedly hitting real hosting limits?</label>
+                      <select id="fit-limits" class="form-input">
+                        <option value="no">No clear limit evidence</option>
+                        <option value="sometimes">Occasional / unclear</option>
+                        <option value="repeated">Yes, repeated CPU/RAM/process/I/O limits</option>
+                      </select>
+                    </div>
+                    <div class="mb-5">
+                      <label for="fit-custom" class="form-label">Do you need root access, custom software or a custom runtime?</label>
+                      <select id="fit-custom" class="form-input">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <div class="mb-5">
+                      <label for="fit-optimize" class="form-label">Is there an obvious site-side issue to fix first?</label>
+                      <select id="fit-optimize" class="form-input">
+                        <option value="unknown">Not sure</option>
+                        <option value="yes">Yes — plugin/query/bot/cache/job issue</option>
+                        <option value="no">No known optimize-first issue</option>
+                      </select>
+                    </div>
+                    <div class="mb-5">
+                      <label for="fit-critical" class="form-label">Is the website business-critical or heavily dynamic?</label>
+                      <select id="fit-critical" class="form-input">
+                        <option value="no">No / low-risk</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <div class="mb-5">
+                      <label for="fit-operator" class="form-label">Who will operate the VPS?</label>
+                      <select id="fit-operator" class="form-input">
+                        <option value="none">Nobody is assigned yet</option>
+                        <option value="help">Paid / managed administration is available</option>
+                        <option value="internal">An internal operator can own it</option>
+                      </select>
+                    </div>
+                    <div class="mb-5">
+                      <label for="fit-readiness" class="form-label">Are security, backup and monitoring responsibilities defined?</label>
+                      <select id="fit-readiness" class="form-input">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">{{ .button }}</button>
+                  </form>
+                  <p id="homepage-vps-fit-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">{{ .initial }}</p>
+                </div>
+                <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                    var form = document.getElementById("homepage-vps-fit-checker");
+                    if (!form) return;
+                    form.addEventListener("submit", function (event) {
+                      event.preventDefault();
+                      var limits = document.getElementById("fit-limits").value;
+                      var custom = document.getElementById("fit-custom").value === "yes";
+                      var optimize = document.getElementById("fit-optimize").value;
+                      var critical = document.getElementById("fit-critical").value === "yes";
+                      var operator = document.getElementById("fit-operator").value;
+                      var ready = document.getElementById("fit-readiness").value === "yes";
+                      var trigger = limits === "repeated" || custom;
+                      var result;
+
+                      if (optimize === "yes" && !custom && limits !== "repeated") {
+                        result = "OPTIMIZE FIRST: fix the known application, query, bot, cache or scheduled-job problem before paying for more infrastructure. Re-measure after the fix.";
+                      } else if (!trigger && limits === "no" && !critical) {
+                        result = "STAY ON SHARED HOSTING: there is no strong VPS requirement yet. Keep the simpler platform until real limits or a required server capability appear.";
+                      } else if (trigger && operator === "internal" && ready) {
+                        result = "MOVE TO VPS: there is a real infrastructure/capability reason and operations ownership exists. Size the VPS from the measured workload, then plan the migration.";
+                      } else if (trigger && (operator === "help" || operator === "none" || !ready || critical)) {
+                        result = "MOVE WITH MANAGED / ADMIN HELP: the VPS case is real, but business risk or missing operations ownership makes an unmanaged move a poor fit. Define administration, security, backups and monitoring before cutover.";
+                      } else {
+                        result = "INSUFFICIENT EVIDENCE: the case is mixed. Measure the current bottleneck and compare a better shared/managed option before accepting VPS administration overhead.";
+                      }
+
+                      document.getElementById("homepage-vps-fit-result").textContent = result;
+                    });
+                  });
+                </script>
+              {{ end }}
+            {{ end }}
+
+            {{ with .plans }}
+              {{ if .enable }}
+                <div class="mt-8 overflow-x-auto">
+                  <table class="w-full min-w-[760px]">
+                    <thead>
+                      <tr>
+                        <th>Configuration</th>
+                        <th>Transfer</th>
+                        <th>Price</th>
+                        <th>Best fit</th>
+                        <th>Watch</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{ range .rows }}
+                        <tr>
+                          <td><strong>{{ .spec }}</strong></td>
+                          <td>{{ .transfer }}</td>
+                          <td>{{ .price_day }}<br /><strong>{{ .price_month }}</strong></td>
+                          <td>{{ .fit }}</td>
+                          <td>{{ .warning }}</td>
+                        </tr>
+                      {{ end }}
+                    </tbody>
+                  </table>
+                </div>
+                <p class="mt-4 text-sm">{{ .checked }}</p>
+                <p class="mt-2 text-sm">{{ .note }}</p>
+                <a class="btn btn-primary mt-5" href="{{ .affiliate_link }}" target="_blank" rel="sponsored nofollow noopener">{{ .affiliate_label }}</a>
+              {{ end }}
+            {{ end }}
+
+            {{ with .methodology }}
+              {{ if .enable }}
+                <div class="mt-8 rounded-2xl border border-border p-6 dark:border-darkmode-border">
+                  <h3 class="mb-4">{{ .title | markdownify }}</h3>
+                  <ul>
+                    {{ range .items }}
+                      <li class="relative mb-3 pl-6">
+                        <i class="fa fa-check absolute left-0 top-1.5"></i>
+                        {{ . | markdownify }}
+                      </li>
+                    {{ end }}
+                  </ul>
+                </div>
+              {{ end }}
+            {{ end }}
+
             {{ with .button }}
               {{ if .enable }}
                 {{ $href := .link }}
