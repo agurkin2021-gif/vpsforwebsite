@@ -403,3 +403,9 @@ The SEO buffer contains:
 - Add a separate location-decision page (provisionally How to Choose VPS Location) to keep the core cluster at 14; current SERP is distinct around latency, routing, audience geography, CDN/origin and operational/jurisdiction fit.
 - Corrected core 14 is recorded in CHATGPT_SEO_AUDIT_BUFFER.md section 54.
 - No existing built page was deleted or retargeted by this audit; these are architecture decisions for remaining work.
+
+
+### 2026-10-13 — Persistent SERP work plan file
+- Added root text file `SERP Audit.txt` as the persistent work plan for the homepage support cluster.
+- The file records the corrected 14-page architecture, current status, merge/retarget decisions, cannibalization rules, HOLD list, recommended work order and the standard SERP->build->audit workflow.
+- This file should be read together with CHATGPT_PROJECT_CONTEXT.md and CHATGPT_SEO_AUDIT_BUFFER.md before continuing the surrounding-page build plan.
