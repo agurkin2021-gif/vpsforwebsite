@@ -90,6 +90,34 @@
   {{ end }}
   <!-- /Features -->
 
+
+  <!-- FAQ -->
+  {{ with .Params.faq }}
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="md:col-10 lg:col-8">
+            <div class="mb-10 text-center">
+              <h2 class="mb-4">{{ .title | markdownify }}</h2>
+              <p>{{ .description | markdownify }}</p>
+            </div>
+            {{ range .items }}
+              <details class="border-border dark:border-darkmode-border mb-4 rounded border px-6 py-4">
+                <summary class="cursor-pointer font-primary font-semibold text-text-dark dark:text-white">
+                  {{ .question | markdownify }}
+                </summary>
+                <div class="content mt-4">
+                  {{ .answer | markdownify }}
+                </div>
+              </details>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+  <!-- /FAQ -->
+
   <!-- Testimonials -->
   {{ with site.GetPage "sections/testimonial" }}
     {{ if .Params.enable }}
