@@ -30,6 +30,8 @@ Use separate virtual hosts or server blocks for each domain. Keep document roots
 
 Separate PHP pools can help when stronger process separation or different limits are useful.
 
+If you want a hosting UI for domains, users, databases, SSL and client/site administration, compare the account and isolation models in [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
+
 ## Databases
 
 Use separate databases and credentials for separate applications even when one database server hosts them.
