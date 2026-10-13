@@ -1,0 +1,425 @@
+/*
+  VPSforWebsite visual system.
+  Inspired by the dark editorial rhythm of Open Source Pledge, while keeping
+  this site's own content, illustrations and information architecture.
+*/
+
+:root {
+  color-scheme: dark;
+  --vps-bg: #080e17;
+  --vps-dark-bg: #02060f;
+  --vps-light-bg: #16212d;
+  --vps-mid-bg: #0d131b;
+  --vps-primary: #2dde74;
+  --vps-secondary: #9e86ff;
+  --vps-muted: #37485c;
+  --vps-text: #ffffff;
+  --vps-body-text: #c9d3df;
+  --vps-radius: 0.5rem;
+  --vps-radius-md: 1rem;
+  --vps-radius-lg: 3rem;
+}
+
+html,
+body {
+  background: var(--vps-bg);
+  color: var(--vps-body-text);
+}
+
+body {
+  letter-spacing: -0.012em;
+}
+
+.header {
+  background: color-mix(in srgb, var(--vps-bg) 94%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--vps-muted) 42%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-brand {
+  color: var(--vps-text) !important;
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.nav-link,
+.nav-dropdown-link {
+  color: var(--vps-text) !important;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-dropdown-link:hover,
+.nav-dropdown-link.active {
+  color: var(--vps-primary) !important;
+}
+
+.nav-dropdown-list {
+  background: var(--vps-mid-bg) !important;
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius);
+  box-shadow: 0 24px 60px rgba(2, 6, 15, 0.42);
+  overflow: hidden;
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6,
+footer h1,
+footer h2,
+footer h3 {
+  font-family: var(--font-secondary);
+  color: var(--vps-text);
+  letter-spacing: -0.032em;
+}
+
+main h1 {
+  font-weight: 600;
+}
+
+main h2,
+main h3,
+main h4 {
+  font-weight: 600;
+}
+
+main p,
+main li,
+.content {
+  line-height: 1.65;
+}
+
+main p a:not(.btn),
+main li a:not(.btn),
+.content a:not(.btn) {
+  color: var(--vps-primary);
+  text-decoration-color: color-mix(in srgb, var(--vps-primary) 55%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+main p a:not(.btn):hover,
+main li a:not(.btn):hover,
+.content a:not(.btn):hover {
+  color: var(--vps-secondary);
+  text-decoration-color: var(--vps-secondary);
+}
+
+.btn {
+  border-radius: var(--vps-radius) !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: none !important;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--vps-primary) !important;
+  border: 1px solid var(--vps-primary) !important;
+  color: var(--vps-dark-bg) !important;
+}
+
+.btn-primary:hover {
+  background: var(--vps-secondary) !important;
+  border-color: var(--vps-secondary) !important;
+  color: var(--vps-dark-bg) !important;
+}
+
+.vps-btn-secondary {
+  background: transparent !important;
+  border: 1px solid var(--vps-primary) !important;
+  color: var(--vps-primary) !important;
+}
+
+.vps-btn-secondary:hover {
+  background: var(--vps-primary) !important;
+  color: var(--vps-dark-bg) !important;
+}
+
+.vps-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem;
+}
+
+.vps-hero::before,
+.vps-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vps-hero::before {
+  left: -7rem;
+  bottom: 3rem;
+  width: 12rem;
+  height: 8rem;
+  border-radius: 60% 40% 48% 52% / 58% 45% 55% 42%;
+  background: var(--vps-light-bg);
+  transform: rotate(14deg);
+}
+
+.vps-hero::after {
+  right: -2.5rem;
+  top: 4.5rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 54% 46% 19% 81% / 41% 87% 13% 59%;
+  background: linear-gradient(135deg, var(--vps-secondary), var(--vps-primary));
+}
+
+.vps-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.vps-eyebrow {
+  margin-bottom: 0.8rem;
+  color: var(--vps-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vps-hero-copy h1 {
+  margin-bottom: 1.4rem;
+  font-size: clamp(3rem, 6vw, 4.3rem);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.vps-hero-copy > p {
+  max-width: 36rem;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.vps-hero-panel {
+  position: relative;
+  padding: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--vps-muted) 72%, transparent);
+  border-radius: var(--vps-radius-lg) var(--vps-radius-md) var(--vps-radius-md) var(--vps-radius-md);
+  background: var(--vps-mid-bg);
+  box-shadow: 0 28px 80px rgba(2, 6, 15, 0.32);
+}
+
+.vps-hero-panel img {
+  display: block;
+  width: 100%;
+  border-radius: calc(var(--vps-radius-md) - 0.15rem);
+}
+
+.vps-workflow-strip {
+  overflow-x: auto;
+  background: var(--vps-light-bg);
+  border-top: 1px solid color-mix(in srgb, var(--vps-muted) 52%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--vps-muted) 52%, transparent);
+}
+
+.vps-workflow-strip-inner {
+  display: flex;
+  min-width: max-content;
+  align-items: center;
+  justify-content: center;
+  gap: 1.9rem;
+  min-height: 4rem;
+  color: var(--vps-text);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.vps-workflow-strip-inner span::after {
+  content: "→";
+  margin-left: 1.9rem;
+  color: var(--vps-primary);
+}
+
+.vps-workflow-strip-inner span:last-child::after {
+  content: "";
+  margin: 0;
+}
+
+.section-sm {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  border-top: 1px solid color-mix(in srgb, var(--vps-muted) 24%, transparent);
+}
+
+.bg-gradient {
+  background: var(--vps-mid-bg) !important;
+  background-image: none !important;
+}
+
+.section-sm img.img {
+  border-radius: var(--vps-radius-md);
+}
+
+#homepage-vps-fit-checker + #homepage-vps-fit-result,
+#vps-methodology,
+#vps-plan-options > div {
+  background: var(--vps-mid-bg);
+}
+
+#homepage-vps-fit-checker select,
+.form-input {
+  background: var(--vps-dark-bg) !important;
+  border-color: var(--vps-muted) !important;
+  color: var(--vps-text) !important;
+  border-radius: var(--vps-radius) !important;
+}
+
+#homepage-vps-fit-checker label,
+.form-label {
+  color: var(--vps-text);
+}
+
+#vps-plan-options > div {
+  border-color: var(--vps-muted) !important;
+  border-radius: var(--vps-radius-md) !important;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+#vps-plan-options > div:hover {
+  border-color: var(--vps-primary) !important;
+  transform: translateY(-2px);
+}
+
+#vps-methodology {
+  border-color: var(--vps-muted) !important;
+  background: var(--vps-light-bg);
+}
+
+.fa-check {
+  color: var(--vps-primary);
+}
+
+details {
+  background: var(--vps-mid-bg);
+  border-color: var(--vps-muted) !important;
+  border-radius: var(--vps-radius) !important;
+  transition: border-color 160ms ease;
+}
+
+details:hover,
+details[open] {
+  border-color: var(--vps-primary) !important;
+}
+
+details summary {
+  color: var(--vps-text) !important;
+}
+
+.bg-gradient-to-b {
+  background: var(--vps-mid-bg) !important;
+  background-image: none !important;
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius-md) !important;
+}
+
+.content table {
+  border-color: var(--vps-muted);
+}
+
+.content th {
+  color: var(--vps-text);
+}
+
+.content code {
+  color: var(--vps-primary);
+  background: var(--vps-dark-bg);
+  border: 1px solid color-mix(in srgb, var(--vps-muted) 70%, transparent);
+  border-radius: 0.25rem;
+}
+
+.content pre {
+  background: var(--vps-dark-bg) !important;
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius);
+}
+
+#final-cta > .container > div {
+  background: var(--vps-light-bg) !important;
+  border: 1px solid var(--vps-muted);
+  border-radius: var(--vps-radius-md) !important;
+}
+
+footer {
+  background: var(--vps-dark-bg);
+  border-top: 1px solid color-mix(in srgb, var(--vps-muted) 45%, transparent);
+}
+
+footer a:hover {
+  color: var(--vps-primary) !important;
+}
+
+@media (max-width: 1023px) {
+  .vps-hero {
+    padding-top: 3rem !important;
+  }
+
+  .vps-hero-copy h1 {
+    font-size: clamp(2.8rem, 11vw, 3.8rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-hero {
+    padding-top: 2.4rem !important;
+    padding-bottom: 2.8rem;
+  }
+
+  .vps-hero::before,
+  .vps-hero::after {
+    opacity: 0.55;
+  }
+
+  .vps-hero-copy {
+    text-align: left;
+  }
+
+  .vps-hero-copy h1 {
+    font-size: clamp(2.6rem, 13vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .vps-hero-panel {
+    margin-top: 1.5rem;
+    border-radius: var(--vps-radius-md);
+  }
+
+  .vps-workflow-strip-inner {
+    justify-content: flex-start;
+    padding-right: 1rem;
+    gap: 1.25rem;
+  }
+
+  .vps-workflow-strip-inner span::after {
+    margin-left: 1.25rem;
+  }
+
+  .section-sm {
+    padding-top: 3.6rem !important;
+    padding-bottom: 3.6rem !important;
+  }
+}
