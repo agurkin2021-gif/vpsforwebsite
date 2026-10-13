@@ -643,3 +643,11 @@ The SEO buffer contains:
 - This is preview-only infrastructure; production BaseURL remains `https://vpsforwebsite.com/`.
 
 - Preview rewrite regex was rechecked after commit and corrected to the effective pattern `(?<!https://raw\.githack\.com)`; the earlier over-escaped intermediate pattern must not be restored.
+
+
+### 2026-10-13 — Deterministic preview publishing
+
+- Rapid sequential commits exposed a preview race: older workflow runs could finish later and overwrite the `preview` branch with stale generated HTML.
+- `.github/workflows/pages.yml` now uses concurrency group `hugo-preview` with `cancel-in-progress: true`.
+- A freshness check fetches `origin/main` and publishes only when `GITHUB_SHA` still equals the current main commit; stale runs skip the preview publish step.
+- Keep this guard. It is required for deterministic visual QA when many SEO/content commits are made quickly.
