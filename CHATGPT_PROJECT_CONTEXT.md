@@ -622,3 +622,14 @@ The SEO buffer contains:
 - Visual QA passed for the first screen, Monitoring Baseline Checker and VPS monitoring checklist table in native Hugoplate styling.
 - SERP Audit.txt now marks VPS Monitoring BUILT / FROZEN.
 - Next planned item: fresh exact-query SERP and build of How to Choose VPS Location.
+
+
+### 2026-10-13 — VPS Monitoring re-audit correction
+
+- Re-read persistent project context, `SERP Audit.txt`, SEO buffer, architecture audit and `research/vps-monitoring-serp-2026-10-13.md` before editing.
+- Corrected an accidental Title/H1 regression: VPS Monitoring must follow the project exact-query rule. Final owner is Title/H1 `VPS Monitoring`, URL `/vps-monitoring/`.
+- Re-audited the implementation against monitoring gaps G1-G22; all are closed.
+- Added the remaining current SERP nuance: provider-native CPU/RAM/disk/network dashboards are useful as a starting host-level layer but do not replace independent external uptime or application-level monitoring.
+- Verified inbound links to VPS Monitoring from Security, Backup, Sizing and Multiple Websites.
+- Preview SEO is intentionally noindex/nofollow; production canonical/hreflang are conditionally emitted by the shared head partial.
+- Live GitHub Pages deployment is currently blocked outside page content: the build job succeeds, but `actions/deploy-pages@v4` returns 404 because GitHub Pages is not enabled for the repository. Preview build remains the review path until Pages is enabled.
