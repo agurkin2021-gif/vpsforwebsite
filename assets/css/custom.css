@@ -3994,3 +3994,49 @@ body:has(.vps-home) footer .container {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+
+/* Homepage unified button states */
+.vps-home a.btn,
+.vps-home button.btn,
+.vps-home .btn,
+.vps-home .vps-btn-secondary {
+  background: var(--osp-green) !important;
+  border-color: var(--osp-green) !important;
+  color: #061019 !important;
+  box-shadow: none !important;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    transform 120ms ease !important;
+}
+
+.vps-home a.btn:hover,
+.vps-home button.btn:hover,
+.vps-home .btn:hover,
+.vps-home .vps-btn-secondary:hover {
+  background: var(--osp-green) !important;
+  border-color: var(--osp-green) !important;
+  color: #061019 !important;
+  transform: translateY(-1px);
+}
+
+.vps-home a.btn:active,
+.vps-home button.btn:active,
+.vps-home .btn:active,
+.vps-home .vps-btn-secondary:active,
+.vps-home a.btn:focus-visible,
+.vps-home button.btn:focus-visible,
+.vps-home .btn:focus-visible,
+.vps-home .vps-btn-secondary:focus-visible {
+  background: var(--vps-secondary) !important;
+  border-color: var(--vps-secondary) !important;
+  color: #061019 !important;
+  transform: translateY(0);
+}
+
+.vps-home .btn i,
+.vps-home .vps-btn-secondary i {
+  color: currentColor !important;
+}
