@@ -3343,3 +3343,36 @@ Status: IMPLEMENTED / PREVIEW VERIFIED.
 - Preview artifact 77fc5ba02230b3451b38d205c5402fd839fb70a2: Title=H1, noindex/nofollow, no preview canonical, checker rendered, JSON-LD present, sponsored partner CTA present, intended internal links present.
 - Homepage and migration generated HTML both link to this page.
 - No known P0/P1 implementation defect from this pass; run dense freeze audit before calling content frozen if requested.
+
+
+## 54. Fresh supporting-page architecture audit — 2026-10-13
+Status: SERP REVALIDATED.
+
+Fresh audit of the homepage's 14 surrounding pages is stored in research/serp-architecture-audit-2026-10-13.md.
+
+Architecture changes from the prior plan:
+- KEEP the built P1 pages: VPS sizing for website; Website migration to VPS; Managed vs Unmanaged VPS.
+- KEEP existing owners: VPS for WordPress; VPS for WooCommerce; VPS vs Shared Hosting; VPS for Multiple Websites; VPS with Control Panel.
+- KEEP new support owners: How to host a website on VPS; VPS Security Checklist; VPS Backup Strategy.
+- RETARGET FASTPANEL page toward the stronger current phrase FASTPANEL VPS Hosting (dedicated page-level SERP still required before locking exact Title/H1/URL).
+- MERGE VPS without Control Panel into How to host a website on VPS; current SERP is predominantly the same manual deployment/tutorial intent, so separate URLs would create high cannibalization risk.
+- REPLACE the core VPS Maintenance Checklist slot with a cleaner VPS Monitoring owner; maintenance content overlaps security/backups/monitoring too heavily for a core page, while monitoring has a stronger distinct current SERP around CPU/RAM/disk/network/uptime/alerts.
+- ADD a location-decision page, provisionally How to Choose VPS Location, to preserve a 14-page core. Current SERP is distinct around latency, routing, audience geography, CDN/origin and jurisdiction/operational fit.
+
+Corrected core 14:
+1 VPS sizing for website
+2 Website migration to VPS
+3 Managed vs Unmanaged VPS
+4 VPS for WordPress
+5 VPS for WooCommerce
+6 VPS vs Shared Hosting
+7 VPS for Multiple Websites
+8 VPS with Control Panel
+9 FASTPANEL VPS Hosting (provisional exact target)
+10 How to host a website on VPS
+11 VPS Security Checklist
+12 VPS Backup Strategy
+13 VPS Monitoring (exact target to validate)
+14 How to Choose VPS Location (exact target to validate)
+
+HOLD remains: High Traffic (merge into sizing), Membership, Website+Email, Agency (merge into Multiple Websites), IIS/ASP.NET later Windows branch.
