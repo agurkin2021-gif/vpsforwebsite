@@ -41,6 +41,22 @@ Before comparing prices, identify:
 
 A managed VPS is valuable only when the written scope matches the work you actually need handled.
 
+## Decode management claims before paying
+
+Treat sales phrases as prompts for evidence, not as proof that a task is owned.
+
+| Claim on the plan page | What you still need in writing |
+|---|---|
+| **24/7 support** | whether somebody proactively monitors your server, what incidents they act on without a ticket, and whether guest-OS/application work is included |
+| **Fully managed** | exact OS, firewall, web stack, database, backup, monitoring and incident tasks; supported software; exclusions |
+| **Backups included** | frequency, retention, off-server location, failure monitoring, restore testing and who performs a restore |
+| **Monitoring included** | what is monitored, thresholds, alert recipients, who is allowed to act, and after-hours response |
+| **Security managed** | patching cadence, firewall ownership, SSH/RDP policy, vulnerable-package handling and compromise response |
+| **Migration included** | files, database, DNS, mail, final writes, rollback and whether application-specific work is covered |
+| **Control panel included** | panel/license scope only; confirm separately who owns OS patches, recovery, monitoring and incidents |
+
+If a provider cannot translate a label into task ownership, treat the ambiguous tasks as still yours when comparing plans.
+
 ## Responsibility matrix
 
 Use this matrix as a default mental model, then replace the "managed" column with the provider's actual written scope.
@@ -142,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (skill === "confident" && opsReady) {
       result = "UNMANAGED FIT: the core operational jobs have an owner. Keep written runbooks, restore tests and monitoring in place; unmanaged still means your team carries the production responsibility.";
     } else if (custom && adminHelp) {
-      result = "UNMANAGED + ADMIN HELP FIT: you need control/customization, but some operational jobs are not covered internally. Keep the VPS self-managed and define a paid/on-call administration scope for the missing tasks.";
+      result = "UNMANAGED + ADMIN HELP FIT: you need control/customization, but some operational jobs are not covered internally. Keep the VPS self-managed only if the paid/on-call administration scope explicitly owns the missing tasks; for high-impact workloads, include monitoring and incident-response coverage.";
     } else if (critical === "low" && skill !== "none" && adminHelp) {
       result = "LEARNING / HYBRID FIT: unmanaged can be reasonable for a non-critical workload if you deliberately use outside admin help and do not treat the server as production-ready until patching, backups, monitoring and incident response are owned.";
     } else {
@@ -177,6 +193,20 @@ For a production website, somebody must own:
 - application deployment coordination.
 
 If nobody can name the person responsible for those jobs, the server is not truly "self-managed"; it is simply **unmanaged without an operator**.
+
+### Red flags: unmanaged is a poor production fit
+
+Do not put a business-critical site on an unmanaged VPS yet when several of these are true:
+
+- nobody owns OS/security patching;
+- backups are scheduled but restores have never been tested;
+- nobody watches disk, CPU, memory, database or uptime alerts;
+- there is no person who can respond to an incident outside normal hours;
+- only one developer knows the server and there is no runbook;
+- the team expects provider support to repair guest-OS/application problems that are outside the support scope;
+- downtime would stop sales, customer access or business operations.
+
+The fix is not necessarily "buy managed hosting." The fix is to make every operational job have a named owner—your team, a managed provider, or contracted administration.
 
 For resource selection, use [VPS sizing for website]({{< relref "vps-sizing-for-website.md" >}}).
 
@@ -256,7 +286,7 @@ Server administration may include:
 
 Those are different responsibilities.
 
-This distinction matters for the provider used on this site: VDSina's Standard page advertises **round-the-clock technical support**, while its public QA separately describes **server administration as an additional ordered service**. Therefore, do not interpret "24/7 support" as "fully managed VPS." Verify the current administration scope and commercial terms directly before relying on it.
+This distinction matters for the provider used on this site: VDSina's Standard page advertises **round-the-clock technical support**, while its public QA separately describes **server administration as an additional ordered service**. Therefore, do not interpret "24/7 support" as "fully managed VPS." These provider pages were rechecked on October 13, 2026; verify the current administration scope and commercial terms again before relying on them.
 
 ## Compare total operating cost, not only server price
 
@@ -280,6 +310,21 @@ It can be the expensive option when:
 Managed service is not automatically cheaper either. If you already have competent operations staff and need a custom stack, paying another provider to perform limited management can add cost without removing meaningful work.
 
 Price the **responsibility**, not only the CPU/RAM.
+
+A simple comparison worksheet is:
+
+| Cost / risk item | Unmanaged | Managed / contracted admin |
+|---|---|---|
+| VPS infrastructure | monthly server price | monthly server price |
+| Panel / licenses | add if used | may or may not be included |
+| Backup storage / tooling | add if used | verify whether included |
+| Monitoring | your tool/time | verify whether included |
+| Routine administration | your staff time | management/admin fee |
+| After-hours incidents | your on-call cost / delay risk | verify coverage and exclusions |
+| Restore / recovery work | your responsibility | verify whether execution is included |
+| Application debugging | developer/admin cost | commonly still customer/developer work |
+
+The correct comparison is not "which monthly invoice is lower?" It is "which model gives every required operational task an owner at an acceptable total cost and risk?"
 
 ## Security, backups and incident response
 
@@ -376,6 +421,11 @@ If you choose this route, decide before purchase who owns OS updates, hardening,
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
 </p>
 <p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. This page does not represent the VPS as managed hosting; verify current support and administration scope with the provider before ordering.</small></p>
+
+### Provider references
+
+- [VDSina Standard VPS — current plan features and technical support](https://www.vdsina.com/pricing/standard)
+- [VDSina QA — server administration and site-transfer service](https://www.vdsina.com/qa/q/administrirovanie-servera-perenos-saytov-s-drugogo-khostinga)
 
 ## Questions to ask before paying for managed VPS
 
