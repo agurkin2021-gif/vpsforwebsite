@@ -149,3 +149,12 @@ Record:
 - exact next continuation point.
 
 A future ChatGPT session must read this file before modifying the repository.
+
+
+## Context update log
+
+### 2026-10-12
+- Fixed homepage primary query as `VPS for website`.
+- Added exact SEO rule: `Title` = primary query; `H1` = identical `Title`; URL slug = same phrase in URL form; no tails in Title/H1.
+- Clarified homepage exception: homepage remains at `/`, so no duplicate `/vps-for-website/` page should be created merely to mirror the slug.
+- Root `AGENTS.md` now enforces reading and updating this context before/after substantive repository work.
