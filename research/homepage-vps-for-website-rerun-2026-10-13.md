@@ -429,3 +429,78 @@ Generated-preview validation:
 - no duplicated RawGitHack preview URL defect detected.
 
 Current VDSina Standard values were reverified against the official Standard VPS page on 2026-10-13 before implementation.
+
+
+## Final visual + production QA — 2026-10-13
+
+Status: CLOSED
+
+Visual QA was performed in deliberately separate passes rather than one full-page screenshot.
+
+### 1280 px desktop
+Passed individually:
+- Hero;
+- Do you actually need a VPS?;
+- VPS Fit / Readiness Checker;
+- Which VPS fits your website workload?;
+- four current VPS plan cards;
+- methodology block;
+- provider-selection checklist;
+- management path;
+- migration;
+- one-VPS-vs-split architecture;
+- recovery/scale;
+- FAQ;
+- final CTA.
+
+Visual fixes made during QA:
+- strengthened the secondary hero CTA outline in dark mode;
+- added scroll offset for sticky-header anchors;
+- moved the Fit Checker out of the feature flex row so it is full-width below the fit summary;
+- checker fields use 2 columns on desktop and 1 column on mobile;
+- moved plan cards and methodology out of the feature flex row;
+- plan cards use 4 columns at 1280 px and 1 column at 390 px;
+- kept the plan affiliate CTA compact instead of full-width;
+- added stable anchors for plan cards, methodology and final CTA.
+
+### 390 px mobile
+Passed individually:
+- responsive header/hamburger;
+- Hero with stacked CTAs and responsive VPS illustration;
+- fit section;
+- Fit Checker;
+- sizing section;
+- all four plan cards;
+- methodology;
+- provider checklist;
+- management;
+- migration;
+- architecture/split workload;
+- recovery/scale;
+- FAQ;
+- final CTA.
+
+No horizontal overflow was observed in the inspected blocks. Long FAQ questions, form labels, plan warnings and CTA copy wrap correctly at 390 px.
+
+### Production HTML QA
+The live-pages production build now contains a dedicated assertion step before artifact upload. On the content build it passed:
+- robots: `index,follow`;
+- canonical: `https://vpsforwebsite.com/`;
+- hreflang `en`: PASS;
+- hreflang `x-default`: PASS;
+- WebSite JSON-LD: PASS;
+- WebPage JSON-LD: PASS;
+- exactly one H1: `VPS for website`.
+
+The assertion uses Python HTMLParser so Hugo minification/unquoted safe attributes do not cause false failures.
+
+The production build and artifact upload succeed. The deploy step still fails separately because GitHub Pages is not enabled for the repository; this is an account/repository setting, not a page-content or SEO-output failure.
+
+### Final generated preview check
+- Title: `VPS for website`;
+- one exact H1;
+- preview: `noindex,nofollow`;
+- WebSite + WebPage JSON-LD present;
+- all required section anchors present;
+- only user-visible external destination is the VDSina affiliate URL;
+- no temporary QA files remain in main.
