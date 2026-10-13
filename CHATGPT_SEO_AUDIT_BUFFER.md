@@ -2935,3 +2935,32 @@ It is now safe to mention BTC, LTC, ETH, TRX, BNB and USDT TRC20 as payment meth
 
 ### Homepage use
 Keep as a compact conversion/trust line near pricing or final CTA, not a major homepage section and not a standalone SEO cluster.
+
+
+## 44. VDSina balance top-up bonus — screenshot-confirmed
+
+Screenshot supplied by user from the current VDSina finance/payment interface on 2026-10-12.
+
+### Bonus tiers visibly listed
+- Top up from **$100** -> **10% bonus** to the payment.
+- Top up from **$1,000** -> **20% bonus** to the payment.
+- Interface warning: payment systems may charge an additional processing fee.
+
+### Current payment minimums visible in the same screenshot
+- International card: minimum **$10**.
+- USDT TRC20: minimum **$20**.
+- TRX: minimum **$20**.
+- Bitcoin: minimum **$20**.
+- Litecoin: minimum **$20**.
+- Ethereum: minimum **$20**.
+- BNB: minimum **$20**.
+- Other cryptocurrencies: minimum **$20**.
+
+### Content decision
+This is a stronger conversion point than crypto acceptance alone because it changes effective funding value. It should be used carefully near pricing/CTA, not as a separate SEO page.
+
+Safe wording while screenshot remains current:
+- **10% bonus on top-ups from $100; 20% from $1,000.**
+- Add a note that payment processors may charge additional fees.
+
+Do not convert the bonus into an implied VPS discount unless the bonus terms are confirmed to apply exactly as account credit usable for server payments.
