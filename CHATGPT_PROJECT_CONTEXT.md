@@ -504,3 +504,17 @@ The SEO buffer contains:
 - Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, two JSON-LD blocks, two sponsored affiliate CTAs, all intended internal links, deployment checker, pre-DNS test, no-panel negative qualification, reboot test and production acceptance checklist.
 - SERP Audit.txt now marks How to host a website on VPS BUILT / FROZEN.
 - Next planned item: deep fresh SERP + rewrite of VPS vs Shared Hosting.
+
+
+### 2026-10-13 — VPS vs Shared Hosting frozen
+- Ran a fresh page-level SERP for VPS vs Shared Hosting / shared hosting vs VPS / when to move from shared hosting to VPS. Exact owner retained: Title = H1 = VPS vs Shared Hosting; URL /vps-vs-shared-hosting/.
+- Research saved at research/vps-vs-shared-hosting-serp-2026-10-13.md.
+- Rebuilt the page around evidence-based stay / optimize / move / move-with-admin-help decisions rather than a generic feature comparison.
+- Added a functional Shared Hosting vs VPS decision checker using recurring limits, custom-software/root need, optimization status, admin readiness, business criticality and current shared-host stability.
+- Closed G1-G15: three/four-way outcome logic, site-vs-host bottleneck, shared metrics != VPS specs, capability triggers, VPS-not-automatically-faster, administration delta, bundled-service loss, total operating cost, isolation nuance, traffic/concurrency caveat, middle paths, migration readiness, functional decision checker, email/DNS/panel transition, and SEO truth.
+- Added explicit security/backups/monitoring ownership section after control audit.
+- Internal links cover homepage, sizing, managed-vs-unmanaged, control panel, migration and post-purchase hosting guide.
+- Final preview build for source commit 396760461e71d5aef95cc8b5310c898fd0224d01 succeeded. Preview artifact e705f52dd5eb3558bcc515fb542cdbde606a53c9 visually checked at the top and decision checker.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional checker including business criticality, one sponsored affiliate CTA and all required internal links.
+- SERP Audit.txt now marks VPS vs Shared Hosting BUILT / FROZEN.
+- Next planned item: deep fresh SERP + rewrite of VPS for WordPress.
