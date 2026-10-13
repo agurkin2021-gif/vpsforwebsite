@@ -442,7 +442,7 @@ A daily DB backup can mean up to a day of recent transactions is outside that re
 
 Choose backup frequency from acceptable **recovery point objective (RPO)** rather than convenience.
 
-Deep backup architecture belongs to the planned **VPS Backup Strategy** page.
+Deep backup architecture belongs to [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}).
 
 ### Staging
 
