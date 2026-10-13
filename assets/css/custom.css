@@ -4486,3 +4486,116 @@ body:has(.vps-vs-shared-page-header) {
     min-height: 0;
   }
 }
+
+
+/* VPS vs Shared Hosting decision outcomes */
+.vps-vs-shared-outcomes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.vps-vs-shared-outcome {
+  min-width: 0;
+  min-height: 94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 15px;
+  border: 1px solid #2a3e4e;
+  border-radius: 12px;
+  background: #0d1824;
+  color: #f7f6f2 !important;
+  text-decoration: none !important;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    background-color 130ms ease,
+    box-shadow 130ms ease;
+}
+
+.vps-vs-shared-outcome > span {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 27px;
+  height: 21px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  background: #142635;
+  color: #7d91a4;
+  font-size: .6rem;
+  font-weight: 800;
+}
+
+.vps-vs-shared-outcome > strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .78rem;
+  line-height: 1.24;
+}
+
+.vps-vs-shared-outcome-stay {
+  border-color: #2a5945;
+}
+
+.vps-vs-shared-outcome-stay > span,
+.vps-vs-shared-outcome-move > span {
+  color: #72e5a2;
+}
+
+.vps-vs-shared-outcome-optimize {
+  border-color: #42536a;
+}
+
+.vps-vs-shared-outcome-move {
+  border-color: #286847;
+  background: #0b1d19;
+}
+
+.vps-vs-shared-outcome-help {
+  border-color: #665a82;
+  background: #121525;
+}
+
+.vps-vs-shared-outcome-help > span {
+  color: #b6a7e8;
+}
+
+.vps-vs-shared-outcome:hover {
+  color: #f7f6f2 !important;
+  text-decoration: none !important;
+  border-color: var(--vs-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+}
+
+.vps-vs-shared-outcome:active {
+  border-color: #9e86ff;
+  transform: translateY(0) scale(.985);
+  box-shadow: none;
+}
+
+.vps-vs-shared-outcome:focus-visible {
+  outline: 2px solid #9e86ff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .vps-vs-shared-outcomes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .vps-vs-shared-outcomes {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .vps-vs-shared-outcome {
+    min-height: 72px;
+  }
+}
