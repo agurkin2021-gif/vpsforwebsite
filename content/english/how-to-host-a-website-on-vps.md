@@ -24,12 +24,13 @@ A reliable first deployment follows this order:
 6. **Install only the web stack the application needs.**
 7. **Configure the site/application before public DNS cutover where practical.**
 8. **Deploy files/code and configure ownership, secrets and database access.**
-9. **Point the domain to the VPS.**
-10. **Enable HTTPS after the hostname reaches the server.**
-11. **Restrict the firewall to required services.**
-12. **Verify cron/workers, logs, backups and external monitoring.**
-13. **Reboot once and confirm every required service returns automatically.**
-14. **Only then call the deployment production-ready.**
+9. **Restrict the firewall while keeping SSH and required HTTP/HTTPS access working.**
+10. **Test the destination before public DNS.**
+11. **Point the domain to the VPS.**
+12. **Enable HTTPS after the hostname reaches the server.**
+13. **Verify cron/workers, logs, backups and external monitoring.**
+14. **Reboot once and confirm every required service returns automatically.**
+15. **Only then call the deployment production-ready.**
 
 Do not install PHP, MySQL, mail or a control panel merely because a generic VPS guide includes them. Install the components your website actually needs.
 
@@ -432,6 +433,33 @@ Instead:
 
 Exact ownership depends on the application and web-server model; use the application's documentation rather than copying a universal `chmod 777` recipe.
 
+## Test before public DNS
+
+Do not make DNS the first real test of the application.
+
+Before public cutover, verify the new server using one of these methods where practical:
+
+- access the server IP for a simple default/static check;
+- use a local hosts-file override so `example.com` resolves to the new VPS only on your computer;
+- use a private/test hostname that is not allowed to become an accidental indexed duplicate;
+- test the application through the same Nginx/Apache hostname configuration that production will use.
+
+Check more than the homepage:
+
+- important internal pages;
+- login/admin;
+- forms;
+- uploads;
+- static assets;
+- database reads/writes;
+- application/API endpoints;
+- redirects;
+- logs.
+
+A hosts-file test is especially useful because many applications behave differently under the real hostname than under the raw server IP.
+
+If this is an existing live site, use the stricter cutover process in [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}).
+
 ## Point the domain to the VPS
 
 At the DNS provider, configure the records that should reach this server.
@@ -453,7 +481,7 @@ If you are moving an existing live site, DNS cutover and final-write handling be
 
 ## Add HTTPS after DNS resolves
 
-Obtain a trusted certificate only after the public hostname resolves to the server that will answer the validation request.
+Obtain a trusted certificate only after the public hostname resolves to the server that will answer the validation request. Make sure the firewall/provider network rules already permit the HTTP/HTTPS validation path you intend to use.
 
 For Nginx/Apache, an ACME client such as Certbot can request and renew Let's Encrypt certificates. Follow the current Certbot/OS instructions rather than copying an old package command blindly.
 
@@ -547,6 +575,22 @@ After it returns, confirm:
 - backup schedule.
 
 If the application only returns after somebody manually launches a command, the deployment is not complete.
+
+## When manual / no-panel hosting is the wrong fit
+
+Use a control panel or managed administration instead when:
+
+- nobody is comfortable with SSH and command-line recovery;
+- nobody owns OS/security updates;
+- nobody can diagnose web-server/runtime/database failures;
+- backups are created but nobody can restore them;
+- business-critical downtime has no incident owner;
+- the team wants mail/users/domains managed through a hosting UI rather than server configuration;
+- the application stack is better served by a managed platform.
+
+A manual VPS can reduce panel overhead and maximize control, but it does not reduce the amount of operational responsibility.
+
+Use [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}) for panel selection or [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}) when the missing piece is operational ownership.
 
 ## Production acceptance checklist
 
