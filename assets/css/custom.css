@@ -5606,3 +5606,159 @@ body:has(.vps-vs-shared-page-header) .vps-vs-limits-result {
     padding: 15px;
   }
 }
+
+
+/* VPS vs Shared Hosting anti-myth speed diagnostic */
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-section {
+  position: relative;
+  margin: 38px 0;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid #5d4a31;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(245, 161, 28, .08), transparent 28%),
+    linear-gradient(135deg, #0d1824 0%, #17140f 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-section > h2 {
+  max-width: calc(100% - 54px);
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #5d4a31;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-section > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-symbol {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #7b5a2e;
+  border-radius: 50%;
+  background: #21190e;
+  color: #f5a11c;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-lead {
+  margin: 0 0 15px !important;
+  padding: 14px 16px;
+  border-left: 3px solid #f5a11c;
+  border-radius: 8px;
+  background: #1a1510;
+  color: #ead9c3;
+  font-size: .92rem;
+  font-weight: 650;
+  line-height: 1.52;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-label {
+  margin: 0 0 10px !important;
+  color: #aab7c3;
+  font-size: .76rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid {
+  counter-reset: speed-risk;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid > li {
+  counter-increment: speed-risk;
+  position: relative;
+  min-width: 0;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 15px 13px 15px 40px;
+  border: 1px solid #453b31;
+  border-radius: 11px;
+  background: #0c141d;
+  color: #c9d2db;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid > li::before {
+  content: counter(speed-risk, decimal-leading-zero);
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #d49535;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid > li:hover {
+  border-color: #76562f;
+  background: #101923;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-speed-result {
+  margin: 16px 0 0 !important;
+  padding: 14px 16px;
+  border: 1px solid #2a6247;
+  border-left: 3px solid var(--vs-green);
+  border-radius: 8px;
+  background: #0b2119;
+  color: #cce8d8;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 850px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-section {
+    margin: 28px 0;
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-section > h2 {
+    max-width: calc(100% - 42px);
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-symbol {
+    top: 17px;
+    right: 17px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.05rem;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-speed-grid > li {
+    min-height: 0;
+  }
+}
