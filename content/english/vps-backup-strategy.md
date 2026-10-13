@@ -8,6 +8,8 @@ VPS Backup Strategy is not “turn on snapshots once a day.” A usable recovery
 
 A strong VPS plan usually combines fast provider-side recovery with an independent off-server copy and application-aware database backups. The exact mix depends on how quickly the data changes and how costly downtime is.
 
+Backup strategy also needs a named owner. If nobody is responsible for job failures, restore tests and recovery decisions, resolve that operating model first: see [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
+
 For the broader server decision, see [VPS for website]({{< relref "_index.md" >}}).
 
 [Quick answer](#quick-answer) · [Checker](#vps-backup-strategy-checker) · [RPO / RTO](#start-with-rpo-and-rto) · [Backup layers](#snapshot-image-file-backup-and-replication-are-different) · [3-2-1](#a-practical-3-2-1-model-for-vps) · [Restore tests](#test-restores-and-measure-real-rto) · [VDSina](#how-vdsina-backups-fit-the-strategy) · [FAQ](#faq)
@@ -292,6 +294,8 @@ For PostgreSQL, use PostgreSQL-aware backup/PITR methods where the RPO requires 
 
 The point is not the exact tool. The point is that the restored DB must be internally coherent and usable.
 
+For WordPress-specific application state and operations, see [VPS for WordPress]({{< relref "vps-for-wordpress.md" >}}).
+
 Test:
 
 - dump/backup completes;
@@ -543,6 +547,8 @@ However:
 VDSina's own Terms explicitly state that the customer is responsible for backups and recommends a routine backup process plus periodic restore testing.
 
 When creating a new VDSina server from a provider backup, their QA notes that the backup/new server must meet provider constraints such as data-center placement and sufficient disk quota; network settings may also require adjustment after restoration.
+
+Do not confuse backup with migration. A backup can be part of a migration safety net, but live cutover, final writes, DNS and rollback are separate concerns; see [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}).
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS backup options</a>
