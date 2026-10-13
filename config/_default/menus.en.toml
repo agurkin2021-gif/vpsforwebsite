@@ -4,24 +4,33 @@ url = "/"
 weight = 1
 
 [[main]]
-name = "Configurations"
-url = "/#configurations"
+name = "WordPress"
+url = "/vps-for-wordpress/"
 weight = 2
 
 [[main]]
-name = "Requirements"
-url = "/#requirements"
+name = "WooCommerce"
+url = "/vps-for-woocommerce/"
 weight = 3
 
 [[main]]
-name = "VPS vs Shared"
-url = "/#vps-vs-shared"
+name = "Guides"
 weight = 4
 
 [[main]]
-name = "FAQ"
-url = "/#faq"
-weight = 5
+parent = "Guides"
+name = "VPS vs Shared Hosting"
+url = "/vps-vs-shared-hosting/"
+
+[[main]]
+parent = "Guides"
+name = "Multiple Websites"
+url = "/vps-for-multiple-websites/"
+
+[[main]]
+parent = "Guides"
+name = "Control Panel"
+url = "/vps-with-control-panel/"
 
 [[footer]]
 name = "About"

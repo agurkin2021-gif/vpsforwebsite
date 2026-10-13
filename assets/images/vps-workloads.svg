@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" fill="none">
-<rect width="720" height="520" rx="32" fill="#F7F9FF"/>
-<circle cx="180" cy="188" r="92" fill="white" stroke="#DDE4F1" stroke-width="3"/><circle cx="360" cy="188" r="92" fill="white" stroke="#DDE4F1" stroke-width="3"/><circle cx="540" cy="188" r="92" fill="white" stroke="#DDE4F1" stroke-width="3"/>
-<text x="180" y="205" text-anchor="middle" font-family="Arial" font-size="58" font-weight="700" fill="#3157D5">W</text>
-<path d="M323 175H397M337 154L323 175L337 196M383 154L397 175L383 196" stroke="#3157D5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="503" y="152" width="74" height="64" rx="12" fill="#3157D5"/><path d="M521 171H559M521 188H559" stroke="white" stroke-width="8" stroke-linecap="round"/>
-<rect x="102" y="332" width="516" height="86" rx="18" fill="#111827"/>
-<rect x="132" y="360" width="122" height="26" rx="13" fill="#26355E"/><rect x="299" y="360" width="122" height="26" rx="13" fill="#26355E"/><rect x="466" y="360" width="122" height="26" rx="13" fill="#26355E"/>
-</svg>

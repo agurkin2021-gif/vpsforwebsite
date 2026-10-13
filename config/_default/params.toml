@@ -1,16 +1,16 @@
-favicon = "images/favicon.png"
-logo = "images/logo.svg"
-logo_darkmode = "images/logo-darkmode.svg"
-logo_width = "190px"
-logo_height = "36px"
-logo_webp = false
+favicon = "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/favicon.png"
+logo = ""
+logo_darkmode = ""
+logo_width = "160px"
+logo_height = "32px"
+logo_webp = true
 logo_text = "VPS for Website"
 
 navbar_fixed = true
 theme_switcher = true
 theme_default = "system"
 mainSections = []
-contact_form_action = ""
+contact_form_action = "#"
 google_tag_manager = ""
 google_adsense = ""
 custom_script = ""
@@ -23,7 +23,7 @@ link = ""
 
 [search]
 enable = false
-primary_color = "#3157D5"
+primary_color = "#121212"
 include_sections = []
 show_image = false
 show_description = true
@@ -40,7 +40,7 @@ keywords = ["vps for website", "website vps hosting", "vps hosting for websites"
 description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
 author = ""
 twitter = ""
-image = "images/favicon.png"
+image = ""
 
 [site_verification]
 google = ""
@@ -52,11 +52,30 @@ mastodon = ""
 [cookies]
 enable = false
 expire_days = 60
-content = ""
+content = "This site uses cookies. By continuing to use this website, you agree to their use."
+button = "I Accept"
 
 [preloader]
 enable = false
 preloader = ""
+
+[mermaid]
+js_url = "https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs"
+
+[widgets]
+sidebar = []
+
+[google_map]
+enable = false
+map_api_key = ""
+map_latitude = ""
+map_longitude = ""
+map_marker = ""
+
+[subscription]
+enable = false
+mailchimp_form_action = ""
+mailchimp_form_name = ""
 
 [open_remark]
 enable = false
@@ -66,15 +85,19 @@ embed_url = ""
 [[plugins.css]]
 link = "plugins/swiper/swiper-bundle.css"
 lazy = true
+
 [[plugins.css]]
 link = "plugins/glightbox/glightbox.css"
 lazy = true
+
 [[plugins.css]]
 link = "plugins/font-awesome/v6/brands.css"
 lazy = true
+
 [[plugins.css]]
 link = "plugins/font-awesome/v6/solid.css"
 lazy = true
+
 [[plugins.css]]
 link = "plugins/font-awesome/v6/icons.css"
 lazy = true
@@ -82,30 +105,35 @@ lazy = true
 [[plugins.js]]
 link = "js/search.js"
 lazy = false
+
 [[plugins.js]]
 link = "plugins/swiper/swiper-bundle.js"
 lazy = false
+
 [[plugins.js]]
 link = "plugins/glightbox/glightbox.js"
 lazy = true
+
 [[plugins.js]]
 link = "js/gallery-slider.js"
 lazy = true
+
 [[plugins.js]]
 link = "plugins/cookie.js"
 lazy = false
+
 [[plugins.js]]
 link = "js/accordion.js"
 lazy = true
+
 [[plugins.js]]
 link = "js/tab.js"
 lazy = true
+
 [[plugins.js]]
 link = "js/modal.js"
 lazy = true
+
 [[plugins.js]]
 link = "plugins/youtube-lite.js"
 lazy = true
-[[plugins.js]]
-link = "js/vps-site.js"
-lazy = false

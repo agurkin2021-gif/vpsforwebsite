@@ -4,86 +4,50 @@ description: "Choose VPS resources for websites by workload, CMS, database deman
 
 banner:
   title: "VPS for Website"
-  content: "Choose the right VPS by what your website actually runs: PHP workers, database queries, background jobs, storage, traffic and the number of sites sharing the server."
-  image: "/images/vps-banner.svg"
+  content: "Choose a VPS by what your website actually runs: PHP workers, database queries, background jobs, storage, traffic and the number of sites sharing the server."
+  image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/banner.png"
   button:
     enable: true
-    label: "See VPS configurations"
-    link: "#plans"
+    label: "Compare VPS options"
+    link: "/vps-for-wordpress/"
 
 features:
-  - title: "Do you actually need a VPS?"
-    image: "/images/vps-decision.svg"
-    content: "A VPS is useful when you need more control, isolation or headroom than shared hosting gives you. Do not move just because VPS sounds faster."
+  - title: "Choose resources by workload, not a visitor-count guess"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-1.png"
+    content: "A cached brochure site, a WordPress install and a WooCommerce checkout can create very different server demand at the same traffic level."
     bulletpoints:
-      - "Stay on shared hosting when the site is light and you do not need root access."
-      - "Move when you need a custom Linux stack, several sites, background services or clearer resource isolation."
-      - "A self-managed VPS also makes updates, monitoring, backups and recovery your responsibility."
+      - "Count PHP workers, database work, background jobs and control-panel overhead."
+      - "Leave RAM for Linux, the web server, the database and routine administration."
+      - "Scale after monitoring shows a real CPU, memory or storage constraint."
+      - "**Current reference tiers:** 1–4 vCPU and 1–8 GB RAM."
     button:
       enable: true
-      label: "Compare VPS vs shared hosting"
-      link: "/vps-vs-shared-hosting/"
-
-  - title: "<span id='plans'>Which VPS fits your website workload?</span>"
-    image: "/images/vps-plans.svg"
-    content: "Use real CPU, RAM, storage and transfer allowances as the starting point, then map them to the workload you actually expect."
-    bulletpoints:
-      - "**1 vCPU / 1 GB / 10 GB** — lean test or very light site — **$0.07/day**"
-      - "**1 vCPU / 2 GB / 40 GB** — small website or lean CMS — **$0.50/day**"
-      - "**2 vCPU / 4 GB / 80 GB** — practical business / WordPress baseline — **$0.67/day**"
-      - "**4 vCPU / 8 GB / 160 GB** — heavier dynamic or multi-site workload — **$1.34/day**"
-    button:
-      enable: true
-      label: "See WordPress VPS sizing"
+      label: "VPS for WordPress"
       link: "/vps-for-wordpress/"
 
-  - title: "WordPress, WooCommerce, or multiple websites?"
-    image: "/images/vps-workloads.svg"
-    content: "Traffic alone does not describe server demand. A cached brochure site, a WooCommerce checkout and several WordPress sites can put very different pressure on the same VPS."
+  - title: "Match the VPS to the website type"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-2.png"
+    content: "The useful question is not how many visitors a VPS can handle. The useful question is what work the website performs when traffic arrives."
     bulletpoints:
-      - "**WordPress:** watch PHP workers, database queries, plugins and cache misses."
-      - "**WooCommerce:** protect headroom for cart, checkout, order writes and background jobs."
-      - "**Multiple websites:** size the combined peak, not the number of domains."
+      - "**WordPress:** PHP workers, plugins, database queries and cache misses."
+      - "**WooCommerce:** cart, checkout, order writes, scheduled actions and integrations."
+      - "**Multiple websites:** combined peak load across every site on the server."
+      - "**Control panels:** panel services share RAM and CPU with the websites."
     button:
       enable: true
-      label: "See WooCommerce VPS sizing"
+      label: "VPS for WooCommerce"
       link: "/vps-for-woocommerce/"
 
-  - title: "Self-managed means server responsibility"
-    image: "/images/vps-management.svg"
-    content: "A low server price does not mean website administration is included. Separate infrastructure cost from the work required to operate the server."
+  - title: "Use a VPS when the extra control solves a real limitation"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-3.png"
+    content: "Shared hosting is often the simpler choice for a light site. A VPS becomes useful when you need resource isolation, root access, a custom stack or several workloads on one server."
     bulletpoints:
-      - "Plan operating-system and package updates."
-      - "Configure the web server, PHP and database."
-      - "Keep off-server backups and test restores."
-      - "Monitor CPU, RAM, storage and application errors."
-    button:
-      enable: false
-      label: ""
-      link: ""
-
-  - title: "Control panel or command line?"
-    image: "/images/vps-panel.svg"
-    content: "A control panel can simplify domains, certificates, databases and PHP versions, but it also consumes resources and may add a license cost."
-    bulletpoints:
-      - "FASTPANEL and HestiaCP target practical hosting administration."
-      - "cPanel and Plesk are commercial options; verify current license terms separately."
-      - "Choose the panel first, then leave enough RAM for the panel plus the websites."
+      - "Keep shared hosting when you do not need server-level control."
+      - "Move when plan limits or software restrictions block legitimate work."
+      - "Remember that a self-managed VPS makes updates, monitoring, backups and recovery your responsibility."
+      - "Keep off-server backups before moving production traffic."
     button:
       enable: true
-      label: "VPS with control panel"
-      link: "/vps-with-control-panel/"
-
-  - title: "Deploy, measure, then scale"
-    image: "/images/vps-monitoring.svg"
-    content: "Do not buy a large VPS based on a guessed visitor number. Start with a sensible configuration, deploy correctly, and scale when monitoring shows a real constraint."
-    bulletpoints:
-      - "Point the domain and enable HTTPS."
-      - "Harden exposed services and keep backups outside the VPS."
-      - "Watch sustained memory pressure, CPU saturation, storage growth and request queues."
-      - "Upgrade only after application-level optimization no longer removes the bottleneck."
-    button:
-      enable: true
-      label: "VPS for multiple websites"
-      link: "/vps-for-multiple-websites/"
+      label: "VPS vs Shared Hosting"
+      link: "/vps-vs-shared-hosting/"
 ---
