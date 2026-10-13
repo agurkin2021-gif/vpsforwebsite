@@ -314,3 +314,19 @@ The SEO buffer contains:
 - Added a local `layouts/home.html` override that preserves stock Hugoplate classes/composition while adding semantic section anchors, descriptive image alt text and `rel="sponsored nofollow noopener"` for external homepage buttons.
 - Current state after this pass: content/IA assembled; Hugo Actions build and public visual rendering must pass before the homepage is called complete/frozen.
 - Next continuation point: verify final GitHub Actions build, inspect the published homepage visually/structurally, then decide whether any section should be cut or shortened before moving to supporting pages.
+
+
+### 2026-10-13 — VPS sizing page completion pass
+- /vps-sizing-for-website/ was rebuilt against the stored SERP/intent specification and dense audit.
+- Primary query naming is now literal: Title = H1 = VPS sizing for website; a local Hugoplate-preserving page-header override outputs .Title without automatic Title Case transformation.
+- Added two no-login interactive utilities inside the page: a transparent RAM budget estimator and a shared-hosting-to-VPS diagnostic using memory/CPU/entry-process/I/O fault patterns. The diagnostic explicitly avoids one-to-one CloudLinux-limit-to-VPS conversion.
+- Added numeric RAM, CPU/concurrency, peak-load and storage worked examples; diagnostic symptom matrix; Low/Medium/High confidence labels; explicit fit limits; and mapping to the four verified Standard configurations.
+- Added commercial path: VDSina partner CTAs with sponsored/nofollow/noopener attributes and human-readable affiliate disclosure.
+- Fixed supporting-page contextual URLs with Hugo relref, so WordPress, WooCommerce, Multiple Websites, Control Panel and VPS vs Shared Hosting resolve correctly in preview and production.
+- Added one contextual return link to the homepage and added VPS Sizing to the Guides menu.
+- Preview indexing hardening: raw.githack builds now emit noindex,nofollow, omit canonical/hreflang, and the preview workflow removes sitemap.xml. Production behavior remains indexable/self-canonical.
+- Added WebPage + BreadcrumbList JSON-LD for inner pages; removed obsolete global meta-keywords; added a real OG image for the sizing page.
+- Replaced the upstream Hugoplate favicon with a local three-server-rack SVG favicon.
+- Verification: preview workflow for main commit 74b1ec5b0dcdd9b405433c9f876191bbacda9488 succeeded. Preview branch commit 63711e18f4936f82e42b1fa8f1b6d9c4498e5906 contains Title/H1 exact match, noindex/no canonical, no sitemap, 2 JSON-LD blocks, both interactive modules, seven affiliate links, and corrected internal routes.
+- Live Hugo production build itself succeeds, but GitHub Pages deployment still fails at actions/deploy-pages@v4 with HTTP 404: GitHub Pages is not enabled for the repository. This is a repository Pages setting blocker, not a Hugo/page build failure.
+- Review surface remains the fixed preview workflow/URL until Pages is enabled.

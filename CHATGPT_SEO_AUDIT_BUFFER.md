@@ -3152,3 +3152,58 @@ All 22 planned homepage questions now have at least a concise direct answer or d
 
 Content decision: **no further large homepage concept blocks are needed.**
 Content may be frozen after the production build and visual/render checks pass.
+
+
+## 48. VPS sizing page implementation and verification — 2026-10-13
+
+Target: /vps-sizing-for-website/
+Primary query: VPS sizing for website
+
+Status: IMPLEMENTED / PREVIEW BUILD VERIFIED
+
+### Closed items
+- Title/H1 literal exact-match rule: CLOSED — generated Title and H1 are both exactly VPS sizing for website.
+- Shared-hosting-to-VPS translator gap: CLOSED at first functional version — interactive diagnostic accepts evidence quality plus PMEM, CPU, EP/worker and I/O pressure and returns optimize/stay/move logic without pretending limits are direct VPS specs.
+- Transparent RAM sizing utility: CLOSED — no-login estimator exposes baseline, DB, workers, worker memory, panel/cache/background and headroom assumptions; returns a RAM-only starting tier with caveat that CPU/storage/I/O still need validation.
+- Worked examples: CLOSED — numeric RAM budget, dynamic concurrency/CPU-work example, peak/cache example and storage-growth example added.
+- Diagnostic matrix: CLOSED — symptom -> verify -> optimize first -> scale trigger.
+- Confidence-aware recommendation: CLOSED — Low / Medium / High input-quality labels.
+- Four-tier fit/limits mapping: CLOSED — 1/1/10, 1/2/40, 2/4/80, 4/8/160 mapped to good-fit, avoid/recheck and validation conditions.
+- Commercial path: CLOSED — partner CTAs, sponsored/nofollow/noopener attributes and affiliate disclosure present.
+- Contextual homepage return link: CLOSED.
+- Broken Markdown internal routes in preview: CLOSED with Hugo relref.
+- Preview indexing defect: CLOSED — raw.githack preview emits noindex,nofollow, no canonical/hreflang and preview workflow removes sitemap.
+- Structured data: CLOSED for WebPage + BreadcrumbList; FAQ schema remains intentionally unnecessary/low priority.
+- Meta keywords: CLOSED by removing obsolete global metadata keywords.
+- OG image: CLOSED for sizing page with a valid pinned image URL.
+- Favicon defect: CLOSED with local server-rack SVG.
+- Guides navigation entry: CLOSED — VPS Sizing added.
+
+### Generated-output verification
+Main source commit:
+74b1ec5b0dcdd9b405433c9f876191bbacda9488
+
+Preview artifact branch commit:
+63711e18f4936f82e42b1fa8f1b6d9c4498e5906
+
+Verified in generated HTML/browser:
+- Title: VPS sizing for website
+- H1: VPS sizing for website
+- robots: noindex,nofollow
+- preview canonical: absent
+- preview sitemap: absent
+- meta keywords: absent
+- JSON-LD blocks: 2
+- RAM estimator: present/rendered
+- shared-hosting diagnostic: present/rendered
+- VDSina partner links: 7
+- WordPress/WooCommerce/Multiple Websites/Control Panel/VPS vs Shared routes resolve under the preview base path.
+
+### Deployment state
+- Build Hugo preview: success.
+- Live workflow build job: success.
+- Live Pages deploy job: failure with HTTP 404 from actions/deploy-pages@v4; log explicitly says to enable GitHub Pages in repository settings.
+- Therefore the page itself builds correctly; public GitHub Pages remains blocked by repository configuration.
+
+### Remaining page-level work
+No critical content/on-page defect from the dense audit remains open. Future work on this page should be evidence-driven refinement rather than adding more sections: real user inputs, better calculator UX, or performance/mobile polish after visual review.
