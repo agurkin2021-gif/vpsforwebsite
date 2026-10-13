@@ -2907,3 +2907,31 @@ Use crypto payment as a **conversion feature**, not a primary topical cluster.
 | USP-12 | cryptocurrency account top-up | VERIFIED GENERIC FEATURE |
 | USP-13 | $20 minimum crypto top-up | VERIFIED CURRENT SUPPORT INFO |
 | USP-14 | exact current coin/network list | CONFIRMED IN VDSina PAYMENT INTERFACE; COPY LABELS LITERALLY |
+
+
+## 43. VDSina payment methods — screenshot-confirmed
+
+Screenshot supplied by user from the current VDSina payment interface on 2026-10-12.
+
+### Methods visibly listed
+- International card — minimum $10.
+- USDT TRC20 — minimum $20.
+- TRX — minimum $20.
+- Bitcoin — minimum $20.
+- Litecoin — minimum $20.
+- Ethereum — minimum $20.
+- BNB — minimum $20.
+- Other cryptocurrencies — minimum $20.
+- SBP fast payments — 5% commission; minimum $50; displayed range up to $10,000.
+- Russian bank card — 5% commission; minimum $50; displayed range up to $1,500.
+- Other payment methods — 5% commission; minimum $50.
+- SWIFT bank transfer — minimum $100.
+
+### Important interpretation
+The repeated "$100" / "$105" values shown in the cards appear to be the currently entered/example top-up amount in the interface, not a universal fee. The lower line is the minimum/range/commission condition.
+
+### Content rule
+It is now safe to mention BTC, LTC, ETH, TRX, BNB and USDT TRC20 as payment methods because they are directly visible in the VDSina payment interface screenshot supplied by the user. Preserve labels exactly; do not invent other networks such as BEP-2/BEP20 unless they are explicitly shown in the current interface.
+
+### Homepage use
+Keep as a compact conversion/trust line near pricing or final CTA, not a major homepage section and not a standalone SEO cluster.
