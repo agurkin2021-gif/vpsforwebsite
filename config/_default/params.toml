@@ -1,4 +1,4 @@
-favicon = "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/favicon.png"
+favicon = "favicon.svg"
 logo = ""
 logo_darkmode = ""
 logo_width = "160px"
@@ -36,7 +36,6 @@ expire_days = 7
 content = ""
 
 [metadata]
-keywords = ["vps for website", "website vps hosting", "vps hosting for websites"]
 description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
 author = ""
 twitter = ""

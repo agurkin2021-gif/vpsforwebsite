@@ -1,9 +1,14 @@
 ---
-title: "VPS Sizing for Website"
+title: "VPS sizing for website"
 description: "VPS sizing for website: calculate CPU, RAM and storage from real workload, shared-hosting limits, PHP workers, database demand and peak traffic."
+image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
 ---
 
 VPS sizing for a website should start with the workload that reaches the origin server, not with a monthly visitor count. Cacheability, simultaneous dynamic requests, PHP or application workers, database activity, background jobs, control-panel overhead and storage growth determine how much CPU, RAM and disk the website actually needs.
+
+For the broader purchase decision, see [VPS for website]({{< relref "_index.md" >}}).
+
+[Jump to RAM sizing](#ram-budget) · [Shared-hosting diagnostic](#shared-hosting-to-vps-diagnostic) · [Plan match](#match-the-result-to-a-vps) · [FAQ](#faq)
 
 ## Quick sizing answer
 
@@ -17,6 +22,11 @@ Use these configurations as starting points, then validate them against the work
 | Heavier dynamic site, larger database or several active sites | 4 vCPU / 8 GB RAM / 160 GB | Sustained CPU, worker memory, peak overlap |
 
 These are sizing directions, not traffic guarantees. Two websites with the same visitor count can require very different servers.
+
+<p>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
+</p>
+<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. The sizing recommendation is based on workload, not commission.</small></p>
 
 ## The sizing model: reserve resources before counting traffic
 
@@ -44,6 +54,57 @@ A practical model is:
 
 Measure the real processes whenever possible. Estimates are useful for choosing a starting tier; measurements decide whether the tier is actually sufficient.
 
+### RAM budget estimator
+
+Use this estimator to expose the assumptions instead of guessing from visitor count. It estimates the RAM tier only; CPU, storage and I/O still need separate validation.
+
+<form id="ram-budget-estimator">
+  <p><label>Baseline OS + web services, MB<br><input id="ram-baseline" type="number" min="0" value="450"></label></p>
+  <p><label>Database working memory, MB<br><input id="ram-database" type="number" min="0" value="500"></label></p>
+  <p><label>Concurrent application workers<br><input id="ram-workers" type="number" min="0" value="6"></label></p>
+  <p><label>Average memory per worker, MB<br><input id="ram-worker-mb" type="number" min="0" value="120"></label></p>
+  <p><label>Panel, cache and background jobs, MB<br><input id="ram-background" type="number" min="0" value="300"></label></p>
+  <p><label>Safety headroom, %<br><input id="ram-headroom" type="number" min="0" max="100" value="25"></label></p>
+  <p><button class="btn btn-primary" type="submit">Estimate RAM tier</button></p>
+</form>
+<p id="ram-budget-result" role="status">Enter your measurements and calculate the budget.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var form = document.getElementById("ram-budget-estimator");
+  if (!form) return;
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    function number(id) {
+      var value = Number(document.getElementById(id).value);
+      return Number.isFinite(value) && value >= 0 ? value : 0;
+    }
+    var baseline = number("ram-baseline");
+    var database = number("ram-database");
+    var workers = number("ram-workers");
+    var workerMb = number("ram-worker-mb");
+    var background = number("ram-background");
+    var headroom = number("ram-headroom");
+    var subtotal = baseline + database + (workers * workerMb) + background;
+    var required = subtotal * (1 + headroom / 100);
+    var requiredGb = Math.round((required / 1024) * 10) / 10;
+    var tier;
+    if (required <= 1024) tier = "1 GB RAM";
+    else if (required <= 2048) tier = "2 GB RAM";
+    else if (required <= 4096) tier = "4 GB RAM";
+    else if (required <= 8192) tier = "8 GB RAM";
+    else tier = "more than 8 GB RAM or a split architecture";
+    document.getElementById("ram-budget-result").textContent =
+      "Estimated coexistence budget: about " + requiredGb + " GB including headroom. RAM-only starting tier: " + tier +
+      ". Validate real process memory and CPU before ordering.";
+  });
+});
+</script>
+
+Worked example: 450 MB of baseline services + 500 MB for the database + 6 workers × 120 MB + 300 MB for panel/cache/background jobs = 1,970 MB before headroom. With 25% headroom, the budget is about 2.4 GB. A 2 GB VPS is therefore too tight for those assumptions; 4 GB is the safer starting tier.
+
+When measuring PHP-FPM or similar workers, remember that raw RSS can double-count shared pages and libraries across processes. Treat process measurements as evidence, not as perfectly additive accounting.
+
 ### CPU budget
 
 CPU demand depends on how much work must be executed at the same time. Static files served from cache can be inexpensive. Dynamic requests that execute application code, query the database, generate pages, resize images, run imports or perform API work can consume much more CPU.
@@ -57,6 +118,12 @@ Look for:
 - database queries consuming CPU because of inefficient indexes or excessive work.
 
 A short CPU spike is not automatically a reason to upgrade. Persistent saturation that delays legitimate work is stronger evidence.
+
+A practical concurrency estimate is:
+
+**active dynamic requests ≈ dynamic requests per second × request duration**
+
+Example: 6 uncached dynamic requests per second at 0.8 seconds p95 duration imply roughly 4.8 active requests at that moment. If the application needs one worker per active request, plan for about five busy workers plus queue/headroom. If each request consumes 0.12 CPU-seconds, 6 requests per second represent roughly 0.72 CPU-seconds of work per second before headroom. This is a workload estimate, not a universal vCPU guarantee: CPU generation, contention and provider scheduling differ.
 
 ## Translate shared-hosting limits into VPS requirements
 
@@ -74,6 +141,63 @@ Collect:
 - traffic peaks by hour rather than only monthly visits;
 - PHP worker or application-process behavior where visible.
 
+### Shared-hosting-to-VPS diagnostic
+
+Use the fault pattern to identify what to investigate before selecting a tier. The tool deliberately does not convert a CloudLinux limit directly into vCPU or RAM.
+
+<form id="shared-hosting-diagnostic">
+  <p><label>Quality of your evidence<br>
+    <select id="diag-evidence">
+      <option value="measured">Dashboard history / measured metrics</option>
+      <option value="partial">Some measured metrics</option>
+      <option value="traffic">Visitor count or impressions only</option>
+    </select>
+  </label></p>
+  <p><label>Memory faults / PMEM events<br>
+    <select id="diag-memory"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </label></p>
+  <p><label>CPU limit events<br>
+    <select id="diag-cpu"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </label></p>
+  <p><label>Entry-process / worker saturation<br>
+    <select id="diag-ep"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </label></p>
+  <p><label>I/O / IOPS pressure<br>
+    <select id="diag-io"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </label></p>
+  <p><button class="btn btn-primary" type="submit">Diagnose the bottleneck</button></p>
+</form>
+<p id="shared-hosting-result" role="status">Choose the signals you actually observe.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var form = document.getElementById("shared-hosting-diagnostic");
+  if (!form) return;
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    function value(id) { return Number(document.getElementById(id).value); }
+    var memory = value("diag-memory");
+    var cpu = value("diag-cpu");
+    var ep = value("diag-ep");
+    var io = value("diag-io");
+    var evidence = document.getElementById("diag-evidence").value;
+    var confidence = evidence === "measured" ? "High" : (evidence === "partial" ? "Medium" : "Low");
+    var repeated = [memory, cpu, ep, io].filter(function (v) { return v === 2; }).length;
+    var findings = [];
+    if (memory >= 1) findings.push("memory pressure: check worker memory, database working set, swap/OOM and background jobs");
+    if (cpu >= 1) findings.push("CPU pressure: profile dynamic requests and database work before adding vCPU");
+    if (ep >= 1) findings.push("worker/concurrency pressure: reduce request duration and measure uncached concurrency");
+    if (io >= 1) findings.push("storage pressure: inspect database I/O, backups, logs and imports; more RAM alone may not solve it");
+    var decision;
+    if (findings.length === 0) decision = "No strong capacity signal. Stay on the current plan or optimize first until measurements show a real constraint.";
+    else if (repeated >= 2) decision = "MOVE / SIZE FROM MEASUREMENTS: multiple repeated limits justify a VPS sizing pass after obvious software inefficiencies are removed.";
+    else decision = "OPTIMIZE FIRST, THEN RECHECK: there is a likely bottleneck, but one hosting limit is not a direct VPS specification.";
+    document.getElementById("shared-hosting-result").textContent =
+      decision + " Confidence: " + confidence + ". " + (findings.length ? findings.join("; ") + "." : "");
+  });
+});
+</script>
+
 Do not copy a shared-hosting limit directly into a VPS specification. A CloudLinux CPU percentage, entry-process limit or memory cap describes the current hosting environment; it is evidence about the bottleneck, not a one-to-one VPS conversion.
 
 Use the pattern instead:
@@ -87,6 +211,15 @@ Use the pattern instead:
 **I/O pressure:** identify backups, logs, database activity, imports or storage-heavy plugins before assuming more RAM will solve it.
 
 This separates a real capacity problem from a hosting-plan limit that may be triggered by one inefficient component.
+
+| Symptom | Verify | Optimize first | Scale when |
+|---|---|---|---|
+| Memory faults, swap or OOM | process memory, DB working set, concurrent workers | leaks, oversized workers, cache/database settings | optimized workload still exhausts RAM |
+| CPU throttling | sustained CPU plus request/DB timing | slow code, uncached work, expensive queries | legitimate work remains CPU-bound |
+| EP/worker queue | dynamic concurrency and request duration | caching, slow endpoints, worker tuning | queue remains after request cost is reduced |
+| I/O wait / IOPS faults | database, logs, backups, imports | scheduling, indexes, log/backup behavior | storage path remains the bottleneck under normal work |
+
+
 
 ## VPS or website optimization?
 
@@ -122,7 +255,7 @@ Then compare that budget with measured worker memory. Do not configure the theor
 
 Caching changes this calculation. A cached anonymous page may bypass PHP entirely, while checkout, logged-in sessions, wp-admin, APIs and personalized pages still reach the application.
 
-For WordPress-specific behavior, see [VPS for WordPress](/vps-for-wordpress/). For transactional workloads, see [VPS for WooCommerce](/vps-for-woocommerce/).
+For WordPress-specific behavior, see [VPS for WordPress]({{< relref "vps-for-wordpress.md" >}}). For transactional workloads, see [VPS for WooCommerce]({{< relref "vps-for-woocommerce.md" >}}).
 
 ## Database demand can set the server size
 
@@ -158,6 +291,8 @@ Keep headroom for the combination of:
 
 A CDN can reduce static delivery and some origin requests. It does not remove dynamic application or database work that still reaches the VPS.
 
+Peak example: if a site receives 20 requests/s and 90% are served from cache/CDN, the origin sees about 2 dynamic requests/s. A campaign that doubles total traffic to 40 requests/s at the same cache ratio sends about 4 dynamic requests/s to the application. At 0.8 seconds p95 duration, that is roughly 3.2 simultaneously active dynamic requests before administrative jobs or checkout/API bursts are added.
+
 ## Storage sizing
 
 Disk capacity is not only the current website directory.
@@ -176,19 +311,25 @@ Include:
 
 Do not fill the filesystem close to its limit. Databases, updates, logs and backup operations need working space.
 
+A practical capacity budget is:
+
+**required disk = current files + database + temporary operation space + local backup staging + expected growth + free working headroom**
+
+Example: 18 GB currently used + 8 GB temporary migration/update space + 18 GB temporary local backup staging + 6 GB expected growth already exceeds a 40 GB disk before safety headroom. In that scenario, an 80 GB tier is the safer starting point. Capacity is separate from IOPS and storage latency: a larger disk does not automatically make a slow database faster.
+
 ## Multiple websites change the calculation
 
 Several websites on one VPS share the same CPU, RAM, storage and process capacity. Their peaks can overlap even if each site is small individually.
 
 Size the server from the combined workload and reserve enough headroom that one site's background job does not starve the others. If isolation, failure impact or resource contention becomes important, splitting workloads can be more useful than continuing to enlarge one server.
 
-See [VPS for multiple websites](/vps-for-multiple-websites/) for the multi-site decision.
+See [VPS for multiple websites]({{< relref "vps-for-multiple-websites.md" >}}) for the multi-site decision.
 
 ## Control-panel overhead belongs in the budget
 
 A control panel simplifies domains, SSL, databases, PHP versions and account administration, but it also runs services of its own. Reserve memory and storage for the panel rather than sizing only for the website.
 
-If you prefer panel-based administration, compare the trade-offs in [VPS with control panel](/vps-with-control-panel/).
+If you prefer panel-based administration, compare the trade-offs in [VPS with control panel]({{< relref "vps-with-control-panel.md" >}}).
 
 ## A repeatable VPS sizing workflow
 
@@ -210,11 +351,47 @@ For example:
 
 Confidence should be lower when the only input is visitor count. Confidence becomes higher when CPU history, memory pressure, concurrent dynamic requests, worker memory, database behavior and storage growth are known.
 
+Use a simple confidence label:
+
+- **Low confidence:** visitor count, CMS name and rough storage only.
+- **Medium confidence:** some real CPU/RAM history plus workload type and peak pattern.
+- **High confidence:** time-series CPU/RAM/I/O, uncached concurrency, worker memory, request duration, database behavior and storage growth.
+
+A higher confidence label means the assumptions are better, not that future traffic is guaranteed.
+
+## Match the result to a VPS
+
+Use the RAM estimate, CPU evidence, storage budget and peak behavior together. These VDSina Standard configurations are examples for mapping the result; verify current provider terms before ordering.
+
+| Configuration | Good starting fit | Avoid / recheck when | Main validation | Action |
+|---|---|---|---|---|
+| 1 vCPU / 1 GB / 10 GB | test site, very light cached site, minimal services | panel + database + several dynamic workers, production store | RAM headroom and disk | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 1 vCPU / 2 GB / 40 GB | lean small site or CMS with controlled dynamic work | sustained CPU, several active sites, heavy panel/mail stack | worker memory, DB memory, storage growth | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 2 vCPU / 4 GB / 80 GB | dynamic business CMS, moderate uncached PHP, panel headroom | heavy WooCommerce, large imports, high DB pressure, noisy multi-site peaks | CPU saturation, DB latency, peak overlap | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 4 vCPU / 8 GB / 160 GB | heavier dynamic workload, larger DB, several active sites | strict HA, very high write load, workload needing independent scaling | whether one VPS is still the right architecture | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+
+A 1 GB or 2 GB tier should not be treated as a default production recommendation merely because the website can boot there. Ecommerce, large databases, several dynamic sites, mail services and control panels can consume headroom quickly.
+
+<p>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose your VPS</a>
+</p>
+
 ## Before buying the VPS
 
 Check the infrastructure terms that sizing alone does not answer: transfer allowance, storage type and capacity, IP terms, server location, backup policy, upgrade path, management scope, control-panel licensing and current billing terms.
 
-If the current website is still on shared hosting, compare the operational change in [VPS vs shared hosting](/vps-vs-shared-hosting/) before moving.
+If the current website is still on shared hosting, compare the operational change in [VPS vs shared hosting]({{< relref "vps-vs-shared-hosting.md" >}}) before moving.
+
+## Technical references
+
+- [cPanel: hardware requirements for a server](https://support.cpanel.net/hc/en-us/articles/360054297474-What-Are-the-Hardware-Requirements-For-My-Server)
+- [cPanel: how to determine how much RAM, CPU and disk to add](https://support.cpanel.net/hc/en-us/articles/1500005235562-How-to-determine-how-much-RAM-CPU-and-DISK-resources-I-should-add-when-upgrading-a-server)
+- [VDSina Standard VPS configurations](https://www.vdsina.com/pricing/standard)
+
+<p>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check the current VPS offer</a>
+</p>
+<p><small>Affiliate disclosure: partner links are marked sponsored. Provider pricing, transfer and other commercial terms can change; verify them on the provider site before ordering.</small></p>
 
 ## FAQ
 

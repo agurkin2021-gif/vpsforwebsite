@@ -1,4 +1,9 @@
+{{ if strings.Contains site.BaseURL "raw.githack.com" }}
+User-agent: *
+Allow: /
+{{ else }}
 User-agent: *
 Allow: /
 
 Sitemap: {{ "sitemap.xml" | absURL }}
+{{ end }}
