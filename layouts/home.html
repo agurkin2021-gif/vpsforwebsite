@@ -75,7 +75,7 @@
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
-    <section {{ with .id }}id="{{ . }}"{{ end }} class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+    <section {{ with .id }}id="{{ . }}"{{ end }} class="section-sm scroll-mt-28 {{ if (modBool $i 2) }}bg-gradient{{ end }}">
       <div class="container">
         <div class="row items-center justify-between">
           <div
@@ -121,12 +121,31 @@
               {{ end }}
             </ul>
 
-            {{ with .fit_checker }}
+            {{ with .button }}
               {{ if .enable }}
-                <div class="mt-8 rounded-2xl bg-light p-6 dark:bg-darkmode-light">
+                {{ $href := .link }}
+                {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
+                  {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
+                {{ end }}
+                <a
+                  class="btn btn-primary mt-6"
+                  href="{{ $href }}"
+                  {{ if strings.HasPrefix .link `http` }}
+                    target="_blank" rel="sponsored nofollow noopener"
+                  {{ end }}>
+                  {{ .label }}
+                  <i class="fa fa-arrow-right pl-2"></i>
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+              {{ with .fit_checker }}
+              {{ if .enable }}
+                <div class="mx-auto mt-10 max-w-5xl rounded-2xl bg-light p-6 dark:bg-darkmode-light">
                   <h3 class="mb-2">{{ .title | markdownify }}</h3>
                   <p class="mb-6">{{ .intro | markdownify }}</p>
                   <form id="homepage-vps-fit-checker">
+                    <div class="grid gap-x-6 md:grid-cols-2">
                     <div class="mb-5">
                       <label for="fit-limits" class="form-label">Are you repeatedly hitting real hosting limits?</label>
                       <select id="fit-limits" class="form-input">
@@ -172,6 +191,7 @@
                         <option value="yes">Yes</option>
                       </select>
                     </div>
+                    </div>
                     <button class="btn btn-primary" type="submit">{{ .button }}</button>
                   </form>
                   <p id="homepage-vps-fit-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">{{ .initial }}</p>
@@ -212,7 +232,7 @@
 
             {{ with .plans }}
               {{ if .enable }}
-                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                   {{ range .rows }}
                     <div class="rounded-xl border border-border p-5 dark:border-darkmode-border">
                       <h4 class="mb-3 text-lg font-semibold">{{ .spec }}</h4>
@@ -237,7 +257,7 @@
 
             {{ with .methodology }}
               {{ if .enable }}
-                <div class="mt-8 rounded-2xl border border-border p-6 dark:border-darkmode-border">
+                <div class="mx-auto mt-8 max-w-5xl rounded-2xl border border-border p-6 dark:border-darkmode-border">
                   <h3 class="mb-4">{{ .title | markdownify }}</h3>
                   <ul>
                     {{ range .items }}
@@ -251,25 +271,7 @@
               {{ end }}
             {{ end }}
 
-            {{ with .button }}
-              {{ if .enable }}
-                {{ $href := .link }}
-                {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                  {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
-                {{ end }}
-                <a
-                  class="btn btn-primary mt-6"
-                  href="{{ $href }}"
-                  {{ if strings.HasPrefix .link `http` }}
-                    target="_blank" rel="sponsored nofollow noopener"
-                  {{ end }}>
-                  {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
-                </a>
-              {{ end }}
-            {{ end }}
-          </div>
-        </div>
+      </div>
       </div>
     </section>
   {{ end }}
