@@ -419,3 +419,14 @@ The SEO buffer contains:
 - Browser visual review confirmed the new management-claim decoder renders correctly in native Hugoplate styling.
 - SERP Audit.txt now marks Managed vs Unmanaged VPS as BUILT / FROZEN.
 - Next work item in the revised plan: exact-query SERP for the FASTPANEL page target.
+
+
+### 2026-10-13 — FASTPANEL exact SERP target locked
+- Ran a dedicated exact-query comparison for FASTPANEL VPS Hosting vs FASTPANEL Hosting vs VPS with FASTPANEL, plus a supporting FASTPANEL VPS check.
+- Winner locked: FASTPANEL VPS Hosting.
+- Exact page naming: Title = H1 = FASTPANEL VPS Hosting; URL = /fastpanel-vps-hosting/.
+- Secondary semantic variant: FASTPANEL Hosting. Natural-language variant: VPS with FASTPANEL. Do not create separate pages for those variants.
+- Exact research saved at research/fastpanel-vps-hosting-serp-2026-10-13.md.
+- VDSina official Standard page currently lists FASTPANEL on Ubuntu 22 as a Web hosting control panel option.
+- FASTPANEL official docs currently state manual-install minimums of 1 GB RAM, 5 GB free disk, 1 CPU core / 1 GHz on a clean supported OS; these are panel minimums, not production website recommendations.
+- SERP Audit.txt updated: FASTPANEL VPS Hosting is READY TO BUILD and is now the next work item.
