@@ -4084,3 +4084,64 @@ body:has(.vps-home) footer .container {
   border-color: #2a6e50;
   box-shadow: 0 0 0 1px rgba(45, 222, 116, .08);
 }
+
+
+/* Homepage affiliate card interactions */
+.vps-home .vps-plan-card {
+  display: block;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  border-color: #263746 !important;
+  background: #0d1824 !important;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    background-color 130ms ease,
+    box-shadow 130ms ease !important;
+}
+
+.vps-home .vps-plan-card:visited {
+  color: inherit !important;
+}
+
+.vps-home .vps-plan-card:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+  border-color: var(--osp-green) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .16);
+}
+
+.vps-home .vps-plan-card:active {
+  border-color: var(--vps-secondary) !important;
+  transform: translateY(0) scale(.985);
+  background: #15192c !important;
+  box-shadow: none;
+}
+
+.vps-home .vps-plan-card:focus-visible {
+  outline: 2px solid var(--vps-secondary);
+  outline-offset: 3px;
+}
+
+/* Same physical feedback for every clickable visual on the homepage */
+.vps-home .vps-affiliate-visual {
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    box-shadow 130ms ease !important;
+  transform-origin: center;
+}
+
+.vps-home .vps-affiliate-visual:hover {
+  transform: translateY(-3px) !important;
+  border-color: var(--osp-green) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14) !important;
+}
+
+.vps-home .vps-affiliate-visual:active {
+  transform: translateY(0) scale(.985) !important;
+  border-color: var(--vps-secondary) !important;
+  box-shadow: none !important;
+}
