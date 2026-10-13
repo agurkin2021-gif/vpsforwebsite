@@ -1471,3 +1471,11 @@ body:has(.vps-home) footer .container {
     transform-origin: right center !important;
   }
 }
+
+
+/* Homepage adjustment 03: slightly lighter H1 scale */
+@media (min-width: 768px) {
+  .vps-home .vps-hero-copy h1 {
+    font-size: clamp(3rem, 3.3vw, 3.8rem) !important;
+  }
+}
