@@ -253,17 +253,26 @@ Do not create VPS Maintenance Checklist as a core page now.
 Maintenance cadence can live inside Security / Backup / Monitoring or become a later article if demand proves it deserves a separate URL.
 
 14. How to Choose VPS Location
-Exact Title/H1/URL: TO BE VALIDATED BY PAGE-LEVEL SERP
-Status: PLANNED / NEW CORE OWNER
-Fresh SERP decision:
-Location has a distinct current SERP around:
-- latency;
-- routing;
-- audience geography;
+URL: /how-to-choose-vps-location/
+Status: BUILT / FROZEN
+Exact SERP decision (2026-10-13):
+Primary keyword: How to Choose VPS Location
+Title: How to Choose VPS Location
+H1: How to Choose VPS Location
+URL: /how-to-choose-vps-location/
+Role:
+- audience-weighted region choice;
+- latency / RTT;
+- routing / peering;
+- ping / MTR / traceroute / HTTP testing;
 - CDN vs origin;
-- legal/jurisdiction/operational fit;
-- route testing;
-- network distance.
+- dynamic traffic;
+- database/API dependency placement;
+- global one-origin + CDN vs multi-region decision;
+- physical location vs GeoIP;
+- jurisdiction / data residency;
+- SEO/geotargeting truth;
+- migration/failure-domain handoff.
 
 Truth rule:
 Do NOT claim server country is a direct Google ranking shortcut.
@@ -394,14 +403,14 @@ DONE / FROZEN
 - VPS Monitoring
 
 NOT BUILT YET
-- How to Choose VPS Location
+- none in the current 14-page core
 
 ==================================================
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Run exact-query SERP and build How to Choose VPS Location.
-2. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Perform a cluster-wide overlap/internal-link audit now that all 14 core pages are complete.
+2. Recheck cannibalization, orphaning, anchors, navigation and intent boundaries before adding any HOLD candidate.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
