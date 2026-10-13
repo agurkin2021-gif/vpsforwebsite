@@ -1,9 +1,65 @@
-<section class="vps-page-header">
-  <div class="container">
-    <div class="vps-page-header-panel">
-      <div class="vps-eyebrow">VPS guide</div>
-      <h1>{{ .Title }}</h1>
-      {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }}
+{{ $isVpsVsShared := false }}
+{{ with .File }}
+  {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
+    {{ $isVpsVsShared = true }}
+  {{ end }}
+{{ end }}
+
+{{ if $isVpsVsShared }}
+  <section class="vps-page-header vps-vs-shared-page-header">
+    <div class="container">
+      <div class="vps-vs-shared-hero">
+        <div class="vps-vs-shared-hero-grid">
+          <div class="vps-vs-shared-hero-copy">
+            <div class="vps-eyebrow">VPS guide</div>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-vs-shared-description">{{ . | markdownify }}</p>
+            {{ end }}
+            {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-vs-shared-breadcrumb") }}
+          </div>
+
+          <div class="vps-vs-shared-hero-diagram" role="img" aria-label="Shared hosting compared with VPS by control, stack flexibility and administration responsibility">
+            <div class="vps-vs-shared-diagram-columns">
+              <div class="vps-vs-shared-model vps-vs-shared-model-shared">
+                <span class="vps-vs-shared-model-kicker">Simpler hosting model</span>
+                <strong>Shared hosting</strong>
+                <div class="vps-vs-shared-model-points">
+                  <span>Provider-managed environment</span>
+                  <span>Restricted server stack</span>
+                  <span>Bundled hosting services</span>
+                </div>
+              </div>
+
+              <div class="vps-vs-shared-versus" aria-hidden="true">VS</div>
+
+              <div class="vps-vs-shared-model vps-vs-shared-model-vps">
+                <span class="vps-vs-shared-model-kicker">More control</span>
+                <strong>VPS</strong>
+                <div class="vps-vs-shared-model-points">
+                  <span>Administrative control</span>
+                  <span>Flexible software stack</span>
+                  <span>Server responsibility</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-vs-shared-hero-rule">
+              <span>Compare capability, limits and responsibility — not site size alone.</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+{{ else }}
+  <section class="vps-page-header">
+    <div class="container">
+      <div class="vps-page-header-panel">
+        <div class="vps-eyebrow">VPS guide</div>
+        <h1>{{ .Title }}</h1>
+        {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }}
+      </div>
+    </div>
+  </section>
+{{ end }}
