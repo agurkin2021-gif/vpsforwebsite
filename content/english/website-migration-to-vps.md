@@ -53,7 +53,7 @@ Use this checker before changing DNS. It does not guarantee a successful migrati
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="migration-preflight">
   <div class="mb-6">
-    <label for="mig-backup" class="form-label">Independent backup exists and its contents were checked</label>
+    <label for="mig-backup" class="form-label">Independent backup exists and a restore/import was tested</label>
     <select id="mig-backup" class="form-input"><option value="no">Not ready</option><option value="yes">Ready</option></select>
   </div>
   <div class="mb-6">
@@ -74,7 +74,7 @@ Use this checker before changing DNS. It does not guarantee a successful migrati
   </div>
   <div class="mb-6">
     <label for="mig-mail" class="form-label">Email location and MX/SPF/DKIM/DMARC handling are decided</label>
-    <select id="mig-mail" class="form-input"><option value="no">Not ready</option><option value="yes">Ready</option></select>
+    <select id="mig-mail" class="form-input"><option value="no">Not ready</option><option value="yes">Ready</option><option value="na">Not applicable / email is separate and unchanged</option></select>
   </div>
   <div class="mb-6">
     <label for="mig-writes" class="form-label">Final write/data-sync plan exists for orders, forms, members or uploads</label>
@@ -86,7 +86,7 @@ Use this checker before changing DNS. It does not guarantee a successful migrati
   </div>
   <div class="mb-6">
     <label for="mig-jobs" class="form-label">Cron, workers, webhooks and IP allowlists are documented and controlled</label>
-    <select id="mig-jobs" class="form-input"><option value="no">Not ready</option><option value="yes">Ready</option></select>
+    <select id="mig-jobs" class="form-input"><option value="no">Not ready</option><option value="yes">Ready</option><option value="na">Not applicable</option></select>
   </div>
   <div class="mb-6">
     <label for="mig-rollback" class="form-label">Rollback trigger is defined and the old host will remain available</label>
@@ -118,15 +118,20 @@ document.addEventListener("DOMContentLoaded", function () {
       ["mig-rollback", "rollback plan"]
     ];
 
+    function isComplete(id) {
+      var value = document.getElementById(id).value;
+      return value === "yes" || value === "na";
+    }
+
     var missing = items.filter(function (item) {
-      return document.getElementById(item[0]).value !== "yes";
+      return !isComplete(item[0]);
     }).map(function (item) {
       return item[1];
     });
 
-    var criticalIds = ["mig-backup", "mig-runtime", "mig-test", "mig-dns", "mig-writes", "mig-tls", "mig-rollback"];
+    var criticalIds = ["mig-backup", "mig-sizing", "mig-runtime", "mig-test", "mig-dns", "mig-mail", "mig-writes", "mig-tls", "mig-jobs", "mig-rollback"];
     var criticalMissing = criticalIds.some(function (id) {
-      return document.getElementById(id).value !== "yes";
+      return !isComplete(id);
     });
 
     var result;
@@ -195,8 +200,9 @@ Before migration:
 3. store a copy outside the source hosting account;
 4. record configuration files and environment variables securely;
 5. record DNS and mail records separately;
-6. verify the archive opens and the database dump is not empty/corrupt;
-7. write down the rollback sequence before changing DNS.
+6. restore the backup into a disposable/test environment where practical, or at minimum perform a real database import and verify representative files instead of only checking that the archive opens;
+7. confirm the restored copy contains the expected data and can start far enough to support rollback;
+8. write down the rollback sequence before changing DNS.
 
 For a dynamic site, the first backup is not the final production dataset. Orders, form submissions, comments, memberships or uploads can continue changing after the first copy. Plan the final delta separately.
 
@@ -292,9 +298,9 @@ Before cutover:
 
 - export or record the current zone;
 - identify exactly which A/AAAA/CNAME/origin records must change;
-- lower the relevant TTL well in advance when possible;
+- lower the relevant TTL at least one full previous-TTL interval before the intended cutover when possible; for example, if the current TTL is 86,400 seconds, reduce it more than 24 hours before the switch;
 - remember that lowering TTL now does not erase caches that already stored the older, longer TTL;
-- preserve MX, SPF, DKIM, DMARC, verification TXT and other records that are not moving;
+- preserve MX, SPF, DKIM, DMARC, verification TXT, SRV, CAA and other records that are not moving;
 - verify both root and www behavior.
 
 Changing an A/AAAA record is usually lower risk than replacing nameservers when the DNS provider itself is not changing. If nameservers do change, recreate the complete required zone first.
@@ -363,6 +369,8 @@ Before and after cutover compare:
 
 Google Search Central recommends preparing and testing the new hosting, changing DNS only when ready, monitoring both old and new hosting, and retiring the old infrastructure after traffic has moved. It also recommends lowering DNS TTL in advance and keeping Search Console verification working.
 
+If only the hosting infrastructure changes and the domain/URLs stay the same, **do not use Google Search Console's Change of Address tool**. That tool is for domain moves, not a same-URL hosting migration.
+
 If the domain or URL paths change too, use an old-to-new URL map and permanent server-side redirects. That is a different site-move problem from a same-URL VPS migration.
 
 ## Cutover checklist
@@ -371,7 +379,7 @@ Immediately before DNS change:
 
 | Check | Pass condition |
 |---|---|
-| Backup | independent copy exists and required data was checked |
+| Backup | independent copy exists; restore/import was tested and representative data was verified |
 | Destination | correct runtime, database, permissions and secrets |
 | Private test | pages, forms, login, checkout/API as applicable pass |
 | Final data | final database/uploads delta complete; source-of-truth time recorded |
