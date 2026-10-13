@@ -348,6 +348,10 @@ Do not promise a client "isolated hosting" if all client sites share the same Un
 
 The old candidate **VPS for Agency Websites** remains merged into this page unless a future SERP/volume check proves a clean separate owner.
 
+If nobody on the team owns OS updates, security, backup verification, monitoring and incidents for the shared server, resolve that before consolidating client sites: see [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
+
+For moving an existing portfolio onto one VPS, do not copy every site and change all DNS at once. Stage, test and cut over with rollback; use [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}) for the migration process.
+
 ## Backups and restore granularity
 
 One VPS means several sites can fail at once.
