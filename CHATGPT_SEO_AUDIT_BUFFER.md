@@ -3886,3 +3886,13 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Generated preview passes: one H1, exact Title/H1, noindex preview, schema present, no broken home links/anchors, no demo assets, and only the VDSina affiliate destination as a user-visible external link.
 - All homepage affiliate links have `sponsored nofollow noopener`.
 - Do not re-expand deep sizing/security/backup/monitoring/location material on the homepage; the root remains summary/commercial hub and routes to the dedicated owners.
+
+
+### 2026-10-13 — Homepage visual and production QA closed
+
+- Completed section-by-section visual QA of the optimized homepage at exact 1280 px and 390 px widths.
+- Closed visual defects found during QA: checker/plan modules were removed from the feature flex row, checker is full-width with 2-column desktop/1-column mobile fields, plans are 4-column desktop/1-column mobile, plan CTA is compact, hero secondary CTA has stronger dark-mode contrast, and sticky-anchor offsets were added.
+- Hero, fit/checker, sizing/cards/methodology, provider checklist, management, migration, architecture, recovery, FAQ and final CTA all passed both responsive passes.
+- Production workflow now asserts the generated root HTML before upload. Verified PASS for index/follow, canonical https://vpsforwebsite.com/, hreflang en/x-default, WebSite JSON-LD, WebPage JSON-LD and exactly one H1 `VPS for website`.
+- Production build succeeds; live deploy still fails only because GitHub Pages is not enabled in repository settings.
+- Temporary visual-QA HTML files were deleted after inspection.
