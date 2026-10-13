@@ -552,3 +552,18 @@ The SEO buffer contains:
 - Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, one sponsored affiliate CTA, official WooCommerce requirement/caching/HPOS/Action Scheduler sections and intended internal links.
 - SERP Audit.txt now marks VPS for WooCommerce BUILT / FROZEN.
 - Next planned item: deep fresh SERP + rewrite of VPS for Multiple Websites.
+
+
+### 2026-10-13 — VPS for Multiple Websites frozen
+- Ran a fresh page-level SERP for VPS for Multiple Websites / host multiple websites on one VPS / agency multi-site VPS. Exact owner retained: Title = H1 = VPS for Multiple Websites; URL /vps-for-multiple-websites/.
+- Research saved at research/vps-for-multiple-websites-serp-2026-10-13.md.
+- Current SERP confirms a distinct multi-site architecture intent around domain-count myths, name-based virtual hosting, site/user isolation, combined peaks, backups, blast radius and when to split workloads.
+- Rebuilt the page around combined peak load and failure-domain design rather than a fixed "number of websites" claim.
+- Added a functional Multi-site VPS Architecture Checker with outcomes ONE VPS / LIGHT PORTFOLIO, ONE VPS + STRONGER ISOLATION, SPLIT THE CRITICAL SITE and SPLIT WORKLOAD / RECHECK ARCHITECTURE.
+- Closed all planned G1-G16 gaps: domain count is not capacity; one-IP/SNI hosting; explicit per-site isolation; folder-only isolation warning; combined peaks; mixed workloads; internal noisy-neighbor risk; one-VPS blast radius; backup/restore granularity; manual/panel/container operating models; agency/client ownership; functional architecture checker; measurable split criteria; per-site/server monitoring; separate-IP nuance; honest 2/4/8 GB mapping.
+- Added explicit operations-ownership and portfolio-migration links to Managed vs Unmanaged VPS and Website migration to VPS during the final control audit.
+- Current VDSina Standard tiers/prices remain mapping examples only; no fixed website-count guarantees are made.
+- Final preview build for source commit a977b947f56c6bb98b3a01066e63b84983b8ffae succeeded. Preview artifact a602593b2a223fd495ec35e3e0cd15f897ec3bd9.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional architecture checker, one sponsored affiliate CTA, same-IP/SNI explanation, isolation/blast-radius/agency/split coverage and all intended contextual links.
+- SERP Audit.txt now marks VPS for Multiple Websites BUILT / FROZEN.
+- Next planned item: fresh page-level SERP + build of VPS Security Checklist.
