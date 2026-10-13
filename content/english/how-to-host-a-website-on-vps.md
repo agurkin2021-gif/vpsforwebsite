@@ -550,7 +550,7 @@ At minimum identify:
 
 Add an external HTTP(S) uptime check so a server failure is visible even when nobody is logged into the VPS.
 
-Deep threshold/alert design belongs to the planned VPS Monitoring page.
+Deep threshold/alert design belongs to [VPS Monitoring]({{< relref "vps-monitoring.md" >}}).
 
 ## Reboot validation
 
@@ -629,7 +629,7 @@ Before relying on the site:
 - watch CPU/RAM/database pressure;
 - watch certificate renewal.
 
-The deeper recovery design belongs to the future **VPS Backup Strategy** page. Monitoring thresholds and alert design belong to the future **VPS Monitoring** page.
+The deeper recovery design belongs to [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}). Monitoring thresholds and alert design belong to [VPS Monitoring]({{< relref "vps-monitoring.md" >}}).
 
 ## Multiple websites
 
