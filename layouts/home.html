@@ -35,7 +35,7 @@
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
                   {{ end }}
                   <a
-                    class="btn border border-primary text-primary dark:text-darkmode-primary"
+                    class="btn border border-primary text-primary dark:border-white dark:text-white"
                     href="{{ $href }}"
                     {{ if strings.HasPrefix .link `http` }}
                       target="_blank" rel="sponsored nofollow noopener"
