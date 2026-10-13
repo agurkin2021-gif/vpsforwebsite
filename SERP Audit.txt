@@ -476,3 +476,43 @@ END OF SERP AUDIT WORK PLAN
 - Provider-native resource dashboard is now covered as a starting monitoring layer only; external/app monitoring remains required.
 - Exact Title/H1/URL remain VPS Monitoring / VPS Monitoring / /vps-monitoring/.
 - Do not restore a descriptive Title/H1 tail.
+
+
+==================================================
+2026-10-13 CORE CLUSTER AUDIT
+==================================================
+
+Status: COMPLETE
+
+Audited homepage + 14 core pages for:
+- primary-query ownership;
+- cannibalization;
+- semantic overlap;
+- duplicate heading/subquery ownership;
+- internal-link graph;
+- orphan pages;
+- stale planned-page references;
+- generated core routes and section anchors.
+
+Final:
+- HIGH-risk cannibalization: 0 confirmed after remediation.
+- Primary-query H2/H3 collisions: 0.
+- Core orphan pages: 0.
+- Stale planned/future references to built core pages: 0.
+- Known broken core content anchors: 0 after Location anchor fix.
+- Core merges required: 0.
+- New core page required: 0.
+
+Main remediation:
+- Removed generic sizing ownership of exact WordPress FAQ `Is 4 GB RAM enough for WordPress?`.
+- Replaced stale planned/future references with live Deployment/Backup/Monitoring links.
+- Added contextual homepage links to Security/Backup/Monitoring.
+- Clarified generic repeated WordPress/WooCommerce/multi-site section headings.
+- Fixed Location top navigation anchor.
+- Made Guides weights deterministic.
+
+Full detailed audit:
+research/cluster-overlap-internal-link-audit-2026-10-13.md
+
+Next rule:
+Do not add HOLD candidates until a fresh SERP proves a distinct intent owner with low overlap against this frozen core.
