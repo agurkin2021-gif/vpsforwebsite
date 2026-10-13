@@ -327,6 +327,8 @@ Do not replace an entire DNS zone just to move the website unless the mail recor
 
 ## Verify HTTPS, CDN and external services
 
+If the destination region is still undecided, resolve that before cutover with [How to Choose VPS Location]({{< relref "how-to-choose-vps-location.md" >}}). Changing regions later can mean another IP/DNS migration.
+
 A destination that works by IP can still fail under the real hostname.
 
 Verify:
