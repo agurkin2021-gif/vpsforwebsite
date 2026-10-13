@@ -37,6 +37,12 @@ weight = 3
 
 [[main]]
 parent = "Guides"
+name = "FASTPANEL VPS Hosting"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "Guides"
 name = "VPS vs Shared Hosting"
 url = "/vps-vs-shared-hosting/"
 

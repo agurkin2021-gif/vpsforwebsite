@@ -49,7 +49,7 @@ features:
     image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-3.png"
     content: "The right VPS is also an operations choice. Pick the management path before you size the server, because the panel, operating system and administration model change both resource use and responsibility."
     bulletpoints:
-      - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself."
+      - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself. [FASTPANEL VPS Hosting →](fastpanel-vps-hosting/index.html)"
       - "**Pure Ubuntu / Linux:** manage the web stack over SSH with Nginx or Apache, the runtime and database; more control, but more work stays with you."
       - "**Windows Server:** use this path when the website genuinely requires IIS or ASP.NET rather than treating Windows as a default hosting choice."
       - "**Support is not the same as managed hosting:** infrastructure help can remove blockers, but a self-managed VPS still leaves operating-system and application administration with the customer unless separate administration is agreed. [Compare Managed vs Unmanaged VPS →](managed-vs-unmanaged-vps/index.html)"

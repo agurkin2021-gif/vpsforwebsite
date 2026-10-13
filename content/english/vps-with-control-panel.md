@@ -19,6 +19,8 @@ A lean panel-managed setup may fit **2 GB RAM**, while **4 GB RAM** is a more pr
 
 Useful when a provider-supported deployment method matches the operating system you plan to use. Verify the current template before ordering.
 
+For FASTPANEL-specific deployment, sizing, WordPress, multi-site isolation and VDSina's current Ubuntu 22 option, see [FASTPANEL VPS Hosting]({{< relref "fastpanel-vps-hosting.md" >}}).
+
 ### HestiaCP
 
 An open-source hosting-oriented option for administrators comfortable managing the underlying Linux server.
