@@ -453,6 +453,73 @@
                   <strong>Choose the VPS configuration after the migration inventory shows the real requirements.</strong>
                 </div>
               </div>
+            {{ else if eq .id "architecture-planner" }}
+              <div class="vps-architecture-diagram" role="img" aria-label="Architecture decision flow for keeping website workloads on one VPS or splitting web, database, workers and staging">
+                <div class="vps-architecture-head">
+                  <span class="vps-architecture-kicker">Architecture decision</span>
+                  <strong>Keep it together while the workload is predictable</strong>
+                  <small>Split only when contention, blast radius or independent scaling becomes more expensive than the added complexity.</small>
+                </div>
+
+                <div class="vps-architecture-one">
+                  <span class="vps-architecture-label">Start simple</span>
+                  <strong>One VPS</strong>
+                  <div class="vps-architecture-one-grid">
+                    <span>Web</span>
+                    <span>Database</span>
+                    <span>Workers</span>
+                    <span>Light jobs</span>
+                  </div>
+                </div>
+
+                <div class="vps-architecture-pressure">
+                  <span>Split trigger</span>
+                  <div class="vps-architecture-pressure-chips">
+                    <span>CPU / RAM contention</span>
+                    <span>Workers delay requests</span>
+                    <span>Independent scaling</span>
+                    <span>Failure isolation</span>
+                    <span>Risky staging</span>
+                    <span>Client/service isolation</span>
+                  </div>
+                </div>
+
+                <div class="vps-architecture-flow" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+
+                <div class="vps-architecture-split">
+                  <div class="vps-architecture-node vps-architecture-node-web">
+                    <span>Web VPS</span>
+                    <strong>User-facing requests</strong>
+                    <small>Nginx/Apache · PHP/app runtime · static delivery</small>
+                  </div>
+
+                  <div class="vps-architecture-node">
+                    <span>Database VPS</span>
+                    <strong>Independent DB resources</strong>
+                    <small>Queries · storage · memory · failure isolation</small>
+                  </div>
+
+                  <div class="vps-architecture-node">
+                    <span>Worker VPS</span>
+                    <strong>Background workload</strong>
+                    <small>Automation · API · queues · AI-agent jobs</small>
+                  </div>
+
+                  <div class="vps-architecture-node vps-architecture-node-stage">
+                    <span>Staging</span>
+                    <strong>Test risky changes away from production</strong>
+                    <small>Updates · migrations · architecture changes</small>
+                  </div>
+                </div>
+
+                <div class="vps-architecture-result">
+                  <span>Rule</span>
+                  <strong>Split only the component that needs independent resources, scaling or failure isolation.</strong>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"

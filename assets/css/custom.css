@@ -3138,3 +3138,264 @@ body:has(.vps-home) footer .container {
     min-height: 0;
   }
 }
+
+
+/* Homepage VPS architecture responsive split-workload diagram */
+.vps-home #architecture-planner .row {
+  grid-template-columns: minmax(0, 46%) minmax(0, 48%) !important;
+  gap: 6% !important;
+  align-items: start !important;
+}
+
+.vps-home #architecture-planner .row > div:first-child {
+  align-self: stretch;
+}
+
+.vps-architecture-diagram {
+  width: 100%;
+  min-height: 610px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border: 1px solid #243646;
+  border-radius: 30px 12px 12px 12px;
+  background: #0d1824;
+}
+
+.vps-architecture-head {
+  margin-bottom: 16px;
+}
+
+.vps-architecture-kicker,
+.vps-architecture-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--osp-green);
+  font-size: .64rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.vps-architecture-head strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.vps-architecture-head small {
+  display: block;
+  margin-top: 7px;
+  color: #95a4b3;
+  font-size: .72rem;
+  line-height: 1.4;
+}
+
+.vps-architecture-one {
+  padding: 14px 15px;
+  border: 1px solid #2b4a3b;
+  border-radius: 13px;
+  background: #0b1d19;
+}
+
+.vps-architecture-one > strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .9rem;
+}
+
+.vps-architecture-one-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.vps-architecture-one-grid span {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 7px;
+  border: 1px solid #286847;
+  border-radius: 999px;
+  color: #9ee9bd;
+  font-size: .61rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.vps-architecture-pressure {
+  margin-top: 13px;
+}
+
+.vps-architecture-pressure > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #8293a4;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.vps-architecture-pressure-chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.vps-architecture-pressure-chips span {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 8px;
+  border: 1px solid #2b4051;
+  border-radius: 9px;
+  background: #07101a;
+  color: #aab7c3;
+  font-size: .61rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.vps-architecture-flow {
+  position: relative;
+  width: 2px;
+  height: 28px;
+  margin: 0 auto;
+  background: var(--osp-green);
+}
+
+.vps-architecture-flow i {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--osp-green);
+  border-bottom: 2px solid var(--osp-green);
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.vps-architecture-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.vps-architecture-node {
+  min-width: 0;
+  min-height: 116px;
+  padding: 12px 13px;
+  border: 1px solid #2a3e4e;
+  border-radius: 12px;
+  background: #101c28;
+}
+
+.vps-architecture-node-web {
+  border-color: #2b684b;
+  background: #0b1d19;
+}
+
+.vps-architecture-node-stage {
+  border-style: dashed;
+}
+
+.vps-architecture-node > span {
+  display: block;
+  color: var(--osp-green);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.vps-architecture-node strong {
+  display: block;
+  margin-top: 5px;
+  color: #f7f6f2;
+  font-size: .79rem;
+  line-height: 1.24;
+}
+
+.vps-architecture-node small {
+  display: block;
+  margin-top: 6px;
+  color: #94a3b1;
+  font-size: .64rem;
+  line-height: 1.34;
+}
+
+.vps-architecture-result {
+  margin-top: 12px;
+  padding: 13px 15px;
+  border-left: 3px solid var(--osp-green);
+  border-radius: 8px;
+  background: #07101a;
+}
+
+.vps-architecture-result > span {
+  display: block;
+  color: var(--osp-green);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.vps-architecture-result strong {
+  display: block;
+  margin-top: 5px;
+  color: #f7f6f2;
+  font-size: .76rem;
+  line-height: 1.28;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .vps-home #architecture-planner .row {
+    grid-template-columns: minmax(0, 47%) minmax(0, 47%) !important;
+    gap: 6% !important;
+  }
+
+  .vps-architecture-diagram {
+    min-height: 590px;
+    padding: 20px;
+  }
+
+  .vps-architecture-one-grid,
+  .vps-architecture-pressure-chips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-home #architecture-planner .row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .vps-architecture-diagram {
+    min-height: 0;
+    padding: 22px;
+    border-radius: 24px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .vps-architecture-one-grid,
+  .vps-architecture-pressure-chips,
+  .vps-architecture-split {
+    grid-template-columns: 1fr;
+  }
+
+  .vps-architecture-node {
+    min-height: 0;
+  }
+}
