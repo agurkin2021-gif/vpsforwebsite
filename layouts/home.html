@@ -520,6 +520,77 @@
                   <strong>Split only the component that needs independent resources, scaling or failure isolation.</strong>
                 </div>
               </div>
+            {{ else if eq .id "safe-growth" }}
+              <div class="vps-growth-diagram" role="img" aria-label="Website VPS lifecycle showing clone, test, monitor, scale, backup and recovery">
+                <div class="vps-growth-head">
+                  <span class="vps-growth-kicker">Reversible operations</span>
+                  <strong>Change the server without betting production</strong>
+                  <small>Use copies, monitoring and recovery points so upgrades and scaling decisions remain reversible.</small>
+                </div>
+
+                <div class="vps-growth-lifecycle">
+                  <div class="vps-growth-step">
+                    <span class="vps-growth-index">01</span>
+                    <strong>Clone</strong>
+                    <small>Create a copy before risky changes</small>
+                  </div>
+
+                  <div class="vps-growth-step">
+                    <span class="vps-growth-index">02</span>
+                    <strong>Test</strong>
+                    <small>Validate upgrades and architecture changes away from production</small>
+                  </div>
+
+                  <div class="vps-growth-step vps-growth-step-monitor">
+                    <span class="vps-growth-index">03</span>
+                    <strong>Monitor</strong>
+                    <small>Watch CPU, memory, storage growth and request queues</small>
+                  </div>
+
+                  <div class="vps-growth-step vps-growth-step-scale">
+                    <span class="vps-growth-index">04</span>
+                    <strong>Scale</strong>
+                    <small>Add resources only when pressure is sustained</small>
+                  </div>
+                </div>
+
+                <div class="vps-growth-signals">
+                  <span>CPU saturation</span>
+                  <span>Memory pressure</span>
+                  <span>Storage growth</span>
+                  <span>Request queues</span>
+                </div>
+
+                <div class="vps-growth-flow" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+
+                <div class="vps-growth-recovery">
+                  <div class="vps-growth-recovery-card">
+                    <span>Snapshot</span>
+                    <strong>Fast rollback point</strong>
+                    <small>Useful for quick reversal, but not the only recovery copy.</small>
+                  </div>
+
+                  <div class="vps-growth-recovery-card vps-growth-recovery-backup">
+                    <span>Scheduled backup</span>
+                    <strong>Recover from a known point</strong>
+                    <small>Restore the server or create another server from the backup.</small>
+                  </div>
+
+                  <div class="vps-growth-recovery-card">
+                    <span>Portable copy</span>
+                    <strong>Keep recovery outside the running VPS</strong>
+                    <small>Maintain an independent copy under your own control.</small>
+                  </div>
+                </div>
+
+                <div class="vps-growth-result">
+                  <span>Operating rule</span>
+                  <strong>Measure first, change second, keep a way back.</strong>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"
