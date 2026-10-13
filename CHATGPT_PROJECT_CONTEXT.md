@@ -443,3 +443,17 @@ The SEO buffer contains:
 - Added the required contextual return link to the homepage in follow-up commit df21ab789ff24e502612fc54669ac56229837dd8.
 - SERP Audit.txt status is now BUILT / NEEDS FINAL DENSE FREEZE AUDIT.
 - Next step: dense completion audit of this page before freeze; then deepen VPS with Control Panel.
+
+
+### 2026-10-13 — FASTPANEL VPS Hosting built and frozen
+- Built /fastpanel-vps-hosting/ with exact Title/H1 FASTPANEL VPS Hosting and exact slug /fastpanel-vps-hosting/.
+- Page covers panel-minimum vs real workload sizing, VDSina FASTPANEL on Ubuntu 22 deployment, current 1/2/4/8 GB Standard reference tiers, FASTPANEL fit checker, supported OS compatibility, first-site flow, WordPress, multi-site user isolation, email/database/SSL/backups, migration, security/updates, SSH/root responsibility and negative qualification.
+- FASTPANEL fit checker deliberately does not recommend the 1 GB panel minimum as the normal production target.
+- Official FASTPANEL manual-install requirements and supported OS list were rechecked; VDSina Standard FASTPANEL on Ubuntu 22 and plan values were rechecked.
+- Internal linking implemented: homepage and VPS with Control Panel -> FASTPANEL VPS Hosting; FASTPANEL page -> homepage, sizing, Managed vs Unmanaged, control-panel parent, WordPress, Multiple Websites and Migration.
+- Guides menu includes FASTPANEL VPS Hosting.
+- Final preview build after OS-compatibility closure succeeded. Preview artifact: 2d71b3dd5ed7fafa2fd368de466f4a32ce64f7a7.
+- Generated checks: Title=H1, one H1, preview noindex/nofollow, no preview canonical, 2 JSON-LD blocks, functional checker, all 4 verified VDSina price tiers, 2 partner links with matching sponsored/nofollow/noopener attributes, all intended routes present.
+- Browser visual review completed for the top of the page and fit checker; both render in native Hugoplate styling.
+- SERP Audit.txt now marks FASTPANEL VPS Hosting as BUILT / FROZEN.
+- Next work item: deepen VPS with Control Panel so the generic parent and FASTPANEL child are cleanly separated.
