@@ -3130,3 +3130,25 @@ The previously approved information architecture included a native Hugoplate FAQ
 ### Content-freeze decision
 
 Do **not** add another large conceptual section. Close the remaining gaps through compact additions to existing sections plus the planned FAQ/direct-answer layer. Full Fit Engine, migration checker, Architecture Planner, SSH/security/backup tutorials and TCO calculator remain supporting-page/tool work.
+
+
+## 47. Homepage content-gap closure implementation
+
+Date: 2026-10-12
+Status: **CONTENT GAPS CLOSED IN IMPLEMENTATION; build/visual verification follows**
+
+Implemented in the homepage:
+- hero now directly defines what a VPS for website hosting is;
+- workload sizing now distinguishes WordPress, WooCommerce and multiple-sites mechanics;
+- pre-purchase checklist now includes storage growth, transfer, IP terms, location, backup policy, upgrade path, management scope, panel/license costs and billing terms;
+- location + CDN/Cloudflare effect is answered without implying CDN removes dynamic origin work;
+- displayed server pricing is explicitly separated from optional licenses/backups/administration/monitoring;
+- recovery block now states snapshot/rollback point is not the same as a complete backup strategy;
+- native-style FAQ/direct-answer layer added with 8 concise questions covering definition, multi-site capacity, location, CDN, snapshot vs backup, immediate post-purchase steps, price scope and control-panel choice.
+
+### 22-question inventory after implementation
+
+All 22 planned homepage questions now have at least a concise direct answer or decision summary on the homepage. Deep tutorials/tools remain intentionally delegated to supporting pages.
+
+Content decision: **no further large homepage concept blocks are needed.**
+Content may be frozen after the production build and visual/render checks pass.
