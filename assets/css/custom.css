@@ -1479,3 +1479,11 @@ body:has(.vps-home) footer .container {
     font-size: clamp(3rem, 3.3vw, 3.8rem) !important;
   }
 }
+
+
+/* Homepage adjustment 04: wider hero copy */
+@media (min-width: 768px) {
+  .vps-home .vps-hero-copy > p {
+    max-width: 590px !important;
+  }
+}
