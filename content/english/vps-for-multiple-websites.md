@@ -457,7 +457,7 @@ A server can be "up" while one virtual host, certificate or application is broke
 | Blast radius | business accepts one-VPS failure impact |
 | Split trigger | clear condition for moving a site/service out |
 
-## Current VPS examples
+## Current multi-site VPS examples
 
 These VDSina Standard plans are mapping examples only.
 
