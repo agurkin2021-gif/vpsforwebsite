@@ -215,3 +215,30 @@ A previous project note referenced completed research artifacts such as:
 - `/research/content-gaps.md`
 
 These files are **not present** in current `main` or `preview` as of 2026-10-12. Treat this as a preservation defect. Future SERP/on-page research should be committed to the repository, not left only in chat/local context.
+
+
+## SEO audit buffer
+
+Persistent SEO/SERP working state is stored in:
+- `CHATGPT_SEO_AUDIT_BUFFER.md`
+
+Every new session doing SEO, content architecture, homepage work, supporting-page work, or internal linking must read that file after `CHATGPT_PROJECT_CONTEXT.md`.
+
+The SEO buffer contains:
+- current SERP observations;
+- competitor patterns;
+- homepage keyword ownership;
+- on-page gaps;
+- supporting-query candidates;
+- intent ownership;
+- internal-link architecture;
+- OPEN / CLOSED / HOLD gap ledger;
+- page-by-page continuation point.
+
+### 2026-10-12 continuation decision
+- Build **page by page**.
+- Finish the homepage first.
+- Do not build new supporting pages until the homepage passes its completion gate.
+- Homepage owns `VPS for website` plus close semantic variants such as `website VPS hosting` and `VPS hosting for websites`; do not create duplicate pages for those variants.
+- High-priority future supporting intents currently identified: `VPS sizing for website`, `Website migration to VPS`, and `Managed vs Unmanaged VPS`.
+- Supporting pages must return contextual internal links to the homepage.
