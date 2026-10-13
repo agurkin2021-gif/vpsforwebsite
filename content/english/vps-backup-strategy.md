@@ -425,7 +425,7 @@ Monitor:
 
 A green cron/service status proves the command ran. It does not prove the restore works.
 
-The future VPS Monitoring page will own broader alert design; backup-job health belongs to the recovery strategy itself.
+Broader server/service alert design belongs to [VPS Monitoring]({{< relref "vps-monitoring.md" >}}); backup-job health remains part of the recovery strategy itself.
 
 ## Test restores and measure real RTO
 
