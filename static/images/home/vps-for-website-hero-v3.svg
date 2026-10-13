@@ -29,7 +29,7 @@
   <path d="M565 594C745 630 930 617 1114 520" fill="none" stroke="#18324a" stroke-width="3" opacity=".35"/>
 
   <!-- website card -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="44" y="180" width="310" height="226" rx="34" fill="#0d1b2a" stroke="#2b4660" stroke-width="2"/>
     <circle cx="78" cy="214" r="7" fill="#7e9ab8"/>
     <circle cx="101" cy="214" r="7" fill="#7e9ab8"/>
@@ -46,7 +46,7 @@
   </g>
 
   <!-- arrow -->
-  <g filter="url(#glow)" stroke="#2dde74" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <g stroke="#2dde74" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <path d="M375 292h116"/>
     <path d="M466 264l30 28-30 28"/>
   </g>
@@ -61,13 +61,13 @@
       <circle cx="1048" cy="323" r="6"/><circle cx="1071" cy="323" r="6"/><circle cx="1048" cy="345" r="6"/><circle cx="1071" cy="345" r="6"/>
       <circle cx="1048" cy="435" r="6"/><circle cx="1071" cy="435" r="6"/><circle cx="1048" cy="457" r="6"/><circle cx="1071" cy="457" r="6"/>
     </g>
-    <circle cx="1090" cy="222" r="8" fill="#2dde74" filter="url(#glow)"/>
-    <circle cx="1090" cy="334" r="8" fill="#2dde74" filter="url(#glow)"/>
-    <circle cx="1090" cy="446" r="8" fill="#2dde74" filter="url(#glow)"/>
+    <circle cx="1090" cy="222" r="8" fill="#2dde74"/>
+    <circle cx="1090" cy="334" r="8" fill="#2dde74"/>
+    <circle cx="1090" cy="446" r="8" fill="#2dde74"/>
   </g>
 
   <!-- VPS panel -->
-  <g filter="url(#shadow)">
+  <g>
     <rect x="500" y="118" width="510" height="390" rx="36" fill="#f4f7fb"/>
     <g transform="translate(538 154)">
       <path d="M0 10L28 0l28 10-28 10zM0 27l28 10 28-10v13L28 50 0 40zM0 45l28 10 28-10v13L28 68 0 58z" fill="#17a95b"/>
