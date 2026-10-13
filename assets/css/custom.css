@@ -1487,3 +1487,13 @@ body:has(.vps-home) footer .container {
     max-width: 590px !important;
   }
 }
+
+
+/* Homepage adjustment 05: tighter secondary CTA */
+@media (min-width: 768px) {
+  .vps-home .vps-hero-copy .vps-btn-secondary {
+    padding-left: .9rem !important;
+    padding-right: .9rem !important;
+    font-size: .86rem !important;
+  }
+}
