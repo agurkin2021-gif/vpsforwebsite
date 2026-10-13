@@ -3537,3 +3537,36 @@ No known P0/P1 content/on-page defect remains. Further edits require new SERP or
 
 ## 61. VPS with Control Panel — control audit confirmation — 2026-10-13
 Rechecked G1-G13 against the frozen page and current generated preview: all planned gaps remain CLOSED. No new P0/P1 page defect found. The only defect found was duplicate/stale bookkeeping in SERP Audit.txt; that plan file was corrected without changing page ownership or scope.
+
+
+## 62. How to host a website on VPS — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Exact owner locked after fresh SERP:
+- Primary keyword: How to host a website on VPS
+- Title/H1: How to host a website on VPS
+- URL: /how-to-host-a-website-on-vps/
+
+The old VPS without Control Panel candidate is now fully merged into this owner. No duplicate no-panel page should be created.
+
+Closed G1-G15:
+- manual vs panel vs managed path;
+- stack choice before package install;
+- full no-control-panel/manual branch;
+- secure first SSH/admin path;
+- pre-DNS private testing;
+- DNS + web-server hostname pairing;
+- HTTPS after hostname resolution/firewall path;
+- static vs PHP/WordPress vs Node/Python/custom branches;
+- non-root ownership/permissions/secrets;
+- SFTP/SCP vs rsync vs Git vs CI/CD deployment methods;
+- production acceptance checklist;
+- reboot validation;
+- basic CPU/RAM/disk/log validation after go-live;
+- explicit negative qualification for manual hosting;
+- functional Deployment Path Checker.
+
+Final preview artifact: d59925531c458870dbeb777f0e86ea802340b820.
+Verified: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, two sponsored/nofollow/noopener CTAs, intended contextual links, visual render of first screen/checker/pre-DNS section.
+
+No known P0/P1 content/on-page defect remains. Next core work item is VPS vs Shared Hosting.
