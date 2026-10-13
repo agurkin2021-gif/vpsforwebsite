@@ -663,3 +663,14 @@ The SEO buffer contains:
 - The 14-page core architecture recorded in `SERP Audit.txt` is now fully BUILT / FROZEN.
 - Next continuation point: perform the cluster-wide overlap, cannibalization and internal-link audit across the homepage + all 14 core pages. Do not start a HOLD candidate until that audit is complete.
 - Live GitHub Pages deployment remains an infrastructure blocker unrelated to page content: production build succeeds but deploy-pages returns 404 while GitHub Pages is not enabled for the repository.
+
+
+### 2026-10-13 — Cluster-wide audit complete
+
+- Completed full cannibalization, overlap and internal-link audit across homepage + all 14 core pages.
+- No core merges are required. No confirmed HIGH-risk cannibalization remains after remediation.
+- Fixed the only exact FAQ collision found: generic sizing no longer owns `Is 4 GB RAM enough for WordPress?`; that subquery remains with `VPS for WordPress`.
+- Fixed stale planned/future-page references, strengthened homepage routing to Security/Backup/Monitoring, fixed one broken Location section anchor, clarified page-specific H2 ownership and made Guides weights deterministic.
+- All 14 supporting pages are reachable contextually from the homepage; every supporting page returns to the homepage; no core orphan remains.
+- Full audit is stored in `research/cluster-overlap-internal-link-audit-2026-10-13.md`.
+- Next continuation point: do not create another core page by default. Any expansion starts with a fresh SERP/volume/ownership check against the frozen cluster. Live GitHub Pages remains separately blocked until Pages is enabled.
