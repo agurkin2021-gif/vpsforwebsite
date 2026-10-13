@@ -4697,3 +4697,206 @@ body:has(.vps-vs-shared-page-header) main h2[id] {
     scroll-margin-top: 142px;
   }
 }
+
+
+/* VPS vs Shared Hosting quick comparison matrix */
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table {
+  width: 100%;
+  margin: 24px 0 18px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #2a3e4e;
+  border-radius: 16px;
+  background: #0b1420;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .12);
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table th,
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table td {
+  vertical-align: top;
+  border: 0 !important;
+  border-right: 1px solid #233545 !important;
+  border-bottom: 1px solid #233545 !important;
+  padding: 16px 17px;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table th:last-child,
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table td:last-child {
+  border-right: 0 !important;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th {
+  background: #111e2a;
+  color: #f7f6f2;
+  font-size: .76rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .025em;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:first-child {
+  width: 23%;
+  color: #9eafbf;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:nth-child(2) {
+  width: 36%;
+  color: #d7dee5;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:nth-child(3) {
+  width: 41%;
+  background: #0d251d;
+  color: #77e7a5;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td {
+  color: #c4ced8;
+  font-size: .82rem;
+  line-height: 1.5;
+  background: #0b1420;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:first-child {
+  color: #f7f6f2;
+  font-weight: 750;
+  background: #101b26;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(3) {
+  background: #0b1b17;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr {
+  transition: background-color 130ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr:hover td:first-child {
+  background: #132331;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr:hover td:nth-child(2) {
+  background: #0f1b27;
+}
+
+body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr:hover td:nth-child(3) {
+  background: #0f241c;
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table th,
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table td {
+    padding: 13px 12px;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:first-child {
+    width: 24%;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:nth-child(2),
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead th:nth-child(3) {
+    width: 38%;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td {
+    font-size: .76rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 640px) {
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table {
+    display: block;
+    overflow: visible;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody {
+    display: grid;
+    gap: 12px;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    border: 1px solid #2a3e4e;
+    border-radius: 14px;
+    background: #0b1420;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 13px 14px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #233545 !important;
+    background: #0b1420;
+    font-size: .8rem;
+    line-height: 1.48;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:last-child {
+    border-bottom: 0 !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:first-child {
+    padding: 12px 14px !important;
+    background: #111e2a;
+    color: #f7f6f2;
+    font-size: .84rem;
+    font-weight: 800;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(2),
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(3) {
+    padding-top: 34px !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(2)::before,
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(3)::before {
+    position: absolute;
+    top: 11px;
+    left: 14px;
+    font-size: .59rem;
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(2)::before {
+    content: "Shared hosting";
+    color: #9eafbf;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(3) {
+    background: #0b1b17;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody td:nth-child(3)::before {
+    content: "VPS";
+    color: #72e5a2;
+  }
+}
