@@ -4599,3 +4599,101 @@ body:has(.vps-vs-shared-page-header) {
     min-height: 72px;
   }
 }
+
+
+/* VPS vs Shared Hosting article navigation pills */
+body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) {
+  position: sticky;
+  top: 96px;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 34px !important;
+  padding: 10px;
+  border: 1px solid #263746;
+  border-radius: 13px;
+  background: rgba(7, 16, 26, .94);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .14);
+  backdrop-filter: blur(14px);
+  font-size: 0;
+}
+
+body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) > a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid #2a3e4e;
+  border-radius: 999px;
+  background: #0d1824;
+  color: #d7dee5 !important;
+  font-size: .72rem;
+  font-weight: 750;
+  line-height: 1;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    background-color 130ms ease,
+    color 130ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) > a:hover {
+  border-color: var(--vs-green);
+  background: #10221b;
+  color: #f7f6f2 !important;
+  transform: translateY(-1px);
+}
+
+body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) > a:active {
+  border-color: #9e86ff;
+  background: #171a2b;
+  transform: scale(.985);
+}
+
+body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) > a:focus-visible {
+  outline: 2px solid #9e86ff;
+  outline-offset: 2px;
+}
+
+body:has(.vps-vs-shared-page-header) main h2[id] {
+  scroll-margin-top: 160px;
+}
+
+@media (max-width: 900px) {
+  body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) {
+    top: 82px;
+  }
+}
+
+@media (max-width: 767px) {
+  body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) {
+    top: 72px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: calc(100% + 8px);
+    margin-left: -4px !important;
+    padding: 8px;
+    border-radius: 11px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"])::-webkit-scrollbar {
+    display: none;
+  }
+
+  body:has(.vps-vs-shared-page-header) main p:has(> a[href="#quick-comparison"]) > a {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding-inline: 13px;
+  }
+
+  body:has(.vps-vs-shared-page-header) main h2[id] {
+    scroll-margin-top: 142px;
+  }
+}
