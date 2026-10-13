@@ -29,7 +29,16 @@
             {{ end }}
           </div>
           <div class="col-12">
-            {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
+            {{ if strings.HasPrefix .image "http" }}
+              <img
+                src="{{ .image }}"
+                alt="{{ .title | plainify }}"
+                loading="eager"
+                decoding="async"
+                class="mx-auto lg:!max-w-[800px] img" />
+            {{ else }}
+              {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
+            {{ end }}
           </div>
         </div>
       </div>
@@ -46,7 +55,16 @@
             class="mb:md-0 {{ if not (modBool $i 2) }}
               md:order-2
             {{ end }} md:col-5 mb-6">
-            {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+            {{ if strings.HasPrefix .image "http" }}
+              <img
+                src="{{ .image }}"
+                alt="{{ .title | plainify }}"
+                loading="lazy"
+                decoding="async"
+                class="img" />
+            {{ else }}
+              {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "DisplayXL" "520x" "DisplayLG" "425x" "DisplayMD" "360x") }}
+            {{ end }}
           </div>
           <div
             class="{{ if not (modBool $i 2) }}
