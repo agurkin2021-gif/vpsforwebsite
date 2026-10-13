@@ -706,3 +706,26 @@ The SEO buffer contains:
 - Only issue found: secondary CTA border was too weak in dark mode; fixed with explicit dark-mode white border/text.
 - Temporary QA wrapper files were removed after the pass.
 - Next visual pass: `Do you actually need a VPS?` + VPS Fit / Readiness Checker.
+
+
+### 2026-10-13 — Homepage final QA complete
+
+- Homepage `VPS for website` has now completed both previously open final gates:
+  1. visual QA at exact 1280 px and 390 px, section by section;
+  2. production HTML SEO verification from the production Hugo build.
+- Responsive visual fixes made during QA:
+  - stronger dark-mode secondary hero CTA;
+  - sticky-header scroll offsets;
+  - full-width Fit Checker below the fit feature row;
+  - checker = 2-column desktop / 1-column mobile;
+  - full-width pricing module;
+  - pricing cards = 4-column desktop / 1-column mobile;
+  - compact configuration CTA;
+  - stable anchors for plan cards, methodology and final CTA.
+- All homepage sections passed both visual widths.
+- Production assertion step passes index/follow, canonical, en/x-default hreflang, WebSite/WebPage JSON-LD and exact single H1.
+- Generated preview still has only the VDSina affiliate destination as an external user-visible link.
+- Temporary QA wrapper/render files were removed.
+- Homepage content/SEO/visual/production-output QA can now be considered CLOSED.
+- Separate infrastructure blocker remains: GitHub Pages is not enabled, so deploy-pages cannot publish the production artifact even though the production build itself passes.
+- Next page-by-page re-audit target remains `VPS sizing for website`.
