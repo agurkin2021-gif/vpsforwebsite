@@ -410,6 +410,8 @@ If you prefer panel-based administration, compare the trade-offs in [VPS with co
 6. **Reproduce a realistic peak.** Validate the configuration under representative dynamic load, not only an idle homepage.
 7. **Monitor after migration.** Adjust from measurements instead of assuming the initial estimate is permanent.
 
+Once the destination is sized, use [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}) to plan the inventory, private test, final data sync, DNS cutover and rollback path.
+
 ## Evidence-based recommendation
 
 A useful VPS recommendation should state both the configuration and the reason for it.

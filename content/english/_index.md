@@ -69,9 +69,9 @@ features:
       - "Prepare a rollback path before DNS is switched, and validate the site on the new environment before production traffic moves."
       - "Choose the VPS configuration only after the migration inventory shows what the website actually needs."
     button:
-      enable: false
-      label: ""
-      link: ""
+      enable: true
+      label: "Plan your migration"
+      link: "website-migration-to-vps/index.html"
 
   - id: "architecture-planner"
     title: "One VPS or split the workload?"
