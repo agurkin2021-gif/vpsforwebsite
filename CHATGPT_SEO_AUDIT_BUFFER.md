@@ -3236,3 +3236,28 @@ Verification:
 - preview route files confirmed for homepage, WordPress, WooCommerce, Multiple Websites, Control Panel, VPS vs Shared Hosting and VPS sizing.
 
 No remaining P0/P1 on-page defect is known for this page. Further changes should be driven by real search/user data rather than adding more sections.
+
+
+## 50. VPS sizing approved-scope closure — 2026-10-13
+
+Status: COMPLETE / CONTENT FROZEN FOR CURRENT SCOPE.
+
+The final three partial items from the original SERP/gap specification are now closed:
+- workload examples: CLOSED with explicit cached/static, WordPress, WooCommerce/transactional, multi-site and background-worker patterns;
+- bandwidth/transfer sizing: CLOSED with origin-transfer estimation, CDN/cache offload, dynamic/non-web traffic caveats and transfer-vs-port-speed distinction;
+- mail overhead: CLOSED with mail-service RAM/CPU/storage/backup overhead and managed-mail alternative.
+
+Original sizing research G1–G12 is now represented on-page at the intended depth. The following researched opportunities remain deliberately out of scope rather than missing:
+- VPS True Cost/TCO calculator;
+- full Peak Event Planner;
+- One VPS vs Split Architecture Planner;
+- detailed migration-risk calculator;
+- generic standalone PHP-worker/web-server calculators.
+
+Verification:
+- preview workflow for source commit 5faa184b3f389d82b178afdab0b8ae220d86f65c: SUCCESS;
+- generated preview contains all three new headings;
+- workload comparison table visually renders in native Hugoplate styling;
+- page remains under the same exact Title/H1/URL ownership and existing noindex preview protections.
+
+SEO/content decision: do not add more sections to this page without new SERP or real-user evidence; additional concepts belong to their own validated supporting pages/tools.

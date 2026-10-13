@@ -342,3 +342,13 @@ The SEO buffer contains:
 - Pricing/transfer terms are explicitly caveated as changeable provider terms.
 - Source commit for this pass: b65676a7bb871243250550556b2c467053a92f33.
 - Verification completed: preview workflow run 38383656385 succeeded. The rendered preview was visually checked at the top, RAM estimator and shared-hosting diagnostic sections. All intended internal route files exist in the preview branch.
+
+
+### 2026-10-13 — VPS sizing scope closed
+- Finished the three remaining planned sizing-page content gaps instead of moving to another page.
+- Added a dedicated workload-comparison table covering cached/static, small WordPress, WooCommerce/transactional, multiple-sites and background-worker/automation-heavy patterns.
+- Added a bandwidth/monthly-transfer sizing section with an origin-transfer formula, CDN/cache-offload example, and an explicit distinction between transfer allowance and network port speed.
+- Expanded panel overhead into panel + mail overhead, covering SMTP/IMAP/POP, spam/AV, queues, logs and mailbox storage, plus the managed-mail alternative.
+- Preview build for source commit 5faa184b3f389d82b178afdab0b8ae220d86f65c succeeded.
+- Preview artifact commit 1b9064108878378eef319c460a1da15741202464 was visually checked; the three new headings render and the workload table is visible.
+- Current decision: /vps-sizing-for-website/ now contains the full material planned for its own approved scope. P2 tools such as TCO, full peak-event planner, architecture planner and migration-risk calculator remain intentionally outside this page.
