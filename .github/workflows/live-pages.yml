@@ -52,8 +52,8 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          from html.parser import HTMLParser
           import re
-          import sys
 
           p = Path("public/index.html")
           if not p.exists():
@@ -61,15 +61,31 @@ jobs:
 
           html = p.read_text(encoding="utf-8")
 
+          class HeadAudit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.metas = []
+                  self.links = []
+              def handle_starttag(self, tag, attrs):
+                  data = {k.lower(): (v or "") for k, v in attrs}
+                  if tag.lower() == "meta":
+                      self.metas.append(data)
+                  elif tag.lower() == "link":
+                      self.links.append(data)
+
+          audit = HeadAudit()
+          audit.feed(html)
+
+          robots = any(x.get("name","").lower() == "robots" and x.get("content","").lower() == "index,follow" for x in audit.metas)
+          canonical = any(x.get("rel","").lower() == "canonical" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+          hreflang_en = any(x.get("hreflang","").lower() == "en" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+          hreflang_default = any(x.get("hreflang","").lower() == "x-default" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+
           checks = {
-              "robots index,follow": bool(re.search(r'<meta[^>]+name=["\']?robots["\']?[^>]+content=["\']index,follow["\']', html, re.I)
-                                            or re.search(r'<meta[^>]+content=["\']index,follow["\'][^>]+name=["\']?robots["\']?', html, re.I)),
-              "canonical": bool(re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']https://vpsforwebsite\.com/["\']', html, re.I)
-                                 or re.search(r'<link[^>]+href=["\']https://vpsforwebsite\.com/["\'][^>]+rel=["\']canonical["\']', html, re.I)),
-              "hreflang en": bool(re.search(r'<link[^>]+hreflang=["\']en["\'][^>]+href=["\']https://vpsforwebsite\.com/["\']', html, re.I)
-                                   or re.search(r'<link[^>]+href=["\']https://vpsforwebsite\.com/["\'][^>]+hreflang=["\']en["\']', html, re.I)),
-              "hreflang x-default": bool(re.search(r'<link[^>]+hreflang=["\']x-default["\'][^>]+href=["\']https://vpsforwebsite\.com/["\']', html, re.I)
-                                          or re.search(r'<link[^>]+href=["\']https://vpsforwebsite\.com/["\'][^>]+hreflang=["\']x-default["\']', html, re.I)),
+              "robots index,follow": robots,
+              "canonical": canonical,
+              "hreflang en": hreflang_en,
+              "hreflang x-default": hreflang_default,
               "WebSite JSON-LD": '"@type":"WebSite"' in html,
               "WebPage JSON-LD": '"@type":"WebPage"' in html,
           }
@@ -79,6 +95,7 @@ jobs:
 
           failed = [name for name, ok in checks.items() if not ok]
           if failed:
+              print("LINK TAGS:", audit.links)
               raise SystemExit("Production SEO verification failed: " + ", ".join(failed))
 
           h1s = re.findall(r'<h1\b[^>]*>(.*?)</h1>', html, re.I | re.S)
