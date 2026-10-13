@@ -518,3 +518,18 @@ The SEO buffer contains:
 - Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional checker including business criticality, one sponsored affiliate CTA and all required internal links.
 - SERP Audit.txt now marks VPS vs Shared Hosting BUILT / FROZEN.
 - Next planned item: deep fresh SERP + rewrite of VPS for WordPress.
+
+
+### 2026-10-13 — VPS for WordPress frozen
+- Ran a fresh page-level SERP for VPS for WordPress / WordPress VPS hosting / WordPress VPS 2026. Exact owner retained: Title = H1 = VPS for WordPress; URL /vps-for-wordpress/.
+- Research saved at research/vps-for-wordpress-serp-2026-10-13.md.
+- Rebuilt the page around WordPress-specific workload rather than generic VPS sizing: uncached PHP concurrency, PHP-FPM worker memory, database demand, layered caching, Redis/persistent object cache, plugin/background work, WP-Cron, staging/backups, management path and WooCommerce boundary.
+- Official WordPress requirements were rechecked: PHP 8.3+, MariaDB 10.11+ or MySQL 8.0+, HTTPS; Apache or Nginx recommended. Page explicitly separates compatibility requirements from production VPS sizing.
+- Added a functional WordPress VPS Fit Checker with STAY/OPTIMIZE FIRST, 2 GB, 4 GB, 8 GB/recheck architecture and WooCommerce-route outcomes.
+- Current VDSina Standard tiers/prices were rechecked; page does not claim preinstalled WordPress because the current Standard visible template/application groups do not list it.
+- Closed all planned G1-G15 gaps: official requirements vs VPS sizing, uncached concurrency, worker RAM budget, cache layers, persistent object cache, DB bottleneck, WP-Cron/system scheduler, plugin/background workload, honest 1/2/4/8 GB mapping, panel/management fork, staging/backup headroom, WooCommerce boundary, functional fit checker, upgrade triggers and negative qualification.
+- Internal links cover homepage, sizing, VPS vs Shared, WooCommerce, Control Panel, FASTPANEL, Managed/Unmanaged, Migration, Multiple Websites and manual deployment guide.
+- Preview build for source commit edbddcff85e3e48b10f6c94f7b86832f094d285c succeeded. Preview artifact a56a819f0b0f1534bdbcdf6f6a8a60630977a446 visually checked at the top and WordPress VPS Fit Checker.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, one sponsored affiliate CTA, official WordPress requirement text, caching/cron sections and all intended internal links.
+- SERP Audit.txt now marks VPS for WordPress BUILT / FROZEN.
+- Next planned item: deep fresh SERP + rewrite of VPS for WooCommerce.
