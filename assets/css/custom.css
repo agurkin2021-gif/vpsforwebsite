@@ -82,3 +82,5 @@
 .vps-guide-list{display:grid;gap:.75rem}.vps-guide-list li{position:relative;padding:1rem 1rem 1rem 2.5rem;border:1px solid var(--color-border);border-radius:.75rem;background:#fff}.dark .vps-guide-list li{border-color:var(--color-darkmode-border);background:var(--color-darkmode-body)}.vps-guide-list li:before{content:"✓";position:absolute;left:1rem;color:var(--color-primary);font-weight:800}
 .vps-dark .vps-three h3 a{color:#fff;text-decoration:none}.vps-dark .vps-three h3 a:hover{text-decoration:underline}
 @media(max-width:900px){.vps-guide-hero-grid,.vps-guide-section{grid-template-columns:1fr;gap:2rem}}
+
+.vps-inline-link{margin-top:1rem!important}.vps-inline-link a{color:var(--color-primary);font-weight:700;text-decoration:none}.vps-inline-link a:hover{text-decoration:underline}
