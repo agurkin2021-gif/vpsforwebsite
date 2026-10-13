@@ -31,6 +31,12 @@ weight = 2
 
 [[main]]
 parent = "Guides"
+name = "Managed vs Unmanaged VPS"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "Guides"
 name = "VPS vs Shared Hosting"
 url = "/vps-vs-shared-hosting/"
 

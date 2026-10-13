@@ -52,7 +52,7 @@ features:
       - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself."
       - "**Pure Ubuntu / Linux:** manage the web stack over SSH with Nginx or Apache, the runtime and database; more control, but more work stays with you."
       - "**Windows Server:** use this path when the website genuinely requires IIS or ASP.NET rather than treating Windows as a default hosting choice."
-      - "**Support is not the same as managed hosting:** infrastructure help can remove blockers, but a self-managed VPS still leaves operating-system and application administration with the customer unless separate administration is agreed."
+      - "**Support is not the same as managed hosting:** infrastructure help can remove blockers, but a self-managed VPS still leaves operating-system and application administration with the customer unless separate administration is agreed. [Compare Managed vs Unmanaged VPS →](managed-vs-unmanaged-vps/index.html)"
     button:
       enable: true
       label: "Compare control-panel options"

@@ -175,7 +175,7 @@ Use the current workload, database behavior, storage growth, panel/mail overhead
 
 Use [VPS sizing for website]({{< relref "vps-sizing-for-website.md" >}}) for the resource calculation instead of duplicating it here.
 
-A migration is also a management-path decision. If the old host hid most server administration, decide whether the destination will use a control panel or a manually managed Linux stack before the copy begins. See [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}) for that choice.
+A migration is also a management-path decision. If the old host hid most server administration, first decide who will operate the destination after cutover: compare [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}). Then decide whether the destination will use a control panel or a manually managed Linux stack; see [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}) for that choice.
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose the destination VPS</a>
