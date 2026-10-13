@@ -4145,3 +4145,20 @@ body:has(.vps-home) footer .container {
   border-color: var(--vps-secondary) !important;
   box-shadow: none !important;
 }
+
+
+/* Hero affiliate press amplitude normalization */
+@media (min-width: 768px) {
+  .vps-home .vps-hero-panel.vps-affiliate-visual {
+    transform: scale(1.10) !important;
+    transform-origin: right center !important;
+  }
+
+  .vps-home .vps-hero-panel.vps-affiliate-visual:hover {
+    transform: translateY(-3px) scale(1.10) !important;
+  }
+
+  .vps-home .vps-hero-panel.vps-affiliate-visual:active {
+    transform: translateY(0) scale(1.0835) !important;
+  }
+}
