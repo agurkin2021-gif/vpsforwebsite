@@ -155,6 +155,8 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- Deep homepage content audit: the six decision blocks are implemented, but content is not frozen yet. Against the prior 22-question inventory, 12 are sufficiently answered, 6 are partial, and 4 remain open (server-location explanation, CDN/Cloudflare effect, snapshot-vs-backup distinction, first steps after purchase). The planned FAQ/direct-answer layer is also absent from the current home layout. Close these through compact additions/FAQ; do not add another large conceptual section.
+
 - VDSina panel screenshot confirms current balance top-up bonuses: from $100 -> +10% bonus; from $1,000 -> +20% bonus. This is a top-up bonus, not a VPS tariff discount; payment systems may still charge extra processing fees. Use only as compact conversion copy and re-verify before future major rewrites because terms can change.
 
 - Payment screenshot bonus confirmation: VDSina finance interface shows 10% bonus on balance top-ups from $100 and 20% bonus from $1,000; interface also warns payment systems may charge extra fees. Treat as conversion copy, not as a claimed server-plan discount.
