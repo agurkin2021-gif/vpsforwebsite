@@ -155,6 +155,10 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- FASTPANEL intent audited and promoted to a strong P1 supporting-page candidate. VDSina currently lists **FASTPANEL on Ubuntu 22** as a web-hosting-control-panel deployment option on Standard VPS/VDS. Proposed exact page: `VPS with FASTPANEL` -> `/vps-with-fastpanel/`.
+- Keep generic `VPS with Control Panel` as the comparison/choice page; FASTPANEL page should own branded commercial intent: sizing FASTPANEL + websites, verified VDSina deployment path, WordPress/site creation, domains/SSL/PHP/database/multiple-sites workflow.
+- Do not infer that FASTPANEL’s 1 GB minimum is a recommended website size; panel overhead and actual workload must be included in sizing.
+
 - SSH intent classification added: `How to connect to VPS via SSH` is important operational content but already well covered in SERPs, so it is not a novel/WOW gap. Keep only a brief SSH mention on the homepage; place the detailed SSH section inside future `How to Host a Website on VPS`, with SSH hardening linked to future `VPS Security Checklist`. Standalone SSH page remains HOLD pending keyword opportunity validation.
 
 - AI-agent adjacent intent audited: broad `VPS for AI agent` is already competitive and is not a novel gap. More defensible website-centric angle is `website + API-based AI agent/automation on one VPS`, with combined sizing and an explicit one-VPS-vs-two-VPS decision.
