@@ -695,3 +695,14 @@ The SEO buffer contains:
 - Final generated homepage QA: one H1; exact Title/H1; preview noindex; schema present; all current plan values present; no broken internal routes/anchors; only VDSina affiliate destination is externally clickable; all 3 affiliate links carry sponsored/nofollow/noopener.
 - Audit ledger: `research/homepage-vps-for-website-rerun-2026-10-13.md`.
 - Next page-by-page re-audit should proceed to `VPS sizing for website`, not restart the homepage.
+
+
+### 2026-10-13 — Staged homepage visual QA
+
+- Homepage visual QA is now intentionally split into separate section-level passes rather than one full-page check.
+- Pass 1 completed: header + hero + two CTAs + hero illustration.
+- Checked at fixed 390 px and 1280 px widths.
+- Hero structure, spacing, responsive stacking and illustration scale passed.
+- Only issue found: secondary CTA border was too weak in dark mode; fixed with explicit dark-mode white border/text.
+- Temporary QA wrapper files were removed after the pass.
+- Next visual pass: `Do you actually need a VPS?` + VPS Fit / Readiness Checker.
