@@ -1159,3 +1159,63 @@ body:has(.vps-home) footer .container {
     padding: 58px 0;
   }
 }
+
+
+/* Homepage layout hardening: keep reference proportions independent of Tailwind col utilities. */
+.home-header {
+  padding: 0 !important;
+  background: #07101a !important;
+  border-bottom: 0 !important;
+  backdrop-filter: none !important;
+}
+.home-header .navbar {
+  width: 100% !important;
+  max-width: 1040px !important;
+  min-height: 96px !important;
+  margin-inline: auto !important;
+  padding: 0 20px !important;
+}
+.home-header .navbar-brand {
+  font-family: var(--font-secondary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.home-header .nav-link {
+  padding: .55rem .75rem !important;
+  font-size: .96rem;
+  font-weight: 600;
+}
+.vps-home > .vps-hero .container {
+  max-width: 1040px !important;
+}
+.vps-home > .vps-workflow-strip .container {
+  max-width: 1040px !important;
+}
+.vps-home > .vps-home-section .container {
+  max-width: 1040px !important;
+}
+.vps-home > #faq .container {
+  max-width: 1040px !important;
+}
+.vps-home .vps-hero .row > *,
+.vps-home .vps-home-section .row > * {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex: none !important;
+}
+@media (max-width: 1023px) {
+  .home-header .navbar,
+  .vps-home > .vps-hero .container,
+  .vps-home > .vps-workflow-strip .container,
+  .vps-home > .vps-home-section .container,
+  .vps-home > #faq .container {
+    max-width: 860px !important;
+  }
+}
+@media (max-width: 767px) {
+  .home-header .navbar {
+    min-height: 72px !important;
+    padding-inline: 16px !important;
+  }
+}
