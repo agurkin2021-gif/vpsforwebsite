@@ -332,6 +332,63 @@
                   <small>Do not assume infrastructure support means managed server administration.</small>
                 </div>
               </div>
+            {{ else if eq .id "management-path" }}
+              <div class="vps-management-diagram" role="img" aria-label="VPS operating model choices: FASTPANEL, Ubuntu over SSH, or Windows when required, followed by administration ownership">
+                <div class="vps-management-head">
+                  <span class="vps-management-kicker">Operating model</span>
+                  <strong>Choose how the server will be operated</strong>
+                  <small>The panel, operating system and administration model change resource use, workflow and responsibility.</small>
+                </div>
+
+                <div class="vps-management-paths">
+                  <div class="vps-management-card vps-management-card-panel">
+                    <span class="vps-management-index">01</span>
+                    <strong>FASTPANEL</strong>
+                    <small>Domains · SSL · PHP versions · databases · multiple sites</small>
+                    <div class="vps-management-meta">Simpler workflow · panel uses RAM</div>
+                  </div>
+
+                  <div class="vps-management-card vps-management-card-ssh">
+                    <span class="vps-management-index">02</span>
+                    <strong>Ubuntu + SSH</strong>
+                    <small>Nginx or Apache · runtime · database · shell administration</small>
+                    <div class="vps-management-meta">More control · more work stays with you</div>
+                  </div>
+
+                  <div class="vps-management-card">
+                    <span class="vps-management-index">03</span>
+                    <strong>Windows when required</strong>
+                    <small>Use this path for genuine IIS or ASP.NET requirements</small>
+                    <div class="vps-management-meta">Not the default website-hosting choice</div>
+                  </div>
+                </div>
+
+                <div class="vps-management-flow" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+
+                <div class="vps-management-owner-label">Who owns server administration?</div>
+
+                <div class="vps-management-owners">
+                  <div class="vps-management-owner">
+                    <span>Self-managed VPS</span>
+                    <strong>You own the operating system</strong>
+                    <small>Patching · security · backups · monitoring · incident response</small>
+                  </div>
+
+                  <div class="vps-management-owner vps-management-owner-assisted">
+                    <span>Administration help</span>
+                    <strong>Separate management can own the work</strong>
+                    <small>Confirm exactly what is included and who is responsible for the application stack.</small>
+                  </div>
+                </div>
+
+                <div class="vps-management-warning">
+                  <span>Important distinction</span>
+                  <strong>Infrastructure support is not the same as managed server administration.</strong>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"

@@ -2582,3 +2582,275 @@ body:has(.vps-home) footer .container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* Homepage VPS management responsive operating-model diagram */
+.vps-home #management-path .row {
+  grid-template-columns: minmax(0, 46%) minmax(0, 48%) !important;
+  gap: 6% !important;
+  align-items: start !important;
+}
+
+.vps-home #management-path .row > div:first-child {
+  align-self: stretch;
+}
+
+.vps-management-diagram {
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 26px;
+  border: 1px solid #243646;
+  border-radius: 30px 12px 12px 12px;
+  background: #0d1824;
+}
+
+.vps-management-head {
+  margin-bottom: 18px;
+}
+
+.vps-management-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--osp-green);
+  font-size: .66rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.vps-management-head strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: 1.23rem;
+  line-height: 1.2;
+}
+
+.vps-management-head small {
+  display: block;
+  max-width: 35rem;
+  margin-top: 7px;
+  color: #95a4b3;
+  font-size: .73rem;
+  line-height: 1.42;
+}
+
+.vps-management-paths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vps-management-card {
+  min-width: 0;
+  min-height: 178px;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px;
+  border: 1px solid #2a3e4e;
+  border-radius: 13px;
+  background: #101c28;
+}
+
+.vps-management-card-panel {
+  border-color: #2b5f49;
+  background: #0d201a;
+}
+
+.vps-management-card-ssh {
+  border-color: #365064;
+  background: #0b1621;
+}
+
+.vps-management-index {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 28px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 11px;
+  border-radius: 999px;
+  background: #142635;
+  color: #71e5a1;
+  font-size: .62rem;
+  font-weight: 800;
+}
+
+.vps-management-card strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .86rem;
+  line-height: 1.2;
+}
+
+.vps-management-card small {
+  display: block;
+  margin-top: 7px;
+  color: #96a5b4;
+  font-size: .67rem;
+  line-height: 1.38;
+}
+
+.vps-management-meta {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #263b4b;
+  color: #78c99a;
+  font-size: .62rem;
+  font-weight: 650;
+  line-height: 1.32;
+}
+
+.vps-management-flow {
+  position: relative;
+  width: 2px;
+  height: 30px;
+  margin: 0 auto;
+  background: var(--osp-green);
+}
+
+.vps-management-flow i {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--osp-green);
+  border-bottom: 2px solid var(--osp-green);
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.vps-management-owner-label {
+  margin: 1px 0 10px;
+  color: #8293a4;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vps-management-owners {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vps-management-owner {
+  min-width: 0;
+  min-height: 118px;
+  padding: 13px 14px;
+  border: 1px solid #2a3e4e;
+  border-radius: 12px;
+  background: #07101a;
+}
+
+.vps-management-owner-assisted {
+  border-color: #285e46;
+  background: #0b1d19;
+}
+
+.vps-management-owner > span {
+  display: block;
+  color: var(--osp-green);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.vps-management-owner strong {
+  display: block;
+  margin-top: 6px;
+  color: #f7f6f2;
+  font-size: .8rem;
+  line-height: 1.25;
+}
+
+.vps-management-owner small {
+  display: block;
+  margin-top: 6px;
+  color: #93a2b1;
+  font-size: .65rem;
+  line-height: 1.36;
+}
+
+.vps-management-warning {
+  margin-top: 12px;
+  padding: 13px 15px;
+  border-left: 3px solid var(--osp-green);
+  border-radius: 8px;
+  background: #07101a;
+}
+
+.vps-management-warning span {
+  display: block;
+  color: var(--osp-green);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.vps-management-warning strong {
+  display: block;
+  margin-top: 5px;
+  color: #f7f6f2;
+  font-size: .77rem;
+  line-height: 1.28;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .vps-home #management-path .row {
+    grid-template-columns: minmax(0, 47%) minmax(0, 47%) !important;
+    gap: 6% !important;
+  }
+
+  .vps-management-diagram {
+    min-height: 580px;
+    padding: 20px;
+  }
+
+  .vps-management-paths {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vps-management-card:last-child {
+    grid-column: 1 / -1;
+    min-height: 118px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-home #management-path .row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  .vps-management-diagram {
+    min-height: 0;
+    padding: 22px;
+    border-radius: 24px 10px 10px 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .vps-management-paths,
+  .vps-management-owners {
+    grid-template-columns: 1fr;
+  }
+
+  .vps-management-card,
+  .vps-management-owner {
+    min-height: 0;
+  }
+
+  .vps-management-card:last-child {
+    grid-column: auto;
+  }
+}
