@@ -3849,3 +3849,15 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Fresh SERP adds one useful secondary pattern: provider-native resource dashboards are a starting host-metric layer, not complete monitoring. The page now states this explicitly and retains external HTTP(S), application/service, DB/job, TLS/DNS, logs, alert ownership and trend layers.
 - Verified required inbound links from Security, Backup, Sizing and Multiple Websites.
 - Preview emits `noindex,nofollow`; production head logic emits canonical + en/x-default hreflang under the production BaseURL.
+
+
+### 2026-10-13 — How to Choose VPS Location built/frozen
+
+- Fresh page-level SERP locked exact owner: `How to Choose VPS Location` / `How to Choose VPS Location` / `/how-to-choose-vps-location/`.
+- Built dedicated location decision page and closed G1-G14.
+- Main differentiator: functional VPS Location Decision Checker plus a measurement-first workflow instead of a generic country list.
+- Page owns audience weighting, routing/peering, repeated RTT, MTR/traceroute/HTTP testing, CDN-vs-origin, dependency placement, global architecture, physical-location-vs-GeoIP, jurisdiction/data residency and SEO/geotargeting truth.
+- Explicit anti-cannibalization boundaries remain: resource size -> VPS sizing; cutover -> migration; ongoing latency/availability -> monitoring; recovery copies -> backup.
+- Added inbound links from homepage, VPS sizing and Website migration.
+- Verified generated preview: exact Title/H1, one H1, noindex/nofollow, WebPage + BreadcrumbList JSON-LD, checker, affiliate rel/disclosure, clean RawGitHack URLs and successful visual render.
+- Core 14-page architecture is now complete. Next mandatory task is cluster-wide overlap/internal-link/cannibalization audit, not another new page.
