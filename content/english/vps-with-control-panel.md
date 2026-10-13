@@ -55,7 +55,7 @@ A panel may be unnecessary when:
 
 "No panel" is not automatically more advanced or more secure. It simply moves every administration task back to your own tools, scripts and operating procedures.
 
-The full manual path belongs to the future **How to host a website on VPS** guide rather than a duplicate no-panel commercial page.
+The full manual path is covered in [How to host a website on VPS]({{< relref "how-to-host-a-website-on-vps.md" >}}) rather than a duplicate no-panel commercial page.
 
 ## What "control panel" means on a VPS
 
@@ -457,7 +457,7 @@ No-panel can be the better fit when:
 - panel restrictions conflict with deployment;
 - the recurring panel license is not justified.
 
-But manual hosting is not "free management." You still own all configuration, patching, TLS, backups, monitoring and recovery.
+But manual hosting is not "free management." You still own all configuration, patching, TLS, backups, monitoring and recovery. For the actual SSH/Nginx/DNS/HTTPS deployment workflow, use [How to host a website on VPS]({{< relref "how-to-host-a-website-on-vps.md" >}}).
 
 ## A repeatable control-panel decision
 
