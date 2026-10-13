@@ -1402,3 +1402,52 @@ body:has(.vps-home) footer .container {
     max-width: 100% !important;
   }
 }
+
+
+/* Homepage hero visual balance v2 */
+@media (min-width: 768px) {
+  .vps-home .vps-hero .row {
+    grid-template-columns: minmax(0, 41%) minmax(0, 55%) !important;
+    gap: 4% !important;
+    align-items: center !important;
+  }
+
+  .vps-home .vps-hero-copy {
+    max-width: 100% !important;
+  }
+
+  .vps-home .vps-hero-copy h1 {
+    max-width: none !important;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
+    font-size: clamp(3.15rem, 3.45vw, 3.95rem) !important;
+  }
+
+  .vps-home .vps-hero-copy > p {
+    max-width: 540px !important;
+  }
+
+  .vps-home .vps-hero-panel {
+    width: 100% !important;
+    max-width: 700px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    transform: translateX(10px) !important;
+  }
+
+  .vps-home .vps-hero-panel img {
+    width: 100% !important;
+    max-width: 700px !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .vps-home .vps-hero-panel,
+  .vps-home .vps-hero-panel img {
+    max-width: 740px !important;
+  }
+}
