@@ -103,7 +103,7 @@ Keep separate from generic WordPress because the SERP and workload are distinct.
 
 6. VPS vs Shared Hosting
 URL: /vps-vs-shared-hosting/
-Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Status: BUILT / FROZEN
 Role:
 - when to stay on shared hosting;
 - when VPS becomes justified;
@@ -370,11 +370,11 @@ DONE / FROZEN
 - FASTPANEL VPS Hosting
 - VPS with Control Panel
 - How to host a website on VPS
+- VPS vs Shared Hosting
 
 EXISTS / MUST BE DEEPLY REWORKED
 - VPS for WordPress
 - VPS for WooCommerce
-- VPS vs Shared Hosting
 - VPS for Multiple Websites
 
 NOT BUILT YET
@@ -387,15 +387,14 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Deepen VPS vs Shared Hosting.
-2. Deepen VPS for WordPress.
-3. Deepen VPS for WooCommerce.
-4. Deepen VPS for Multiple Websites.
-5. Build VPS Security Checklist.
-6. Build VPS Backup Strategy.
-7. Run exact-query SERP and build VPS Monitoring.
-8. Run exact-query SERP and build How to Choose VPS Location.
-9. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Deepen VPS for WordPress.
+2. Deepen VPS for WooCommerce.
+3. Deepen VPS for Multiple Websites.
+4. Build VPS Security Checklist.
+5. Build VPS Backup Strategy.
+6. Run exact-query SERP and build VPS Monitoring.
+7. Run exact-query SERP and build How to Choose VPS Location.
+8. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
