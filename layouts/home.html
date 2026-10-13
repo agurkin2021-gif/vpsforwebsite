@@ -270,6 +270,68 @@
                   <small>Validate CPU, memory, storage growth and dynamic workload together.</small>
                 </div>
               </div>
+            {{ else if eq .id "provider-checklist" }}
+              <div class="vps-provider-diagram" role="img" aria-label="VPS provider evaluation flow covering compute, network, platform, operations and billing before purchase">
+                <div class="vps-provider-head">
+                  <span class="vps-provider-kicker">Provider audit</span>
+                  <strong>Compare the terms that affect the website</strong>
+                  <small>Headline price is only one input. Check the infrastructure and operating terms before you commit.</small>
+                </div>
+
+                <div class="vps-provider-grid">
+                  <div class="vps-provider-card">
+                    <span class="vps-provider-index">01</span>
+                    <strong>Compute</strong>
+                    <small>CPU policy · RAM · storage type · expected I/O</small>
+                  </div>
+
+                  <div class="vps-provider-card">
+                    <span class="vps-provider-index">02</span>
+                    <strong>Network</strong>
+                    <small>Transfer · port speed · IP terms · region · route</small>
+                  </div>
+
+                  <div class="vps-provider-card">
+                    <span class="vps-provider-index">03</span>
+                    <strong>Platform</strong>
+                    <small>OS images · panel options · license cost</small>
+                  </div>
+
+                  <div class="vps-provider-card">
+                    <span class="vps-provider-index">04</span>
+                    <strong>Operations</strong>
+                    <small>Backups · firewall · DDoS · monitoring · support scope</small>
+                  </div>
+
+                  <div class="vps-provider-card vps-provider-card-wide">
+                    <span class="vps-provider-index">05</span>
+                    <strong>Billing & upgrade path</strong>
+                    <small>Billing cadence · renewal terms · add-ons · upgrade limits · extra charges</small>
+                  </div>
+                </div>
+
+                <div class="vps-provider-flow" aria-hidden="true">
+                  <span></span>
+                  <i></i>
+                </div>
+
+                <div class="vps-provider-shortlist">
+                  <span class="vps-provider-shortlist-label">Shortlist</span>
+                  <strong>Keep only providers that match the workload and operating model</strong>
+                  <div class="vps-provider-chips">
+                    <span>Performance fit</span>
+                    <span>Location fit</span>
+                    <span>Management fit</span>
+                    <span>Cost fit</span>
+                  </div>
+                </div>
+
+                <div class="vps-provider-result">
+                  <span>Before paying</span>
+                  <strong>Verify the current order page and support scope</strong>
+                  <small>Do not assume infrastructure support means managed server administration.</small>
+                </div>
+              </div>
             {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"
