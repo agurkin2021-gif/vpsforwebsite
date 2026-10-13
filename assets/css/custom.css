@@ -1497,3 +1497,11 @@ body:has(.vps-home) footer .container {
     font-size: .86rem !important;
   }
 }
+
+
+/* Homepage adjustment 06: tighter header navigation balance */
+@media (min-width: 1024px) {
+  .home-header #nav-menu {
+    transform: translateX(-48px) !important;
+  }
+}
