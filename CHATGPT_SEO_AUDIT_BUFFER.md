@@ -2313,3 +2313,232 @@ These stay tightly inside the website cluster and avoid RDP/general-Windows nois
 | GAP-52 | SQL Server web-app sizing | IIS/ASP.NET pages first | HOLD |
 | GAP-53 | Windows RDP generic intent | none for core site | EXCLUDE |
 | GAP-54 | Windows WordPress | possible future niche | HOLD |
+
+
+## 35. Novel-intent hunt #2 — VPS Architecture Planner / "One VPS or Split?"
+
+Research pass: 2026-10-12.
+
+### Strongest new candidate after Fit / Readiness Engine
+
+Working concept:
+**One VPS or Split?**
+Alternative internal name:
+**VPS Architecture Planner**
+
+Core job-to-be-done:
+> "Should I keep my website, database, background workers, staging environment, AI agent and other services on one VPS, or split them across several VPS servers — and what should I separate first?"
+
+### SERP evidence
+
+Current search results contain separate articles for individual pieces:
+- one VPS vs multiple websites;
+- application + database on one server vs separate DB VPS;
+- dev/staging/production on one VPS vs separate servers;
+- single-VPS vs multi-VPS SaaS architecture;
+- when to move workers/cache/database to separate nodes.
+
+Examples found:
+- Marksystem: "One VPS or a separate database server?"
+- DCHost: separate database/application servers.
+- DCHost: dev/staging/production one VPS or separate servers.
+- ActiveSkill: when to move from one server to multiple.
+- DCHost: single-VPS vs multi-VPS for SaaS.
+- HostingGuider: WooCommerce database separation.
+
+What was NOT found in this pass:
+a strong website-focused interactive/planner experience that takes the user's workload/risk inputs and outputs an ordered architecture recommendation.
+
+Therefore the uncovered layer is not the question itself; it is the **combined personalized architecture decision**.
+
+### Why this can rival the VPS Fit / Readiness Engine
+
+The Fit Engine answers:
+**Do I need VPS, and what size?**
+
+The Architecture Planner answers the next question:
+**Should this workload stay on one VPS, or should I buy multiple VPSs and split roles?**
+
+This has direct commercial value because the honest result may recommend:
+- one VPS;
+- one main VPS + a smaller staging VPS;
+- web VPS + database VPS;
+- web VPS + DB VPS + worker/automation VPS;
+- production VPS + separate sandbox/AI-agent VPS.
+
+It can increase order value without forcing unnecessary servers, because the logic explicitly keeps small workloads on one box.
+
+### Inputs
+
+#### Business/risk
+- business-critical or hobby;
+- ecommerce/payments;
+- downtime tolerance;
+- number of client sites;
+- sensitive data;
+- need for staging/load testing.
+
+#### Workload
+- website/CMS/app type;
+- database intensity;
+- background jobs/queues;
+- AI agent/browser automation;
+- cron/import/export;
+- number of sites;
+- combined CPU/RAM pressure;
+- I/O pressure.
+
+#### Operational
+- backups/restores;
+- monitoring;
+- deployment frequency;
+- team size;
+- need for independent maintenance windows.
+
+### Output topologies
+
+#### Topology A — One VPS
+Use when:
+- workload is modest;
+- one failure domain is acceptable;
+- web + DB + jobs do not contend materially;
+- operational simplicity is more valuable than isolation.
+
+#### Topology B — Production + Staging VPS
+Use when:
+- updates/testing create risk;
+- load testing or imports could hurt production;
+- production needs stronger isolation.
+
+#### Topology C — Web/App VPS + Database VPS
+Use when:
+- DB memory/I/O competes with app/web processes;
+- DB needs independent scaling or backup/maintenance;
+- data tier needs tighter exposure.
+
+#### Topology D — Web/App + DB + Worker/Automation
+Use when:
+- background jobs, n8n, AI-agent tasks, scraping/browser automation or queue workers create noisy load;
+- those jobs can be restarted/scaled separately.
+
+#### Topology E — Multi-site isolation
+Use when:
+- one important client/site should not share blast radius with lower-trust or noisy sites;
+- a compromised/heavy tenant could impact all sites.
+
+### "What should I split first?" decision order
+
+Default principle:
+1. keep architecture simple while there is headroom;
+2. split **production from staging/dev** when testing creates business risk;
+3. split **database** when resource contention / independent scaling / maintenance justifies it;
+4. split **workers/automation/AI agents** when they create bursty/noisy CPU/RAM load;
+5. split high-value/noisy client sites when blast radius becomes unacceptable;
+6. add load balancing/HA only when uptime/load requirements justify the extra operational complexity.
+
+This order must be evidence-driven, not presented as universal law.
+
+### WOW output
+
+The result should visually show:
+- current architecture;
+- recommended architecture;
+- which service moves to which VPS;
+- suggested size per VPS;
+- cost difference;
+- blast-radius improvement;
+- operational complexity increase;
+- next trigger for another split.
+
+Example:
+**Today:** 1 VPS — web + MySQL + WooCommerce + n8n.
+**Recommendation:** 2 VPSs — keep web+DB together, move n8n/browser automation to smaller second VPS.
+**Why:** worker spikes compete with checkout PHP workers; database separation is premature.
+**Next split trigger:** sustained DB I/O / memory contention.
+
+This is a much stronger result than a static "use two servers" article.
+
+### Relationship to existing pages
+
+- Homepage: compact entry point only.
+- Fit / Readiness Engine: determines need + size.
+- VPS Architecture Planner: determines topology / number of VPSs.
+- VPS for Multiple Websites: multi-site workload and isolation details.
+- Website migration to VPS: movement/cutover mechanics.
+- VPS sizing for website: resource sizing.
+- Managed vs Unmanaged VPS: operations responsibility.
+- AI-agent adjacent intent: worker/automation split input.
+- VPS for FASTPANEL / No Control Panel / IIS: stack/management-path inputs.
+
+### Potential indexable page
+
+Do NOT lock the SEO title yet.
+
+Possible query families to validate later:
+- one VPS or multiple VPS
+- single VPS vs multiple VPS
+- separate database VPS
+- website on one server or multiple servers
+- when to split VPS services
+- web server and database same VPS or separate
+
+The interactive tool may deserve a page even if no single exact keyword dominates, because it can earn links and satisfy multiple adjacent intents.
+
+### Novelty confidence
+
+**High for the combined planner experience.**
+
+Not safe to claim that nobody has written about these architecture choices.
+Many individual articles exist.
+
+The differentiation is:
+**one personalized website-specific planner that combines cost, risk, blast radius, resource contention and service separation into an ordered multi-VPS recommendation.**
+
+## 36. Runner-up novel candidate — VPS True Cost / TCO Calculator
+
+Current SERP has articles about hidden VPS costs:
+- server;
+- panel licensing;
+- backups;
+- monitoring;
+- admin time;
+- management;
+- bandwidth/IP extras.
+
+A few general cloud/colocation TCO calculators exist, but a simple website-owner-focused:
+**"What will this cheap VPS really cost me?"**
+calculator is less common.
+
+Potential inputs:
+- VPS price;
+- control panel;
+- backup storage;
+- monitoring;
+- mail service;
+- admin hours/month;
+- managed support;
+- number of websites.
+
+Output:
+- infrastructure cash cost;
+- operational/tool cost;
+- time cost;
+- cost per website;
+- comparison with shared/managed hosting.
+
+Status:
+**PROMISING P2 WOW utility**, but weaker than Architecture Planner for core website intent.
+
+Reason:
+the search intent is less naturally phrased and may depend more on linkability/tool value than direct keyword volume.
+
+## 37. Novel-intent ranking after current audit
+
+1. **VPS Fit / Readiness Engine** — strongest overall.
+   - Need VPS? Optimize first? Which size? Ready to operate it?
+2. **VPS Architecture Planner / One VPS or Split?** — strongest new rival.
+   - One VPS or multiple? What to split first? Size each role.
+3. **Website + AI Agent combined sizing / one-vs-two VPS decision** — strong modern adjacent dimension.
+4. **VPS True Cost / TCO Calculator** — strong trust/conversion utility.
+5. **FASTPANEL vs Pure Ubuntu / No Control Panel decision** — strong commercial supporting path, less novel.
+6. **Windows IIS / ASP.NET branch** — relevant supporting cluster, not a novel gap.
