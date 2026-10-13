@@ -229,3 +229,35 @@ Human-readable affiliate disclosure required.
 - production canonical behavior;
 - JSON-LD;
 - browser visual QA.
+
+
+## Freeze audit — 2026-10-13
+
+Status: BUILT / FROZEN
+
+Verified:
+- exact Title = H1 = `How to Choose VPS Location`;
+- URL = `/how-to-choose-vps-location/`;
+- exactly one H1 in generated preview HTML;
+- G1-G14 are implemented;
+- VPS Location Decision Checker is present;
+- audience weighting, geography-vs-routing, repeated RTT, MTR/traceroute and HTTP testing are covered;
+- CDN vs origin and dynamic-traffic distinction is explicit;
+- critical dependency placement and cross-region round-trip risk are covered;
+- global one-origin+CDN vs multi-region decision is covered;
+- physical location vs GeoIP is separated;
+- jurisdiction/data-residency section carries a non-legal-advice boundary;
+- Google geotargeting section does not claim server-country ranking gains;
+- resource sizing, migration, monitoring, backup, WooCommerce and multi-site intents are delegated with contextual links;
+- affiliate CTA uses `rel="sponsored nofollow noopener"` and a human-readable disclosure;
+- preview emits `noindex,nofollow`;
+- WebPage and BreadcrumbList JSON-LD are present;
+- shared production head logic emits canonical/hreflang outside preview;
+- direct RawGitHack browser preview renders correctly in the stock Hugoplate visual system.
+
+Inbound links added from:
+- homepage location summary / FAQ;
+- VPS sizing for website;
+- Website migration to VPS.
+
+No provider location inventory was invented or published.
