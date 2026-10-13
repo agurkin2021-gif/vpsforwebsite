@@ -155,6 +155,10 @@ A future ChatGPT session must read this file before modifying the repository.
 
 ### 2026-10-12
 
+- AI-agent adjacent intent audited: broad `VPS for AI agent` is already competitive and is not a novel gap. More defensible website-centric angle is `website + API-based AI agent/automation on one VPS`, with combined sizing and an explicit one-VPS-vs-two-VPS decision.
+- VDSina is currently verified as a general self-managed VPS platform with OS/software installation and API management; no dedicated official preinstalled/managed AI-agent offer was found. Do not claim one.
+- Keep AI-agent content as a supporting use case / Fit Engine dimension for now; dedicated page remains HOLD pending query validation.
+
 - Novel-intent research completed: strongest under-owned opportunity is a **VPS Fit / Readiness Engine** rather than another generic article. It combines: need-VPS diagnosis, optimize-first branch, translation of real cPanel/CloudLinux usage into VPS sizing, self-managed readiness, migration-risk scoring, and mapping to verified VDSina tiers.
 - Closest competitors only cover fragments (generic calculators, cPanel-to-VPS sizing articles, readiness checklists, migration guides). Do not claim nobody has anything similar; differentiation is the combined diagnostic workflow.
 - Architecture decision: keep homepage H1 exactly `VPS for website`; use the diagnostic as a homepage supporting utility/message, with deeper routing to sizing, VPS-vs-shared, managed-vs-unmanaged, and migration pages.
