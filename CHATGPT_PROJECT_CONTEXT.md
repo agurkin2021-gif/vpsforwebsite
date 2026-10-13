@@ -489,3 +489,18 @@ The SEO buffer contains:
 - Rechecked the frozen page against the stored G1-G13 SERP gap list and current generated preview. All planned content gaps are closed.
 - Verified current generated output: Title=H1=VPS with Control Panel, one H1, preview noindex/nofollow, no preview canonical, two JSON-LD blocks, functional panel-fit checker, representative panel map, current VDSina FASTPANEL/HestiaCP/BitrixVM truth boundary, two sponsored affiliate CTAs, and all planned contextual links.
 - Corrected SERP Audit.txt bookkeeping: removed duplicated DONE/FROZEN block and restored the intended next work order beginning with a fresh exact-query SERP for How to host a website on VPS.
+
+
+### 2026-10-13 — How to host a website on VPS frozen
+- Ran a fresh exact-query SERP across How to host a website on VPS / host website on VPS / without control panel / VPS setup variants. Exact owner locked: Title = H1 = How to host a website on VPS; URL /how-to-host-a-website-on-vps/.
+- Fresh research saved at research/how-to-host-a-website-on-vps-serp-2026-10-13.md. Current exact/near-exact SERP includes Hostinger, Fasthosts, Hyperswitches, Server Manager, CWP.sg, ScalaHosting, DCHost, Namecheap, RoyaleHosting, Linux Junkies and Virteche.
+- Merged the old VPS without Control Panel intent into this page as planned; no separate no-panel URL will be created.
+- Implemented a functional Deployment Path Checker for static/manual, PHP/WordPress, Node/Python/reverse-proxy and control-panel paths.
+- Closed all planned G1-G15 gaps: manual/panel/managed branch, stack branch before install, no-panel path, secure first SSH access, pre-DNS testing, DNS+hostname dual requirement, HTTPS ordering, static/PHP/app differences, non-root permissions/secrets, repeatable deployment methods, production acceptance, reboot validation, basic resource validation, negative qualification and functional path checker.
+- VDSina current pure OS templates were rechecked on the Standard page; page uses Ubuntu/Debian as documentation examples without calling them universally best.
+- Internal links added: homepage pure-Linux branch -> this guide; VPS with Control Panel manual/no-panel sections -> this guide; new page -> homepage, sizing, control panel, FASTPANEL, managed-vs-unmanaged, migration, WordPress and Multiple Websites.
+- Guides menu includes Host Website on VPS.
+- Final preview build for source commit 709a05f1436e1b50915806bec13c19d50ead6e04 succeeded. Preview artifact d59925531c458870dbeb777f0e86ea802340b820 was visually checked at the top, deployment checker and pre-DNS testing area.
+- Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, two JSON-LD blocks, two sponsored affiliate CTAs, all intended internal links, deployment checker, pre-DNS test, no-panel negative qualification, reboot test and production acceptance checklist.
+- SERP Audit.txt now marks How to host a website on VPS BUILT / FROZEN.
+- Next planned item: deep fresh SERP + rewrite of VPS vs Shared Hosting.
