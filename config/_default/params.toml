@@ -36,7 +36,7 @@ expire_days = 7
 content = ""
 
 [metadata]
-keywords = ["vps for website", "website vps hosting", "vps hosting"]
+keywords = ["vps for website", "website vps hosting", "vps hosting for websites"]
 description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
 author = "VPSforWebsite.com"
 twitter = ""
@@ -66,19 +66,15 @@ embed_url = ""
 [[plugins.css]]
 link = "plugins/swiper/swiper-bundle.css"
 lazy = true
-
 [[plugins.css]]
 link = "plugins/glightbox/glightbox.css"
 lazy = true
-
 [[plugins.css]]
 link = "plugins/font-awesome/v6/brands.css"
 lazy = true
-
 [[plugins.css]]
 link = "plugins/font-awesome/v6/solid.css"
 lazy = true
-
 [[plugins.css]]
 link = "plugins/font-awesome/v6/icons.css"
 lazy = true
@@ -86,35 +82,30 @@ lazy = true
 [[plugins.js]]
 link = "js/search.js"
 lazy = false
-
 [[plugins.js]]
 link = "plugins/swiper/swiper-bundle.js"
 lazy = false
-
 [[plugins.js]]
 link = "plugins/glightbox/glightbox.js"
 lazy = true
-
 [[plugins.js]]
 link = "js/gallery-slider.js"
 lazy = true
-
 [[plugins.js]]
 link = "plugins/cookie.js"
 lazy = false
-
 [[plugins.js]]
 link = "js/accordion.js"
 lazy = true
-
 [[plugins.js]]
 link = "js/tab.js"
 lazy = true
-
 [[plugins.js]]
 link = "js/modal.js"
 lazy = true
-
 [[plugins.js]]
 link = "plugins/youtube-lite.js"
 lazy = true
+[[plugins.js]]
+link = "js/vps-site.js"
+lazy = false
