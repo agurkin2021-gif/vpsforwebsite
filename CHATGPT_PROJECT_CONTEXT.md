@@ -651,3 +651,15 @@ The SEO buffer contains:
 - `.github/workflows/pages.yml` now uses concurrency group `hugo-preview` with `cancel-in-progress: true`.
 - A freshness check fetches `origin/main` and publishes only when `GITHUB_SHA` still equals the current main commit; stale runs skip the preview publish step.
 - Keep this guard. It is required for deterministic visual QA when many SEO/content commits are made quickly.
+
+
+### 2026-10-13 — Core 14 pages complete
+
+- Built and froze the final planned core page: `How to Choose VPS Location` at `/how-to-choose-vps-location/`.
+- Fresh SERP confirmed the exact decision-guide query; Title/H1 remain exact with no tail per project rule.
+- Page includes the VPS Location Decision Checker and closes the saved G1-G14 gap set.
+- Added the page to Guides navigation and contextual inbound links from homepage, VPS sizing and Website migration.
+- Browser QA on direct RawGitHack preview passed visually in the stock Hugoplate system.
+- The 14-page core architecture recorded in `SERP Audit.txt` is now fully BUILT / FROZEN.
+- Next continuation point: perform the cluster-wide overlap, cannibalization and internal-link audit across the homepage + all 14 core pages. Do not start a HOLD candidate until that audit is complete.
+- Live GitHub Pages deployment remains an infrastructure blocker unrelated to page content: production build succeeds but deploy-pages returns 404 while GitHub Pages is not enabled for the repository.
