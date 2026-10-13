@@ -48,6 +48,26 @@ Preserve the existing VPS-related content and page intent. Do not invent unrelat
 
 ## SEO invariants
 
+### Exact keyword / Title / H1 / URL rule
+
+For every target commercial page, the primary target query must be used **without tails or additions** in the page naming elements.
+
+Required:
+- `Title` = exact primary target query;
+- `H1` = exact same text as `Title`;
+- URL slug = the same keyword phrase in URL form (lowercase, words separated with hyphens);
+- no extra words before or after the primary query in `Title` or `H1`.
+
+Example for the main target:
+- primary query: `VPS for website`
+- Title: `VPS for website`
+- H1: `VPS for website`
+- URL form for an internal page would be: `/vps-for-website/`
+
+For the site homepage at `/`, the root URL is retained; do **not** create a duplicate `/vps-for-website/` homepage only to mimic the slug.
+
+Homepage primary target query is fixed as: **VPS for website**.
+
 For every indexable page preserve/check:
 
 - exactly one H1;
@@ -114,3 +134,18 @@ If repository code and old chat recollections conflict, inspect the current repo
 After a visual/site edit, the user primarily wants the **working visual URL of the site**, not repository or commit URLs.
 
 Do not claim publication is complete until the public URL has been checked.
+
+
+## Mandatory context maintenance
+
+After every substantive change to site code, content, SEO, layouts, navigation, deployment, or configuration, update this file in the same work session.
+
+Record:
+- what changed;
+- new user rules/decisions;
+- current state;
+- deployment state;
+- blockers/known defects;
+- exact next continuation point.
+
+A future ChatGPT session must read this file before modifying the repository.
