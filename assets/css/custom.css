@@ -1353,3 +1353,52 @@ body:has(.vps-home) footer .container {
     text-wrap: balance !important;
   }
 }
+
+
+/* Reliable SVG homepage hero */
+.vps-home .vps-hero-panel {
+  width: 100% !important;
+  max-width: 570px !important;
+  min-height: 0 !important;
+  margin-left: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.vps-home .vps-hero-panel::before,
+.vps-home .vps-hero-panel::after {
+  display: none !important;
+}
+.vps-home .vps-hero-panel img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+@media (min-width: 768px) {
+  .vps-home .vps-hero .row {
+    grid-template-columns: minmax(0, 43%) minmax(0, 49%) !important;
+    gap: 8% !important;
+  }
+  .vps-home .vps-hero-copy h1 {
+    max-width: none !important;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
+  }
+}
+@media (max-width: 767px) {
+  .vps-home .vps-hero-panel {
+    max-width: 100% !important;
+  }
+}
