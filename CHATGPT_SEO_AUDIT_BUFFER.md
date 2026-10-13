@@ -2964,3 +2964,31 @@ Safe wording while screenshot remains current:
 - Add a note that payment processors may charge additional fees.
 
 Do not convert the bonus into an implied VPS discount unless the bonus terms are confirmed to apply exactly as account credit usable for server payments.
+
+
+## 43. VDSina balance top-up bonus — screenshot-confirmed
+
+Screenshot supplied by user from VDSina control panel (`cp.vdsina.com/operation/create`) on 2026-10-12.
+
+### Current bonus terms visible in the panel
+- Top up from **$100** -> **10% bonus** added to the payment.
+- Top up from **$1,000** -> **20% bonus** added to the payment.
+- The panel also warns that payment systems may charge an additional processing fee.
+
+### Interpretation
+This is a **balance top-up bonus**, not a discount on the VPS tariff itself. Do not describe it as "10%/20% off VPS".
+
+### Commercial value
+This is materially stronger than merely saying "crypto payment available" because it changes the effective account funding value at larger top-ups.
+
+### Homepage recommendation
+Use only a compact conversion line near pricing/final CTA, for example:
+- **Top up from $100 and get a 10% balance bonus; from $1,000, 20%.**
+
+Do not make it a large homepage section. Treat it as a current panel-confirmed commercial condition that may change; re-verify before future major rewrites/translations.
+
+### Truth boundary
+- Do not convert the bonus into a tariff discount percentage.
+- Do not say "20% cheaper VPS".
+- Do not imply payment-system fees are waived.
+- Keep the provider warning that payment processors may charge additional fees in detailed/FAQ copy if the bonus is explained there.
