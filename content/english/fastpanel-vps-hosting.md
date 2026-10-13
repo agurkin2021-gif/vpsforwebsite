@@ -65,6 +65,8 @@ FASTPANEL's official manual-install documentation currently states a minimum of:
 
 Those are **panel installation minimums**. They are not a production sizing recommendation for a VPS that also runs:
 
+FASTPANEL's current manual-install documentation lists these supported 64-bit operating systems: Debian 9/10/11/12, Ubuntu 18.04/20.04/22.04/24.04, CentOS 7, AlmaLinux 8 and Rocky Linux 8. Manual installation requires a clean OS. That broader FASTPANEL support list is separate from VDSina's current preconfigured option, which is specifically listed as FASTPANEL on Ubuntu 22.
+
 - Nginx/Apache or other web services;
 - PHP-FPM or another runtime;
 - MySQL/MariaDB/PostgreSQL;
