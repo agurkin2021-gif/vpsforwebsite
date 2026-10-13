@@ -3876,3 +3876,13 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Pair verdicts: Panel<->FASTPANEL, Sizing<->WordPress, Deployment<->Security, WordPress<->WooCommerce, Migration<->Deployment, Managed<->Shared, Security<->Backup<->Monitoring and Sizing<->Multiple are valid intentional overlaps with distinct ownership.
 - Full ledger: `research/cluster-overlap-internal-link-audit-2026-10-13.md`.
 - Do not add HOLD candidates until a fresh SERP proves a new distinct owner. Core architecture remains frozen.
+
+
+### 2026-10-13 — Homepage VPS for website re-audit implemented
+
+- Re-ran English Google SERP for `VPS for website` and found the current SERP strongly commercial-investigational: provider landing pages + informational validation + community/provider-trust discussions.
+- Locked owner remains `VPS for website` / root `/`; no Title/H1 tail added.
+- Implemented the homepage gaps from `research/homepage-vps-for-website-rerun-2026-10-13.md`: functional fit checker, plan table with daily+monthly prices, provider checklist, PAA FAQs, methodology, second hero CTA, local intent-specific SVGs, WebSite/WebPage schema, mixed workload example and CTA rewrite.
+- Generated preview passes: one H1, exact Title/H1, noindex preview, schema present, no broken home links/anchors, no demo assets, and only the VDSina affiliate destination as a user-visible external link.
+- All homepage affiliate links have `sponsored nofollow noopener`.
+- Do not re-expand deep sizing/security/backup/monitoring/location material on the homepage; the root remains summary/commercial hub and routes to the dedicated owners.
