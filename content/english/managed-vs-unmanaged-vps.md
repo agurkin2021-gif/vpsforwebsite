@@ -354,7 +354,7 @@ Ask separately:
 - who performs a restore;
 - how recent the restored data will be.
 
-A provider saying "backups included" does not answer all six.
+A provider saying "backups included" does not answer all six. For RPO/RTO, retention, offsite copies and restore architecture, use [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}).
 
 ### Incident response
 
