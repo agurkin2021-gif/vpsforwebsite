@@ -1,4 +1,4 @@
-name: Build Hugo site
+name: Build Hugo preview
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -36,10 +36,12 @@ jobs:
         run: hugo mod get
 
       - name: Build
-        run: hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+        run: hugo --gc --minify --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Publish preview branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: vpsforwebsite-public
-          path: ./public
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: preview
+          publish_dir: ./public
+          force_orphan: true
