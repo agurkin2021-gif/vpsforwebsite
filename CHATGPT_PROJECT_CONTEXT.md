@@ -590,3 +590,19 @@ The SEO buffer contains:
 - Page status is now BUILT / FROZEN. All G1-G19 remain closed; no new P0/P1 content or visual defect was found.
 - SERP Audit.txt updated accordingly.
 - Next planned item: fresh page-level SERP + build of VPS Backup Strategy.
+
+
+### 2026-10-13 — VPS Backup Strategy frozen
+- Ran a fresh exact-query SERP for VPS Backup Strategy / 3-2-1 / RPO-RTO / snapshot-vs-backup / restore-testing variants. Exact owner locked: Title = H1 = VPS Backup Strategy; URL /vps-backup-strategy/.
+- Fresh research saved at research/vps-backup-strategy-serp-2026-10-13.md. Current 2026 SERP includes HostMyCode, LuckVM, ServerExpress, Advika, StoicVPS, DotMoose, VDS Panel, All-VPS and related recovery-strategy guides.
+- Authority basis: NIST SP 800-34 RPO/RTO definitions; NIST SP 1339 regular backup creation/testing/recovery exercises; Ubuntu restic/Borg tooling references.
+- Implemented a functional VPS Backup Strategy Checker using workload type, RPO, RTO, independent offsite copy, DB-consistent method, restore test, separated credentials/keys and retention history.
+- Checker outputs: CRITICAL BACKUP GAPS, BASIC RECOVERY STRATEGY, TRANSACTIONAL / FREQUENT-DB-BACKUP PATH, and LOW-RTO / RECHECK DR ARCHITECTURE.
+- Closed all planned G1-G20 gaps: RPO/RTO-first design, provider image vs file/DB backup vs replication, rebuildable-vs-stateful inventory, DB consistency, RPO-driven frequency, low-RTO architecture, practical 3-2-1, credential separation, encryption/key recovery, retention, restore granularity, restore drills, measured RTO, multi-site restore, transactional RPO, production-disk impact, backup CPU/I/O impact, VDSina portability, functional checker and recovery runbook.
+- VDSina official backup facts rechecked: manual and scheduled backup copies; restore; create new server from backup; cloning; downloadable backup image in .img.gz form. VDSina Terms explicitly place backup responsibility on the customer and recommend periodic restore testing.
+- Page truth boundary: provider image is treated as one recovery layer, not a complete backup strategy; no guarantee of portability to every hypervisor is claimed.
+- Added inbound contextual links from VPS Security Checklist, Managed vs Unmanaged VPS, VPS for WooCommerce and VPS for Multiple Websites; Guides menu includes VPS Backup Strategy.
+- Hugo preview build succeeded. Preview artifact f5cab165f695db299994b671a6088bff8a8f5161 was visually checked at the first screen, Backup Strategy Checker, VDSina section and VPS backup checklist table.
+- Generated checks: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional checker, one sponsored affiliate CTA and intended contextual links.
+- SERP Audit.txt now marks VPS Backup Strategy BUILT / FROZEN.
+- Next planned item: fresh exact-query SERP and build of VPS Monitoring.
