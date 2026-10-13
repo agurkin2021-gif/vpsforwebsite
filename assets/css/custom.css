@@ -1528,8 +1528,7 @@ body:has(.vps-home) footer .container {
   will-change: transform;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-  animation: vps-workflow-marquee 58s linear infinite;
-  animation-play-state: running !important;
+  transform-style: preserve-3d;
 }
 
 .vps-home .vps-workflow-run {
@@ -1552,15 +1551,7 @@ body:has(.vps-home) footer .container {
   color: var(--vps-primary);
 }
 
-@keyframes vps-workflow-marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
 @media (max-width: 767px) {
-  .vps-home .vps-workflow-strip-inner {
-    animation-duration: 48s;
-  }
   .vps-home .vps-workflow-run {
     gap: 1.25rem;
     padding-right: 1.25rem;
@@ -1570,9 +1561,3 @@ body:has(.vps-home) footer .container {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .vps-home .vps-workflow-strip-inner {
-    animation: none !important;
-    transform: none !important;
-  }
-}

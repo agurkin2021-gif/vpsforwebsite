@@ -148,6 +148,60 @@
         </div>
       </div>
     </div>
+
+    <!-- Smooth requestAnimationFrame marquee -->
+    <script>
+      (() => {
+        const track = document.querySelector(".vps-workflow-strip-inner");
+        if (!track) return;
+
+        const firstRun = track.querySelector(".vps-workflow-run");
+        if (!firstRun) return;
+
+        const speed = 82; // pixels per second
+        let runWidth = 0;
+        let offset = 0;
+        let lastTime = performance.now();
+
+        const measure = () => {
+          const nextWidth = firstRun.getBoundingClientRect().width;
+          if (nextWidth <= 0) return;
+
+          if (runWidth > 0) {
+            offset = (offset / runWidth) * nextWidth;
+          }
+          runWidth = nextWidth;
+        };
+
+        const frame = (now) => {
+          const delta = Math.min((now - lastTime) / 1000, 0.05);
+          lastTime = now;
+
+          if (runWidth > 0) {
+            offset += speed * delta;
+            if (offset >= runWidth) offset -= runWidth;
+            track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+          }
+
+          requestAnimationFrame(frame);
+        };
+
+        measure();
+
+        if ("ResizeObserver" in window) {
+          const observer = new ResizeObserver(measure);
+          observer.observe(firstRun);
+        } else {
+          window.addEventListener("resize", measure, { passive: true });
+        }
+
+        document.addEventListener("visibilitychange", () => {
+          lastTime = performance.now();
+        });
+
+        requestAnimationFrame(frame);
+      })();
+    </script>
   {{ end }}
   <!-- /Banner -->
 
