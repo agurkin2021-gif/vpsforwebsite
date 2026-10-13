@@ -12,16 +12,16 @@ For the broader purchase decision, see [VPS for website]({{< relref "_index.md" 
 
 ## Quick sizing answer
 
-Use these configurations as starting points, then validate them against the workload:
+These current VDSina Standard configurations are useful reference tiers, but the workload should choose the tier — not the other way around. Provider values below were checked on October 13, 2026.
 
-| Website workload | Starting VPS | What to verify |
+| Website workload | Starting VPS example | What to verify |
 |---|---:|---|
-| Very light site, test environment, aggressively cached project | 1 vCPU / 1 GB RAM / 10 GB | Memory headroom, database size, swap use |
-| Small site or lean CMS | 1 vCPU / 2 GB RAM / 40 GB | PHP workers, panel overhead, database memory |
-| Business site or typical dynamic WordPress workload | 2 vCPU / 4 GB RAM / 80 GB | Uncached concurrency, cron jobs, database latency |
-| Heavier dynamic site, larger database or several active sites | 4 vCPU / 8 GB RAM / 160 GB | Sustained CPU, worker memory, peak overlap |
+| Very light site, test environment, aggressively cached project | 1 vCPU / 1 GB RAM / 10 GB — $0.07/day, 1 TB/month transfer | Memory headroom, database size, swap use |
+| Small site or lean CMS | 1 vCPU / 2 GB RAM / 40 GB — $0.50/day, 32 TB/month transfer | PHP workers, panel overhead, database memory |
+| Business site or typical dynamic WordPress workload | 2 vCPU / 4 GB RAM / 80 GB — $0.67/day, 32 TB/month transfer | Uncached concurrency, cron jobs, database latency |
+| Heavier dynamic site, larger database or several active sites | 4 vCPU / 8 GB RAM / 160 GB — $1.34/day, 32 TB/month transfer | Sustained CPU, worker memory, peak overlap |
 
-These are sizing directions, not traffic guarantees. Two websites with the same visitor count can require very different servers.
+These are sizing directions, not traffic guarantees. Two websites with the same visitor count can require very different servers. Prices, transfer allowances and other provider terms can change, so verify the current offer before ordering.
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
@@ -56,18 +56,38 @@ Measure the real processes whenever possible. Estimates are useful for choosing 
 
 ### RAM budget estimator
 
-Use this estimator to expose the assumptions instead of guessing from visitor count. It estimates the RAM tier only; CPU, storage and I/O still need separate validation.
+Use this estimator to expose the assumptions instead of guessing from visitor count. It estimates the RAM tier only; CPU, storage and I/O still need separate validation. Enter your own measurements; the placeholders mirror the worked example below and are not universal defaults.
 
+<div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="ram-budget-estimator">
-  <p><label>Baseline OS + web services, MB<br><input id="ram-baseline" type="number" min="0" value="450"></label></p>
-  <p><label>Database working memory, MB<br><input id="ram-database" type="number" min="0" value="500"></label></p>
-  <p><label>Concurrent application workers<br><input id="ram-workers" type="number" min="0" value="6"></label></p>
-  <p><label>Average memory per worker, MB<br><input id="ram-worker-mb" type="number" min="0" value="120"></label></p>
-  <p><label>Panel, cache and background jobs, MB<br><input id="ram-background" type="number" min="0" value="300"></label></p>
-  <p><label>Safety headroom, %<br><input id="ram-headroom" type="number" min="0" max="100" value="25"></label></p>
-  <p><button class="btn btn-primary" type="submit">Estimate RAM tier</button></p>
+  <div class="mb-6">
+    <label for="ram-baseline" class="form-label">Baseline OS + web services, MB</label>
+    <input id="ram-baseline" class="form-input" type="number" min="0" step="1" placeholder="450" required>
+  </div>
+  <div class="mb-6">
+    <label for="ram-database" class="form-label">Database working memory, MB</label>
+    <input id="ram-database" class="form-input" type="number" min="0" step="1" placeholder="500" required>
+  </div>
+  <div class="mb-6">
+    <label for="ram-workers" class="form-label">Concurrent application workers</label>
+    <input id="ram-workers" class="form-input" type="number" min="0" step="1" placeholder="6" required>
+  </div>
+  <div class="mb-6">
+    <label for="ram-worker-mb" class="form-label">Average memory per worker, MB</label>
+    <input id="ram-worker-mb" class="form-input" type="number" min="0" step="1" placeholder="120" required>
+  </div>
+  <div class="mb-6">
+    <label for="ram-background" class="form-label">Panel, cache and background jobs, MB</label>
+    <input id="ram-background" class="form-input" type="number" min="0" step="1" placeholder="300" required>
+  </div>
+  <div class="mb-6">
+    <label for="ram-headroom" class="form-label">Safety headroom, %</label>
+    <input id="ram-headroom" class="form-input" type="number" min="0" max="100" step="1" value="25" required>
+  </div>
+  <button class="btn btn-primary" type="submit">Estimate RAM tier</button>
 </form>
-<p id="ram-budget-result" role="status">Enter your measurements and calculate the budget.</p>
+<p id="ram-budget-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">Enter your measurements and calculate the budget.</p>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -145,29 +165,42 @@ Collect:
 
 Use the fault pattern to identify what to investigate before selecting a tier. The tool deliberately does not convert a CloudLinux limit directly into vCPU or RAM.
 
+On cPanel hosting with CloudLinux, start with the Resource Usage history rather than a single live reading. Capture repeated faults and the time they happen, then compare them with traffic, cron, backup, import and admin activity.
+
+<div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="shared-hosting-diagnostic">
-  <p><label>Quality of your evidence<br>
-    <select id="diag-evidence">
+  <div class="mb-6">
+    <label for="diag-evidence" class="form-label">Quality of your evidence</label>
+    <select id="diag-evidence" class="form-input">
       <option value="measured">Dashboard history / measured metrics</option>
       <option value="partial">Some measured metrics</option>
       <option value="traffic">Visitor count or impressions only</option>
     </select>
-  </label></p>
-  <p><label>Memory faults / PMEM events<br>
-    <select id="diag-memory"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
-  </label></p>
-  <p><label>CPU limit events<br>
-    <select id="diag-cpu"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
-  </label></p>
-  <p><label>Entry-process / worker saturation<br>
-    <select id="diag-ep"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
-  </label></p>
-  <p><label>I/O / IOPS pressure<br>
-    <select id="diag-io"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
-  </label></p>
-  <p><button class="btn btn-primary" type="submit">Diagnose the bottleneck</button></p>
+  </div>
+  <div class="mb-6">
+    <label for="diag-memory" class="form-label">Memory faults / PMEM events</label>
+    <select id="diag-memory" class="form-input"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </div>
+  <div class="mb-6">
+    <label for="diag-cpu" class="form-label">CPU limit events</label>
+    <select id="diag-cpu" class="form-input"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </div>
+  <div class="mb-6">
+    <label for="diag-ep" class="form-label">Entry-process / worker saturation</label>
+    <select id="diag-ep" class="form-input"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </div>
+  <div class="mb-6">
+    <label for="diag-nproc" class="form-label">Process-count / NPROC saturation</label>
+    <select id="diag-nproc" class="form-input"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </div>
+  <div class="mb-6">
+    <label for="diag-io" class="form-label">I/O / IOPS pressure</label>
+    <select id="diag-io" class="form-input"><option value="0">None</option><option value="1">Occasional</option><option value="2">Repeated</option></select>
+  </div>
+  <button class="btn btn-primary" type="submit">Diagnose the bottleneck</button>
 </form>
-<p id="shared-hosting-result" role="status">Choose the signals you actually observe.</p>
+<p id="shared-hosting-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">Choose the signals you actually observe.</p>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -179,14 +212,16 @@ document.addEventListener("DOMContentLoaded", function () {
     var memory = value("diag-memory");
     var cpu = value("diag-cpu");
     var ep = value("diag-ep");
+    var nproc = value("diag-nproc");
     var io = value("diag-io");
     var evidence = document.getElementById("diag-evidence").value;
     var confidence = evidence === "measured" ? "High" : (evidence === "partial" ? "Medium" : "Low");
-    var repeated = [memory, cpu, ep, io].filter(function (v) { return v === 2; }).length;
+    var repeated = [memory, cpu, ep, nproc, io].filter(function (v) { return v === 2; }).length;
     var findings = [];
     if (memory >= 1) findings.push("memory pressure: check worker memory, database working set, swap/OOM and background jobs");
     if (cpu >= 1) findings.push("CPU pressure: profile dynamic requests and database work before adding vCPU");
     if (ep >= 1) findings.push("worker/concurrency pressure: reduce request duration and measure uncached concurrency");
+    if (nproc >= 1) findings.push("process-count pressure: find runaway or excessive PHP, cron and background processes before buying capacity");
     if (io >= 1) findings.push("storage pressure: inspect database I/O, backups, logs and imports; more RAM alone may not solve it");
     var decision;
     if (findings.length === 0) decision = "No strong capacity signal. Stay on the current plan or optimize first until measurements show a real constraint.";
@@ -365,10 +400,10 @@ Use the RAM estimate, CPU evidence, storage budget and peak behavior together. T
 
 | Configuration | Good starting fit | Avoid / recheck when | Main validation | Action |
 |---|---|---|---|---|
-| 1 vCPU / 1 GB / 10 GB | test site, very light cached site, minimal services | panel + database + several dynamic workers, production store | RAM headroom and disk | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
-| 1 vCPU / 2 GB / 40 GB | lean small site or CMS with controlled dynamic work | sustained CPU, several active sites, heavy panel/mail stack | worker memory, DB memory, storage growth | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
-| 2 vCPU / 4 GB / 80 GB | dynamic business CMS, moderate uncached PHP, panel headroom | heavy WooCommerce, large imports, high DB pressure, noisy multi-site peaks | CPU saturation, DB latency, peak overlap | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
-| 4 vCPU / 8 GB / 160 GB | heavier dynamic workload, larger DB, several active sites | strict HA, very high write load, workload needing independent scaling | whether one VPS is still the right architecture | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 1 vCPU / 1 GB / 10 GB — $0.07/day, 1 TB/month | test site, very light cached site, minimal services | panel + database + several dynamic workers, production store | RAM headroom and disk | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 1 vCPU / 2 GB / 40 GB — $0.50/day, 32 TB/month | lean small site or CMS with controlled dynamic work | sustained CPU, several active sites, heavy panel/mail stack | worker memory, DB memory, storage growth | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 2 vCPU / 4 GB / 80 GB — $0.67/day, 32 TB/month | dynamic business CMS, moderate uncached PHP, panel headroom | heavy WooCommerce, large imports, high DB pressure, noisy multi-site peaks | CPU saturation, DB latency, peak overlap | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
+| 4 vCPU / 8 GB / 160 GB — $1.34/day, 32 TB/month | heavier dynamic workload, larger DB, several active sites | strict HA, very high write load, workload needing independent scaling | whether one VPS is still the right architecture | <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current plan</a> |
 
 A 1 GB or 2 GB tier should not be treated as a default production recommendation merely because the website can boot there. Ecommerce, large databases, several dynamic sites, mail services and control panels can consume headroom quickly.
 
