@@ -1275,3 +1275,16 @@ body:has(.vps-home) footer .container {
     min-height: 0 !important;
   }
 }
+
+/* Homepage final balance cleanup */
+.vps-home .vps-section-index {
+  display: none !important;
+}
+.vps-home .vps-home-section .row {
+  align-items: start !important;
+}
+@media (max-width: 767px) {
+  .vps-home .vps-hero::after {
+    display: none !important;
+  }
+}
