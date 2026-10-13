@@ -1980,3 +1980,150 @@ Do NOT give FASTPANEL a large homepage block because the homepage must remain pr
 | GAP-42 | dedicated FASTPANEL commercial/use-case intent | /vps-with-fastpanel/ | OPEN P1 |
 | GAP-43 | FASTPANEL sizing beyond panel minimum | /vps-with-fastpanel/ + sizing | OPEN P1 |
 | GAP-44 | FASTPANEL website/WordPress deployment flow | /vps-with-fastpanel/ | OPEN P1 |
+
+
+## 33. Ubuntu / Linux website-hosting intent audit
+
+Research pass: 2026-10-12.
+
+### Provider fit — VERIFIED
+
+VDSina Standard VPS currently offers pure OS templates:
+- Ubuntu 26.04
+- Ubuntu 24.04
+- Ubuntu 22.04
+- Ubuntu 20.04
+- plus Debian, AlmaLinux, Rocky, CentOS, Oracle Linux, ArchLinux.
+
+Official source:
+https://www.vdsina.com/pricing/standard
+
+Therefore it is valid to build content around a website running on a **pure Ubuntu/Linux VPS**, not only around FASTPANEL.
+
+### SERP split
+
+Two broad intents are already heavily covered:
+
+#### A. Commercial: Ubuntu VPS Hosting
+Examples:
+- DigitalOcean Linux hosting
+- UltaHost Ubuntu VPS
+- VPSForLife Ubuntu VPS
+- ColossusCloud Ubuntu VPS
+- many dedicated Ubuntu-VPS provider pages
+
+Conclusion:
+**Ubuntu VPS Hosting is a real, high-value commercial query cluster, but it is NOT an uncovered gap.**
+Competition is substantial.
+
+#### B. Operational: How to host a website on Ubuntu VPS/server
+Examples:
+- official Ubuntu Server documentation
+- Linode/Akamai guides
+- LinuxJunkies guide
+- many current host/provider tutorials
+
+Conclusion:
+**How to host a website on Ubuntu is also well covered.**
+Useful for topical authority, but not a WOW gap.
+
+### More attractive adjacent intent
+
+The less saturated and more strategically useful angle is:
+
+**VPS without Control Panel**
+
+or, operationally:
+
+**Host a website on VPS without Control Panel**
+
+Current SERP contains some coverage (notably ScalaHosting and a few unmanaged-VPS pages), but it is much thinner than generic Ubuntu VPS Hosting.
+
+This matches a real buyer decision:
+- FASTPANEL / Hestia / cPanel / Plesk
+vs
+- pure Ubuntu/Linux managed manually over SSH.
+
+### Recommended architecture
+
+Do NOT create a generic `Ubuntu VPS Hosting` page immediately just because Ubuntu is popular.
+
+Better first candidate:
+**VPS without Control Panel**
+
+Proposed exact target:
+- Title: `VPS without Control Panel`
+- H1: `VPS without Control Panel`
+- URL: `/vps-without-control-panel/`
+
+Status:
+**P1/P2 boundary — strong supporting candidate**
+
+Why it is stronger for this project:
+- directly complements `VPS with FASTPANEL`;
+- directly complements `VPS with Control Panel`;
+- maps to VDSina pure Ubuntu templates;
+- captures self-managed/manual-stack users;
+- creates a clean decision branch instead of another generic Ubuntu-provider page.
+
+### Page job-to-be-done
+
+> “I want to host websites directly on a Linux/Ubuntu VPS without cPanel/FASTPANEL. What do I need, what size server should I choose, and what becomes my responsibility?”
+
+Core sections:
+1. Pure Ubuntu/Linux VPS vs control panel.
+2. Who should choose no-panel hosting.
+3. SSH access and non-root admin.
+4. Nginx vs Apache.
+5. PHP-FPM / Node / other runtimes.
+6. MySQL/MariaDB/PostgreSQL.
+7. virtual hosts/server blocks.
+8. domain + DNS.
+9. HTTPS / Certbot.
+10. firewall and security.
+11. backups and restore.
+12. logs/monitoring.
+13. multiple sites.
+14. resource sizing.
+15. when FASTPANEL is easier.
+16. current VDSina pure-Ubuntu deployment path.
+
+### Important non-cannibalization rule
+
+`VPS without Control Panel` should own the DECISION + commercial setup path.
+
+`How to Host a Website on VPS` should own the broad step-by-step deployment tutorial.
+
+`VPS Security Checklist` should own hardening details.
+
+`VPS with FASTPANEL` should own panel-assisted site hosting.
+
+`VPS with Control Panel` should own comparison/choice among panels.
+
+### Homepage placement
+
+Homepage should show the fork compactly:
+
+**Choose how you want to manage the server**
+- FASTPANEL / control panel
+- pure Ubuntu/Linux over SSH
+
+This is a strong buyer decision and deserves homepage presence, but only as a concise branch, not a tutorial.
+
+### Potential future comparison
+
+Promising supporting comparison:
+**FASTPANEL vs No Control Panel**
+
+Status: HOLD until query/SERP validation.
+
+This could be highly relevant to the project because it compares the two exact paths the affiliate offer supports.
+
+### Gap ledger additions
+
+| ID | Gap | Recommended owner | Status |
+|---|---|---|---|
+| GAP-45 | pure Ubuntu/Linux website hosting path | VPS without Control Panel | OPEN P1/P2 |
+| GAP-46 | panel vs no-panel buyer decision | homepage + control-panel page | OPEN |
+| GAP-47 | manual Nginx/Apache/PHP/DB stack | VPS without Control Panel / How to Host Website on VPS | OPEN |
+| GAP-48 | FASTPANEL vs no-panel comparison | possible comparison page | HOLD |
