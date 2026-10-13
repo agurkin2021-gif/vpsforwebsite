@@ -2127,3 +2127,189 @@ This could be highly relevant to the project because it compares the two exact p
 | GAP-46 | panel vs no-panel buyer decision | homepage + control-panel page | OPEN |
 | GAP-47 | manual Nginx/Apache/PHP/DB stack | VPS without Control Panel / How to Host Website on VPS | OPEN |
 | GAP-48 | FASTPANEL vs no-panel comparison | possible comparison page | HOLD |
+
+
+## 34. Windows VPS / Microsoft web-stack intent audit
+
+Research pass: 2026-10-12.
+
+### Provider fit — VERIFIED
+
+VDSina Standard VPS currently offers pure Windows Server templates:
+- Windows Server 2025
+- Windows Server 2022
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012 R2
+
+VDSina also states:
+- automatic Windows installation is available on plans with **2 vCPUs / 4 GB RAM or higher**;
+- the Windows license is included in the tariff price;
+- Windows servers can be accessed through Remote Desktop (RDP).
+
+Official source:
+https://www.vdsina.com/pricing/standard
+
+Therefore Windows-based website hosting is legitimately relevant to this project.
+
+### Intent separation
+
+#### A. Windows VPS Hosting
+Status: real commercial intent, but strongly covered / competitive.
+
+Current SERP includes many mature provider landing pages that already combine:
+- Windows Server;
+- RDP;
+- IIS;
+- ASP.NET;
+- SQL Server / MSSQL;
+- administrator access;
+- plan tables.
+
+Conclusion:
+do NOT treat generic `Windows VPS Hosting` as an uncovered gap.
+
+#### B. VPS for ASP.NET
+Status: relevant supporting commercial intent.
+
+Why:
+- directly website/application related;
+- requires/benefits from Windows/IIS in many legacy or Windows-native deployments;
+- maps naturally to VDSina Windows Server templates.
+
+Competition exists, including dedicated .NET / ASP.NET VPS pages.
+
+Potential page:
+- Title: `VPS for ASP.NET`
+- H1: `VPS for ASP.NET`
+- URL: `/vps-for-aspnet/`
+
+Priority:
+P2 unless search-volume data later justifies P1.
+
+Important technical nuance:
+ASP.NET Core is cross-platform and can run on Linux.
+Do not imply every .NET site requires Windows.
+Windows is especially relevant for:
+- IIS-specific deployments;
+- .NET Framework / legacy ASP.NET;
+- Windows Authentication;
+- Windows Services;
+- Microsoft-native integration.
+
+#### C. VPS for IIS
+Status: promising narrower supporting intent.
+
+Why:
+- clean website-specific job;
+- more precise than generic Windows VPS;
+- directly asks for a Windows web-server stack;
+- current SERP exists but is less saturated than broad Windows VPS hosting.
+
+Potential page:
+- Title: `VPS for IIS`
+- H1: `VPS for IIS`
+- URL: `/vps-for-iis/`
+
+Core content:
+- Windows Server requirement;
+- IIS role;
+- sites/bindings/application pools;
+- HTTPS;
+- ASP.NET runtime;
+- firewall 80/443;
+- RDP/admin;
+- sizing;
+- SQL Server where relevant;
+- backups/security.
+
+Priority:
+P1/P2 boundary — stronger fit than generic Windows VPS Hosting.
+
+#### D. VPS for SQL Server
+Status: relevant but adjacent.
+
+Why:
+- database workload is often part of ASP.NET/IIS website architecture;
+- SQL Server sizing/licensing can be a real buyer concern.
+
+Risk:
+can drift away from website hosting into database/server administration.
+
+Decision:
+keep as supporting section inside ASP.NET/IIS first.
+Dedicated page only after demand validation.
+
+#### E. Windows VPS with RDP
+Status: DO NOT PRIORITIZE for this project.
+
+Reason:
+RDP intent is broad and often unrelated to websites:
+- remote desktop;
+- trading;
+- Windows applications;
+- bots;
+- automation;
+- general remote workstation use.
+
+It would dilute the topical focus of `VPS for website`.
+
+Use RDP only as a management/access feature inside Windows website pages.
+
+#### F. Windows VPS for WordPress
+Status: HOLD / low priority.
+
+WordPress can run on Windows/IIS, but Linux/Nginx/Apache remains the more natural/common stack.
+
+Do not create this page merely because it is technically possible.
+Only revisit if search demand is proven.
+
+### Best architecture for this site
+
+Keep three management/OS branches:
+
+1. **FASTPANEL path**
+   - VPS with FASTPANEL
+   - panel-assisted website hosting
+
+2. **Pure Linux path**
+   - VPS without Control Panel
+   - Ubuntu/Linux + SSH + Nginx/Apache + PHP/DB
+
+3. **Windows web-stack path**
+   - Windows Server + RDP + IIS + ASP.NET/.NET + SQL Server where needed
+
+This gives the site a complete website-hosting decision tree without turning it into a generic VPS catalog.
+
+### Homepage placement
+
+Do not add a large Windows block.
+
+A compact OS/stack decision block can later show:
+- Linux/Ubuntu for Nginx/Apache/PHP/Node and most open-source stacks;
+- FASTPANEL for panel-assisted website management;
+- Windows Server for IIS / ASP.NET / Microsoft-specific workloads.
+
+This is useful because it answers:
+**Which operating-system path should I choose for my website?**
+
+### Stronger potential gap
+
+The more differentiated page is probably not generic `Windows VPS Hosting`.
+
+More focused candidates:
+- `VPS for IIS`
+- `VPS for ASP.NET`
+
+These stay tightly inside the website cluster and avoid RDP/general-Windows noise.
+
+### Gap ledger additions
+
+| ID | Gap | Recommended owner | Status |
+|---|---|---|---|
+| GAP-49 | Windows website stack decision | homepage short branch | OPEN summary |
+| GAP-50 | IIS-specific VPS intent | /vps-for-iis/ | OPEN P1/P2 |
+| GAP-51 | ASP.NET-specific VPS intent | /vps-for-aspnet/ | OPEN P2 |
+| GAP-52 | SQL Server web-app sizing | IIS/ASP.NET pages first | HOLD |
+| GAP-53 | Windows RDP generic intent | none for core site | EXCLUDE |
+| GAP-54 | Windows WordPress | possible future niche | HOLD |
