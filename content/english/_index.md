@@ -5,7 +5,7 @@ description: "VPS for website: decide if you need a VPS, choose CPU and RAM from
 banner:
   title: "VPS for website"
   content: "A VPS for website hosting is an isolated virtual server where you control the operating system, web stack and allocated resources. Decide whether you actually need one, size it from real workload instead of guessed visitor counts, choose how you will manage it, and plan migration and growth before you buy."
-  image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/banner.png"
+  image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
   button:
     enable: true
     label: "Check your VPS fit"
@@ -14,7 +14,7 @@ banner:
 features:
   - id: "fit-check"
     title: "Do you actually need a VPS?"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-1.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-1.png"
     content: "Start with the diagnosis, not the server size. A VPS is useful when hosting limits, software restrictions, isolation needs or sustained resource pressure are the real problem. It is not a cure for an inefficient site."
     bulletpoints:
       - "Stay on shared hosting when the site is light, stable and does not need root access or a custom stack."
@@ -28,7 +28,7 @@ features:
 
   - id: "vps-sizing"
     title: "Which VPS fits your website workload?"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-2.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-2.png"
     content: "Do not size a server from a monthly visitor number alone. Cacheability, simultaneous requests, PHP workers, database work, background jobs and the number of sites determine the real load. [Open the full VPS sizing guide →](vps-sizing-for-website/index.html)"
     bulletpoints:
       - "**1 vCPU / 1 GB / 10 GB — $0.07/day:** lean test environment or a very light site with strict memory discipline."
@@ -46,7 +46,7 @@ features:
 
   - id: "management-path"
     title: "Choose how you will manage the server"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-3.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-3.png"
     content: "The right VPS is also an operations choice. Pick the management path before you size the server, because the panel, operating system and administration model change both resource use and responsibility."
     bulletpoints:
       - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself."
@@ -60,7 +60,7 @@ features:
 
   - id: "migration-preflight"
     title: "Check migration risk before you move"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-1.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-1.png"
     content: "A useful migration plan starts before the VPS is purchased. Map the existing website stack and identify what can break during the move so the new server size and migration method are based on evidence."
     bulletpoints:
       - "Inventory the CMS or framework, PHP/Node/Python versions, database engine, cron jobs, storage, DNS, SSL, email and external integrations."
@@ -75,7 +75,7 @@ features:
 
   - id: "architecture-planner"
     title: "One VPS or split the workload?"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-2.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-2.png"
     content: "Keeping everything on one VPS is simple and economical until resource contention, blast radius or operational risk becomes more expensive than separation."
     bulletpoints:
       - "Keep web, database and light background jobs together while the workload is small and predictable."
@@ -90,7 +90,7 @@ features:
 
   - id: "safe-growth"
     title: "Clone, test, scale, recover"
-    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/service-3.png"
+    image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/service-3.png"
     content: "The server should be able to evolve with the website without forcing a rebuild every time the workload changes. Use copies, monitoring and recovery points to make changes reversible."
     bulletpoints:
       - "**Clone before risky changes:** test upgrades or architecture changes on a copy instead of experimenting first on production."

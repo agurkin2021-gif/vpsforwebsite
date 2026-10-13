@@ -41,7 +41,10 @@ jobs:
       - name: Resolve Hugo modules
         run: hugo mod get
 
-      - name: Build production site
+      - name: Warm build stats
+        run: hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+
+      - name: Build production site with complete Tailwind utilities
         run: hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
 
       - name: Upload Pages artifact
