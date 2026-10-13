@@ -5762,3 +5762,191 @@ body:has(.vps-vs-shared-page-header) .vps-vs-speed-result {
     min-height: 0;
   }
 }
+
+
+/* VPS vs Shared Hosting responsibility ownership system */
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-system {
+  margin: 40px 0;
+  padding: 0;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-stage {
+  position: relative;
+  padding: 28px;
+  border: 1px solid #37435b;
+  border-radius: 18px;
+  background: #0d1824;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-admin {
+  border-color: #4b4d70;
+  background: linear-gradient(135deg, #0d1824 0%, #151628 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-ownership {
+  border-color: #286847;
+  background: linear-gradient(135deg, #0d1824 0%, #0b1b17 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-stage > h2 {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #3b405a;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-ownership > h2 {
+  border-bottom-color: #286847;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-stage > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-intro {
+  margin: 0 0 14px !important;
+  color: #d6dde4;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-stage > p:not(.vps-vs-responsibility-intro):not(.vps-vs-responsibility-result):not(.vps-vs-responsibility-warning):not(.vps-vs-responsibility-link) {
+  margin: 0 0 10px !important;
+  color: #9aa8b5;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid {
+  counter-reset: responsibility-item;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid > li {
+  counter-increment: responsibility-item;
+  position: relative;
+  min-width: 0;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 14px 13px 14px 40px;
+  border: 1px solid #3d405d;
+  border-radius: 11px;
+  background: #0b1320;
+  color: #c8d1da;
+  font-size: .79rem;
+  line-height: 1.4;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid > li::before {
+  content: counter(responsibility-item, decimal-leading-zero);
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #a692ee;
+  font-size: .57rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-ownership .vps-vs-responsibility-grid > li {
+  border-color: #245d42;
+  background: #091914;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-ownership .vps-vs-responsibility-grid > li::before {
+  color: var(--vs-green);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-result {
+  margin: 16px 0 0 !important;
+  padding: 13px 15px;
+  border-left: 3px solid #9e86ff;
+  border-radius: 8px;
+  background: #18192c;
+  color: #ded9f2;
+  font-size: .86rem;
+  line-height: 1.52;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-ownership .vps-vs-responsibility-result {
+  border-left-color: var(--vs-green);
+  background: #0b2119;
+  color: #cce8d8;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-warning {
+  margin: 10px 0 0 !important;
+  padding: 13px 15px;
+  border: 1px solid #65492e;
+  border-left: 3px solid #f5a11c;
+  border-radius: 8px;
+  background: #1a1510;
+  color: #e3d2ba;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-link {
+  margin: 10px 0 0 !important;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-connector {
+  position: relative;
+  width: 2px;
+  height: 38px;
+  margin: 0 auto;
+  background: linear-gradient(#9e86ff, var(--vs-green));
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-connector::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--vs-green);
+  border-bottom: 2px solid var(--vs-green);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-system {
+    margin: 30px 0;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-stage {
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-grid > li {
+    min-height: 0;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-connector {
+    height: 30px;
+  }
+}

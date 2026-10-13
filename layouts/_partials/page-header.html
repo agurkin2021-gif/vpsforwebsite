@@ -303,6 +303,77 @@
       heading.insertAdjacentElement("afterend", symbol);
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function collectSection(heading) {
+        var nodes = [];
+        var node = heading.nextElementSibling;
+        while (node && node.tagName !== "H2") {
+          var next = node.nextElementSibling;
+          nodes.push(node);
+          node = next;
+        }
+        return nodes;
+      }
+
+      var adminHeading = document.getElementById("administration-responsibility-changes");
+      var ownershipHeading = document.getElementById("security-backups-and-monitoring-ownership");
+
+      if (!adminHeading || !ownershipHeading || adminHeading.closest(".vps-vs-responsibility-system")) return;
+
+      var parent = adminHeading.parentElement;
+      if (!parent || ownershipHeading.parentElement !== parent) return;
+
+      var system = document.createElement("div");
+      system.className = "vps-vs-responsibility-system";
+      parent.insertBefore(system, adminHeading);
+
+      var adminSection = document.createElement("section");
+      adminSection.className = "vps-vs-responsibility-stage vps-vs-responsibility-admin";
+      var adminNodes = collectSection(adminHeading);
+      adminSection.appendChild(adminHeading);
+      adminNodes.forEach(function (item) { adminSection.appendChild(item); });
+
+      var ownershipSection = document.createElement("section");
+      ownershipSection.className = "vps-vs-responsibility-stage vps-vs-responsibility-ownership";
+      var ownershipNodes = collectSection(ownershipHeading);
+      ownershipSection.appendChild(ownershipHeading);
+      ownershipNodes.forEach(function (item) { ownershipSection.appendChild(item); });
+
+      var connector = document.createElement("div");
+      connector.className = "vps-vs-responsibility-connector";
+      connector.setAttribute("aria-hidden", "true");
+
+      system.appendChild(adminSection);
+      system.appendChild(connector);
+      system.appendChild(ownershipSection);
+
+      var adminList = adminSection.querySelector(":scope > ul");
+      if (adminList) adminList.classList.add("vps-vs-responsibility-grid");
+
+      var ownershipList = ownershipSection.querySelector(":scope > ul");
+      if (ownershipList) ownershipList.classList.add("vps-vs-responsibility-grid");
+
+      var adminParagraphs = adminSection.querySelectorAll(":scope > p");
+      if (adminParagraphs.length) {
+        adminParagraphs[0].classList.add("vps-vs-responsibility-intro");
+        if (adminParagraphs.length > 1) {
+          adminParagraphs[adminParagraphs.length - 2].classList.add("vps-vs-responsibility-result");
+          adminParagraphs[adminParagraphs.length - 1].classList.add("vps-vs-responsibility-link");
+        }
+      }
+
+      var ownershipParagraphs = ownershipSection.querySelectorAll(":scope > p");
+      if (ownershipParagraphs.length) {
+        ownershipParagraphs[0].classList.add("vps-vs-responsibility-intro");
+        if (ownershipParagraphs.length > 1) {
+          ownershipParagraphs[ownershipParagraphs.length - 2].classList.add("vps-vs-responsibility-result");
+          ownershipParagraphs[ownershipParagraphs.length - 1].classList.add("vps-vs-responsibility-warning");
+        }
+      }
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
