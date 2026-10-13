@@ -1345,3 +1345,284 @@ The final homepage succeeds only if a buyer can answer:
 
 Every homepage block must map to at least one of these five questions.
 If a block does not help answer one of them or route to a supporting intent, it is probably noise.
+
+
+## 27. Novel-intent hunt — WOW candidate
+
+Research pass: 2026-10-12.
+
+Goal:
+find an intent that is not merely under-covered, but is structurally missing from the dominant competitor model.
+
+### Closest existing competitor patterns found
+
+1. **Generic workload calculators / recommendation engines**
+   - ServerCalc: chooses VPS from workload categories and generic requirements.
+   - InfraPilot: asks region, workload and traffic, then suggests vCPU/RAM/storage.
+   - Ucartz n8n recommendation engine: website type + traffic + budget -> plan.
+
+2. **Shared-hosting-to-VPS sizing guides**
+   - Hostworld: reads cPanel/CloudLinux Resource Usage and maps CPU, RAM, I/O, EP, bandwidth and disk to VPS sizing.
+   - DCHost: recommends planning from real shared-hosting usage.
+   - AHosting: publishes a shared-to-VPS equivalence map using EP, memory and PHP-FPM worker reasoning.
+
+3. **Readiness/checklist pages**
+   - Maviter: VPS readiness gate around ownership/security/recovery.
+   - SERVER1X: readiness snapshot around operations and migration risk.
+   - migration guides: stage, DNS, SSL, email, rollback.
+
+### What is still missing as a unified user job
+
+No strong current result found that combines all of these into one **personalized decision engine**:
+
+1. **Do I need a VPS at all?**
+2. **Is my current problem actually hosting, or an inefficient site/plugin/database/bot issue?**
+3. **If I need VPS, what size should I buy from my REAL current usage rather than visitor-count guesses?**
+4. **Am I operationally ready for a self-managed VPS?**
+5. **What migration/recovery risks do I have before I move?**
+6. **Which exact current plan maps to the diagnosis?**
+
+This is the strongest WOW-gap found so far.
+
+### Proposed concept — VPS Fit / Readiness Engine
+
+Working concept name only, NOT final SEO page title:
+**VPS Fit Check / VPS Readiness Engine**
+
+Core job-to-be-done:
+> “Tell me whether my website really needs a VPS, what is actually causing my current limit, what VPS size I need, and what will become my responsibility after I move.”
+
+### Inputs
+
+#### A. Current hosting evidence
+User enters or copies values from cPanel / CloudLinux / DirectAdmin:
+- CPU typical / peak;
+- CPU faults;
+- physical memory typical / peak;
+- memory faults;
+- Entry Processes (EP) typical / peak / faults;
+- NPROC faults;
+- I/O / IOPS pressure;
+- current disk usage;
+- monthly bandwidth;
+- current site count.
+
+Later enhancement:
+allow user to paste a screenshot or structured values from Resource Usage.
+
+#### B. Website workload
+- CMS / stack;
+- WordPress / WooCommerce / membership / custom;
+- logged-in vs mostly cached visitors;
+- database-heavy search/filtering;
+- cron/background jobs;
+- imports/exports/backups;
+- email on same hosting or separate;
+- number of sites;
+- traffic pattern: steady vs campaigns/spikes.
+
+#### C. Operations readiness
+- comfortable with SSH?
+- who installs updates?
+- who manages firewall?
+- who monitors uptime/errors?
+- where are backups stored?
+- who restores after failure?
+- control panel required?
+- management budget / admin availability.
+
+### Output
+
+The engine should return a result in this order:
+
+#### 1. Decision: VPS needed?
+- **STAY ON SHARED**
+- **OPTIMIZE FIRST**
+- **MOVE TO VPS**
+- **MOVE, BUT USE MANAGED HELP / CONTROL PANEL**
+
+#### 2. Why
+Example:
+- EP faults caused by slow PHP requests;
+- memory faults;
+- CPU throttling;
+- I/O bottleneck;
+- capability gap (Redis/worker/custom runtime);
+- multiple-site isolation need;
+- false positive: site inefficient, not infrastructure-limited.
+
+#### 3. VPS size
+Map to the currently verified VDSina Standard tiers:
+- 1 vCPU / 1 GB;
+- 1 vCPU / 2 GB;
+- 2 vCPU / 4 GB;
+- 4 vCPU / 8 GB.
+
+Include headroom reasoning, not visitor guarantees.
+
+#### 4. What a VPS will NOT fix
+Examples:
+- slow database queries;
+- uncached expensive PHP;
+- broken plugin;
+- bot abuse;
+- huge images/frontend payload;
+- bad cron scheduling;
+- external API latency.
+
+#### 5. Responsibility warning
+Personalized checklist:
+- updates;
+- firewall;
+- TLS;
+- backups;
+- monitoring;
+- recovery;
+- panel;
+- email if self-hosted.
+
+#### 6. Migration risk
+Score risks:
+- DNS;
+- SSL;
+- email;
+- PHP/database compatibility;
+- current storage size;
+- write-heavy ecommerce;
+- no rollback copy;
+- no quiet migration window.
+
+#### 7. Commercial next step
+Only after diagnosis:
+- recommended configuration;
+- approved affiliate CTA;
+- disclosure;
+- `rel="sponsored nofollow"`.
+
+### Why this is more powerful than another article
+
+It captures several high-value search jobs at once:
+- do I need a VPS;
+- shared hosting resource limit reached;
+- what VPS do I need;
+- how much RAM does my website need;
+- cPanel resource usage;
+- VPS vs shared hosting;
+- managed vs unmanaged;
+- website migration to VPS.
+
+But it does not create seven competing pages for the same user decision.
+It turns the homepage/site into a **diagnostic destination**, not another generic VPS content site.
+
+### Why this has WOW potential
+
+Competitors mostly ask the user to:
+- choose a workload category;
+- enter traffic;
+- read generic RAM tiers;
+- compare provider plans.
+
+This concept instead says:
+**“Show me what your hosting is doing now, and I will tell you whether buying a VPS is even the correct fix.”**
+
+That is a qualitatively different promise.
+
+### SEO deployment recommendation
+
+Do NOT immediately create a separate indexable page called “VPS Fit Check”.
+
+Best architecture:
+1. Put a compact version / diagnostic entry point on the homepage because it directly supports `VPS for website`.
+2. Deep diagnostic results can route to:
+   - VPS sizing for website;
+   - VPS vs Shared Hosting;
+   - Managed vs Unmanaged VPS;
+   - Website migration to VPS.
+3. If search data later shows a stable query cluster around “VPS calculator / VPS sizing calculator / what VPS do I need”, create a dedicated tool page with a researched exact Title/H1.
+
+### Novel-intent confidence
+
+**High confidence that the combined diagnostic job is under-owned.**
+
+Not safe to claim “nobody on the internet has ever made anything similar.”
+Closest partial competitors exist:
+- generic VPS calculators;
+- cPanel-to-VPS sizing articles;
+- readiness checklists;
+- migration checklists.
+
+The gap is the **combined diagnosis + optimization-vs-upgrade decision + real usage translation + operations readiness + migration risk + exact-plan mapping**.
+
+## 28. Secondary novel candidates
+
+### A. VPS or Optimize First?
+Status: MERGE INTO VPS Fit / Readiness Engine.
+
+Job:
+“Will a VPS actually solve my slow website, or am I about to move the same bottleneck to a bigger server?”
+
+Strong because buyers frequently misdiagnose:
+- slow plugin;
+- bad DB query;
+- cache miss;
+- bot load;
+- cron;
+- external API;
+- frontend weight.
+
+Do not split into a separate page initially; this is the first diagnostic branch of the Fit Engine.
+
+### B. VPS Responsibility Cost / Admin Readiness
+Status: MERGE INTO engine.
+
+Job:
+“Can I safely operate a self-managed VPS, and what will it really cost me in time/tools/admin work?”
+
+Could calculate:
+- server price;
+- panel;
+- backup storage;
+- monitoring;
+- admin hours;
+- incident/recovery responsibility.
+
+Useful but weaker as a standalone SEO intent.
+Strong as a conversion/trust module.
+
+### C. VPS Migration Risk Score
+Status: MERGE INTO engine / migration page.
+
+Job:
+“Before I switch hosting, what can break?”
+
+Score:
+- DNS;
+- mail;
+- SSL;
+- DB writes;
+- unsupported PHP/DB version;
+- storage size;
+- cron;
+- rollback;
+- staging/testing.
+
+Migration guides exist, but a personalized risk score is rare.
+
+## 29. Strategic decision from novel-intent hunt
+
+The strongest differentiation is NOT another long-tail article.
+
+The strongest differentiation is:
+**diagnostic intent + interactive utility + honest disqualification.**
+
+Core promise:
+> **Do not buy a VPS by visitor count. Diagnose the website first.**
+
+This should influence the final homepage architecture.
+
+New potential homepage hero/support message:
+- primary H1 remains exactly `VPS for website`;
+- below the commercial answer, introduce the concept:
+  **Find out if you actually need a VPS — and which size — from real workload and hosting limits.**
+
+This is supporting copy only, not a replacement for the primary keyword/H1.
