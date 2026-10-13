@@ -423,7 +423,7 @@ At minimum:
 
 CISA recommends maintaining offline/encrypted backups of critical data and regularly testing restoration in a disaster-recovery scenario.
 
-The deeper RPO/RTO, retention and backup-topology design belongs to the planned **VPS Backup Strategy** page.
+The deeper RPO/RTO, retention and backup-topology design is covered in [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}).
 
 ## Logs, alerts and audit trail
 
