@@ -1505,3 +1505,20 @@ body:has(.vps-home) footer .container {
     transform: translateX(-48px) !important;
   }
 }
+
+
+/* Homepage adjustment 07: centered workflow strip content */
+.vps-home > .vps-workflow-strip .container {
+  width: calc(100% - 48px) !important;
+  min-width: 0 !important;
+  max-width: 1180px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+@media (max-width: 767px) {
+  .vps-home > .vps-workflow-strip .container {
+    width: calc(100% - 32px) !important;
+  }
+}
