@@ -75,16 +75,19 @@ weight = 9
 parent = "Guides"
 name = "VPS vs Shared Hosting"
 url = "/vps-vs-shared-hosting/"
+weight = 10
 
 [[main]]
 parent = "Guides"
 name = "Multiple Websites"
 url = "/vps-for-multiple-websites/"
+weight = 11
 
 [[main]]
 parent = "Guides"
 name = "Control Panel"
 url = "/vps-with-control-panel/"
+weight = 12
 
 [[footer]]
 name = "About"
