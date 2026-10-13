@@ -363,12 +363,6 @@ DONE / FROZEN
 - Website migration to VPS
 - Managed vs Unmanaged VPS
 - FASTPANEL VPS Hosting
-
-DONE / FROZEN
-- VPS sizing for website
-- Website migration to VPS
-- Managed vs Unmanaged VPS
-- FASTPANEL VPS Hosting
 - VPS with Control Panel
 
 EXISTS / MUST BE DEEPLY REWORKED
@@ -388,7 +382,8 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Deepen VPS with Control Panel so the generic parent and FASTPANEL child are cleanly separated.
+1. Run a fresh exact-query SERP for How to host a website on VPS, keeping the no-control-panel/manual path merged into that page.
+2. Build How to host a website on VPS.
 3. Deepen VPS vs Shared Hosting.
 4. Deepen VPS for WordPress.
 5. Deepen VPS for WooCommerce.
