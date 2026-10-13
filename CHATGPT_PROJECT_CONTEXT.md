@@ -567,3 +567,17 @@ The SEO buffer contains:
 - Generated verification: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional architecture checker, one sponsored affiliate CTA, same-IP/SNI explanation, isolation/blast-radius/agency/split coverage and all intended contextual links.
 - SERP Audit.txt now marks VPS for Multiple Websites BUILT / FROZEN.
 - Next planned item: fresh page-level SERP + build of VPS Security Checklist.
+
+
+### 2026-10-13 — VPS Security Checklist built; visual QA pending
+- Ran a fresh exact-query SERP for VPS Security Checklist / VPS hardening 2026 / how to secure a VPS. Exact owner locked: Title = H1 = VPS Security Checklist; URL /vps-security-checklist/.
+- Fresh research saved at research/vps-security-checklist-serp-2026-10-13.md. Current results include HostMyCode, Contabo, Server Warden, Defensia, ArgoEye, HostAccent, VPS.app, Kage System, Varnox and VPSDEN.
+- Authority sources added: Ubuntu OpenSSH, UFW/firewall and unattended-upgrades docs; CISA StopRansomware guidance for least privilege, offline/encrypted backups, restore testing and incident response.
+- Implemented a functional VPS Security Baseline Checker with CRITICAL GAPS, BASELINE INCOMPLETE and PRODUCTION BASELINE READY outcomes; it explicitly does not claim a server is fully secure.
+- Closed researched G1-G19 in source: lockout-safe recovery order, service inventory, SSH-key/root/password policy, firewall layers, private DB/Redis/internal services, patch/restart/reboot ownership, least privilege, secrets, Fail2ban/CrowdSec as defense-in-depth, panel/admin UI security, backup/restore, logs/alerts, DDoS scope, TLS boundary, application-layer patching, compromise response, functional checker and recurring review.
+- VDSina truth rechecked: Standard advertises free DDoS protection; public QA states the free DDoS service is L3-L4 and has no SLA. Page explicitly says this does not replace application/guest-OS security.
+- Added inbound links from How to host a website on VPS and Managed vs Unmanaged VPS; Guides menu now includes VPS Security Checklist.
+- Final Hugo preview build for source commit ad76712e6eef1f92d459fd1ddc115e6fb7d88375 succeeded. Generated preview checks: exact Title/H1, one H1, preview noindex/nofollow, no preview canonical, WebPage + BreadcrumbList JSON-LD, functional security checker, one sponsored affiliate CTA, DDoS scope, backup/incident sections and all intended internal links.
+- Browser visual QA could not be completed because Opera Browser Connector is currently disconnected, and Desktop Commander remote-use quota is exhausted. Do not mark the page FROZEN until the actual rendered page is visually checked.
+- SERP Audit.txt status is BUILT / FINAL VISUAL QA PENDING.
+- Next continuation point: visually open /vps-security-checklist/ in preview, confirm top/checker/table rendering, then mark FROZEN; after that build VPS Backup Strategy.
