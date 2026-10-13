@@ -37,7 +37,7 @@ features:
       - "**4 vCPU / 8 GB / 160 GB — $1.34/day:** heavier dynamic traffic, larger databases, background work or several active sites."
       - "Different workloads need different headroom: [WordPress](vps-for-wordpress/) depends heavily on PHP workers, caching and plugins; [WooCommerce](vps-for-woocommerce/) adds more uncached sessions, checkout and database work; [multiple websites](vps-for-multiple-websites/) compete for the same CPU, RAM, storage and process limits."
       - "Before paying, check storage growth, transfer allowance, IP terms, server location, backup policy, upgrade path, management scope, control-panel or license costs, and current billing terms."
-      - "Server location affects network latency to your users. A CDN such as Cloudflare can offload static delivery and some origin requests, but it does not remove dynamic PHP, application or database work from the VPS."
+      - "[Server location](how-to-choose-vps-location/) affects network latency to your users. A CDN such as Cloudflare can offload static delivery and some origin requests, but it does not remove dynamic PHP, application or database work from the VPS."
       - "Treat the displayed VPS price as infrastructure pricing: optional panel licenses, external backups, administration, monitoring or other services can be separate depending on what you choose."
     button:
       enable: true
@@ -114,7 +114,7 @@ faq:
     - question: "How many websites can one VPS host?"
       answer: "There is no safe fixed number. The limit depends on each site's PHP or application concurrency, database work, caching, background jobs, storage and traffic pattern. Several light cached sites may fit where one busy dynamic site would not."
     - question: "Does server location matter?"
-      answer: "Yes. A shorter network path can reduce latency, especially for dynamic requests. Choose a location that fits the main audience and operational requirements, then use caching or a CDN where appropriate."
+      answer: "Yes. A shorter network path can reduce latency, especially for dynamic requests. [Choose the VPS location](how-to-choose-vps-location/) around the main audience, real routing, dependencies and operational requirements, then use caching or a CDN where appropriate."
     - question: "Does Cloudflare or another CDN mean I can buy a smaller VPS?"
       answer: "Sometimes it reduces static bandwidth and repeated origin requests, but it does not eliminate uncached application, PHP, API or database work. Size the VPS for the dynamic workload that still reaches the origin."
     - question: "Is a snapshot the same as a backup?"
