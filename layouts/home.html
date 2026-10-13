@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <!-- Smooth requestAnimationFrame marquee -->
+    <!-- Smooth compositor-driven marquee -->
     <script>
       (() => {
         const track = document.querySelector(".vps-workflow-strip-inner");
@@ -159,47 +159,63 @@
         if (!firstRun) return;
 
         const speed = 82; // pixels per second
-        let runWidth = 0;
-        let offset = 0;
-        let lastTime = performance.now();
+        let animation = null;
+        let distance = 0;
+        let resizeFrame = 0;
 
-        const measure = () => {
-          const nextWidth = firstRun.getBoundingClientRect().width;
-          if (nextWidth <= 0) return;
+        const startMarquee = () => {
+          const nextDistance = firstRun.getBoundingClientRect().width;
+          if (nextDistance <= 0) return;
 
-          if (runWidth > 0) {
-            offset = (offset / runWidth) * nextWidth;
-          }
-          runWidth = nextWidth;
-        };
+          let phase = 0;
 
-        const frame = (now) => {
-          const delta = Math.min((now - lastTime) / 1000, 0.05);
-          lastTime = now;
-
-          if (runWidth > 0) {
-            offset += speed * delta;
-            if (offset >= runWidth) offset -= runWidth;
-            track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+          if (animation && distance > 0) {
+            const oldDuration = (distance / speed) * 1000;
+            const currentTime = Number(animation.currentTime) || 0;
+            phase = (currentTime % oldDuration) / oldDuration;
+            animation.cancel();
           }
 
-          requestAnimationFrame(frame);
+          distance = nextDistance;
+          const duration = (distance / speed) * 1000;
+
+          track.style.transform = "translate3d(0, 0, 0)";
+          animation = track.animate(
+            [
+              { transform: "translate3d(0, 0, 0)" },
+              { transform: `translate3d(${-distance}px, 0, 0)` }
+            ],
+            {
+              duration,
+              iterations: Infinity,
+              easing: "linear",
+              fill: "both"
+            }
+          );
+
+          if (phase > 0) {
+            animation.currentTime = phase * duration;
+          }
         };
 
-        measure();
+        const scheduleMeasure = () => {
+          cancelAnimationFrame(resizeFrame);
+          resizeFrame = requestAnimationFrame(startMarquee);
+        };
+
+        const fontsReady =
+          document.fonts && document.fonts.ready
+            ? document.fonts.ready
+            : Promise.resolve();
+
+        fontsReady.then(startMarquee);
 
         if ("ResizeObserver" in window) {
-          const observer = new ResizeObserver(measure);
+          const observer = new ResizeObserver(scheduleMeasure);
           observer.observe(firstRun);
         } else {
-          window.addEventListener("resize", measure, { passive: true });
+          window.addEventListener("resize", scheduleMeasure, { passive: true });
         }
-
-        document.addEventListener("visibilitychange", () => {
-          lastTime = performance.now();
-        });
-
-        requestAnimationFrame(frame);
       })();
     </script>
   {{ end }}
