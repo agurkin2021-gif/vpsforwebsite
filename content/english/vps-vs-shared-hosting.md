@@ -64,6 +64,14 @@ Use this checker to identify the next move. It is deliberately more conservative
     </select>
   </div>
   <div class="mb-6">
+    <label for="sv-critical" class="form-label">How costly would a hosting failure be?</label>
+    <select id="sv-critical" class="form-input">
+      <option value="low">Low — hobby/test/non-critical site</option>
+      <option value="medium">Moderate — normal business website</option>
+      <option value="high">High — revenue/operations depend on it</option>
+    </select>
+  </div>
+  <div class="mb-6">
     <label for="sv-stable" class="form-label">Is the current shared hosting otherwise stable and meeting the site's needs?</label>
     <select id="sv-stable" class="form-input"><option value="yes">Yes</option><option value="no">No</option></select>
   </div>
@@ -84,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var custom = document.getElementById("sv-custom").value === "yes";
     var optimized = document.getElementById("sv-optimized").value === "yes";
     var admin = document.getElementById("sv-admin").value;
+    var critical = document.getElementById("sv-critical").value;
     var stable = document.getElementById("sv-stable").value === "yes";
 
     var result;
@@ -94,8 +103,10 @@ document.addEventListener("DOMContentLoaded", function () {
       result = "OPTIMIZE / RECHECK SHARED FIRST: investigate caching, slow plugins/queries, bots, cron jobs and other application causes before buying a VPS.";
     } else if ((custom || limits === "repeated") && admin === "yes") {
       result = "MOVE TO VPS: there is a real capability/resource reason and an operator exists. Size the VPS from measurements, then plan the migration.";
+    } else if ((custom || limits === "repeated") && (admin === "help" || critical === "high")) {
+      result = "MOVE, BUT USE MANAGED / ADMIN HELP: the infrastructure case exists, while business risk or missing operations ownership makes a raw unmanaged move a poor fit.";
     } else if (custom || limits === "repeated") {
-      result = "MOVE, BUT USE MANAGED / ADMIN HELP: the infrastructure case exists, but server operations do not currently have an owner.";
+      result = "MOVE ONLY AFTER OPERATIONS ARE OWNED: the infrastructure case exists, but nobody currently owns the server work. Arrange managed/paid administration before production cutover.";
     } else {
       result = "RECHECK THE CURRENT PLAN: the evidence is mixed. Compare a better shared plan or managed application hosting before accepting VPS administration overhead.";
     }
@@ -282,6 +293,27 @@ With an unmanaged VPS, somebody must own:
 If nobody on your side owns those jobs, the decision is not "shared or unmanaged VPS." It may be **shared vs managed VPS / paid administration**.
 
 Use [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}) for that responsibility boundary.
+
+## Security, backups and monitoring ownership
+
+Shared hosting usually hides much of the server-operations layer. A VPS exposes it.
+
+Before moving, name who owns:
+
+- operating-system and package security updates;
+- SSH/admin access policy;
+- firewall/service exposure;
+- backup-job failures;
+- restore testing;
+- disk/memory/CPU alerts;
+- external website uptime checks;
+- TLS renewal;
+- log review;
+- incident response.
+
+The provider still owns its physical/virtualization infrastructure, but on an unmanaged VPS the guest operating system and website stack are generally your responsibility.
+
+If those tasks do not have an owner, moving to a raw VPS can increase operational risk even when the infrastructure itself is more flexible.
 
 ## Shared-hosting services you may have to replace
 
