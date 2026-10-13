@@ -392,3 +392,14 @@ The SEO buffer contains:
 - Generated checks: Title=H1, preview noindex/nofollow, no preview canonical, JSON-LD present, partner CTA has sponsored/nofollow/noopener.
 - VDSina is not described as fully managed: current Standard page lists 24/7 technical support while separate public QA documents administration as an additional ordered service.
 - Next planned page after freeze/audit: VPS with FASTPANEL.
+
+
+### 2026-10-13 — Fresh architecture SERP audit
+- Re-ran SERP validation for the pages surrounding the homepage.
+- Full audit saved at research/serp-architecture-audit-2026-10-13.md.
+- Main correction: do not create VPS without Control Panel as a separate core page; merge that intent into How to host a website on VPS because current SERP resolves to the same manual deployment/tutorial job.
+- Replace core VPS Maintenance Checklist with a cleaner VPS Monitoring owner; monitoring has a stronger distinct SERP while maintenance substantially overlaps security and backup.
+- Retarget the future FASTPANEL page toward the stronger current commercial phrase FASTPANEL VPS Hosting; run a dedicated page-level SERP before fixing exact Title/H1/URL.
+- Add a separate location-decision page (provisionally How to Choose VPS Location) to keep the core cluster at 14; current SERP is distinct around latency, routing, audience geography, CDN/origin and operational/jurisdiction fit.
+- Corrected core 14 is recorded in CHATGPT_SEO_AUDIT_BUFFER.md section 54.
+- No existing built page was deleted or retargeted by this audit; these are architecture decisions for remaining work.
