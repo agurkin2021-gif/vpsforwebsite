@@ -1,0 +1,48 @@
+<!-- DNS preconnect -->
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- google fonts -->
+{{ $pf:= hugo.Data.theme.fonts.font_family.primary }}
+{{ $sf:= hugo.Data.theme.fonts.font_family.secondary }}
+<script>
+  (function () {
+    const googleFont = document.createElement("link");
+    googleFont.href = "https://fonts.googleapis.com/css2?family={{$pf | safeURL}}{{with $sf}}&family={{. | safeURL}}{{end}}&display=swap";
+    googleFont.type = "text/css";
+    googleFont.rel = "stylesheet";
+    document.head.appendChild(googleFont);
+  })();
+</script>
+
+<!-- Bundle all site CSS inline so GitHub Pages project-path deployment cannot lose styling. -->
+{{ $styles := slice }}
+{{ $stylesLazy := slice }}
+
+{{ range site.Params.plugins.css }}
+  {{ if findRE "^http" .link }}
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="{{ .link | relURL }}" {{ .attributes | safeHTMLAttr }} />
+  {{ else }}
+    {{ if not .lazy }}
+      {{ $styles = $styles | append (resources.Get .link) }}
+    {{ else }}
+      {{ $stylesLazy = $stylesLazy | append (resources.Get .link) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $mainCSS := resources.Get "css/main.css" }}
+{{ $tailwindOpts := dict "inlineImports" true }}
+{{ $tailwindCSS := $mainCSS | css.TailwindCSS $tailwindOpts }}
+{{ $styles = $styles | append $tailwindCSS }}
+{{ $styles = $styles | resources.Concat "css/style.css" }}
+{{ $stylesLazy = $stylesLazy | resources.Concat "css/style-lazy.css" }}
+
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles | minify }}
+  {{ $stylesLazy = $stylesLazy | minify }}
+{{ end }}
+
+<style id="site-critical-css">{{ $styles.Content | safeCSS }}</style>
+<style id="site-plugin-css">{{ $stylesLazy.Content | safeCSS }}</style>
