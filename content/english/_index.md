@@ -5,7 +5,7 @@ description: "VPS for website: decide if you need one, compare current configura
 banner:
   title: "VPS for website"
   content: "A VPS for website hosting is an isolated virtual server where you control the operating system, web stack and allocated resources. Decide whether you actually need one, size it from real workload instead of guessed visitor counts, choose how you will manage it, and plan migration and growth before you buy."
-  image: "images/home/vps-for-website-hero-v2.webp"
+  image: "images/home/vps-for-website-hero-v3.svg"
   button:
     enable: true
     label: "Check your VPS fit"
