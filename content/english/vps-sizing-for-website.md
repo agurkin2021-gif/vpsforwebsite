@@ -449,7 +449,7 @@ A 1 GB or 2 GB tier should not be treated as a default production recommendation
 
 ## Before buying the VPS
 
-Check the infrastructure terms that sizing alone does not answer: transfer allowance, storage type and capacity, IP terms, server location, backup policy, upgrade path, management scope, control-panel licensing and current billing terms.
+Check the infrastructure terms that sizing alone does not answer: transfer allowance, storage type and capacity, IP terms, backup policy, upgrade path, management scope, control-panel licensing and current billing terms. Choose the deployment region separately with [How to Choose VPS Location]({{< relref "how-to-choose-vps-location.md" >}}), because CPU/RAM sizing does not determine the best network path.
 
 If the current website is still on shared hosting, compare the operational change in [VPS vs shared hosting]({{< relref "vps-vs-shared-hosting.md" >}}) before moving.
 
