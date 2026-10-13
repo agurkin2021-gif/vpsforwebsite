@@ -215,6 +215,27 @@ A pure Linux VPS without a panel is a better fit when:
 
 Do not create two competing pages for this decision. The broader manual-deployment path belongs to the planned **How to host a website on VPS** guide; the generic panel choice stays on [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
 
+## FASTPANEL vs other control panels
+
+Choose FASTPANEL because its workflow fits your stack and operating model, not because every panel solves the same problem.
+
+Compare panels on:
+
+- supported operating systems and versions;
+- license cost and commercial terms;
+- PHP/runtime and database support;
+- mail requirements;
+- backup destinations and restore workflow;
+- multi-user / reseller / client isolation;
+- migration tooling;
+- team familiarity;
+- documentation and support;
+- how much manual SSH/root work remains.
+
+FASTPANEL is attractive when you want its specific hosting workflow, current feature set and multi-user model. cPanel, Plesk, HestiaCP and other panels have different licensing, ecosystem and administration trade-offs.
+
+For the generic panel-selection decision rather than the FASTPANEL-specific use case, use [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
+
 ## Create the first website
 
 A useful first-site sequence is:
@@ -349,6 +370,10 @@ It can satisfy the panel's published minimum and may work for a very light/test 
 ### Does VDSina offer FASTPANEL?
 
 The current VDSina Standard VPS page lists FASTPANEL on Ubuntu 22 under its web-hosting-control-panel options. Verify the current order screen before purchase because available templates can change.
+
+### Is FASTPANEL free?
+
+FASTPANEL's current official site presents the control panel as free. Its manual installation flow still requests a license during first login, so verify the current licensing terms and any provider-specific conditions before deployment.
 
 ### Does FASTPANEL make the VPS managed?
 
