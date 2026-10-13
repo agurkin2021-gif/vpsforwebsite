@@ -4016,8 +4016,8 @@ body:has(.vps-home) footer .container {
 .vps-home button.btn:hover,
 .vps-home .btn:hover,
 .vps-home .vps-btn-secondary:hover {
-  background: var(--osp-green) !important;
-  border-color: var(--osp-green) !important;
+  background: var(--vps-secondary) !important;
+  border-color: var(--vps-secondary) !important;
   color: #061019 !important;
   transform: translateY(-1px);
 }
