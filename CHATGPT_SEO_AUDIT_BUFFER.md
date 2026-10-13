@@ -1739,3 +1739,81 @@ That connects directly to the existing VPS Fit / Readiness Engine:
 - recommendation: one VPS vs two VPSs.
 
 This is a stronger and more defensible differentiator than generic AI-agent hosting.
+
+
+## 31. SSH access intent classification
+
+Research pass: 2026-10-12.
+
+### Query family
+- how to connect to VPS via SSH
+- SSH to VPS
+- connect to Linux VPS via SSH
+- VPS SSH key
+- VPS root access
+
+### SERP finding
+
+This is a well-established operational intent, not an uncovered competitor gap.
+
+Current strong coverage includes:
+- DigitalOcean — SSH remote-server guide;
+- Namecheap — VPS setup guide with SSH step;
+- Bluehost — self-managed VPS/VDS SSH-key guide;
+- current host knowledgebases with Windows / macOS / Linux examples.
+
+Therefore:
+**SSH is important for topical completeness, but it is NOT a WOW differentiator.**
+
+### Architecture decision
+
+Do NOT give SSH a large homepage block.
+
+Homepage treatment:
+- one short line under self-managed responsibility / first steps:
+  - secure SSH access is part of operating a self-managed Linux VPS;
+  - prefer key-based access where practical;
+  - do not expose detailed commands on the commercial homepage.
+
+Best owner:
+**How to host a website on VPS** — P2 operational guide.
+
+That page should contain a clear SSH section:
+1. what SSH is;
+2. required values: server IP, username, port, authentication method;
+3. Windows: PowerShell / Windows Terminal;
+4. macOS / Linux: Terminal;
+5. first-connect fingerprint;
+6. password login vs SSH key;
+7. create non-root admin user;
+8. disable/restrict risky root/password access only after confirming key login;
+9. firewall / port considerations;
+10. common errors: timeout, refused, permission denied, host-key changed.
+
+### Dedicated SSH page decision
+
+Status: HOLD.
+
+A standalone exact page such as:
+`How to Connect to VPS via SSH`
+may be justified later if keyword-volume / SERP research shows enough opportunity.
+
+For now:
+- avoid another thin guide;
+- put SSH inside the broader first-hour / hosting-a-website guide;
+- security-specific hardening belongs to `VPS Security Checklist`.
+
+### Internal linking
+
+Future structure:
+- Homepage -> How to Host a Website on VPS
+- How to Host a Website on VPS -> SSH section
+- SSH section -> VPS Security Checklist
+- SSH section -> Website Migration to VPS where relevant
+
+### Gap status
+
+| ID | Gap | Recommended owner | Status |
+|---|---|---|---|
+| GAP-40 | SSH connection / first access | How to Host a Website on VPS | OPEN P2 |
+| GAP-41 | SSH key hardening | VPS Security Checklist | OPEN P2 |
