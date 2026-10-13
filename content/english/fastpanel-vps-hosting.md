@@ -8,7 +8,7 @@ FASTPANEL VPS Hosting combines a self-managed VPS with a web-hosting control pan
 
 VDSina currently lists **FASTPANEL on Ubuntu 22** as a web-hosting-control-panel deployment option on its Standard VPS. That is a provider deployment choice, not a claim that the server becomes fully managed.
 
-For the generic panel decision, see [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
+For the broader server-buying decision, see [VPS for website]({{< relref "_index.md" >}}). For the generic panel decision, see [VPS with Control Panel]({{< relref "vps-with-control-panel.md" >}}).
 
 [Quick answer](#quick-answer) · [Sizing](#fastpanel-system-requirements-vs-real-website-sizing) · [Fit checker](#fastpanel-vps-fit-checker) · [First site](#create-the-first-website) · [Multiple sites](#multiple-websites-and-user-isolation) · [FAQ](#faq)
 
