@@ -74,6 +74,20 @@ Use this as a starting decision, not as a benchmark guarantee.
     </select>
   </div>
   <div class="mb-6">
+    <label for="wc-limits" class="form-label">Does current hosting show repeated resource limits or a capability gap?</label>
+    <select id="wc-limits" class="form-input">
+      <option value="no">No / not measured</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="mb-6">
+    <label for="wc-external" class="form-label">Is the main failure/latency already traced to a payment, shipping, tax, SMTP or other external service?</label>
+    <select id="wc-external" class="form-input">
+      <option value="no">No / not known</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="mb-6">
     <label for="wc-checkout" class="form-label">Simultaneous checkout/account activity</label>
     <select id="wc-checkout" class="form-input">
       <option value="low">Low</option>
@@ -133,6 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function val(id) { return document.getElementById(id).value; }
 
     var stage = val("wc-stage");
+    var limits = val("wc-limits") === "yes";
+    var external = val("wc-external") === "yes";
     var checkout = val("wc-checkout");
     var catalog = val("wc-catalog");
     var jobs = val("wc-jobs") === "yes";
@@ -156,7 +172,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var result;
 
-    if (stage === "business" && operator !== "yes") {
+    if (external) {
+      result = "DIAGNOSE EXTERNAL / APPLICATION FIRST: the main failure is already traced outside the VPS resource pool. Fix or measure the gateway/API/SMTP/integration path before buying more CPU or RAM.";
+    } else if (!limits && stage !== "business" && score <= 2) {
+      result = "MANAGED / SHARED MAY STILL FIT: there is no measured VPS constraint yet. Keep the simpler hosting model or optimize first until a real resource/capability reason appears.";
+    } else if (stage === "business" && operator !== "yes") {
       result = "MANAGED / ADMIN-HELP PATH: the store is business-critical and server operations do not have a full internal owner. Use managed or paid administration before choosing a raw unmanaged VPS.";
     } else if (score <= 2) {
       result = "LEAN 2 GB / SMALL-STORE PATH: 1 vCPU / 2 GB / 40 GB can be a foundational starting point for a very light store. Validate checkout, PHP worker memory, DB latency and scheduled actions before calling it production-ready.";
