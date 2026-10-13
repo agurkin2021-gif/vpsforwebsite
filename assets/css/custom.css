@@ -4900,3 +4900,161 @@ body:has(.vps-vs-shared-page-header) main h2#quick-comparison + table tbody tr:h
     color: #72e5a2;
   }
 }
+
+
+/* VPS vs Shared Hosting decision checker responsive grid */
+body:has(.vps-vs-shared-page-header) main div:has(> #shared-vs-vps-checker) {
+  margin-top: 24px;
+  padding: 24px !important;
+  border: 1px solid #2a3e4e;
+  border-radius: 16px !important;
+  background: #0d1824 !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 22px;
+  align-items: start;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .mb-6 {
+  display: grid !important;
+  grid-template-rows: 4rem 54px;
+  align-content: start;
+  margin-bottom: 0 !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-label {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 0 9px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  color: #f0f3f6 !important;
+  font-size: .88rem !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-input {
+  width: 100% !important;
+  height: 54px !important;
+  min-height: 54px !important;
+  margin: 0 !important;
+  padding: 0 42px 0 15px !important;
+  border: 1px solid #314555 !important;
+  border-radius: 9px !important;
+  background: #07101a !important;
+  color: #d7dee5 !important;
+  font-size: .86rem !important;
+  line-height: 54px !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-input:hover {
+  border-color: #3e5d72 !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-input:focus {
+  border-color: var(--vs-green) !important;
+  box-shadow: 0 0 0 2px rgba(45, 222, 116, .1) !important;
+  outline: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 4px !important;
+  min-height: 46px;
+  padding: 0 18px !important;
+  background: var(--vs-green) !important;
+  border-color: var(--vs-green) !important;
+  color: #061019 !important;
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .btn:hover,
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .btn:focus-visible {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  color: #061019 !important;
+  transform: translateY(-1px);
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .btn:active {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  color: #061019 !important;
+  transform: scale(.985);
+}
+
+body:has(.vps-vs-shared-page-header) #shared-vs-vps-result {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  margin-top: 22px !important;
+  padding: 13px 15px !important;
+  border: 1px solid #2a3e4e !important;
+  border-left: 3px solid var(--vs-green) !important;
+  border-radius: 9px !important;
+  background: #09141f;
+  color: #cbd5de;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) and (min-width: 701px) {
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker {
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .mb-6 {
+    grid-template-rows: 4.6rem 52px;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-input {
+    height: 52px !important;
+    min-height: 52px !important;
+    padding-left: 13px !important;
+    padding-right: 36px !important;
+    font-size: .8rem !important;
+    line-height: 52px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body:has(.vps-vs-shared-page-header) main div:has(> #shared-vs-vps-checker) {
+    padding: 18px !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .mb-6 {
+    grid-template-rows: auto 52px;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-label {
+    display: block !important;
+    padding-bottom: 8px !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker .form-input {
+    height: 52px !important;
+    min-height: 52px !important;
+    line-height: 52px !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-checker > .btn {
+    grid-column: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  body:has(.vps-vs-shared-page-header) #shared-vs-vps-result {
+    min-height: 0;
+  }
+}
