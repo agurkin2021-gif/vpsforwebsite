@@ -3630,3 +3630,34 @@ Final preview artifact: a56a819f0b0f1534bdbcdf6f6a8a60630977a446.
 Verified: Title=H1=VPS for WordPress; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; WordPress VPS Fit Checker; one sponsored/nofollow/noopener CTA; all planned contextual links.
 
 No known P0/P1 content/on-page defect remains. Next core work item is VPS for WooCommerce.
+
+
+## 65. VPS for WooCommerce — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Fresh SERP retained the exact owner VPS for WooCommerce. Current results and WooCommerce's own documentation support a distinct transaction-oriented workload separate from generic WordPress.
+
+Closed G1-G16:
+- official WooCommerce requirements != production VPS sizing;
+- dynamic Cart/Checkout/My Account cannot be treated as fully page-cacheable;
+- PHP worker / checkout concurrency sizing;
+- official 2 GB foundational setup vs stronger 4 GB practical business baseline;
+- database read/write workload;
+- HPOS coverage without overclaiming;
+- Action Scheduler/background queues as a first-class workload;
+- Woo-aware page/object/OPcache/CDN layers;
+- checkout/payment/webhook reliability;
+- sale/campaign peak modeling;
+- transaction-aware backup RPO;
+- external payment/shipping/tax/SMTP/API bottleneck diagnosis;
+- functional WooCommerce VPS Fit Checker;
+- migration live-write/data-divergence boundary;
+- measured upgrade triggers;
+- negative qualification / managed hosting when operations ownership is missing.
+
+Control audit found and fixed one missing G13 behavior: the checker can now explicitly return DIAGNOSE EXTERNAL/APPLICATION FIRST and MANAGED/SHARED MAY STILL FIT instead of always recommending more VPS.
+
+Final preview artifact: 4ce66bddb3ef8bf23db6039b464e5ed3e3b4101d.
+Verified: Title=H1=VPS for WooCommerce; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; current official server-recommendation values; Woo caching exclusions; HPOS; Action Scheduler; one sponsored/nofollow/noopener CTA; contextual links to homepage, WordPress, sizing, managed, panel, FASTPANEL, migration and deployment guide.
+
+No known P0/P1 content/on-page defect remains. Next core work item is VPS for Multiple Websites.
