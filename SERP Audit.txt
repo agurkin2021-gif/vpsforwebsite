@@ -136,13 +136,16 @@ This page is the generic parent for the FASTPANEL branded page.
 Management ownership belongs to Managed vs Unmanaged VPS, not here.
 
 9. FASTPANEL VPS Hosting
-Provisional URL: /fastpanel-vps-hosting/
-Status: PLANNED / EXACT QUERY MUST BE REVALIDATED BEFORE BUILD
-Fresh SERP decision:
-Retarget the old planned "VPS with FASTPANEL" page toward the stronger current commercial cluster:
-- FASTPANEL VPS Hosting
-- FASTPANEL Hosting
-Before implementation, run a dedicated exact-query SERP and lock one exact primary keyword / Title / H1 / URL.
+URL: /fastpanel-vps-hosting/
+Status: PLANNED / EXACT QUERY LOCKED / READY TO BUILD
+Exact SERP decision (2026-10-13):
+Primary keyword: FASTPANEL VPS Hosting
+Title: FASTPANEL VPS Hosting
+H1: FASTPANEL VPS Hosting
+URL: /fastpanel-vps-hosting/
+Secondary semantic variant: FASTPANEL Hosting
+Natural-language variant: VPS with FASTPANEL
+Do NOT create a separate "VPS with FASTPANEL" page.
 Role:
 - FASTPANEL-specific commercial use case;
 - VDSina FASTPANEL deployment option where verified;
@@ -379,11 +382,7 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Run exact-query SERP for FASTPANEL:
-   - FASTPANEL VPS Hosting
-   - FASTPANEL Hosting
-   - VPS with FASTPANEL
-   Lock the strongest natural owner, then build it.
+1. Build FASTPANEL VPS Hosting using the locked exact query and the saved page-level SERP research.
 2. Deepen VPS with Control Panel so the generic parent and FASTPANEL child are cleanly separated.
 3. Build How to host a website on VPS with the no-control-panel/manual path inside it.
 4. Deepen VPS vs Shared Hosting.
