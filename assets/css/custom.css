@@ -1219,3 +1219,59 @@ body:has(.vps-home) footer .container {
     padding-inline: 16px !important;
   }
 }
+
+/* Homepage precision alignment with reference */
+.home-header .navbar,
+.vps-home > .vps-hero .container,
+.vps-home > .vps-home-section .container,
+.vps-home > #faq .container {
+  width: 1040px !important;
+}
+.home-header #nav-menu {
+  margin-left: auto !important;
+  gap: 22px !important;
+}
+.home-header #nav-menu > li {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.vps-home .vps-hero .row {
+  grid-template-columns: minmax(0, 36%) minmax(0, 48%) !important;
+  gap: 16% !important;
+}
+.vps-home .vps-hero-copy h1 {
+  font-size: clamp(3.7rem, 4vw, 4.35rem) !important;
+}
+.vps-home .vps-hero-copy > p {
+  max-width: 350px !important;
+}
+.vps-home .vps-hero-panel {
+  max-width: 480px !important;
+  min-height: 480px !important;
+}
+.vps-home > .vps-workflow-strip .container {
+  width: 100vw !important;
+  min-width: 100vw !important;
+  padding-inline: 28px !important;
+}
+@media (max-width: 1100px) {
+  .home-header .navbar,
+  .vps-home > .vps-hero .container,
+  .vps-home > .vps-home-section .container,
+  .vps-home > #faq .container {
+    width: calc(100% - 40px) !important;
+  }
+}
+@media (max-width: 767px) {
+  .home-header #nav-menu {
+    margin-left: 0 !important;
+    gap: 0 !important;
+  }
+  .vps-home .vps-hero .row {
+    gap: 30px !important;
+  }
+  .vps-home .vps-hero-panel {
+    max-width: none !important;
+    min-height: 0 !important;
+  }
+}
