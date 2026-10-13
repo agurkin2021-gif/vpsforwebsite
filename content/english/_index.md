@@ -40,9 +40,9 @@ features:
       - "Server location affects network latency to your users. A CDN such as Cloudflare can offload static delivery and some origin requests, but it does not remove dynamic PHP, application or database work from the VPS."
       - "Treat the displayed VPS price as infrastructure pricing: optional panel licenses, external backups, administration, monitoring or other services can be separate depending on what you choose."
     button:
-      enable: false
-      label: ""
-      link: ""
+      enable: true
+      label: "Size your VPS"
+      link: "/vps-sizing-for-website/"
 
   - id: "management-path"
     title: "Choose how you will manage the server"
