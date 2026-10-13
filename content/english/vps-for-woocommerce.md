@@ -480,7 +480,7 @@ For migration:
 
 Use [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}) for the full cutover process.
 
-## Upgrade triggers
+## WooCommerce VPS upgrade triggers
 
 Scale or re-architect when measurements show:
 
@@ -516,7 +516,7 @@ If checkout is slow while server resources are healthy, investigate payment/API/
 | Reboot | web/PHP/DB/jobs return automatically |
 | Peak | representative sale/campaign load validated |
 
-## Current VPS examples
+## Current WooCommerce VPS examples
 
 These current VDSina Standard plans are mapping examples, not store-capacity guarantees.
 
