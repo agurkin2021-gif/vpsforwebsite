@@ -674,3 +674,24 @@ The SEO buffer contains:
 - All 14 supporting pages are reachable contextually from the homepage; every supporting page returns to the homepage; no core orphan remains.
 - Full audit is stored in `research/cluster-overlap-internal-link-audit-2026-10-13.md`.
 - Next continuation point: do not create another core page by default. Any expansion starts with a fresh SERP/volume/ownership check against the frozen cluster. Live GitHub Pages remains separately blocked until Pages is enabled.
+
+
+### 2026-10-13 — Homepage re-audit and optimization complete
+
+- Re-audited the homepage from the current English Google SERP for `VPS for website`.
+- Current SERP intent is commercial investigation + informational validation, not a purely informational guide.
+- Main homepage owner remains exact: Title/H1 `VPS for website`, URL `/`.
+- Implemented:
+  - working VPS Fit / Readiness Checker;
+  - second hero commercial CTA;
+  - Standard VPS comparison table with current daily/monthly pricing;
+  - provider-selection checklist;
+  - evidence-first methodology/trust block;
+  - direct FAQs for best VPS, monthly price, $5 VPS, downsides, domain/email;
+  - mixed website + automation/worker example;
+  - local intent-specific SVG illustrations replacing external theme demo images;
+  - WebSite + homepage WebPage schema;
+  - bottom CTA rewrite away from bonus-first messaging.
+- Final generated homepage QA: one H1; exact Title/H1; preview noindex; schema present; all current plan values present; no broken internal routes/anchors; only VDSina affiliate destination is externally clickable; all 3 affiliate links carry sponsored/nofollow/noopener.
+- Audit ledger: `research/homepage-vps-for-website-rerun-2026-10-13.md`.
+- Next page-by-page re-audit should proceed to `VPS sizing for website`, not restart the homepage.
