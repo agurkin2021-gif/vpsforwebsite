@@ -641,3 +641,5 @@ The SEO buffer contains:
 - Root cause: preview workflow performed a blind replacement of `/agurkin2021-gif/vpsforwebsite/preview/` even inside URLs that were already absolute RawGitHack URLs.
 - `.github/workflows/pages.yml` now replaces only prefixes not already preceded by `https://raw.githack.com`, preserving already-correct absolute preview URLs.
 - This is preview-only infrastructure; production BaseURL remains `https://vpsforwebsite.com/`.
+
+- Preview rewrite regex was rechecked after commit and corrected to the effective pattern `(?<!https://raw\.githack\.com)`; the earlier over-escaped intermediate pattern must not be restored.
