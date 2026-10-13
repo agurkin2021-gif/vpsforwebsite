@@ -1506,19 +1506,74 @@ body:has(.vps-home) footer .container {
   }
 }
 
-
-/* Homepage adjustment 07: centered workflow strip content */
-.vps-home > .vps-workflow-strip .container {
-  width: calc(100% - 48px) !important;
-  min-width: 0 !important;
-  max-width: 1180px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* Homepage adjustment 07: intent-driven running workflow strip */
+.vps-home > .vps-workflow-strip {
+  overflow: hidden !important;
 }
+
+.vps-home > .vps-workflow-strip .container {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-home .vps-workflow-strip-inner {
+  display: flex !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  will-change: transform;
+  animation: vps-workflow-marquee 28s linear infinite;
+}
+
+.vps-home .vps-workflow-run {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 1.9rem;
+  min-height: 4rem;
+  padding-right: 1.9rem;
+}
+
+.vps-home .vps-workflow-run span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.vps-home .vps-workflow-run span::after {
+  content: "→";
+  margin-left: 1.9rem;
+  color: var(--vps-primary);
+}
+
+.vps-home .vps-workflow-strip:hover .vps-workflow-strip-inner {
+  animation-play-state: paused;
+}
+
+@keyframes vps-workflow-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 @media (max-width: 767px) {
-  .vps-home > .vps-workflow-strip .container {
-    width: calc(100% - 32px) !important;
+  .vps-home .vps-workflow-strip-inner {
+    animation-duration: 24s;
+  }
+  .vps-home .vps-workflow-run {
+    gap: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .vps-home .vps-workflow-run span::after {
+    margin-left: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vps-home .vps-workflow-strip-inner {
+    animation: none !important;
+    transform: none !important;
   }
 }
