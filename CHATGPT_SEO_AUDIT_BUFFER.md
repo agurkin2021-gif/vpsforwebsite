@@ -3333,3 +3333,13 @@ Final dense-audit corrections:
 - cutover checklist mirrors the stronger backup acceptance standard.
 
 Research gaps G1–G15 are now represented on-page at the intended scope. No known P0/P1 content gap remains. Keep generic server setup, managed-vs-unmanaged, and URL-changing/domain-changing migration as separate owners rather than expanding this page further.
+
+
+## 53. Managed vs Unmanaged VPS — implementation — 2026-10-13
+Status: IMPLEMENTED / PREVIEW VERIFIED.
+- Exact owner: /managed-vs-unmanaged-vps/; Title/H1 Managed vs Unmanaged VPS.
+- SERP research and competitors saved in research/managed-vs-unmanaged-vps-serp-2026-10-13.md; search volume not verified.
+- Closed scope: managed-label ambiguity, support != management, panel != management, responsibility matrix, app-level exclusions, restore-tested backups, incident/on-call ownership, TCO, root/custom-stack trade-off, hybrid paid admin, production disqualification, functional Management fit checker, VDSina support/admin truth boundary.
+- Preview artifact 77fc5ba02230b3451b38d205c5402fd839fb70a2: Title=H1, noindex/nofollow, no preview canonical, checker rendered, JSON-LD present, sponsored partner CTA present, intended internal links present.
+- Homepage and migration generated HTML both link to this page.
+- No known P0/P1 implementation defect from this pass; run dense freeze audit before calling content frozen if requested.
