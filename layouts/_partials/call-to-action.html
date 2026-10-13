@@ -1,4 +1,5 @@
 <!-- Call to actions -->
+{{ $caller := . }}
 {{ with site.GetPage "sections/call-to-action" }}
   {{ if .Params.enable }}
     <section id="final-cta" class="mb-28 scroll-mt-28">
@@ -7,7 +8,59 @@
           class="bg-light dark:bg-darkmode-light rounded-xl px-4 py-16 xl:p-20">
           <div class="row items-center justify-between">
             <div class="md:col-5 lg:col-4 mb-10 md:order-2 md:mb-0">
-              {{ if strings.HasSuffix .Params.image ".svg" }}
+              {{ if $caller.IsHome }}
+                <div class="vps-cta-diagram" role="img" aria-label="Evidence-based VPS buying flow from fit and sizing checks to current configurations">
+                  <div class="vps-cta-diagram-head">
+                    <span>Evidence first</span>
+                    <strong>Choose the configuration after the checks</strong>
+                  </div>
+
+                  <div class="vps-cta-steps">
+                    <div class="vps-cta-step">
+                      <span>01</span>
+                      <strong>Fit</strong>
+                      <small>Confirm that a VPS solves the real problem</small>
+                    </div>
+
+                    <div class="vps-cta-step">
+                      <span>02</span>
+                      <strong>Size</strong>
+                      <small>CPU · RAM · storage · dynamic workload</small>
+                    </div>
+
+                    <div class="vps-cta-step">
+                      <span>03</span>
+                      <strong>Verify terms</strong>
+                      <small>Location · transfer · panel · backups · support</small>
+                    </div>
+
+                    <div class="vps-cta-step vps-cta-step-current">
+                      <span>04</span>
+                      <strong>Check current configurations</strong>
+                      <small>Use the provider's current order page before paying</small>
+                    </div>
+                  </div>
+
+                  <div class="vps-cta-flow" aria-hidden="true">
+                    <span></span>
+                    <i></i>
+                  </div>
+
+                  <div class="vps-cta-headroom">
+                    <span>Buy only measured headroom</span>
+                    <div>
+                      <span>Workload fit</span>
+                      <span>Growth room</span>
+                      <span>Current terms</span>
+                    </div>
+                  </div>
+
+                  <div class="vps-cta-diagram-result">
+                    <span>Decision</span>
+                    <strong>Smallest configuration that covers the real workload with enough headroom</strong>
+                  </div>
+                </div>
+              {{ else if strings.HasSuffix .Params.image ".svg" }}
                 <img src="{{ .Params.image | relURL }}" alt="Choose a VPS configuration" loading="lazy" decoding="async" width="700" height="520" class="w-full" />
               {{ else }}
                 {{ partial "image" (dict "Src" .Params.image "Alt" "call to action" "Class" "w-full") }}
