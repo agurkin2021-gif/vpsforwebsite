@@ -162,7 +162,48 @@
             class="mb:md-0 {{ if not (modBool $i 2) }}
               md:order-2
             {{ end }} md:col-5 mb-6">
-            {{ if strings.HasPrefix .image "http" }}
+            {{ if eq .id "fit-check" }}
+              <div class="vps-fit-diagram" role="img" aria-label="Decision path from shared hosting to stay, optimize first, or move to a VPS">
+                <div class="vps-fit-diagram-top">
+                  <div class="vps-fit-node vps-fit-node-source">
+                    <span class="vps-fit-node-kicker">Current hosting</span>
+                    <strong>Shared hosting</strong>
+                    <small>Light, stable, standard stack</small>
+                  </div>
+                  <div class="vps-fit-arrow" aria-hidden="true"></div>
+                  <div class="vps-fit-node vps-fit-node-question">
+                    <span class="vps-fit-node-kicker">Check evidence</span>
+                    <strong>Limits or custom stack?</strong>
+                    <small>CPU · RAM · process · I/O · root</small>
+                  </div>
+                </div>
+
+                <div class="vps-fit-stem" aria-hidden="true"></div>
+                <div class="vps-fit-decision-label">Decision</div>
+
+                <div class="vps-fit-outcomes">
+                  <div class="vps-fit-outcome">
+                    <span class="vps-fit-outcome-index">01</span>
+                    <strong>Stay shared</strong>
+                    <small>Light, stable, no custom stack</small>
+                  </div>
+                  <div class="vps-fit-outcome">
+                    <span class="vps-fit-outcome-index">02</span>
+                    <strong>Optimize first</strong>
+                    <small>Plugin, query, bot, cache or job issue</small>
+                  </div>
+                  <div class="vps-fit-outcome vps-fit-outcome-move">
+                    <span class="vps-fit-outcome-index">03</span>
+                    <strong>Move to VPS</strong>
+                    <small>Repeated real limits or custom software needs</small>
+                  </div>
+                </div>
+
+                <div class="vps-fit-diagram-note">
+                  Measure the workload first. Move only when the evidence points to infrastructure.
+                </div>
+              </div>
+            {{ else if strings.HasPrefix .image "http" }}
               <img
                 src="{{ .image }}"
                 alt="{{ .title | plainify }}"
