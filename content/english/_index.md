@@ -4,7 +4,7 @@ description: "VPS for website: decide if you need a VPS, choose CPU and RAM from
 
 banner:
   title: "VPS for website"
-  content: "Decide whether you actually need a VPS, size it from real workload instead of guessed visitor counts, choose how you will manage it, check migration risk, and see when one server should become several."
+  content: "A VPS for website hosting is an isolated virtual server where you control the operating system, web stack and allocated resources. Decide whether you actually need one, size it from real workload instead of guessed visitor counts, choose how you will manage it, and plan migration and growth before you buy."
   image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/main/exampleSite/assets/images/banner.png"
   button:
     enable: true
@@ -35,8 +35,10 @@ features:
       - "**1 vCPU / 2 GB / 40 GB — $0.50/day:** small site or lean CMS where the panel, PHP and database still fit with headroom."
       - "**2 vCPU / 4 GB / 80 GB — $0.67/day:** practical starting point for a business site or typical WordPress workload."
       - "**4 vCPU / 8 GB / 160 GB — $1.34/day:** heavier dynamic traffic, larger databases, background work or several active sites."
-      - "Different workloads need different headroom: [WordPress](vps-for-wordpress/), [WooCommerce](vps-for-woocommerce/) and [multiple websites](vps-for-multiple-websites/) should not be sized with one visitor-count rule."
-      - "Before paying, also check storage growth, transfer allowance, server location, backup method, control-panel overhead and who will administer the server."
+      - "Different workloads need different headroom: [WordPress](vps-for-wordpress/) depends heavily on PHP workers, caching and plugins; [WooCommerce](vps-for-woocommerce/) adds more uncached sessions, checkout and database work; [multiple websites](vps-for-multiple-websites/) compete for the same CPU, RAM, storage and process limits."
+      - "Before paying, check storage growth, transfer allowance, IP terms, server location, backup policy, upgrade path, management scope, control-panel or license costs, and current billing terms."
+      - "Server location affects network latency to your users. A CDN such as Cloudflare can offload static delivery and some origin requests, but it does not remove dynamic PHP, application or database work from the VPS."
+      - "Treat the displayed VPS price as infrastructure pricing: optional panel licenses, external backups, administration, monitoring or other services can be separate depending on what you choose."
     button:
       enable: false
       label: ""
@@ -94,6 +96,7 @@ features:
       - "**Clone before risky changes:** test upgrades or architecture changes on a copy instead of experimenting first on production."
       - "**Scale upward without rebuilding the stack:** add resources when monitoring shows sustained CPU, memory or storage pressure."
       - "**Recover from a known point:** scheduled backups can be used to restore or create another server."
+      - "**Snapshot is not the same as a backup:** a fast rollback point is useful, but recovery planning should also include an independent or portable copy outside the running server."
       - "**Keep a portable copy:** VDSina documents downloading a full server backup image as an .img.gz file for storage under your own control."
       - "**Watch before you upgrade:** sustained memory pressure, CPU saturation, storage growth and request queues are better upgrade signals than guessed traffic numbers."
       - "Provider basics worth checking at purchase time include the advertised 10 Gbit/s public port, DDoS protection, 24/7 support and daily billing."
@@ -101,4 +104,25 @@ features:
       enable: false
       label: ""
       link: ""
+
+faq:
+  title: "VPS for website FAQ"
+  description: "Short answers to the buying and operating questions that matter before you move a website to a VPS."
+  items:
+    - question: "What is a VPS for a website?"
+      answer: "It is an isolated virtual server with allocated CPU, RAM and storage where you control the operating system and website stack. That extra control also means more administration responsibility than typical shared hosting."
+    - question: "How many websites can one VPS host?"
+      answer: "There is no safe fixed number. The limit depends on each site's PHP or application concurrency, database work, caching, background jobs, storage and traffic pattern. Several light cached sites may fit where one busy dynamic site would not."
+    - question: "Does server location matter?"
+      answer: "Yes. A shorter network path can reduce latency, especially for dynamic requests. Choose a location that fits the main audience and operational requirements, then use caching or a CDN where appropriate."
+    - question: "Does Cloudflare or another CDN mean I can buy a smaller VPS?"
+      answer: "Sometimes it reduces static bandwidth and repeated origin requests, but it does not eliminate uncached application, PHP, API or database work. Size the VPS for the dynamic workload that still reaches the origin."
+    - question: "Is a snapshot the same as a backup?"
+      answer: "No. A snapshot or rollback point is useful for fast recovery, but it should not be your only copy. Keep a separate recovery copy, preferably off-server or portable, and verify that it can actually be restored."
+    - question: "What should I do immediately after buying a VPS?"
+      answer: "Provision it, apply updates and basic hardening, configure the web stack or panel, deploy or migrate the site, set DNS and HTTPS, verify the application, backups and email path, then start monitoring resource use."
+    - question: "What does the VPS price include?"
+      answer: "The listed server price covers the stated infrastructure configuration. Control-panel licenses, paid backups, administration, external monitoring or other optional services may be separate, so check the current order terms before paying."
+    - question: "Do I need a control panel?"
+      answer: "Not necessarily. A panel simplifies domains, SSL, PHP and databases but uses some resources and may have separate licensing. Pure Ubuntu or Linux over SSH gives more control but leaves more administration with you."
 ---
