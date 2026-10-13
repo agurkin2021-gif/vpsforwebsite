@@ -77,7 +77,7 @@ VDSina technical support must NOT be described as fully managed hosting unless a
 
 4. VPS for WordPress
 URL: /vps-for-wordpress/
-Status: EXISTS / NEEDS DEEP SERP + ON-PAGE EXPANSION
+Status: BUILT / FROZEN
 Role:
 - WordPress-specific VPS workload;
 - PHP workers;
@@ -371,9 +371,9 @@ DONE / FROZEN
 - VPS with Control Panel
 - How to host a website on VPS
 - VPS vs Shared Hosting
+- VPS for WordPress
 
 EXISTS / MUST BE DEEPLY REWORKED
-- VPS for WordPress
 - VPS for WooCommerce
 - VPS for Multiple Websites
 
@@ -387,14 +387,13 @@ NOT BUILT YET
 RECOMMENDED WORK ORDER
 ==================================================
 
-1. Deepen VPS for WordPress.
-2. Deepen VPS for WooCommerce.
-3. Deepen VPS for Multiple Websites.
-4. Build VPS Security Checklist.
-5. Build VPS Backup Strategy.
-6. Run exact-query SERP and build VPS Monitoring.
-7. Run exact-query SERP and build How to Choose VPS Location.
-8. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
+1. Deepen VPS for WooCommerce.
+2. Deepen VPS for Multiple Websites.
+3. Build VPS Security Checklist.
+4. Build VPS Backup Strategy.
+5. Run exact-query SERP and build VPS Monitoring.
+6. Run exact-query SERP and build How to Choose VPS Location.
+7. Perform a cluster-wide overlap/internal-link audit after all 14 pages are complete.
 
 ==================================================
 STANDARD WORKFLOW FOR EVERY PAGE
