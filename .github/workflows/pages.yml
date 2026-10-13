@@ -56,7 +56,11 @@ jobs:
                   continue
 
               text = path.read_text(encoding="utf-8")
-              text = text.replace(prefix, target)
+              text = re.sub(
+                  r"(?<!https://raw\\.githack\\.com)" + re.escape(prefix),
+                  target,
+                  text,
+              )
 
               if path.suffix.lower() == ".html":
                   text = re.sub(
