@@ -1,17 +1,18 @@
 {{ define "main" }}
   <!-- Banner -->
   {{ with .Params.banner }}
-    <section class="section pt-14">
+    <section class="section vps-hero">
       <div class="container">
-        <div class="row justify-center">
-          <div class="lg:col-7 md:col-9 mb-8 text-center">
-            <h1 class="mb-4 text-h3 lg:text-h1">
+        <div class="row items-center justify-between">
+          <div class="vps-hero-copy md:col-6 lg:col-5">
+            <div class="vps-eyebrow">Fit · Size · Deploy</div>
+            <h1>
               {{ .title | markdownify }}
             </h1>
             <p class="mb-8">
               {{ .content | markdownify }}
             </p>
-            <div class="flex flex-wrap justify-center gap-3">
+            <div class="flex flex-wrap justify-start gap-3">
               {{ with .button }}
                 {{ if .enable }}
                   {{ $href := .link }}
@@ -35,7 +36,7 @@
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
                   {{ end }}
                   <a
-                    class="btn border border-primary text-primary dark:border-white dark:text-white"
+                    class="btn vps-btn-secondary"
                     href="{{ $href }}"
                     {{ if strings.HasPrefix .link `http` }}
                       target="_blank" rel="sponsored nofollow noopener"
@@ -46,30 +47,43 @@
               {{ end }}
             </div>
           </div>
-          <div class="col-12">
-            {{ if strings.HasPrefix .image "http" }}
-              <img
-                src="{{ .image }}"
-                alt="{{ .title | plainify }}"
-                loading="eager"
-                decoding="async"
-                class="mx-auto lg:!max-w-[800px] img" />
-            {{ else if strings.HasSuffix .image ".svg" }}
-              <img
-                src="{{ .image | relURL }}"
-                alt="{{ .title | plainify }}"
-                loading="eager"
-                decoding="async"
-                width="1200"
-                height="675"
-                class="mx-auto lg:!max-w-[800px] img" />
-            {{ else }}
-              {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
-            {{ end }}
+          <div class="md:col-6 lg:col-6">
+            <div class="vps-hero-panel">
+              {{ if strings.HasPrefix .image "http" }}
+                <img
+                  src="{{ .image }}"
+                  alt="{{ .title | plainify }}"
+                  loading="eager"
+                  decoding="async" />
+              {{ else if strings.HasSuffix .image ".svg" }}
+                <img
+                  src="{{ .image | relURL }}"
+                  alt="{{ .title | plainify }}"
+                  loading="eager"
+                  decoding="async"
+                  width="1200"
+                  height="675" />
+              {{ else }}
+                {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "DisplayXL" "800x" ) }}
+              {{ end }}
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <div class="vps-workflow-strip" aria-label="VPS decision workflow">
+      <div class="container">
+        <div class="vps-workflow-strip-inner">
+          <span>Fit</span>
+          <span>Size</span>
+          <span>Locate</span>
+          <span>Migrate</span>
+          <span>Secure</span>
+          <span>Back up</span>
+          <span>Monitor</span>
+        </div>
+      </div>
+    </div>
   {{ end }}
   <!-- /Banner -->
 
