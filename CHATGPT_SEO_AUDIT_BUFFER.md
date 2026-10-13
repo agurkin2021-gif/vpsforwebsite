@@ -3600,3 +3600,33 @@ Final preview artifact: e705f52dd5eb3558bcc515fb542cdbde606a53c9.
 Verified: Title=H1=VPS vs Shared Hosting; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; checker rendered with business-criticality field; one sponsored/nofollow/noopener CTA; required contextual links.
 
 No known P0/P1 content/on-page defect remains. Next core work item is VPS for WordPress.
+
+
+## 64. VPS for WordPress — final freeze — 2026-10-13
+Status: BUILT / FROZEN.
+
+Fresh SERP retained the exact owner VPS for WordPress. Current results separate this intent from generic VPS sizing through WordPress-specific PHP worker, database, cache, plugin and background-job behavior.
+
+Closed G1-G15:
+- WordPress software requirements != production VPS sizing;
+- uncached/dynamic concurrency instead of monthly visits;
+- PHP worker memory budget;
+- explicit OPcache/page cache/object cache/browser-CDN layers;
+- persistent object cache is not automatic;
+- database bottleneck diagnosis;
+- WP-Cron/system scheduler boundary;
+- plugin/theme/background workload;
+- honest 1/2/4/8 GB tier meaning;
+- manual/panel/FASTPANEL and management fork;
+- staging/backup temporary headroom;
+- WooCommerce ownership boundary;
+- functional WordPress VPS Fit Checker;
+- measured upgrade triggers;
+- negative qualification / when VPS is unnecessary.
+
+Authority facts rechecked from WordPress.org: recommended PHP 8.3+, MariaDB 10.11+ or MySQL 8.0+, HTTPS; Apache/Nginx recommended. VDSina Standard tiers/prices rechecked; no preinstalled WordPress claim is made.
+
+Final preview artifact: a56a819f0b0f1534bdbcdf6f6a8a60630977a446.
+Verified: Title=H1=VPS for WordPress; one H1; preview noindex/nofollow; no preview canonical; WebPage + BreadcrumbList JSON-LD; WordPress VPS Fit Checker; one sponsored/nofollow/noopener CTA; all planned contextual links.
+
+No known P0/P1 content/on-page defect remains. Next core work item is VPS for WooCommerce.
