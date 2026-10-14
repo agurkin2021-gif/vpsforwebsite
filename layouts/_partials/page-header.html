@@ -61,47 +61,69 @@
       <div class="vps-vs-shared-hero">
         <div class="vps-vs-shared-hero-grid">
           <div class="vps-vs-shared-hero-copy">
-            <div class="vps-eyebrow">VPS guide</div>
             <h1>{{ .Title }}</h1>
             {{ with .Params.description }}
               <p class="vps-vs-shared-description">{{ . | markdownify }}</p>
             {{ end }}
-            <a
-              class="btn btn-primary vps-vs-shared-hero-affiliate"
-              href="{{ $vsAffiliate }}"
-              target="_blank"
-              rel="sponsored nofollow noopener">
-              {{ .Title }}
-            </a>
+
+            <div class="vps-vs-shared-hero-actions">
+              <a
+                class="btn btn-primary vps-vs-shared-hero-affiliate"
+                href="{{ $vsAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-vs-shared-secondary-cta" href="#quick-comparison">
+                See quick comparison
+              </a>
+            </div>
           </div>
 
-          <a class="vps-vs-shared-hero-diagram vps-vs-affiliate-visual" href="{{ $vsAffiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="Check current VPS configurations — Shared hosting compared with VPS">
-            <div class="vps-vs-shared-diagram-columns">
-              <div class="vps-vs-shared-model vps-vs-shared-model-shared">
-                <span class="vps-vs-shared-model-kicker">Simpler hosting model</span>
-                <strong>Shared hosting</strong>
-                <div class="vps-vs-shared-model-points">
-                  <span>Provider-managed environment</span>
-                  <span>Restricted server stack</span>
-                  <span>Bundled hosting services</span>
+          <a
+            class="vps-vs-shared-hero-diagram vps-vs-affiliate-visual"
+            href="{{ $vsAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS configurations — Shared hosting compared with VPS">
+            <div class="vps-vs-shared-compact-head">
+              <strong>More control means more server responsibility</strong>
+              <small>Compare the operating model, resource limits and software freedom — not site size alone.</small>
+            </div>
+
+            <div class="vps-vs-shared-compact-grid">
+              <div class="vps-vs-shared-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Administration</strong>
+                  <small>Provider-managed vs self-managed</small>
                 </div>
               </div>
-
-              <div class="vps-vs-shared-versus" aria-hidden="true">VS</div>
-
-              <div class="vps-vs-shared-model vps-vs-shared-model-vps">
-                <span class="vps-vs-shared-model-kicker">More control</span>
-                <strong>VPS</strong>
-                <div class="vps-vs-shared-model-points">
-                  <span>Administrative control</span>
-                  <span>Flexible software stack</span>
-                  <span>Server responsibility</span>
+              <div class="vps-vs-shared-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Software</strong>
+                  <small>Restricted stack vs flexible stack</small>
+                </div>
+              </div>
+              <div class="vps-vs-shared-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Resources</strong>
+                  <small>Account limits vs VPS allocation</small>
+                </div>
+              </div>
+              <div class="vps-vs-shared-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Operations</strong>
+                  <small>Simplicity vs control + ownership</small>
                 </div>
               </div>
             </div>
 
-            <div class="vps-vs-shared-hero-rule">
-              <span>Compare capability, limits and responsibility — not site size alone.</span>
+            <div class="vps-vs-shared-compact-rule">
+              <strong>Move only when the extra control solves a real limit or capability need.</strong>
             </div>
           </a>
         </div>
