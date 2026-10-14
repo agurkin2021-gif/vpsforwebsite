@@ -779,3 +779,13 @@ The SEO buffer contains:
 - SEO/content ownership was not changed by the design pass: homepage remains exact `VPS for website`; supporting Title/H1 owners remain frozen.
 - User-visible external link invariant remains unchanged: homepage external destination is only the VDSina affiliate URL.
 - GitHub Pages deploy remains a separate repository-setting blocker; production build/SEO assertions pass before deploy.
+
+### 2026-10-14 — Production VPS and V favicon
+
+- The active production review URL is now `https://vpsforwebsite.com/`, served by Nginx on the user's VPS through Cloudflare. HTTPS and automatic certificate renewal were verified during deployment. Use this URL for user review; older preview-only hosting notes above are historical.
+- The user rejected the server-rack favicon and requested a clean, attractive replacement. The replacement is a bold geometric V with green `#2dde74` and mint `#72e5a2` faces on the existing midnight `#080e17` rounded square.
+- The vector source is `static/favicon.svg` (240 bytes), with no fonts, scripts, external assets or filters. Raster rendering was visually reviewed at 16, 32 and 48 px on light and dark browser surfaces.
+- Compatibility assets: multi-size ICO (16/32/48), 180 px Apple touch icon, 192/512 px app icons, and a separate 512 px maskable icon with an opaque background and the mark inside the safe area.
+- Shared favicon and manifest partials now use `v=20261014-v` so browsers and Cloudflare can fetch the replacement immediately. The local manifest partial also avoids the upstream white theme-color metadata; the existing dark theme-color in the head remains authoritative.
+- The change is limited to icon assets and head metadata. Page bodies, layouts, content, titles, H1s, canonical URLs, stylesheets and scripts retain their current behavior.
+- Production is updated separately from GitHub Pages: keep these source assets/partials in future Hugo builds so exporting or redeploying the site retains the new icon. Do not add a Hugo build toolchain to the VPS for static icon changes.
