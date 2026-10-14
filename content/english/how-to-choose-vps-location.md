@@ -650,7 +650,7 @@ Verify real external latency, TTFB, errors and user-facing health. A pre-purchas
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Confirm the provider's currently available locations and network details before ordering; this page does not claim a specific VDSina location inventory.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Confirm the provider's currently available locations and network details before ordering; this page does not claim a specific VDSina location inventory.</small></p>
 
 ## Technical references
 
