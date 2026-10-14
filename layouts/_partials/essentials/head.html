@@ -14,7 +14,7 @@
 
 {{ partial "basic-seo.html" . }}
 
-{{ $isPreview := strings.Contains site.BaseURL "raw.githack.com" }}
+{{ $isPreview := or (strings.Contains site.BaseURL "raw.githack.com") (strings.Contains site.BaseURL "github.io") }}
 {{ if or (.Param "noindex") $isPreview }}
   <meta name="robots" content="noindex,nofollow" />
 {{ else }}
