@@ -6289,3 +6289,86 @@ body:has(.vps-wordpress-page-header) main .content {
     width: calc(100% - 36px) !important;
   }
 }
+
+
+/* VPS for WordPress canonical full-width block alignment */
+/*
+  Canonical internal-page geometry:
+  every major block aligns to the same 1040px edges as the homepage.
+  Remove Hugo's inner lg:col-10 narrowing on this page.
+*/
+.vps-wordpress-page-header > .container,
+body:has(.vps-wordpress-page-header) main > .section-sm > .container,
+body:has(.vps-wordpress-page-header) #final-cta > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body:has(.vps-wordpress-page-header) main > .section-sm > .container > .row.justify-center {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body:has(.vps-wordpress-page-header) main > .section-sm > .container > .row.justify-center > div {
+  flex: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body:has(.vps-wordpress-page-header) main .content {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Every substantial visual block inherits the same left/right edges. */
+body:has(.vps-wordpress-page-header) main .content > table,
+body:has(.vps-wordpress-page-header) main .content > .vps-wordpress-requirements,
+body:has(.vps-wordpress-page-header) main .content > .vps-wordpress-php-section,
+body:has(.vps-wordpress-page-header) main .content > div:has(> #wordpress-vps-fit-checker),
+body:has(.vps-wordpress-page-header) main .content > details,
+body:has(.vps-wordpress-page-header) main .content > blockquote {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body:has(.vps-wordpress-page-header) #final-cta > .container > div {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1100px) {
+  .vps-wordpress-page-header > .container,
+  body:has(.vps-wordpress-page-header) main > .section-sm > .container,
+  body:has(.vps-wordpress-page-header) #final-cta > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-wordpress-page-header > .container,
+  body:has(.vps-wordpress-page-header) main > .section-sm > .container,
+  body:has(.vps-wordpress-page-header) #final-cta > .container {
+    width: calc(100% - 36px) !important;
+  }
+}
