@@ -8852,3 +8852,210 @@ body:has(.vps-security-page-header) main > .section-sm {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* VPS Security Checklist full-page refinement */
+
+/* Editorial lists stay readable and lightly accented. */
+body:has(.vps-security-page-header) main .content > ul,
+body:has(.vps-security-page-header) main .content > ol {
+  margin-top: 14px;
+}
+
+body:has(.vps-security-page-header) main .content > ul > li,
+body:has(.vps-security-page-header) main .content > ol > li {
+  margin-bottom: 7px;
+  color: #c8d2dc;
+  line-height: 1.5;
+}
+
+body:has(.vps-security-page-header) main .content li::marker {
+  color: var(--sec-green);
+}
+
+/* Terminal snippets should look intentional, not like default theme boxes. */
+body:has(.vps-security-page-header) main .content pre {
+  margin: 18px 0 22px !important;
+  padding: 15px 17px !important;
+  border: 1px solid #2a3e4e !important;
+  border-left: 3px solid var(--sec-green) !important;
+  border-radius: 9px !important;
+  background: #09131d !important;
+  box-shadow: none !important;
+  overflow-x: auto;
+}
+
+body:has(.vps-security-page-header) main .content pre code {
+  color: #dce6ed !important;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+/* Important incident path gets one distinct recovery block. */
+.vps-security-incident-section {
+  margin-top: 4rem;
+  padding: 26px;
+  border: 1px solid #47384f;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(158, 134, 255, .045), rgba(158, 134, 255, 0)),
+    #0d1824;
+}
+
+.vps-security-incident-section > h2 {
+  margin: 0 0 14px !important;
+  padding: 0 0 15px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #3a3347 !important;
+}
+
+.vps-security-incident-section > h2::before {
+  display: none !important;
+}
+
+.vps-security-incident-section > ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 22px;
+  margin: 18px 0 !important;
+  padding-left: 1.35rem !important;
+}
+
+.vps-security-incident-section > ol > li {
+  margin: 0 !important;
+  padding: 9px 0;
+  border-bottom: 1px solid #263746;
+  color: #cbd4dc;
+  font-size: .8rem;
+  line-height: 1.45;
+}
+
+.vps-security-incident-section > p:last-child {
+  margin-top: 16px !important;
+  padding: 12px 14px;
+  border-left: 3px solid var(--sec-purple);
+  border-radius: 7px;
+  background: #17182a;
+  color: #ddd9f2;
+}
+
+/* Production checklist table is the final scannable audit surface. */
+.vps-security-production-section {
+  margin-top: 4rem;
+}
+
+.vps-security-production-section > h2 {
+  margin: 0 0 18px !important;
+  padding-top: 1.75rem !important;
+  border-top: 1px solid var(--sec-line) !important;
+}
+
+.vps-security-production-section > table {
+  width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #2a3e4e;
+  border-radius: 15px;
+  background: #0b1420;
+}
+
+.vps-security-production-section > table th,
+.vps-security-production-section > table td {
+  vertical-align: top;
+  padding: 13px 15px;
+  border: 0 !important;
+  border-bottom: 1px solid #233545 !important;
+}
+
+.vps-security-production-section > table th:first-child,
+.vps-security-production-section > table td:first-child {
+  width: 31%;
+  border-right: 1px solid #233545 !important;
+}
+
+.vps-security-production-section > table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+.vps-security-production-section > table thead th {
+  background: #111e2a;
+  color: #f7f6f2;
+  font-size: .74rem;
+  font-weight: 800;
+}
+
+.vps-security-production-section > table tbody td:first-child {
+  background: #0b1b17;
+  color: #75e6a3;
+  font-weight: 750;
+}
+
+.vps-security-production-section > table tbody td {
+  color: #c4ced8;
+  font-size: .79rem;
+  line-height: 1.45;
+}
+
+/* Mid-article commercial CTA stays compact and separate from editorial copy. */
+body:has(.vps-security-page-header) main .content p:has(> a.btn[href*="vdsina.com"]) {
+  margin: 24px 0 8px !important;
+}
+
+body:has(.vps-security-page-header) main .content p > a.btn[href*="vdsina.com"] {
+  min-height: 46px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px !important;
+  background: var(--sec-green) !important;
+  border-color: var(--sec-green) !important;
+  color: #061019 !important;
+  font-size: .76rem !important;
+  font-weight: 800 !important;
+}
+
+body:has(.vps-security-page-header) main .content p:has(> small) {
+  color: #7f8e9b;
+  font-size: .68rem;
+  line-height: 1.45;
+}
+
+/* Technical references and FAQ remain editorial, but with cleaner rhythm. */
+body:has(.vps-security-page-header) main h2#technical-references + ul {
+  columns: 2;
+  column-gap: 34px;
+}
+
+body:has(.vps-security-page-header) main h2#technical-references + ul > li {
+  break-inside: avoid;
+}
+
+body:has(.vps-security-page-header) main h2#faq ~ h3 {
+  margin-top: 1.8rem;
+  color: #e8edf1;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 767px) {
+  .vps-security-incident-section {
+    padding: 18px;
+  }
+
+  .vps-security-incident-section > ol {
+    grid-template-columns: 1fr;
+  }
+
+  .vps-security-production-section > table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body:has(.vps-security-page-header) main h2#technical-references + ul {
+    columns: 1;
+  }
+}
