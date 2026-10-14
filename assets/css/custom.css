@@ -5706,23 +5706,45 @@ body:has(.vps-wordpress-page-header) main > .container,
   line-height: 1.6;
 }
 
-.vps-wordpress-hero-context {
+.vps-wordpress-hero-checks {
   max-width: 500px;
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid #263746;
 }
 
-.vps-wordpress-hero-copy .vps-wordpress-hero-context p {
-  max-width: 500px;
-  margin: 0 !important;
-  color: #b9c5cf;
-  font-size: .82rem;
-  line-height: 1.48;
+.vps-wordpress-hero-checks-title {
+  display: block;
+  margin-bottom: 10px;
+  color: #8fa0af;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
 }
 
-.vps-wordpress-hero-copy .vps-wordpress-hero-context p + p {
-  margin-top: 11px !important;
+.vps-wordpress-hero-checks-grid {
+  display: grid;
+  gap: 9px;
+}
+
+.vps-wordpress-hero-check {
+  display: grid;
+  grid-template-columns: 122px minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+}
+
+.vps-wordpress-hero-check strong {
+  color: #e8ecef;
+  font-size: .76rem;
+  line-height: 1.35;
+}
+
+.vps-wordpress-hero-check span {
+  color: #9eadb9;
+  font-size: .72rem;
+  line-height: 1.42;
 }
 
 .vps-wordpress-hero-diagram {
