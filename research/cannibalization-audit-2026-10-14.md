@@ -135,6 +135,21 @@ Current owners:
 - no-panel route -> How to host a website on VPS
 - maintenance tasks -> split across Security / Backup / Monitoring
 
+## Technical duplicate-URL hardening
+
+- Homepage internal links were normalized from `/page/index.html` variants to clean canonical `/page/` URLs.
+- No remaining core content links target `index.html`, raw `.md` paths or unsafe relative child paths.
+- Live pages use one self-referencing canonical emitted by the local head partial.
+- The upstream Basic SEO partial emits a canonical only when a page explicitly defines `.Params.canonical`; the project defines no competing canonical parameters.
+- Taxonomy and term pages are disabled globally.
+- `content/english/sections/_index.md` is excluded from rendering, listings and sitemap.
+- `content/english/sections/call-to-action.md` is now independently protected with `noindex`, `render: never`, `list: never`, `publishResources: false` and `sitemap.disable: true`.
+- Page-specific header rendering uses an `if / else if` chain, so each indexable page receives one H1 owner.
+
+## Homepage commercial-intent hardening
+
+Homepage meta description no longer claims the detailed CPU/RAM sizing job. It now owns the broad purchase decision, configuration comparison, management, location, migration, recovery and upgrade-path checks. Detailed resource calculation remains assigned to `/vps-sizing-for-website/`.
+
 ## Future validation after indexing
 
 Once Google Search Console has query data, validate cannibalization by query, not impressions alone.
