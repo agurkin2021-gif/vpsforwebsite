@@ -5950,3 +5950,158 @@ body:has(.vps-vs-shared-page-header) .vps-vs-responsibility-connector::after {
     height: 30px;
   }
 }
+
+
+/* VPS vs Shared Hosting pre-migration service checklist */
+body:has(.vps-vs-shared-page-header) .vps-vs-services-section {
+  margin: 40px 0;
+  padding: 28px;
+  border: 1px solid #31516a;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 96% 5%, rgba(45, 222, 116, .07), transparent 24%),
+    linear-gradient(135deg, #0d1824 0%, #0b1721 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-section > h2 {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #31516a;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-section > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-intro {
+  margin: 0 0 14px !important;
+  color: #d7dee5;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-label {
+  margin: 0 0 10px !important;
+  color: #9eafbf;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 11px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-grid > li {
+  position: relative;
+  min-width: 0;
+  min-height: 68px;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 26px;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+  padding: 11px 12px;
+  border: 1px solid #2b4254;
+  border-radius: 11px;
+  background: #08131e;
+  color: #c7d1da;
+  font-size: .81rem;
+  line-height: 1.38;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-grid > li::before {
+  content: "✓";
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3c5d72;
+  border-radius: 50%;
+  background: #10202c;
+  color: #9eafbf;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-grid > li::after {
+  content: "→";
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #286847;
+  border-radius: 50%;
+  background: #0b2119;
+  color: var(--vs-green);
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-grid > li:hover {
+  border-color: #36755a;
+  background: #0b1920;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-warning {
+  margin: 16px 0 0 !important;
+  padding: 14px 16px;
+  border: 1px solid #685032;
+  border-left: 3px solid #f5a11c;
+  border-radius: 8px;
+  background: #1a1510;
+  color: #e3d2ba;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-note {
+  margin: 10px 0 0 !important;
+  padding: 13px 15px;
+  border: 1px solid #2a6047;
+  border-left: 3px solid var(--vs-green);
+  border-radius: 8px;
+  background: #0b2119;
+  color: #cce8d8;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-note a {
+  font-weight: 750;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-services-note-email {
+  border-color: #4b4d70;
+  border-left-color: #9e86ff;
+  background: #17182a;
+  color: #ddd9f2;
+}
+
+@media (max-width: 720px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-services-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-services-section {
+    margin: 30px 0;
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-services-grid > li {
+    min-height: 0;
+  }
+}

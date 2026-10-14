@@ -374,6 +374,39 @@
       }
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("shared-hosting-services-you-may-have-to-replace");
+      if (!heading || heading.closest(".vps-vs-services-section")) return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var section = document.createElement("section");
+      section.className = "vps-vs-services-section";
+      parent.insertBefore(section, heading);
+
+      var node = heading;
+      while (node && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        section.appendChild(node);
+        node = next;
+      }
+
+      var paragraphs = section.querySelectorAll(":scope > p");
+      if (paragraphs.length) {
+        paragraphs[0].classList.add("vps-vs-services-intro");
+        if (paragraphs.length > 1) paragraphs[1].classList.add("vps-vs-services-label");
+        if (paragraphs.length > 2) paragraphs[2].classList.add("vps-vs-services-warning");
+        if (paragraphs.length > 3) paragraphs[3].classList.add("vps-vs-services-note");
+        if (paragraphs.length > 4) paragraphs[4].classList.add("vps-vs-services-note", "vps-vs-services-note-email");
+      }
+
+      var list = section.querySelector(":scope > ul");
+      if (list) list.classList.add("vps-vs-services-grid");
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
