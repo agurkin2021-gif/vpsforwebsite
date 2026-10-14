@@ -81,7 +81,7 @@ jobs:
           assert any(x.get("rel","").lower() == "canonical" and x.get("href") == expected for x in a.links)
           assert any(x.get("hreflang","").lower() == "en" and x.get("href") == expected for x in a.links)
           assert any(x.get("hreflang","").lower() == "x-default" and x.get("href") == expected for x in a.links)
-          h1s = re.findall(r'<h1\\b[^>]*>(.*?)</h1>', html, re.I | re.S)
+          h1s = re.findall(r'<h1\b[^>]*>(.*?)</h1>', html, re.I | re.S)
           h1s = [re.sub(r'<[^>]+>', '', x).strip() for x in h1s]
           assert h1s == ["VPS for website"], h1s
           assert "github.io" not in html
