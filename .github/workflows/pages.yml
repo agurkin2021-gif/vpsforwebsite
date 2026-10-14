@@ -108,3 +108,17 @@ jobs:
           publish_branch: preview
           publish_dir: ./public
           force_orphan: true
+
+      - name: Rebuild for GitHub Pages URL
+        run: |
+          rm -rf public
+          hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+
+      - name: Publish GitHub Pages branch
+        if: steps.freshness.outputs.current == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+          force_orphan: true
