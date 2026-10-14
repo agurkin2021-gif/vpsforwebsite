@@ -6589,3 +6589,50 @@ body:has(.vps-wordpress-page-header) main > .section-sm {
     padding-top: 28px !important;
   }
 }
+
+
+/* WordPress H1 exact homepage alignment */
+@media (min-width: 901px) {
+  /* Do not vertically center the shorter copy against the tall right diagram. */
+  .vps-wordpress-hero-grid {
+    align-items: start !important;
+  }
+
+  .vps-wordpress-hero-copy {
+    align-self: start !important;
+    padding-top: 0 !important;
+  }
+
+  /* Exact desktop typography used by the homepage H1. */
+  .vps-wordpress-hero-copy h1 {
+    max-width: none !important;
+    margin: 0 0 26px !important;
+    font-size: clamp(3rem, 3.3vw, 3.8rem) !important;
+    line-height: .96 !important;
+    letter-spacing: -.052em !important;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
+  }
+
+  /* Same top offset from the canonical header as the homepage hero. */
+  .vps-wordpress-hero {
+    padding-top: 30px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-wordpress-hero-grid {
+    align-items: start !important;
+  }
+
+  .vps-wordpress-hero-copy {
+    align-self: start !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-wordpress-hero-copy h1 {
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+}
