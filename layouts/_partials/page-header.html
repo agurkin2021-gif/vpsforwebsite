@@ -9,6 +9,7 @@
 {{ $isWebsiteMigration := false }}
 {{ $isManagedVsUnmanaged := false }}
 {{ $isFastpanelVps := false }}
+{{ $isHostWebsiteVps := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -42,6 +43,9 @@
   {{ end }}
   {{ if eq .BaseFileName "fastpanel-vps-hosting" }}
     {{ $isFastpanelVps = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "how-to-host-a-website-on-vps" }}
+    {{ $isHostWebsiteVps = true }}
   {{ end }}
 {{ end }}
 
@@ -1392,6 +1396,84 @@
 
             <div class="vps-fastpanel-compact-rule">
               <strong>Do not treat the 1 GB panel minimum as a default production target.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isHostWebsiteVps }}
+  {{ $hostAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-host-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-host-breadcrumb") }}
+
+      <div class="vps-host-hero">
+        <div class="vps-host-hero-grid">
+          <div class="vps-host-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-host-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-host-hero-actions">
+              <a
+                class="btn btn-primary vps-host-primary-cta"
+                href="{{ $hostAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-host-secondary-cta" href="#quick-deployment-sequence">
+                See deployment sequence
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-host-hero-diagram"
+            href="{{ $hostAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for hosting a website">
+            <div class="vps-host-compact-head">
+              <strong>Fresh VPS to live website</strong>
+              <small>Build the stack in the right order, test it, then send production traffic.</small>
+            </div>
+
+            <div class="vps-host-compact-grid">
+              <div class="vps-host-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Provision</strong>
+                  <small>OS + secure admin access</small>
+                </div>
+              </div>
+              <div class="vps-host-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Install stack</strong>
+                  <small>Only what the app needs</small>
+                </div>
+              </div>
+              <div class="vps-host-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Connect domain</strong>
+                  <small>DNS + HTTPS</small>
+                </div>
+              </div>
+              <div class="vps-host-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Verify</strong>
+                  <small>Reboot + backups + monitoring</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-host-compact-rule">
+              <strong>Install only the services the website actually needs.</strong>
             </div>
           </a>
         </div>
