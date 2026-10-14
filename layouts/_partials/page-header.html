@@ -587,6 +587,67 @@
       if (list) list.classList.add("vps-vs-seo-grid");
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("before-choosing-the-vps");
+      if (!heading || heading.closest(".vps-vs-before-section")) return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var section = document.createElement("section");
+      section.className = "vps-vs-before-section";
+      parent.insertBefore(section, heading);
+
+      var node = heading;
+      while (node && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        section.appendChild(node);
+        node = next;
+      }
+
+      var intro = section.querySelector(":scope > p");
+      if (intro) intro.classList.add("vps-vs-before-intro");
+
+      var list = section.querySelector(":scope > ol");
+      if (list) list.classList.add("vps-vs-before-steps");
+
+      var paragraphs = Array.from(section.querySelectorAll(":scope > p"));
+      var buttonParagraph = paragraphs.find(function (p) {
+        return p.querySelector("a.btn");
+      });
+      var disclosureParagraph = paragraphs.find(function (p) {
+        return p.querySelector("small");
+      });
+
+      var grid = document.createElement("div");
+      grid.className = "vps-vs-before-grid";
+
+      var stepsWrap = document.createElement("div");
+      stepsWrap.className = "vps-vs-before-steps-wrap";
+
+      var action = document.createElement("aside");
+      action.className = "vps-vs-before-action";
+
+      if (intro) stepsWrap.appendChild(intro);
+      if (list) stepsWrap.appendChild(list);
+
+      if (buttonParagraph) {
+        buttonParagraph.classList.add("vps-vs-before-cta");
+        action.appendChild(buttonParagraph);
+      }
+
+      if (disclosureParagraph) {
+        disclosureParagraph.classList.add("vps-vs-before-disclosure");
+        action.appendChild(disclosureParagraph);
+      }
+
+      heading.insertAdjacentElement("afterend", grid);
+      grid.appendChild(stepsWrap);
+      grid.appendChild(action);
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
