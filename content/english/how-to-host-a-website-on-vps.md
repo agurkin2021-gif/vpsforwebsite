@@ -1,7 +1,7 @@
 ---
 title: "How to host a website on VPS"
 description: "How to host a website on VPS: choose the deployment path, secure first access, install the right web stack, connect the domain, enable HTTPS, test reboot recovery and verify production readiness."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 How to host a website on VPS depends on the application you are deploying. A static site needs a web server and DNS. WordPress or another PHP CMS also needs PHP and a database. A Node.js or Python application usually runs behind a reverse proxy. You can build those pieces manually on a clean VPS or use a control panel to manage them through a browser.
@@ -647,10 +647,10 @@ Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) f
 
 ## Technical references
 
-- [Ubuntu Server: install Nginx](https://ubuntu.com/server/docs/how-to-install-nginx/)
-- [Ubuntu Server: configure Nginx](https://ubuntu.com/server/docs/how-to/web-services/configure-nginx/)
-- [Ubuntu Server: web services](https://ubuntu.com/server/docs/how-to/web-services/)
-- [VDSina Standard VPS — current pure OS templates](https://www.vdsina.com/pricing/standard)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: install Nginx</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: configure Nginx</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: web services</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current pure OS templates</a>
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for your website</a>
