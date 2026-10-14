@@ -5343,3 +5343,35 @@ body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
     font-size: .68rem !important;
   }
 }
+
+
+/* Homepage hero server visual refresh */
+.vps-home .vps-hero-panel {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.vps-home .vps-hero-panel img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 0 !important;
+}
+
+.vps-home .vps-hero::after {
+  display: none !important;
+}
+
+.vps-home .vps-hero-panel.vps-affiliate-visual:hover {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 767px) {
+  .vps-home .vps-hero-panel {
+    margin-top: 1.35rem !important;
+  }
+}

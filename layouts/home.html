@@ -71,8 +71,8 @@
                   alt="{{ .title | plainify }}"
                   loading="eager"
                   decoding="async"
-                  width="1200"
-                  height="900" />
+                  width="600"
+                  height="413" />
               {{ else }}
                 {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "DisplayXL" "800x" ) }}
               {{ end }}
