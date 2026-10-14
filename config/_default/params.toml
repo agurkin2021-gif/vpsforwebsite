@@ -39,7 +39,7 @@ content = ""
 description = "Choose VPS resources for websites by workload, CMS, database demand and growth needs."
 author = ""
 twitter = ""
-image = ""
+image = "images/home/vps-for-website-hero.webp"
 
 [site_verification]
 google = ""
