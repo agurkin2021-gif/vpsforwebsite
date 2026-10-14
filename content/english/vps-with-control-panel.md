@@ -441,7 +441,7 @@ For the FASTPANEL-specific path, including sizing, WordPress and multi-site isol
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS control-panel options</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Verify current panel availability, operating-system versions, licensing and administration scope before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Verify current panel availability, operating-system versions, licensing and administration scope before ordering.</small></p>
 
 ## When no panel is better
 
@@ -480,7 +480,7 @@ But manual hosting is not "free management." You still own all configuration, pa
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS configuration</a>
 </p>
-<p><small>Affiliate disclosure: partner links are marked sponsored. VPS and panel terms can change; confirm the live order screen and panel vendor documentation before purchase.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina. Partner links are marked sponsored. VPS and panel terms can change; confirm the live order screen and panel vendor documentation before purchase.</small></p>
 
 ## FAQ
 
