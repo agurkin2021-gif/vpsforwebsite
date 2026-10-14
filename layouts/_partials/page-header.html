@@ -14,6 +14,7 @@
 {{ $isVpsControlPanel := false }}
 {{ $isAboutPage := false }}
 {{ $isContactPage := false }}
+{{ $isPrivacyPage := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -56,6 +57,9 @@
   {{ end }}
   {{ if eq .BaseFileName "vps-with-control-panel" }}
     {{ $isVpsControlPanel = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "privacy-policy" }}
+    {{ $isPrivacyPage = true }}
   {{ end }}
 {{ end }}
 {{ if eq .Section "about" }}
@@ -1577,6 +1581,60 @@
 
             <div class="vps-contact-compact-rule">
               <strong>The preview does not collect form submissions yet.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isPrivacyPage }}
+  <section class="vps-page-header vps-privacy-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-privacy-breadcrumb") }}
+
+      <div class="vps-privacy-hero">
+        <div class="vps-privacy-hero-grid">
+          <div class="vps-privacy-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-privacy-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-privacy-hero-actions">
+              <a class="btn btn-primary vps-privacy-primary-cta" href="/about/">
+                About our process
+              </a>
+              <a class="vps-privacy-secondary-cta" href="/contact/">
+                Contact
+              </a>
+            </div>
+          </div>
+
+          <a class="vps-privacy-hero-diagram"
+             href="/contact/"
+             aria-label="Open the VPSforWebsite.com contact and correction page">
+            <div class="vps-privacy-compact-head">
+              <strong>Minimal collection, clear disclosure</strong>
+              <small>The policy describes what the site actually uses now, not planned tracking or integrations.</small>
+            </div>
+
+            <div class="vps-privacy-compact-grid">
+              <div class="vps-privacy-compact-item">
+                <span>01</span><div><strong>No account</strong><small>Public informational site</small></div>
+              </div>
+              <div class="vps-privacy-compact-item">
+                <span>02</span><div><strong>Analytics</strong><small>Not enabled in preview</small></div>
+              </div>
+              <div class="vps-privacy-compact-item">
+                <span>03</span><div><strong>Affiliate links</strong><small>Sponsored / nofollow marked</small></div>
+              </div>
+              <div class="vps-privacy-compact-item">
+                <span>04</span><div><strong>Updates</strong><small>Policy follows actual services</small></div>
+              </div>
+            </div>
+
+            <div class="vps-privacy-compact-rule">
+              <strong>Data collection should stay limited to what the site actually needs.</strong>
             </div>
           </a>
         </div>
