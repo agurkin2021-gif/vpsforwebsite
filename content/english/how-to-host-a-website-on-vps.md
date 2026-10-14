@@ -162,7 +162,7 @@ VDSina's current Standard VPS page lists pure OS templates including Ubuntu 26.0
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for the website</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Choose the server size and operating model from the workload, not from commission.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Choose the server size and operating model from the workload, not from commission.</small></p>
 
 ## Choose the operating system
 
@@ -655,7 +655,7 @@ Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) f
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for your website</a>
 </p>
-<p><small>Affiliate disclosure: partner links are marked sponsored. Verify current VPS pricing, operating-system availability and provider terms before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina. Partner links are marked sponsored. Verify current VPS pricing, operating-system availability and provider terms before ordering.</small></p>
 
 ## FAQ
 
