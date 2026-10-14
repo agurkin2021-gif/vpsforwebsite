@@ -1,7 +1,7 @@
 ---
 title: "FASTPANEL VPS Hosting"
 description: "FASTPANEL VPS Hosting: choose a VPS for FASTPANEL by panel overhead, website workload, PHP workers, database demand, mail, backups and multi-site isolation."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 FASTPANEL VPS Hosting combines a self-managed VPS with a web-hosting control panel for websites, domains, databases, PHP, SSL, mail, backups and scheduled jobs. The panel simplifies routine hosting administration, but the VPS still has to be sized for **FASTPANEL plus the websites and services running behind it**.
@@ -341,12 +341,12 @@ FASTPANEL is strongest when the requirement is **self-managed VPS control with a
 
 ## Technical references
 
-- [VDSina Standard VPS — FASTPANEL on Ubuntu 22](https://www.vdsina.com/pricing/standard)
-- [FASTPANEL — official system requirements and installation](https://kb.fastpanel.direct/quick_start/how-to-install-fastpanel/)
-- [FASTPANEL — create a website](https://kb.fastpanel.direct/sites/how-to-create-a-website/)
-- [FASTPANEL — WordPress installation](https://kb.fastpanel.direct/sites/how-to-create-a-wordpress-based-site/)
-- [FASTPANEL — security recommendations](https://kb.fastpanel.direct/security/)
-- [FASTPANEL — standard backup plan](https://kb.fastpanel.direct/backups/standard-backup-plan/)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — FASTPANEL on Ubuntu 22</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — official system requirements and installation</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — create a website</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — WordPress installation</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — security recommendations</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — standard backup plan</a>
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a FASTPANEL VPS</a>
