@@ -49,13 +49,13 @@ jobs:
           file static/images/home/vps-hero-right.webp
 
       - name: Warm build stats
-        run: hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+        run: hugo --gc --baseURL "https://vpsforwebsite.com/"
 
       - name: Clear warm-build output
         run: rm -rf public
 
       - name: Build production site with complete Tailwind utilities
-        run: hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+        run: hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
 
       - name: Verify production homepage SEO output
         shell: bash
@@ -87,9 +87,9 @@ jobs:
           audit.feed(html)
 
           robots = any(x.get("name","").lower() == "robots" and x.get("content","").lower() == "index,follow" for x in audit.metas)
-          canonical = any(x.get("rel","").lower() == "canonical" and x.get("href") == "https://agurkin2021-gif.github.io/vpsforwebsite/" for x in audit.links)
-          hreflang_en = any(x.get("hreflang","").lower() == "en" and x.get("href") == "https://agurkin2021-gif.github.io/vpsforwebsite/" for x in audit.links)
-          hreflang_default = any(x.get("hreflang","").lower() == "x-default" and x.get("href") == "https://agurkin2021-gif.github.io/vpsforwebsite/" for x in audit.links)
+          canonical = any(x.get("rel","").lower() == "canonical" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+          hreflang_en = any(x.get("hreflang","").lower() == "en" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+          hreflang_default = any(x.get("hreflang","").lower() == "x-default" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
 
           checks = {
               "robots index,follow": robots,
