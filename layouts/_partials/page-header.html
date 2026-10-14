@@ -319,49 +319,45 @@
             target="_blank"
             rel="sponsored nofollow noopener"
             aria-label="Check current VPS options for WooCommerce">
-            <div class="vps-woocommerce-flow-head">
-              <span class="vps-woocommerce-wcmark">WC</span>
-              <div>
-                <strong>WooCommerce transaction path</strong>
-                <small>Size for uncached checkout, writes and background work.</small>
-              </div>
+            <div class="vps-woocommerce-compact-head">
+              <strong>WooCommerce dynamic path</strong>
+              <small>Three workloads dominate the uncached store path.</small>
             </div>
 
-            <div class="vps-woocommerce-flow">
-              <div class="vps-woocommerce-flow-node">
+            <div class="vps-woocommerce-compact-flow">
+              <div class="vps-woocommerce-compact-step">
                 <span>01</span>
                 <div>
-                  <strong>Cart / checkout</strong>
-                  <small>Dynamic PHP requests</small>
+                  <strong>Checkout</strong>
+                  <small>PHP workers + session state</small>
                 </div>
               </div>
-              <div class="vps-woocommerce-flow-arrow" aria-hidden="true">→</div>
-              <div class="vps-woocommerce-flow-node">
+
+              <div class="vps-woocommerce-compact-step">
                 <span>02</span>
                 <div>
-                  <strong>Orders / stock</strong>
-                  <small>Database writes</small>
+                  <strong>Orders & stock</strong>
+                  <small>Database writes + inventory updates</small>
                 </div>
               </div>
-              <div class="vps-woocommerce-flow-arrow" aria-hidden="true">→</div>
-              <div class="vps-woocommerce-flow-node">
+
+              <div class="vps-woocommerce-compact-step">
                 <span>03</span>
                 <div>
-                  <strong>Payments / webhooks</strong>
-                  <small>External callbacks</small>
+                  <strong>Async work</strong>
+                  <small>Webhooks + Action Scheduler</small>
                 </div>
               </div>
             </div>
 
-            <div class="vps-woocommerce-signal-row">
+            <div class="vps-woocommerce-compact-signals">
               <span>PHP workers</span>
               <span>DB writes</span>
-              <span>Action Scheduler</span>
               <span>Sale peaks</span>
             </div>
 
-            <div class="vps-woocommerce-stack-rule">
-              <strong>Size for peak dynamic concurrency — not monthly visits alone.</strong>
+            <div class="vps-woocommerce-compact-rule">
+              <strong>Size the VPS for peak dynamic concurrency, not monthly visits.</strong>
             </div>
           </a>
         </div>
