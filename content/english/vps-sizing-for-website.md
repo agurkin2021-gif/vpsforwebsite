@@ -26,7 +26,7 @@ These are sizing directions, not traffic guarantees. Two websites with the same 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. The sizing recommendation is based on workload, not commission.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. The sizing recommendation is based on workload, not commission.</small></p>
 
 ## The sizing model: reserve resources before counting traffic
 
@@ -462,7 +462,7 @@ If the current website is still on shared hosting, compare the operational chang
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check the current VPS offer</a>
 </p>
-<p><small>Affiliate disclosure: partner links are marked sponsored. Provider pricing, transfer and other commercial terms can change; verify them on the provider site before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina. Partner links are marked sponsored. Provider pricing, transfer and other commercial terms can change; verify them on the provider site before ordering.</small></p>
 
 ## FAQ
 
