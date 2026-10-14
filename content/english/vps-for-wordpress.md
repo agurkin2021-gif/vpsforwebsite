@@ -460,7 +460,7 @@ VDSina's current Standard page does not list WordPress as a dedicated preinstall
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current WordPress VPS options</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Verify current VPS pricing, templates and panel availability before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Verify current VPS pricing, templates and panel availability before ordering.</small></p>
 
 ## Technical references
 
