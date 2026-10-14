@@ -4,9 +4,8 @@
 <meta name="color-scheme" content="dark" />
 {{ partial "basic-seo.html" . }}
 {{ if .IsHome }}
-  {{ $small := resources.Get "images/home/vps-hero-450.webp" | fingerprint "sha256" }}
-  {{ $large := resources.Get "images/home/vps-hero-579.webp" | fingerprint "sha256" }}
-  <link rel="preload" as="image" href="{{ $large.RelPermalink }}" imagesrcset="{{ $small.RelPermalink }} 450w, {{ $large.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
+  {{ $hero := resources.Get "images/home/vps-hero-transparent.webp" | fingerprint "sha256" }}
+  <link rel="preload" as="image" href="{{ $hero.RelPermalink }}" imagesrcset="{{ $hero.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
 {{ end }}
 {{ partialCached "local-fonts.html" . }}
 <script>

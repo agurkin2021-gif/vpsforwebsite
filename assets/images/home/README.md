@@ -1,3 +1,3 @@
-The 450 px and 579 px WebP files are responsive versions of the existing transparent hero artwork. The original remains encoded in static/images/home/vps-hero-right.webp.b64.*.
+The active homepage artwork is `vps-hero-transparent.webp`, supplied by the owner on 2026-10-14 as `vps-hero-transparent-50kb.webp`. It is retained byte-for-byte: 579 x 434 RGBA, 51,196 bytes, SHA-256 `af91640a83f2564d6b91777550e9b9d6435eeca232b876473037c58f95346fb1`. Do not recompress or substitute a smaller lossy version: the owner explicitly prioritizes clarity. Hugo only fingerprints and copies this asset.
 
-Encoding: libwebp 1.6.0 cwebp, `-q 75 -alpha_q 80 -m 6 -metadata none`, with `-resize 450 0` for the smaller version. Templates fingerprint both files, declare their real aspect ratio, and select the appropriate size. No build-time image conversion is required.
+The earlier 450 px and 579 px derivatives are retained for history but are no longer selected by the templates. The previous artwork also remains encoded in static/images/home/vps-hero-right.webp.b64.*. No build-time image conversion is required.

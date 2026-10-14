@@ -3926,3 +3926,9 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Online PSI remeasurement was unavailable due to HTTP 429. Direct Lighthouse 13.5 mobile/desktop results are recorded in CHATGPT_PROJECT_CONTEXT.md; do not present those as a new Google-hosted PageSpeed report.
 
 - 2026-10-14 CI follow-up: production metadata verification now builds for vpsforwebsite.com; pages.yml remains the sole github.io publisher. Preview noindex and production index/canonical behavior are preserved.
+
+
+### 2026-10-14 — First-paint follow-up / original-quality hero
+
+- Preserved all owner queries, titles/H1s, canonicals, link destinations and page text. Updated only the GA loading schedule and the owner-provided homepage artwork; no further lossy image conversion is permitted for that asset.
+- All 19 production documents / 22 source-build documents remain valid. Fresh-release Lighthouse scores are mobile 93/100/100/100 in three consecutive runs and desktop 100/100/100/100. These use a query URL to obtain the new release while the owner-managed two-hour Cloudflare HTML cache expires; they are not fresh Google-hosted PSI scores.

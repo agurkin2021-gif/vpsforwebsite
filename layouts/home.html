@@ -81,10 +81,9 @@
                   width="1200"
                   height="675" />
               {{ else if strings.HasSuffix .image ".webp" }}
-                {{ $small := resources.Get "images/home/vps-hero-450.webp" | fingerprint "sha256" }}
-                {{ $large := resources.Get "images/home/vps-hero-579.webp" | fingerprint "sha256" }}
-                <img src="{{ $large.RelPermalink }}"
-                  srcset="{{ $small.RelPermalink }} 450w, {{ $large.RelPermalink }} 579w"
+                {{ $hero := resources.Get "images/home/vps-hero-transparent.webp" | fingerprint "sha256" }}
+                <img src="{{ $hero.RelPermalink }}"
+                  srcset="{{ $hero.RelPermalink }} 579w"
                   sizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)"
                   alt="{{ .title | plainify }}" loading="eager" decoding="auto" fetchpriority="high"
                   width="579" height="434" />

@@ -4,16 +4,44 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', '{{ site.Config.Services.GoogleAnalytics.ID }}');
-  // Queue the visit immediately, then give the page's own assets the connection first.
-  // No interaction, timer, or user-agent check is required to start analytics.
+  // Queue the visit immediately. Load can precede the first visible frame,
+  // so let the browser paint before starting the analytics library.
   (function () {
+    var started = false;
+    var observer;
     function loadAnalytics() {
+      if (started) return;
+      started = true;
+      if (observer) observer.disconnect();
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       var script = document.createElement('script');
       script.async = true;
       script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.Config.Services.GoogleAnalytics.ID }}';
       document.head.appendChild(script);
     }
-    if (document.readyState === 'complete') loadAnalytics();
-    else window.addEventListener('load', loadAnalytics, { once: true });
+    function onVisibilityChange() {
+      if (document.visibilityState === 'hidden') loadAnalytics();
+    }
+    function afterLoad() {
+      if (document.visibilityState === 'hidden' ||
+          !window.PerformanceObserver ||
+          !PerformanceObserver.supportedEntryTypes ||
+          PerformanceObserver.supportedEntryTypes.indexOf('paint') === -1 ||
+          performance.getEntriesByName('first-contentful-paint').length) {
+        loadAnalytics();
+        return;
+      }
+      document.addEventListener('visibilitychange', onVisibilityChange);
+      try {
+        observer = new PerformanceObserver(function (list) {
+          if (list.getEntries().some(function (entry) {
+            return entry.name === 'first-contentful-paint';
+          })) loadAnalytics();
+        });
+        observer.observe({ type: 'paint', buffered: true });
+      } catch (e) { loadAnalytics(); }
+    }
+    if (document.readyState === 'complete') afterLoad();
+    else window.addEventListener('load', afterLoad, { once: true });
   })();
 </script>
