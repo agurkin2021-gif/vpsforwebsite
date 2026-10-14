@@ -85,7 +85,7 @@ If a provider does not state who owns a task, assume it is not safely delegated 
 This tool does not rate your technical ability. It checks whether the operational jobs have a real owner.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="management-fit-checker">
+<form id="management-fit-checker-form">
   <div class="mb-6">
     <label for="mg-skill" class="form-label">Linux/Windows server administration skill</label>
     <select id="mg-skill" class="form-input">
@@ -133,7 +133,7 @@ This tool does not rate your technical ability. It checks whether the operationa
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("management-fit-checker");
+  var form = document.getElementById("management-fit-checker-form");
   if (!form) return;
 
   form.addEventListener("submit", function (event) {
