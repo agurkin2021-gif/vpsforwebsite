@@ -537,12 +537,12 @@ VDSina's current Standard page does **not** list a dedicated preinstalled WooCom
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce — server recommendations</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — scaling with WooCommerce</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — configuring caching plugins</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce — Scheduled Actions</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — High Performance Order Storage</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
+- WooCommerce — server recommendations
+- WooCommerce Developer — scaling with WooCommerce
+- WooCommerce Developer — configuring caching plugins
+- WooCommerce — Scheduled Actions
+- WooCommerce Developer — High Performance Order Storage
+- VDSina Standard VPS
 
 ## FAQ
 
