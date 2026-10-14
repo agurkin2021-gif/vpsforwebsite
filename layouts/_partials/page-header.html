@@ -2,6 +2,7 @@
 {{ $isVpsWordPress := false }}
 {{ $isVpsWooCommerce := false }}
 {{ $isVpsMultipleWebsites := false }}
+{{ $isVpsSecurity := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -14,6 +15,9 @@
   {{ end }}
   {{ if eq .BaseFileName "vps-for-multiple-websites" }}
     {{ $isVpsMultipleWebsites = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-security-checklist" }}
+    {{ $isVpsSecurity = true }}
   {{ end }}
 {{ end }}
 
@@ -489,6 +493,105 @@
 
           var node = formula;
           while (node && !(node !== formula && node.tagName === "H2")) {
+            var next = node.nextElementSibling;
+            section.appendChild(node);
+            node = next;
+          }
+        }
+      }
+    });
+  </script>
+{{ else if $isVpsSecurity }}
+  {{ $securityAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-security-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-security-breadcrumb") }}
+
+      <div class="vps-security-hero">
+        <div class="vps-security-hero-grid">
+          <div class="vps-security-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-security-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-security-hero-actions">
+              <a
+                class="btn btn-primary vps-security-primary-cta"
+                href="{{ $securityAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-security-secondary-cta" href="#security-baseline-in-order">
+                Security baseline
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-security-hero-diagram"
+            href="{{ $securityAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for a hardened server">
+            <div class="vps-security-compact-head">
+              <strong>Harden in the right order</strong>
+              <small>Preserve recovery first, then reduce exposure and maintain the server.</small>
+            </div>
+
+            <div class="vps-security-compact-grid">
+              <div class="vps-security-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Recovery path</strong>
+                  <small>Console / rescue access</small>
+                </div>
+              </div>
+              <div class="vps-security-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Admin access</strong>
+                  <small>Named user + SSH key</small>
+                </div>
+              </div>
+              <div class="vps-security-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Exposure</strong>
+                  <small>Ports + firewall</small>
+                </div>
+              </div>
+              <div class="vps-security-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Maintenance</strong>
+                  <small>Patches + backups + alerts</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-security-compact-rule">
+              <strong>Do not tighten remote access until a second tested admin path works.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("security-baseline-in-order");
+      if (heading && !heading.closest(".vps-security-baseline-section")) {
+        var parent = heading.parentElement;
+        if (parent) {
+          var section = document.createElement("section");
+          section.className = "vps-security-baseline-section";
+          parent.insertBefore(section, heading);
+
+          var node = heading;
+          while (node && !(node !== heading && node.tagName === "H2")) {
             var next = node.nextElementSibling;
             section.appendChild(node);
             node = next;
