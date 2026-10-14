@@ -647,10 +647,10 @@ Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) f
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: install Nginx</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: configure Nginx</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server: web services</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current pure OS templates</a>
+- Ubuntu Server: install Nginx
+- Ubuntu Server: configure Nginx
+- Ubuntu Server: web services
+- VDSina Standard VPS — current pure OS templates
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for your website</a>
