@@ -341,12 +341,12 @@ FASTPANEL is strongest when the requirement is **self-managed VPS control with a
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — FASTPANEL on Ubuntu 22</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — official system requirements and installation</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — create a website</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — WordPress installation</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — security recommendations</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">FASTPANEL — standard backup plan</a>
+- VDSina Standard VPS — FASTPANEL on Ubuntu 22
+- FASTPANEL — official system requirements and installation
+- FASTPANEL — create a website
+- FASTPANEL — WordPress installation
+- FASTPANEL — security recommendations
+- FASTPANEL — standard backup plan
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a FASTPANEL VPS</a>
