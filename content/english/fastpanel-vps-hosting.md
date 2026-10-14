@@ -51,7 +51,7 @@ Do not assume that the provider's FASTPANEL option means server administration i
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current FASTPANEL VPS options</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. The VPS sizing and management recommendations on this page do not change based on commission.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. The VPS sizing and management recommendations on this page do not change based on commission.</small></p>
 
 ## FASTPANEL system requirements vs real website sizing
 
@@ -351,7 +351,7 @@ FASTPANEL is strongest when the requirement is **self-managed VPS control with a
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a FASTPANEL VPS</a>
 </p>
-<p><small>Affiliate disclosure: partner links are marked sponsored. Verify current VPS pricing, transfer limits, FASTPANEL availability and administration scope before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina. Partner links are marked sponsored. Verify current VPS pricing, transfer limits, FASTPANEL availability and administration scope before ordering.</small></p>
 
 ## FAQ
 
