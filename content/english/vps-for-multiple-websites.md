@@ -472,7 +472,7 @@ The 1 GB tier can be useful for tests or extremely light sites, but it is not pr
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current multi-site VPS options</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Verify current VPS pricing and choose architecture from measured workload and acceptable failure risk.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Verify current VPS pricing and choose architecture from measured workload and acceptable failure risk.</small></p>
 
 ## FAQ
 
