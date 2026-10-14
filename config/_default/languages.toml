@@ -3,3 +3,9 @@ label = "EN"
 locale = "en-US"
 contentDir = "content/english"
 weight = 1
+
+[es]
+label = "ES"
+locale = "es-ES"
+contentDir = "content/spanish"
+weight = 2
