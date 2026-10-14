@@ -7,6 +7,7 @@
 {{ $isVpsMonitoring := false }}
 {{ $isVpsSizing := false }}
 {{ $isWebsiteMigration := false }}
+{{ $isManagedVsUnmanaged := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -34,6 +35,9 @@
   {{ end }}
   {{ if eq .BaseFileName "website-migration-to-vps" }}
     {{ $isWebsiteMigration = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "managed-vs-unmanaged-vps" }}
+    {{ $isManagedVsUnmanaged = true }}
   {{ end }}
 {{ end }}
 
@@ -1228,6 +1232,84 @@
 
             <div class="vps-migrate-compact-rule">
               <strong>Do not retire the old host until the new VPS passes acceptance checks.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isManagedVsUnmanaged }}
+  {{ $managedAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-managed-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-managed-breadcrumb") }}
+
+      <div class="vps-managed-hero">
+        <div class="vps-managed-hero-grid">
+          <div class="vps-managed-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-managed-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-managed-hero-actions">
+              <a
+                class="btn btn-primary vps-managed-primary-cta"
+                href="{{ $managedAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-managed-secondary-cta" href="#quick-answer">
+                Compare management
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-managed-hero-diagram"
+            href="{{ $managedAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for managed or unmanaged hosting">
+            <div class="vps-managed-compact-head">
+              <strong>The real difference is operational ownership</strong>
+              <small>CPU, RAM and storage can be identical. Responsibility after provisioning is what changes.</small>
+            </div>
+
+            <div class="vps-managed-compact-grid">
+              <div class="vps-managed-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Patching</strong>
+                  <small>Who owns OS + security updates?</small>
+                </div>
+              </div>
+              <div class="vps-managed-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Backups</strong>
+                  <small>Who verifies restore readiness?</small>
+                </div>
+              </div>
+              <div class="vps-managed-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Monitoring</strong>
+                  <small>Who sees and acts on alerts?</small>
+                </div>
+              </div>
+              <div class="vps-managed-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Incidents</strong>
+                  <small>Who responds when production fails?</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-managed-compact-rule">
+              <strong>Do not buy the word “managed” — buy a written scope of owned tasks.</strong>
             </div>
           </a>
         </div>
