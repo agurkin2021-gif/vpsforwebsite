@@ -534,27 +534,6 @@
       </div>
     </div>
   </section>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var formula = document.getElementById("count-workload-not-domains");
-      if (formula && !formula.closest(".vps-multiweb-capacity-section")) {
-        var parent = formula.parentElement;
-        if (parent) {
-          var section = document.createElement("section");
-          section.className = "vps-multiweb-capacity-section";
-          parent.insertBefore(section, formula);
-
-          var node = formula;
-          while (node && !(node !== formula && node.tagName === "H2")) {
-            var next = node.nextElementSibling;
-            section.appendChild(node);
-            node = next;
-          }
-        }
-      }
-    });
-  </script>
 {{ else if $isVpsSecurity }}
   {{ $securityAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
   <section class="vps-page-header vps-security-page-header">
