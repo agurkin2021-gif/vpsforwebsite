@@ -6061,7 +6061,7 @@ body:has(.vps-wordpress-page-header) .vps-wordpress-requirements > h2::before {
 }
 
 /* Fit checker */
-body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker) {
+body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker-form) {
   margin-top: 22px;
   padding: 24px !important;
   border: 1px solid #2a3e4e;
@@ -6069,20 +6069,20 @@ body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker) 
   background: #0d1824 !important;
 }
 
-#wordpress-vps-fit-checker {
+#wordpress-vps-fit-checker-form {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 24px;
   row-gap: 20px;
 }
 
-#wordpress-vps-fit-checker > .mb-6 {
+#wordpress-vps-fit-checker-form > .mb-6 {
   display: grid !important;
   grid-template-rows: 3.8rem 52px;
   margin-bottom: 0 !important;
 }
 
-#wordpress-vps-fit-checker .form-label {
+#wordpress-vps-fit-checker-form .form-label {
   margin: 0 !important;
   padding: 0 0 8px !important;
   display: flex !important;
@@ -6093,7 +6093,7 @@ body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker) 
   line-height: 1.28 !important;
 }
 
-#wordpress-vps-fit-checker .form-input {
+#wordpress-vps-fit-checker-form .form-input {
   height: 52px !important;
   min-height: 52px !important;
   padding: 0 40px 0 14px !important;
@@ -6104,7 +6104,7 @@ body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker) 
   font-size: .82rem !important;
 }
 
-#wordpress-vps-fit-checker > .btn {
+#wordpress-vps-fit-checker-form > .btn {
   grid-column: 1 / -1;
   justify-self: start;
   min-height: 46px;
@@ -6228,15 +6228,15 @@ body:has(.vps-wordpress-page-header) main .content table:not(:where(h2#quick-ans
     display: none;
   }
 
-  #wordpress-vps-fit-checker {
+  #wordpress-vps-fit-checker-form {
     grid-template-columns: 1fr;
   }
 
-  #wordpress-vps-fit-checker > .mb-6 {
+  #wordpress-vps-fit-checker-form > .mb-6 {
     grid-template-rows: auto 52px;
   }
 
-  #wordpress-vps-fit-checker > .btn {
+  #wordpress-vps-fit-checker-form > .btn {
     grid-column: 1;
     width: 100%;
     justify-content: center;
@@ -6277,7 +6277,7 @@ body:has(.vps-wordpress-page-header) main .content table:not(:where(h2#quick-ans
   }
 
   body:has(.vps-wordpress-page-header) .vps-wordpress-requirements,
-  body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker) {
+  body:has(.vps-wordpress-page-header) main div:has(> #wordpress-vps-fit-checker-form) {
     padding: 18px !important;
     border-radius: 14px !important;
   }
@@ -6379,7 +6379,7 @@ body:has(.vps-wordpress-page-header) main .content {
 body:has(.vps-wordpress-page-header) main .content > table,
 body:has(.vps-wordpress-page-header) main .content > .vps-wordpress-requirements,
 body:has(.vps-wordpress-page-header) main .content > .vps-wordpress-php-section,
-body:has(.vps-wordpress-page-header) main .content > div:has(> #wordpress-vps-fit-checker),
+body:has(.vps-wordpress-page-header) main .content > div:has(> #wordpress-vps-fit-checker-form),
 body:has(.vps-wordpress-page-header) main .content > details,
 body:has(.vps-wordpress-page-header) main .content > blockquote {
   width: 100% !important;
@@ -7141,7 +7141,7 @@ body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements > h2::befor
 }
 
 /* Fit checker */
-body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker) {
+body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker-form) {
   margin-top: 22px;
   padding: 24px !important;
   border: 1px solid #2a3e4e;
@@ -7149,20 +7149,20 @@ body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-check
   background: #0d1824 !important;
 }
 
-#woocommerce-vps-fit-checker {
+#woocommerce-vps-fit-checker-form {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 24px;
   row-gap: 20px;
 }
 
-#woocommerce-vps-fit-checker > .mb-6 {
+#woocommerce-vps-fit-checker-form > .mb-6 {
   display: grid !important;
   grid-template-rows: 3.8rem 52px;
   margin-bottom: 0 !important;
 }
 
-#woocommerce-vps-fit-checker .form-label {
+#woocommerce-vps-fit-checker-form .form-label {
   margin: 0 !important;
   padding: 0 0 8px !important;
   display: flex !important;
@@ -7173,7 +7173,7 @@ body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-check
   line-height: 1.28 !important;
 }
 
-#woocommerce-vps-fit-checker .form-input {
+#woocommerce-vps-fit-checker-form .form-input {
   height: 52px !important;
   min-height: 52px !important;
   padding: 0 40px 0 14px !important;
@@ -7184,7 +7184,7 @@ body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-check
   font-size: .82rem !important;
 }
 
-#woocommerce-vps-fit-checker > .btn {
+#woocommerce-vps-fit-checker-form > .btn {
   grid-column: 1 / -1;
   justify-self: start;
   min-height: 46px;
@@ -7242,7 +7242,7 @@ body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-check
     margin-top: 24px;
   }
 
-  #woocommerce-vps-fit-checker {
+  #woocommerce-vps-fit-checker-form {
     grid-template-columns: 1fr !important;
   }
 
@@ -7357,7 +7357,7 @@ body:has(.vps-woocommerce-page-header) main > .section-sm {
 }
 
 /* Homepage-like compact widths for single-column functional blocks. */
-body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker),
+body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker-form),
 body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
   max-width: 850px !important;
   margin-left: auto !important;
@@ -7400,7 +7400,7 @@ body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
     max-width: none !important;
   }
 
-  body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker),
+  body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker-form),
   body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
     max-width: none !important;
   }
@@ -12974,7 +12974,7 @@ body:has(.vps-woocommerce-page-header) main .content > *,
 body:has(.vps-woocommerce-page-header) main .content > section,
 body:has(.vps-woocommerce-page-header) main .content > div,
 body:has(.vps-woocommerce-page-header) main .content > table,
-body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker),
+body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker-form),
 body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
   width: 100% !important;
   max-width: none !important;
