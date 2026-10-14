@@ -11,6 +11,7 @@
 {{ $isFastpanelVps := false }}
 {{ $isHostWebsiteVps := false }}
 {{ $isVpsLocation := false }}
+{{ $isVpsControlPanel := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -50,6 +51,9 @@
   {{ end }}
   {{ if eq .BaseFileName "how-to-choose-vps-location" }}
     {{ $isVpsLocation = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-with-control-panel" }}
+    {{ $isVpsControlPanel = true }}
   {{ end }}
 {{ end }}
 
@@ -1395,6 +1399,64 @@
 
             <div class="vps-location-compact-rule">
               <strong>Geography gives you candidates. Real routing chooses the region.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isVpsControlPanel }}
+  {{ $panelAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-control-panel-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-control-panel-breadcrumb") }}
+
+      <div class="vps-control-panel-hero">
+        <div class="vps-control-panel-hero-grid">
+          <div class="vps-control-panel-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-control-panel-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-control-panel-hero-actions">
+              <a class="btn btn-primary vps-control-panel-primary-cta"
+                 href="{{ $panelAffiliate }}" target="_blank"
+                 rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-control-panel-secondary-cta" href="#quick-answer">
+                See panel guidance
+              </a>
+            </div>
+          </div>
+
+          <a class="vps-control-panel-hero-diagram"
+             href="{{ $panelAffiliate }}" target="_blank"
+             rel="sponsored nofollow noopener"
+             aria-label="Check current VPS options with a control panel">
+            <div class="vps-control-panel-compact-head">
+              <strong>Choose the panel by operating model</strong>
+              <small>Websites, users, mail, operating system and licensing define the right panel class.</small>
+            </div>
+
+            <div class="vps-control-panel-compact-grid">
+              <div class="vps-control-panel-compact-item">
+                <span>01</span><div><strong>Sites</strong><small>One site or many?</small></div>
+              </div>
+              <div class="vps-control-panel-compact-item">
+                <span>02</span><div><strong>Users</strong><small>Single admin or clients?</small></div>
+              </div>
+              <div class="vps-control-panel-compact-item">
+                <span>03</span><div><strong>Services</strong><small>Mail, DNS, DB, backups</small></div>
+              </div>
+              <div class="vps-control-panel-compact-item">
+                <span>04</span><div><strong>Platform</strong><small>Linux / Windows + license</small></div>
+              </div>
+            </div>
+
+            <div class="vps-control-panel-compact-rule">
+              <strong>Use a panel only when it removes enough admin work to justify its overhead and constraints.</strong>
             </div>
           </a>
         </div>
