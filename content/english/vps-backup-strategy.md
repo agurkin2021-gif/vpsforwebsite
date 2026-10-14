@@ -1,7 +1,7 @@
 ---
 title: "VPS Backup Strategy"
 description: "VPS Backup Strategy: define RPO and RTO, combine provider images with independent offsite backups, protect databases and secrets, set retention, and prove recovery with restore tests."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS Backup Strategy is not “turn on snapshots once a day.” A usable recovery plan defines **how much data you can lose (RPO), how long recovery may take (RTO), which data must survive, where independent copies live, how long versions are retained, and whether anybody has actually restored them**.
@@ -601,14 +601,14 @@ Keep the runbook somewhere available even when the VPS itself is unavailable.
 
 ## Technical references
 
-- [NIST SP 800-34 Rev.1 — RPO/RTO and contingency planning](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-34r1.pdf)
-- [NIST SP 1339 — backup creation, testing and recovery exercises](https://csrc.nist.gov/pubs/sp/1339/final)
-- [Ubuntu — restic backup/restore tool](https://manpages.ubuntu.com/manpages/noble/man1/restic.1.html)
-- [Ubuntu — BorgBackup](https://manpages.ubuntu.com/manpages/jammy/man1/borg.1.html)
-- [VDSina Terms — customer backup responsibility](https://www.vdsina.com/terms)
-- [VDSina — server backup / restore / new server from backup](https://www.vdsina.com/qa/q/kak-sdelat-bekap-vds-servera)
-- [VDSina — scheduled backups](https://www.vdsina.com/qa/q/kak-nastroit-rezervnoe-kopirovanie-po-raspisaniyu)
-- [VDSina — download and use a server backup](https://www.vdsina.com/qa/q/kak-skachat-rezervnuyu-kopiyu-sozdannuyu-iz-paneli)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">NIST SP 800-34 Rev.1 — RPO/RTO and contingency planning</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">NIST SP 1339 — backup creation, testing and recovery exercises</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu — restic backup/restore tool</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu — BorgBackup</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Terms — customer backup responsibility</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — server backup / restore / new server from backup</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — scheduled backups</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — download and use a server backup</a>
 
 ## FAQ
 
