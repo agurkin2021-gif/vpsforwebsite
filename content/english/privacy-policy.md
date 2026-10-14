@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-description: "Privacy, analytics and affiliate disclosure for VPSforWebsite.com."
+description: "Privacy, analytics, affiliate and commercial-relationship disclosure for VPSforWebsite.com."
 ---
 
 ## Overview
@@ -21,11 +21,11 @@ If analytics are enabled later, this policy will be updated to identify the serv
 
 The site does not currently operate a public contact form or collect contact-form submissions.
 
-## Affiliate links
+## Affiliate links and commercial relationship
 
-Some links to VPS providers are affiliate or partner links. VPSforWebsite.com may receive a commission if a purchase is completed through one of those links.
+The editor has a professional relationship with VDSina. Some links to VDSina are affiliate or partner links, and VPSforWebsite.com may receive a commission if a qualifying purchase is completed through one of those links.
 
-Affiliate links are marked in the site code with `rel="sponsored nofollow"`.
+Affiliate links are marked in the site code with `rel="sponsored nofollow"`. The relationship and potential compensation do not change the workload-based sizing method, but they are disclosed so readers can evaluate commercial recommendations with the relevant context.
 
 ## External websites
 
