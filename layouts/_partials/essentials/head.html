@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 <meta name="theme-name" content="hugoplate" />
 <meta name="color-scheme" content="dark" />
+{{ partial "basic-seo.html" . }}
 <script>
   document.documentElement.classList.add("dark");
   try { localStorage.setItem("theme", "dark"); } catch (e) {}
@@ -12,14 +13,12 @@
 <meta name="theme-color" content="#080e17" />
 {{ partialCached "site-verifications.html" . }}
 
-{{ partial "basic-seo.html" . }}
-
 {{ $isPreview := or (strings.Contains site.BaseURL "raw.githack.com") (strings.Contains site.BaseURL "github.io") }}
 {{ if or (.Param "noindex") $isPreview }}
   <meta name="robots" content="noindex,nofollow" />
 {{ else }}
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+  <link rel="canonical" href="{{ .Permalink }}" />
   {{ range .AllTranslations }}
     <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
   {{ end }}

@@ -800,3 +800,14 @@ The SEO buffer contains:
 - The existing preview detection now also excludes Google Analytics from github.io/raw.githack.com preview builds, keeping preview visits out of the production property.
 - Public verification passed for all 19 pages; the Google script URL, sitemap and SEOimpuls on the shared VPS returned HTTP 200. The initialization code queues one js event and one config command for the requested ID. Page bodies and other site assets are unchanged.
 - Analytics-dashboard event receipt was not inspected because no Google Analytics account session was available. Published tag installation is verified; no claim of confirmed dashboard data is made.
+
+### 2026-10-14 — Nu HTML Checker fixes
+
+- Fixed the user's W3C validation report for the live homepage and audited all 19 published HTML pages with Nu Html Checker 26.10.12, the same version as validator.w3.org.
+- The basic SEO partial now runs before any link/script output, placing the existing page-specific base element in the required position without changing its URL. Removed itemprop from the rel=canonical link while preserving the canonical href.
+- Removed the non-standard x-dns-prefetch-control meta http-equiv; retained the valid font preconnect links.
+- Named informational groups (homepage workflow, WordPress factors, multiple-site examples) now have role=group. Pricing-card headings use h3 after the section h2; the existing card font-size selector follows h3 to retain its appearance.
+- Added a local list template using a neutral div wrapper for the headingless list container, removing the About/Contact section warnings while retaining the existing classes and content.
+- Production result: all 19 publicly fetched HTML documents have zero Nu errors, warnings or informational messages. The online W3C checker also reports an empty message list for https://vpsforwebsite.com/.
+- Full Hugo source build passes validation for all 22 generated English/Spanish HTML documents, including the currently present localization work. Published scope was the 19 existing production documents and one newly fingerprinted CSS asset. Other source changes on main were preserved.
+- Text, link destinations, IDs, canonical/base URLs and script contents were checked for preservation during publication. GA4 G-J6X9FNRMH5, the V favicon, sitemap and SEOimpuls remain operational. The old fingerprinted CSS is retained for already-open/cached pages; the HTML points to the new CSS with its matching SRI hash.

@@ -3909,3 +3909,10 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Internal page headers and content styling now use the same editorial system.
 - 1280/390 visual QA passed on homepage and representative internal page.
 - No SEO owner changes; no additional external public links introduced.
+
+### 2026-10-14 — HTML conformance audit
+
+- Fixed shared base-element ordering, invalid canonical itemprop, unsupported x-dns-prefetch-control metadata, three named div groups lacking roles, and the homepage pricing h2-to-h4 heading skip.
+- Pricing-card headings are now h3 with the existing visual size. Headingless About/Contact list containers use div instead of section.
+- Nu Html Checker 26.10.12: all 19 live HTML documents pass with zero errors/warnings; online W3C homepage result has no messages. The complete current Hugo source build also passes for all 22 English/Spanish HTML documents.
+- Page titles, H1s, text, URL ownership, canonical/base destinations, link targets, IDs, JSON-LD and analytics behavior were preserved. This pass changes conformance markup; it does not reopen frozen content scopes or create new SEO owners.

@@ -960,7 +960,7 @@ body:has(.vps-home) footer .container {
   width: 2px;
 }
 
-.vps-home #vps-plan-options h4 {
+.vps-home #vps-plan-options h3 {
   font-size: 1.02rem;
 }
 
