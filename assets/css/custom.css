@@ -5541,3 +5541,62 @@ body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
     text-align: center !important;
   }
 }
+
+
+/* Homepage hero editorial copy treatment */
+.vps-home .vps-hero-copy-text {
+  max-width: 545px;
+}
+
+.vps-home .vps-hero-lead,
+.vps-home .vps-hero-detail {
+  margin: 0 !important;
+  letter-spacing: -.008em;
+}
+
+.vps-home .vps-hero-lead {
+  color: #eef2f5;
+  font-size: 1.13rem;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.vps-home .vps-hero-detail {
+  margin-top: 12px !important;
+  color: #b8c4cf;
+  font-size: .98rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.vps-home .vps-hero-emphasis {
+  color: var(--osp-green);
+  font-weight: 650;
+}
+
+@media (min-width: 768px) {
+  .vps-home .vps-hero-copy > .flex {
+    margin-top: 54px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-home .vps-hero-copy-text {
+    max-width: none;
+  }
+
+  .vps-home .vps-hero-lead {
+    font-size: 1.04rem;
+    line-height: 1.55;
+  }
+
+  .vps-home .vps-hero-detail {
+    margin-top: 10px !important;
+    font-size: .94rem;
+    line-height: 1.58;
+  }
+
+  .vps-home .vps-hero-copy > .flex {
+    margin-top: 30px !important;
+  }
+}

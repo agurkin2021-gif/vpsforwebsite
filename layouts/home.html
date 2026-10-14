@@ -11,9 +11,20 @@
             <h1>
               {{ .title | markdownify }}
             </h1>
-            <p class="mb-8">
-              {{ .content | markdownify }}
-            </p>
+            {{ $heroParts := split .content "allocated resources. " }}
+            {{ if ge (len $heroParts) 2 }}
+              {{ $heroLead := printf "%sallocated resources." (index $heroParts 0) }}
+              {{ $heroLead = replace $heroLead "control" "<span class=\"vps-hero-emphasis\">control</span>" }}
+              {{ $heroDetail := index $heroParts 1 }}
+              {{ $heroDetail = replace $heroDetail "real workload" "<span class=\"vps-hero-emphasis\">real workload</span>" }}
+              {{ $heroDetail = replace $heroDetail "migration and growth" "<span class=\"vps-hero-emphasis\">migration and growth</span>" }}
+              <div class="vps-hero-copy-text">
+                <p class="vps-hero-lead">{{ $heroLead | safeHTML }}</p>
+                <p class="vps-hero-detail">{{ $heroDetail | safeHTML }}</p>
+              </div>
+            {{ else }}
+              <p class="mb-8">{{ .content | markdownify }}</p>
+            {{ end }}
             <div class="flex flex-wrap justify-start gap-3">
               {{ with .button }}
                 {{ if .enable }}
