@@ -48,22 +48,34 @@ jobs:
           test -s static/images/home/vps-hero-right.webp
           file static/images/home/vps-hero-right.webp
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Show Pages base URL
+        run: echo "PAGES_BASE_URL=${{ steps.pages.outputs.base_url }}"
+
       - name: Warm build stats
-        run: hugo --gc --baseURL "https://vpsforwebsite.com/"
+        run: hugo --gc --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Clear warm-build output
         run: rm -rf public
 
       - name: Build production site with complete Tailwind utilities
-        run: hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Verify production homepage SEO output
         shell: bash
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           python - <<'PY'
           from pathlib import Path
           from html.parser import HTMLParser
           import re
+          import os
 
           p = Path("public/index.html")
           if not p.exists():
@@ -86,10 +98,13 @@ jobs:
           audit = HeadAudit()
           audit.feed(html)
 
+          expected_url = os.environ["PAGES_BASE_URL"].rstrip("/") + "/"
+          print("Expected production base URL:", expected_url)
+
           robots = any(x.get("name","").lower() == "robots" and x.get("content","").lower() == "index,follow" for x in audit.metas)
-          canonical = any(x.get("rel","").lower() == "canonical" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
-          hreflang_en = any(x.get("hreflang","").lower() == "en" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
-          hreflang_default = any(x.get("hreflang","").lower() == "x-default" and x.get("href") == "https://vpsforwebsite.com/" for x in audit.links)
+          canonical = any(x.get("rel","").lower() == "canonical" and x.get("href") == expected_url for x in audit.links)
+          hreflang_en = any(x.get("hreflang","").lower() == "en" and x.get("href") == expected_url for x in audit.links)
+          hreflang_default = any(x.get("hreflang","").lower() == "x-default" and x.get("href") == expected_url for x in audit.links)
 
           checks = {
               "robots index,follow": robots,
@@ -116,11 +131,6 @@ jobs:
 
           print("Production homepage SEO verification: PASS")
           PY
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
