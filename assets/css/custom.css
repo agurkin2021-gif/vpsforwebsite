@@ -12646,3 +12646,301 @@ body:has(.vps-contact-page-header) {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Privacy page hero only */
+body:has(.vps-privacy-page-header) {
+  --pp-bg: #07101a;
+  --pp-text: #f7f6f2;
+  --pp-copy: #c8d2dc;
+  --pp-green: #2dde74;
+}
+
+.vps-privacy-page-header > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.vps-privacy-page-header {
+  position: relative !important;
+  padding: 0 0 24px !important;
+  border-bottom: 0 !important;
+  background: var(--pp-bg);
+}
+
+.vps-privacy-page-header > .container {
+  position: relative !important;
+}
+
+.vps-privacy-page-header .vps-privacy-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 2;
+  margin: 0 !important;
+  padding: 0 2px !important;
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+}
+
+.vps-privacy-page-header .vps-privacy-breadcrumb ol,
+.vps-privacy-page-header .vps-privacy-breadcrumb ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-privacy-page-header .vps-privacy-breadcrumb li,
+.vps-privacy-page-header .vps-privacy-breadcrumb span,
+.vps-privacy-page-header .vps-privacy-breadcrumb a {
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.vps-privacy-hero {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.vps-privacy-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 48%) minmax(0, 46%);
+  gap: 6%;
+  align-items: start;
+  width: 100%;
+}
+
+.vps-privacy-hero-copy {
+  min-width: 0;
+}
+
+.vps-privacy-hero-copy h1 {
+  max-width: 100%;
+  margin: 0 0 24px !important;
+  color: var(--pp-text);
+  font-family: var(--font-secondary);
+  font-size: clamp(3rem, 3.2vw, 3.7rem);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.052em;
+  text-wrap: balance;
+}
+
+.vps-privacy-description {
+  max-width: 510px;
+  margin: 0 !important;
+  color: var(--pp-copy);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.vps-privacy-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.vps-privacy-primary-cta {
+  min-height: 46px;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--pp-green) !important;
+  border-color: var(--pp-green) !important;
+  color: #061019 !important;
+  font-size: .76rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.vps-privacy-secondary-cta {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  padding: 0 2px;
+  color: #aebbc6 !important;
+  font-size: .74rem;
+  font-weight: 720;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+}
+
+.vps-privacy-secondary-cta:hover {
+  color: #eef2f5 !important;
+  border-bottom-color: #3b4e5d;
+}
+
+.vps-privacy-hero-diagram {
+  display: block;
+  width: 100%;
+  max-width: 475px;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transform: translateY(0) scale(1);
+  transition: transform 120ms ease;
+  will-change: transform;
+}
+
+.vps-privacy-hero-diagram:hover {
+  transform: translateY(-2px) scale(1);
+}
+
+.vps-privacy-hero-diagram:active {
+  transform: translateY(1px) scale(.975);
+  transition-duration: 70ms;
+}
+
+.vps-privacy-hero-diagram:focus,
+.vps-privacy-hero-diagram:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.vps-privacy-compact-head {
+  margin-bottom: 14px;
+}
+
+.vps-privacy-compact-head strong {
+  display: block;
+  color: var(--pp-text);
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.vps-privacy-compact-head small {
+  display: block;
+  max-width: 430px;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .67rem;
+  line-height: 1.4;
+}
+
+.vps-privacy-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vps-privacy-compact-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 11px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+}
+
+.vps-privacy-compact-item > span {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #0d2a1e;
+  color: #72e5a2;
+  font-size: .56rem;
+  font-weight: 850;
+}
+
+.vps-privacy-compact-item strong {
+  display: block;
+  color: #dce3e8;
+  font-size: .72rem;
+  line-height: 1.2;
+}
+
+.vps-privacy-compact-item small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa0af;
+  font-size: .59rem;
+  line-height: 1.3;
+}
+
+.vps-privacy-compact-rule {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--pp-green);
+  border-radius: 7px;
+  background: #0d1824;
+}
+
+.vps-privacy-compact-rule strong {
+  color: #dce4e9;
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+  .vps-privacy-page-header > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-privacy-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .vps-privacy-hero-diagram {
+    max-width: none !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-privacy-page-header > .container {
+    width: calc(100% - 36px) !important;
+  }
+
+  .vps-privacy-page-header .vps-privacy-breadcrumb {
+    top: 4px !important;
+  }
+
+  .vps-privacy-hero {
+    padding-top: 28px !important;
+  }
+
+  .vps-privacy-hero-copy h1 {
+    font-size: clamp(2.45rem, 12vw, 3.2rem) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .vps-privacy-hero-actions {
+    align-items: stretch;
+  }
+
+  .vps-privacy-primary-cta,
+  .vps-privacy-secondary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vps-privacy-compact-grid {
+    grid-template-columns: 1fr;
+  }
+}
