@@ -1,4 +1,4 @@
-name: Build Hugo preview
+name: Publish multilingual Hugo site to GitHub Pages
 
 on:
   push:
@@ -6,16 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: hugo-preview
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -38,103 +38,38 @@ jobs:
           hugo-version: "0.158.0"
           extended: true
 
-      - name: Install node dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Resolve Hugo modules
         run: hugo mod get
 
-      - name: Decode homepage hero visual
+      - name: Restore homepage visual
         shell: bash
         run: |
           cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
           test -s static/images/home/vps-hero-right.webp
-          file static/images/home/vps-hero-right.webp
 
-      - name: Warm build stats
-        run: hugo --gc --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
+      - name: Warm Tailwind build stats
+        run: hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
 
-      - name: Clear warm-build output
-        run: rm -rf public
-
-      - name: Build preview with complete Tailwind utilities
-        run: hugo --gc --minify --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
-
-      - name: Make preview portable
-        shell: python
-        run: |
-          from pathlib import Path
-          import re
-
-          prefix = "/agurkin2021-gif/vpsforwebsite/preview/"
-          target = "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
-          suffixes = {".html", ".css", ".js", ".json", ".xml", ".webmanifest"}
-
-          for path in Path("public").rglob("*"):
-              if not path.is_file() or path.suffix.lower() not in suffixes:
-                  continue
-
-              text = path.read_text(encoding="utf-8")
-              text = re.sub(
-                  r"(?<!https://raw\.githack\.com)" + re.escape(prefix),
-                  target,
-                  text,
-              )
-
-              if path.suffix.lower() == ".html":
-                  text = re.sub(
-                      r"\\s+integrity=(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)",
-                      "",
-                      text,
-                  )
-
-              path.write_text(text, encoding="utf-8")
-
-      - name: Remove preview sitemap
-        run: rm -f public/sitemap.xml public/sitemap.xml.gz
-
-      - name: Check preview run freshness
-        id: freshness
-        shell: bash
-        run: |
-          git fetch origin main
-          if [ "$GITHUB_SHA" = "$(git rev-parse origin/main)" ]; then
-            echo "current=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "current=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping stale preview publish for $GITHUB_SHA; current main is $(git rev-parse origin/main)"
-          fi
-
-      - name: Publish preview branch
-        if: steps.freshness.outputs.current == 'true'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: preview
-          publish_dir: ./public
-          force_orphan: true
-
-      - name: Rebuild for GitHub Pages URL
+      - name: Build published website
         run: |
           rm -rf public
           hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+          test -s public/index.html
+          test -s public/es/index.html
+          grep -q 'VPS para alojar sitios web' public/es/index.html
+          grep -q 'data-language-switcher' public/es/index.html
+          touch public/.nojekyll
 
-      - name: Upload GitHub Pages artifact
-        if: steps.freshness.outputs.current == 'true'
+      - uses: actions/configure-pages@v5
+
+      - name: Upload published website
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-      - name: Publish GitHub Pages branch
-        if: steps.freshness.outputs.current == 'true'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./public
-          force_orphan: true
-
-      - name: Deploy directly to GitHub Pages
-        if: steps.freshness.outputs.current == 'true'
+      - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
