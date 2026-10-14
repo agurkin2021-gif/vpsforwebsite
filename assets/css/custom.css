@@ -12944,3 +12944,66 @@ body:has(.vps-privacy-page-header) {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* WooCommerce body width = hero width */
+body:has(.vps-woocommerce-page-header) main > .section-sm > .container,
+body:has(.vps-woocommerce-page-header) main > .container,
+body:has(.vps-woocommerce-page-header) #final-cta > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center,
+body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > div,
+body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > .lg\:col-10,
+body:has(.vps-woocommerce-page-header) main .content {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  flex: none !important;
+}
+
+/* Remove the earlier 900/850px narrowing on WooCommerce lower blocks. */
+body:has(.vps-woocommerce-page-header) main .content > *,
+body:has(.vps-woocommerce-page-header) main .content > section,
+body:has(.vps-woocommerce-page-header) main .content > div,
+body:has(.vps-woocommerce-page-header) main .content > table,
+body:has(.vps-woocommerce-page-header) main div:has(> #woocommerce-vps-fit-checker),
+body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1100px) {
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container,
+  body:has(.vps-woocommerce-page-header) main > .container,
+  body:has(.vps-woocommerce-page-header) #final-cta > .container,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > div,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > .lg\:col-10,
+  body:has(.vps-woocommerce-page-header) main .content {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container,
+  body:has(.vps-woocommerce-page-header) main > .container,
+  body:has(.vps-woocommerce-page-header) #final-cta > .container,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > div,
+  body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.justify-center > .lg\:col-10,
+  body:has(.vps-woocommerce-page-header) main .content {
+    width: calc(100% - 36px) !important;
+  }
+}
