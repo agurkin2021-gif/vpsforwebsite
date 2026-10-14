@@ -1,0 +1,15 @@
+{
+  "name": "VPS for website",
+  "short_name": "VPS for website",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07101a",
+  "theme_color": "#080e17",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
