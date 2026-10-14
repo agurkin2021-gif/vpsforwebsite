@@ -7405,3 +7405,602 @@ body:has(.vps-woocommerce-page-header) .vps-woocommerce-requirements {
     max-width: none !important;
   }
 }
+
+
+/* VPS for Multiple Websites design */
+body:has(.vps-multiweb-page-header) {
+  --mw-bg: #07101a;
+  --mw-panel: #0d1824;
+  --mw-panel-2: #101d29;
+  --mw-line: #263746;
+  --mw-text: #f7f6f2;
+  --mw-copy: #c8d2dc;
+  --mw-muted: #8291a0;
+  --mw-green: #2dde74;
+  --mw-purple: #9e86ff;
+  background: var(--mw-bg);
+}
+
+/* Homepage is the width reference: 1040px outer container. */
+.vps-multiweb-page-header > .container,
+body:has(.vps-multiweb-page-header) main > .section-sm > .container,
+body:has(.vps-multiweb-page-header) #final-cta > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Keep article reading width restrained inside the homepage-width shell. */
+body:has(.vps-multiweb-page-header) main > .section-sm > .container > .row.justify-center {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body:has(.vps-multiweb-page-header) main > .section-sm > .container > .row.justify-center > div {
+  flex: none !important;
+  width: 900px !important;
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body:has(.vps-multiweb-page-header) main .content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Breadcrumbs: same top-left quiet treatment used across designed inner pages. */
+.vps-multiweb-page-header {
+  position: relative !important;
+  padding: 0 0 24px !important;
+  border-bottom: 0 !important;
+  background: var(--mw-bg);
+}
+
+.vps-multiweb-page-header > .container {
+  position: relative !important;
+}
+
+.vps-multiweb-page-header .vps-multiweb-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 2;
+  margin: 0 !important;
+  padding: 0 2px !important;
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+}
+
+.vps-multiweb-page-header .vps-multiweb-breadcrumb ol,
+.vps-multiweb-page-header .vps-multiweb-breadcrumb ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-multiweb-page-header .vps-multiweb-breadcrumb li,
+.vps-multiweb-page-header .vps-multiweb-breadcrumb span,
+.vps-multiweb-page-header .vps-multiweb-breadcrumb a {
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.vps-multiweb-page-header .vps-multiweb-breadcrumb a:hover {
+  color: #a0abb5 !important;
+}
+
+/* Hero mirrors the current homepage 41/55 balance. */
+.vps-multiweb-hero {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.vps-multiweb-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 41%) minmax(0, 55%);
+  gap: 4%;
+  align-items: start;
+  width: 100%;
+}
+
+.vps-multiweb-hero-copy {
+  min-width: 0;
+}
+
+.vps-multiweb-hero-copy h1 {
+  max-width: none;
+  margin: 0 0 24px !important;
+  color: var(--mw-text);
+  font-family: var(--font-secondary);
+  font-size: clamp(2.9rem, 3.15vw, 3.6rem);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.052em;
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
+.vps-multiweb-description {
+  max-width: 500px;
+  margin: 0 !important;
+  color: var(--mw-copy);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.vps-multiweb-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.vps-multiweb-primary-cta {
+  min-height: 46px;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--mw-green) !important;
+  border-color: var(--mw-green) !important;
+  color: #061019 !important;
+  font-size: .76rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.vps-multiweb-secondary-cta {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  padding: 0 2px;
+  color: #aebbc6 !important;
+  font-size: .74rem;
+  font-weight: 720;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+}
+
+.vps-multiweb-secondary-cta:hover {
+  color: #eef2f5 !important;
+  border-bottom-color: #3b4e5d;
+}
+
+.vps-multiweb-hero-diagram {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 21px;
+  border: 1px solid #286847;
+  border-radius: 18px 9px 9px 9px;
+  background: #07101a;
+  color: inherit !important;
+  text-decoration: none !important;
+  box-sizing: border-box;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    box-shadow 130ms ease;
+}
+
+.vps-multiweb-hero-diagram:hover {
+  border-color: var(--mw-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+}
+
+.vps-multiweb-hero-diagram:active {
+  border-color: var(--mw-purple);
+  transform: scale(.985);
+  box-shadow: none;
+}
+
+.vps-multiweb-hero-diagram:focus-visible {
+  outline: 2px solid var(--mw-purple);
+  outline-offset: 4px;
+}
+
+.vps-multiweb-diagram-head {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  margin-bottom: 17px;
+}
+
+.vps-multiweb-server-mark {
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2a7651;
+  border-radius: 12px;
+  background: #0b2119;
+  color: var(--mw-green);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .04em;
+}
+
+.vps-multiweb-diagram-head strong {
+  display: block;
+  color: var(--mw-text);
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.vps-multiweb-diagram-head small {
+  display: block;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .67rem;
+  line-height: 1.35;
+}
+
+.vps-multiweb-sites {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vps-multiweb-site {
+  min-width: 0;
+  padding: 12px 9px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+}
+
+.vps-multiweb-site span {
+  display: block;
+  margin-bottom: 13px;
+  color: #72e5a2;
+  font-size: .55rem;
+  font-weight: 850;
+}
+
+.vps-multiweb-site strong {
+  display: block;
+  color: #dce3e8;
+  font-size: .72rem;
+  line-height: 1.2;
+}
+
+.vps-multiweb-shared-label {
+  margin-top: 15px;
+  color: #748695;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.vps-multiweb-resource-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.vps-multiweb-resource-row span {
+  padding: 8px 7px;
+  border: 1px solid #2b4051;
+  border-radius: 999px;
+  background: #0b151f;
+  color: #9eafbf;
+  font-size: .58rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.vps-multiweb-rule {
+  margin-top: 14px;
+  padding: 12px 13px;
+  border-left: 3px solid var(--mw-green);
+  border-radius: 7px;
+  background: #0d1824;
+}
+
+.vps-multiweb-rule strong {
+  color: #dce4e9;
+  font-size: .69rem;
+  line-height: 1.38;
+}
+
+/* Article rhythm */
+body:has(.vps-multiweb-page-header) main .content > h2 {
+  margin-top: 4rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--mw-line);
+}
+
+body:has(.vps-multiweb-page-header) main .content > h2::before {
+  width: 42px;
+  border-top-color: var(--mw-green);
+}
+
+/* Compact in-page nav */
+body:has(.vps-multiweb-page-header) main p:has(> a[href="#quick-answer"]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 26px 0 36px !important;
+  padding: 9px;
+  border: 1px solid #263746;
+  border-radius: 12px;
+  background: #0b151f;
+  font-size: 0;
+}
+
+body:has(.vps-multiweb-page-header) main p:has(> a[href="#quick-answer"]) > a {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 11px;
+  border: 1px solid #2a3e4e;
+  border-radius: 999px;
+  background: #0d1824;
+  color: #aebac5 !important;
+  font-size: .68rem;
+  font-weight: 720;
+  line-height: 1;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+/* Quick answer table */
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table {
+  width: 100%;
+  margin: 22px 0 18px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #2a3e4e;
+  border-radius: 15px;
+  background: #0b1420;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table th,
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table td {
+  vertical-align: top;
+  padding: 15px 16px;
+  border: 0 !important;
+  border-right: 1px solid #233545 !important;
+  border-bottom: 1px solid #233545 !important;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table th:last-child,
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table td:last-child {
+  border-right: 0 !important;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table thead th {
+  background: #111e2a;
+  color: #f7f6f2;
+  font-size: .74rem;
+  font-weight: 800;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table thead th:nth-child(2) {
+  background: #0d251d;
+  color: #75e6a3;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table tbody td {
+  color: #c4ced8;
+  font-size: .8rem;
+  line-height: 1.48;
+}
+
+body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table tbody td:nth-child(2) {
+  background: #0b1b17;
+}
+
+/* Architecture checker follows homepage compact-block width: 850px. */
+body:has(.vps-multiweb-page-header) main div:has(> #multi-site-architecture-checker) {
+  width: 850px;
+  max-width: 100%;
+  margin: 22px auto 0;
+  padding: 24px !important;
+  border: 1px solid #2a3e4e;
+  border-radius: 16px !important;
+  background: #0d1824 !important;
+  box-sizing: border-box;
+}
+
+#multi-site-architecture-checker {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 20px;
+}
+
+#multi-site-architecture-checker > .mb-6 {
+  display: grid !important;
+  grid-template-rows: 3.8rem 52px;
+  margin-bottom: 0 !important;
+}
+
+#multi-site-architecture-checker .form-label {
+  margin: 0 !important;
+  padding: 0 0 8px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  color: #edf1f4 !important;
+  font-size: .84rem !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+}
+
+#multi-site-architecture-checker .form-input {
+  height: 52px !important;
+  min-height: 52px !important;
+  padding: 0 40px 0 14px !important;
+  border: 1px solid #314555 !important;
+  border-radius: 9px !important;
+  background: #07101a !important;
+  color: #d7dee5 !important;
+  font-size: .82rem !important;
+}
+
+#multi-site-architecture-checker > .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 46px;
+  margin-top: 2px !important;
+  background: var(--mw-green) !important;
+  border-color: var(--mw-green) !important;
+  color: #061019 !important;
+}
+
+#multi-site-architecture-result {
+  width: 850px;
+  max-width: 100%;
+  margin: 20px auto 0 !important;
+  padding: 13px 15px !important;
+  border: 1px solid #2a3e4e !important;
+  border-left: 3px solid var(--mw-green) !important;
+  border-radius: 9px !important;
+  background: #09141f;
+  color: #cbd5de;
+  box-sizing: border-box;
+}
+
+/* One intent-heavy section gets visual emphasis; the rest remains editorial. */
+.vps-multiweb-capacity-section {
+  margin-top: 4rem;
+  padding: 26px;
+  border: 1px solid #2b4051;
+  border-radius: 16px;
+  background: #0d1824;
+}
+
+.vps-multiweb-capacity-section > h2 {
+  margin: 0 0 16px !important;
+  padding: 0 0 15px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #2b4051 !important;
+}
+
+.vps-multiweb-capacity-section > h2::before {
+  display: none !important;
+}
+
+.vps-multiweb-capacity-section > p > strong:only-child {
+  display: block;
+  margin: 15px 0 !important;
+  padding: 13px 15px;
+  border-left: 3px solid var(--mw-green);
+  border-radius: 8px;
+  background: #0b2119;
+  color: #dce8e1;
+}
+
+body:has(.vps-multiweb-page-header) main > .section-sm {
+  padding-top: 36px !important;
+}
+
+@media (max-width: 1100px) {
+  .vps-multiweb-page-header > .container,
+  body:has(.vps-multiweb-page-header) main > .section-sm > .container,
+  body:has(.vps-multiweb-page-header) #final-cta > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+
+  body:has(.vps-multiweb-page-header) main > .section-sm > .container > .row.justify-center > div {
+    width: 100% !important;
+    max-width: 900px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-multiweb-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .vps-multiweb-hero-copy h1 {
+    white-space: normal !important;
+    text-wrap: balance !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-multiweb-page-header > .container,
+  body:has(.vps-multiweb-page-header) main > .section-sm > .container,
+  body:has(.vps-multiweb-page-header) #final-cta > .container {
+    width: calc(100% - 36px) !important;
+  }
+
+  .vps-multiweb-page-header .vps-multiweb-breadcrumb {
+    top: 4px !important;
+  }
+
+  .vps-multiweb-hero {
+    padding-top: 28px !important;
+  }
+
+  .vps-multiweb-hero-copy h1 {
+    font-size: clamp(2.45rem, 12vw, 3.2rem) !important;
+  }
+
+  .vps-multiweb-sites,
+  .vps-multiweb-resource-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #multi-site-architecture-checker {
+    grid-template-columns: 1fr !important;
+  }
+
+  #multi-site-architecture-checker > .mb-6 {
+    grid-template-rows: auto 52px;
+  }
+
+  #multi-site-architecture-checker > .btn {
+    grid-column: 1;
+    width: 100%;
+    justify-content: center;
+  }
+
+  body:has(.vps-multiweb-page-header) main h2#quick-answer + p + table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 540px) {
+  .vps-multiweb-hero-actions {
+    align-items: stretch;
+  }
+
+  .vps-multiweb-primary-cta,
+  .vps-multiweb-secondary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vps-multiweb-hero-diagram {
+    padding: 16px;
+  }
+}
