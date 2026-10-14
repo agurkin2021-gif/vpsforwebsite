@@ -8203,3 +8203,151 @@ body:has(.vps-multiweb-page-header) main > .section-sm {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* WooCommerce compact hero diagram v2 */
+@media (min-width: 901px) {
+  .vps-woocommerce-hero-grid {
+    grid-template-columns: minmax(0, 48%) minmax(0, 46%) !important;
+    gap: 6% !important;
+    align-items: start !important;
+  }
+
+  .vps-woocommerce-hero-copy h1 {
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
+    font-size: clamp(2.85rem, 3.05vw, 3.5rem) !important;
+  }
+
+  .vps-woocommerce-hero-diagram {
+    width: 100% !important;
+    max-width: 475px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+.vps-woocommerce-hero-diagram,
+.vps-woocommerce-hero-diagram:hover,
+.vps-woocommerce-hero-diagram:active,
+.vps-woocommerce-hero-diagram:focus,
+.vps-woocommerce-hero-diagram:focus-visible {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+.vps-woocommerce-compact-head {
+  margin-bottom: 14px;
+}
+
+.vps-woocommerce-compact-head strong {
+  display: block;
+  color: var(--wc-text);
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.vps-woocommerce-compact-head small {
+  display: block;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .67rem;
+  line-height: 1.4;
+}
+
+.vps-woocommerce-compact-flow {
+  display: grid;
+  gap: 8px;
+}
+
+.vps-woocommerce-compact-step {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  min-height: 62px;
+  padding: 10px 12px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+}
+
+.vps-woocommerce-compact-step > span {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #0d2a1e;
+  color: #72e5a2;
+  font-size: .57rem;
+  font-weight: 850;
+}
+
+.vps-woocommerce-compact-step strong {
+  display: block;
+  color: #dce3e8;
+  font-size: .74rem;
+  line-height: 1.2;
+}
+
+.vps-woocommerce-compact-step small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa0af;
+  font-size: .61rem;
+  line-height: 1.35;
+}
+
+.vps-woocommerce-compact-signals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 11px;
+}
+
+.vps-woocommerce-compact-signals span {
+  padding: 8px 6px;
+  border: 1px solid #2b4051;
+  border-radius: 999px;
+  background: #0b151f;
+  color: #9eafbf;
+  font-size: .57rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.vps-woocommerce-compact-rule {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--wc-green);
+  border-radius: 7px;
+  background: #0d1824;
+}
+
+.vps-woocommerce-compact-rule strong {
+  color: #dce4e9;
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .vps-woocommerce-hero-diagram {
+    max-width: none !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .vps-woocommerce-compact-signals {
+    grid-template-columns: 1fr;
+  }
+}
