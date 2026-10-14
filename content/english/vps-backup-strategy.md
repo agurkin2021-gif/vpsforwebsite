@@ -41,7 +41,7 @@ That is more useful than relying on one “successful backup” status.
 This checker identifies the recovery architecture you need. It does not guarantee recovery.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="vps-backup-strategy-checker">
+<form id="vps-backup-strategy-checker-form">
   <div class="mb-6">
     <label for="bk-workload" class="form-label">Workload type</label>
     <select id="bk-workload" class="form-input">
@@ -99,7 +99,7 @@ This checker identifies the recovery architecture you need. It does not guarante
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("vps-backup-strategy-checker");
+  var form = document.getElementById("vps-backup-strategy-checker-form");
   if (!form) return;
 
   form.addEventListener("submit", function (event) {
