@@ -69,7 +69,7 @@ See [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
 This tool identifies the stack path to investigate. It does not replace application documentation.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="deployment-path-checker">
+<form id="deployment-path-checker-form">
   <div class="mb-6">
     <label for="deploy-type" class="form-label">Website / application type</label>
     <select id="deploy-type" class="form-input">
@@ -101,7 +101,7 @@ This tool identifies the stack path to investigate. It does not replace applicat
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("deployment-path-checker");
+  var form = document.getElementById("deployment-path-checker-form");
   if (!form) return;
 
   form.addEventListener("submit", function (event) {
