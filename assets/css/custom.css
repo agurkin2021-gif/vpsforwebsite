@@ -5521,3 +5521,23 @@ body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
     text-align: center !important;
   }
 }
+
+
+/* Homepage hero CTA lower + slimmer */
+@media (min-width: 768px) {
+  .vps-home .vps-hero-copy > .flex {
+    margin-top: 64px !important;
+  }
+
+  .vps-home .vps-hero-copy .btn,
+  .vps-home .vps-hero-copy .vps-btn-secondary {
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 0 1.15rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    text-align: center !important;
+  }
+}
