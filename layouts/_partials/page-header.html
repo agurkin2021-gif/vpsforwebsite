@@ -164,13 +164,18 @@
               <p>{{ . | markdownify }}</p>
             {{ end }}
 
-            <div class="vps-wordpress-hero-context">
-              <p>
-                A WordPress VPS changes more than server size: it adds control and isolation, but also responsibility for updates, security, backups and monitoring.
-              </p>
-              <p>
-                Separate the hosting decision from the sizing decision so a VPS solves a real infrastructure limit rather than a WordPress problem.
-              </p>
+            <div class="vps-wordpress-hero-checks" aria-label="WordPress VPS factors beyond RAM">
+              <span class="vps-wordpress-hero-checks-title">Beyond CPU and RAM</span>
+              <div class="vps-wordpress-hero-checks-grid">
+                <div class="vps-wordpress-hero-check">
+                  <strong>SSD / NVMe storage</strong>
+                  <span>Database queries, cache warmups, updates and backups are sensitive to storage latency.</span>
+                </div>
+                <div class="vps-wordpress-hero-check">
+                  <strong>Server location</strong>
+                  <span>Choose a region near the main audience; extra RAM cannot remove network latency.</span>
+                </div>
+              </div>
             </div>
           </div>
 
