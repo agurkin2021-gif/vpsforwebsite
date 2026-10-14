@@ -82,18 +82,6 @@ site_key = ""
 embed_url = ""
 
 [[plugins.css]]
-link = "plugins/swiper/swiper-bundle.css"
-lazy = true
-
-[[plugins.css]]
-link = "plugins/glightbox/glightbox.css"
-lazy = true
-
-[[plugins.css]]
-link = "plugins/font-awesome/v6/brands.css"
-lazy = true
-
-[[plugins.css]]
 link = "plugins/font-awesome/v6/solid.css"
 lazy = true
 
@@ -104,18 +92,6 @@ lazy = true
 [[plugins.js]]
 link = "js/search.js"
 lazy = false
-
-[[plugins.js]]
-link = "plugins/swiper/swiper-bundle.js"
-lazy = false
-
-[[plugins.js]]
-link = "plugins/glightbox/glightbox.js"
-lazy = true
-
-[[plugins.js]]
-link = "js/gallery-slider.js"
-lazy = true
 
 [[plugins.js]]
 link = "plugins/cookie.js"
