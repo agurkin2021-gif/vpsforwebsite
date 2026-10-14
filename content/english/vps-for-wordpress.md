@@ -464,11 +464,11 @@ VDSina's current Standard page does not list WordPress as a dedicated preinstall
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress.org — current requirements</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer Handbook — caching</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer — object cache</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer — system scheduler and WP-Cron</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
+- WordPress.org — current requirements
+- WordPress Developer Handbook — caching
+- WordPress Developer — object cache
+- WordPress Developer — system scheduler and WP-Cron
+- VDSina Standard VPS
 
 ## FAQ
 
