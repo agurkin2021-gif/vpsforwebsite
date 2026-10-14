@@ -6,6 +6,7 @@
 {{ $isVpsBackup := false }}
 {{ $isVpsMonitoring := false }}
 {{ $isVpsSizing := false }}
+{{ $isWebsiteMigration := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -30,6 +31,9 @@
   {{ end }}
   {{ if eq .BaseFileName "vps-sizing-for-website" }}
     {{ $isVpsSizing = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "website-migration-to-vps" }}
+    {{ $isWebsiteMigration = true }}
   {{ end }}
 {{ end }}
 
@@ -1146,6 +1150,84 @@
 
             <div class="vps-sizing-compact-rule">
               <strong>Choose the smallest VPS that covers measured workload with safe headroom.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isWebsiteMigration }}
+  {{ $migrationAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-migrate-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-migrate-breadcrumb") }}
+
+      <div class="vps-migrate-hero">
+        <div class="vps-migrate-hero-grid">
+          <div class="vps-migrate-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-migrate-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-migrate-hero-actions">
+              <a
+                class="btn btn-primary vps-migrate-primary-cta"
+                href="{{ $migrationAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-migrate-secondary-cta" href="#quick-migration-plan">
+                See migration plan
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-migrate-hero-diagram"
+            href="{{ $migrationAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for website migration">
+            <div class="vps-migrate-compact-head">
+              <strong>Move the website before you move the traffic</strong>
+              <small>Build and validate the destination first. DNS should be the final controlled step.</small>
+            </div>
+
+            <div class="vps-migrate-compact-grid">
+              <div class="vps-migrate-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Inventory</strong>
+                  <small>Stack, data, DNS, mail</small>
+                </div>
+              </div>
+              <div class="vps-migrate-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Build & test</strong>
+                  <small>Prepare VPS in parallel</small>
+                </div>
+              </div>
+              <div class="vps-migrate-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Final sync</strong>
+                  <small>Control last writes</small>
+                </div>
+              </div>
+              <div class="vps-migrate-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>DNS cutover</strong>
+                  <small>Monitor + keep rollback</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-migrate-compact-rule">
+              <strong>Do not retire the old host until the new VPS passes acceptance checks.</strong>
             </div>
           </a>
         </div>
