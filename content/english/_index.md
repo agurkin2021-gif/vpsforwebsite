@@ -39,7 +39,7 @@ features:
   - id: "vps-sizing"
     title: "VPS configurations for common website workloads"
     image: "images/home/vps-sizing.svg"
-    content: "Compare current VPS configurations by workload first, then use the dedicated sizing guide to calculate CPU, RAM and storage from measured demand instead of guessed visitor counts. [Open the full VPS sizing guide →](vps-sizing-for-website/index.html)"
+    content: "Compare current VPS configurations by workload first, then use the dedicated sizing guide to calculate CPU, RAM and storage from measured demand instead of guessed visitor counts. [Open the full VPS sizing guide →](/vps-sizing-for-website/)"
     plans:
       enable: true
       checked: "Current VDSina Standard prices checked October 13, 2026."
@@ -87,7 +87,7 @@ features:
     button:
       enable: true
       label: "Size your VPS"
-      link: "vps-sizing-for-website/index.html"
+      link: "/vps-sizing-for-website/"
 
   - id: "provider-checklist"
     title: "What to check before choosing a VPS provider"
@@ -99,7 +99,7 @@ features:
       - "**Platform:** supported operating systems, images, panel options and license cost."
       - "**Operations:** snapshots/backups, firewall/DDoS controls, monitoring, upgrade path and support scope."
       - "**Billing:** daily/monthly cadence, renewal terms, add-ons and any current limits or extra charges."
-      - "Do not assume provider support means managed server administration. [Compare Managed vs Unmanaged VPS →](managed-vs-unmanaged-vps/index.html)"
+      - "Do not assume provider support means managed server administration. [Compare Managed vs Unmanaged VPS →](/managed-vs-unmanaged-vps/)"
     button:
       enable: true
       label: "Choose a VPS location"
@@ -110,10 +110,10 @@ features:
     image: "images/home/vps-management.svg"
     content: "The right VPS is also an operations choice. Pick the management path before you size the server, because the panel, operating system and administration model change both resource use and responsibility."
     bulletpoints:
-      - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself. [FASTPANEL VPS Hosting →](fastpanel-vps-hosting/index.html)"
-      - "**Pure Ubuntu / Linux:** manage the web stack over SSH with Nginx or Apache, the runtime and database; more control, but more work stays with you. [How to host a website on VPS →](how-to-host-a-website-on-vps/index.html)"
+      - "**FASTPANEL / control panel:** simpler domains, SSL, PHP versions, databases and multiple-site administration; reserve RAM for the panel itself. [FASTPANEL VPS Hosting →](/fastpanel-vps-hosting/)"
+      - "**Pure Ubuntu / Linux:** manage the web stack over SSH with Nginx or Apache, the runtime and database; more control, but more work stays with you. [How to host a website on VPS →](/how-to-host-a-website-on-vps/)"
       - "**Windows Server:** use this path when the website genuinely requires IIS or ASP.NET rather than treating Windows as a default hosting choice."
-      - "**Support is not the same as managed hosting:** infrastructure help can remove blockers, but a self-managed VPS still leaves operating-system and application administration with the customer unless separate administration is agreed. [Compare Managed vs Unmanaged VPS →](managed-vs-unmanaged-vps/index.html)"
+      - "**Support is not the same as managed hosting:** infrastructure help can remove blockers, but a self-managed VPS still leaves operating-system and application administration with the customer unless separate administration is agreed. [Compare Managed vs Unmanaged VPS →](/managed-vs-unmanaged-vps/)"
     button:
       enable: true
       label: "Compare control-panel options"
@@ -132,7 +132,7 @@ features:
     button:
       enable: true
       label: "Plan your migration"
-      link: "website-migration-to-vps/index.html"
+      link: "/website-migration-to-vps/"
 
   - id: "architecture-planner"
     title: "One VPS or split the workload?"
