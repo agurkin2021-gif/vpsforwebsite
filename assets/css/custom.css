@@ -5298,3 +5298,48 @@ body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
     margin-bottom: 16px;
   }
 }
+
+
+/* VPS vs Shared Hosting breadcrumb placement */
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb {
+  margin: 0 0 12px !important;
+  padding: 0 2px !important;
+  color: #7f8b97 !important;
+  font-size: .72rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb ol,
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb li,
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb span,
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb a {
+  color: #7f8b97 !important;
+  font-size: .72rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb a:hover {
+  color: #a4aeb8 !important;
+  text-decoration: none !important;
+}
+
+@media (max-width: 767px) {
+  .vps-vs-shared-page-header .vps-vs-shared-breadcrumb {
+    margin-bottom: 10px !important;
+    padding-left: 0 !important;
+    font-size: .68rem !important;
+  }
+
+  .vps-vs-shared-page-header .vps-vs-shared-breadcrumb li,
+  .vps-vs-shared-page-header .vps-vs-shared-breadcrumb span,
+  .vps-vs-shared-page-header .vps-vs-shared-breadcrumb a {
+    font-size: .68rem !important;
+  }
+}
