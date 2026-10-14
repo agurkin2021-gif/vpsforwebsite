@@ -1,6 +1,7 @@
 {{ $isVpsVsShared := false }}
 {{ $isVpsWordPress := false }}
 {{ $isVpsWooCommerce := false }}
+{{ $isVpsMultipleWebsites := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -10,6 +11,9 @@
   {{ end }}
   {{ if eq .BaseFileName "vps-for-woocommerce" }}
     {{ $isVpsWooCommerce = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-for-multiple-websites" }}
+    {{ $isVpsMultipleWebsites = true }}
   {{ end }}
 {{ end }}
 
@@ -399,6 +403,104 @@
         var ps = requirements.querySelectorAll(":scope > p");
         if (ps.length) ps[0].classList.add("vps-woocommerce-requirements-intro");
         if (ps.length > 1) ps[ps.length - 1].classList.add("vps-woocommerce-requirements-warning");
+      }
+    });
+  </script>
+{{ else if $isVpsMultipleWebsites }}
+  {{ $multiAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-multiweb-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-multiweb-breadcrumb") }}
+
+      <div class="vps-multiweb-hero">
+        <div class="vps-multiweb-hero-grid">
+          <div class="vps-multiweb-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-multiweb-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-multiweb-hero-actions">
+              <a
+                class="btn btn-primary vps-multiweb-primary-cta"
+                href="{{ $multiAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-multiweb-secondary-cta" href="#multi-site-vps-architecture-checker">
+                Check architecture
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-multiweb-hero-diagram"
+            href="{{ $multiAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for multiple websites">
+            <div class="vps-multiweb-diagram-head">
+              <span class="vps-multiweb-server-mark">VPS</span>
+              <div>
+                <strong>One server, several websites</strong>
+                <small>Share resources deliberately; isolate sites where failure or security boundaries matter.</small>
+              </div>
+            </div>
+
+            <div class="vps-multiweb-sites">
+              <div class="vps-multiweb-site">
+                <span>01</span>
+                <strong>Site A</strong>
+              </div>
+              <div class="vps-multiweb-site">
+                <span>02</span>
+                <strong>Site B</strong>
+              </div>
+              <div class="vps-multiweb-site">
+                <span>03</span>
+                <strong>Site C</strong>
+              </div>
+              <div class="vps-multiweb-site">
+                <span>04</span>
+                <strong>Site D</strong>
+              </div>
+            </div>
+
+            <div class="vps-multiweb-shared-label">Shared server pool</div>
+            <div class="vps-multiweb-resource-row">
+              <span>CPU</span>
+              <span>RAM</span>
+              <span>Storage</span>
+              <span>DB / jobs</span>
+            </div>
+
+            <div class="vps-multiweb-rule">
+              <strong>Size the combined peak. Split workloads when one failure domain becomes the risk.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var formula = document.getElementById("count-workload-not-domains");
+      if (formula && !formula.closest(".vps-multiweb-capacity-section")) {
+        var parent = formula.parentElement;
+        if (parent) {
+          var section = document.createElement("section");
+          section.className = "vps-multiweb-capacity-section";
+          parent.insertBefore(section, formula);
+
+          var node = formula;
+          while (node && !(node !== formula && node.tagName === "H2")) {
+            var next = node.nextElementSibling;
+            section.appendChild(node);
+            node = next;
+          }
+        }
       }
     });
   </script>
