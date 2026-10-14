@@ -1,7 +1,7 @@
 ---
 title: "VPS Security Checklist"
 description: "VPS Security Checklist: harden administrative access, firewall exposed services, keep software patched, protect secrets, verify backups and prepare for incident response without locking yourself out."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS Security Checklist is a prioritized hardening pass for an internet-facing self-managed server. The goal is not to make a VPS “100% secure.” The goal is to remove avoidable attack surface, protect privileged access, keep software maintained, make recovery possible and verify that somebody actually owns the security work.
@@ -512,12 +512,12 @@ Also rerun the checklist after major migrations, panel changes, new services or 
 
 ## Technical references
 
-- [Ubuntu Server — OpenSSH](https://ubuntu.com/server/docs/how-to/security/openssh-server/)
-- [Ubuntu Server — firewall/UFW](https://ubuntu.com/server/docs/firewalls/)
-- [Ubuntu Server — automatic updates](https://ubuntu.com/server/docs/how-to/software/automatic-updates/)
-- [CISA — StopRansomware Guide](https://www.cisa.gov/stopransomware/ransomware-guide)
-- [VDSina Standard VPS](https://www.vdsina.com/pricing/standard)
-- [VDSina QA — DDoS protection scope](https://www.vdsina.com/ru/qa/q/zashchita-ot-ddos)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — OpenSSH</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — firewall/UFW</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — automatic updates</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">CISA — StopRansomware Guide</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina QA — DDoS protection scope</a>
 
 ## FAQ
 
