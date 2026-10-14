@@ -1,7 +1,7 @@
 ---
 title: "VPS for WooCommerce"
 description: "VPS for WooCommerce: size CPU and RAM from checkout concurrency, PHP workers, database writes, Action Scheduler, integrations and sale peaks, then choose the right management path."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS for WooCommerce should be sized for the parts of the store that cannot behave like a cached blog: **cart, checkout, account, orders, stock, payment callbacks, scheduled actions and database writes**. Monthly visits or product count alone do not tell you how much server the store needs.
@@ -537,12 +537,12 @@ VDSina's current Standard page does **not** list a dedicated preinstalled WooCom
 
 ## Technical references
 
-- [WooCommerce — server recommendations](https://woocommerce.com/document/server-requirements/)
-- [WooCommerce Developer — scaling with WooCommerce](https://developer.woocommerce.com/2024/08/22/scaling-with-woocommerce/)
-- [WooCommerce Developer — configuring caching plugins](https://developer.woocommerce.com/docs/best-practices/performance/configuring-caching-plugins/)
-- [WooCommerce — Scheduled Actions](https://woocommerce.com/document/understanding-the-woocommerce-system-status-report/scheduled-actions/)
-- [WooCommerce Developer — High Performance Order Storage](https://developer.woocommerce.com/docs/features/orders/high-performance-order-storage/)
-- [VDSina Standard VPS](https://www.vdsina.com/pricing/standard)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce — server recommendations</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — scaling with WooCommerce</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — configuring caching plugins</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce — Scheduled Actions</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WooCommerce Developer — High Performance Order Storage</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
 
 ## FAQ
 
