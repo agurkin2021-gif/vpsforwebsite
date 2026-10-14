@@ -4,6 +4,7 @@ timeZone = "America/Argentina/Buenos_Aires"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 enableRobotsTXT = true
+enableGitInfo = true
 disableKinds = ["taxonomy", "term"]
 
 [build]
