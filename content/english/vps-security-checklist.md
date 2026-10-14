@@ -512,12 +512,12 @@ Also rerun the checklist after major migrations, panel changes, new services or 
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — OpenSSH</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — firewall/UFW</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu Server — automatic updates</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">CISA — StopRansomware Guide</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina QA — DDoS protection scope</a>
+- Ubuntu Server — OpenSSH
+- Ubuntu Server — firewall/UFW
+- Ubuntu Server — automatic updates
+- CISA — StopRansomware Guide
+- VDSina Standard VPS
+- VDSina QA — DDoS protection scope
 
 ## FAQ
 
