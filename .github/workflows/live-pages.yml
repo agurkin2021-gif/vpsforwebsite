@@ -51,6 +51,9 @@ jobs:
       - name: Warm build stats
         run: hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
 
+      - name: Clear warm-build output
+        run: rm -rf public
+
       - name: Build production site with complete Tailwind utilities
         run: hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
 
