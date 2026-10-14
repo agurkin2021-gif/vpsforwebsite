@@ -567,7 +567,7 @@ Use [VPS sizing for website]({{< relref "vps-sizing-for-website.md" >}}) to tran
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Monitoring data should drive the sizing decision; this page does not claim that VDSina provides the monitoring tools described above as a managed service.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Monitoring data should drive the sizing decision; this page does not claim that VDSina provides the monitoring tools described above as a managed service.</small></p>
 
 ## Monitor multiple websites at two levels
 
