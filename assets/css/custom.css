@@ -9059,3 +9059,411 @@ body:has(.vps-security-page-header) main h2#faq ~ h3 {
     columns: 1;
   }
 }
+
+
+/* VPS Security homepage-section reconstruction */
+/* The homepage—not the article template—is the structural reference. */
+body:has(.vps-security-page-header) main > .section-sm > .container > .row.justify-center > div {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body:has(.vps-security-page-header) main .content {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Top baseline is a section, not a giant card. */
+.vps-security-baseline-section {
+  margin: 0 !important;
+  padding: 64px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--sec-line) !important;
+  border-bottom: 1px solid var(--sec-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.vps-security-baseline-section > h2 {
+  max-width: 12.5ch;
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--sec-text);
+  font-size: clamp(2.45rem, 3.4vw, 3.35rem) !important;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.vps-security-baseline-section > ol {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 34px !important;
+  margin: 0 !important;
+  padding-left: 1.35rem !important;
+}
+
+.vps-security-baseline-section > ol > li {
+  margin: 0 !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid #263746 !important;
+  color: #c8d2dc !important;
+  font-size: .86rem !important;
+  line-height: 1.48 !important;
+}
+
+.vps-security-baseline-section > p:last-child {
+  max-width: 760px;
+  margin: 20px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #9eadb9 !important;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+/* Homepage-style alternating feature sections. */
+.vps-security-home-section {
+  position: relative;
+  margin: 0 !important;
+  padding: 72px 0 !important;
+  border-bottom: 1px solid var(--sec-line);
+  background: var(--sec-bg);
+}
+
+.vps-security-home-section-alt {
+  background: #0a141f;
+  box-shadow: 0 0 0 100vmax #0a141f;
+  clip-path: inset(0 -100vmax);
+}
+
+.vps-security-home-row {
+  display: grid;
+  grid-template-columns: minmax(0, 39%) minmax(0, 53%);
+  gap: 8%;
+  align-items: start;
+  width: 100%;
+}
+
+.vps-security-home-section-reverse .vps-security-home-row {
+  grid-template-columns: minmax(0, 53%) minmax(0, 39%);
+}
+
+.vps-security-home-copy,
+.vps-security-home-visual {
+  min-width: 0;
+}
+
+.vps-security-home-copy > h2:first-child {
+  max-width: 12.5ch;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--sec-text);
+  font-size: clamp(2.35rem, 3.15vw, 3.15rem) !important;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -.043em;
+}
+
+.vps-security-home-copy > h2:first-child::before {
+  display: none !important;
+}
+
+.vps-security-home-copy > h2:not(:first-child) {
+  margin: 34px 0 14px !important;
+  padding: 24px 0 0 !important;
+  border-top: 1px solid #263746 !important;
+  color: #edf1f4;
+  font-size: 1.28rem !important;
+  line-height: 1.18;
+  letter-spacing: -.018em;
+}
+
+.vps-security-home-copy > h2:not(:first-child)::before {
+  display: none !important;
+}
+
+.vps-security-home-copy > h3 {
+  margin-top: 24px !important;
+  color: #e2e8ec;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.vps-security-home-copy > p,
+.vps-security-home-copy > ul,
+.vps-security-home-copy > ol {
+  color: #c8d2dc;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.vps-security-home-copy > ul,
+.vps-security-home-copy > ol {
+  margin-top: 12px !important;
+}
+
+.vps-security-home-copy > ul > li,
+.vps-security-home-copy > ol > li {
+  margin-bottom: 7px !important;
+}
+
+.vps-security-home-copy pre {
+  margin: 16px 0 18px !important;
+}
+
+/* Visual column: no outer frame, only intent-native internal components. */
+.vps-security-home-visual {
+  align-self: center;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+}
+
+.vps-security-home-section-reverse .vps-security-home-visual {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.vps-security-visual-kicker {
+  margin-bottom: 15px;
+  color: #7f90a0;
+  font-size: .64rem;
+  font-weight: 820;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.vps-security-visual-note {
+  margin-top: 13px;
+  padding: 11px 13px;
+  border-left: 3px solid var(--sec-green);
+  border-radius: 7px;
+  background: #0d1824;
+  color: #aebbc6;
+  font-size: .67rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.vps-security-visual-steps,
+.vps-security-incident-flow {
+  display: grid;
+  grid-template-columns: 1fr 18px 1fr 18px 1fr 18px 1fr;
+  gap: 5px;
+  align-items: center;
+}
+
+.vps-security-visual-steps span,
+.vps-security-incident-flow span {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid #263b4b;
+  border-radius: 10px;
+  background: #0d1824;
+  color: #dce3e8;
+  font-size: .67rem;
+  font-weight: 750;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.vps-security-visual-steps i,
+.vps-security-incident-flow i {
+  color: #506577;
+  font-style: normal;
+  text-align: center;
+}
+
+.vps-security-network-grid,
+.vps-security-recovery-grid {
+  display: grid;
+  gap: 9px;
+}
+
+.vps-security-network-grid > div,
+.vps-security-recovery-grid > div {
+  padding: 13px 14px;
+  border: 1px solid #263b4b;
+  border-radius: 10px;
+  background: #0d1824;
+}
+
+.vps-security-network-grid strong,
+.vps-security-recovery-grid strong {
+  display: block;
+  color: #e5eaee;
+  font-size: .76rem;
+  line-height: 1.25;
+}
+
+.vps-security-network-grid span,
+.vps-security-recovery-grid span {
+  display: block;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .63rem;
+  line-height: 1.35;
+}
+
+.vps-security-network-grid > div:nth-child(3),
+.vps-security-recovery-grid > div:nth-child(2) {
+  border-color: #286047;
+  background: #091a15;
+}
+
+.vps-security-maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.vps-security-maintenance-grid span,
+.vps-security-layer-stack span {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+  color: #dce3e8;
+  font-size: .7rem;
+  font-weight: 750;
+}
+
+.vps-security-layer-stack {
+  display: grid;
+  gap: 8px;
+}
+
+.vps-security-layer-stack span:nth-child(2) {
+  margin-left: 24px;
+}
+
+.vps-security-layer-stack span:nth-child(3) {
+  margin-left: 48px;
+}
+
+.vps-security-layer-stack span:nth-child(4) {
+  margin-left: 72px;
+  border-color: #47384f;
+  background: #17182a;
+}
+
+/* Incident section now follows the same homepage alternating-section geometry. */
+.vps-security-incident-section {
+  margin: 0 !important;
+  padding: 72px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--sec-line) !important;
+  border-radius: 0 !important;
+  background: #0a141f !important;
+  box-shadow: 0 0 0 100vmax #0a141f;
+  clip-path: inset(0 -100vmax);
+}
+
+/* Production checklist returns to the homepage compact-block principle. */
+.vps-security-production-section {
+  width: 850px;
+  max-width: 100%;
+  margin: 64px auto 0 !important;
+  padding: 0 !important;
+}
+
+.vps-security-production-section > h2 {
+  max-width: 12ch;
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: clamp(2.35rem, 3vw, 3rem) !important;
+  line-height: 1.02;
+  letter-spacing: -.04em;
+}
+
+/* Remove generic H2 separators inside reconstructed blocks. */
+body:has(.vps-security-page-header) main .vps-security-home-section h2,
+body:has(.vps-security-page-header) main .vps-security-baseline-section h2,
+body:has(.vps-security-page-header) main .vps-security-production-section h2 {
+  border-top: 0 !important;
+}
+
+/* Fit checker already follows the homepage's compact 850px functional-block rule. */
+body:has(.vps-security-page-header) main h2#vps-security-baseline-checker {
+  width: 850px;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Technical refs + FAQ also use the homepage's restrained 850px reading width. */
+body:has(.vps-security-page-header) main h2#technical-references,
+body:has(.vps-security-page-header) main h2#technical-references ~ * {
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1100px) {
+  body:has(.vps-security-page-header) main > .section-sm > .container > .row.justify-center > div,
+  body:has(.vps-security-page-header) main .content {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-security-home-row,
+  .vps-security-home-section-reverse .vps-security-home-row {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .vps-security-home-visual,
+  .vps-security-home-section-reverse .vps-security-home-visual {
+    max-width: none;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-security-baseline-section,
+  .vps-security-home-section,
+  .vps-security-incident-section {
+    padding: 48px 0 !important;
+  }
+
+  .vps-security-baseline-section > ol {
+    grid-template-columns: 1fr !important;
+  }
+
+  .vps-security-visual-steps,
+  .vps-security-incident-flow {
+    grid-template-columns: 1fr !important;
+  }
+
+  .vps-security-visual-steps i,
+  .vps-security-incident-flow i {
+    transform: rotate(90deg);
+  }
+
+  .vps-security-layer-stack span:nth-child(2),
+  .vps-security-layer-stack span:nth-child(3),
+  .vps-security-layer-stack span:nth-child(4) {
+    margin-left: 0;
+  }
+}
