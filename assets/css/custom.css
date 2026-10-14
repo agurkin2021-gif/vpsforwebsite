@@ -13052,7 +13052,7 @@ body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.ju
 .vps-wordpress-hero-actions {
   display: flex;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 40px;
 }
 
 .vps-wordpress-primary-cta {
