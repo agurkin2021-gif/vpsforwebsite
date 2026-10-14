@@ -11851,3 +11851,309 @@ body:has(.vps-location-page-header) {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* VPS vs Shared hero-only refinement */
+.vps-vs-shared-page-header {
+  position: relative !important;
+  padding: 0 0 24px !important;
+  background: #07101a !important;
+}
+
+.vps-vs-shared-page-header > .container {
+  position: relative !important;
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.vps-vs-shared-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 3;
+  margin: 0 !important;
+  padding: 0 2px !important;
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+}
+
+.vps-vs-shared-breadcrumb ol,
+.vps-vs-shared-breadcrumb ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-vs-shared-breadcrumb li,
+.vps-vs-shared-breadcrumb span,
+.vps-vs-shared-breadcrumb a {
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.vps-vs-shared-hero {
+  position: relative !important;
+  overflow: visible !important;
+  padding: 30px 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.vps-vs-shared-hero::after {
+  display: none !important;
+  content: none !important;
+}
+
+.vps-vs-shared-hero-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 48%) minmax(0, 46%) !important;
+  gap: 6% !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+
+.vps-vs-shared-hero-copy {
+  min-width: 0 !important;
+}
+
+.vps-vs-shared-hero-copy h1 {
+  max-width: 100% !important;
+  margin: 0 0 24px !important;
+  color: #f7f6f2 !important;
+  font-family: var(--font-secondary);
+  font-size: clamp(2.9rem, 3.15vw, 3.6rem) !important;
+  font-weight: 700 !important;
+  line-height: .96 !important;
+  letter-spacing: -.052em !important;
+  text-wrap: balance !important;
+}
+
+.vps-vs-shared-description {
+  max-width: 510px !important;
+  margin: 0 !important;
+  color: #c8d2dc !important;
+  font-size: 1rem !important;
+  line-height: 1.58 !important;
+}
+
+.vps-vs-shared-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.vps-vs-shared-hero-affiliate {
+  min-height: 46px;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: #2dde74 !important;
+  border-color: #2dde74 !important;
+  color: #061019 !important;
+  font-size: .76rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.vps-vs-shared-secondary-cta {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  padding: 0 2px;
+  color: #aebbc6 !important;
+  font-size: .74rem;
+  font-weight: 720;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+}
+
+.vps-vs-shared-secondary-cta:hover {
+  color: #eef2f5 !important;
+  border-bottom-color: #3b4e5d;
+}
+
+.vps-vs-shared-hero-diagram,
+.vps-vs-shared-hero-diagram.vps-vs-affiliate-visual {
+  display: block !important;
+  width: 100% !important;
+  max-width: 475px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transform: translateY(0) scale(1) !important;
+  transition: transform 120ms ease !important;
+  will-change: transform;
+}
+
+.vps-vs-shared-hero-diagram:hover,
+.vps-vs-shared-hero-diagram.vps-vs-affiliate-visual:hover {
+  transform: translateY(-2px) scale(1) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.vps-vs-shared-hero-diagram:active,
+.vps-vs-shared-hero-diagram.vps-vs-affiliate-visual:active {
+  transform: translateY(1px) scale(.975) !important;
+  transition-duration: 70ms !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.vps-vs-shared-hero-diagram:focus,
+.vps-vs-shared-hero-diagram:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.vps-vs-shared-compact-head {
+  margin-bottom: 14px;
+}
+
+.vps-vs-shared-compact-head strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.vps-vs-shared-compact-head small {
+  display: block;
+  max-width: 430px;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .67rem;
+  line-height: 1.4;
+}
+
+.vps-vs-shared-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vps-vs-shared-compact-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 11px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+}
+
+.vps-vs-shared-compact-item > span {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #0d2a1e;
+  color: #72e5a2;
+  font-size: .56rem;
+  font-weight: 850;
+}
+
+.vps-vs-shared-compact-item strong {
+  display: block;
+  color: #dce3e8;
+  font-size: .72rem;
+  line-height: 1.2;
+}
+
+.vps-vs-shared-compact-item small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa0af;
+  font-size: .59rem;
+  line-height: 1.3;
+}
+
+.vps-vs-shared-compact-rule {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid #2dde74;
+  border-radius: 7px;
+  background: #0d1824;
+}
+
+.vps-vs-shared-compact-rule strong {
+  color: #dce4e9;
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+  .vps-vs-shared-page-header > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-vs-shared-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .vps-vs-shared-hero-diagram,
+  .vps-vs-shared-hero-diagram.vps-vs-affiliate-visual {
+    max-width: none !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-vs-shared-page-header > .container {
+    width: calc(100% - 36px) !important;
+  }
+
+  .vps-vs-shared-breadcrumb {
+    top: 4px !important;
+  }
+
+  .vps-vs-shared-hero {
+    padding-top: 28px !important;
+  }
+
+  .vps-vs-shared-hero-copy h1 {
+    font-size: clamp(2.3rem, 11.7vw, 3.05rem) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .vps-vs-shared-hero-actions {
+    align-items: stretch;
+  }
+
+  .vps-vs-shared-hero-affiliate,
+  .vps-vs-shared-secondary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vps-vs-shared-compact-grid {
+    grid-template-columns: 1fr;
+  }
+}
