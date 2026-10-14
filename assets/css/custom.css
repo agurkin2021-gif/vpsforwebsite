@@ -5209,3 +5209,92 @@ body:has(.vps-vs-shared-page-header) main .content > ol > li {
     padding-top: 1.4rem;
   }
 }
+
+
+/* VPS vs Shared Hosting affiliate interaction pass */
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-affiliate {
+  display: inline-flex;
+  width: auto;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 18px;
+  padding: .72rem 1.05rem !important;
+  background: var(--vs-green) !important;
+  border-color: var(--vs-green) !important;
+  color: #061019 !important;
+  font-size: .82rem;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-affiliate:hover,
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-affiliate:focus-visible {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  color: #061019 !important;
+  transform: translateY(-1px);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-affiliate:active {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  transform: scale(.985);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-diagram.vps-vs-affiliate-visual {
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    box-shadow 130ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-diagram.vps-vs-affiliate-visual:hover {
+  border-color: var(--vs-green);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-diagram.vps-vs-affiliate-visual:active {
+  border-color: #9e86ff;
+  transform: translateY(0) scale(.985);
+  box-shadow: none;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-diagram.vps-vs-affiliate-visual:focus-visible,
+body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:focus-visible {
+  outline: 2px solid #9e86ff;
+  outline-offset: 4px;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate {
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    box-shadow 130ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+  border-color: var(--vs-green);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
+  border-color: #9e86ff;
+  transform: scale(.985);
+  box-shadow: none;
+}
+
+@media (max-width: 767px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-shared-hero-affiliate {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
