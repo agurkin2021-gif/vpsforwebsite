@@ -1,7 +1,7 @@
 ---
 title: "VPS for WordPress"
 description: "VPS for WordPress: size CPU and RAM from PHP workers, database load, caching, plugins and background jobs, then choose the right management and migration path."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS for WordPress is useful when WordPress needs more control, isolation or server-level features than shared hosting can provide. The VPS should be sized around **uncached PHP work, database demand, plugins, background jobs, storage growth and the services that run beside WordPress**, not around a monthly visitor number.
@@ -464,11 +464,11 @@ VDSina's current Standard page does not list WordPress as a dedicated preinstall
 
 ## Technical references
 
-- [WordPress.org — current requirements](https://wordpress.org/about/requirements/)
-- [WordPress Developer Handbook — caching](https://developer.wordpress.org/advanced-administration/performance/cache/)
-- [WordPress Developer — object cache](https://developer.wordpress.org/reference/classes/wp_object_cache/)
-- [WordPress Developer — system scheduler and WP-Cron](https://developer.wordpress.org/plugins/cron/hooking-wp-cron-into-the-system-task-scheduler/)
-- [VDSina Standard VPS](https://www.vdsina.com/pricing/standard)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress.org — current requirements</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer Handbook — caching</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer — object cache</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">WordPress Developer — system scheduler and WP-Cron</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS</a>
 
 ## FAQ
 
