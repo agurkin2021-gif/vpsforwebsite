@@ -67,7 +67,7 @@ Do not use the WordPress software requirements as a production resource recommen
 Use this checker as a starting point. It does not replace real CPU/RAM/database measurements.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="wordpress-vps-fit-checker">
+<form id="wordpress-vps-fit-checker-form">
   <div class="mb-6">
     <label for="wp-limits" class="form-label">Does the current hosting show repeated legitimate limits or a capability gap?</label>
     <select id="wp-limits" class="form-input">
@@ -120,7 +120,7 @@ Use this checker as a starting point. It does not replace real CPU/RAM/database 
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("wordpress-vps-fit-checker");
+  var form = document.getElementById("wordpress-vps-fit-checker-form");
   if (!form) return;
 
   form.addEventListener("submit", function (event) {
