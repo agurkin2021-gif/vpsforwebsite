@@ -2,11 +2,11 @@
 {{- $class := .Class | default "" -}}
 {{- if gt (len site.Languages) 1 -}}
 <div class="relative {{ $class }}" data-language-switcher>
-  <button type="button" class="inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold text-white border border-white/20 rounded-md hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="Select language" aria-expanded="false" aria-haspopup="true" data-language-toggle>
+  <button type="button" class="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-white bg-transparent border-0 shadow-none rounded-none hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="Select language" aria-expanded="false" aria-haspopup="true" data-language-toggle>
     {{ upper $current.Language.Lang }}
     <svg aria-hidden="true" viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="m5 7 5 5 5-5z"/></svg>
   </button>
-  <div class="absolute right-0 top-full mt-2 z-50 min-w-28 rounded-md border border-white/20 bg-[#101b2a] shadow-xl hidden" data-language-options>
+  <div class="absolute right-0 top-full mt-2 z-50 min-w-24 rounded-md border border-white/15 bg-[#101b2a] shadow-xl hidden" data-language-options>
     {{- range site.Languages -}}
       {{- $target := . -}}
       {{- $url := "" -}}
