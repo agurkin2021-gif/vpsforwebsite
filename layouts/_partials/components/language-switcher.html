@@ -9,7 +9,10 @@
   <div class="absolute right-0 top-full mt-2 z-50 min-w-28 rounded-md border border-white/20 bg-[#101b2a] shadow-xl hidden" data-language-options>
     {{- range site.Languages -}}
       {{- $target := . -}}
-      {{- $url := .Home.RelPermalink -}}
+      {{- $url := "" -}}
+      {{- range site.Sites -}}
+        {{- if eq .Language.Lang $target.Lang -}}{{- $url = .Home.RelPermalink -}}{{- end -}}
+      {{- end -}}
       {{- range $current.AllTranslations -}}
         {{- if eq .Language.Lang $target.Lang -}}
           {{- $url = .RelPermalink -}}
