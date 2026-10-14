@@ -1,5 +1,11 @@
 <!-- Call to actions -->
 {{ $caller := . }}
+{{ $isVpsVsShared := false }}
+{{ with $caller.File }}
+  {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
+    {{ $isVpsVsShared = true }}
+  {{ end }}
+{{ end }}
 {{ with site.GetPage "sections/call-to-action" }}
   {{ if .Params.enable }}
     <section id="final-cta" class="mb-28 scroll-mt-28">
@@ -74,6 +80,63 @@
                   <div class="vps-cta-diagram-result">
                     <span>Decision</span>
                     <strong>Smallest configuration that covers the real workload with enough headroom</strong>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        {{ else if $isVpsVsShared }}
+          <div class="vps-cta-vs-card">
+            <div class="vps-cta-vs-grid">
+              <div class="vps-cta-vs-copy">
+                <h2>{{ .Title | markdownify }}</h2>
+                <p>{{ .Params.description | markdownify }}</p>
+                {{ with .Params.button }}
+                  {{ if .enable }}
+                    <a
+                      class="btn btn-primary"
+                      href="{{ .link | absURL }}"
+                      {{ if strings.HasPrefix .link "http" }}
+                        target="_blank" rel="sponsored nofollow noopener"
+                      {{ end }}>
+                      {{ .label }}
+                    </a>
+                  {{ end }}
+                {{ end }}
+              </div>
+
+              <div class="vps-cta-vs-visual">
+                <a
+                  class="vps-cta-vs-diagram"
+                  href="{{ .Params.button.link | absURL }}"
+                  target="_blank"
+                  rel="sponsored nofollow noopener"
+                  aria-label="Check current VPS configurations">
+                  <div class="vps-cta-vs-steps">
+                    <div class="vps-cta-vs-step">
+                      <span>01</span>
+                      <strong>Shared hosting</strong>
+                    </div>
+                    <div class="vps-cta-vs-arrow" aria-hidden="true">→</div>
+                    <div class="vps-cta-vs-step">
+                      <span>02</span>
+                      <strong>Decision checker</strong>
+                    </div>
+                    <div class="vps-cta-vs-arrow" aria-hidden="true">→</div>
+                    <div class="vps-cta-vs-step vps-cta-vs-step-decision">
+                      <span>03</span>
+                      <strong>Move to VPS</strong>
+                    </div>
+                    <div class="vps-cta-vs-arrow" aria-hidden="true">→</div>
+                    <div class="vps-cta-vs-step vps-cta-vs-step-current">
+                      <span>04</span>
+                      <strong>Check current VPS configurations</strong>
+                    </div>
+                  </div>
+
+                  <div class="vps-cta-vs-result">
+                    <span>If the decision checker points to VPS</span>
+                    <strong>Choose the smallest operational jump that actually fixes the constraint.</strong>
                   </div>
                 </a>
               </div>

@@ -7113,3 +7113,262 @@ body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer[hidden] {
     padding: 0 14px 16px;
   }
 }
+
+
+/* VPS vs Shared Hosting final CTA */
+body:has(.vps-vs-shared-page-header) #final-cta {
+  margin-bottom: 72px !important;
+  padding-top: 10px;
+}
+
+body:has(.vps-vs-shared-page-header) #final-cta > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-card {
+  width: 100%;
+  padding: 34px;
+  border: 1px solid #2d5e49;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 95% 8%, rgba(45, 222, 116, .08), transparent 25%),
+    linear-gradient(135deg, #0d1824 0%, #0b1916 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 52%) minmax(0, 44%);
+  gap: 4%;
+  align-items: center;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy,
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-visual {
+  min-width: 0;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy h2 {
+  max-width: 11ch;
+  margin: 0 0 15px !important;
+  color: #f7f6f2;
+  font-size: clamp(2.35rem, 3.1vw, 3rem);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy p {
+  max-width: 560px;
+  margin: 0 0 24px !important;
+  color: #d2d8df;
+  font-size: .96rem;
+  line-height: 1.58;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy .btn {
+  min-height: 50px;
+  padding: .82rem 1.25rem !important;
+  background: var(--vs-green) !important;
+  border-color: var(--vs-green) !important;
+  color: #061019 !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy .btn:hover,
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy .btn:focus-visible {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  color: #061019 !important;
+  transform: translateY(-1px);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy .btn:active {
+  background: #9e86ff !important;
+  border-color: #9e86ff !important;
+  transform: scale(.985);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-diagram {
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid #2b4657;
+  border-radius: 18px 9px 9px 9px;
+  background: #07101a;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    box-shadow 130ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-diagram:hover {
+  border-color: var(--vs-green);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-diagram:active {
+  border-color: #9e86ff;
+  transform: translateY(0) scale(.985);
+  box-shadow: none;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-diagram:focus-visible {
+  outline: 2px solid #9e86ff;
+  outline-offset: 4px;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-steps {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) 18px
+    minmax(0, 1fr) 18px
+    minmax(0, 1fr) 18px
+    minmax(0, 1.15fr);
+  gap: 6px;
+  align-items: stretch;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-step {
+  min-width: 0;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 11px 10px;
+  border: 1px solid #2a3e4e;
+  border-radius: 10px;
+  background: #101c28;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-step-decision {
+  border-color: #315b49;
+  background: #0c1c18;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-step-current {
+  border-color: #2a6e50;
+  background: #0b2119;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-step > span {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 25px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  border-radius: 999px;
+  background: #142635;
+  color: #71e5a1;
+  font-size: .56rem;
+  font-weight: 850;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-step strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .68rem;
+  line-height: 1.28;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vs-green);
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-result {
+  margin-top: 14px;
+  padding: 13px 14px;
+  border-left: 3px solid var(--vs-green);
+  border-radius: 8px;
+  background: #0d1824;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-result > span {
+  display: block;
+  margin-bottom: 5px;
+  color: #77e7a5;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-cta-vs-result strong {
+  display: block;
+  color: #f7f6f2;
+  font-size: .74rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+  body:has(.vps-vs-shared-page-header) #final-cta > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-card {
+    padding: 28px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy h2 {
+    max-width: none;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-diagram {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  body:has(.vps-vs-shared-page-header) #final-cta {
+    margin-bottom: 54px !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) #final-cta > .container {
+    width: calc(100% - 36px) !important;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-card {
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-copy h2 {
+    font-size: clamp(2rem, 10vw, 2.7rem);
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-steps {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-step {
+    min-height: 0;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-cta-vs-arrow {
+    min-height: 20px;
+    transform: rotate(90deg);
+  }
+}
