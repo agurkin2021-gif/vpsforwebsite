@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: hugo-preview
@@ -15,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -114,6 +119,12 @@ jobs:
           rm -rf public
           hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
 
+      - name: Upload GitHub Pages artifact
+        if: steps.freshness.outputs.current == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
       - name: Publish GitHub Pages branch
         if: steps.freshness.outputs.current == 'true'
         uses: peaceiris/actions-gh-pages@v4
@@ -122,3 +133,8 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./public
           force_orphan: true
+
+      - name: Deploy directly to GitHub Pages
+        if: steps.freshness.outputs.current == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
