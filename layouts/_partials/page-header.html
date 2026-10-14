@@ -582,22 +582,41 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var heading = document.getElementById("security-baseline-in-order");
-      if (heading && !heading.closest(".vps-security-baseline-section")) {
-        var parent = heading.parentElement;
-        if (parent) {
-          var section = document.createElement("section");
-          section.className = "vps-security-baseline-section";
-          parent.insertBefore(section, heading);
+      function wrapSecuritySection(id, className) {
+        var heading = document.getElementById(id);
+        if (!heading || heading.closest("." + className)) return null;
 
-          var node = heading;
-          while (node && !(node !== heading && node.tagName === "H2")) {
-            var next = node.nextElementSibling;
-            section.appendChild(node);
-            node = next;
-          }
+        var parent = heading.parentElement;
+        if (!parent) return null;
+
+        var section = document.createElement("section");
+        section.className = className;
+        parent.insertBefore(section, heading);
+
+        var node = heading;
+        while (node && !(node !== heading && node.tagName === "H2")) {
+          var next = node.nextElementSibling;
+          section.appendChild(node);
+          node = next;
         }
+
+        return section;
       }
+
+      wrapSecuritySection(
+        "security-baseline-in-order",
+        "vps-security-baseline-section"
+      );
+
+      wrapSecuritySection(
+        "after-a-suspected-compromise",
+        "vps-security-incident-section"
+      );
+
+      wrapSecuritySection(
+        "production-security-checklist",
+        "vps-security-production-section"
+      );
     });
   </script>
 {{ else }}
