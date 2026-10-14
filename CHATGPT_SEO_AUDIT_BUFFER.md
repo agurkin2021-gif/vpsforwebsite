@@ -3924,3 +3924,5 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Improved font loading/CLS, responsive hero delivery, per-page CSS, native icons, offscreen rendering, accessible link names/contrast and theme-script reliability. GA4 initialization is queued in the head; its library starts on page load without an artificial timer or interaction gate.
 - All 19 production pages / 22 source-build documents continue to pass Nu HTML Checker. Full-page accessibility checks and the homepage fit checker pass. No new SEO owner or content expansion was introduced.
 - Online PSI remeasurement was unavailable due to HTTP 429. Direct Lighthouse 13.5 mobile/desktop results are recorded in CHATGPT_PROJECT_CONTEXT.md; do not present those as a new Google-hosted PageSpeed report.
+
+- 2026-10-14 CI follow-up: production metadata verification now builds for vpsforwebsite.com; pages.yml remains the sole github.io publisher. Preview noindex and production index/canonical behavior are preserved.

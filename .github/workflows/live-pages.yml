@@ -1,4 +1,4 @@
-name: Deploy live Hugo site to Pages
+name: Validate production Hugo build
 
 on:
   push:
@@ -7,11 +7,12 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+env:
+  PRODUCTION_BASE_URL: https://vpsforwebsite.com
 
 concurrency:
-  group: live-pages
+  group: production-validation
   cancel-in-progress: false
 
 jobs:
@@ -48,31 +49,20 @@ jobs:
           test -s static/images/home/vps-hero-right.webp
           file static/images/home/vps-hero-right.webp
 
-      - name: Configure GitHub Pages
-        id: pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Show Pages base URL
-        run: echo "PAGES_BASE_URL=${{ steps.pages.outputs.base_url }}"
-
       - name: Warm build stats
-        run: hugo --gc --baseURL "${{ steps.pages.outputs.base_url }}/"
+        run: hugo --gc --baseURL "${{ env.PRODUCTION_BASE_URL }}/"
 
       - name: Clear warm-build output
         run: rm -rf public
 
       - name: Build production site with complete Tailwind utilities
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        run: hugo --gc --minify --baseURL "${{ env.PRODUCTION_BASE_URL }}/"
 
       - name: Optimize CSS for each generated page
         run: node scripts/optimize-css.mjs public
 
       - name: Verify production homepage SEO metadata
         shell: bash
-        env:
-          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -101,7 +91,7 @@ jobs:
           audit = HeadAudit()
           audit.feed(html)
 
-          expected_url = os.environ["PAGES_BASE_URL"].rstrip("/") + "/"
+          expected_url = os.environ["PRODUCTION_BASE_URL"].rstrip("/") + "/"
           print("Expected production base URL:", expected_url)
 
           robots = any(x.get("name","").lower() == "robots" and x.get("content","").lower() == "index,follow" for x in audit.metas)
@@ -134,19 +124,3 @@ jobs:
 
           print("Production homepage SEO verification: PASS")
           PY
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

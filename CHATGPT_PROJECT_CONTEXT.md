@@ -827,3 +827,10 @@ The SEO buffer contains:
 - Final direct Lighthouse results: mobile {"scores": {"performance": 93, "accessibility": 100, "best-practices": 100, "seo": 100}, "metrics": {"first-contentful-paint": "1.7 s", "largest-contentful-paint": "2.3 s", "total-blocking-time": "220 ms", "cumulative-layout-shift": "0", "speed-index": "1.7 s"}, "formFactor": "mobile"}; desktop {"scores": {"performance": 99, "accessibility": 100, "best-practices": 100, "seo": 100}, "metrics": {"first-contentful-paint": "0.5 s", "largest-contentful-paint": "1.0 s", "total-blocking-time": "10 ms", "cumulative-layout-shift": "0", "speed-index": "0.7 s"}, "formFactor": "desktop"}.
 - The reported mobile score is the median of three consecutive final runs: [82, 94, 93]. Metrics are from that median run. Individual lab scores remain variable.
 - GA network verification: [{"event": ["page_view"], "status": 204, "page": ["https://vpsforwebsite.com/"]}]. This confirms the browser request, not account-side processing.
+
+
+### 2026-10-14 — Production validation and Pages publishing
+
+- The older live-pages.yml also published to GitHub Pages and incorrectly required production indexing metadata on the intentionally noindex github.io preview. CI exposed that pre-existing conflict after the performance update; the optimized Hugo build itself passed.
+- Keep pages.yml as the single GitHub Pages publisher, preserving the concurrent multilingual publishing setup. Convert live-pages.yml to a read-only production build/SEO check using https://vpsforwebsite.com as its base URL, with no Pages deployment or write permissions. This retains the production indexing/canonical/hreflang/H1 checks rather than relaxing them for a preview.
+- Executed the same production metadata verifier against the final local Hugo build: every check passed. The VPS release and its content were not changed by this CI repair.
