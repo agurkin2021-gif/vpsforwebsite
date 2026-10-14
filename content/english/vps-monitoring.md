@@ -621,9 +621,9 @@ Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) f
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Prometheus — monitoring Linux host metrics with Node Exporter</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Prometheus — Alertmanager</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Uptime Kuma — official project</a>
+- Prometheus — monitoring Linux host metrics with Node Exporter
+- Prometheus — Alertmanager
+- Uptime Kuma — official project
 - [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}})
 - [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}})
 
