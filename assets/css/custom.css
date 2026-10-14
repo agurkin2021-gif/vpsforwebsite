@@ -8004,3 +8004,25 @@ body:has(.vps-multiweb-page-header) main > .section-sm {
     padding: 16px;
   }
 }
+
+
+/* Multiple websites hero collision fix */
+/* The title is longer than the homepage title, so it must not overflow into the visual column. */
+@media (min-width: 901px) {
+  .vps-multiweb-hero-copy h1 {
+    white-space: normal !important;
+    text-wrap: balance !important;
+    max-width: 100% !important;
+  }
+}
+
+/* No outer frame around the right visual; keep only the internal structure. */
+.vps-multiweb-hero-diagram,
+.vps-multiweb-hero-diagram:hover,
+.vps-multiweb-hero-diagram:active,
+.vps-multiweb-hero-diagram:focus,
+.vps-multiweb-hero-diagram:focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
