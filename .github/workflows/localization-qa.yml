@@ -1,0 +1,48 @@
+name: Localization QA workspace
+
+on:
+  push:
+    branches: ["localization/es-homepage-20261014"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Resolve exact project dependencies
+        run: |
+          npm install
+          hugo mod vendor
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+      - name: Build baseline
+        run: |
+          hugo --gc --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+          rm -rf public
+          hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+      - name: Package reproducible local QA workspace
+        run: |
+          mkdir -p .qa-bin
+          cp "$(command -v hugo)" .qa-bin/hugo
+          tar --exclude=.git --exclude=.github --exclude=.qa-export.tar.gz -czf /tmp/localization-workspace.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: localization-workspace
+          path: /tmp/localization-workspace.tar.gz
+          retention-days: 1
