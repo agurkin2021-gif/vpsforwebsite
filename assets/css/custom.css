@@ -5708,8 +5708,8 @@ body:has(.vps-wordpress-page-header) main > .container,
 
 .vps-wordpress-hero-context {
   max-width: 500px;
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px solid #263746;
 }
 
@@ -5717,12 +5717,12 @@ body:has(.vps-wordpress-page-header) main > .container,
   max-width: 500px;
   margin: 0 !important;
   color: #b9c5cf;
-  font-size: .88rem;
-  line-height: 1.58;
+  font-size: .82rem;
+  line-height: 1.48;
 }
 
 .vps-wordpress-hero-copy .vps-wordpress-hero-context p + p {
-  margin-top: 14px !important;
+  margin-top: 11px !important;
 }
 
 .vps-wordpress-hero-diagram {
