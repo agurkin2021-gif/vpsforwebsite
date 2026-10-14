@@ -10,6 +10,7 @@
 {{ $isManagedVsUnmanaged := false }}
 {{ $isFastpanelVps := false }}
 {{ $isHostWebsiteVps := false }}
+{{ $isVpsLocation := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -46,6 +47,9 @@
   {{ end }}
   {{ if eq .BaseFileName "how-to-host-a-website-on-vps" }}
     {{ $isHostWebsiteVps = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "how-to-choose-vps-location" }}
+    {{ $isVpsLocation = true }}
   {{ end }}
 {{ end }}
 
@@ -1312,6 +1316,84 @@
 
             <div class="vps-host-compact-rule">
               <strong>Install only the services the website actually needs.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isVpsLocation }}
+  {{ $locationAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-location-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-location-breadcrumb") }}
+
+      <div class="vps-location-hero">
+        <div class="vps-location-hero-grid">
+          <div class="vps-location-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-location-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-location-hero-actions">
+              <a
+                class="btn btn-primary vps-location-primary-cta"
+                href="{{ $locationAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-location-secondary-cta" href="#quick-answer">
+                See location guidance
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-location-hero-diagram"
+            href="{{ $locationAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options by location">
+            <div class="vps-location-compact-head">
+              <strong>Choose the route, not the map</strong>
+              <small>Audience, dynamic traffic, dependencies and real network paths matter more than country labels.</small>
+            </div>
+
+            <div class="vps-location-compact-grid">
+              <div class="vps-location-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Audience</strong>
+                  <small>Important users first</small>
+                </div>
+              </div>
+              <div class="vps-location-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Dependencies</strong>
+                  <small>DB + APIs + services</small>
+                </div>
+              </div>
+              <div class="vps-location-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Route test</strong>
+                  <small>Latency + stability + loss</small>
+                </div>
+              </div>
+              <div class="vps-location-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Constraints</strong>
+                  <small>CDN + data location</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-location-compact-rule">
+              <strong>Geography gives you candidates. Real routing chooses the region.</strong>
             </div>
           </a>
         </div>
