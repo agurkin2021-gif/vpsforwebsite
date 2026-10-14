@@ -601,14 +601,14 @@ Keep the runbook somewhere available even when the VPS itself is unavailable.
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">NIST SP 800-34 Rev.1 — RPO/RTO and contingency planning</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">NIST SP 1339 — backup creation, testing and recovery exercises</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu — restic backup/restore tool</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Ubuntu — BorgBackup</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Terms — customer backup responsibility</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — server backup / restore / new server from backup</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — scheduled backups</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina — download and use a server backup</a>
+- NIST SP 800-34 Rev.1 — RPO/RTO and contingency planning
+- NIST SP 1339 — backup creation, testing and recovery exercises
+- Ubuntu — restic backup/restore tool
+- Ubuntu — BorgBackup
+- VDSina Terms — customer backup responsibility
+- VDSina — server backup / restore / new server from backup
+- VDSina — scheduled backups
+- VDSina — download and use a server backup
 
 ## FAQ
 
