@@ -64,7 +64,7 @@ A **256 MB WordPress/PHP memory limit is not 256 MB of VPS RAM**. Total server R
 Use this as a starting decision, not as a benchmark guarantee.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="woocommerce-vps-fit-checker">
+<form id="woocommerce-vps-fit-checker-form">
   <div class="mb-6">
     <label for="wc-stage" class="form-label">Store stage / business importance</label>
     <select id="wc-stage" class="form-input">
@@ -138,7 +138,7 @@ Use this as a starting decision, not as a benchmark guarantee.
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("woocommerce-vps-fit-checker");
+  var form = document.getElementById("woocommerce-vps-fit-checker-form");
   if (!form) return;
 
   form.addEventListener("submit", function (event) {
