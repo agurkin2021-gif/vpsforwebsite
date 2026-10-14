@@ -1,7 +1,7 @@
 ---
 title: "VPS sizing for website"
 description: "VPS sizing for website: calculate CPU, RAM and storage from real workload, shared-hosting limits, PHP workers, database demand and peak traffic."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS sizing for a website should start with the workload that reaches the origin server, not with a monthly visitor count. Cacheability, simultaneous dynamic requests, PHP or application workers, database activity, background jobs, control-panel overhead and storage growth determine how much CPU, RAM and disk the website actually needs.
@@ -455,9 +455,9 @@ If the current website is still on shared hosting, compare the operational chang
 
 ## Technical references
 
-- [cPanel: hardware requirements for a server](https://support.cpanel.net/hc/en-us/articles/360054297474-What-Are-the-Hardware-Requirements-For-My-Server)
-- [cPanel: how to determine how much RAM, CPU and disk to add](https://support.cpanel.net/hc/en-us/articles/1500005235562-How-to-determine-how-much-RAM-CPU-and-DISK-resources-I-should-add-when-upgrading-a-server)
-- [VDSina Standard VPS configurations](https://www.vdsina.com/pricing/standard)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">cPanel: hardware requirements for a server</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">cPanel: how to determine how much RAM, CPU and disk to add</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS configurations</a>
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check the current VPS offer</a>
