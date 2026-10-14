@@ -8513,11 +8513,7 @@ body:has(.vps-security-page-header) main .content {
 }
 
 /* No outer frame: the internal nodes are the visual. */
-.vps-security-hero-diagram,
-.vps-security-hero-diagram:hover,
-.vps-security-hero-diagram:active,
-.vps-security-hero-diagram:focus,
-.vps-security-hero-diagram:focus-visible {
+.vps-security-hero-diagram {
   display: block;
   width: 100%;
   max-width: 475px;
@@ -8531,7 +8527,24 @@ body:has(.vps-security-page-header) main .content {
   background: transparent !important;
   color: inherit !important;
   text-decoration: none !important;
-  transform: none !important;
+  transform: translateY(0) scale(1);
+  transition: transform 120ms ease;
+  will-change: transform;
+}
+
+.vps-security-hero-diagram:hover {
+  transform: translateY(-2px) scale(1);
+}
+
+.vps-security-hero-diagram:active {
+  transform: translateY(1px) scale(.975);
+  transition-duration: 70ms;
+}
+
+.vps-security-hero-diagram:focus,
+.vps-security-hero-diagram:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 .vps-security-compact-head {
