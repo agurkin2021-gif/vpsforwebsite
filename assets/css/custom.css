@@ -6959,3 +6959,157 @@ body:has(.vps-vs-shared-page-header) .vps-vs-before-disclosure small {
     min-height: 0;
   }
 }
+
+
+/* VPS vs Shared Hosting FAQ accordion */
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-section {
+  margin: 42px 0 36px;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-section > h2 {
+  margin: 0 0 18px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #2b4051;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-section > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-item {
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid #2a3e4e;
+  border-radius: 13px;
+  background: #0d1824;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-item[data-open="true"] {
+  border-color: #2a6a4a;
+  background: #0c1916;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-item > h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: inherit;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-toggle {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 0;
+  background: transparent;
+  color: #f7f6f2;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-toggle:hover {
+  color: #ffffff;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-toggle:focus-visible {
+  outline: 2px solid #9e86ff;
+  outline-offset: -3px;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #345063;
+  border-radius: 50%;
+  background: #09131d;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-icon::before,
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-icon::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--vs-green);
+  transition: transform 140ms ease;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-icon::after {
+  transform: rotate(90deg);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-item[data-open="true"] .vps-vs-faq-icon {
+  border-color: #2a6a4a;
+  background: #0b2119;
+  transform: rotate(180deg);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-item[data-open="true"] .vps-vs-faq-icon::after {
+  transform: rotate(0deg);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer {
+  padding: 0 18px 18px;
+  border-top: 1px solid #243847;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer > :first-child {
+  margin-top: 16px !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer > :last-child {
+  margin-bottom: 0 !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer p {
+  color: #c8d2dc;
+  font-size: .88rem;
+  line-height: 1.58;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 560px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-faq-section {
+    margin: 30px 0;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-faq-item {
+    margin-bottom: 8px;
+    border-radius: 11px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-faq-toggle {
+    min-height: 68px;
+    grid-template-columns: minmax(0, 1fr) 32px;
+    gap: 12px;
+    padding: 15px 14px;
+    font-size: .94rem;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-faq-answer {
+    padding: 0 14px 16px;
+  }
+}

@@ -648,6 +648,98 @@
       grid.appendChild(action);
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var faqHeading = document.getElementById("faq");
+      if (!faqHeading || faqHeading.dataset.vsFaqEnhanced === "true") return;
+
+      var parent = faqHeading.parentElement;
+      if (!parent) return;
+
+      var faqSection = document.createElement("section");
+      faqSection.className = "vps-vs-faq-section";
+      parent.insertBefore(faqSection, faqHeading);
+      faqSection.appendChild(faqHeading);
+
+      var node = faqSection.nextElementSibling;
+      var index = 0;
+
+      while (node && node.tagName !== "H2") {
+        var next = node.nextElementSibling;
+
+        if (node.tagName === "H3") {
+          index += 1;
+          var item = document.createElement("div");
+          item.className = "vps-vs-faq-item";
+          item.dataset.open = index === 1 ? "true" : "false";
+
+          faqSection.appendChild(item);
+          item.appendChild(node);
+
+          var question = node;
+          var answer = document.createElement("div");
+          answer.className = "vps-vs-faq-answer";
+          answer.id = "vps-vs-faq-answer-" + index;
+
+          var answerNode = next;
+          while (answerNode && answerNode.tagName !== "H3" && answerNode.tagName !== "H2") {
+            var answerNext = answerNode.nextElementSibling;
+            answer.appendChild(answerNode);
+            answerNode = answerNext;
+          }
+
+          item.appendChild(answer);
+
+          var button = document.createElement("button");
+          button.type = "button";
+          button.className = "vps-vs-faq-toggle";
+          button.setAttribute("aria-expanded", index === 1 ? "true" : "false");
+          button.setAttribute("aria-controls", answer.id);
+
+          while (question.firstChild) {
+            button.appendChild(question.firstChild);
+          }
+
+          var icon = document.createElement("span");
+          icon.className = "vps-vs-faq-icon";
+          icon.setAttribute("aria-hidden", "true");
+          button.appendChild(icon);
+          question.appendChild(button);
+
+          if (index !== 1) answer.hidden = true;
+
+          button.addEventListener("click", function () {
+            var currentItem = this.closest(".vps-vs-faq-item");
+            var currentAnswer = currentItem.querySelector(".vps-vs-faq-answer");
+            var isOpen = currentItem.dataset.open === "true";
+
+            faqSection.querySelectorAll(".vps-vs-faq-item").forEach(function (otherItem) {
+              var otherButton = otherItem.querySelector(".vps-vs-faq-toggle");
+              var otherAnswer = otherItem.querySelector(".vps-vs-faq-answer");
+              otherItem.dataset.open = "false";
+              if (otherButton) otherButton.setAttribute("aria-expanded", "false");
+              if (otherAnswer) otherAnswer.hidden = true;
+            });
+
+            if (!isOpen) {
+              currentItem.dataset.open = "true";
+              this.setAttribute("aria-expanded", "true");
+              currentAnswer.hidden = false;
+            }
+          });
+
+          node = answerNode;
+          continue;
+        }
+
+        faqSection.appendChild(node);
+        node = next;
+      }
+
+      faqHeading.dataset.vsFaqEnhanced = "true";
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
