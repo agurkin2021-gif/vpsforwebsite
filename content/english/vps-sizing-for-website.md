@@ -455,9 +455,9 @@ If the current website is still on shared hosting, compare the operational chang
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">cPanel: hardware requirements for a server</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">cPanel: how to determine how much RAM, CPU and disk to add</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS configurations</a>
+- cPanel: hardware requirements for a server
+- cPanel: how to determine how much RAM, CPU and disk to add
+- VDSina Standard VPS configurations
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check the current VPS offer</a>
