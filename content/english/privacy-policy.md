@@ -5,21 +5,21 @@ description: "Privacy, analytics and affiliate disclosure for VPSforWebsite.com.
 
 ## Overview
 
-VPSforWebsite.com is designed as a public informational website. The site does not require an account to read its content.
+VPSforWebsite.com is a public informational website. The site does not require an account to read its content.
 
 ## Server logs
 
-When the production site is hosted, the hosting platform may process standard request information such as IP address, requested URL, user agent, response status and timestamp for security, delivery and operational diagnostics.
+The hosting platform may process standard request information such as IP address, requested URL, user agent, response status and timestamp for security, delivery and operational diagnostics.
 
 ## Analytics
 
-Analytics are **not currently enabled in the pre-launch build**.
+Analytics are not currently enabled.
 
-If analytics are enabled later, this policy will be updated to identify the service and the relevant data handling before relying on that service for production tracking.
+If analytics are enabled later, this policy will be updated to identify the service and the relevant data handling before that service is used for production tracking.
 
 ## Contact submissions
 
-The current preview does not accept contact-form submissions. A verified project contact channel will be added before the site is opened for public submissions.
+The site does not currently operate a public contact form or collect contact-form submissions.
 
 ## Affiliate links
 
@@ -33,7 +33,7 @@ Following an external link takes you to a third-party website with its own priva
 
 ## Cookies
 
-The site does not intentionally enable a marketing or analytics cookie layer in the current pre-launch build. Functional behavior supplied by the browser, hosting platform or a future explicitly enabled service may change this policy before production launch.
+The site does not intentionally enable a marketing or analytics cookie layer. Functional behavior supplied by the browser or hosting platform may still involve technical storage or request processing required to deliver the site.
 
 ## Data minimization
 
@@ -41,6 +41,6 @@ The site is built to avoid collecting information that is not needed for its cor
 
 ## Updates
 
-This policy may change when the production domain, analytics or direct contact channel is configured. The published policy should always describe the services actually in use rather than planned integrations.
+This policy may change if analytics, a contact channel or other data-processing services are enabled. The published policy should describe the services actually in use.
 
-**Last reviewed: 12 October 2026.**
+**Last reviewed: 14 October 2026.**
