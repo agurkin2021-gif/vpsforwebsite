@@ -5,6 +5,7 @@
 {{ $isVpsSecurity := false }}
 {{ $isVpsBackup := false }}
 {{ $isVpsMonitoring := false }}
+{{ $isVpsSizing := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -26,6 +27,9 @@
   {{ end }}
   {{ if eq .BaseFileName "vps-monitoring" }}
     {{ $isVpsMonitoring = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-sizing-for-website" }}
+    {{ $isVpsSizing = true }}
   {{ end }}
 {{ end }}
 
@@ -1064,6 +1068,84 @@
 
             <div class="vps-monitor-compact-rule">
               <strong>The monitor and notification path must survive failure of the VPS being watched.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isVpsSizing }}
+  {{ $sizingAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-sizing-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-sizing-breadcrumb") }}
+
+      <div class="vps-sizing-hero">
+        <div class="vps-sizing-hero-grid">
+          <div class="vps-sizing-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-sizing-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-sizing-hero-actions">
+              <a
+                class="btn btn-primary vps-sizing-primary-cta"
+                href="{{ $sizingAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-sizing-secondary-cta" href="#quick-sizing-answer">
+                See sizing guidance
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-sizing-hero-diagram"
+            href="{{ $sizingAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS configurations for website sizing">
+            <div class="vps-sizing-compact-head">
+              <strong>Size from workload, not monthly visits</strong>
+              <small>CPU, RAM, storage and dynamic concurrency must be evaluated together.</small>
+            </div>
+
+            <div class="vps-sizing-compact-grid">
+              <div class="vps-sizing-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>CPU</strong>
+                  <small>Dynamic work + concurrency</small>
+                </div>
+              </div>
+              <div class="vps-sizing-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>RAM</strong>
+                  <small>Workers + DB + services</small>
+                </div>
+              </div>
+              <div class="vps-sizing-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Storage</strong>
+                  <small>Data growth + I/O</small>
+                </div>
+              </div>
+              <div class="vps-sizing-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Headroom</strong>
+                  <small>Peaks + jobs + maintenance</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-sizing-compact-rule">
+              <strong>Choose the smallest VPS that covers measured workload with safe headroom.</strong>
             </div>
           </a>
         </div>
