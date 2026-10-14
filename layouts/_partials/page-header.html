@@ -8,6 +8,7 @@
 {{ $isVpsSizing := false }}
 {{ $isWebsiteMigration := false }}
 {{ $isManagedVsUnmanaged := false }}
+{{ $isFastpanelVps := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -38,6 +39,9 @@
   {{ end }}
   {{ if eq .BaseFileName "managed-vs-unmanaged-vps" }}
     {{ $isManagedVsUnmanaged = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "fastpanel-vps-hosting" }}
+    {{ $isFastpanelVps = true }}
   {{ end }}
 {{ end }}
 
@@ -1310,6 +1314,84 @@
 
             <div class="vps-managed-compact-rule">
               <strong>Do not buy the word “managed” — buy a written scope of owned tasks.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isFastpanelVps }}
+  {{ $fastpanelAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-fastpanel-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-fastpanel-breadcrumb") }}
+
+      <div class="vps-fastpanel-hero">
+        <div class="vps-fastpanel-hero-grid">
+          <div class="vps-fastpanel-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-fastpanel-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-fastpanel-hero-actions">
+              <a
+                class="btn btn-primary vps-fastpanel-primary-cta"
+                href="{{ $fastpanelAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-fastpanel-secondary-cta" href="#quick-answer">
+                See FASTPANEL sizing
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-fastpanel-hero-diagram"
+            href="{{ $fastpanelAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for FASTPANEL hosting">
+            <div class="vps-fastpanel-compact-head">
+              <strong>Size the VPS for FASTPANEL plus the workload</strong>
+              <small>The panel is only one resource consumer. Websites, database, mail and jobs need headroom too.</small>
+            </div>
+
+            <div class="vps-fastpanel-compact-grid">
+              <div class="vps-fastpanel-compact-item">
+                <span>01</span>
+                <div>
+                  <strong>Panel</strong>
+                  <small>FASTPANEL services</small>
+                </div>
+              </div>
+              <div class="vps-fastpanel-compact-item">
+                <span>02</span>
+                <div>
+                  <strong>Web stack</strong>
+                  <small>PHP workers + web server</small>
+                </div>
+              </div>
+              <div class="vps-fastpanel-compact-item">
+                <span>03</span>
+                <div>
+                  <strong>Database</strong>
+                  <small>MySQL / MariaDB load</small>
+                </div>
+              </div>
+              <div class="vps-fastpanel-compact-item">
+                <span>04</span>
+                <div>
+                  <strong>Extras</strong>
+                  <small>Mail + backups + jobs</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-fastpanel-compact-rule">
+              <strong>Do not treat the 1 GB panel minimum as a default production target.</strong>
             </div>
           </a>
         </div>
