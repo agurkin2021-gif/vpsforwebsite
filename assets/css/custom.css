@@ -6499,3 +6499,192 @@ body:has(.vps-vs-shared-page-header) .vps-vs-middle-result {
     transform: translateY(-50%);
   }
 }
+
+
+/* VPS vs Shared Hosting migration readiness preflight */
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-readiness {
+  margin: 40px 0;
+  padding: 28px;
+  border: 1px solid #286847;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 95% 7%, rgba(45, 222, 116, .08), transparent 24%),
+    linear-gradient(135deg, #0d1824 0%, #0a1b16 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-readiness > h2 {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #286847;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-readiness > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-intro {
+  margin: 0 0 14px !important;
+  color: #d7dee5;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-label {
+  margin: 0 0 12px !important;
+  color: #9eafbf;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow {
+  counter-reset: migration-step;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li {
+  counter-increment: migration-step;
+  position: relative;
+  min-width: 0;
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 15px 14px 15px 46px;
+  border: 1px solid #245d42;
+  border-radius: 11px;
+  background: #091914;
+  color: #cce1d5;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li::before {
+  content: counter(migration-step, decimal-leading-zero);
+  position: absolute;
+  left: 13px;
+  top: 14px;
+  min-width: 25px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #0f3223;
+  color: #67e39a;
+  font-size: .56rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li::after {
+  content: "→";
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  color: var(--vs-green);
+  font-size: .7rem;
+  font-weight: 900;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:nth-child(3n)::after,
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:last-child::after {
+  display: none;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-warning {
+  margin: 16px 0 0 !important;
+  padding: 14px 16px;
+  border: 1px solid #6b5030;
+  border-left: 3px solid #f5a11c;
+  border-radius: 8px;
+  background: #1a1510;
+  color: #e5d4bc;
+  font-size: .87rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-action {
+  margin: 10px 0 0 !important;
+  padding: 13px 15px;
+  border: 1px solid #2a6047;
+  border-left: 3px solid var(--vs-green);
+  border-radius: 8px;
+  background: #0b2119;
+  color: #cce8d8;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-action a {
+  font-weight: 750;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-migration-after {
+  border-color: #4b4d70;
+  border-left-color: #9e86ff;
+  background: #17182a;
+  color: #ddd9f2;
+}
+
+@media (max-width: 860px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:nth-child(3n)::after {
+    display: block;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:nth-child(2n)::after,
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:last-child::after {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-readiness {
+    margin: 30px 0;
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li {
+    min-height: 0;
+    padding: 12px 12px 12px 46px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li::after,
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:nth-child(2n)::after,
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:nth-child(3n)::after {
+    display: block;
+    right: auto;
+    left: 24px;
+    top: calc(100% + 1px);
+    transform: translateX(-50%) rotate(90deg);
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-migration-flow > li:last-child::after {
+    display: none;
+  }
+}
