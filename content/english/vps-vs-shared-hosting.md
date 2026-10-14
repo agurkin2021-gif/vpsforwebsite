@@ -457,9 +457,9 @@ Do not convert them one-to-one. Use the shared-hosting metrics to identify the b
 
 Not necessarily. A VPS can be run manually or with a control panel. Verify the exact provider image/license terms.
 
-### Does VPS include email?
+### How does email hosting differ between shared hosting and VPS?
 
-Not necessarily. Shared hosting often bundles email; a raw VPS may require you to run mail services yourself or use a separate managed mail provider.
+Shared hosting often bundles mailboxes into the hosting account. A raw VPS may not include managed email, so the comparison should include whether you will operate mail services yourself or keep email with a separate managed provider.
 
 ### Do I need technical skills for VPS?
 
