@@ -1,7 +1,11 @@
 {{ $isVpsVsShared := false }}
+{{ $isVpsWordPress := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-for-wordpress" }}
+    {{ $isVpsWordPress = true }}
   {{ end }}
 {{ end }}
 
@@ -143,6 +147,120 @@
 
       heading.insertAdjacentElement("afterend", block);
       heading.dataset.vsEnhanced = "true";
+    });
+  </script>
+{{ else if $isVpsWordPress }}
+  {{ $wpAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-wordpress-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-wordpress-breadcrumb") }}
+
+      <div class="vps-wordpress-hero">
+        <div class="vps-wordpress-hero-grid">
+          <div class="vps-wordpress-hero-copy">
+            <div class="vps-wordpress-eyebrow">WordPress VPS guide</div>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p>{{ . | markdownify }}</p>
+            {{ end }}
+          </div>
+
+          <a
+            class="vps-wordpress-hero-diagram"
+            href="{{ $wpAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current WordPress VPS options">
+            <div class="vps-wordpress-stack-head">
+              <span class="vps-wordpress-wpmark">WP</span>
+              <div>
+                <strong>WordPress workload</strong>
+                <small>Size the dynamic work, not visitor count.</small>
+              </div>
+            </div>
+
+            <div class="vps-wordpress-stack-grid">
+              <div class="vps-wordpress-stack-node">
+                <span>PHP</span>
+                <strong>PHP-FPM workers</strong>
+              </div>
+              <div class="vps-wordpress-stack-node">
+                <span>DB</span>
+                <strong>MySQL / MariaDB</strong>
+              </div>
+              <div class="vps-wordpress-stack-node">
+                <span>OP</span>
+                <strong>OPcache</strong>
+              </div>
+              <div class="vps-wordpress-stack-node">
+                <span>CA</span>
+                <strong>Page / object cache</strong>
+              </div>
+            </div>
+
+            <div class="vps-wordpress-signal-row">
+              <span>PHP workers</span>
+              <span>DB load</span>
+              <span>Plugins</span>
+              <span>Cron / jobs</span>
+            </div>
+
+            <div class="vps-wordpress-stack-rule">
+              <strong>VPS size = real WordPress workload + operating headroom</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function wrapSection(id, className) {
+        var heading = document.getElementById(id);
+        if (!heading || heading.closest("." + className)) return null;
+        var parent = heading.parentElement;
+        if (!parent) return null;
+
+        var section = document.createElement("section");
+        section.className = className;
+        parent.insertBefore(section, heading);
+
+        var node = heading;
+        while (node && !(node !== heading && node.tagName === "H2")) {
+          var next = node.nextElementSibling;
+          section.appendChild(node);
+          node = next;
+        }
+        return section;
+      }
+
+      var requirements = wrapSection(
+        "wordpress-requirements-are-not-vps-sizing",
+        "vps-wordpress-requirements"
+      );
+      if (requirements) {
+        var lists = requirements.querySelectorAll(":scope > ul");
+        if (lists[0]) lists[0].classList.add("vps-wordpress-runtime-list");
+        if (lists[1]) lists[1].classList.add("vps-wordpress-resource-list");
+        var ps = requirements.querySelectorAll(":scope > p");
+        if (ps.length) ps[0].classList.add("vps-wordpress-requirements-intro");
+        if (ps.length > 1) ps[1].classList.add("vps-wordpress-requirements-rule");
+        if (ps.length > 2) ps[ps.length - 1].classList.add("vps-wordpress-requirements-warning");
+      }
+
+      var php = wrapSection(
+        "php-workers-and-ram",
+        "vps-wordpress-php-section"
+      );
+      if (php) {
+        var paragraphs = php.querySelectorAll(":scope > p");
+        paragraphs.forEach(function (p) {
+          if (p.children.length === 1 && p.firstElementChild && p.firstElementChild.tagName === "STRONG") {
+            p.classList.add("vps-wordpress-formula");
+          }
+        });
+      }
     });
   </script>
 {{ else }}
