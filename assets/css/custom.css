@@ -6516,3 +6516,76 @@ body:has(.vps-wordpress-page-header) main > .section-sm {
     font-size: clamp(2.45rem, 12vw, 3.2rem) !important;
   }
 }
+
+
+/* Canonical internal H1 vertical position = homepage */
+/*
+  Homepage is the vertical reference:
+  desktop H1 starts ~30px below the header.
+  Breadcrumbs stay above visually but are removed from document flow,
+  so they do not push the title down.
+*/
+
+/* WordPress */
+.vps-wordpress-page-header {
+  position: relative !important;
+  padding-top: 0 !important;
+}
+
+.vps-wordpress-page-header > .container {
+  position: relative !important;
+}
+
+.vps-wordpress-page-header .vps-wordpress-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 2;
+  margin: 0 !important;
+}
+
+.vps-wordpress-hero {
+  padding-top: 30px !important;
+}
+
+.vps-wordpress-eyebrow {
+  display: none !important;
+}
+
+/* VPS vs Shared Hosting */
+.vps-vs-shared-page-header {
+  position: relative !important;
+  padding-top: 0 !important;
+}
+
+.vps-vs-shared-page-header > .container {
+  position: relative !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 2;
+  margin: 0 !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-hero {
+  padding-top: 30px !important;
+}
+
+.vps-vs-shared-page-header .vps-vs-shared-hero-copy > .vps-eyebrow {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .vps-wordpress-page-header .vps-wordpress-breadcrumb,
+  .vps-vs-shared-page-header .vps-vs-shared-breadcrumb {
+    top: 4px !important;
+  }
+
+  .vps-wordpress-hero,
+  .vps-vs-shared-page-header .vps-vs-shared-hero {
+    padding-top: 28px !important;
+  }
+}
