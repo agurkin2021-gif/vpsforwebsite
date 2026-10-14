@@ -426,8 +426,8 @@ If you choose this route, decide before purchase who owns OS updates, hardening,
 
 ### Provider references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current plan features and technical support</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina QA — server administration and site-transfer service</a>
+- VDSina Standard VPS — current plan features and technical support
+- VDSina QA — server administration and site-transfer service
 
 ## Questions to ask before paying for managed VPS
 
