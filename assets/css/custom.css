@@ -6327,3 +6327,175 @@ body:has(.vps-vs-shared-page-header) .vps-vs-cost-renewal-note {
     gap: 8px;
   }
 }
+
+
+/* VPS vs Shared Hosting middle-path decision ladder */
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-section {
+  margin: 40px 0;
+  padding: 28px;
+  border: 1px solid #4b4d70;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 95% 5%, rgba(158, 134, 255, .08), transparent 24%),
+    linear-gradient(135deg, #0d1824 0%, #151628 100%);
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-section > h2 {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #4b4d70;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-section > h2::before {
+  display: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-intro {
+  margin: 0 0 14px !important;
+  padding: 13px 15px;
+  border-left: 3px solid #9e86ff;
+  border-radius: 8px;
+  background: #191a2d;
+  color: #e1ddf3;
+  font-size: .92rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-label {
+  margin: 0 0 12px !important;
+  color: #9eafbf;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder {
+  counter-reset: middle-path;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li {
+  counter-increment: middle-path;
+  position: relative;
+  min-width: 0;
+  min-height: 130px;
+  display: flex;
+  align-items: flex-end;
+  margin: 0 !important;
+  padding: 38px 12px 14px;
+  border: 1px solid #3b405d;
+  border-radius: 11px;
+  background: #0b1320;
+  color: #cbd3dc;
+  font-size: .76rem;
+  line-height: 1.38;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li::before {
+  content: counter(middle-path, decimal-leading-zero);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  min-width: 25px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #211f3c;
+  color: #b8abe9;
+  font-size: .56rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 1px);
+  width: 2px;
+  height: calc((var(--ladder-step, 0)) * 0px);
+  background: transparent;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(1) {
+  border-color: #385a4b;
+  background: #0b1916;
+}
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(2) {
+  transform: translateY(-5px);
+}
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(3) {
+  transform: translateY(-10px);
+}
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(4) {
+  transform: translateY(-15px);
+}
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(5) {
+  transform: translateY(-20px);
+  border-color: #5a4f7e;
+}
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li:nth-child(6) {
+  transform: translateY(-25px);
+  border-color: #286847;
+  background: #0b1b17;
+}
+
+body:has(.vps-vs-shared-page-header) .vps-vs-middle-result {
+  margin: 18px 0 0 !important;
+  padding: 14px 16px;
+  border: 1px solid #2b6247;
+  border-left: 3px solid var(--vs-green);
+  border-radius: 8px;
+  background: #0b2119;
+  color: #cce8d8;
+  font-size: .88rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li {
+    transform: none !important;
+    min-height: 108px;
+  }
+}
+
+@media (max-width: 640px) {
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-section {
+    margin: 30px 0;
+    padding: 20px 18px;
+    border-radius: 15px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li {
+    min-height: 0;
+    padding: 12px 12px 12px 45px;
+    align-items: center;
+  }
+
+  body:has(.vps-vs-shared-page-header) .vps-vs-middle-ladder > li::before {
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+  }
+}

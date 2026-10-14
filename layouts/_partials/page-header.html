@@ -491,6 +491,37 @@
       }
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("middle-paths-between-shared-hosting-and-raw-vps");
+      if (!heading || heading.closest(".vps-vs-middle-section")) return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var section = document.createElement("section");
+      section.className = "vps-vs-middle-section";
+      parent.insertBefore(section, heading);
+
+      var node = heading;
+      while (node && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        section.appendChild(node);
+        node = next;
+      }
+
+      var paragraphs = section.querySelectorAll(":scope > p");
+      if (paragraphs.length) {
+        paragraphs[0].classList.add("vps-vs-middle-intro");
+        if (paragraphs.length > 1) paragraphs[1].classList.add("vps-vs-middle-label");
+        paragraphs[paragraphs.length - 1].classList.add("vps-vs-middle-result");
+      }
+
+      var list = section.querySelector(":scope > ul");
+      if (list) list.classList.add("vps-vs-middle-ladder");
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
