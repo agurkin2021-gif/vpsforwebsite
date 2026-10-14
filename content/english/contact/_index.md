@@ -1,6 +1,11 @@
 ---
 title: "Contact"
-description: "Contact and correction policy for VPSforWebsite.com."
+description: "Current contact and correction policy for VPSforWebsite.com."
+noindex: true
+sitemap:
+  disable: true
 ---
 
-This preview does not collect contact-form submissions. A direct project inbox will be added before the production domain is opened to public submissions.
+VPSforWebsite.com does not currently operate a public contact form or collect contact-form submissions.
+
+This page is reserved for the project's direct contact and correction channel. If a public project contact channel is enabled, it will be published here.
