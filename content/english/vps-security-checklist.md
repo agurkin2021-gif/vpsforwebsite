@@ -405,7 +405,7 @@ Do not describe network-layer DDoS mitigation as a complete website-security ser
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS infrastructure</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Provider DDoS protection and technical support do not replace guest-OS/application hardening or administration.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Provider DDoS protection and technical support do not replace guest-OS/application hardening or administration.</small></p>
 
 ## Backups are a security control
 
