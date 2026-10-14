@@ -37,9 +37,9 @@ features:
       link: "/vps-vs-shared-hosting/"
 
   - id: "vps-sizing"
-    title: "Which VPS fits your website workload?"
+    title: "VPS configurations for common website workloads"
     image: "images/home/vps-sizing.svg"
-    content: "Do not size a server from a monthly visitor number alone. Cacheability, simultaneous requests, PHP workers, database work, background jobs and the number of sites determine the real load. [Open the full VPS sizing guide →](vps-sizing-for-website/index.html)"
+    content: "Compare current VPS configurations by workload first, then use the dedicated sizing guide to calculate CPU, RAM and storage from measured demand instead of guessed visitor counts. [Open the full VPS sizing guide →](vps-sizing-for-website/index.html)"
     plans:
       enable: true
       checked: "Current VDSina Standard prices checked October 13, 2026."
@@ -183,8 +183,8 @@ faq:
       answer: "Compared with typical shared hosting, a self-managed VPS adds operating-system administration, patching, security, backups, monitoring, incident response and migration/setup work. Panel licenses or paid administration can add cost. If nobody owns those tasks, use [Managed vs Unmanaged VPS](managed-vs-unmanaged-vps/) before moving."
     - question: "Does a VPS include a domain name and email?"
       answer: "Do not assume it does. A VPS price usually describes the server infrastructure; domain registration, managed email, control-panel licenses, backups or administration may be separate. Verify the current order terms and decide whether email should stay with a managed mail provider."
-    - question: "How many websites can one VPS host?"
-      answer: "There is no safe fixed number. The limit depends on each site's PHP or application concurrency, database work, caching, background jobs, storage and traffic pattern. Several light cached sites may fit where one busy dynamic site would not."
+    - question: "Can I upgrade a VPS later?"
+      answer: "Often, but upgrade rules differ by provider and resource type. Before buying, verify whether CPU, RAM and storage can be increased in place, whether a reboot or migration is required, and whether downsizing has different limits. Use monitoring data rather than guessed traffic to decide when more capacity is actually needed."
     - question: "Does server location matter?"
       answer: "Yes. A shorter network path can reduce latency, especially for dynamic requests. [Choose the VPS location](how-to-choose-vps-location/) around the main audience, real routing, dependencies and operational requirements, then use caching or a CDN where appropriate."
     - question: "Does Cloudflare or another CDN mean I can buy a smaller VPS?"
@@ -195,7 +195,7 @@ faq:
       answer: "Provision it, apply updates and basic hardening, configure the web stack or panel, deploy or migrate the site, set DNS and HTTPS, verify the application, backups and email path, then start monitoring resource use."
     - question: "What does the VPS price include?"
       answer: "The listed server price covers the stated infrastructure configuration. Control-panel licenses, paid backups, administration, external monitoring or other optional services may be separate, so check the current order terms before paying."
-    - question: "Do I need a control panel?"
-      answer: "Not necessarily. A panel simplifies domains, SSL, PHP and databases but uses some resources and may have separate licensing. Pure Ubuntu or Linux over SSH gives more control but leaves more administration with you."
+    - question: "What should I check before paying for a VPS?"
+      answer: "Verify the exact CPU, RAM, storage, transfer allowance, network terms, server location, backup options, upgrade path, operating-system and control-panel choices, management scope and any extra license or administration costs. Treat the order page as the source of truth for current provider terms."
 ---
 
