@@ -44,5 +44,18 @@
   {{ $stylesLazy = $stylesLazy | minify }}
 {{ end }}
 
-<style id="site-critical-css">{{ $styles.Content | safeCSS }}</style>
-<style id="site-plugin-css">{{ $stylesLazy.Content | safeCSS }}</style>
+{{ $styles = $styles | fingerprint "sha256" }}
+{{ $stylesLazy = $stylesLazy | fingerprint "sha256" }}
+
+<link
+  id="site-critical-css"
+  rel="stylesheet"
+  href="{{ $styles.Permalink }}"
+  integrity="{{ $styles.Data.Integrity }}"
+  crossorigin="anonymous" />
+<link
+  id="site-plugin-css"
+  rel="stylesheet"
+  href="{{ $stylesLazy.Permalink }}"
+  integrity="{{ $stylesLazy.Data.Integrity }}"
+  crossorigin="anonymous" />
