@@ -8,6 +8,11 @@ button:
   label: "Check current VPS configurations"
   link: "https://www.vdsina.com/?partner=ni8gzrvz75"
 
+noindex: true
 build:
   render: "never"
+  list: "never"
+  publishResources: false
+sitemap:
+  disable: true
 ---
