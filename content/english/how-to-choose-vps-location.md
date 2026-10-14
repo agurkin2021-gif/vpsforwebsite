@@ -654,8 +654,8 @@ Verify real external latency, TTFB, errors and user-facing health. A pre-purchas
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central — Managing multi-regional and multilingual sites</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central — CDNs and crawling</a>
+- Google Search Central — Managing multi-regional and multilingual sites
+- Google Search Central — CDNs and crawling
 
 ## FAQ
 
