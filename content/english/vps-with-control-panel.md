@@ -474,7 +474,7 @@ But manual hosting is not "free management." You still own all configuration, pa
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current control-panel options</a>
+- VDSina Standard VPS — current control-panel options
 - [FASTPANEL VPS Hosting — branded deployment and sizing guide]({{< relref "fastpanel-vps-hosting.md" >}})
 
 <p>
