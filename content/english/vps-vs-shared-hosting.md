@@ -1,7 +1,7 @@
 ---
 title: "VPS vs Shared Hosting"
 description: "VPS vs Shared Hosting: decide whether to stay, optimize first or move by checking resource limits, control needs, administration responsibility, total cost and migration readiness."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS vs Shared Hosting is not a simple "small site vs big site" decision. Shared hosting is usually easier because the provider operates the server stack. A VPS gives you more control and a more isolated virtual environment, but you or an administrator must operate the guest server.
