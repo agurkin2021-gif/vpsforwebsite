@@ -603,14 +603,139 @@
         return section;
       }
 
+      function wrapSecurityFeature(startId, endId, className, reverse, alt, visualHtml) {
+        var heading = document.getElementById(startId);
+        if (!heading || heading.closest(".vps-security-home-section")) return null;
+
+        var parent = heading.parentElement;
+        if (!parent) return null;
+
+        var section = document.createElement("section");
+        section.className =
+          "vps-security-home-section " +
+          className +
+          (reverse ? " vps-security-home-section-reverse" : "") +
+          (alt ? " vps-security-home-section-alt" : "");
+
+        var row = document.createElement("div");
+        row.className = "vps-security-home-row";
+
+        var copy = document.createElement("div");
+        copy.className = "vps-security-home-copy";
+
+        var visual = document.createElement("div");
+        visual.className = "vps-security-home-visual";
+        visual.setAttribute("aria-hidden", "true");
+        visual.innerHTML = visualHtml;
+
+        parent.insertBefore(section, heading);
+
+        var node = heading;
+        while (node) {
+          if (node !== heading && node.tagName === "H2" && node.id === endId) break;
+          var next = node.nextElementSibling;
+          copy.appendChild(node);
+          node = next;
+        }
+
+        if (reverse) {
+          row.appendChild(visual);
+          row.appendChild(copy);
+        } else {
+          row.appendChild(copy);
+          row.appendChild(visual);
+        }
+
+        section.appendChild(row);
+        return section;
+      }
+
       wrapSecuritySection(
         "security-baseline-in-order",
         "vps-security-baseline-section"
       );
 
-      wrapSecuritySection(
+      wrapSecurityFeature(
+        "keep-a-recovery-path-before-changing-access",
+        "firewall-only-the-services-you-need",
+        "vps-security-access-section",
+        false,
+        false,
+        '<div class="vps-security-visual-kicker">Access sequence</div>' +
+        '<div class="vps-security-visual-steps">' +
+          '<span>Console</span><i>→</i><span>Named admin</span><i>→</i><span>SSH key</span><i>→</i><span>Restrict old access</span>' +
+        '</div>' +
+        '<div class="vps-security-visual-note">Keep one working session open while testing the replacement path.</div>'
+      );
+
+      wrapSecurityFeature(
+        "firewall-only-the-services-you-need",
+        "patching-and-automatic-security-updates",
+        "vps-security-network-section",
+        true,
+        true,
+        '<div class="vps-security-visual-kicker">Network exposure</div>' +
+        '<div class="vps-security-network-grid">' +
+          '<div><strong>Public</strong><span>HTTP / HTTPS</span></div>' +
+          '<div><strong>Controlled</strong><span>SSH / admin</span></div>' +
+          '<div><strong>Private</strong><span>DB / Redis / app ports</span></div>' +
+        '</div>' +
+        '<div class="vps-security-visual-note">Expose only what the architecture actually needs.</div>'
+      );
+
+      wrapSecurityFeature(
+        "patching-and-automatic-security-updates",
+        "control-panels-and-admin-interfaces",
+        "vps-security-maintenance-section",
+        false,
+        false,
+        '<div class="vps-security-visual-kicker">Maintenance loop</div>' +
+        '<div class="vps-security-maintenance-grid">' +
+          '<span>Patches</span><span>Least privilege</span><span>Secrets</span><span>Rate limits</span>' +
+        '</div>' +
+        '<div class="vps-security-visual-note">Security degrades when ownership, updates or credentials are left unmanaged.</div>'
+      );
+
+      wrapSecurityFeature(
+        "control-panels-and-admin-interfaces",
+        "backups-are-a-security-control",
+        "vps-security-application-section",
+        true,
+        true,
+        '<div class="vps-security-visual-kicker">Application layer</div>' +
+        '<div class="vps-security-layer-stack">' +
+          '<span>Panel / admin UI</span>' +
+          '<span>CMS / plugins / runtime</span>' +
+          '<span>HTTPS transport</span>' +
+          '<span>DDoS ≠ application security</span>' +
+        '</div>'
+      );
+
+      wrapSecurityFeature(
+        "backups-are-a-security-control",
         "after-a-suspected-compromise",
-        "vps-security-incident-section"
+        "vps-security-recovery-section",
+        false,
+        false,
+        '<div class="vps-security-visual-kicker">Recovery controls</div>' +
+        '<div class="vps-security-recovery-grid">' +
+          '<div><strong>Backup copy</strong><span>Outside the running VPS</span></div>' +
+          '<div><strong>Restore test</strong><span>Prove recovery works</span></div>' +
+          '<div><strong>Logs & alerts</strong><span>Detect failed controls</span></div>' +
+        '</div>'
+      );
+
+      wrapSecurityFeature(
+        "after-a-suspected-compromise",
+        "production-security-checklist",
+        "vps-security-incident-section",
+        true,
+        true,
+        '<div class="vps-security-visual-kicker">Incident path</div>' +
+        '<div class="vps-security-incident-flow">' +
+          '<span>Contain</span><i>→</i><span>Rotate secrets</span><i>→</i><span>Rebuild</span><i>→</i><span>Restore</span>' +
+        '</div>' +
+        '<div class="vps-security-visual-note">Recover from known-good sources after privileged compromise.</div>'
       );
 
       wrapSecuritySection(
