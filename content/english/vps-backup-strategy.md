@@ -553,7 +553,7 @@ Do not confuse backup with migration. A backup can be part of a migration safety
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS backup options</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Provider backup features do not replace an independent recovery strategy or restore testing.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Provider backup features do not replace an independent recovery strategy or restore testing.</small></p>
 
 ## Recovery runbook
 
