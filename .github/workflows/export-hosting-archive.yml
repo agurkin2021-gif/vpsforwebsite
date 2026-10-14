@@ -1,0 +1,109 @@
+name: Export hosting archive
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/export-hosting-archive.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Install node dependencies
+        run: npm install
+
+      - name: Resolve Hugo modules
+        run: hugo mod get
+
+      - name: Decode homepage hero visual
+        shell: bash
+        run: |
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          test -s static/images/home/vps-hero-right.webp
+
+      - name: Warm build stats
+        run: hugo --gc --baseURL "https://vpsforwebsite.com/"
+
+      - name: Clear warm-build output
+        run: rm -rf public
+
+      - name: Build production site
+        run: hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+
+      - name: Verify hosting build
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re
+
+          html = Path("public/index.html").read_text(encoding="utf-8")
+
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.metas = []
+                  self.links = []
+              def handle_starttag(self, tag, attrs):
+                  d = {k.lower(): (v or "") for k, v in attrs}
+                  if tag.lower() == "meta":
+                      self.metas.append(d)
+                  elif tag.lower() == "link":
+                      self.links.append(d)
+
+          a = Audit()
+          a.feed(html)
+          expected = "https://vpsforwebsite.com/"
+
+          assert any(x.get("name","").lower() == "robots" and x.get("content","").lower() == "index,follow" for x in a.metas)
+          assert any(x.get("rel","").lower() == "canonical" and x.get("href") == expected for x in a.links)
+          assert any(x.get("hreflang","").lower() == "en" and x.get("href") == expected for x in a.links)
+          assert any(x.get("hreflang","").lower() == "x-default" and x.get("href") == expected for x in a.links)
+          h1s = re.findall(r'<h1\\b[^>]*>(.*?)</h1>', html, re.I | re.S)
+          h1s = [re.sub(r'<[^>]+>', '', x).strip() for x in h1s]
+          assert h1s == ["VPS for website"], h1s
+          assert "github.io" not in html
+          print("Hosting build verification: PASS")
+          PY
+
+      - name: Create upload archive
+        shell: bash
+        run: |
+          cd public
+          zip -qr ../vpsforwebsite-upload.zip .
+          cd ..
+          test -s vpsforwebsite-upload.zip
+          sha256sum vpsforwebsite-upload.zip > vpsforwebsite-upload.sha256
+          ls -lh vpsforwebsite-upload.zip
+
+      - name: Upload hosting archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: vpsforwebsite-hosting-upload
+          path: |
+            vpsforwebsite-upload.zip
+            vpsforwebsite-upload.sha256
+          if-no-files-found: error
+          retention-days: 7
