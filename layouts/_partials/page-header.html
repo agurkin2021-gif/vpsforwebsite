@@ -407,6 +407,90 @@
       if (list) list.classList.add("vps-vs-services-grid");
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("compare-total-operating-cost");
+      if (!heading || heading.closest(".vps-vs-cost-section")) return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var section = document.createElement("section");
+      section.className = "vps-vs-cost-section";
+      parent.insertBefore(section, heading);
+
+      var node = heading;
+      while (node && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        section.appendChild(node);
+        node = next;
+      }
+
+      var paragraphs = section.querySelectorAll(":scope > p");
+      if (paragraphs.length) {
+        paragraphs[0].classList.add("vps-vs-cost-intro");
+      }
+
+      var formulaStrong = section.querySelector(":scope > p > strong");
+      if (formulaStrong) {
+        var raw = formulaStrong.textContent.trim();
+        var sides = raw.split("=");
+        if (sides.length === 2) {
+          var total = sides[0].trim();
+          var parts = sides[1].split("+").map(function (part) { return part.trim(); });
+
+          formulaStrong.textContent = "";
+          formulaStrong.classList.add("vps-vs-cost-formula");
+
+          var totalNode = document.createElement("span");
+          totalNode.className = "vps-vs-cost-total";
+          totalNode.textContent = total;
+          formulaStrong.appendChild(totalNode);
+
+          var equalsNode = document.createElement("span");
+          equalsNode.className = "vps-vs-cost-operator vps-vs-cost-equals";
+          equalsNode.textContent = "=";
+          formulaStrong.appendChild(equalsNode);
+
+          var stack = document.createElement("span");
+          stack.className = "vps-vs-cost-stack";
+
+          parts.forEach(function (part, index) {
+            var item = document.createElement("span");
+            item.className = "vps-vs-cost-component";
+            item.textContent = part;
+            stack.appendChild(item);
+
+            if (index < parts.length - 1) {
+              var plus = document.createElement("span");
+              plus.className = "vps-vs-cost-operator";
+              plus.textContent = "+";
+              stack.appendChild(plus);
+            }
+          });
+
+          formulaStrong.appendChild(stack);
+          formulaStrong.parentElement.classList.add("vps-vs-cost-formula-wrap");
+        }
+      }
+
+      var list = section.querySelector(":scope > ul");
+      if (list) {
+        list.classList.add("vps-vs-cost-benefit-grid");
+        var label = list.previousElementSibling;
+        if (label && label.tagName === "P") label.classList.add("vps-vs-cost-benefit-label");
+      }
+
+      var directParagraphs = section.querySelectorAll(":scope > p");
+      if (directParagraphs.length >= 3) {
+        directParagraphs[2].classList.add("vps-vs-cost-shared-note");
+      }
+      if (directParagraphs.length) {
+        directParagraphs[directParagraphs.length - 1].classList.add("vps-vs-cost-renewal-note");
+      }
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
