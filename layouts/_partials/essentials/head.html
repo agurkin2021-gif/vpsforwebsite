@@ -79,7 +79,7 @@
 
 {{ partialCached "custom-script.html" . }}
 
-{{ if and site.Config.Services.GoogleAnalytics.ID (ne site.Config.Services.GoogleAnalytics.ID "G-MEASUREMENT_ID") }}
+{{ if and (not $isPreview) site.Config.Services.GoogleAnalytics.ID (ne site.Config.Services.GoogleAnalytics.ID "G-MEASUREMENT_ID") }}
   {{ partial "google_analytics.html" . }}
 {{ end }}
 

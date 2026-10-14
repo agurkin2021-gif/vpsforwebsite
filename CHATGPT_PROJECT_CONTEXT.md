@@ -792,3 +792,11 @@ The SEO buffer contains:
 - Verification after publication: all 19 production HTML pages reference the versioned icons and manifest; all seven icon/manifest resources return HTTP 200 with matching file hashes; the manifest has `application/manifest+json`. Production page bodies remain byte-for-byte unchanged. SEOimpuls on the shared VPS still returns HTTP 200.
 - Source commit `e0fffc754f03a32da907fee9fd5303515659b7ee` passed the complete Hugo preview workflow (run `38619994659`), and the production Hugo compilation also succeeded.
 - Existing separate Pages CI defect remains: the `github.io` build intentionally emits preview noindex/no canonical, while `live-pages.yml` expects production index/follow, canonical and hreflang. The same SEO assertion failure existed before this favicon change (baseline run `38603546540`, favicon run `38619994500`). It does not affect the deployed custom-domain site. Do not remove preview noindex as part of an icon change; handle this workflow mismatch as its own deployment task.
+
+### 2026-10-14 — Google Analytics 4
+
+- Installed the user's Google tag with measurement ID `G-J6X9FNRMH5` on the production site, in the head of all 19 HTML pages. Each page has exactly one async gtag.js loader and one matching config call.
+- The source of truth is `[services.googleAnalytics].ID` in `hugo.toml`, rendered by the local `layouts/_partials/google_analytics.html` through the existing shared head integration. Google Tag Manager remains unset; do not add a second installation through GTM or custom_script.
+- The existing preview detection now also excludes Google Analytics from github.io/raw.githack.com preview builds, keeping preview visits out of the production property.
+- Public verification passed for all 19 pages; the Google script URL, sitemap and SEOimpuls on the shared VPS returned HTTP 200. The initialization code queues one js event and one config command for the requested ID. Page bodies and other site assets are unchanged.
+- Analytics-dashboard event receipt was not inspected because no Google Analytics account session was available. Published tag installation is verified; no claim of confirmed dashboard data is made.

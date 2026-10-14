@@ -7,6 +7,9 @@ enableRobotsTXT = true
 enableGitInfo = true
 disableKinds = ["taxonomy", "term"]
 
+[services.googleAnalytics]
+  ID = "G-J6X9FNRMH5"
+
 [build]
   [build.buildStats]
     enable = true
