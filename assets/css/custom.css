@@ -11211,3 +11211,301 @@ body:has(.vps-migrate-page-header) {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Managed vs Unmanaged hero only */
+body:has(.vps-managed-page-header) {
+  --mg-bg: #07101a;
+  --mg-text: #f7f6f2;
+  --mg-copy: #c8d2dc;
+  --mg-green: #2dde74;
+}
+
+.vps-managed-page-header > .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.vps-managed-page-header {
+  position: relative !important;
+  padding: 0 0 24px !important;
+  border-bottom: 0 !important;
+  background: var(--mg-bg);
+}
+
+.vps-managed-page-header > .container {
+  position: relative !important;
+}
+
+.vps-managed-page-header .vps-managed-breadcrumb {
+  position: absolute !important;
+  top: 6px !important;
+  left: 0 !important;
+  z-index: 2;
+  margin: 0 !important;
+  padding: 0 2px !important;
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+}
+
+.vps-managed-page-header .vps-managed-breadcrumb ol,
+.vps-managed-page-header .vps-managed-breadcrumb ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vps-managed-page-header .vps-managed-breadcrumb li,
+.vps-managed-page-header .vps-managed-breadcrumb span,
+.vps-managed-page-header .vps-managed-breadcrumb a {
+  color: #788592 !important;
+  font-size: .71rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.vps-managed-hero {
+  width: 100%;
+  padding-top: 30px;
+}
+
+.vps-managed-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 48%) minmax(0, 46%);
+  gap: 6%;
+  align-items: start;
+  width: 100%;
+}
+
+.vps-managed-hero-copy {
+  min-width: 0;
+}
+
+.vps-managed-hero-copy h1 {
+  max-width: 100%;
+  margin: 0 0 24px !important;
+  color: var(--mg-text);
+  font-family: var(--font-secondary);
+  font-size: clamp(2.72rem, 2.95vw, 3.45rem);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.052em;
+  text-wrap: balance;
+}
+
+.vps-managed-description {
+  max-width: 510px;
+  margin: 0 !important;
+  color: var(--mg-copy);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.vps-managed-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.vps-managed-primary-cta {
+  min-height: 46px;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--mg-green) !important;
+  border-color: var(--mg-green) !important;
+  color: #061019 !important;
+  font-size: .76rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.vps-managed-secondary-cta {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  padding: 0 2px;
+  color: #aebbc6 !important;
+  font-size: .74rem;
+  font-weight: 720;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+}
+
+.vps-managed-secondary-cta:hover {
+  color: #eef2f5 !important;
+  border-bottom-color: #3b4e5d;
+}
+
+.vps-managed-hero-diagram {
+  display: block;
+  width: 100%;
+  max-width: 475px;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transform: translateY(0) scale(1);
+  transition: transform 120ms ease;
+  will-change: transform;
+}
+
+.vps-managed-hero-diagram:hover {
+  transform: translateY(-2px) scale(1);
+}
+
+.vps-managed-hero-diagram:active {
+  transform: translateY(1px) scale(.975);
+  transition-duration: 70ms;
+}
+
+.vps-managed-hero-diagram:focus,
+.vps-managed-hero-diagram:focus-visible {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.vps-managed-compact-head {
+  margin-bottom: 14px;
+}
+
+.vps-managed-compact-head strong {
+  display: block;
+  color: var(--mg-text);
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.vps-managed-compact-head small {
+  display: block;
+  max-width: 430px;
+  margin-top: 4px;
+  color: #8fa0af;
+  font-size: .67rem;
+  line-height: 1.4;
+}
+
+.vps-managed-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vps-managed-compact-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 11px;
+  border: 1px solid #263b4b;
+  border-radius: 9px;
+  background: #0d1824;
+}
+
+.vps-managed-compact-item > span {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #0d2a1e;
+  color: #72e5a2;
+  font-size: .56rem;
+  font-weight: 850;
+}
+
+.vps-managed-compact-item strong {
+  display: block;
+  color: #dce3e8;
+  font-size: .72rem;
+  line-height: 1.2;
+}
+
+.vps-managed-compact-item small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa0af;
+  font-size: .59rem;
+  line-height: 1.3;
+}
+
+.vps-managed-compact-rule {
+  margin-top: 11px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--mg-green);
+  border-radius: 7px;
+  background: #0d1824;
+}
+
+.vps-managed-compact-rule strong {
+  color: #dce4e9;
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 1100px) {
+  .vps-managed-page-header > .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vps-managed-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .vps-managed-hero-diagram {
+    max-width: none !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-managed-page-header > .container {
+    width: calc(100% - 36px) !important;
+  }
+
+  .vps-managed-page-header .vps-managed-breadcrumb {
+    top: 4px !important;
+  }
+
+  .vps-managed-hero {
+    padding-top: 28px !important;
+  }
+
+  .vps-managed-hero-copy h1 {
+    font-size: clamp(2.28rem, 11.6vw, 3.05rem) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .vps-managed-hero-actions {
+    align-items: stretch;
+  }
+
+  .vps-managed-primary-cta,
+  .vps-managed-secondary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vps-managed-compact-grid {
+    grid-template-columns: 1fr;
+  }
+}
