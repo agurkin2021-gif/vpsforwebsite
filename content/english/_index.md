@@ -1,6 +1,6 @@
 ---
 title: "VPS for website"
-description: "VPS for website: decide if you need one, compare current configurations, size CPU and RAM by workload, and check management, location, migration and recovery before you buy."
+description: "VPS for website: decide whether a VPS fits your site, compare current configurations, and check management, location, migration, recovery and upgrade path before you buy."
 
 banner:
   title: "VPS for website"
