@@ -1,7 +1,7 @@
 ---
 title: "VPS for Multiple Websites"
 description: "VPS for Multiple Websites: size one server from combined peak load, isolate users and databases, understand one-server blast radius, and know when to split sites or services."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS for Multiple Websites works well when several sites can safely share one resource pool, one administration model and one failure domain. The important limit is not the number of domains. It is the **combined peak of CPU, RAM, PHP/application workers, database work, storage, background jobs and backups across every site on the server**.
