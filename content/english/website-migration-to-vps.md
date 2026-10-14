@@ -1,7 +1,7 @@
 ---
 title: "Website migration to VPS"
 description: "Website migration to VPS: inventory the current stack, test the new server, control final writes, switch DNS safely, preserve email and SEO, and keep a rollback path."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 Website migration to VPS is safest when the new server is built and tested while the old host is still serving traffic. Inventory the current stack, size the destination, copy and validate the site, control the final data changes, switch DNS last, then monitor both environments until the old host can be retired.
@@ -437,8 +437,8 @@ Document environment variables, secrets, background workers, queues, build/runti
 
 ## Technical references
 
-- [Google Search Central: Changing your web hosting and SEO](https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes)
-- [Google Search Central: Site moves with URL changes](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central: Changing your web hosting and SEO</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central: Site moves with URL changes</a>
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for the migration</a>
