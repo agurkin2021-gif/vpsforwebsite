@@ -59,7 +59,7 @@ Measure the real processes whenever possible. Estimates are useful for choosing 
 Use this estimator to expose the assumptions instead of guessing from visitor count. It estimates the RAM tier only; CPU, storage and I/O still need separate validation. Enter your own measurements; the placeholders mirror the worked example below and are not universal defaults.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
-<form id="ram-budget-estimator">
+<form id="ram-budget-estimator-form">
   <div class="mb-6">
     <label for="ram-baseline" class="form-label">Baseline OS + web services, MB</label>
     <input id="ram-baseline" class="form-input" type="number" min="0" step="1" placeholder="450" required>
@@ -91,7 +91,7 @@ Use this estimator to expose the assumptions instead of guessing from visitor co
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("ram-budget-estimator");
+  var form = document.getElementById("ram-budget-estimator-form");
   if (!form) return;
   form.addEventListener("submit", function (event) {
     event.preventDefault();
