@@ -1,7 +1,7 @@
 ---
 title: "Managed vs Unmanaged VPS"
 description: "Managed vs Unmanaged VPS: compare who handles updates, security, backups, monitoring and incidents, calculate the real operating cost, and choose the right management model."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 Managed vs Unmanaged VPS is mainly a decision about **who operates the server after it is provisioned**. The virtual machine can have the same CPU, RAM and disk either way. What changes is responsibility for the operating system, security, web stack, backups, monitoring, troubleshooting and recovery.
@@ -426,8 +426,8 @@ If you choose this route, decide before purchase who owns OS updates, hardening,
 
 ### Provider references
 
-- [VDSina Standard VPS — current plan features and technical support](https://www.vdsina.com/pricing/standard)
-- [VDSina QA — server administration and site-transfer service](https://www.vdsina.com/qa/q/administrirovanie-servera-perenos-saytov-s-drugogo-khostinga)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current plan features and technical support</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina QA — server administration and site-transfer service</a>
 
 ## Questions to ask before paying for managed VPS
 
