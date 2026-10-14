@@ -440,43 +440,40 @@
             target="_blank"
             rel="sponsored nofollow noopener"
             aria-label="Check current VPS options for multiple websites">
-            <div class="vps-multiweb-diagram-head">
-              <span class="vps-multiweb-server-mark">VPS</span>
-              <div>
-                <strong>One server, several websites</strong>
-                <small>Share resources deliberately; isolate sites where failure or security boundaries matter.</small>
+            <div class="vps-multiweb-compact-head">
+              <strong>Multiple websites on one VPS</strong>
+              <small>Consolidate only while the shared resource pool and failure domain still make sense.</small>
+            </div>
+
+            <div class="vps-multiweb-compact-sites" aria-label="Websites sharing the server">
+              <span>Site A</span>
+              <span>Site B</span>
+              <span>Site C</span>
+              <span>Site D</span>
+            </div>
+
+            <div class="vps-multiweb-compact-link" aria-hidden="true">
+              <i></i>
+              <span>share one server</span>
+              <i></i>
+            </div>
+
+            <div class="vps-multiweb-compact-server">
+              <div class="vps-multiweb-compact-server-title">
+                <span>VPS</span>
+                <strong>Shared resource pool</strong>
+              </div>
+              <div class="vps-multiweb-compact-resources">
+                <span>CPU</span>
+                <span>RAM</span>
+                <span>Storage</span>
+                <span>DB / jobs</span>
               </div>
             </div>
 
-            <div class="vps-multiweb-sites">
-              <div class="vps-multiweb-site">
-                <span>01</span>
-                <strong>Site A</strong>
-              </div>
-              <div class="vps-multiweb-site">
-                <span>02</span>
-                <strong>Site B</strong>
-              </div>
-              <div class="vps-multiweb-site">
-                <span>03</span>
-                <strong>Site C</strong>
-              </div>
-              <div class="vps-multiweb-site">
-                <span>04</span>
-                <strong>Site D</strong>
-              </div>
-            </div>
-
-            <div class="vps-multiweb-shared-label">Shared server pool</div>
-            <div class="vps-multiweb-resource-row">
-              <span>CPU</span>
-              <span>RAM</span>
-              <span>Storage</span>
-              <span>DB / jobs</span>
-            </div>
-
-            <div class="vps-multiweb-rule">
-              <strong>Size the combined peak. Split workloads when one failure domain becomes the risk.</strong>
+            <div class="vps-multiweb-compact-risk">
+              <span>Combined peak load</span>
+              <span>Shared failure domain</span>
             </div>
           </a>
         </div>
