@@ -39,6 +39,13 @@ jobs:
       - name: Resolve Hugo modules
         run: hugo mod get
 
+      - name: Decode homepage hero visual
+        shell: bash
+        run: |
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          test -s static/images/home/vps-hero-right.webp
+          file static/images/home/vps-hero-right.webp
+
       - name: Warm build stats
         run: hugo --gc --baseURL "https://raw.githack.com/agurkin2021-gif/vpsforwebsite/preview/"
 

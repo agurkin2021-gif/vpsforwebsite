@@ -5375,3 +5375,83 @@ body:has(.vps-vs-shared-page-header) .vps-vs-model-card-affiliate:active {
     margin-top: 1.35rem !important;
   }
 }
+
+
+/* Homepage transparent hero illustration integration */
+.vps-home .vps-hero-panel {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.vps-home .vps-hero-panel img {
+  display: block !important;
+  width: 112% !important;
+  max-width: none !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  filter:
+    drop-shadow(0 0 14px rgba(45, 222, 116, .12))
+    drop-shadow(0 0 28px rgba(74, 104, 255, .11));
+  animation: vps-hero-soft-glow 5.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.vps-home .vps-hero-panel.vps-affiliate-visual {
+  transform: none !important;
+  transform-origin: center !important;
+}
+
+.vps-home .vps-hero-panel.vps-affiliate-visual:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.vps-home .vps-hero-panel.vps-affiliate-visual:active {
+  transform: translateY(0) scale(.985) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@keyframes vps-hero-soft-glow {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 12px rgba(45, 222, 116, .11))
+      drop-shadow(0 0 24px rgba(74, 104, 255, .10));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 20px rgba(45, 222, 116, .20))
+      drop-shadow(0 0 38px rgba(74, 104, 255, .18));
+  }
+}
+
+@media (max-width: 1100px) {
+  .vps-home .vps-hero-panel img {
+    width: 108% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .vps-home .vps-hero-panel {
+    margin-top: 1.25rem !important;
+  }
+
+  .vps-home .vps-hero-panel img {
+    width: 100% !important;
+    max-width: 600px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vps-home .vps-hero-panel img {
+    animation: none !important;
+  }
+}
