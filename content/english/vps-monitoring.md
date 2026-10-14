@@ -1,7 +1,7 @@
 ---
 title: "VPS Monitoring"
 description: "Monitor a VPS with external uptime checks, CPU/RAM/disk/network metrics, service health, logs and actionable alerts. Includes tools, thresholds and a practical checklist."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS Monitoring should answer more than “is the server up?” A production monitoring baseline needs **external availability checks, historical host metrics, service/application health, logs, actionable alerts and a named response owner**.
@@ -621,9 +621,9 @@ Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) f
 
 ## Technical references
 
-- [Prometheus — monitoring Linux host metrics with Node Exporter](https://prometheus.io/docs/guides/node-exporter/)
-- [Prometheus — Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
-- [Uptime Kuma — official project](https://github.com/louislam/uptime-kuma)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Prometheus — monitoring Linux host metrics with Node Exporter</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Prometheus — Alertmanager</a>
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Uptime Kuma — official project</a>
 - [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}})
 - [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}})
 
