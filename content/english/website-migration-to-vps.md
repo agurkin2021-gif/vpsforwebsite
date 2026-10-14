@@ -437,8 +437,8 @@ Document environment variables, secrets, background workers, queues, build/runti
 
 ## Technical references
 
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central: Changing your web hosting and SEO</a>
-- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Google Search Central: Site moves with URL changes</a>
+- Google Search Central: Changing your web hosting and SEO
+- Google Search Central: Site moves with URL changes
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for the migration</a>
