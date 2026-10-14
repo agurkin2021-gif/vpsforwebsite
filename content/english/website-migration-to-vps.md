@@ -180,7 +180,7 @@ A migration is also a management-path decision. If the old host hid most server 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose the destination VPS</a>
 </p>
-<p><small>Affiliate disclosure: this site may earn a commission if you order through this partner link. Migration guidance and sizing criteria do not change based on commission.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Migration guidance and sizing criteria do not change based on commission.</small></p>
 
 ## Create a rollback-capable backup
 
@@ -443,7 +443,7 @@ Document environment variables, secrets, background workers, queues, build/runti
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Choose a VPS for the migration</a>
 </p>
-<p><small>Affiliate disclosure: partner links are marked sponsored. VPS pricing, transfer allowances and other provider terms can change; verify the current offer before ordering.</small></p>
+<p><small>Disclosure: the editor has a professional relationship with VDSina. Partner links are marked sponsored. VPS pricing, transfer allowances and other provider terms can change; verify the current offer before ordering.</small></p>
 
 ## FAQ
 
