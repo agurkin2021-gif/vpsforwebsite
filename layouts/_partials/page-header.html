@@ -1,11 +1,15 @@
 {{ $isVpsVsShared := false }}
 {{ $isVpsWordPress := false }}
+{{ $isVpsWooCommerce := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
   {{ end }}
   {{ if eq .BaseFileName "vps-for-wordpress" }}
     {{ $isVpsWordPress = true }}
+  {{ end }}
+  {{ if eq .BaseFileName "vps-for-woocommerce" }}
+    {{ $isVpsWooCommerce = true }}
   {{ end }}
 {{ end }}
 
@@ -274,6 +278,127 @@
             p.classList.add("vps-wordpress-formula");
           }
         });
+      }
+    });
+  </script>
+{{ else if $isVpsWooCommerce }}
+  {{ $wcAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-woocommerce-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-woocommerce-breadcrumb") }}
+
+      <div class="vps-woocommerce-hero">
+        <div class="vps-woocommerce-hero-grid">
+          <div class="vps-woocommerce-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-woocommerce-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-woocommerce-hero-actions">
+              <a
+                class="btn btn-primary vps-woocommerce-primary-cta"
+                href="{{ $wcAffiliate }}"
+                target="_blank"
+                rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-woocommerce-secondary-cta" href="#quick-answer">
+                See sizing guidance
+              </a>
+            </div>
+          </div>
+
+          <a
+            class="vps-woocommerce-hero-diagram"
+            href="{{ $wcAffiliate }}"
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            aria-label="Check current VPS options for WooCommerce">
+            <div class="vps-woocommerce-flow-head">
+              <span class="vps-woocommerce-wcmark">WC</span>
+              <div>
+                <strong>WooCommerce transaction path</strong>
+                <small>Size for uncached checkout, writes and background work.</small>
+              </div>
+            </div>
+
+            <div class="vps-woocommerce-flow">
+              <div class="vps-woocommerce-flow-node">
+                <span>01</span>
+                <div>
+                  <strong>Cart / checkout</strong>
+                  <small>Dynamic PHP requests</small>
+                </div>
+              </div>
+              <div class="vps-woocommerce-flow-arrow" aria-hidden="true">→</div>
+              <div class="vps-woocommerce-flow-node">
+                <span>02</span>
+                <div>
+                  <strong>Orders / stock</strong>
+                  <small>Database writes</small>
+                </div>
+              </div>
+              <div class="vps-woocommerce-flow-arrow" aria-hidden="true">→</div>
+              <div class="vps-woocommerce-flow-node">
+                <span>03</span>
+                <div>
+                  <strong>Payments / webhooks</strong>
+                  <small>External callbacks</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="vps-woocommerce-signal-row">
+              <span>PHP workers</span>
+              <span>DB writes</span>
+              <span>Action Scheduler</span>
+              <span>Sale peaks</span>
+            </div>
+
+            <div class="vps-woocommerce-stack-rule">
+              <strong>Size for peak dynamic concurrency — not monthly visits alone.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function wrapWooSection(id, className) {
+        var heading = document.getElementById(id);
+        if (!heading || heading.closest("." + className)) return null;
+        var parent = heading.parentElement;
+        if (!parent) return null;
+
+        var section = document.createElement("section");
+        section.className = className;
+        parent.insertBefore(section, heading);
+
+        var node = heading;
+        while (node && !(node !== heading && node.tagName === "H2")) {
+          var next = node.nextElementSibling;
+          section.appendChild(node);
+          node = next;
+        }
+        return section;
+      }
+
+      var requirements = wrapWooSection(
+        "woocommerce-requirements-are-not-production-vps-sizing",
+        "vps-woocommerce-requirements"
+      );
+
+      if (requirements) {
+        var lists = requirements.querySelectorAll(":scope > ul");
+        if (lists[0]) lists[0].classList.add("vps-woocommerce-runtime-list");
+        if (lists[1]) lists[1].classList.add("vps-woocommerce-gap-list");
+
+        var ps = requirements.querySelectorAll(":scope > p");
+        if (ps.length) ps[0].classList.add("vps-woocommerce-requirements-intro");
+        if (ps.length > 1) ps[ps.length - 1].classList.add("vps-woocommerce-requirements-warning");
       }
     });
   </script>
