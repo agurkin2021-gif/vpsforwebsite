@@ -508,9 +508,9 @@ A free panel can remove license cost, but the VPS, backups, monitoring, administ
 
 There is no universal number across panels. Check the current official minimum for the chosen panel, then add RAM for the operating system, database, application workers, mail, backup jobs and headroom. Do not use the installer minimum as the complete website sizing target.
 
-### Can I host multiple websites with one control panel?
+### What multi-site features should I compare in a VPS control panel?
 
-Often yes, but website count alone is not enough. Check account/user isolation, resource limits, databases, backup scope, delegated access and the total combined VPS workload.
+Compare separate users or accounts, per-site runtime settings, database isolation, mail and DNS controls, backup granularity, delegated access and restore workflow. The panel can simplify administration, but server capacity and failure isolation belong to the separate [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) decision.
 
 ### Can I install cPanel or Plesk on any VPS?
 
