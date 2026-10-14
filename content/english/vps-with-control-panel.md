@@ -1,7 +1,7 @@
 ---
 title: "VPS with Control Panel"
 description: "VPS with Control Panel: decide whether you need a hosting panel, compare panel types, account for licensing and resource overhead, and choose by websites, mail, users and operating system."
-image: "https://raw.githubusercontent.com/zeon-studio/hugoplate/4acb4365d7a86703357a9f216db149f55210fa09/exampleSite/assets/images/banner.png"
+image: "images/home/vps-for-website-hero.webp"
 ---
 
 VPS with Control Panel means running a web-hosting or server-management interface on top of a VPS so routine tasks can be handled from a browser instead of only through SSH or RDP. The important decision is not "which dashboard looks nicest?" It is **whether you need a panel at all, and which panel model matches the websites, users, mail, operating system and support model you actually need**.
@@ -474,7 +474,7 @@ But manual hosting is not "free management." You still own all configuration, pa
 
 ## Technical references
 
-- [VDSina Standard VPS — current control-panel options](https://www.vdsina.com/pricing/standard)
+- <a href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">VDSina Standard VPS — current control-panel options</a>
 - [FASTPANEL VPS Hosting — branded deployment and sizing guide]({{< relref "fastpanel-vps-hosting.md" >}})
 
 <p>
