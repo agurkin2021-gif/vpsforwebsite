@@ -13,6 +13,7 @@
 {{ $isVpsLocation := false }}
 {{ $isVpsControlPanel := false }}
 {{ $isAboutPage := false }}
+{{ $isContactPage := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -59,6 +60,9 @@
 {{ end }}
 {{ if eq .Section "about" }}
   {{ $isAboutPage = true }}
+{{ end }}
+{{ if eq .Section "contact" }}
+  {{ $isContactPage = true }}
 {{ end }}
 
 {{ if $isVpsVsShared }}
@@ -1519,6 +1523,60 @@
 
             <div class="vps-about-compact-rule">
               <strong>No fixed visitor-count promises. Size from the actual workload.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isContactPage }}
+  <section class="vps-page-header vps-contact-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-contact-breadcrumb") }}
+
+      <div class="vps-contact-hero">
+        <div class="vps-contact-hero-grid">
+          <div class="vps-contact-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-contact-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-contact-hero-actions">
+              <a class="btn btn-primary vps-contact-primary-cta" href="/">
+                VPS for website
+              </a>
+              <a class="vps-contact-secondary-cta" href="/about/">
+                About our process
+              </a>
+            </div>
+          </div>
+
+          <a class="vps-contact-hero-diagram"
+             href="/about/"
+             aria-label="Read how VPSforWebsite.com reviews and corrects information">
+            <div class="vps-contact-compact-head">
+              <strong>Corrections should be evidence-based</strong>
+              <small>Useful feedback identifies the claim, the source and what needs to be checked.</small>
+            </div>
+
+            <div class="vps-contact-compact-grid">
+              <div class="vps-contact-compact-item">
+                <span>01</span><div><strong>Identify</strong><small>Which claim or page?</small></div>
+              </div>
+              <div class="vps-contact-compact-item">
+                <span>02</span><div><strong>Source</strong><small>Provide current evidence</small></div>
+              </div>
+              <div class="vps-contact-compact-item">
+                <span>03</span><div><strong>Review</strong><small>Check provider + context</small></div>
+              </div>
+              <div class="vps-contact-compact-item">
+                <span>04</span><div><strong>Update</strong><small>Correct the published guidance</small></div>
+              </div>
+            </div>
+
+            <div class="vps-contact-compact-rule">
+              <strong>The preview does not collect form submissions yet.</strong>
             </div>
           </a>
         </div>
