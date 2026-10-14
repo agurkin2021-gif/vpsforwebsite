@@ -24,13 +24,50 @@
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
 {{ end }}
 
+{{ $publisher := dict
+  "@type" "Organization"
+  "name" "VPSforWebsite.com Editorial"
+  "url" site.Home.Permalink
+  "description" "Technical editorial project focused on evidence-based VPS hosting, workload sizing, migration, monitoring and operational decisions."
+}}
+
 {{ if .IsHome }}
-  {{ $webSite := dict "@context" "https://schema.org" "@type" "WebSite" "name" site.Title "url" .Permalink "description" (.Description | default site.Params.metadata.description) "inLanguage" "en" }}
+  {{ $webSite := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "name" site.Title
+    "url" .Permalink
+    "description" (.Description | default site.Params.metadata.description)
+    "inLanguage" "en"
+    "publisher" $publisher
+  }}
   <script type="application/ld+json">{{ $webSite | jsonify | safeJS }}</script>
-  {{ $homePage := dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" (.Description | default site.Params.metadata.description) "url" .Permalink "inLanguage" "en" "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" .Permalink) }}
+  {{ $homePage := dict
+    "@context" "https://schema.org"
+    "@type" "WebPage"
+    "name" .Title
+    "description" (.Description | default site.Params.metadata.description)
+    "url" .Permalink
+    "inLanguage" "en"
+    "author" $publisher
+    "publisher" $publisher
+    "dateModified" (.Lastmod.Format "2006-01-02")
+    "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" .Permalink)
+  }}
   <script type="application/ld+json">{{ $homePage | jsonify | safeJS }}</script>
 {{ else if .IsPage }}
-  {{ $webPage := dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" (.Description | default .Summary) "url" .Permalink "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" site.Home.Permalink) }}
+  {{ $webPage := dict
+    "@context" "https://schema.org"
+    "@type" "WebPage"
+    "name" .Title
+    "description" (.Description | default .Summary)
+    "url" .Permalink
+    "inLanguage" "en"
+    "author" $publisher
+    "publisher" $publisher
+    "dateModified" (.Lastmod.Format "2006-01-02")
+    "isPartOf" (dict "@type" "WebSite" "name" site.Title "url" site.Home.Permalink)
+  }}
   <script type="application/ld+json">{{ $webPage | jsonify | safeJS }}</script>
   {{ $breadcrumbItems := slice
     (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.Home.Permalink)
