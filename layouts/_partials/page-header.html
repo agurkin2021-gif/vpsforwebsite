@@ -12,6 +12,7 @@
 {{ $isHostWebsiteVps := false }}
 {{ $isVpsLocation := false }}
 {{ $isVpsControlPanel := false }}
+{{ $isAboutPage := false }}
 {{ with .File }}
   {{ if eq .BaseFileName "vps-vs-shared-hosting" }}
     {{ $isVpsVsShared = true }}
@@ -55,6 +56,9 @@
   {{ if eq .BaseFileName "vps-with-control-panel" }}
     {{ $isVpsControlPanel = true }}
   {{ end }}
+{{ end }}
+{{ if eq .Section "about" }}
+  {{ $isAboutPage = true }}
 {{ end }}
 
 {{ if $isVpsVsShared }}
@@ -1457,6 +1461,64 @@
 
             <div class="vps-control-panel-compact-rule">
               <strong>Use a panel only when it removes enough admin work to justify its overhead and constraints.</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ else if $isAboutPage }}
+  {{ $aboutAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
+  <section class="vps-page-header vps-about-page-header">
+    <div class="container">
+      {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-about-breadcrumb") }}
+
+      <div class="vps-about-hero">
+        <div class="vps-about-hero-grid">
+          <div class="vps-about-hero-copy">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+              <p class="vps-about-description">{{ . | markdownify }}</p>
+            {{ end }}
+
+            <div class="vps-about-hero-actions">
+              <a class="btn btn-primary vps-about-primary-cta"
+                 href="{{ $aboutAffiliate }}" target="_blank"
+                 rel="sponsored nofollow noopener">
+                Check VPS options
+              </a>
+              <a class="vps-about-secondary-cta" href="#what-this-site-does">
+                How the site works
+              </a>
+            </div>
+          </div>
+
+          <a class="vps-about-hero-diagram"
+             href="{{ $aboutAffiliate }}" target="_blank"
+             rel="sponsored nofollow noopener"
+             aria-label="Check current VPS options">
+            <div class="vps-about-compact-head">
+              <strong>Research first, recommendation second</strong>
+              <small>Provider facts stay separate from workload-based editorial guidance.</small>
+            </div>
+
+            <div class="vps-about-compact-grid">
+              <div class="vps-about-compact-item">
+                <span>01</span><div><strong>Provider facts</strong><small>CPU, RAM, storage, price</small></div>
+              </div>
+              <div class="vps-about-compact-item">
+                <span>02</span><div><strong>Workload fit</strong><small>Workers, DB, cache, jobs</small></div>
+              </div>
+              <div class="vps-about-compact-item">
+                <span>03</span><div><strong>Constraints</strong><small>Management, backups, growth</small></div>
+              </div>
+              <div class="vps-about-compact-item">
+                <span>04</span><div><strong>Recommendation</strong><small>Smallest safe starting tier</small></div>
+              </div>
+            </div>
+
+            <div class="vps-about-compact-rule">
+              <strong>No fixed visitor-count promises. Size from the actual workload.</strong>
             </div>
           </a>
         </div>
