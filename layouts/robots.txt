@@ -1,4 +1,4 @@
-{{ if strings.Contains site.BaseURL "raw.githack.com" }}
+{{ if or (strings.Contains site.BaseURL "raw.githack.com") (strings.Contains site.BaseURL "github.io") }}
 User-agent: *
 Allow: /
 {{ else }}
