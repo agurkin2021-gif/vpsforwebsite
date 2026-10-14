@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Website deployed to a VPS</title>
+  <desc id="desc">A website connects to a VPS with CPU and RAM, web stack, database, monitoring and backup, plus isolated resources, full control and scalable setup.</desc>
+  <defs>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f35c9a"/>
+      <stop offset="1" stop-color="#f6a21a"/>
+    </linearGradient>
+    <linearGradient id="server" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#15283a"/>
+      <stop offset="1" stop-color="#09131f"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#38ec87"/>
+      <stop offset="1" stop-color="#14bd63"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- decorative field -->
+  <circle cx="1030" cy="112" r="92" fill="url(#warm)" opacity=".98"/>
+  <path d="M550 60C690 10 900 18 1088 118" fill="none" stroke="#18324a" stroke-width="3" opacity=".6"/>
+  <path d="M565 594C745 630 930 617 1114 520" fill="none" stroke="#18324a" stroke-width="3" opacity=".35"/>
+
+  <!-- website card -->
+  <g>
+    <rect x="44" y="180" width="310" height="226" rx="34" fill="#0d1b2a" stroke="#2b4660" stroke-width="2"/>
+    <circle cx="78" cy="214" r="7" fill="#7e9ab8"/>
+    <circle cx="101" cy="214" r="7" fill="#7e9ab8"/>
+    <circle cx="124" cy="214" r="7" fill="#7e9ab8"/>
+    <rect x="72" y="246" width="134" height="94" rx="14" fill="#cfd9e5"/>
+    <path d="M91 322l31-34 22 23 18-18 27 29z" fill="#9eb1c7"/>
+    <circle cx="177" cy="272" r="10" fill="#eff4f8"/>
+    <rect x="226" y="258" width="92" height="12" rx="6" fill="#8ca3bd"/>
+    <rect x="226" y="282" width="72" height="10" rx="5" fill="#7088a2"/>
+    <rect x="226" y="305" width="58" height="10" rx="5" fill="#7088a2"/>
+    <rect x="226" y="332" width="86" height="32" rx="16" fill="url(#green)"/>
+    <rect x="72" y="365" width="130" height="9" rx="4.5" fill="#35516b"/>
+    <text x="199" y="447" text-anchor="middle" fill="#f7f6f2" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Website</text>
+  </g>
+
+  <!-- arrow -->
+  <g stroke="#2dde74" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M375 292h116"/>
+    <path d="M466 264l30 28-30 28"/>
+  </g>
+
+  <!-- server stack behind VPS -->
+  <g opacity=".96">
+    <rect x="900" y="176" width="220" height="92" rx="24" fill="url(#server)" stroke="#27435d" stroke-width="2"/>
+    <rect x="920" y="288" width="200" height="92" rx="24" fill="url(#server)" stroke="#27435d" stroke-width="2"/>
+    <rect x="936" y="400" width="184" height="92" rx="24" fill="url(#server)" stroke="#27435d" stroke-width="2"/>
+    <g fill="#06101a">
+      <circle cx="1048" cy="211" r="6"/><circle cx="1071" cy="211" r="6"/><circle cx="1048" cy="233" r="6"/><circle cx="1071" cy="233" r="6"/>
+      <circle cx="1048" cy="323" r="6"/><circle cx="1071" cy="323" r="6"/><circle cx="1048" cy="345" r="6"/><circle cx="1071" cy="345" r="6"/>
+      <circle cx="1048" cy="435" r="6"/><circle cx="1071" cy="435" r="6"/><circle cx="1048" cy="457" r="6"/><circle cx="1071" cy="457" r="6"/>
+    </g>
+    <circle cx="1090" cy="222" r="8" fill="#2dde74"/>
+    <circle cx="1090" cy="334" r="8" fill="#2dde74"/>
+    <circle cx="1090" cy="446" r="8" fill="#2dde74"/>
+  </g>
+
+  <!-- VPS panel -->
+  <g>
+    <rect x="500" y="118" width="510" height="390" rx="36" fill="#f4f7fb"/>
+    <g transform="translate(538 154)">
+      <path d="M0 10L28 0l28 10-28 10zM0 27l28 10 28-10v13L28 50 0 40zM0 45l28 10 28-10v13L28 68 0 58z" fill="#17a95b"/>
+      <text x="78" y="45" fill="#07101a" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">VPS</text>
+    </g>
+
+    <!-- module cards -->
+    <g font-family="Arial, Helvetica, sans-serif" fill="#07101a">
+      <rect x="540" y="238" width="205" height="105" rx="22" fill="#e7edf4"/>
+      <rect x="768" y="238" width="205" height="105" rx="22" fill="#e7edf4"/>
+      <rect x="540" y="364" width="205" height="105" rx="22" fill="#e7edf4"/>
+      <rect x="768" y="364" width="205" height="105" rx="22" fill="#e7edf4"/>
+
+      <!-- cpu icon -->
+      <rect x="568" y="268" width="34" height="34" rx="7" fill="#17a95b"/>
+      <g stroke="#17a95b" stroke-width="5" stroke-linecap="round">
+        <path d="M576 258v8M586 258v8M596 258v8M576 304v8M586 304v8M596 304v8M558 276h8M558 286h8M558 296h8M604 276h8M604 286h8M604 296h8"/>
+      </g>
+      <text x="624" y="287" font-size="20" font-weight="700">CPU + RAM</text>
+      <rect x="624" y="306" width="92" height="8" rx="4" fill="#c2cedc"/>
+      <rect x="624" y="322" width="66" height="8" rx="4" fill="#d0d9e3"/>
+
+      <!-- web icon -->
+      <path d="M798 269l22-9 22 9-22 9zM798 284l22 9 22-9v10l-22 9-22-9z" fill="#17a95b"/>
+      <text x="854" y="287" font-size="20" font-weight="700">Web stack</text>
+      <rect x="854" y="306" width="92" height="8" rx="4" fill="#c2cedc"/>
+      <rect x="854" y="322" width="64" height="8" rx="4" fill="#d0d9e3"/>
+
+      <!-- db icon -->
+      <ellipse cx="585" cy="392" rx="24" ry="10" fill="#17a95b"/>
+      <path d="M561 392v37c0 6 11 11 24 11s24-5 24-11v-37c0 6-11 11-24 11s-24-5-24-11z" fill="#17a95b"/>
+      <path d="M561 408c0 6 11 11 24 11s24-5 24-11M561 424c0 6 11 11 24 11s24-5 24-11" fill="none" stroke="#f4f7fb" stroke-opacity=".5" stroke-width="3"/>
+      <text x="624" y="413" font-size="20" font-weight="700">Database</text>
+      <rect x="624" y="432" width="92" height="8" rx="4" fill="#c2cedc"/>
+      <rect x="624" y="448" width="66" height="8" rx="4" fill="#d0d9e3"/>
+
+      <!-- shield icon -->
+      <path d="M820 382l25 10v20c0 18-11 31-25 39-14-8-25-21-25-39v-20z" fill="#11894b"/>
+      <path d="M809 414l8 8 15-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="854" y="405" font-size="18" font-weight="700">Monitoring +</text>
+      <text x="854" y="428" font-size="18" font-weight="700">backup</text>
+      <rect x="854" y="445" width="92" height="8" rx="4" fill="#c2cedc"/>
+    </g>
+  </g>
+
+  <!-- benefit chips -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">
+    <rect x="418" y="548" width="230" height="70" rx="35" fill="#0b1723" stroke="#1b8060" stroke-width="2"/>
+    <circle cx="456" cy="583" r="23" fill="#0f553b"/>
+    <rect x="447" y="579" width="18" height="16" rx="3" fill="#2dde74"/>
+    <path d="M451 579v-5a5 5 0 0110 0v5" fill="none" stroke="#2dde74" stroke-width="4"/>
+    <text x="492" y="590" fill="#f3f6f8">Isolated resources</text>
+
+    <rect x="666" y="548" width="190" height="70" rx="35" fill="#0b1723" stroke="#1b8060" stroke-width="2"/>
+    <circle cx="704" cy="583" r="23" fill="#0f553b"/>
+    <path d="M704 567l5 6 8-1 2 8 7 4-4 7 2 8-8 2-5 6-7-4-7 4-5-6-8-2 2-8-4-7 7-4 2-8 8 1z" fill="#2dde74"/>
+    <circle cx="704" cy="584" r="7" fill="#0f553b"/>
+    <text x="739" y="590" fill="#f3f6f8">Full control</text>
+
+    <rect x="874" y="548" width="250" height="70" rx="35" fill="#0b1723" stroke="#1b8060" stroke-width="2"/>
+    <circle cx="912" cy="583" r="23" fill="#0f553b"/>
+    <path d="M900 592l10-10 8 6 12-15M921 573h9v9" fill="none" stroke="#2dde74" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="947" y="590" fill="#f3f6f8">Scalable setup</text>
+  </g>
+
+  <!-- subtle connectors to chips -->
+  <g stroke="#2c7f9b" stroke-width="2" stroke-dasharray="7 8" fill="none" opacity=".9">
+    <path d="M720 508v20c0 12-15 20-33 20h-150"/>
+    <path d="M742 508v40"/>
+    <path d="M764 508v20c0 12 15 20 33 20h185"/>
+  </g>
+  <g fill="#2dde74">
+    <circle cx="537" cy="548" r="5"/><circle cx="742" cy="548" r="5"/><circle cx="982" cy="548" r="5"/>
+  </g>
+</svg>
