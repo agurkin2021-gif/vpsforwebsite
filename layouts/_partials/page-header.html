@@ -555,6 +555,38 @@
       if (list) list.classList.add("vps-vs-migration-flow");
     });
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var heading = document.getElementById("vps-and-seo");
+      if (!heading || heading.closest(".vps-vs-seo-section")) return;
+
+      var parent = heading.parentElement;
+      if (!parent) return;
+
+      var section = document.createElement("section");
+      section.className = "vps-vs-seo-section";
+      parent.insertBefore(section, heading);
+
+      var node = heading;
+      while (node && !(node !== heading && node.tagName === "H2")) {
+        var next = node.nextElementSibling;
+        section.appendChild(node);
+        node = next;
+      }
+
+      var paragraphs = section.querySelectorAll(":scope > p");
+      if (paragraphs.length) {
+        paragraphs[0].classList.add("vps-vs-seo-lead");
+        if (paragraphs.length > 1) paragraphs[1].classList.add("vps-vs-seo-explainer");
+        if (paragraphs.length > 2) paragraphs[2].classList.add("vps-vs-seo-label");
+        paragraphs[paragraphs.length - 1].classList.add("vps-vs-seo-result");
+      }
+
+      var list = section.querySelector(":scope > ul");
+      if (list) list.classList.add("vps-vs-seo-grid");
+    });
+  </script>
 {{ else }}
   <section class="vps-page-header">
     <div class="container">
