@@ -1,0 +1,9 @@
+{{/* Same design fonts, served locally. Preload + optional prevents late font swaps. */}}
+{{ $inter := resources.Get "fonts/inter-latin.woff2" | fingerprint "sha256" }}
+{{ $fraunces := resources.Get "fonts/fraunces-latin.woff2" | fingerprint "sha256" }}
+<link rel="preload" href="{{ $inter.RelPermalink }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ $fraunces.RelPermalink }}" as="font" type="font/woff2" crossorigin />
+<style>
+@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:optional;src:url('{{ $inter.RelPermalink }}') format('woff2')}
+@font-face{font-family:Fraunces;font-style:normal;font-weight:600 700;font-display:optional;src:url('{{ $fraunces.RelPermalink }}') format('woff2')}
+</style>

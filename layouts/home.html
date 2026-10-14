@@ -81,13 +81,13 @@
                   width="1200"
                   height="675" />
               {{ else if strings.HasSuffix .image ".webp" }}
-                <img
-                  src="{{ .image | relURL }}"
-                  alt="{{ .title | plainify }}"
-                  loading="eager"
-                  decoding="async"
-                  width="600"
-                  height="456" />
+                {{ $small := resources.Get "images/home/vps-hero-450.webp" | fingerprint "sha256" }}
+                {{ $large := resources.Get "images/home/vps-hero-579.webp" | fingerprint "sha256" }}
+                <img src="{{ $large.RelPermalink }}"
+                  srcset="{{ $small.RelPermalink }} 450w, {{ $large.RelPermalink }} 579w"
+                  sizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)"
+                  alt="{{ .title | plainify }}" loading="eager" decoding="auto" fetchpriority="high"
+                  width="579" height="434" />
               {{ else }}
                 {{ partial "image" (dict "Src" .image "Alt" (.title | plainify) "Loading" "eager" "DisplayXL" "800x" ) }}
               {{ end }}
@@ -179,7 +179,7 @@
               md:order-2
             {{ end }} md:col-5 mb-6">
             {{ if eq .id "fit-check" }}
-              <a class="vps-fit-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — VPS fit decision">
+              <a class="vps-fit-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-fit-diagram-top">
                   <div class="vps-fit-node vps-fit-node-source">
                     <span class="vps-fit-node-kicker">Current hosting</span>
@@ -220,7 +220,7 @@
                 </div>
               </a>
             {{ else if eq .id "vps-sizing" }}
-              <a class="vps-sizing-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — workload sizing">
+              <a class="vps-sizing-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-sizing-head">
                   <span class="vps-sizing-kicker">Sizing logic</span>
                   <strong>Size the workload, not visits</strong>
@@ -287,7 +287,7 @@
                 </div>
               </a>
             {{ else if eq .id "provider-checklist" }}
-              <a class="vps-provider-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — provider checklist">
+              <a class="vps-provider-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-provider-head">
                   <span class="vps-provider-kicker">Provider audit</span>
                   <strong>Compare the terms that affect the website</strong>
@@ -349,7 +349,7 @@
                 </div>
               </a>
             {{ else if eq .id "management-path" }}
-              <a class="vps-management-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — management model">
+              <a class="vps-management-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-management-head">
                   <span class="vps-management-kicker">Operating model</span>
                   <strong>Choose how the server will be operated</strong>
@@ -406,7 +406,7 @@
                 </div>
               </a>
             {{ else if eq .id "migration-preflight" }}
-              <a class="vps-migration-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — migration plan">
+              <a class="vps-migration-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-migration-head">
                   <span class="vps-migration-kicker">Migration preflight</span>
                   <strong>Map the stack before you move it</strong>
@@ -470,7 +470,7 @@
                 </div>
               </a>
             {{ else if eq .id "architecture-planner" }}
-              <a class="vps-architecture-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — workload architecture">
+              <a class="vps-architecture-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-architecture-head">
                   <span class="vps-architecture-kicker">Architecture decision</span>
                   <strong>Keep it together while the workload is predictable</strong>
@@ -537,7 +537,7 @@
                 </div>
               </a>
             {{ else if eq .id "safe-growth" }}
-              <a class="vps-growth-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener" aria-label="See current VPS configurations — growth and recovery">
+              <a class="vps-growth-diagram vps-affiliate-visual" href="{{ $affiliate }}" target="_blank" rel="sponsored nofollow noopener">
                 <div class="vps-growth-head">
                   <span class="vps-growth-kicker">Reversible operations</span>
                   <strong>Change the server without betting production</strong>
@@ -640,7 +640,7 @@
             <ul>
               {{ range .bulletpoints }}
                 <li class="relative mb-4 pl-6">
-                  <i class="fa fa-check absolute left-0 top-1.5"></i>
+                  {{ partial "ui-icon.html" (dict "Name" "check" "Class" "absolute left-0 top-1.5") }}
                   {{ . | markdownify }}
                 </li>
               {{ end }}
@@ -659,7 +659,7 @@
                     target="_blank" rel="sponsored nofollow noopener"
                   {{ end }}>
                   {{ .label }}
-                  <i class="fa fa-arrow-right pl-2"></i>
+                  {{ partial "ui-icon.html" (dict "Name" "arrow-right" "Class" "ml-2") }}
                 </a>
               {{ end }}
             {{ end }}
@@ -767,7 +767,7 @@
                       href="{{ $affiliateLink }}"
                       target="_blank"
                       rel="sponsored nofollow noopener"
-                      aria-label="See current VPS configurations — {{ .spec }}">
+                     >
                       <h3 class="mb-3 text-lg font-semibold">{{ .spec }}</h3>
                       <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
                         <dt class="font-semibold">Transfer</dt>
@@ -795,7 +795,7 @@
                   <ul>
                     {{ range .items }}
                       <li class="relative mb-3 pl-6">
-                        <i class="fa fa-check absolute left-0 top-1.5"></i>
+                        {{ partial "ui-icon.html" (dict "Name" "check" "Class" "absolute left-0 top-1.5") }}
                         {{ . | markdownify }}
                       </li>
                     {{ end }}

@@ -13044,3 +13044,22 @@ body:has(.vps-woocommerce-page-header) main > .section-sm > .container > .row.ju
     width: 100%;
   }
 }
+
+/* Performance/accessibility: native icons and readable inline links. */
+/* The artwork already contains its neon glow; avoid repainting blur filters on phones. */
+@media (max-width: 767px) {
+  .vps-home .vps-hero-panel img { animation:none!important; filter:none; }
+}
+.vps-home > section:not(.vps-hero), #final-cta {
+  content-visibility:auto;
+  contain-intrinsic-size:auto 1000px;
+}
+@media print {
+  .vps-home > section:not(.vps-hero), #final-cta { content-visibility:visible; }
+}
+.vps-icon { display:inline-block; width:1em; height:1em; vertical-align:-.125em; flex:none; }
+.vps-fit-node-source .vps-fit-node-kicker { color:#08763b; }
+.vps-fit-node-source small { color:#526274; }
+.vps-home p a:not(.btn), .vps-home li a:not(.btn) {
+  text-decoration:underline; text-underline-offset:.18em;
+}

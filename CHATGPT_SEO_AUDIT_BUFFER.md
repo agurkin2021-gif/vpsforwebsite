@@ -3916,3 +3916,11 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Pricing-card headings are now h3 with the existing visual size. Headingless About/Contact list containers use div instead of section.
 - Nu Html Checker 26.10.12: all 19 live HTML documents pass with zero errors/warnings; online W3C homepage result has no messages. The complete current Hugo source build also passes for all 22 English/Spanish HTML documents.
 - Page titles, H1s, text, URL ownership, canonical/base destinations, link targets, IDs, JSON-LD and analytics behavior were preserved. This pass changes conformance markup; it does not reopen frozen content scopes or create new SEO owners.
+
+
+### 2026-10-14 — Performance and accessibility follow-up
+
+- Preserved frozen content ownership, Title/H1 equality, canonical destinations, internal links and existing production routes.
+- Improved font loading/CLS, responsive hero delivery, per-page CSS, native icons, offscreen rendering, accessible link names/contrast and theme-script reliability. GA4 initialization is queued in the head; its library starts on page load without an artificial timer or interaction gate.
+- All 19 production pages / 22 source-build documents continue to pass Nu HTML Checker. Full-page accessibility checks and the homepage fit checker pass. No new SEO owner or content expansion was introduced.
+- Online PSI remeasurement was unavailable due to HTTP 429. Direct Lighthouse 13.5 mobile/desktop results are recorded in CHATGPT_PROJECT_CONTEXT.md; do not present those as a new Google-hosted PageSpeed report.

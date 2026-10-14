@@ -57,6 +57,7 @@ jobs:
         run: |
           rm -rf public
           hugo --gc --minify --baseURL "https://agurkin2021-gif.github.io/vpsforwebsite/"
+          node scripts/optimize-css.mjs public
           test -s public/index.html
           test -s public/es/index.html
           grep -q 'VPS para alojar sitios web' public/es/index.html

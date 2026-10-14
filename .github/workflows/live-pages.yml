@@ -66,7 +66,10 @@ jobs:
       - name: Build production site with complete Tailwind utilities
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Verify production homepage SEO output
+      - name: Optimize CSS for each generated page
+        run: node scripts/optimize-css.mjs public
+
+      - name: Verify production homepage SEO metadata
         shell: bash
         env:
           PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}

@@ -81,22 +81,6 @@ enable = false
 site_key = ""
 embed_url = ""
 
-[[plugins.css]]
-link = "plugins/font-awesome/v6/solid.css"
-lazy = true
-
-[[plugins.css]]
-link = "plugins/font-awesome/v6/icons.css"
-lazy = true
-
-[[plugins.js]]
-link = "js/search.js"
-lazy = false
-
-[[plugins.js]]
-link = "plugins/cookie.js"
-lazy = false
-
 [[plugins.js]]
 link = "js/accordion.js"
 lazy = true

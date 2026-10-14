@@ -1,21 +1,4 @@
-<!-- DNS preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<!-- google fonts -->
-{{ $pf:= hugo.Data.theme.fonts.font_family.primary }}
-{{ $sf:= hugo.Data.theme.fonts.font_family.secondary }}
-<script>
-  (function () {
-    const googleFont = document.createElement("link");
-    googleFont.href = "https://fonts.googleapis.com/css2?family={{$pf | safeURL}}{{with $sf}}&family={{. | safeURL}}{{end}}&display=swap";
-    googleFont.type = "text/css";
-    googleFont.rel = "stylesheet";
-    document.head.appendChild(googleFont);
-  })();
-</script>
-
-<!-- Bundle all site CSS inline so GitHub Pages project-path deployment cannot lose styling. -->
+<!-- Fingerprinted site styles, compatible with custom domains and project-path previews. -->
 {{ $styles := slice }}
 {{ $stylesLazy := slice }}
 
@@ -36,15 +19,15 @@
 {{ $tailwindCSS := $mainCSS | css.TailwindCSS $tailwindOpts }}
 {{ $styles = $styles | append $tailwindCSS }}
 {{ $styles = $styles | resources.Concat "css/style.css" }}
-{{ $stylesLazy = $stylesLazy | resources.Concat "css/style-lazy.css" }}
+{{ if $stylesLazy }}{{ $stylesLazy = $stylesLazy | resources.Concat "css/style-lazy.css" }}{{ end }}
 
 {{ if hugo.IsProduction }}
   {{ $styles = $styles | minify }}
-  {{ $stylesLazy = $stylesLazy | minify }}
+  {{ if $stylesLazy }}{{ $stylesLazy = $stylesLazy | minify }}{{ end }}
 {{ end }}
 
 {{ $styles = $styles | fingerprint "sha256" }}
-{{ $stylesLazy = $stylesLazy | fingerprint "sha256" }}
+{{ if $stylesLazy }}{{ $stylesLazy = $stylesLazy | fingerprint "sha256" }}{{ end }}
 
 <link
   id="site-critical-css"
@@ -52,9 +35,12 @@
   href="{{ $styles.Permalink }}"
   integrity="{{ $styles.Data.Integrity }}"
   crossorigin="anonymous" />
+{{ if $stylesLazy }}
 <link
   id="site-plugin-css"
   rel="stylesheet"
   href="{{ $stylesLazy.Permalink }}"
   integrity="{{ $stylesLazy.Data.Integrity }}"
   crossorigin="anonymous" />
+
+{{ end }}
