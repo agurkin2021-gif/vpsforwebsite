@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "node -e \"const fs=require('fs'); if(!fs.existsSync('cloudflare-public/index.html')){console.error('Missing cloudflare-public/index.html'); process.exit(1)} console.log('Using prebuilt cloudflare-public for Cloudflare deployment')\"",
+    "build": "hugo --gc --minify --forceSyncStatic --destination cloudflare-public && node scripts/optimize-css.mjs cloudflare-public",
     "build:hugo": "hugo --gc --minify --forceSyncStatic && node scripts/optimize-css.mjs public"
   },
   "devDependencies": {
