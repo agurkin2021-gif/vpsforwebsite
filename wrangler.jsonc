@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vpsforwebsite",
+  "main": "./cloudflare-worker.mjs",
+  "compatibility_date": "2026-10-19",
+  "assets": {
+    "directory": "./cloudflare-public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

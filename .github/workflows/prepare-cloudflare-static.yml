@@ -1,0 +1,87 @@
+name: Prepare Cloudflare static site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/prepare-cloudflare-static.yml"
+      - "content/**"
+      - "layouts/**"
+      - "assets/**"
+      - "static/**"
+      - "config/**"
+      - "i18n/**"
+      - "data/**"
+      - "hugo.toml"
+      - "go.mod"
+      - "package.json"
+      - "scripts/optimize-css.mjs"
+      - "recovered-public/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prepare-cloudflare-static
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Install dependencies
+        run: |
+          npm install
+          hugo mod get
+
+      - name: Decode homepage hero visual
+        shell: bash
+        run: |
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          test -s static/images/home/vps-hero-right.webp
+
+      - name: Build restored Hugo source
+        run: |
+          rm -rf cloudflare-public
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/" --destination cloudflare-public
+          node scripts/optimize-css.mjs cloudflare-public
+
+      - name: Overlay emergency Cloudflare-cache recovery
+        shell: bash
+        run: |
+          if [ -d recovered-public ]; then
+            cp -a recovered-public/. cloudflare-public/
+          fi
+          test -s cloudflare-public/index.html
+          echo "Cloudflare site files: $(find cloudflare-public -type f | wc -l)"
+          echo "Cloudflare HTML files: $(find cloudflare-public -type f -name '*.html' | wc -l)"
+
+      - name: Commit deployable static site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f cloudflare-public
+          git diff --cached --quiet && exit 0
+          git commit -m "Prepare vpsforwebsite Cloudflare static site"
+          git pull --rebase origin main
+          git push
