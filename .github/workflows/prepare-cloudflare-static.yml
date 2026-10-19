@@ -65,12 +65,34 @@ jobs:
           hugo --gc --minify --baseURL "https://vpsforwebsite.com/" --destination cloudflare-public
           node scripts/optimize-css.mjs cloudflare-public
 
-      - name: Overlay emergency Cloudflare-cache recovery
+      - name: Fill only files missing from restored Hugo source
         shell: bash
         run: |
-          if [ -d recovered-public ]; then
-            cp -a recovered-public/. cloudflare-public/
-          fi
+          python - <<'PY'
+          from pathlib import Path
+          import shutil
+
+          src = Path("recovered-public")
+          dst = Path("cloudflare-public")
+          copied = 0
+          preserved = 0
+
+          if src.is_dir():
+              for item in src.rglob("*"):
+                  if not item.is_file():
+                      continue
+                  rel = item.relative_to(src)
+                  target = dst / rel
+                  if target.exists():
+                      preserved += 1
+                      continue
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(item, target)
+                  copied += 1
+
+          print(f"Recovery fallback copied missing files: {copied}")
+          print(f"Hugo-generated files preserved over recovery snapshot: {preserved}")
+          PY
           test -s cloudflare-public/index.html
           echo "Cloudflare site files: $(find cloudflare-public -type f | wc -l)"
           echo "Cloudflare HTML files: $(find cloudflare-public -type f -name '*.html' | wc -l)"
