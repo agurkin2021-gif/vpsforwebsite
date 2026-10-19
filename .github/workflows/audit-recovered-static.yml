@@ -1,0 +1,137 @@
+name: Audit recovered Cloudflare static site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/audit-recovered-static.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit recovered static site
+        shell: bash
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+          import json, re, xml.etree.ElementTree as ET
+
+          ROOT = Path("cloudflare-public")
+          DOMAIN = "vpsforwebsite.com"
+
+          class P(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  d = dict(attrs)
+                  for k in ("href","src","poster","data-src","data-href"):
+                      v = d.get(k)
+                      if v: self.refs.append(v)
+                  for k in ("srcset","data-srcset"):
+                      v = d.get(k)
+                      if v:
+                          self.refs.extend(x.strip().split(" ")[0] for x in v.split(",") if x.strip())
+                  style = d.get("style","")
+                  self.refs.extend(re.findall(r"url\((?:['\"])?([^)'\"]+)", style, re.I))
+
+          def internal_path(raw):
+              if not raw or raw.startswith(("#","mailto:","tel:","javascript:","data:","blob:")):
+                  return None
+              if raw.startswith("//"):
+                  raw = "https:" + raw
+              if raw.startswith("http://") or raw.startswith("https://"):
+                  u = urlparse(raw)
+                  if u.hostname not in {DOMAIN, "www."+DOMAIN}:
+                      return None
+                  p = u.path
+              else:
+                  p = raw.split("?",1)[0].split("#",1)[0]
+              if not p.startswith("/"):
+                  return None
+              return p
+
+          asset_exts = {
+              ".css",".js",".mjs",".json",".webmanifest",".png",".jpg",".jpeg",".webp",
+              ".gif",".svg",".ico",".woff",".woff2",".ttf",".wasm",".xml",".txt"
+          }
+          missing_assets = {}
+          html_files = list(ROOT.rglob("*.html"))
+          for f in html_files:
+              try:
+                  text = f.read_text(encoding="utf-8")
+              except Exception:
+                  continue
+              p = P(); p.feed(text)
+              refs = list(p.refs)
+              refs += re.findall(r"url\((?:['\"])?([^)'\"]+)", text, re.I)
+              for raw in refs:
+                  path = internal_path(raw)
+                  if not path:
+                      continue
+                  q = Path(path)
+                  if q.suffix.lower() not in asset_exts:
+                      continue
+                  target = ROOT / path.lstrip("/")
+                  if not target.is_file():
+                      missing_assets.setdefault(path, []).append(str(f.relative_to(ROOT)))
+
+          # CSS nested assets.
+          for f in ROOT.rglob("*.css"):
+              try: text=f.read_text(encoding="utf-8")
+              except Exception: continue
+              for raw in re.findall(r"url\((?:['\"])?([^)'\"]+)", text, re.I):
+                  path=internal_path(raw)
+                  if not path: continue
+                  target=ROOT/path.lstrip("/")
+                  if not target.is_file():
+                      missing_assets.setdefault(path, []).append(str(f.relative_to(ROOT)))
+
+          sitemap = ROOT/"sitemap.xml"
+          sitemap_urls=[]
+          if sitemap.is_file():
+              root=ET.fromstring(sitemap.read_bytes())
+              sitemap_urls=[e.text.strip() for e in root.iter() if e.tag.endswith("loc") and e.text]
+
+          missing_pages=[]
+          for url in sitemap_urls:
+              u=urlparse(url)
+              p=u.path or "/"
+              if p=="/":
+                  target=ROOT/"index.html"
+              elif p.endswith("/"):
+                  target=ROOT/p.lstrip("/")/"index.html"
+              elif p.endswith(".html"):
+                  target=ROOT/p.lstrip("/")
+              else:
+                  target=ROOT/p.lstrip("/")/"index.html"
+              if not target.is_file():
+                  missing_pages.append({"url":url,"expected":str(target.relative_to(ROOT))})
+
+          summary={
+              "files":sum(1 for x in ROOT.rglob("*") if x.is_file()),
+              "html":len(html_files),
+              "sitemap_urls":len(sitemap_urls),
+              "missing_sitemap_pages":missing_pages,
+              "missing_asset_count":len(missing_assets),
+              "missing_assets":missing_assets,
+              "has_index":(ROOT/"index.html").is_file(),
+              "has_404":(ROOT/"404.html").is_file(),
+              "has_robots":(ROOT/"robots.txt").is_file(),
+              "has_sitemap":sitemap.is_file(),
+          }
+          print("RECOVERY_AUDIT_BEGIN")
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          print("RECOVERY_AUDIT_END")
+          PY
