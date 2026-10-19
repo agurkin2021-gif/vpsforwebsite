@@ -1,0 +1,1 @@
+(function(){"use strict";typeof Swiper!="undefined"&&document.querySelector(".testimonial-slider")&&new Swiper(".testimonial-slider",{spaceBetween:24,loop:!0,pagination:{el:".testimonial-slider-pagination",type:"bullets",clickable:!0},breakpoints:{768:{slidesPerView:2},992:{slidesPerView:3}}})})()
