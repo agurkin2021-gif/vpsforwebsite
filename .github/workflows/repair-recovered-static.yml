@@ -1,0 +1,189 @@
+name: Repair recovered Cloudflare static site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/repair-recovered-static.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Build reference Hugo output
+        shell: bash
+        run: |
+          npm install
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          rm -rf source-public
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/" --destination source-public
+          node scripts/optimize-css.mjs source-public
+
+      - name: Repair missing cached CSS and sitemap pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, shutil, xml.etree.ElementTree as ET
+
+          ROOT=Path("cloudflare-public")
+          SRC=Path("source-public")
+          BASE="https://vpsforwebsite.com"
+
+          # Old cached stylesheet -> equivalent English source page.
+          mapping={
+            "e60c448ced9439b74681acd811925cad69406201d3a8e26c64bb5939311542bb":"managed-vs-unmanaged-vps",
+            "9a173859172208727d98f0c92f4e9bc56c209d23cd7c8e2ed926fa0714e24f52":"vps-with-control-panel",
+            "3c673456840ad5bad4343f6f6c4b749002ccfe9f9b735231f2ff5077786aabdc":"privacy-policy",
+            "9b2a664e055babddf2d4cdcd4c19abeee7030dbbe9e3c0868bf9157a32db85f0":"vps-vs-shared-hosting",
+            "af99f8bcda84bbeb2cfee75bf905054efc085d17c6feb307762b5c1e1be89df6":"vps-backup-strategy",
+            "eec2d3f25005e4e7040ef8ee8e32a8ac06b8ff99de82cc223ce2363e30629074":"vps-for-woocommerce",
+            "99b7423bc92ff9638928e48c2227c37f28736fb9030f3694772d0b4122a23f64":"vps-monitoring",
+            "fdd9cc1cb83f4e321f7ae83e85e728a15034732d332b44cf70b2902a8fefc402":"vps-security-checklist",
+            "d8bbe8f8254651f2e2d6e81b3a50e580aff78f2aa4f8829943a13ce0d1a8021b":"how-to-choose-vps-location",
+            "4f5738c5d69f0da367aa62ca65613f46827a1e5cc44214518b2256435b063687":"fastpanel-vps-hosting",
+            "501a140761af9ab5385b13782c31a750a4efa37590339d6c6ff94c10a27c9e05":"vps-for-wordpress",
+            "ded1f45064f4cda13500bbd8f03444976c90892dca24ce14f1f980c5e31b7973":"how-to-host-a-website-on-vps",
+            "d401eae4631d08c6571ac56f67d69f31c2df172dfbb20193dfeaa9a0057c013a":"website-migration-to-vps",
+            "0741a923295b60ee4e30a8a896c5ae4e29e921a80933700dbd0330ff7f8f9224":"vps-for-multiple-websites",
+            "428f4d75d6e2652eec694e7c54be4574ea71b57b6245413ff424aeebced2334f":"vps-sizing-for-website",
+            "1ee382c6e4eab0626332a87aab2fc9aeb62686bdf7b8c9812992299cb26f0319":"about",
+            "4e5b00c813b819c9a94f025c28808995ee54206cac49c046184151dcd4a80aa8":"contact",
+          }
+
+          def stylesheet_for(page):
+              p=SRC/page/"index.html"
+              if not p.is_file():
+                  raise SystemExit(f"Missing source reference page: {p}")
+              text=p.read_text(encoding="utf-8")
+              m=re.search(r'href=(?:"|\')?(?:https://vpsforwebsite\.com)?(/css/style\.min\.[0-9a-f]+\.css)',text,re.I)
+              if not m:
+                  raise SystemExit(f"No stylesheet in {p}")
+              rel=m.group(1)
+              if not (SRC/rel.lstrip("/")).is_file():
+                  raise SystemExit(f"Source stylesheet absent: {rel}")
+              # The initial source build already copied these into cloudflare-public.
+              if not (ROOT/rel.lstrip("/")).is_file():
+                  shutil.copy2(SRC/rel.lstrip("/"),ROOT/rel.lstrip("/"))
+              return rel
+
+          replacements={old:stylesheet_for(page) for old,page in mapping.items()}
+          changed=0
+          for p in ROOT.rglob("*.html"):
+              text=p.read_text(encoding="utf-8")
+              original=text
+              for old,newrel in replacements.items():
+                  oldrel=f"/css/style.min.{old}.css"
+                  oldabs=BASE+oldrel
+                  if oldrel not in text and oldabs not in text:
+                      continue
+                  newabs=BASE+newrel
+                  # Patch only link tags so unrelated text is never touched.
+                  def fix(tagm):
+                      tag=tagm.group(0)
+                      if oldrel not in tag and oldabs not in tag:
+                          return tag
+                      tag=tag.replace(oldabs,newabs).replace(oldrel,newrel)
+                      tag=re.sub(r'\s+integrity=(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',"",tag,flags=re.I)
+                      return tag
+                  text=re.sub(r"<link\b[^>]*>",fix,text,flags=re.I)
+              if text!=original:
+                  p.write_text(text,encoding="utf-8")
+                  changed+=1
+
+          # Seven sitemap URLs were cache misses. Restore a 200 page from the
+          # equivalent English article and localize critical metadata/H1.
+          fallbacks=[
+            ("bn/vps-backup-strategy","vps-backup-strategy","bn","VPS ব্যাকআপ কৌশল","VPS ব্যাকআপ পরিকল্পনা, স্ন্যাপশট, অফ-সার্ভার কপি ও পুনরুদ্ধার যাচাইয়ের ব্যবহারিক নির্দেশিকা।"),
+            ("bn/vps-vs-shared-hosting","vps-vs-shared-hosting","bn","VPS বনাম শেয়ার্ড হোস্টিং","VPS এবং শেয়ার্ড হোস্টিংয়ের নিয়ন্ত্রণ, সম্পদ, পরিচালনা ও বৃদ্ধির পার্থক্য তুলনা করুন।"),
+            ("pt-br/monitoramento-vps","vps-monitoring","pt-BR","Monitoramento de VPS","Monitore recursos, disponibilidade e sinais de capacidade do VPS antes de escalar."),
+            ("fr/strategie-sauvegarde-vps","vps-backup-strategy","fr","Stratégie de sauvegarde VPS","Planifiez les sauvegardes VPS, les copies hors serveur, les snapshots et les tests de restauration."),
+            ("fr/vps-pour-plusieurs-sites","vps-for-multiple-websites","fr","VPS pour plusieurs sites","Planifiez un VPS pour héberger plusieurs sites avec isolation, capacité, sauvegardes et surveillance."),
+            ("id/kebijakan-privasi","privacy-policy","id","Kebijakan Privasi","Kebijakan privasi untuk VPSforWebsite.com."),
+            ("es/copias-de-seguridad-vps","vps-backup-strategy","es","Copias de seguridad VPS","Planificá copias de seguridad VPS, snapshots, copias externas y pruebas de restauración."),
+          ]
+
+          for target,source,lang,title,desc in fallbacks:
+              src=ROOT/source/"index.html"
+              dst=ROOT/target/"index.html"
+              if dst.is_file():
+                  continue
+              if not src.is_file():
+                  raise SystemExit(f"Fallback source missing: {src}")
+              text=src.read_text(encoding="utf-8")
+              source_url=f"{BASE}/{source}/"
+              target_url=f"{BASE}/{target}/"
+
+              # Critical URL metadata only; keep hreflang matrix from recovered page.
+              text=re.sub(r'(<link\s+rel=canonical\s+href=)(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',lambda m:m.group(1)+target_url,text,count=1,flags=re.I)
+              text=re.sub(r'(<meta\s+property=(?:"|\')?og:url(?:"|\')?\s+content=)(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',lambda m:m.group(1)+target_url,text,count=1,flags=re.I)
+              text=text.replace(f'"url":"{source_url}"',f'"url":"{target_url}"')
+              text=re.sub(r'(<html\b[^>]*\blang=)(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',lambda m:m.group(1)+lang,text,count=1,flags=re.I)
+              text=re.sub(r'<title>.*?</title>',f'<title>{title}</title>',text,count=1,flags=re.I|re.S)
+              text=re.sub(r'(<meta\s+name=description\s+content=)(?:"[^"]*"|\'[^\']*\'|[^\s>]+)',lambda m:m.group(1)+'"'+desc.replace('"','&quot;')+'"',text,count=1,flags=re.I)
+              text=re.sub(r'(<h1\b[^>]*>).*?(</h1>)',lambda m:m.group(1)+title+m.group(2),text,count=1,flags=re.I|re.S)
+              dst.parent.mkdir(parents=True,exist_ok=True)
+              dst.write_text(text,encoding="utf-8")
+
+          # Final hard checks for the known failures.
+          alltext="\n".join(p.read_text(encoding="utf-8",errors="ignore") for p in ROOT.rglob("*.html"))
+          still=[old for old in mapping if f"style.min.{old}.css" in alltext]
+          if still:
+              raise SystemExit("Old missing CSS refs remain: "+", ".join(still))
+
+          sm=ROOT/"sitemap.xml"
+          root=ET.fromstring(sm.read_bytes())
+          urls=[e.text.strip() for e in root.iter() if e.tag.endswith("loc") and e.text]
+          missing=[]
+          for url in urls:
+              path=url.replace(BASE,"",1).split("?",1)[0] or "/"
+              if path=="/": target=ROOT/"index.html"
+              elif path.endswith("/"): target=ROOT/path.lstrip("/")/"index.html"
+              elif path.endswith(".html"): target=ROOT/path.lstrip("/")
+              else: target=ROOT/path.lstrip("/")/"index.html"
+              if not target.is_file(): missing.append(url)
+          if missing:
+              raise SystemExit("Missing sitemap pages after repair: "+", ".join(missing))
+
+          print(f"REPAIR PASS: patched_html={changed}, fallback_pages={len(fallbacks)}, sitemap_urls={len(urls)}")
+          print("CSS replacements:")
+          for old,new in replacements.items():
+              print(old,"->",new)
+          PY
+
+      - name: Commit repaired static recovery
+        shell: bash
+        run: |
+          rm -rf source-public
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f cloudflare-public
+          git diff --cached --quiet && exit 0
+          git commit -m "Repair recovered static assets and cache misses"
+          git reset --hard HEAD
+          git clean -fd
+          git pull --rebase origin main
+          git push
