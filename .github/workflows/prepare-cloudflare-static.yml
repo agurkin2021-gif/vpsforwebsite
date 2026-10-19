@@ -83,5 +83,7 @@ jobs:
           git add -f cloudflare-public
           git diff --cached --quiet && exit 0
           git commit -m "Prepare vpsforwebsite Cloudflare static site"
+          git reset --hard HEAD
+          git clean -fd
           git pull --rebase origin main
           git push
