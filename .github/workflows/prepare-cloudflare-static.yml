@@ -97,6 +97,100 @@ jobs:
           echo "Cloudflare site files: $(find cloudflare-public -type f | wc -l)"
           echo "Cloudflare HTML files: $(find cloudflare-public -type f -name '*.html' | wc -l)"
 
+      - name: Restore known cache-miss pages from current English source
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path("cloudflare-public")
+          BASE = "https://vpsforwebsite.com"
+
+          fallbacks = [
+              ("bn/vps-backup-strategy", "vps-backup-strategy", "bn", "VPS ব্যাকআপ কৌশল", "VPS ব্যাকআপ পরিকল্পনা, স্ন্যাপশট, অফ-সার্ভার কপি ও পুনরুদ্ধার যাচাইয়ের ব্যবহারিক নির্দেশিকা।"),
+              ("bn/vps-vs-shared-hosting", "vps-vs-shared-hosting", "bn", "VPS বনাম শেয়ার্ড হোস্টিং", "VPS এবং শেয়ার্ড হোস্টিংয়ের নিয়ন্ত্রণ, সম্পদ, পরিচালনা ও বৃদ্ধির পার্থক্য তুলনা করুন।"),
+              ("pt-br/monitoramento-vps", "vps-monitoring", "pt-BR", "Monitoramento de VPS", "Monitore recursos, disponibilidade e sinais de capacidade do VPS antes de escalar."),
+              ("fr/strategie-sauvegarde-vps", "vps-backup-strategy", "fr", "Stratégie de sauvegarde VPS", "Planifiez les sauvegardes VPS, les copies hors serveur, les snapshots et les tests de restauration."),
+              ("fr/vps-pour-plusieurs-sites", "vps-for-multiple-websites", "fr", "VPS pour plusieurs sites", "Planifiez un VPS pour héberger plusieurs sites avec isolation, capacité, sauvegardes et surveillance."),
+              ("id/kebijakan-privasi", "privacy-policy", "id", "Kebijakan Privasi", "Kebijakan privasi untuk VPSforWebsite.com."),
+              ("es/copias-de-seguridad-vps", "vps-backup-strategy", "es", "Copias de seguridad VPS", "Planificá copias de seguridad VPS, snapshots, copias externas y pruebas de restauración."),
+          ]
+
+          def replace_attr(text, tag_prefix, attr, value, count=1):
+              pattern = rf'(<{tag_prefix}\\b[^>]*\\b{attr}=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)'
+              return re.sub(pattern, lambda m: m.group(1) + '"' + value.replace('"', '&quot;') + '"', text, count=count, flags=re.I)
+
+          created = 0
+          for target, source, lang, title, desc in fallbacks:
+              src = ROOT / source / "index.html"
+              dst = ROOT / target / "index.html"
+              if dst.is_file():
+                  continue
+              if not src.is_file():
+                  raise SystemExit(f"Fallback source missing: {src}")
+
+              text = src.read_text(encoding="utf-8")
+              source_url = f"{BASE}/{source}/"
+              target_url = f"{BASE}/{target}/"
+
+              text = re.sub(r'(<base\\s+href=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r'(<link\\s+rel=canonical\\s+href=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r'(<meta\\s+property=(?:"|\\')?og:url(?:"|\\')?\\s+content=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r'(<html\\b[^>]*\\blang=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + '"' + lang + '"', text, count=1, flags=re.I)
+              text = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', text, count=1, flags=re.I | re.S)
+              text = re.sub(r'(<meta\\s+name=description\\s+content=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + '"' + desc.replace('"', '&quot;') + '"', text, count=1, flags=re.I)
+              text = re.sub(r'(<h1\\b[^>]*>).*?(</h1>)', lambda m: m.group(1) + title + m.group(2), text, count=1, flags=re.I | re.S)
+              text = text.replace(f'"url":"{source_url}"', f'"url":"{target_url}"')
+              text = text.replace('"inLanguage":"en"', f'"inLanguage":"{lang}"')
+
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              dst.write_text(text, encoding="utf-8")
+              created += 1
+
+          print(f"Known cache-miss fallback pages created: {created}")
+          PY
+
+      - name: Build sitemap from actual deployable HTML
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from xml.sax.saxutils import escape
+          import re
+
+          ROOT = Path("cloudflare-public")
+          BASE = "https://vpsforwebsite.com"
+          urls = set()
+
+          for page in ROOT.rglob("*.html"):
+              rel = page.relative_to(ROOT)
+              if rel.as_posix() == "404.html" or rel.name == "404.html":
+                  continue
+              try:
+                  html = page.read_text(encoding="utf-8", errors="ignore")
+              except Exception:
+                  continue
+              if re.search(r'<meta\\b[^>]*name=(?:"|\\')?robots(?:"|\\')?[^>]*content=(?:"|\\')?[^>]*noindex', html, re.I):
+                  continue
+
+              if rel.as_posix() == "index.html":
+                  url = BASE + "/"
+              elif rel.name == "index.html":
+                  url = BASE + "/" + rel.parent.as_posix().strip("/") + "/"
+              else:
+                  url = BASE + "/" + rel.as_posix()
+              urls.add(url)
+
+          body = ['<?xml version="1.0" encoding="utf-8"?>',
+                  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+          for url in sorted(urls):
+              body.append(f"  <url><loc>{escape(url)}</loc></url>")
+          body.append("</urlset>")
+          (ROOT / "sitemap.xml").write_text("\n".join(body) + "\n", encoding="utf-8")
+          print(f"Merged deploy sitemap URLs: {len(urls)}")
+          PY
+
       - name: Commit deployable static site
         shell: bash
         run: |
