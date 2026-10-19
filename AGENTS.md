@@ -20,3 +20,14 @@ Critical SEO rule:
 Critical design rule:
 - Hugo + original Hugoplate visual system.
 - Do not replace it with a custom design unless explicitly requested.
+
+Deployment / source-of-truth contract:
+- GitHub repository `main` is the only place for site management and edits.
+- Do not edit the live Cloudflare Worker code or uploaded assets manually in the Cloudflare dashboard.
+- Do not edit `cloudflare-public/**` as source content. It is generated deploy output and can be overwritten by automation.
+- For Hugo-managed pages, edit `content/**`, `layouts/**`, `assets/**`, `static/**`, `config/**`, `i18n/**`, or `data/**`.
+- English and Spanish are currently Hugo-source-managed.
+- Cache-recovered languages/pages that do not yet exist in Hugo source remain under `recovered-public/**`; edit those files in GitHub until that language/page is migrated into Hugo source.
+- `.github/workflows/prepare-cloudflare-static.yml` builds Hugo, preserves Hugo output over the recovery snapshot, restores known cache-miss fallback pages, rebuilds the deployment sitemap from the actual deployable HTML, and commits the generated `cloudflare-public/**`.
+- Cloudflare is connected to GitHub `main` and deploys the generated `cloudflare-public/**` through Worker `vpsforwebsite`.
+- After a production content change, verify: GitHub Action success -> generated static commit -> Cloudflare deployment Ready -> target live URL.
