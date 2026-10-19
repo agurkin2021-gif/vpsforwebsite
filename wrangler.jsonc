@@ -9,5 +9,15 @@
     "run_worker_first": true,
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "vpsforwebsite.com/*",
+      "zone_name": "vpsforwebsite.com"
+    },
+    {
+      "pattern": "www.vpsforwebsite.com/*",
+      "zone_name": "vpsforwebsite.com"
+    }
+  ]
 }
