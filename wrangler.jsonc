@@ -12,8 +12,8 @@
   },
   "routes": [
     {
-      "pattern": "vpsforwebsite.com/*",
-      "zone_name": "vpsforwebsite.com"
+      "pattern": "vpsforwebsite.com",
+      "custom_domain": true
     },
     {
       "pattern": "www.vpsforwebsite.com/*",
