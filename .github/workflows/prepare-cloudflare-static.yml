@@ -117,10 +117,6 @@ jobs:
               ("es/copias-de-seguridad-vps", "vps-backup-strategy", "es", "Copias de seguridad VPS", "Planificá copias de seguridad VPS, snapshots, copias externas y pruebas de restauración."),
           ]
 
-          def replace_attr(text, tag_prefix, attr, value, count=1):
-              pattern = rf'(<{tag_prefix}\\b[^>]*\\b{attr}=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)'
-              return re.sub(pattern, lambda m: m.group(1) + '"' + value.replace('"', '&quot;') + '"', text, count=count, flags=re.I)
-
           created = 0
           for target, source, lang, title, desc in fallbacks:
               src = ROOT / source / "index.html"
@@ -134,12 +130,12 @@ jobs:
               source_url = f"{BASE}/{source}/"
               target_url = f"{BASE}/{target}/"
 
-              text = re.sub(r'(<base\\s+href=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
-              text = re.sub(r'(<link\\s+rel=canonical\\s+href=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
-              text = re.sub(r'(<meta\\s+property=(?:"|\\')?og:url(?:"|\\')?\\s+content=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
-              text = re.sub(r'(<html\\b[^>]*\\blang=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + '"' + lang + '"', text, count=1, flags=re.I)
+              text = re.sub(r"(<base\\s+href=)(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r"(<link\\s+rel=canonical\\s+href=)(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r"(<meta\\s+property=(?:\"|')?og:url(?:\"|')?\\s+content=)(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", lambda m: m.group(1) + target_url, text, count=1, flags=re.I)
+              text = re.sub(r"(<html\\b[^>]*\\blang=)(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", lambda m: m.group(1) + '"' + lang + '"', text, count=1, flags=re.I)
               text = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', text, count=1, flags=re.I | re.S)
-              text = re.sub(r'(<meta\\s+name=description\\s+content=)(?:"[^"]*"|\\'[^\\']*\\'|[^\\s>]+)', lambda m: m.group(1) + '"' + desc.replace('"', '&quot;') + '"', text, count=1, flags=re.I)
+              text = re.sub(r"(<meta\\s+name=description\\s+content=)(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", lambda m: m.group(1) + '"' + desc.replace('"', '&quot;') + '"', text, count=1, flags=re.I)
               text = re.sub(r'(<h1\\b[^>]*>).*?(</h1>)', lambda m: m.group(1) + title + m.group(2), text, count=1, flags=re.I | re.S)
               text = text.replace(f'"url":"{source_url}"', f'"url":"{target_url}"')
               text = text.replace('"inLanguage":"en"', f'"inLanguage":"{lang}"')
@@ -171,7 +167,7 @@ jobs:
                   html = page.read_text(encoding="utf-8", errors="ignore")
               except Exception:
                   continue
-              if re.search(r'<meta\\b[^>]*name=(?:"|\\')?robots(?:"|\\')?[^>]*content=(?:"|\\')?[^>]*noindex', html, re.I):
+              if re.search(r"<meta\\b[^>]*name=(?:\"|')?robots(?:\"|')?[^>]*content=(?:\"|')?[^>]*noindex", html, re.I):
                   continue
 
               if rel.as_posix() == "index.html":
