@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "hugo server --disableFastRender",
-    "build": "hugo --gc --minify --forceSyncStatic && node scripts/optimize-css.mjs public"
+    "build": "node -e \"const fs=require('fs'); if(!fs.existsSync('cloudflare-public/index.html')){console.error('Missing cloudflare-public/index.html'); process.exit(1)} console.log('Using prebuilt cloudflare-public for Cloudflare deployment')\"",
+    "build:hugo": "hugo --gc --minify --forceSyncStatic && node scripts/optimize-css.mjs public"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.0",
