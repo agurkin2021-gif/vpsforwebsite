@@ -45,13 +45,13 @@ for lang in LANGS:
     for page in pages:
         rel = page.relative_to(ROOT)
         html = page.read_text(encoding="utf-8", errors="replace")
-        metas = [attrs(tag) for tag in re.findall(r"<meta\\b[^>]*>", html, re.I)]
+        metas = [attrs(tag) for tag in re.findall(r"<meta\b[^>]*>", html, re.I)]
         robots = [m.get("content", "").lower() for m in metas if m.get("name", "").lower() == "robots"]
         is_noindex = any("noindex" in value for value in robots)
         refresh = next((m.get("content", "") for m in metas
                         if m.get("http-equiv", "").lower() == "refresh"), "")
         if refresh:
-            target = re.split(r"url\\s*=", refresh, maxsplit=1, flags=re.I)[-1].strip().strip("'\\\"")
+            target = re.split(r"url\s*=", refresh, maxsplit=1, flags=re.I)[-1].strip().strip("\'\"")
             target_file = local_file(target)
             SUMMARY[lang]["redirects"] += 1
             if target_file is None or not target_file.is_file():
