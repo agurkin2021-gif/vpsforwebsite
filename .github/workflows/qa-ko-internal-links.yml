@@ -1,0 +1,109 @@
+name: Korean internal link routing QA
+
+on:
+  push:
+    branches: ["main", "work/ko-relref-locale-audit-20261020"]
+    paths:
+      - "content/korean/**"
+      - "layouts/_markup/render-link.html"
+      - "layouts/_partials/localized-url.html"
+      - ".github/workflows/qa-ko-internal-links.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  korean-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Build Korean source using the production Hugo configuration
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/" --destination public
+
+      - name: Verify every Korean page stays on Korean routes
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse, unquote
+
+          BASE = "https://vpsforwebsite.com"
+          root = Path("public/ko")
+          pages = sorted(root.rglob("index.html"))
+          assert len(pages) >= 16, f"Expected at least 16 Korean Hugo pages; found {len(pages)}"
+          errors = []
+
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.main = 0
+                  self.links = []
+              def handle_starttag(self, tag, attributes):
+                  a = dict(attributes)
+                  if tag == "main":
+                      self.main += 1
+                  if tag != "a":
+                      return
+                  href = a.get("href", "")
+                  if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+                      return
+                  if a.get("hreflang"):
+                      return  # Explicit language switcher: cross-language navigation is intended.
+                  if href.startswith("/") and not href.startswith("//") and not href.startswith("/ko/"):
+                      self.links.append((href, self.main != 0))
+                  elif href.startswith(BASE + "/") and not href.startswith(BASE + "/ko/"):
+                      path = urlparse(href).path.lower()
+                      if not path.startswith(("/images/", "/css/", "/js/", "/fonts/")):
+                          self.links.append((href, self.main != 0))
+              def handle_endtag(self, tag):
+                  if tag == "main" and self.main:
+                      self.main -= 1
+
+          for page in pages:
+              html = page.read_text(encoding="utf-8")
+              parser = Links()
+              parser.feed(html)
+              relative = page.relative_to(root).as_posix()
+              for href, in_main in parser.links:
+                  errors.append(f"{relative}: link exits Korean locale: {href} (in_main={in_main})")
+
+          # Each formerly English-forced relref must be localized at source.
+          refs = {
+              "vps-backup-strategy.md": {"vps-monitoring.md": 1},
+              "vps-security-checklist.md": {"vps-backup-strategy.md": 1, "vps-monitoring.md": 1},
+              "how-to-host-a-website-on-vps.md": {
+                  "vps-security-checklist.md": 2,
+                  "vps-monitoring.md": 2,
+                  "vps-backup-strategy.md": 1,
+              },
+          }
+          for filename, expected in refs.items():
+              content = (Path("content/korean") / filename).read_text(encoding="utf-8")
+              for target, minimum in expected.items():
+                  local = '{{< relref "' + target + '" >}}'
+                  if content.count(local) < minimum:
+                      errors.append(f"{filename}: expected {minimum} localized refs to {target}")
+
+          for err in errors:
+              print("KO_LINK_ERROR", err)
+          print(f"Korean HTML pages checked: {len(pages)}; unexpected outbound locale links: {len(errors)}")
+          if errors:
+              raise SystemExit(1)
+          PY
