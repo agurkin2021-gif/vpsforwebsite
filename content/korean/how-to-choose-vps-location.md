@@ -222,53 +222,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
 지리 정보를 활용해 명백히 먼 후보를 제외하세요. 그다음 실측 데이터로 현실적인 후보를 비교하세요.
 
-## Test the route, not just the map
+## 지도 대신 실제 네트워크 경로 테스트 {#test-the-route-not-just-the-map}
 
-Ask a provider for a test IP, test file, looking glass or other current endpoint for each candidate region. If none is available and the commitment is small, a short-lived instance can be a more reliable test than guessing.
+제공업체에 각 후보 지역의 테스트 IP, 테스트 파일, looking glass 또는 현재 사용 가능한 테스트 엔드포인트를 요청하세요. 제공하지 않는다면 비용 부담이 크지 않은 단기 인스턴스를 사용해 직접 측정하는 편이 추측보다 확실합니다.
 
-Test from networks that resemble the real audience.
+실제 사용자층과 유사한 네트워크에서 테스트하세요.
 
-For a consumer website, useful test sources can include:
+일반 소비자 대상 웹사이트에는 다음 테스트 환경이 유용합니다.
 
-- home broadband in the target market;
-- mobile networks;
-- office/corporate networks where relevant;
-- remote monitoring probes near the audience;
-- more than one ISP when the market is important.
+- 대상 시장의 가정용 광대역 인터넷;
+- 이동통신망;
+- 필요한 경우 사무실·기업 네트워크;
+- 사용자층 주변의 원격 모니터링 프로브;
+- 중요 시장이라면 여러 ISP.
 
-Do not test only from the administrator's laptop if the administrator is on another continent.
+관리자가 다른 대륙에 있다면 관리자 노트북에서만 테스트하지 마세요.
 
-### Compare repeated latency, not one ping
+### 한 번의 ping이 아니라 반복 지연 시간을 비교하세요 {#compare-repeated-latency-not-one-ping}
 
-A single ping is weak evidence.
+ping 한 번의 결과는 판단 근거로 부족합니다.
 
-Use repeated samples:
+반복 측정을 사용하세요.
 
 ```bash
 ping -c 30 TEST_IP
 ```
 
-On Windows:
+Windows에서는:
 
 ```text
 ping -n 30 TEST_IP
 ```
 
-Compare candidates at similar times of day.
+후보 지역은 비슷한 시간대에 비교하세요.
 
-Look for:
+다음을 확인하세요.
 
-- typical RTT;
-- consistency;
-- large spikes;
-- endpoint packet loss;
-- whether performance changes at peak hours.
+- 일반적인 RTT(왕복 지연 시간);
+- 지연 시간의 일관성;
+- 큰 폭의 지연 시간 급증;
+- 최종 목적지의 패킷 손실;
+- 피크 시간대 성능 변화.
 
-There is no universal RTT number that makes one VPS "good." The useful comparison is between candidate regions for the actual workload.
+모든 VPS를 “좋다”고 평가할 수 있는 보편적인 RTT 수치는 없습니다. 실제 워크로드에서 후보 지역 간 상대적인 성능이 중요합니다.
 
-### Inspect the path with MTR or traceroute
+### MTR 또는 traceroute로 경로 확인 {#inspect-the-path-with-mtr-or-traceroute}
 
-On Linux, a typical MTR report:
+Linux에서 일반적인 MTR 보고서 생성:
 
 ```bash
 mtr -rwzc 50 TEST_IP
@@ -286,42 +286,42 @@ Windows:
 tracert TEST_IP
 ```
 
-MTR/traceroute can reveal:
+MTR·traceroute로 다음 정보를 확인할 수 있습니다.
 
-- unexpected geographic detours;
-- unstable transit;
-- large latency jumps;
-- route changes;
-- where a path appears to become inefficient.
+- 예상하지 못한 지리적 우회 경로;
+- 불안정한 트랜짓 구간;
+- 특정 구간의 큰 지연 시간 증가;
+- 경로 변경;
+- 경로의 효율이 떨어지는 것으로 보이는 구간.
 
-Do not automatically interpret packet loss shown on an intermediate hop as end-to-end loss. Routers can rate-limit diagnostic traffic while forwarding real traffic normally. The destination and repeated end-to-end behavior matter more.
+중간 홉에서 표시되는 패킷 손실을 곧바로 종단 간 손실로 해석하면 안 됩니다. 라우터는 실제 트래픽은 정상 전달하면서 진단 패킷만 속도 제한할 수 있습니다. 최종 목적지와 반복적인 종단 간 결과가 더 중요합니다.
 
-### Test HTTP, not only ICMP
+### ICMP뿐 아니라 HTTP도 테스트하세요 {#test-http-not-only-icmp}
 
-Ping measures network round-trip behavior. Users experience HTTP.
+Ping은 네트워크 왕복 동작을 측정하지만, 사용자가 경험하는 것은 HTTP 요청입니다.
 
-If a representative test endpoint exists, compare connection and response timing:
+실제 환경을 대표하는 테스트 엔드포인트가 있다면 연결 시간과 응답 시간을 비교하세요.
 
 ```bash
 curl -o /dev/null -s -w 'connect=%{time_connect} ttfb=%{time_starttransfer} total=%{time_total}\n' https://candidate.example/
 ```
 
-For a production application, TTFB also includes origin work. That is useful after deployment, but it means a slow TTFB cannot be blamed on distance alone.
+운영 애플리케이션의 TTFB에는 원본 서버의 처리 시간도 포함됩니다. 배포 후 이 지표는 유용하지만 TTFB가 느리다고 해서 거리가 원인이라고 단정할 수는 없습니다.
 
-After launch, use [VPS Monitoring]({{< relref "vps-monitoring.md" >}}) to keep external latency and application health under observation.
+운영을 시작한 뒤에는 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})으로 외부 지연 시간과 애플리케이션 상태를 지속적으로 확인하세요.
 
-## Test the networks that matter
+## 중요한 사용자 네트워크를 테스트하세요 {#test-the-networks-that-matter}
 
-A route that is excellent from one ISP may be mediocre from another.
+어떤 ISP에서 뛰어난 경로가 다른 ISP에서는 평범한 성능을 보일 수 있습니다.
 
-For an important market, test:
+중요한 시장에서는 다음 환경을 테스트하세요.
 
-- at least one major consumer ISP;
-- mobile if a large share of users are mobile;
-- corporate/VPN routes if the application is B2B;
-- the actual upstream API or dependency if server-to-server latency matters.
+- 주요 소비자용 ISP 하나 이상;
+- 모바일 사용자가 많다면 이동통신망;
+- B2B 애플리케이션이라면 기업·VPN 경로;
+- 서버 간 지연 시간이 중요하다면 실제 상위 API 또는 의존 시스템.
 
-The objective is not to find a region that wins every test. It is to find the region with the best compromise for the important traffic.
+목표는 모든 테스트에서 1등인 지역을 찾는 것이 아니라 중요한 트래픽에 가장 적합한 절충점을 찾는 것입니다.
 
 ## Keep chatty dependencies close
 
