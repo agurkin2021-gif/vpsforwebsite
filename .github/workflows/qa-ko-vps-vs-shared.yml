@@ -1,0 +1,135 @@
+name: Korean VPS vs Shared browser QA
+
+on:
+  push:
+    branches: ["work/ko-vps-vs-shared-20261020"]
+    paths:
+      - "content/korean/vps-vs-shared-hosting.md"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-vps-vs-shared.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Build full Hugo preview on isolated branch
+        shell: bash
+        run: |
+          npm install
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --baseURL "http://127.0.0.1:8765/"
+          rm -rf public
+          hugo --gc --minify --baseURL "http://127.0.0.1:8765/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/vps와-공유-호스팅-비교/index.html
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-vs-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8765/ko/vps와-공유-호스팅-비교/ >/dev/null && break; sleep 1; done
+
+      - name: Install Chromium automation
+        run: |
+          mkdir -p /tmp/qa-vs
+          cd /tmp/qa-vs
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Check SEO, responsive layout and all six decision outcomes
+        shell: bash
+        run: |
+          cd /tmp/qa-vs
+          cat > check.cjs <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const { chromium } = require('playwright');
+          const url = 'http://127.0.0.1:8765/ko/vps%EC%99%80-%EA%B3%B5%EC%9C%A0-%ED%98%B8%EC%8A%A4%ED%8C%85-%EB%B9%84%EA%B5%90/';
+          const shots = '/tmp/qa-vs/screenshots';
+          fs.mkdirSync(shots, { recursive: true });
+
+          async function main() {
+            const browser = await chromium.launch({headless:true});
+            try {
+              for(const width of [390, 1280]) {
+                const context = await browser.newContext({ viewport:{width,height:844},deviceScaleFactor:1, isMobile:width===390,hasTouch:width===390 });
+                const page = await context.newPage(), errors = [];
+                page.on('pageerror', error=>errors.push(error.message));
+                const resp=await page.goto(url,{waitUntil:'networkidle',timeout:60000});
+                assert(resp && resp.status()===200, 'Expected 200 at width '+width);
+                assert.equal((await page.locator('h1').allTextContents()).length,1);
+                assert.equal((await page.locator('h1').innerText()).trim(),'VPS와 공유 호스팅 비교');
+                assert.equal((await page.title()).trim(),'VPS와 공유 호스팅 비교');
+                assert.equal(await page.locator('table').count(),1);
+                assert.equal(await page.locator('#shared-vs-vps-checker select').count(),6);
+                assert.equal(await page.locator('#shared-vs-vps-checker option').count(),15);
+                assert.equal(await page.locator('h2, h3').count(),30);
+                assert.equal(await page.locator('#what-actually-changes-between-shared-hosting-and-vps').count(),1);
+                assert.equal(await page.locator('.vps-vs-model-card-shared').count(),1,'Shared model card must render in Korean');
+                assert.equal(await page.locator('.vps-vs-model-card-vps').count(),1,'VPS model card must render in Korean');
+                assert.equal(await page.locator('link[rel=canonical]').count(),1);
+                const size = await page.evaluate(()=>{
+                  const e=document.documentElement,b=document.body;
+                  return {html:e.scrollWidth,body:b.scrollWidth,viewport:e.clientWidth,
+                    blocks:[...document.querySelectorAll('header, h1, #shared-vs-vps-checker')].map(n=>{const r=n.getBoundingClientRect();return {tag:n.tagName,left:r.left,right:r.right,width:r.width};})};
+                });
+                console.log('MEASURE',width,JSON.stringify(size));
+                assert(size.html<=width+2 && size.body<=width+2, 'Unexpected horizontal overflow at '+width);
+                for(const b of size.blocks)if(b.width>0)assert(b.left>=-2 && b.right<=width+2,'Critical block overflow '+JSON.stringify(b));
+                assert.deepEqual(errors,[],'JS errors at '+width);
+                await page.screenshot({path:shots+'/viewport-'+width+'.png',fullPage:true});
+                console.log('PASS responsive SEO DOM',width);
+
+                if(width===390){
+                  const form=page.locator('#shared-vs-vps-checker');
+                  const status=page.locator('#shared-vs-vps-result');
+                  async function choose(values,expected){
+                    await page.reload({waitUntil:'networkidle'});
+                    for(const [key,value] of Object.entries(values))await page.locator('#'+key).selectOption(value);
+                    await form.locator('button[type=submit]').click();
+                    const text=(await status.innerText()).trim();
+                    assert(text.startsWith(expected),'Expected '+expected+' got '+text);
+                    console.log('PASS checker',expected);
+                  }
+                  await choose({},'공유 호스팅 유지:');
+                  await choose({'sv-stable':'no','sv-limits':'occasional'},'먼저 최적화하고 공유 호스팅 재평가:');
+                  await choose({'sv-custom':'yes','sv-admin':'yes'},'VPS로 이전:');
+                  await choose({'sv-custom':'yes','sv-admin':'help'},'이전하되 관리형·관리자 지원 확보:');
+                  await choose({'sv-custom':'yes','sv-admin':'no','sv-critical':'low'},'운영 책임자를 정한 뒤에만 이전:');
+                  await choose({'sv-stable':'no','sv-limits':'occasional','sv-optimized':'yes'},'현재 요금제 재검토:');
+                  await status.screenshot({path:shots+'/form-output.png'});
+                }
+                await context.close();
+              }
+            } finally { await browser.close(); }
+          }
+          main().catch(e=>{console.error(e.stack||e);process.exitCode=1});
+          NODE
+          node check.cjs
+
+      - name: Save browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-vps-vs-shared-qa
+          path: /tmp/qa-vs/screenshots/*.png
+          retention-days: 7
+          if-no-files-found: ignore

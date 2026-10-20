@@ -88,10 +88,10 @@
                 href="{{ $vsAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-vs-shared-secondary-cta" href="#quick-comparison">
-                See quick comparison
+                {{ if eq .Language.Lang "ko" }}빠른 비교 보기{{ else }}See quick comparison{{ end }}
               </a>
             </div>
           </div>
@@ -101,66 +101,66 @@
             href="{{ $vsAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS configurations — Shared hosting compared with VPS">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인 — 공유 호스팅과 VPS 비교{{ else }}Check current VPS configurations — Shared hosting compared with VPS{{ end }}">
             <div class="vps-vs-shared-compact-head">
-              <strong>More control means more server responsibility</strong>
-              <small>Compare the operating model, resource limits and software freedom — not site size alone.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}제어권이 커질수록 서버 운영 책임도 늘어납니다{{ else }}More control means more server responsibility{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}사이트 규모가 아니라 운영 방식, 자원 제한, 소프트웨어 선택 자유도를 비교하세요.{{ else }}Compare the operating model, resource limits and software freedom — not site size alone.{{ end }}</small>
             </div>
 
             <div class="vps-vs-shared-compact-grid">
               <div class="vps-vs-shared-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Administration</strong>
-                  <small>Provider-managed vs self-managed</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 관리{{ else }}Administration{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}공급업체 관리 vs 직접 관리{{ else }}Provider-managed vs self-managed{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Software</strong>
-                  <small>Restricted stack vs flexible stack</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}소프트웨어{{ else }}Software{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}제한된 구성 vs 유연한 구성{{ else }}Restricted stack vs flexible stack{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Resources</strong>
-                  <small>Account limits vs VPS allocation</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}자원{{ else }}Resources{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}계정별 제한 vs VPS 자원 할당{{ else }}Account limits vs VPS allocation{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Operations</strong>
-                  <small>Simplicity vs control + ownership</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}운영{{ else }}Operations{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}간편함 vs 제어권과 책임{{ else }}Simplicity vs control + ownership{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-vs-shared-compact-rule">
-              <strong>Move only when the extra control solves a real limit or capability need.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}실제 자원 제약이나 필요한 기능을 해결할 때만 VPS로 이전하세요.{{ else }}Move only when the extra control solves a real limit or capability need.{{ end }}</strong>
             </div>
           </a>
         </div>
       </div>
 
-      <nav class="vps-vs-shared-outcomes" aria-label="VPS vs Shared Hosting decision outcomes">
+      <nav class="vps-vs-shared-outcomes" aria-label="{{ if eq .Language.Lang "ko" }}공유 호스팅과 VPS 선택 결과{{ else }}VPS vs Shared Hosting decision outcomes{{ end }}">
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-stay" href="#stay-on-shared-hosting-when">
           <span>01</span>
-          <strong>Stay on shared hosting</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}공유 호스팅 유지{{ else }}Stay on shared hosting{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-optimize" href="#optimize-first-when-the-site-is-the-bottleneck">
           <span>02</span>
-          <strong>Optimize first</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}먼저 최적화{{ else }}Optimize first{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-move" href="#move-to-vps-when">
           <span>03</span>
-          <strong>Move to VPS</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}VPS로 이전{{ else }}Move to VPS{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-help" href="#middle-paths-between-shared-hosting-and-raw-vps">
           <span>04</span>
-          <strong>Move with managed / admin help</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}관리형·유료 관리자 지원과 함께 이전{{ else }}Move with managed / admin help{{ end }}</strong>
         </a>
       </nav>
     </div>
@@ -185,7 +185,7 @@
 
         if (node.tagName === "H3") {
           var text = node.textContent.trim().toLowerCase();
-          if (text === "shared hosting") current = "shared";
+          if (text === "shared hosting" || text === "공유 호스팅") current = "shared";
           else if (text === "vps") current = "vps";
         }
 
@@ -220,7 +220,7 @@
       vps.href = "https://www.vdsina.com/?partner=ni8gzrvz75";
       vps.target = "_blank";
       vps.rel = "sponsored nofollow noopener";
-      vps.setAttribute("aria-label", "Check current VPS configurations");
+      vps.setAttribute("aria-label", "{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인{{ else }}Check current VPS configurations{{ end }}");
       vpsNodes.forEach(function (item) { vps.appendChild(item); });
 
       grid.appendChild(shared);
