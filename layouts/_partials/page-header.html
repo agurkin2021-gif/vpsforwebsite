@@ -1369,10 +1369,10 @@
                 href="{{ $locationAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-location-secondary-cta" href="#quick-answer">
-                See location guidance
+                {{ if eq .Language.Lang "ko" }}VPS 위치 선택 가이드{{ else }}See location guidance{{ end }}
               </a>
             </div>
           </div>
@@ -1382,45 +1382,45 @@
             href="{{ $locationAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options by location">
+            aria-label="{{ if eq .Language.Lang "ko" }}위치별 현재 VPS 옵션 확인{{ else }}Check current VPS options by location{{ end }}">
             <div class="vps-location-compact-head">
-              <strong>Choose the route, not the map</strong>
-              <small>Audience, dynamic traffic, dependencies and real network paths matter more than country labels.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}지도보다 실제 네트워크 경로를 확인하세요{{ else }}Choose the route, not the map{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}국가 이름보다 사용자 분포, 동적 트래픽, 의존 시스템과 실제 네트워크 경로가 중요합니다.{{ else }}Audience, dynamic traffic, dependencies and real network paths matter more than country labels.{{ end }}</small>
             </div>
 
             <div class="vps-location-compact-grid">
               <div class="vps-location-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Audience</strong>
-                  <small>Important users first</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}사용자 분포{{ else }}Audience{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}중요한 사용자 우선{{ else }}Important users first{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Dependencies</strong>
-                  <small>DB + APIs + services</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}의존 시스템{{ else }}Dependencies{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}DB + API + 서비스{{ else }}DB + APIs + services{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Route test</strong>
-                  <small>Latency + stability + loss</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}네트워크 경로 테스트{{ else }}Route test{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}지연 시간 + 안정성 + 손실{{ else }}Latency + stability + loss{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Constraints</strong>
-                  <small>CDN + data location</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}제약 조건{{ else }}Constraints{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}CDN + 데이터 위치{{ else }}CDN + data location{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-location-compact-rule">
-              <strong>Geography gives you candidates. Real routing chooses the region.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}지리 정보는 후보를 제시하고, 실제 라우팅이 최적 지역을 결정합니다.{{ else }}Geography gives you candidates. Real routing chooses the region.{{ end }}</strong>
             </div>
           </a>
         </div>
