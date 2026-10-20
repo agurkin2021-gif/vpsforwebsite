@@ -203,7 +203,7 @@ usermod -aG sudo deploy
 
 서버 보안을 강화하는 과정에서 유일하게 작동하는 관리 접속 경로를 차단하지 마세요.
 
-SSH와 방화벽의 상세 보안 강화는 [VPS 보안 점검표]({{< relref path="vps-security-checklist.md" lang="en" >}})에서 다룹니다. 이 가이드에는 배포에 필요한 최소 사항만 포함합니다.
+SSH와 방화벽의 상세 보안 강화는 [VPS 보안 점검표]({{< relref "vps-security-checklist.md" >}})에서 다룹니다. 이 가이드에는 배포에 필요한 최소 사항만 포함합니다.
 
 ## 스택 설치 전 서버 업데이트 {#update-the-server-before-installing-the-stack}
 
@@ -510,7 +510,7 @@ MySQL/PostgreSQL, Redis 또는 애플리케이션 내부 포트가 기본적으�
 
 UFW를 사용하는 서버에서는 제한적인 규칙을 활성화하기 **전에** 필요한 SSH 접속 경로를 허용하세요.
 
-상세 방화벽 설정과 보안 강화는 [VPS 보안 점검표]({{< relref path="vps-security-checklist.md" lang="en" >}})에서 다룹니다.
+상세 방화벽 설정과 보안 강화는 [VPS 보안 점검표]({{< relref "vps-security-checklist.md" >}})에서 다룹니다.
 
 ## Cron 작업, 큐 및 워커 {#cron-jobs-queues-and-workers}
 
@@ -551,7 +551,7 @@ UFW를 사용하는 서버에서는 제한적인 규칙을 활성화하기 **전
 
 VPS에 로그인한 사람이 없어도 서버 장애를 알 수 있도록 외부 HTTP(S) 가동 상태 확인을 추가하세요.
 
-임계값과 알림 설계의 상세 내용은 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
+임계값과 알림 설계의 상세 내용은 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})에서 다룹니다.
 
 ## 재부팅 검증 {#reboot-validation}
 
@@ -630,7 +630,7 @@ sudo reboot
 - CPU/RAM/데이터베이스 부하를 관찰합니다;
 - 인증서 갱신을 확인합니다.
 
-상세 복구 설계는 [VPS 백업 전략]({{< relref path="vps-backup-strategy.md" lang="en" >}})에서 다룹니다. 모니터링 임계값과 알림 설계는 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
+상세 복구 설계는 [VPS 백업 전략]({{< relref "vps-backup-strategy.md" >}})에서 다룹니다. 모니터링 임계값과 알림 설계는 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})에서 다룹니다.
 
 ## 여러 웹사이트 운영 {#multiple-websites}
 
