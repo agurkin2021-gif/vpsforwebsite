@@ -1445,10 +1445,10 @@
               <a class="btn btn-primary vps-control-panel-primary-cta"
                  href="{{ $panelAffiliate }}" target="_blank"
                  rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-control-panel-secondary-cta" href="#quick-answer">
-                See panel guidance
+                {{ if eq site.Language.Lang "ko" }}패널 선택 안내{{ else }}See panel guidance{{ end }}
               </a>
             </div>
           </div>
@@ -1456,29 +1456,29 @@
           <a class="vps-control-panel-hero-diagram"
              href="{{ $panelAffiliate }}" target="_blank"
              rel="sponsored nofollow noopener"
-             aria-label="Check current VPS options with a control panel">
+             aria-label="{{ if eq site.Language.Lang "ko" }}컨트롤 패널이 있는 VPS 구성 확인{{ else }}Check current VPS options with a control panel{{ end }}">
             <div class="vps-control-panel-compact-head">
-              <strong>Choose the panel by operating model</strong>
-              <small>Websites, users, mail, operating system and licensing define the right panel class.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}운영 방식에 맞는 패널 선택{{ else }}Choose the panel by operating model{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}웹사이트·사용자·메일·운영체제·라이선스를 기준으로 선택하세요.{{ else }}Websites, users, mail, operating system and licensing define the right panel class.{{ end }}</small>
             </div>
 
             <div class="vps-control-panel-compact-grid">
               <div class="vps-control-panel-compact-item">
-                <span>01</span><div><strong>Sites</strong><small>One site or many?</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}웹사이트{{ else }}Sites{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}하나 또는 여러 개?{{ else }}One site or many?{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>02</span><div><strong>Users</strong><small>Single admin or clients?</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}사용자{{ else }}Users{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리자 또는 고객?{{ else }}Single admin or clients?{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>03</span><div><strong>Services</strong><small>Mail, DNS, DB, backups</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}서비스{{ else }}Services{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}메일·DNS·DB·백업{{ else }}Mail, DNS, DB, backups{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>04</span><div><strong>Platform</strong><small>Linux / Windows + license</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}플랫폼{{ else }}Platform{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}Linux·Windows와 라이선스{{ else }}Linux / Windows + license{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-control-panel-compact-rule">
-              <strong>Use a panel only when it removes enough admin work to justify its overhead and constraints.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}추가 자원과 제약을 감수할 만큼 관리 업무를 줄일 때만 패널을 사용하세요.{{ else }}Use a panel only when it removes enough admin work to justify its overhead and constraints.{{ end }}</strong>
             </div>
           </a>
         </div>
