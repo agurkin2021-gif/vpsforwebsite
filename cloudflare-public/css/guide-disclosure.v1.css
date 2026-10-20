@@ -1,0 +1,20 @@
+/* Match the guide hero container, including its tablet and mobile gutters. */
+main > .container.vps-affiliate-disclosure {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 1100px) {
+  main > .container.vps-affiliate-disclosure {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  main > .container.vps-affiliate-disclosure {
+    width: calc(100% - 36px) !important;
+  }
+}
