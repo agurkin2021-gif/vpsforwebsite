@@ -1,0 +1,164 @@
+name: Korean VPS location prepublication QA
+on:
+  push:
+    branches: ["work/ko-vps-location-20261020"]
+    paths:
+      - "content/korean/how-to-choose-vps-location.md"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-location.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build Hugo release candidate
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/vps-위치-선택-방법/index.html
+      - name: Compare all source structure, IDs and English header
+        run: |
+          node <<'JS'
+          const fs=require('fs'),a=require('assert').strict,cp=require('child_process');
+          const en=fs.readFileSync('content/english/how-to-choose-vps-location.md','utf8');
+          const ko=fs.readFileSync('content/korean/how-to-choose-vps-location.md','utf8');
+          const m=(s,r)=>[...s.matchAll(r)].map(x=>x[1]||x[0]);
+          const sl=s=>{
+            if(s==='Global audience: one origin + CDN or multi-region?')return 'global-audience-one-origin--cdn-or-multi-region';
+            if(s==='One origin + CDN')return 'one-origin--cdn';
+            return s.toLowerCase().replace(/[^a-z0-9 -]/g,'').trim().replace(/\s+/g,'-');
+          };
+          const heads=m(en,/^#{2,3}\s+(.+)$/gm);
+          a.equal(heads.length,48);
+          a.deepEqual(m(ko,/^#{2,3}\s+.*\{#([\w-]+)\}$/gm),heads.map(sl),'All 48 original anchors preserved');
+          for(const re of [/^\|.*\|$/gm,/^- /gm,/^\d+\. /gm,/^\x60{3}/gm,/<form\b/g,/<select\b/g,/<option\b/g,/<script>/g,/<a\b/g])
+            a.equal(m(en,re).length,m(ko,re).length,'Structure '+re);
+          a.equal(m(ko,/^\|.*\|$/gm).length,34);
+          a.equal(m(ko,/^- /gm).length,140);
+          a.equal(m(ko,/^\d+\. /gm).length,11);
+          a.equal(m(ko,/^\x60{3}/gm).length,12);
+          a.equal(m(ko,/<select\b/g).length,6);
+          a.equal(m(ko,/<option\b/g).length,16);
+          for(const re of [/<select[^>]*id="([^"]+)"/g,/<option[^>]*value="([^"]+)"/g,/\{\{<\s*relref\s+(?:path=)?"([^"]+)"/g])
+            a.deepEqual(m(en,re),m(ko,re),'Unchanged selectors/link targets '+re);
+          a.deepEqual(m(en,/\x60{3}([\s\S]*?)\x60{3}/g),m(ko,/\x60{3}([\s\S]*?)\x60{3}/g),'Code examples unchanged');
+          const script=s=>s.match(/<script>[\s\S]*?<\/script>/)[0].replace(/result = [^\n]*;/g,'result = LOCALIZED;');
+          a.equal(script(en),script(ko),'JavaScript branches untouched');
+          const nums=s=>m(s.replace(/\{#[\w-]+\}/g,''),/(?<![a-zA-Z0-9])(?:\d+(?:\.\d+)?)(?:%|GB|TB)?/g).sort();
+          a.deepEqual(nums(en),nums(ko),'Numeric values unchanged');
+          const h=fs.readFileSync('layouts/_partials/page-header.html','utf8');
+          const main=cp.execFileSync('git',['show','origin/main:layouts/_partials/page-header.html'],{encoding:'utf8'});
+          const part=s=>{const i=s.indexOf('{{ else if $isVpsLocation }}');return s.slice(i,s.indexOf('{{ else if ',i+25));};
+          const fallback=part(h).replace(/\{\{ if eq \.Language\.Lang "ko" \}\}[\s\S]*?\{\{ else \}\}([\s\S]*?)\{\{ end \}\}/g,'$1');
+          a.equal(fallback,part(main),'English site header must remain unchanged');
+          a(!ko.includes('draft: true'));
+          console.log('PASS 48 English H2/H3 IDs, 34 table lines, 140 bullets, 11 steps, 12 fences, 6 selects, 16 options, all relrefs and unchanged JS/EN');
+          JS
+      - name: Serve preview and install Chromium
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-location-http.log 2>&1 &
+          mkdir -p /tmp/ko-location-qa
+          cd /tmp/ko-location-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser SEO, mobile layout and all 288 form outcomes
+        run: |
+          cd /tmp/ko-location-qa
+          mkdir -p shots
+          cat > check.cjs <<'JS'
+          const a=require('assert').strict,{chromium}=require('playwright');
+          const url='http://127.0.0.1:8765/ko/'+encodeURIComponent('vps-위치-선택-방법')+'/';
+          const ids=['loc-audience','loc-dynamic','loc-dependency','loc-cdn','loc-compliance','loc-tested'];
+          const values=[['concentrated','split','global'],['low','medium','high'],['same','fixed','distributed','none'],['no','yes'],['no','yes'],['no','yes']];
+          (async()=>{
+            const browser=await chromium.launch();
+            try{
+              for(const width of [390,1280]){
+                const ctx=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const page=await ctx.newPage(),en=await ctx.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const res=await page.goto(url,{waitUntil:'load',timeout:60000});
+                a.equal(res.status(),200);
+                a.equal((await page.title()).trim(),'VPS 위치 선택 방법');
+                a.deepEqual(await page.locator('h1').allTextContents(),['VPS 위치 선택 방법']);
+                a.equal(await page.locator('h2,h3').count(),48);
+                a.equal(await page.locator('table').count(),3);
+                a.equal(await page.locator('#vps-location-checker select').count(),6);
+                a.equal(await page.locator('#vps-location-checker option').count(),16);
+                await en.goto('http://127.0.0.1:8765/how-to-choose-vps-location/',{waitUntil:'domcontentloaded'});
+                const extract=p=>p.locator('h2,h3').evaluateAll(nodes=>nodes.map(n=>n.id));
+                a.deepEqual(await extract(page),await extract(en),'Hugo EN/KO anchor IDs match');
+                a.equal(await page.locator('link[rel="canonical"]').count(),1);
+                a((await page.locator('link[rel="canonical"]').getAttribute('href')).includes('/ko/'));
+                a((await page.locator('.vps-location-hero-diagram').innerText()).includes('지도보다 실제 네트워크 경로를 확인하세요'));
+                a((await page.locator('body').innerText()).includes('제휴 고지'));
+                const links=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(nodes=>nodes.map(x=>x.rel));
+                a(links.length>=3&&links.every(x=>x.includes('sponsored')&&x.includes('nofollow')));
+                a.equal(await page.locator('a[href^="//"]').count(),0,'No protocol-relative links');
+                const geo=await page.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth,boxes:[...document.querySelectorAll('header,h1,.vps-location-hero-grid,#vps-location-checker')].map(x=>{const r=x.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width}})}));
+                console.log('GEOMETRY',width,JSON.stringify(geo));
+                if(geo.html>width+2||geo.body>width+2){
+                  const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,className:typeof e.className==='string'?e.className.slice(0,120):'',left:r.left,right:r.right,width:r.width,text:(e.textContent||'').trim().slice(0,80)}}).filter(x=>x.right>window.innerWidth+2&&x.width>5).sort((a,b)=>b.right-a.right).slice(0,35));
+                  console.log('OVERFLOW OFFENDERS',JSON.stringify(offenders));
+                  const scrollables=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(e=>e.scrollWidth>e.clientWidth+60&&e.clientWidth>0).map(e=>({tag:e.tagName,className:typeof e.className==='string'?e.className.slice(0,100):'',id:e.id,scroll:e.scrollWidth,client:e.clientWidth,overflowX:getComputedStyle(e).overflowX,text:(e.innerText||'').slice(0,95)})).sort((a,b)=>(b.scroll-b.client)-(a.scroll-a.client)).slice(0,35));
+                  console.log('INTERNAL SCROLL WIDTH',JSON.stringify(scrollables));
+                  console.log('EN DOC WIDTH',await en.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth})));
+
+                }
+                a(geo.html<=width+2&&geo.body<=width+2,'Horizontal overflow');
+                for(const box of geo.boxes)if(box.width>0)a(box.left>=-2&&box.right<=width+2,'Overflow '+JSON.stringify(box));
+                await page.screenshot({path:'shots/location-'+width+'.png',fullPage:true});
+                if(width===390){
+                  let combos=[[]];for(const v of values)combos=combos.flatMap(c=>v.map(x=>[...c,x]));
+                  a.equal(combos.length,288);
+                  const actual=await page.evaluate(({ids,combos})=>{
+                    const form=document.getElementById('vps-location-checker'),res=document.getElementById('vps-location-result'),out=[];
+                    for(const c of combos){ids.forEach((id,i)=>document.getElementById(id).value=c[i]);form.requestSubmit();out.push(res.textContent);}
+                    return out;
+                  },{ids,combos});
+                  let count=[0,0,0,0,0,0];
+                  for(let i=0;i<combos.length;i++){
+                    const c=combos[i],compliance=c[4]==='yes',dep=c[2]==='fixed'&&c[1]!=='low',multi=c[0]==='global'&&c[1]==='high',cdn=(c[0]==='global'||c[0]==='split')&&c[3]==='yes'&&c[1]!=='high',untested=c[5]==='no';
+                    const idx=compliance?0:dep?1:multi?2:cdn?3:untested?4:5;
+                    const prefixes=['데이터 위치 제약:','의존 시스템 우선 / 인접 배치:','다중 지역 구성이 필요할 수 있음:','중앙 원본 서버 + CDN:','구매 전 테스트:','사용자 우선 지역:'];
+                    a(actual[i].startsWith(prefixes[idx]),'Case '+i+' '+actual[i]);
+                    count[idx]++;
+                  }
+                  console.log('PASS all 288 form submits',JSON.stringify(count));
+                }
+                a.deepEqual(errors.filter(x=>!(x.startsWith('Failed to register a ServiceWorker')&&x.includes('does not match the current origin'))),[],'Unexpected JS errors');
+                console.log('PASS viewport',width);
+                await ctx.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
+      - name: Preserve preview screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-location-prepublication
+          path: /tmp/ko-location-qa/shots/*.png
+          if-no-files-found: ignore
+          retention-days: 7
