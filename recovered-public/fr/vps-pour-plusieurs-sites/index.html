@@ -71,12 +71,9 @@
 
 <h2 id="quick-answer">En bref</h2>
 <p>Plusieurs sites peuvent partager une adresse IP, un serveur web, un service de base de données et un VPS. Ce n’est pas le nombre de sites qui fixe la capacité, mais leur charge et leur comportement au même moment.</p>
-<div class="vps-table-scroll" role="region" aria-label="Facteurs de dimensionnement de plusieurs sites" tabindex="0"><table><thead><tr><th>Facteur</th><th>Ce qu’il faut contrôler</th><th>Conséquence</th></tr></thead><tbody>
-<tr><td>CPU et mémoire</td><td>Demandes dynamiques cumulées, processus PHP et applications</td><td>Éviter la saturation et les incidents de mémoire</td></tr>
-<tr><td>Bases de données</td><td>Requêtes, taille, connexions et écritures simultanées</td><td>Réserver de la RAM et des ressources E/S</td></tr>
-<tr><td>Isolation</td><td>Utilisateurs Unix, racines web, identifiants BDD, pools et journaux</td><td>Limiter les conséquences d’une erreur ou d’une compromission</td></tr>
-<tr><td>Tâches de fond</td><td>Imports, sauvegardes, cron, traitements et pics</td><td>Éviter que les tâches d’un site bloquent les autres</td></tr>
-<tr><td>Défaillance unique</td><td>Importance métier, restauration et disponibilité</td><td>Isoler les sites critiques si nécessaire</td></tr></tbody></table></div>
+<ul class="vps-localized-details"><li>1 vCPU / 1 Go / 10 Go / 1 To de transfert mensuel — 0,07 $/jour</li><li>1 vCPU / 2 Go / 40 Go / 32 To de transfert — 0,50 $/jour</li><li>2 vCPU / 4 Go / 80 Go / 32 To de transfert — 0,67 $/jour</li><li>4 vCPU / 8 Go / 160 Go / 32 To de transfert — 1,34 $/jour</li></ul>
+
+<div class="vps-table-scroll" role="region" aria-label="Facteurs de dimensionnement de plusieurs sites" tabindex="0"><table><thead><tr><th>Portefeuille</th><th>Configuration initiale indicative</th><th>À vérifier</th></tr></thead><tbody><tr><td>Quelques sites statiques ou en cache</td><td><strong>1 vCPU / 2 Go / 40 Go</strong></td><td>RAM totale, stockage, sauvegardes et requêtes dynamiques occasionnelles</td></tr><tr><td>Plusieurs petits sites WordPress ou professionnels</td><td><strong>2 vCPU / 4 Go / 80 Go</strong></td><td>Pools PHP, mémoire des bases, cron et fenêtres de sauvegarde</td></tr><tr><td>Portefeuille mixte ou charges plus dynamiques</td><td><strong>4 vCPU / 8 Go / 160 Go</strong></td><td>Pics cumulés, contention des bases, sites bruyants et croissance des fichiers</td></tr><tr><td>Charges critiques, fortes écritures ou évolution indépendante</td><td><strong>Séparer l’architecture</strong></td><td>Isolation des pannes, évolution autonome et piles incompatibles</td></tr></tbody></table></div>
 <p>Un petit portefeuille de sites statiques ou bien mis en cache peut tenir sur un serveur modeste. Une seule boutique ou application très dynamique peut exiger davantage de ressources que dix sites vitrines.</p>
 
 <h2 id="multi-site-vps-architecture-checker">Diagnostic d’architecture multisite</h2>
@@ -95,14 +92,20 @@
 
 <h2 id="count-workload-not-domains">Compter la charge plutôt que les domaines</h2>
 <p>Un domaine peut afficher un simple fichier HTML ou déclencher des centaines de requêtes dynamiques. Dimensionnez en fonction de la concurrence réelle : mémoire du système et des services, PHP-FPM ou processus applicatifs, bases de données, cache, tâches en arrière-plan et marge de sécurité.</p>
+<ul class="vps-localized-details"><li>Dix sites statiques ou fortement mis en cache peuvent consommer très peu de ressources PHP et de base</li><li>Trois sites WordPress professionnels peuvent demander bien plus de RAM en raison des processus PHP et de la base de chacun</li><li>Une seule boutique WooCommerce peut monopoliser le VPS lors des paiements ou d’une opération commerciale</li><li>Un import d’images, une sauvegarde ou un scan de sécurité peut temporairement dépasser la charge CPU et E/S de plusieurs sites calmes</li></ul>
+
 <p>Évaluez les périodes de charge les plus fortes. Une addition naïve des moyennes peut sous-estimer la pression lorsqu’une promotion, un import et une sauvegarde se chevauchent.</p>
 
 <h2 id="how-many-websites-can-one-vps-host">Combien de sites un VPS peut-il héberger ?</h2>
 <p>Il n’existe pas de limite universelle. Quelques sites très chargés peuvent saturer un VPS puissant alors que plusieurs dizaines de vitrines peu visitées et mises en cache n’utilisent qu’une fraction d’un serveur bien dimensionné.</p>
+<ul class="vps-localized-details"><li>Taux de succès du cache</li><li>Simultanéité des requêtes non mises en cache</li><li>Mémoire des processus PHP et applicatifs</li><li>Durée de chaque requête</li><li>Ensemble de travail de la base de données</li><li>Intensité des écritures</li><li>Tâches programmées et processus d’arrière-plan</li><li>Trafic des robots</li><li>Croissance des fichiers et des médias</li><li>Fenêtres de sauvegarde</li><li>Surcoût du panneau de contrôle et de la messagerie</li><li>Marge de capacité conservée</li></ul>
+
 <p>Commencez par mesurer CPU, RAM, taille et activité des bases, espace disque, processus simultanés et durée des requêtes. Vérifiez ensuite le comportement en pic et la possibilité de restaurer un site sans affecter les autres.</p>
 
 <h2 id="one-ip-can-host-many-websites">Une adresse IP peut servir plusieurs sites</h2>
 <p>Avec Nginx ou Apache, les hôtes virtuels utilisent le nom de domaine demandé pour envoyer chaque requête vers le bon site. Plusieurs sites peuvent donc partager la même adresse IPv4. Chaque domaine a néanmoins besoin d’une configuration DNS et d’un certificat TLS valide.</p>
+<ul class="vps-localized-details"><li>Le DNS dirige plusieurs domaines vers la même adresse IP</li><li>Le navigateur envoie le nom d’hôte demandé</li><li>Nginx ou Apache sélectionne le bon bloc serveur ou hôte virtuel</li><li>Grâce à SNI, chaque nom d’hôte reçoit le certificat TLS approprié</li></ul>
+
 <p>Des adresses IP distinctes ne sont pas automatiquement nécessaires. Elles peuvent être pertinentes pour des contraintes particulières de réseau ou de service, mais ne constituent pas en elles-mêmes une isolation des ressources.</p>
 
 <h2 id="isolate-each-site-deliberately">Isoler chaque site de façon explicite</h2>
@@ -114,10 +117,12 @@
 <tr><td>Base et utilisateur BDD</td><td>Réduit la portée des accès et facilite les restaurations ciblées</td></tr>
 <tr><td>Journaux</td><td>Facilite le diagnostic et l’attribution des incidents</td></tr>
 <tr><td>Secrets et fichiers d’environnement</td><td>Empêche l’accès accidentel aux identifiants des autres applications</td></tr>
-</tbody></table></div><p>Une compromission d’un site ne doit pas donner sans raison l’accès en écriture aux fichiers et aux données de tous les autres. L’isolation n’est cependant pas absolue sur une machine unique : le système, le réseau, le stockage et le noyau restent des composants communs.</p>
+<tr><td>Jeu de sauvegardes par site</td><td>Permet de restaurer un site sans ramener tous les autres à un état antérieur</td></tr></tbody></table></div><p>Une compromission d’un site ne doit pas donner sans raison l’accès en écriture aux fichiers et aux données de tous les autres. L’isolation n’est cependant pas absolue sur une machine unique : le système, le réseau, le stockage et le noyau restent des composants communs.</p>
 
 <h2 id="separate-php-pools-app-services-and-database-credentials">Séparer les pools PHP, les services applicatifs et les identifiants BDD</h2>
 <p>Pour PHP-FPM, des pools dédiés peuvent fournir des utilisateurs Unix, paramètres et limites différents. Pour Node.js ou Python, exécutez les applications sous des comptes et services appropriés, sans privilèges root. Attribuez à chaque application son compte de base de données avec les seules permissions nécessaires.</p>
+<ul class="vps-localized-details"><li>Utilisateur et groupe Unix propres au pool PHP-FPM</li><li>Limites de processus dédiées</li><li>Configuration PHP par site</li><li>Journaux séparés</li><li>Sockets propres au service</li><li>Comportement des ressources identifiable</li><li>Bases de données distinctes</li><li>Identifiants distincts</li><li>Privilèges limités aux besoins de chaque application</li><li>Pas de compte root ou administrateur de base commun à tous les sites</li></ul>
+
 <p>Documentez la consommation et les échecs de chaque pool. Une séparation des processus peut améliorer le diagnostic, mais ne crée pas de nouvelles ressources physiques : tous les pools consomment toujours la RAM et le CPU du même VPS.</p>
 
 <h2 id="mixed-workloads-need-different-budgets">Adapter le budget aux charges de nature différente</h2>
@@ -132,15 +137,21 @@
 
 <h2 id="your-own-sites-can-become-noisy-neighbors">Vos propres sites peuvent perturber les autres</h2>
 <p>Le problème du « voisin bruyant » n’est pas réservé à l’hébergement mutualisé. Sur votre VPS, un import massif, un plugin défectueux, un cron bloqué ou un pic de boutique peut priver les autres sites de CPU, de RAM ou d’entrées-sorties.</p>
+<ul class="vps-localized-details"><li>Pic de trafic</li><li>Extension défectueuse ou requête SQL coûteuse</li><li>Attaque de robots</li><li>Traitement d’images</li><li>Importation ou exportation</li><li>Analyse de sécurité</li><li>Compression d’une sauvegarde</li><li>Tâche cron bloquée</li><li>Croissance démesurée des journaux</li><li>Verrouillage des bases ou pression sur les E/S</li></ul>
+
 <p>Réduisez ce risque par la surveillance, les limites de processus adaptées, la planification des tâches lourdes et la séparation des charges qui doivent évoluer indépendamment.</p>
 
 <h2 id="combined-peaks-matter-more-than-average-usage">Les pics cumulés comptent davantage que la moyenne</h2>
 <p>Une moyenne mensuelle ne montre pas les pointes de plusieurs applications au même instant. Imaginez un site recevant une campagne, une boutique traitant des commandes et un troisième créant une archive complète : additionnez leurs besoins concurrents avec une marge opérationnelle.</p>
+<ul class="vps-localized-details"><li>Le site A reçoit un pic dû à une campagne</li><li>Le site B lance une importation en base</li><li>Le site C démarre une sauvegarde complète</li><li>Le site D exécute un scan de malwares</li><li>Le panneau de contrôle effectue une rotation des journaux</li><li>Le tampon mémoire de la base occupe déjà beaucoup de RAM</li></ul>
+
 <p>Évitez aussi la double comptabilisation de mémoire partagée entre processus. Mesurez la consommation réelle et validez la configuration sous une charge représentative.</p>
 
 <h2 id="manual-control-panel-or-containers">Administration manuelle, panneau ou conteneurs ?</h2>
 <h3 id="manual-server-blocks--virtual-hosts">Hôtes virtuels administrés manuellement</h3>
 <p>Des blocs Nginx ou des VirtualHost Apache conviennent lorsqu’un administrateur maîtrise SSH, les certificats, les permissions, les services et la supervision. C’est souple, mais tout doit être configuré et maintenu explicitement.</p>
+<ul class="vps-localized-details"><li>Gestion manuelle : un administrateur compétent supervise le serveur</li><li>Gestion manuelle : le nombre de sites est limité</li><li>Gestion manuelle : les piles logicielles se ressemblent</li><li>Gestion manuelle : scripts et automatisations rendent les configurations cohérentes</li><li>Panneau : nombreux domaines et comptes à administrer régulièrement</li><li>Panneau : délégation d’accès aux clients nécessaire</li><li>Panneau : interface pour SSL, PHP, bases, sauvegardes et e-mail</li><li>Conteneurs : isolation des dépendances ou environnements importante</li><li>Conteneurs : applications et piles techniques différentes</li><li>Conteneurs : déploiements conçus pour des images ou conteneurs</li><li>Conteneurs : équipe habituée à exploiter ces outils</li></ul>
+
 <h3 id="hosting-control-panel">Panneau de contrôle d’hébergement</h3>
 <p>Un panneau peut simplifier la création de domaines, comptes, versions PHP, bases, certificats et sauvegardes. Vérifiez son modèle d’isolation, les services qu’il installe et sa consommation de mémoire. Voir <a href="/fr/vps-avec-panneau-de-controle/">VPS avec panneau de contrôle</a> et <a href="/fr/hebergement-vps-fastpanel/">Hébergement VPS avec FASTPANEL</a>.</p>
 <h3 id="containers">Conteneurs</h3>
@@ -148,52 +159,47 @@
 
 <h2 id="agency-and-client-websites">Sites d’agences et de clients</h2>
 <p>Les projets de clients distincts présentent des exigences de confidentialité, de disponibilité et de responsabilité différentes. Même avec des utilisateurs séparés, une panne du serveur commun peut affecter toutes les sociétés hébergées.</p>
+<ul class="vps-localized-details"><li>Propriété du domaine et du DNS</li><li>Comptes système ou panneau séparés</li><li>Identifiants de bases distincts</li><li>Accès délégués</li><li>Responsabilité des sauvegardes pour chaque client</li><li>Granularité des restaurations</li><li>Exportation ou migration lorsqu’un client quitte l’agence</li><li>Responsabilité des mises à jour applicatives</li><li>Risque qu’un incident chez un client touche les autres</li></ul>
+
 <p>Définissez à l’avance les accès de chaque client, le traitement des incidents, les fenêtres de maintenance, les sauvegardes individuelles et les conséquences contractuelles d’une indisponibilité. Les clients critiques peuvent justifier un VPS dédié.</p>
 
 <h2 id="backups-and-restore-granularity">Sauvegardes et granularité de restauration</h2>
 <p>Un plan multisite doit permettre de restaurer <strong>un site, sa base et ses médias</strong> sans ramener automatiquement tous les autres à leur état précédent. Combinez sauvegardes individuelles et reprise du serveur entier, conservez des copies externes et testez les deux procédures.</p>
+<ul class="vps-localized-details"><li>Puis-je restaurer le seul site A ?</li><li>Puis-je restaurer uniquement sa base ?</li><li>Puis-je reconstruire le VPS après une panne de disque ou une suppression ?</li><li>Ai-je une copie hors du serveur ?</li><li>Quelle perte de données est possible entre deux sauvegardes ?</li><li>Puis-je tester une restauration sans écraser les autres sites ?</li></ul>
+
 <p>Une archive unique de la machine peut être rapide en cas de destruction totale, mais mal adaptée à la suppression accidentelle d’un fichier chez un seul client. Voir <a href="/fr/strategie-sauvegarde-vps/">Stratégie de sauvegarde VPS</a>.</p>
 
 <h2 id="one-vps-is-one-failure-domain">Un VPS constitue un seul domaine de défaillance</h2>
 <p>Des sites distincts sur une même VM restent vulnérables à une panne du stockage, à une défaillance du système, à une erreur d’administration ou à une compromission de l’hôte invité. Les conteneurs et les pools PHP n’éliminent pas ce point commun.</p>
+<ul class="vps-localized-details"><li>Panne générale du VPS</li><li>Système de fichiers rempli</li><li>Mise à jour défectueuse de l’OS ou de la pile web</li><li>Défaillance de la base de données</li><li>Mauvaise règle de pare-feu</li><li>Compromission d’un compte administrateur</li><li>Malware ou compromission root</li><li>Suppression accidentelle</li><li>Sauvegarde saturant le disque ou les entrées/sorties</li></ul>
+
 <p>Pour une application essentielle à l’activité, le coût potentiel d’une panne conjointe peut être plus important que l’économie de consolidation. Évaluez le besoin de séparation, de redondance ou d’hébergement administré.</p>
 
 <h2 id="when-to-split-sites-or-workloads">Quand séparer les sites ou les charges</h2>
 <p>La séparation devient pertinente lorsque :</p>
-<ul><li>une application critique ne doit pas subir les erreurs des autres ;</li><li>un site monopolise régulièrement CPU, RAM, connexions BDD ou E/S ;</li><li>des technologies nécessitent des versions ou mesures de sécurité incompatibles ;</li><li>un client doit disposer de son propre périmètre d’accès et de restauration ;</li><li>une base ou une file de tâches doit évoluer séparément ;</li><li>les pics cumulés persistent malgré l’optimisation et la planification.</li></ul>
+<ul><li>une application critique ne doit pas subir les erreurs des autres ;</li><li>un site monopolise régulièrement CPU, RAM, connexions BDD ou E/S ;</li><li>des technologies nécessitent des versions ou mesures de sécurité incompatibles ;</li><li>un client doit disposer de son propre périmètre d’accès et de restauration ;</li><li>une base ou une file de tâches doit évoluer séparément ;</li><li>les pics cumulés persistent malgré l’optimisation et la planification.</li></ul><ul class="vps-localized-details"><li>Une boutique critique exige un périmètre de disponibilité indépendant</li><li>Les fenêtres de maintenance ou exigences opérationnelles sont incompatibles</li><li>La contention persiste après optimisation et réorganisation des tâches</li><li>Site professionnel critique : son propre VPS</li><li>Site web : base de données déplacée sur un VPS distinct</li><li>Site web : processus de fond isolés sur un autre VPS</li><li>Agence : groupes de clients séparés selon les risques</li><li>Production : préproduction ou tests sur une machine séparée</li><li>Boutique à fortes écritures : serveur indépendant</li></ul>
 <p>Augmenter la taille d’un VPS peut résoudre un manque de capacité, mais pas toujours les problèmes de périmètre de confiance, de disponibilité ou de responsabilité.</p>
 
 <h2 id="monitoring-a-multi-site-vps">Superviser un VPS multisite</h2>
 <h3 id="server-level">Au niveau du serveur</h3>
 <p>Suivez CPU, RAM disponible, swap et événements OOM, espace libre, E/S disque, charge de la base, erreurs réseau, files de tâches et disponibilité des processus système.</p>
+<ul class="vps-localized-details"><li>Charge CPU</li><li>RAM, swap et événements OOM</li><li>Espace disque</li><li>Temps d’attente des E/S</li><li>Santé des bases de données</li><li>Réseau</li><li>État des services et processus</li><li>Sondes HTTP(S) externes pour chaque nom de domaine important</li><li>Temps de réponse</li><li>Erreurs HTTP 5xx</li><li>Journaux PHP et applicatifs</li><li>Trafic et pression des processus par site si disponibles</li><li>Échecs cron et files d’attente</li><li>Croissance des bases, journaux et fichiers</li></ul>
+
 <h3 id="site-level">Au niveau de chaque site</h3>
 <p>Vérifiez séparément les réponses HTTP, erreurs 5xx, temps de réponse, journaux applicatifs, tâches planifiées, opérations critiques, certificats et croissance du stockage. Une seule vérification de la page d’accueil ne garantit pas que toutes les applications fonctionnent.</p>
 <p>Voir <a href="/fr/supervision-vps/">Supervision VPS</a> pour les alertes et seuils.</p>
 
 <h2 id="multi-site-launch-checklist">Checklist de mise en production multisite</h2>
-<div class="vps-table-scroll" role="region" tabindex="0" aria-label="Checklist multisite"><table><thead><tr><th>Contrôle</th><th>Critère de validation</th></tr></thead><tbody>
-<tr><td>Dimensionnement</td><td>Charge de pointe cumulée testée avec marge de sécurité</td></tr>
-<tr><td>DNS et TLS</td><td>Chaque nom de domaine et certificat fonctionne</td></tr>
-<tr><td>Hôtes virtuels</td><td>Racine web et configuration propres à chaque site</td></tr>
-<tr><td>Comptes système</td><td>Permissions limitées et séparation si nécessaire</td></tr>
-<tr><td>PHP et applications</td><td>Pools ou services dimensionnés et identifiables</td></tr>
-<tr><td>Bases de données</td><td>Identifiants propres et privilèges minimaux</td></tr>
-<tr><td>Tâches planifiées</td><td>Cron, imports et sauvegardes sans conflits dangereux</td></tr>
-<tr><td>Isolation</td><td>Test des accès intersites et de la portée des erreurs</td></tr>
-<tr><td>Sauvegardes</td><td>Restauration d’un site et restauration globale testées</td></tr>
-<tr><td>Surveillance</td><td>Alertes serveur et disponibilité par site</td></tr>
-<tr><td>Redémarrage</td><td>Services et applications repartent automatiquement</td></tr>
-<tr><td>Risque métier</td><td>Impact d’une panne commune explicitement accepté</td></tr>
-</tbody></table></div>
+<div class="vps-table-scroll" role="region" tabindex="0" aria-label="Checklist multisite"><table><thead><tr><th>Contrôle</th><th>Critère de validation</th></tr></thead><tbody><tr><td>Capacité</td><td>Dimensionnée selon la pointe cumulée, pas le nombre de domaines</td></tr><tr><td>DNS</td><td>Chaque domaine pointe volontairement vers ce serveur</td></tr><tr><td>HTTPS</td><td>Certificat et renouvellement valides pour chaque nom de domaine</td></tr><tr><td>Routage</td><td>Bloc Nginx ou hôte virtuel Apache correct par domaine</td></tr><tr><td>Utilisateurs</td><td>Comptes distincts pour sites clients indépendants lorsque possible</td></tr><tr><td>Fichiers</td><td>Racines web et droits séparés</td></tr><tr><td>PHP et applications</td><td>Pools ou services propres aux besoins</td></tr><tr><td>Bases de données</td><td>Bases et identifiants propres ; aucun administrateur commun</td></tr><tr><td>Journaux</td><td>Journaux attribuables à chaque site</td></tr><tr><td>Tâches planifiées</td><td>Pas de chevauchement dangereux des imports, sauvegardes et cron</td></tr><tr><td>Sauvegardes</td><td>Copie hors serveur et procédure de restauration par site</td></tr><tr><td>Surveillance</td><td>Suivi séparé du serveur et des sites importants</td></tr><tr><td>Risque commun</td><td>Impact d’une panne commune explicitement accepté</td></tr><tr><td>Critère de séparation</td><td>Condition claire pour déplacer un site ou un service</td></tr></tbody></table></div>
 
 <h2 id="current-multi-site-vps-examples">Exemples actuels de VPS pour plusieurs sites</h2>
-<p>Les configurations Standard de VDSina sont des repères à confronter à la charge réelle, pas des garanties de nombre de sites.</p>
+<p>Les configurations Standard de VDSina sont des repères à confronter à la charge réelle, pas des garanties de nombre de sites. L’étalon anglais indique une vérification de ces références le 13 octobre 2026 ; vérifiez les conditions actuelles avant toute commande.</p>
 <div class="vps-table-scroll" role="region" tabindex="0" aria-label="Configurations VPS multisite"><table><thead><tr><th>VPS</th><th>Cas d’usage initial</th><th>À réévaluer si</th></tr></thead><tbody>
 <tr><td>1 vCPU / 2 Go / 40 Go — 0,50 $/jour</td><td>Quelques sites légers, statiques ou en cache</td><td>PHP, base, panneau et sauvegardes se chevauchent</td></tr>
 <tr><td>2 vCPU / 4 Go / 80 Go — 0,67 $/jour</td><td>Plusieurs sites professionnels ou WordPress modestes</td><td>Boutique, tâches nombreuses ou pression BDD</td></tr>
 <tr><td>4 vCPU / 8 Go / 160 Go — 1,34 $/jour</td><td>Portefeuille mixte plus exigeant et simultané</td><td>Risques communs inacceptables ou besoin d’évoluer séparément</td></tr>
 </tbody></table></div>
-<p>Un VPS de 1 Go peut servir aux tests ou à des sites extrêmement légers, mais ne constitue pas une recommandation de production multisite par défaut. Vérifiez les tarifs et caractéristiques actuels avant toute commande.</p>
+<p>Le niveau de référence à <strong>1 vCPU / 1 Go / 10 Go / 1 To de transfert mensuel</strong> était indiqué à <strong>0,07 $/jour</strong> le 13 octobre 2026. Les niveaux présentés ici à 2, 4 et 8 Go de RAM étaient indiqués avec <strong>32 To de transfert</strong>. Ce sont des caractéristiques historiques à revérifier, et non une garantie de capacité en nombre de sites.</p><p>Un VPS de 1 Go peut servir aux tests ou à des sites extrêmement légers, mais ne constitue pas une recommandation de production multisite par défaut. Vérifiez les tarifs et caractéristiques actuels avant toute commande.</p>
 <p><a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" rel="sponsored nofollow noopener" target="_blank">Consulter les offres VPS multisites</a></p>
 <p><small>Information commerciale : l’éditeur entretient une relation professionnelle avec VDSina. Les liens partenaires peuvent générer une commission ; la configuration doit rester déterminée par la charge et le risque mesurés.</small></p>
 

@@ -19,6 +19,7 @@ on:
       - "scripts/restore-language-navigation.py"
       - "scripts/audit-language-recovery.py"
       - "scripts/audit-localized-pages.py"
+      - "scripts/audit-french-parity.py"
       - "scripts/audit-site-integrity.py"
       - "scripts/test-site-integrity.py"
       - "recovered-public/**"
@@ -283,6 +284,9 @@ jobs:
           if errors:
               raise SystemExit(1)
           PY
+
+      - name: Verify restored French guide parity
+        run: python3 scripts/audit-french-parity.py cloudflare-public
 
       - name: Build sitemap from actual deployable HTML
         shell: bash
