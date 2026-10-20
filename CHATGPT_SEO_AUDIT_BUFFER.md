@@ -1,5 +1,13 @@
 # CHATGPT SEO AUDIT BUFFER — vpsforwebsite.com
 
+
+### Korean page 11: live publication and internal-link regression closure — 2026-10-20
+
+- Page 11 `VPS에 웹사이트를 호스팅하는 방법` at `/ko/vps에-웹사이트를-호스팅하는-방법/` is published. Original article source commit `b997a5b9a0dfdff5ef7919c14939aa19d70cf5ae`; Korean-only render-hook correction `3f763abbc6b3b3f6cec3b9be67563a7cd0449075`.
+- A post-publication Opera check exposed protocol-relative internal links such as `//ko/...`. Angle-bracket relref placeholders must not pass through relURL before their later expansion. The render hook now preserves those placeholders in its Korean branch; the English/other-language branch is unchanged. No article prose, commands, tables, numbers or checker JavaScript were changed by this repair.
+- Production Chromium QA run `39476410608` passed at 390px and 1280px: HTTP 200, exact single Title/H1, self-canonical, indexability, no page-width overflow, no JavaScript errors, no protocol-relative article links, and all 19 distinct same-origin article destinations/anchors reachable. All 72 checker input combinations passed at each viewport (144 actual submissions). Screenshots and JSON report are stored as run artifacts.
+- Core Korean queue is now 11/15 published. Continue with page 12 `VPS Security Checklist`, then Backup Strategy, Monitoring and Location; About/Contact/Privacy remain separate final passes. Translate one page and one block at a time; preserve the English reference and other locales.
+
 > Persistent working file for SERP research, on-page audit, intent ownership, content gaps, internal linking, competitor tracking, and page-by-page build decisions.
 > Read this file together with `CHATGPT_PROJECT_CONTEXT.md` before SEO/content work.
 > Updated: 2026-10-12.
