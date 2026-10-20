@@ -117,6 +117,10 @@ jobs:
                 a.equal(await page.locator('a[href^="//"]').count(),0,'No protocol-relative links');
                 const geo=await page.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth,boxes:[...document.querySelectorAll('header,h1,.vps-location-hero-grid,#vps-location-checker')].map(x=>{const r=x.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width}})}));
                 console.log('GEOMETRY',width,JSON.stringify(geo));
+                if(geo.html>width+2||geo.body>width+2){
+                  const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,className:typeof e.className==='string'?e.className.slice(0,120):'',left:r.left,right:r.right,width:r.width,text:(e.textContent||'').trim().slice(0,80)}}).filter(x=>x.right>window.innerWidth+2&&x.width>5).sort((a,b)=>b.right-a.right).slice(0,35));
+                  console.log('OVERFLOW OFFENDERS',JSON.stringify(offenders));
+                }
                 a(geo.html<=width+2&&geo.body<=width+2,'Horizontal overflow');
                 for(const box of geo.boxes)if(box.width>0)a(box.left>=-2&&box.right<=width+2,'Overflow '+JSON.stringify(box));
                 await page.screenshot({path:'shots/location-'+width+'.png',fullPage:true});
