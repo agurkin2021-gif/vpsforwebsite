@@ -16,7 +16,9 @@
 - Homepage published: source `37b43069c4156856731cce5fc759ab83ca932c1a`, generated `efc4b33376a3e6a0da20f5f57c2087631f3ebd71`; both Actions and Cloudflare Workers Builds succeeded. Live `/ko/` returns HTTP 200 with correct SEO and sitemap inclusion.
 - Second source pass complete: `웹사이트용 VPS 사양`, `/ko/웹사이트용-vps-사양/`. All 29 headings, four tables, seven FAQs and two tools translated. All 729 diagnostic inputs and nine RAM boundaries preserve the original behavior; worked example returns 2.4 GB and a 4 GB tier. Production/preview builds and responsive/SEO/link checks pass. Sizing publication pending.
 - Shared article disclosure now localized with a working English About fallback. Wide Korean plan comparison table supports horizontal scrolling on mobile; English content and behavior unchanged.
-- Next page after sizing publication: Website migration to VPS. The remaining Korean cluster is not yet translated.
+- Website migration (page 3) completed as a full Korean source pass: Title/H1 `웹사이트 VPS 이전`, route `/ko/웹사이트-vps-이전/`, source `content/korean/website-migration-to-vps.md`. Original 31 headings, 2 tables, 8 FAQ, 25 numbered items, 106 bullet points, 8 relref links and 2 body affiliate links preserved.
+- Korean migration preflight: same 10 controls/values and English decision tree; 2,304/2,304 combinations match readiness classification. Dedicated migration hero strings localized only for KO with EN unchanged.
+- Translation and structure verified; production Hugo, rendered SEO, responsive browser and Cloudflare publication still need post-commit confirmation. Next page after confirmation: Managed vs Unmanaged VPS. Other Korean pages remain untranslated.
 
 ## Project identity
 

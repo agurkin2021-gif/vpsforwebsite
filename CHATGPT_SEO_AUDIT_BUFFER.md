@@ -15,7 +15,9 @@
 - `scripts/translation_audit.py` reports only expected price-unit localization and Korean-particle word-boundary mismatches; separate numeric/structural checks confirm unchanged values, section/list counts, images and affiliate URLs. See `research/korean-localization-2026-10-19.md`.
 - Homepage publication confirmed: source `37b4306`, generated `efc4b33`, Actions and Cloudflare Workers Builds successful; live `/ko/` HTTP 200, exact SEO and sitemap inclusion.
 - Second owner: `웹사이트용 VPS 사양` → `/ko/웹사이트용-vps-사양/`. Full 29-heading article, four tables, seven FAQs, both tools and hero localized. 729 diagnostic combinations, nine RAM threshold cases and worked example pass. en/ko/x-default point to equivalent pages; homepage/menu link to the new Korean owner. Mobile wide-table scrolling preserves legibility. Sizing publication pending.
-- Supporting pages remain queued individually, next Website migration to VPS. Do not claim the full Korean site is complete.
+- Third intent owner: `웹사이트 VPS 이전` → `/ko/웹사이트-vps-이전/`. Korean natural migration/hosting terminology reviewed; search volume unverified. EN migration intent remains distinct from homepage purchase and sizing-owner intents.
+- Full translation parity: 31 headings (all anchored to original English IDs), 2 tables/22 Markdown rows, 25 numbered items, 106 bullets, 8 FAQ, 8 relref sources, 2 unchanged sponsored affiliate links. Interactive 10-field preflight checker preserves decision logic for all 2,304 input-state combinations; Korean-only hero text in shared template does not alter English.
+- This source pass requires rendered build, canonical/hreflang, mobile/desktop and live publication checks before completion is declared. Next independent Korean article: Managed vs Unmanaged VPS. The Korean cluster is not yet complete.
 
 ## 1. Operating rules
 

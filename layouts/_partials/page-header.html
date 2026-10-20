@@ -1057,10 +1057,10 @@
                 href="{{ $migrationAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}VPS 사양 확인하기{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-migrate-secondary-cta" href="#quick-migration-plan">
-                See migration plan
+                {{ if eq site.Language.Lang "ko" }}이전 계획 보기{{ else }}See migration plan{{ end }}
               </a>
             </div>
           </div>
@@ -1070,45 +1070,45 @@
             href="{{ $migrationAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for website migration">
+            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 이전용 VPS 사양 확인하기{{ else }}Check current VPS options for website migration{{ end }}">
             <div class="vps-migrate-compact-head">
-              <strong>Move the website before you move the traffic</strong>
-              <small>Build and validate the destination first. DNS should be the final controlled step.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}트래픽을 옮기기 전에 웹사이트를 먼저 이전하세요{{ else }}Move the website before you move the traffic{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}새 서버를 먼저 구축하고 검증하세요. DNS 전환은 마지막에 통제된 방식으로 진행해야 합니다.{{ else }}Build and validate the destination first. DNS should be the final controlled step.{{ end }}</small>
             </div>
 
             <div class="vps-migrate-compact-grid">
               <div class="vps-migrate-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Inventory</strong>
-                  <small>Stack, data, DNS, mail</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}현황 파악{{ else }}Inventory{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}기술 환경·데이터·DNS·메일{{ else }}Stack, data, DNS, mail{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Build & test</strong>
-                  <small>Prepare VPS in parallel</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}구축·테스트{{ else }}Build & test{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}새 VPS를 병렬로 준비{{ else }}Prepare VPS in parallel{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Final sync</strong>
-                  <small>Control last writes</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}최종 동기화{{ else }}Final sync{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}마지막 데이터 쓰기 관리{{ else }}Control last writes{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>DNS cutover</strong>
-                  <small>Monitor + keep rollback</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}DNS 전환{{ else }}DNS cutover{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}모니터링·롤백 경로 유지{{ else }}Monitor + keep rollback{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-migrate-compact-rule">
-              <strong>Do not retire the old host until the new VPS passes acceptance checks.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS가 검수 기준을 통과하기 전에는 기존 호스팅을 종료하지 마세요.{{ else }}Do not retire the old host until the new VPS passes acceptance checks.{{ end }}</strong>
             </div>
           </a>
         </div>

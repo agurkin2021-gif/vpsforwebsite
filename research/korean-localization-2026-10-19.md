@@ -54,13 +54,23 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - Homepage publication verified: source `37b43069c4156856731cce5fc759ab83ca932c1a`; generated `efc4b33376a3e6a0da20f5f57c2087631f3ebd71`; both GitHub Actions and Cloudflare Workers Builds succeeded; live `/ko/` HTTP 200 with correct Title/H1/canonical/hreflang and deployment sitemap entry.
 - Sizing source/QA complete; its own source commit, generated output and live publication must be recorded after deployment.
 
+## Page 3: Website migration to VPS — 2026-10-20
+
+- Korean query, Title and H1: **웹사이트 VPS 이전**; slug: \`/ko/웹사이트-vps-이전/\`. This article owns the cutover/migration intent, not VPS purchase selection or WordPress-specific resource sizing. Korean query volume not verified.
+- Full English article translated individually: all **31 original headings** retained as anchored sections, both Markdown tables (**22 table lines**), **25 numbered steps**, **106 bullet points** and all **8 FAQ items** preserved in the same order.
+- Ten-field interactive preflight form preserves field IDs, option values, readiness conditions, CSS classes and submit behavior; labels, both outcomes and all missing-item names are Korean. **All 2,304 distinct field-value combinations** were simulated against the unchanged English decision logic; zero category mismatches.
+- All eight article relref destinations, two article affiliate URLs and their \`rel="sponsored nofollow noopener"\` attributes preserved. English-only supporting destinations continue to resolve to their real English pages until their Korean counterparts are created.
+- Dedicated migration hero translated for Korean via narrowly scoped Hugo language conditionals. Original English visible labels, markup and links remain untouched. Korean nav will resolve to this guide once generated.
+- Source/structure review completed; Hugo production build, generated HTML/canonical/hreflang, responsive-browser review and live Cloudflare deployment are separate publication gates and **not claimed as passed at this point**.
+- Next individual page after publication validation: **Managed vs Unmanaged VPS**.
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
 
 1. Homepage `/ko/` — implementation and local checks complete; publication verification recorded in the project context.
 2. VPS sizing for website — implementation and local QA complete; publication gate pending.
-3. Website migration to VPS.
+3. Website migration to VPS — source complete; publication verification pending.
 4. Managed vs Unmanaged VPS.
 5. VPS for WordPress.
 6. VPS for WooCommerce.
