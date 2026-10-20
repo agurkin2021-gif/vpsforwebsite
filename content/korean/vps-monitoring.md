@@ -255,105 +255,105 @@ Linux는 남는 RAM을 파일시스템 캐시로 사용하므로 “RAM 사용�
 
 네트워크 지표를 통해 애플리케이션 자체의 지연과 제공업체·전송 경로의 문제를 구분할 수 있습니다.
 
-## Monitor services and application health
+## 서비스와 애플리케이션 상태 모니터링 {#monitor-services-and-application-health}
 
-A VPS can be reachable while the website is broken.
+VPS에 접속할 수 있어도 웹사이트는 정상 작동하지 않을 수 있습니다.
 
-Monitor important services such as:
+다음과 같은 주요 서비스를 감시하세요.
 
 - Nginx/Apache;
 - PHP-FPM;
-- Node/Python application service;
+- Node/Python 애플리케이션 서비스;
 - MySQL/MariaDB/PostgreSQL;
-- Redis where used;
-- queue workers;
-- scheduled-job service;
-- control panel where business-critical.
+- 사용하는 경우 Redis;
+- 큐 워커;
+- 예약 작업 서비스;
+- 업무상 중요한 경우 컨트롤 패널.
 
-On systemd-based Linux, `systemctl --failed` is useful during diagnosis, but continuous monitoring should alert on failed or repeatedly restarting required services.
+systemd 기반 Linux에서는 진단 시 `systemctl --failed`가 유용합니다. 하지만 상시 모니터링은 필수 서비스가 실패하거나 반복 재시작할 때 알림을 보내야 합니다.
 
-Do not stop at “process exists.” A process can be alive but unable to serve valid requests.
+“프로세스가 존재한다”는 확인만으로 끝내지 마세요. 프로세스가 살아 있어도 정상적인 요청을 처리하지 못할 수 있습니다.
 
-## HTTP 200 is not always healthy
+## HTTP 200만으로 정상 상태를 보장할 수 없습니다 {#http-200-is-not-always-healthy}
 
-An application can return HTTP 200 with:
+애플리케이션이 HTTP 200을 반환하면서도 다음 상태일 수 있습니다.
 
-- maintenance page;
-- database error rendered inside a template;
-- empty/incorrect content;
-- broken login flow;
-- stale cache.
+- 점검 안내 페이지만 표시;
+- 템플릿 내부에 데이터베이스 오류 표시;
+- 콘텐츠가 비어 있거나 잘못됨;
+- 로그인 절차 장애;
+- 오래된 캐시 제공.
 
-For critical sites, use the narrowest useful check:
+중요한 사이트에는 필요한 기능을 정확히 검증하는 점검을 사용하세요.
 
-- expected keyword/text;
-- health endpoint;
-- API response;
-- critical public URL;
-- synthetic login/transaction only when the business value justifies the complexity.
+- 예상한 키워드·문구;
+- 상태 확인 엔드포인트;
+- API 응답;
+- 핵심 공개 URL;
+- 업무상 가치가 추가 복잡성을 정당화하는 경우에만 합성 로그인·거래 테스트.
 
-Do not make synthetic checks mutate production data unless they are specifically designed to do so safely.
+안전하게 변경하도록 설계된 테스트가 아니라면 합성 점검으로 운영 데이터를 수정하지 마세요.
 
-## Monitor TLS and DNS
+## TLS와 DNS 모니터링 {#monitor-tls-and-dns}
 
-The VPS can be healthy while the website is unavailable because of certificate or DNS failure.
+VPS가 정상이어도 인증서 또는 DNS 장애 때문에 웹사이트에 접속하지 못할 수 있습니다.
 
-Track:
+다음을 추적하세요.
 
-- certificate expiration;
-- certificate hostname mismatch;
-- failed renewal;
+- 인증서 만료일;
+- 인증서와 호스트 이름 불일치;
+- 갱신 실패;
 - DNS 이름 해석;
-- accidental record changes where tooling supports it.
+- 도구가 지원하는 경우 의도하지 않은 DNS 레코드 변경.
 
-A useful example is to warn well before certificate expiry, such as **14 days**, then escalate closer to expiry, such as **7 days**. The exact window should match how quickly somebody can fix renewal.
+예를 들어 인증서 만료 **14일** 전에 미리 경고하고, **7일** 전에는 경고 수준을 높일 수 있습니다. 실제 알림 기간은 담당자가 갱신 문제를 해결하는 데 필요한 시간에 맞춰야 합니다.
 
-## Monitor the database as an application dependency
+## 애플리케이션 의존 요소인 데이터베이스 모니터링 {#monitor-the-database-as-an-application-dependency}
 
-For database-backed websites, monitor enough to tell whether the DB is the bottleneck or failed dependency.
+데이터베이스를 사용하는 웹사이트에서는 DB가 병목인지, 아니면 장애가 발생한 의존 서비스인지 구분할 수 있도록 감시해야 합니다.
 
-Depending on the engine/workload, useful signals include:
+엔진과 워크로드에 따라 다음 지표가 유용합니다.
 
-- service availability;
-- connection count;
-- connection errors;
-- query latency;
-- locks/contention symptoms;
-- slow-query activity;
-- memory pressure;
-- storage growth;
-- replication/backup status where used.
+- 서비스 가용성;
+- 연결 수;
+- 연결 오류;
+- 쿼리 지연 시간;
+- 잠금·경합 징후;
+- 느린 쿼리 발생 현황;
+- 메모리 압박;
+- 저장 공간 증가;
+- 사용하는 경우 복제·백업 상태.
 
-Do not alert on every DB metric. Alert on conditions tied to user impact or a known failure mode.
+DB 지표마다 알림을 보내지 마세요. 사용자에게 영향을 주거나 알려진 장애 유형과 관련된 조건에 대해 알리세요.
 
-For WordPress workload behavior, see [VPS for WordPress]({{< relref "vps-for-wordpress.md" >}}). For transactional store workload, see [VPS for WooCommerce]({{< relref "vps-for-woocommerce.md" >}}).
+WordPress 워크로드의 특성은 [WordPress용 VPS]({{< relref "vps-for-wordpress.md" >}})를, 거래 처리형 쇼핑몰은 [WooCommerce용 VPS]({{< relref "vps-for-woocommerce.md" >}})를 참고하세요.
 
-## Monitor cron, queues and background jobs
+## cron, 큐와 백그라운드 작업 모니터링 {#monitor-cron-queues-and-background-jobs}
 
-A green homepage does not prove background work is healthy.
+홈페이지가 정상이라고 해서 백그라운드 작업까지 정상인 것은 아닙니다.
 
-Track jobs that matter to the application:
+애플리케이션에 중요한 다음 작업을 추적하세요.
 
 - cron;
-- queue workers;
-- scheduled imports;
-- webhooks;
-- email jobs;
-- WordPress WP-Cron/system cron;
+- 큐 워커;
+- 예약된 데이터 가져오기;
+- 웹훅;
+- 이메일 작업;
+- WordPress WP-Cron·시스템 cron;
 - WooCommerce Action Scheduler;
-- subscriptions/renewals;
-- inventory sync.
+- 구독·갱신;
+- 재고 동기화.
 
-Useful signals:
+유용한 지표:
 
-- last successful run;
-- queue depth/backlog;
-- failed jobs;
-- oldest pending job;
-- repeated retries;
-- worker stopped/restarting.
+- 마지막 성공 실행 시각;
+- 큐 깊이·적체량;
+- 실패한 작업;
+- 가장 오래 대기 중인 작업;
+- 반복되는 재시도;
+- 워커 중지·재시작.
 
-For WooCommerce, a growing failed/past-due Action Scheduler queue can be an operational problem even if catalog pages still load.
+WooCommerce에서는 상품 목록 페이지가 열리더라도 Action Scheduler의 실패·지연 작업이 계속 쌓이면 운영상 문제가 될 수 있습니다.
 
 ## Monitor backup freshness
 
