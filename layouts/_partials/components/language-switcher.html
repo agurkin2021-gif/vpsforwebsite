@@ -1,24 +1,35 @@
 {{- $current := .Context -}}
 {{- $class := .Class | default "" -}}
-{{- if gt (len site.Languages) 1 -}}
+{{- $currentLang := $current.Language.Lang -}}
+{{- $targets := slice
+  (dict "lang" "en" "label" "EN" "url" "/")
+  (dict "lang" "bn" "label" "BN" "url" "/bn/")
+  (dict "lang" "pt-BR" "label" "PT-BR" "url" "/pt-br/")
+  (dict "lang" "fr" "label" "FR" "url" "/fr/")
+  (dict "lang" "hi" "label" "HI" "url" "/hi/")
+  (dict "lang" "id" "label" "ID" "url" "/id/")
+  (dict "lang" "ru" "label" "RU" "url" "/ru/")
+  (dict "lang" "es" "label" "ES" "url" "/es/")
+  (dict "lang" "vi" "label" "VI" "url" "/vi/")
+  (dict "lang" "ko" "label" "KO" "url" "/ko/")
+-}}
 <div class="relative {{ $class }}" data-language-switcher>
   <button type="button" class="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-white bg-transparent border-0 shadow-none rounded-none hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="{{ T "ui_select_language" }}" aria-expanded="false" aria-haspopup="true" data-language-toggle>
-    {{ upper $current.Language.Lang }}
+    {{ upper $currentLang }}
     <svg aria-hidden="true" viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="m5 7 5 5 5-5z"/></svg>
   </button>
-  <div class="absolute right-0 top-full mt-2 z-50 min-w-24 rounded-md border border-white/15 bg-[#101b2a] shadow-xl hidden" data-language-options>
-    {{- range site.Languages -}}
-      {{- $target := . -}}
-      {{- $url := "" -}}
-      {{- range site.Sites -}}
-        {{- if eq .Language.Lang $target.Lang -}}{{- $url = .Home.RelPermalink -}}{{- end -}}
-      {{- end -}}
-      {{- range $current.AllTranslations -}}
-        {{- if eq .Language.Lang $target.Lang -}}
-          {{- $url = .RelPermalink -}}
+  <div class="absolute right-0 top-full mt-2 z-50 min-w-28 rounded-md border border-white/15 bg-[#101b2a] shadow-xl hidden max-h-[70vh] overflow-y-auto" data-language-options>
+    {{- range $targets -}}
+      {{- $targetLang := .lang -}}
+      {{- $url := .url -}}
+      {{- if or (eq $targetLang "en") (eq $targetLang "es") (eq $targetLang "ko") -}}
+        {{- range $current.AllTranslations -}}
+          {{- if eq .Language.Lang $targetLang -}}
+            {{- $url = .RelPermalink -}}
+          {{- end -}}
         {{- end -}}
       {{- end -}}
-      <a href="{{ $url }}" hreflang="{{ $target.Lang }}" lang="{{ $target.Lang }}" class="block px-4 py-2 text-sm text-white hover:text-primary hover:bg-white/10 {{ if eq $target.Lang $current.Language.Lang }}font-bold{{ end }}">{{ upper $target.Lang }}</a>
+      <a href="{{ $url }}" hreflang="{{ $targetLang }}" lang="{{ $targetLang }}" class="block px-4 py-2 text-sm text-white hover:text-primary hover:bg-white/10 {{ if eq $targetLang $currentLang }}font-bold{{ end }}">{{ .label }}</a>
     {{- end -}}
   </div>
 </div>
@@ -40,4 +51,3 @@
     });
   })();
 </script>
-{{- end -}}
