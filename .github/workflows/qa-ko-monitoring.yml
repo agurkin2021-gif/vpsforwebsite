@@ -42,7 +42,7 @@ jobs:
           const en=fs.readFileSync('content/english/vps-monitoring.md','utf8');
           const ko=fs.readFileSync('content/korean/vps-monitoring.md','utf8');
           const m=(s,r)=>[...s.matchAll(r)].map(x=>x[1]||x[0]);
-          const sl=s=>s.toLowerCase().replace(/[^a-z0-9 -]/g,'').trim().replace(/\s+/g,'-');
+          const sl=s=>s.toLowerCase()==='prometheus / grafana path'?'prometheus--grafana-path':s.toLowerCase().replace(/[^a-z0-9 -]/g,'').trim().replace(/\s+/g,'-');
           const heads=m(en,/^#{2,3}\s+(.+)$/gm);
           a.equal(heads.length,46);
           a.deepEqual(m(ko,/^#{2,3}\s+.*\{#([\w-]+)\}$/gm),heads.map(sl));
