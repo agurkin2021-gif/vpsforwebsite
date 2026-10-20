@@ -169,91 +169,91 @@ Prometheus Node Exporter는 CPU, 파일시스템과 네트워크 데이터를 �
 
 ## CPU, 메모리, 디스크와 네트워크 모니터링 {#monitor-cpu-memory-disk-and-network}
 
-### CPU
+### CPU {#cpu}
 
-Do not alert on every short spike.
+짧은 사용량 급증마다 알림을 보내지 마세요.
 
-Watch:
+다음 지표를 확인하세요.
 
-- sustained CPU utilization;
-- load average relative to vCPU count;
-- per-process CPU;
-- CPU steal time where exposed by the virtualization stack;
-- application/request latency at the same time.
+- 장시간 지속되는 CPU 사용률;
+- vCPU 개수 대비 평균 부하;
+- 프로세스별 CPU 사용량;
+- 가상화 환경에서 제공하는 경우 CPU steal time;
+- 같은 시점의 애플리케이션·요청 지연 시간.
 
-A brief 100% burst during cache warm-up or a cron task can be harmless. Sustained CPU saturation plus growing latency/queues is stronger evidence of a real bottleneck.
+캐시 준비나 cron 작업 중 잠시 CPU가 100%에 도달하는 것은 문제가 아닐 수 있습니다. CPU 포화가 지속되면서 지연 시간과 큐가 함께 증가한다면 실제 병목의 근거가 됩니다.
 
-### Memory, swap and OOM
+### 메모리, 스왑과 OOM {#memory-swap-and-oom}
 
-Linux often uses spare RAM for filesystem cache, so “90% RAM used” is not automatically a failure.
+Linux는 남는 RAM을 파일시스템 캐시로 사용하므로 “RAM 사용률 90%”가 반드시 장애를 뜻하지는 않습니다.
 
-Watch:
+다음 지표를 확인하세요.
 
-- available memory;
-- swap activity;
-- swap growth;
-- OOM-killer events;
-- process memory growth;
-- PHP/app worker memory;
-- database memory.
+- 사용 가능한 메모리;
+- 스왑 활동;
+- 스왑 사용량 증가;
+- OOM-killer 발생 기록;
+- 프로세스 메모리 사용량 증가;
+- PHP·애플리케이션 워커의 메모리;
+- 데이터베이스 메모리.
 
-A memory leak may look normal at noon and kill the process overnight. Historical trend data is what exposes it.
+메모리 누수는 낮에는 정상처럼 보이다가 밤사이 프로세스를 종료시킬 수 있습니다. 이런 문제는 과거 추세 데이터로 확인합니다.
 
-### Disk capacity
+### 디스크 용량 {#disk-capacity}
 
-Watch filesystem utilization before it reaches the point where databases, logs or package updates fail.
+데이터베이스, 로그 또는 패키지 업데이트가 실패할 정도로 공간이 부족해지기 전에 파일시스템 사용률을 감시하세요.
 
-An illustrative starting warning/critical pair might be **80% / 90% used**, but this is not a universal SLA. A rapidly growing database may need much earlier action.
+경고·위험 임계값의 예시로 **사용률 80% / 90%**를 둘 수 있지만 보편적인 SLA는 아닙니다. 빠르게 증가하는 데이터베이스에는 훨씬 이른 조치가 필요할 수 있습니다.
 
-Also monitor free working space required by:
+다음 작업에 필요한 여유 공간도 감시하세요.
 
-- backups;
-- database maintenance;
-- package updates;
-- uploads;
-- logs;
-- staging/import jobs.
+- 백업;
+- 데이터베이스 유지 관리;
+- 패키지 업데이트;
+- 업로드;
+- 로그;
+- 스테이징 및 가져오기 작업.
 
-### Inodes
+### Inode {#inodes}
 
-A filesystem can run out of inodes while many GB remain free.
+디스크에 수 GB가 남아 있어도 파일시스템의 inode가 소진될 수 있습니다.
 
-This can happen with:
+다음과 같은 경우에 발생할 수 있습니다.
 
-- cache directories;
-- sessions;
-- mail queues;
-- huge numbers of tiny files;
-- runaway temporary files.
+- 캐시 디렉터리;
+- 세션;
+- 메일 큐;
+- 매우 많은 작은 파일;
+- 통제되지 않고 쌓이는 임시 파일.
 
-Track inode use separately from disk GB.
+디스크의 잔여 GB와 inode 사용량을 별도로 추적하세요.
 
-### Disk I/O and latency
+### 디스크 I/O와 지연 시간 {#disk-io-and-latency}
 
-Disk can become the bottleneck before capacity is full.
+저장 공간이 가득 차기 전에 디스크가 병목이 될 수 있습니다.
 
-Watch:
+다음 지표를 확인하세요.
 
-- I/O wait;
-- read/write latency;
-- queue depth where available;
-- database response time;
-- backup/import windows.
+- I/O 대기 시간;
+- 읽기·쓰기 지연 시간;
+- 확인할 수 있다면 큐 깊이;
+- 데이터베이스 응답 시간;
+- 백업·가져오기 수행 시간대.
 
-A larger disk capacity does not automatically fix slow storage I/O.
+디스크 용량을 늘리는 것만으로 느린 스토리지 I/O가 해결되지는 않습니다.
 
-### Network
+### 네트워크 {#network}
 
-Track more than total bandwidth:
+총 대역폭 외에도 다음을 추적하세요.
 
-- inbound/outbound throughput;
-- sudden traffic changes;
-- connection errors;
-- packet loss/latency where measurable;
-- unusual outbound traffic;
-- interface errors.
+- 인바운드·아웃바운드 처리량;
+- 갑작스러운 트래픽 변화;
+- 연결 오류;
+- 측정 가능한 경우 패킷 손실과 지연 시간;
+- 비정상적인 아웃바운드 트래픽;
+- 네트워크 인터페이스 오류.
 
-Network metrics help separate application slowness from provider/path problems.
+네트워크 지표를 통해 애플리케이션 자체의 지연과 제공업체·전송 경로의 문제를 구분할 수 있습니다.
 
 ## Monitor services and application health
 
