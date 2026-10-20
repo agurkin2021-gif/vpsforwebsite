@@ -474,228 +474,228 @@ GeoIP 데이터베이스가 IP 주소에 표시하는 위치는 실제 서버 �
 
 GeoIP 웹사이트 한 곳의 결과만으로 물리적 위치를 추정하지 마세요.
 
-GeoIP can matter to applications, fraud systems or localized services, but that is a separate issue from actual network latency.
+GeoIP 정보는 애플리케이션, 사기 탐지 시스템 또는 지역화 서비스에 중요할 수 있지만, 실제 네트워크 지연 시간과는 별개의 문제입니다.
 
-## Jurisdiction and data residency
+## 관할권과 데이터 보관 지역 {#jurisdiction-and-data-residency}
 
-Location can be constrained by more than performance.
+서버 위치는 성능 외의 요건으로도 제한될 수 있습니다.
 
-Examples include:
+예를 들면 다음과 같습니다.
 
-- contractual data-residency requirements;
-- regulated customer data;
-- internal company policy;
-- client procurement requirements;
-- restrictions on cross-border processing or storage.
+- 계약상 데이터 보관 지역 요건;
+- 규제 대상 고객 데이터;
+- 회사 내부 정책;
+- 고객사의 조달 요건;
+- 국경을 넘는 데이터 처리·저장에 대한 제한.
 
-If a requirement is real, first define which regions are legally/contractually eligible. Then optimize performance inside that set.
+실제 구속력 있는 요건이 있다면 먼저 법률·계약상 허용되는 지역을 정하세요. 그다음 허용된 후보 안에서 성능을 최적화해야 합니다.
 
-This page does not provide legal advice. For regulated or contractually restricted data, confirm the requirement with qualified legal/compliance guidance and the provider's current contractual documentation.
+이 페이지는 법률 자문이 아닙니다. 규제나 계약 제한이 적용되는 데이터는 적격한 법률·컴플라이언스 전문가의 안내와 제공업체의 최신 계약 문서로 요건을 확인하세요.
 
-## Does VPS location affect SEO?
+## VPS 위치가 SEO에 영향을 주나요? {#does-vps-location-affect-seo}
 
-Do not choose a VPS country because somebody promises a direct ranking boost.
+특정 국가에 VPS를 두면 검색 순위가 바로 오른다는 약속만 믿고 위치를 선택하지 마세요.
 
-Google's current guidance says server location **can be a signal** about a site's intended audience, but it is **not definitive**, especially because sites can use CDNs or host in countries with better infrastructure.
+Google의 안내에 따르면 서버 위치는 사이트의 대상 지역을 나타내는 **신호가 될 수 있지만**, **결정적인 신호는 아닙니다**. 특히 CDN을 사용하거나 인프라가 더 좋은 다른 국가에 서버를 둘 수 있기 때문입니다.
 
-For explicit regional targeting, Google points to signals such as:
+명시적인 지역 타겟팅 신호로 Google은 다음과 같은 요소를 설명합니다.
 
-- locale-specific URLs;
+- 지역·언어별 URL;
 - `hreflang`;
-- country-code domains where appropriate;
-- explicit regional/language site structure.
+- 적합한 경우 국가 코드 최상위 도메인;
+- 명확한 지역·언어별 사이트 구조.
 
-Therefore:
+따라서 핵심 원칙은 다음과 같습니다.
 
-**choose VPS location primarily for users, network paths, dependencies and operational/data requirements — not as an SEO shortcut.**
+**VPS 위치는 SEO 편법이 아니라 사용자, 네트워크 경로, 의존 서비스, 운영 및 데이터 요건을 우선해 선택하세요.**
 
-For a global site, a fast and reliable architecture plus correct international targeting is more defensible than moving the origin solely to chase rankings.
+글로벌 사이트라면 검색 순위만을 기대하고 원본 서버를 이전하는 것보다, 빠르고 안정적인 아키텍처와 올바른 다국어·다지역 타겟팅을 갖추는 편이 타당합니다.
 
-## Location and resource sizing are separate decisions
+## 위치 선택과 서버 자원 산정은 별개입니다 {#location-and-resource-sizing-are-separate-decisions}
 
-A nearer server does not compensate for insufficient CPU, RAM or storage.
+서버가 가까이 있다고 CPU·RAM·스토리지 부족이 해결되는 것은 아닙니다.
 
-A larger VPS does not remove network distance.
+VPS 사양을 높여도 네트워크 거리는 줄어들지 않습니다.
 
-Treat them as two different questions:
+두 문제를 따로 판단하세요.
 
-1. **Where should the server be?** → this page.
-2. **How large should the server be?** → [VPS sizing for website]({{< relref "vps-sizing-for-website.md" >}}).
+1. **서버를 어디에 둘까요?** → 이 페이지.
+2. **서버가 얼마나 커야 할까요?** → [웹사이트용 VPS 사양]({{< relref "vps-sizing-for-website.md" >}}).
 
-A badly sized server in the perfect city can still be slow. A powerful server on the wrong network path can still feel slow to users.
+완벽한 도시에 있더라도 사양이 부족한 서버는 느릴 수 있습니다. 반대로 서버가 강력해도 네트워크 경로가 잘못되면 사용자는 느리게 느낄 수 있습니다.
 
-## Location and multiple websites
+## 여러 웹사이트의 서버 위치 {#location-and-multiple-websites}
 
-A multi-site VPS can have several audiences.
+하나의 VPS에 여러 웹사이트가 있다면 이용자층도 여러 개일 수 있습니다.
 
-If all sites serve one market, location is straightforward.
+모든 사이트가 같은 시장을 대상으로 한다면 위치를 결정하기는 비교적 쉽습니다.
 
-If client sites target different continents, a single VPS creates a compromise: all websites share one origin region even if their audiences differ.
+고객 사이트가 서로 다른 대륙을 대상으로 한다면 단일 VPS는 절충안이 됩니다. 이용자층이 달라도 모든 사이트가 하나의 원본 서버 지역을 공유하기 때문입니다.
 
-For mixed portfolios, classify sites by:
+여러 사이트를 운영한다면 다음 기준으로 분류하세요.
 
-- audience geography;
-- dynamic traffic;
-- business importance;
-- compliance constraints.
+- 이용자 지역;
+- 동적 트래픽;
+- 비즈니스 중요도;
+- 규제·준수 요건.
 
-If one site has a materially different location requirement, it may deserve a separate VPS rather than forcing every site onto one region.
+한 사이트의 위치 요건이 다른 사이트들과 크게 다르다면 모든 사이트를 한 지역에 맞추기보다 별도 VPS에 배치하는 것이 나을 수 있습니다.
 
-Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) for the consolidation/isolation decision.
+통합 운영과 분리 운영의 판단 기준은 [여러 웹사이트용 VPS]({{< relref "vps-for-multiple-websites.md" >}})를 참고하세요.
 
-## Failure domains matter too
+## 장애 영역도 고려하세요 {#failure-domains-matter-too}
 
-The fastest production region is not automatically where every supporting copy should live.
+운영 서버에 가장 빠른 지역이 모든 지원 시스템과 백업 사본을 둘 장소로도 최적인 것은 아닙니다.
 
-Depending on business risk, consider separating critical recovery/monitoring dependencies from the same failure domain:
+비즈니스 위험에 따라 핵심 복구·모니터링 수단을 같은 장애 영역에서 분리하는 것을 고려하세요.
 
-- off-server backups;
-- external uptime checks;
-- incident notifications;
-- secondary copies.
+- 서버 외부 백업;
+- 외부 가용성 점검;
+- 장애 알림;
+- 2차 사본.
 
-The objective is not "put everything far away." It is to avoid one regional/provider/network failure disabling both production and the systems required to detect or recover from it.
+목표는 '모든 것을 멀리 두기'가 아닙니다. 한 지역·제공업체·네트워크에서 장애가 나더라도 운영 환경과 장애 감지·복구 수단이 동시에 중단되지 않도록 하는 것입니다.
 
-Use [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}) for recovery design and [VPS Monitoring]({{< relref "vps-monitoring.md" >}}) for independent availability checks.
+복구 설계는 [VPS 백업 전략]({{< relref "vps-backup-strategy.md" >}}), 독립적인 가용성 점검은 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})을 참고하세요.
 
-## What if you choose the wrong location?
+## 잘못된 지역을 선택했다면? {#what-if-you-choose-the-wrong-location}
 
-Changing region later may be simple or disruptive depending on the provider and application.
+이후 다른 지역으로 옮기는 작업은 제공업체와 애플리케이션에 따라 간단할 수도, 중단 위험이 큰 작업일 수도 있습니다.
 
-Possible consequences include:
+다음과 같은 작업이 필요할 수 있습니다.
 
-- creating a replacement VPS;
-- copying files and databases;
-- receiving a new IP address;
-- changing DNS;
-- updating firewall/IP allowlists;
-- changing CDN origin settings;
-- updating webhook destinations or trusted IPs;
-- validating TLS and external integrations;
-- planning a cutover window.
+- 대체 VPS 생성;
+- 파일과 데이터베이스 복사;
+- 새로운 IP 주소 할당;
+- DNS 변경;
+- 방화벽 및 IP 허용 목록 업데이트;
+- CDN 원본 서버 설정 변경;
+- 웹훅 목적지 또는 신뢰할 수 있는 IP 변경;
+- TLS와 외부 연동 검증;
+- 서비스 전환 시간대 계획.
 
-That is why testing candidate locations before production is cheaper than treating region selection as a cosmetic dropdown.
+따라서 위치 선택을 단순한 드롭다운 설정으로 취급하기보다 운영 전 후보 지역을 테스트하는 편이 비용과 위험을 줄일 수 있습니다.
 
-For the actual cutover process, use [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}).
+실제 서비스 이전 절차는 [웹사이트 VPS 이전]({{< relref "website-migration-to-vps.md" >}})을 참고하세요.
 
-## A practical region-selection workflow
+## 실무용 서버 지역 선택 절차 {#a-practical-region-selection-workflow}
 
-### 1. Map origin-sensitive traffic
+### 1. 원본 서버 처리가 필요한 트래픽 파악 {#1-map-origin-sensitive-traffic}
 
-Record:
+다음 내용을 기록하세요.
 
-- top countries/cities;
-- paying customer concentration;
-- logged-in traffic;
-- peak-hour location;
-- API consumers.
+- 주요 국가·도시;
+- 유료 고객 집중 지역;
+- 로그인 사용자 트래픽;
+- 최대 트래픽 시간대의 지역;
+- API 이용자.
 
-### 2. Map dependencies
+### 2. 의존 서비스 위치 파악 {#2-map-dependencies}
 
-Record where the application talks synchronously:
+애플리케이션이 동기 통신하는 대상의 위치를 기록하세요.
 
-- database;
-- Redis/cache;
-- object/file service;
-- payment/API;
-- internal systems;
-- external SaaS.
+- 데이터베이스;
+- Redis·캐시;
+- 객체·파일 스토리지;
+- 결제 시스템·API;
+- 내부 시스템;
+- 외부 SaaS.
 
-### 3. Apply hard placement constraints
+### 3. 필수 위치 제한 적용 {#3-apply-hard-placement-constraints}
 
-Remove any location that violates a real contractual, legal or internal policy requirement.
+실제 계약·법률·내부 정책 요건을 위반하는 지역은 후보에서 제외하세요.
 
-### 4. Shortlist plausible regions
+### 4. 현실적인 후보 지역 추리기 {#4-shortlist-plausible-regions}
 
-Use geography only to create the shortlist.
+지리는 후보 목록을 만드는 데만 사용하세요.
 
-### 5. Test from representative networks
+### 5. 대표 사용자 네트워크에서 테스트 {#5-test-from-representative-networks}
 
-Compare repeated latency and route quality. If possible, include more than one important ISP.
+반복 측정한 지연 시간과 경로 품질을 비교하세요. 가능하면 중요한 ISP 두 곳 이상을 포함하세요.
 
-### 6. Test dynamic application behavior
+### 6. 동적 애플리케이션 동작 테스트 {#6-test-dynamic-application-behavior}
 
-Do not judge only cached homepage load time.
+캐시된 홈페이지의 로딩 시간만으로 판단하지 마세요.
 
-### 7. Choose the simplest architecture that satisfies the requirement
+### 7. 요구사항을 충족하는 가장 단순한 아키텍처 선택 {#7-choose-the-simplest-architecture-that-satisfies-the-requirement}
 
-Prefer one well-chosen origin + CDN until measurements or business requirements justify more complexity.
+측정 결과나 비즈니스 요건으로 복잡한 구조가 정당화되기 전까지는 적절한 위치의 원본 서버 하나와 CDN을 우선 검토하세요.
 
-### 8. Monitor after launch
+### 8. 출시 후 모니터링 {#8-monitor-after-launch}
 
-Verify real external latency, TTFB, errors and user-facing health. A pre-purchase test is evidence, not a permanent guarantee.
+실제 외부 지연 시간, TTFB, 오류와 사용자에게 보이는 서비스 상태를 확인하세요. 구매 전 측정은 참고 자료일 뿐 영구적인 성능 보장은 아닙니다.
 
-## VPS location pre-purchase checklist
+## VPS 서버 위치 구매 전 체크리스트 {#vps-location-pre-purchase-checklist}
 
-| Check | Pass condition |
+| 점검 항목 | 통과 조건 |
 |---|---|
-| Audience | important users/traffic regions are known |
-| Business weighting | paying/logged-in/peak users are identified |
-| Dynamic share | origin-sensitive requests are understood |
-| Dependencies | DB/API/private service locations are known |
-| Candidate regions | shortlist is based on traffic and constraints |
-| Test endpoint | provider/test instance can be measured |
-| Repeated RTT | candidate routes compared with repeated samples |
-| Route quality | obvious detours/instability investigated |
-| ISP coverage | important user networks represented |
-| CDN | cacheable vs dynamic traffic separated |
-| Origin | dynamic traffic path remains acceptable |
-| Physical placement | provider's actual region/city verified where relevant |
-| GeoIP | not confused with physical data-center location |
-| Data location | contractual/compliance constraints checked |
-| SEO | no ranking promise assumed from server country |
-| Recovery | backup/monitoring failure domain considered |
-| Migration | moving later is understood as an operational change |
-| Sizing | CPU/RAM/storage chosen separately |
+| 이용자 | 중요한 사용자·트래픽 지역 파악 완료 |
+| 비즈니스 가중치 | 유료·로그인·피크 이용자 파악 완료 |
+| 동적 트래픽 비중 | 원본 서버 처리가 필요한 요청 이해 |
+| 의존 서비스 | DB·API·비공개 서비스 위치 확인 |
+| 후보 지역 | 실제 트래픽과 제약 조건을 기준으로 선정 |
+| 테스트 엔드포인트 | 제공업체 또는 테스트 인스턴스에서 측정 가능 |
+| 반복 RTT 측정 | 후보 경로를 반복 측정으로 비교 |
+| 경로 품질 | 명백한 우회·불안정 구간 조사 |
+| ISP 범위 | 중요한 사용자 네트워크를 반영 |
+| CDN | 캐시 가능 요청과 동적 트래픽 구분 |
+| 원본 서버 | 동적 요청 경로가 허용 가능한 수준 |
+| 물리적 배치 | 필요할 때 실제 데이터센터 지역·도시 검증 |
+| GeoIP | 데이터센터 물리적 위치와 혼동하지 않음 |
+| 데이터 위치 | 계약·규제 준수 요건 확인 |
+| SEO | 서버 국가에 따른 검색 순위 상승 보장으로 판단하지 않음 |
+| 복구 | 백업·모니터링의 장애 영역 검토 |
+| 이전 | 추후 지역 변경이 운영 작업임을 이해 |
+| 사양 | CPU·RAM·스토리지 용량을 별도로 선정 |
 
 <p>
-  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">현재 VPS 구성 확인</a>
 </p>
-<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Confirm the provider's currently available locations and network details before ordering; this page does not claim a specific VDSina location inventory.</small></p>
+<p><small>고지: 편집자는 VDSina와 사업상 관계가 있으며, 이 제휴 링크를 통해 주문하면 사이트가 수수료를 받을 수 있습니다. 구매 전에 제공업체의 현재 서버 지역과 네트워크 정보를 직접 확인하세요. 이 페이지는 VDSina가 특정 지역에 서버를 제공한다고 주장하지 않습니다.</small></p>
 
-## Technical references
+## 기술 참고 자료 {#technical-references}
 
-- Google Search Central — Managing multi-regional and multilingual sites
-- Google Search Central — CDNs and crawling
+- Google Search Central — 다지역·다국어 사이트 관리
+- Google Search Central — CDN과 크롤링
 
-## FAQ
+## 자주 묻는 질문 {#faq}
 
-### Which VPS location should I choose?
+### 어떤 VPS 위치를 선택해야 하나요? {#which-vps-location-should-i-choose}
 
-Start with the region near the largest or most valuable latency-sensitive audience, then verify real routing from representative networks. Also account for database/API dependencies and any hard data-location requirement.
+지연 시간에 민감한 이용자 수가 가장 많거나 비즈니스 가치가 큰 지역과 가까운 곳부터 검토한 다음 대표 네트워크의 실제 라우팅을 확인하세요. 데이터베이스/API 의존성과 필수 데이터 위치 제약도 고려해야 합니다.
 
-### Should I choose the VPS location closest to me?
+### 내 위치에서 가장 가까운 VPS를 선택해야 하나요? {#should-i-choose-the-vps-location-closest-to-me}
 
-Only if you are also the important user. A public website should normally be located for its visitors/customers and critical dependencies, not for the administrator.
+본인이 중요한 실제 사용자이기도 한 경우에만 그렇습니다. 공개 웹사이트의 위치는 일반적으로 관리자보다 방문자·고객·핵심 의존 서비스를 기준으로 정해야 합니다.
 
-### Is the closest data center always the fastest?
+### 가장 가까운 데이터센터가 항상 가장 빠른가요? {#is-the-closest-data-center-always-the-fastest}
 
-No. Physical distance matters, but peering and routing can make a slightly farther region perform better to a specific ISP. Test the actual path.
+아닙니다. 물리적 거리도 중요하지만 피어링과 라우팅에 따라 조금 더 먼 지역이 특정 ISP에 더 빠를 수 있습니다. 실제 경로를 테스트하세요.
 
-### How do I test a VPS location before buying?
+### 구매 전에 VPS 위치를 어떻게 테스트하나요? {#how-do-i-test-a-vps-location-before-buying}
 
-Use provider test IPs, test files, a looking glass or a short-lived instance. Compare repeated ping/RTT, MTR/traceroute and, where possible, HTTP timing from networks representative of your users.
+제공업체의 테스트 IP·파일·looking glass 또는 단기 인스턴스를 사용하세요. 이용자 네트워크를 대표하는 위치에서 ping/RTT를 반복 측정하고 MTR/traceroute, 가능하다면 HTTP 응답 시간도 비교하세요.
 
-### Does a CDN make VPS location irrelevant?
+### CDN을 사용하면 VPS 위치는 중요하지 않나요? {#does-a-cdn-make-vps-location-irrelevant}
 
-No. A CDN can serve cacheable content near users, but dynamic requests, login, checkout, APIs, cache misses and origin fetches still depend on the origin.
+아닙니다. CDN이 캐시 가능 콘텐츠를 이용자 가까이에서 제공해도 동적 요청, 로그인, 결제, API, 캐시 미스와 원본 서버 가져오기는 여전히 원본 서버의 위치에 영향을 받습니다.
 
-### Where should a global website host its VPS?
+### 글로벌 웹사이트는 VPS를 어디에 두어야 하나요? {#where-should-a-global-website-host-its-vps}
 
-Often one origin near the largest/most valuable dynamic audience plus a CDN is the simplest starting point. Multi-region is justified only when dynamic latency, resilience requirements and application architecture support the added complexity.
+중요한 동적 이용자층과 가까운 원본 서버 하나에 CDN을 결합하는 것이 대개 가장 단순한 시작점입니다. 다중 지역은 동적 요청 지연, 복원력 요건, 애플리케이션 아키텍처가 추가 복잡성을 정당화할 때 검토하세요.
 
-### Should the VPS be near the database?
+### VPS는 데이터베이스 가까이에 있어야 하나요? {#should-the-vps-be-near-the-database}
 
-For a chatty dynamic application, usually yes. Repeated cross-region app-to-database round trips can dominate response time even when the VPS is close to users.
+데이터베이스와 왕복 요청이 많은 동적 애플리케이션이라면 대체로 그렇습니다. VPS가 사용자 가까이에 있어도 지역 간 앱·DB 왕복 시간이 전체 응답 시간을 지배할 수 있습니다.
 
-### Does VPS server location improve Google rankings?
+### VPS 서버 위치가 Google 순위에 도움이 되나요? {#does-vps-server-location-improve-google-rankings}
 
-Do not treat it as a direct ranking shortcut. Google says server location can be a locale signal but is not definitive. Use explicit international targeting such as locale-specific URLs and hreflang where relevant.
+직접적인 검색 순위 향상 수단으로 취급하지 마세요. Google은 서버 위치가 지역 신호일 수 있지만 결정적이지 않다고 설명합니다. 필요하다면 지역별 URL과 hreflang 같은 명시적인 국제 타겟팅 방식을 사용하세요.
 
-### Is IP geolocation the same as physical server location?
+### IP 지리정보와 서버의 물리적 위치는 같은가요? {#is-ip-geolocation-the-same-as-physical-server-location}
 
-No. GeoIP databases can label an address differently from the actual data-center location. Verify physical placement separately when it matters.
+아닙니다. GeoIP 데이터베이스가 표시하는 주소와 실제 데이터센터의 위치는 다를 수 있습니다. 중요하다면 물리적 배치를 별도로 확인하세요.
 
-### Can I move to another VPS region later?
+### 나중에 다른 VPS 지역으로 이전할 수 있나요? {#can-i-move-to-another-vps-region-later}
 
-Usually, but the process may require a new VPS or IP, data migration, DNS changes, allowlist/CDN updates and a cutover. Test before production to reduce the chance of a later move.
+대체로 가능하지만 새 VPS·IP 주소, 데이터 이전, DNS 변경, 허용 목록/CDN 업데이트와 전환 작업이 필요할 수 있습니다. 운영 전에 테스트하면 추후 이전 가능성을 줄일 수 있습니다.
