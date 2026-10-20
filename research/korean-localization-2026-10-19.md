@@ -81,6 +81,17 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - The shared WordPress hero/diagram's 18 user-facing string placements localized with `ko`-only Hugo conditionals, retaining English and Spanish source text without changes. Affiliate URL and `rel="sponsored nofollow noopener"` preserved.
 - Source and static audit complete on the working branch; main-branch Hugo CI, Cloudflare publication, live URL and responsive geometry remain to be checked, and must not be marked verified before actual successful results.
 
+
+## Page 6: VPS for WooCommerce — 2026-10-20 (pre-publication)
+
+- Korean Title/H1/slug: **우커머스용 VPS** at `/ko/우커머스용-vps/`. Intent: sizing WooCommerce transactional workload and selecting an operating model; separate from generic WordPress VPS and homepage. Korean usage of 우커머스 cross-checked with Korean commercial hosting material; search-volume figures were not available.
+- Branch: `work/ko-woocommerce-20261020`. Full Korean source at `content/korean/vps-for-woocommerce.md`; English source `content/english/vps-for-woocommerce.md` unchanged.
+- Full content parity: **37 headings including 10 FAQ**, **28 Markdown table lines across three tables**, **131 unordered list items**, **seven numbered actions**, **10 selects with 25 original option values**, **16 Markdown links** and one article affiliate URL; same counts as English. All 37 original rendered English heading IDs were preserved as explicit Korean anchors.
+- The checker retains the original 10 control IDs, 25 values and unaltered JavaScript conditions/decision logic. Six outcome strings, all user-facing labels and options, submit button and introductory status are in Korean. Checker script is byte-identical to English after normalizing only the six result strings.
+- The WooCommerce page hero has 15 Korean-only text branches covering CTAs, captions, flow nodes, metrics, and its accessible name. English text is preserved as the else branch; diagram geometry, styles, link target and affiliate rel attributes remain unchanged.
+- All server specifications, VDSina daily USD prices, dates, formulas and WooCommerce/WordPress version figures are preserved. The existing Korean Markdown link renderer sends translated targets to KO and untranslated targets to existing English articles. No false Korean data-center, managed-service or preinstalled-app claims added.
+- Static audit passed for article content, anchor mapping, checker source parity, option IDs/values and affiliate URL. Hugo CI, Cloudflare publication, live browser and 390/1280 responsive geometry must be checked after merging to main. Do not represent these pending stages as completed.
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
