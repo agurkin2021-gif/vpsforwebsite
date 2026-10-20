@@ -5,6 +5,7 @@ on:
     paths:
       - "content/korean/vps-security-checklist.md"
       - "layouts/_partials/page-header.html"
+      - "layouts/_markup/render-link.html"
       - ".github/workflows/qa-ko-security.yml"
   workflow_dispatch:
 
