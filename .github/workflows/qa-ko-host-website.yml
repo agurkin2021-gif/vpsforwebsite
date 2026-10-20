@@ -61,7 +61,17 @@ jobs:
           links=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',en)
           kl=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko)
           assert len(links)==len(kl),(len(links),len(kl))
-          li=iter(links)
+          # Keep each original page target. Missing Korean counterparts resolve
+          # explicitly to the English original instead of breaking the build.
+          fallback=[]
+          def localized_target(target):
+              m=re.fullmatch(r'\{\{< relref "([^"]+)" >\}\}',target)
+              if m and not (Path('content/korean')/m[1]).is_file():
+                  fallback.append(m[1])
+                  return '{{< relref path="'+m[1]+'" lang="en" >}}'
+              return target
+          expected_links=[localized_target(target) for target in links]
+          li=iter(expected_links)
           ko=re.sub(r'(\[[^\]\n]*\]\()([^\n]*?)(\))',lambda m:m[1]+next(li)+m[3],ko)
           kp.write_text(ko)
           hp=Path('layouts/_partials/page-header.html'); header=hp.read_text()
@@ -88,7 +98,6 @@ jobs:
                   assert block.count(original)==1,(original,block.count(original))
                   block=block.replace(original,'{{ if eq site.Language.Lang "ko" }}'+translated+'{{ else }}'+original+'{{ end }}')
               hp.write_text(header[:start]+block+header[end:])
-          # Verify technical invariants, not merely word counts.
           assert re.findall(r'```[^\n]*\n.*?```',en,re.S)==re.findall(r'```[^\n]*\n.*?```',ko,re.S),'Code blocks changed'
           assert re.findall(r'(?<!`)`([^`\n]+)`(?!`)',en)==re.findall(r'(?<!`)`([^`\n]+)`(?!`)',ko),'Inline commands changed'
           def script(s):
@@ -103,9 +112,9 @@ jobs:
               s=s.split('---',2)[2];s=re.sub(r'\{#[^}]+\}','',s)
               return Counter(re.findall(r'\d+(?:\.\d+)*',s))
           assert numbers(en)==numbers(ko),('Numeric values changed',numbers(en)-numbers(ko),numbers(ko)-numbers(en))
-          assert re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',en)==re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko),'Link targets changed'
+          assert expected_links==re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko),'Link targets changed'
           assert re.findall(r'href="([^"]+)"',en)==re.findall(r'href="([^"]+)"',ko),'HTML links changed'
-          info={'slug':slug,'heading_ids':[x[1] for x in ep.ids],'headings':len(eh),'code_blocks':len(re.findall(r'```[^\n]*\n.*?```',en,re.S)),'source_links':len(links),'english_source_sha256':hashlib.sha256(en.encode()).hexdigest()}
+          info={'slug':slug,'heading_ids':[x[1] for x in ep.ids],'headings':len(eh),'code_blocks':len(re.findall(r'```[^\n]*\n.*?```',en,re.S)),'source_links':len(links),'english_fallback_pages':sorted(set(fallback)),'english_source_sha256':hashlib.sha256(en.encode()).hexdigest()}
           Path('/tmp/ko-host-invariants.json').write_text(json.dumps(info,ensure_ascii=False,indent=2))
           print('SOURCE INVARIANTS PASSED',json.dumps(info,ensure_ascii=False))
           PY
@@ -226,5 +235,7 @@ jobs:
           path: |
             /tmp/ko-host-qa/shots/*.png
             /tmp/ko-host-invariants.json
+            content/english/how-to-host-a-website-on-vps.md
+            content/korean/how-to-host-a-website-on-vps.md
           retention-days: 7
           if-no-files-found: ignore
