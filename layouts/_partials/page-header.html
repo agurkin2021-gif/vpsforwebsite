@@ -823,10 +823,10 @@
                 href="{{ $backupAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-backup-secondary-cta" href="#quick-answer">
-                Backup strategy
+                {{ if eq .Language.Lang "ko" }}백업 전략{{ else }}Backup strategy{{ end }}
               </a>
             </div>
           </div>
@@ -836,45 +836,45 @@
             href="{{ $backupAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for a backup-ready server">
+            aria-label="{{ if eq .Language.Lang "ko" }}백업 준비가 된 서버를 위한 VPS 옵션 확인{{ else }}Check current VPS options for a backup-ready server{{ end }}">
             <div class="vps-backup-compact-head">
-              <strong>Recovery needs more than one backup</strong>
-              <small>Fast rollback, independent copies and tested restores solve different failure modes.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}복구에는 여러 계층의 백업이 필요합니다{{ else }}Recovery needs more than one backup{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}빠른 롤백, 독립적인 사본과 검증된 복원은 서로 다른 장애에 대비합니다.{{ else }}Fast rollback, independent copies and tested restores solve different failure modes.{{ end }}</small>
             </div>
 
             <div class="vps-backup-compact-grid">
               <div class="vps-backup-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Provider image</strong>
-                  <small>Fast server rollback</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}제공업체 이미지{{ else }}Provider image{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}빠른 서버 롤백{{ else }}Fast server rollback{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Database backup</strong>
-                  <small>Application state</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}데이터베이스 백업{{ else }}Database backup{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}애플리케이션 상태{{ else }}Application state{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Offsite copy</strong>
-                  <small>Separate failure domain</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}외부 사본{{ else }}Offsite copy{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}독립된 장애 영역{{ else }}Separate failure domain{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Restore drill</strong>
-                  <small>Prove RTO in practice</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}복원 훈련{{ else }}Restore drill{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}실제 RTO 검증{{ else }}Prove RTO in practice{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-backup-compact-rule">
-              <strong>RPO defines acceptable data loss. RTO defines acceptable downtime.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}RPO는 허용 가능한 데이터 손실량을, RTO는 허용 가능한 서비스 중단 시간을 정의합니다.{{ else }}RPO defines acceptable data loss. RTO defines acceptable downtime.{{ end }}</strong>
             </div>
           </a>
         </div>
