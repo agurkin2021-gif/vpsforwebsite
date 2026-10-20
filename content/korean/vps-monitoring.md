@@ -355,109 +355,109 @@ WordPress 워크로드의 특성은 [WordPress용 VPS]({{< relref "vps-for-wordp
 
 WooCommerce에서는 상품 목록 페이지가 열리더라도 Action Scheduler의 실패·지연 작업이 계속 쌓이면 운영상 문제가 될 수 있습니다.
 
-## Monitor backup freshness
+## 최신 백업 상태 모니터링 {#monitor-backup-freshness}
 
-A backup job belongs to the recovery strategy, but **backup freshness is a monitoring signal**.
+백업 작업은 복구 전략의 일부이지만 **가장 최근 백업의 상태도 중요한 모니터링 지표**입니다.
 
-Alert when:
+다음 상황에 알림을 설정하세요.
 
-- scheduled backup fails;
-- latest successful backup is older than the defined RPO;
-- DB dump fails;
-- offsite upload fails;
-- repository credentials expire;
-- backup size changes suspiciously;
-- prune/retention job fails.
+- 예약된 백업 실패;
+- 마지막 성공 백업이 정의된 RPO보다 오래됨;
+- DB 덤프 실패;
+- 외부 저장소 업로드 실패;
+- 백업 저장소 자격 증명 만료;
+- 백업 크기가 의심스럽게 변함;
+- 오래된 백업 정리·보존 작업 실패.
 
-Do not treat “cron ran” as proof that a usable backup exists.
+“cron이 실행됐다”는 사실만으로 복원 가능한 백업이 있다고 판단하지 마세요.
 
-For RPO/RTO, retention, independent copies and restore drills, use [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}}).
+RPO/RTO, 보존 기간, 독립적인 사본과 복원 훈련은 [VPS 백업 전략]({{< relref "vps-backup-strategy.md" >}})을 참고하세요.
 
-## Correlate logs with metrics
+## 로그와 지표 연관 분석 {#correlate-logs-with-metrics}
 
-Metrics tell you **what changed**. Logs often tell you **why**.
+지표는 **무엇이 변했는지** 알려주고, 로그는 흔히 **왜 변했는지** 설명합니다.
 
-Correlate the same time window across:
+같은 시간대의 다음 로그를 함께 비교하세요.
 
-- Nginx/Apache access/error logs;
-- PHP-FPM/runtime logs;
-- application logs;
-- database logs;
-- system journal;
-- authentication logs;
-- backup/job logs.
+- Nginx/Apache 액세스·오류 로그;
+- PHP-FPM·실행 환경 로그;
+- 애플리케이션 로그;
+- 데이터베이스 로그;
+- 시스템 저널;
+- 인증 로그;
+- 백업·작업 로그.
 
-Example:
+예시:
 
-- CPU spikes at 14:03;
-- 5xx rises at 14:03;
-- application log shows DB timeouts;
-- DB log shows lock contention.
+- 14:03에 CPU 급증;
+- 14:03에 5xx 응답 증가;
+- 애플리케이션 로그에 DB 시간 초과 기록;
+- DB 로그에 잠금 경합 기록.
 
-That is more actionable than a generic “CPU high” alert.
+이런 정보는 단순한 “CPU 사용률 높음” 알림보다 실제 조치에 도움이 됩니다.
 
-Keep enough log retention to investigate incidents, but do not let logs fill the production filesystem.
+사고를 조사할 수 있을 만큼 로그를 보존하되, 로그 때문에 운영 파일시스템이 가득 차지 않도록 하세요.
 
-## Build actionable alerts
+## 대응 가능한 알림 구성 {#build-actionable-alerts}
 
-An alert should tell the operator what failed and what to check first.
+알림에는 어떤 장애가 발생했고 무엇부터 확인해야 하는지가 나타나야 합니다.
 
-Prefer:
+다음 구성을 우선하세요.
 
-- **warning** — investigate before user impact;
-- **critical** — user impact or imminent failure;
-- duration/debounce — avoid paging on one-second spikes;
-- grouping/deduplication — avoid 40 notifications for one outage;
-- clear affected host/service;
-- link to dashboard/log/runbook;
-- known first action/escalation.
+- **경고(warning)** — 사용자에게 영향을 주기 전에 조사;
+- **위험(critical)** — 사용자 영향 또는 임박한 장애;
+- 지속 시간·디바운스 — 1초짜리 급증마다 호출하지 않음;
+- 그룹화·중복 제거 — 한 번의 장애로 40개 알림이 오지 않도록 설정;
+- 영향을 받은 서버·서비스의 명확한 표시;
+- 대시보드·로그·대응 절차서 링크;
+- 알려진 첫 조치와 상위 담당자에게 넘기는 기준.
 
-Prometheus Alertmanager is an example of a system designed to group, deduplicate and route alerts.
+Prometheus Alertmanager는 알림을 그룹화하고 중복을 제거하며 적절한 수신자에게 전달하도록 설계된 시스템의 예입니다.
 
-### Avoid universal thresholds
+### 모든 환경에 같은 임계값을 적용하지 마세요 {#avoid-universal-thresholds}
 
-Thresholds should match the workload.
+임계값은 워크로드에 맞아야 합니다.
 
-Examples of reasonable starting logic:
+합리적인 초기 판단 기준의 예시는 다음과 같습니다.
 
-- CPU: sustained high utilization + latency/queue symptoms rather than isolated spike;
-- RAM: low available memory + swap/OOM rather than “used RAM > 80%” alone;
-- disk: early warning while enough operating headroom remains;
-- TLS: warn days before expiry;
-- HTTP: repeated failure or multi-location confirmation where false positives matter;
-- backup: latest success older than RPO;
-- 5xx/latency: sustained deviation from the application's normal baseline.
+- CPU: 한 번의 급증보다 지연 시간·큐 적체를 동반한 지속적인 높은 사용률;
+- RAM: 단순한 “사용 RAM > 80%”보다 낮은 가용 메모리와 스왑·OOM;
+- 디스크: 운영에 필요한 여유 공간이 남아 있을 때 조기 경고;
+- TLS: 만료 며칠 전부터 경고;
+- HTTP: 오탐이 중요하다면 반복된 실패 또는 여러 지역에서의 확인;
+- 백업: 마지막 성공 백업이 RPO보다 오래됨;
+- 5xx·지연 시간: 해당 애플리케이션의 평상시 기준에서 지속적으로 벗어남.
 
-Tune after observing normal production behavior.
+운영 환경의 정상적인 동작을 관찰한 뒤 임계값을 조정하세요.
 
-## Keep the notification path independent
+## 독립적인 알림 경로 유지 {#keep-the-notification-path-independent}
 
-An alert is useless if its delivery system dies in the same incident.
+알림을 전달하는 시스템이 동일한 장애로 중단되면 알림은 무용지물입니다.
 
-Where practical, send important alerts through a path outside the VPS:
+가능하다면 중요한 알림을 VPS 외부 경로로 보내세요.
 
-- external email provider;
-- external chat/notification service;
-- hosted incident tool;
-- a monitoring instance in another failure domain.
+- 외부 이메일 제공업체;
+- 외부 채팅·알림 서비스;
+- 호스팅형 사고 대응 도구;
+- 다른 장애 영역의 모니터링 인스턴스.
 
-Do not rely only on an SMTP server or dashboard hosted on the same broken VPS.
+장애가 발생한 VPS 자체에 설치된 SMTP 서버나 대시보드에만 의존하지 마세요.
 
-## Every alert needs an owner and runbook
+## 모든 알림에는 담당자와 대응 절차서가 필요합니다 {#every-alert-needs-an-owner-and-runbook}
 
-Before creating an alert, answer:
+알림을 만들기 전에 다음을 정하세요.
 
-- who receives it?
-- who is allowed to act?
-- what is the first diagnostic step?
-- what dashboard/log should be opened?
-- when is it escalated?
-- when is it safe to silence?
-- what happens outside business hours?
+- 누가 알림을 받는가?
+- 누가 조치할 권한이 있는가?
+- 첫 진단 단계는 무엇인가?
+- 어떤 대시보드·로그를 열어야 하는가?
+- 언제 문제를 상위 담당자에게 넘기는가?
+- 언제 알림을 일시 중지해도 안전한가?
+- 업무 시간 외에는 어떻게 대응하는가?
 
-If nobody owns the response, the monitoring system has only converted an outage into a notification.
+아무도 대응 책임을 맡지 않는다면 모니터링 시스템은 장애를 알림 메시지로 바꾼 것에 불과합니다.
 
-For the broader operations-responsibility decision, see [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
+운영 책임을 정하는 전반적인 기준은 [관리형 VPS와 비관리형 VPS]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요.
 
 ## Choose the monitoring stack by complexity
 
