@@ -28,7 +28,7 @@ TAG_RE = re.compile(r"<link\b[^>]*>", re.I)
 ANCHOR_RE = re.compile(r"<a\b[^>]*>", re.I)
 HTML_LANG_RE = re.compile(r"""<html\b[^>]*\blang\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))""", re.I)
 LEGACY_LIST_RE = re.compile(r"""(<ul\b[^>]*\bid\s*=\s*(?:"language-options"|'language-options'|language-options)[^>]*>)(.*?)(</ul>)""", re.I | re.S)
-GENERATED_LIST_RE = re.compile(r"""(<div\\b[^>]*\\bdata-language-options\\b[^>]*>)(.*?)(</div>)""", re.I | re.S)
+GENERATED_LIST_RE = re.compile(r"""(<div\b[^>]*\bdata-language-options\b[^>]*>)(.*?)(</div>)""", re.I | re.S)
 
 
 def attrs(tag):
