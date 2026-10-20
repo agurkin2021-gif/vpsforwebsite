@@ -173,188 +173,188 @@ RTO는 다음 질문에 답합니다.
 
 NIST의 비상 계획 지침은 RPO를 복구 기준 시점으로, RTO를 허용 가능한 최대 서비스 중단 시간으로 정의합니다. 도구를 선택하기 전에 이 목표부터 정하세요.
 
-## What should be backed up?
+## 무엇을 백업해야 하나요? {#what-should-be-backed-up}
 
-Classify the server into **rebuildable** and **stateful/irreplaceable** parts.
+서버의 구성 요소를 **재구축 가능한 항목**과 **상태가 있거나 다시 만들기 어려운 항목**으로 구분하세요.
 
-### Rebuildable
+### 재구축 가능한 항목 {#rebuildable}
 
-Often reproducible from code or automation:
+코드나 자동화로 다시 만들 수 있는 경우가 많습니다.
 
-- base operating system;
-- packages;
-- application code already stored safely in Git;
-- container images that can be rebuilt/pulled;
-- standard web-server packages.
+- 기본 운영체제;
+- 패키지;
+- 이미 Git에 안전하게 보관된 애플리케이션 코드;
+- 다시 빌드하거나 내려받을 수 있는 컨테이너 이미지;
+- 표준 웹 서버 패키지.
 
-### Stateful / difficult to recreate
+### 상태가 있거나 복원이 어려운 항목 {#stateful--difficult-to-recreate}
 
-Usually higher priority:
+일반적으로 우선순위가 더 높습니다.
 
-- databases;
-- user uploads/media;
-- mailboxes if hosted locally;
-- configuration;
-- environment/secrets required for recovery;
-- TLS/private keys where replacement is not trivial;
-- application-generated data;
-- control-panel/site configuration;
-- cron/worker configuration;
-- DNS zone data if DNS is hosted on the VPS;
-- custom scripts not stored elsewhere.
+- 데이터베이스;
+- 사용자 업로드와 미디어;
+- 같은 서버에서 운영하는 경우 메일함;
+- 설정;
+- 복구에 필요한 환경 변수와 비밀 정보;
+- 다시 발급하거나 교체하기 어려운 TLS 인증서와 개인 키;
+- 애플리케이션이 생성한 데이터;
+- 컨트롤 패널과 사이트 설정;
+- cron과 워커 설정;
+- DNS를 VPS에서 운영한다면 DNS 영역 데이터;
+- 다른 곳에 저장되지 않은 맞춤형 스크립트.
 
-Do not waste backup capacity blindly copying caches, temporary files and rebuildable artifacts while forgetting the database or secrets needed to start the site.
+데이터베이스나 사이트를 다시 시작하는 데 필요한 비밀 정보를 빠뜨리면서 캐시, 임시 파일, 쉽게 재생성할 수 있는 결과물을 무작정 복사하는 데 백업 공간을 낭비하지 마세요.
 
-## Snapshot, image, file backup and replication are different
+## 스냅샷, 이미지, 파일 백업과 복제는 서로 다릅니다 {#snapshot-image-file-backup-and-replication-are-different}
 
-Do not treat these as interchangeable.
+서로 같은 수단으로 취급하지 마세요.
 
-### Provider snapshot / server image
+### 제공업체 스냅샷 / 서버 이미지 {#provider-snapshot--server-image}
 
-Useful for:
+다음 상황에 유용합니다.
 
-- fast rollback after a risky update;
-- full-server recovery;
-- cloning/recreating the VM.
+- 위험이 있는 업데이트 후 빠른 롤백;
+- 서버 전체 복구;
+- 가상 머신 복제 또는 재생성.
 
-Weaknesses:
+한계:
 
-- may live in the same provider/account failure domain;
-- may not provide granular file/site restore;
-- application/database consistency must still be understood;
-- one latest image gives little history.
+- 제공업체나 계정과 동일한 장애 영역에 있을 수 있습니다;
+- 개별 파일 또는 사이트 단위 복원이 어려울 수 있습니다;
+- 애플리케이션과 데이터베이스의 일관성을 별도로 이해해야 합니다;
+- 최신 이미지 하나만 있으면 이전 시점의 기록이 부족합니다.
 
-### File-level backup
+### 파일 단위 백업 {#file-level-backup}
 
-Useful for:
+다음 항목에 유용합니다.
 
-- uploads;
-- configuration;
-- selected application data;
-- granular restore.
+- 업로드 파일;
+- 설정;
+- 선택한 애플리케이션 데이터;
+- 세부 항목별 복원.
 
-Tools such as restic or Borg can store encrypted versioned backups on remote repositories.
+restic이나 Borg 같은 도구를 사용하면 원격 저장소에 암호화된 여러 버전의 백업을 보관할 수 있습니다.
 
-### Database backup
+### 데이터베이스 백업 {#database-backup}
 
-Use an engine-aware method:
+데이터베이스 엔진에 맞는 방법을 사용하세요.
 
-- logical dump;
-- native backup tool;
-- application-consistent snapshot/process.
+- 논리적 덤프;
+- 데이터베이스 자체 백업 도구;
+- 애플리케이션 일관성을 유지하는 스냅샷 또는 절차.
 
-Do not assume copying live database files produces a usable database backup.
+실행 중인 데이터베이스 파일을 그대로 복사한다고 해서 사용 가능한 DB 백업이 만들어진다고 가정하지 마세요.
 
-### Replication / standby
+### 복제 / 대기 서버 {#replication--standby}
 
-Replication can reduce recovery time or data loss, but it is not historical backup by itself.
+복제는 복구 시간이나 데이터 손실을 줄일 수 있지만, 그 자체로 과거 시점의 백업은 아닙니다.
 
-A bad delete, corruption or application error can be replicated too.
+잘못된 삭제, 손상 또는 애플리케이션 오류까지 함께 복제될 수 있습니다.
 
-Use replication/standby for availability/RTO when required, and keep versioned backups for historical recovery.
+필요한 경우 가용성과 RTO를 위해 복제 및 대기 서버를 사용하되, 과거 시점으로 복구할 수 있도록 버전별 백업도 유지하세요.
 
-## A practical 3-2-1 model for VPS
+## VPS에 적용하는 실용적인 3-2-1 모델 {#a-practical-3-2-1-model-for-vps}
 
-The common 3-2-1 model means:
+일반적인 3-2-1 모델은 다음을 뜻합니다.
 
-- **3 copies** of important data;
-- **2 different storage/failure modes**;
-- **1 copy offsite / outside the main failure domain**.
+- 중요한 데이터의 사본 **3개**;
+- **2가지 서로 다른 저장 방식 또는 장애 영역**;
+- **1개는 외부, 즉 주 장애 영역 밖에 보관**.
 
-For a VPS, a practical interpretation might be:
+VPS에서는 다음과 같이 적용할 수 있습니다.
 
-1. production data on the VPS;
-2. provider backup image for fast recovery;
-3. encrypted offsite file/database backup in an independent destination.
+1. VPS의 실제 운영 데이터;
+2. 빠른 복구를 위한 제공업체 백업 이미지;
+3. 독립적인 장소에 보관하는 암호화된 외부 파일 및 데이터베이스 백업.
 
-The goal is not to satisfy a slogan literally. The goal is to avoid one event destroying production and every recovery copy.
+목표는 구호의 숫자를 기계적으로 맞추는 것이 아닙니다. 한 번의 사고로 운영 데이터와 모든 복구 사본이 동시에 사라지는 일을 막는 것입니다.
 
-Examples of failure domains:
+장애 영역의 예시는 다음과 같습니다.
 
-- the VPS filesystem;
-- provider backup storage;
-- the provider account;
-- a separate object-storage account/provider;
-- an offline or immutable copy.
+- VPS 파일 시스템;
+- 제공업체의 백업 저장소;
+- 제공업체 계정;
+- 별도의 객체 저장소 계정 또는 제공업체;
+- 오프라인 사본 또는 변경할 수 없도록 보호된 사본.
 
-If an attacker who controls the VPS can delete every backup using the same credentials, the copies are not meaningfully independent.
+VPS를 장악한 공격자가 같은 자격 증명으로 모든 백업을 삭제할 수 있다면, 사본이 실질적으로 독립되어 있다고 볼 수 없습니다.
 
-## Database-consistent backups
+## 데이터베이스 일관성을 보장하는 백업 {#database-consistent-backups}
 
-Database state changes while the site is live.
+사이트가 실행되는 동안에도 데이터베이스 상태는 계속 변합니다.
 
-A valid strategy should know how the DB engine is protected.
+올바른 전략이라면 DB 엔진을 어떤 방식으로 보호하는지 알아야 합니다.
 
-For WordPress/MySQL/MariaDB this may be:
+워드프레스, MySQL 또는 MariaDB에서는 다음 방법을 사용할 수 있습니다.
 
-- logical dumps;
-- native DB backup tooling;
-- coordinated snapshots;
-- backup software that explicitly handles database consistency.
+- 논리적 덤프;
+- DB 전용 백업 도구;
+- 서로 맞춰 수행하는 스냅샷;
+- 데이터베이스 일관성을 명시적으로 처리하는 백업 소프트웨어.
 
-For PostgreSQL, use PostgreSQL-aware backup/PITR methods where the RPO requires them.
+PostgreSQL에서는 필요한 RPO에 따라 PostgreSQL에 맞는 백업과 시점 복구(PITR) 방법을 사용하세요.
 
-The point is not the exact tool. The point is that the restored DB must be internally coherent and usable.
+중요한 것은 특정 도구가 아니라 복원된 DB의 내부 상태가 일관되고 실제로 사용할 수 있어야 한다는 점입니다.
 
-For WordPress-specific application state and operations, see [VPS for WordPress]({{< relref "vps-for-wordpress.md" >}}).
+워드프레스의 애플리케이션 상태와 운영에 대해서는 [워드프레스용 VPS]({{< relref "vps-for-wordpress.md" >}})를 참고하세요.
 
-Test:
+다음을 테스트하세요.
 
-- dump/backup completes;
-- file is non-empty;
-- restore/import succeeds;
-- representative tables/records exist;
-- application can connect and perform critical reads/writes.
+- 덤프 또는 백업 작업이 완료됩니다;
+- 백업 파일이 비어 있지 않습니다;
+- 복원 또는 가져오기가 성공합니다;
+- 대표적인 테이블과 레코드가 존재합니다;
+- 애플리케이션이 접속하여 중요한 데이터 읽기와 쓰기를 수행합니다.
 
-## Transactional sites need a different RPO
+## 거래가 발생하는 사이트는 다른 RPO가 필요합니다 {#transactional-sites-need-a-different-rpo}
 
-A brochure site may tolerate a day-old copy.
+단순한 소개 사이트는 하루 전 사본으로도 충분할 수 있습니다.
 
-A transactional store may not.
+반면 거래가 발생하는 쇼핑몰은 그렇지 않을 수 있습니다.
 
-For WooCommerce, membership, billing or order systems, define how much recent state may be lost:
+WooCommerce, 회원 관리, 청구 또는 주문 시스템에서는 최근에 변경된 상태를 얼마나 잃을 수 있는지 정하세요.
 
-- orders;
-- payments;
-- stock;
-- customers;
-- memberships;
-- form submissions;
-- uploads.
+- 주문;
+- 결제;
+- 재고;
+- 고객;
+- 회원 자격;
+- 양식 제출;
+- 업로드.
 
-If a store receives orders every hour, a nightly DB backup can lose many transactions.
+매시간 주문이 들어오는 쇼핑몰에서는 하루에 한 번의 DB 백업으로 많은 거래 기록을 잃을 수 있습니다.
 
-Use [VPS for WooCommerce]({{< relref "vps-for-woocommerce.md" >}}) for the store workload. The backup schedule here should be chosen from the acceptable transaction-loss window.
+쇼핑몰 작업 부하는 [우커머스용 VPS]({{< relref "vps-for-woocommerce.md" >}})를 참고하세요. 이 페이지의 백업 주기는 허용 가능한 거래 데이터 손실 시간에 맞춰 정해야 합니다.
 
-## Backup frequency and retention
+## 백업 빈도와 보존 기간 {#backup-frequency-and-retention}
 
-Backup frequency should be no slower than the RPO for the data class it protects.
+각 데이터 유형의 백업 주기는 해당 RPO보다 느려서는 안 됩니다.
 
-Different data can use different schedules:
+데이터에 따라 다른 일정이 필요할 수 있습니다.
 
-- DB: frequent;
-- uploads: frequent or event-driven;
-- OS/config: after important changes + scheduled;
-- full provider image: less frequent but useful around risky changes.
+- DB: 빈번하게;
+- 업로드: 빈번하게 또는 이벤트 발생 시;
+- OS 및 설정: 중요한 변경 후와 정기 일정에 따라;
+- 제공업체의 전체 이미지: 상대적으로 드물게, 특히 위험한 변경 전후에 유용.
 
-Retention protects against failures discovered late.
+보존 정책은 문제가 늦게 발견되더라도 복구할 수 있도록 해 줍니다.
 
-One illustrative pattern might keep:
+예를 들면 다음 사본을 유지하는 방식이 있습니다.
 
-- recent hourly restore points;
-- several daily copies;
-- several weekly copies;
-- selected monthly copies.
+- 최근의 시간별 복구 지점;
+- 여러 개의 일별 사본;
+- 여러 개의 주별 사본;
+- 일부 월별 사본.
 
-The exact retention should come from:
+정확한 보존 기간은 다음을 기준으로 정하세요.
 
-- business recovery needs;
-- storage cost;
-- data-change rate;
-- compliance/legal requirements;
-- how long corruption or compromise may remain unnoticed.
+- 비즈니스의 복구 필요;
+- 저장 비용;
+- 데이터 변경 속도;
+- 규정 준수와 법적 요구사항;
+- 손상이나 침해가 발견되지 않은 채 지속될 수 있는 시간.
 
-Do not keep only “latest”.
+“최신 버전” 하나만 보관하지 마세요.
 
 ## Keep an independent off-server destination
 
