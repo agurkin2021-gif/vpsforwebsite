@@ -580,10 +580,10 @@
                 href="{{ $securityAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-security-secondary-cta" href="#security-baseline-in-order">
-                Security baseline
+                {{ if eq .Language.Lang "ko" }}기본 보안 점검{{ else }}Security baseline{{ end }}
               </a>
             </div>
           </div>
@@ -593,45 +593,45 @@
             href="{{ $securityAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for a hardened server">
+            aria-label="{{ if eq .Language.Lang "ko" }}보안을 강화할 서버용 VPS 옵션 확인{{ else }}Check current VPS options for a hardened server{{ end }}">
             <div class="vps-security-compact-head">
-              <strong>Harden in the right order</strong>
-              <small>Preserve recovery first, then reduce exposure and maintain the server.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}올바른 순서로 보안 강화{{ else }}Harden in the right order{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}복구 경로를 먼저 확보하고 외부 노출을 줄인 뒤 서버를 지속적으로 관리하세요.{{ else }}Preserve recovery first, then reduce exposure and maintain the server.{{ end }}</small>
             </div>
 
             <div class="vps-security-compact-grid">
               <div class="vps-security-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Recovery path</strong>
-                  <small>Console / rescue access</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}복구 경로{{ else }}Recovery path{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}콘솔 / 복구 접속{{ else }}Console / rescue access{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Admin access</strong>
-                  <small>Named user + SSH key</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}관리자 접속{{ else }}Admin access{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}개별 사용자 + SSH 키{{ else }}Named user + SSH key{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Exposure</strong>
-                  <small>Ports + firewall</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}공개 노출{{ else }}Exposure{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}포트 + 방화벽{{ else }}Ports + firewall{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Maintenance</strong>
-                  <small>Patches + backups + alerts</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}유지관리{{ else }}Maintenance{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}패치 + 백업 + 알림{{ else }}Patches + backups + alerts{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-security-compact-rule">
-              <strong>Do not tighten remote access until a second tested admin path works.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}두 번째 관리자 접속 경로를 테스트하기 전에는 원격 접속을 제한하지 마세요.{{ else }}Do not tighten remote access until a second tested admin path works.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -720,11 +720,11 @@
         "vps-security-access-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">Access sequence</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}접속 설정 순서{{ else }}Access sequence{{ end }}</div>' +
         '<div class="vps-security-visual-steps">' +
-          '<span>Console</span><i>→</i><span>Named admin</span><i>→</i><span>SSH key</span><i>→</i><span>Restrict old access</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}콘솔{{ else }}Console{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}전용 관리자{{ else }}Named admin{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}SSH 키{{ else }}SSH key{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}기존 접속 제한{{ else }}Restrict old access{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">Keep one working session open while testing the replacement path.</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}새 경로를 테스트하는 동안 기존 세션 하나를 유지하세요.{{ else }}Keep one working session open while testing the replacement path.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -733,13 +733,13 @@
         "vps-security-network-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">Network exposure</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}네트워크 노출{{ else }}Network exposure{{ end }}</div>' +
         '<div class="vps-security-network-grid">' +
-          '<div><strong>Public</strong><span>HTTP / HTTPS</span></div>' +
-          '<div><strong>Controlled</strong><span>SSH / admin</span></div>' +
-          '<div><strong>Private</strong><span>DB / Redis / app ports</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}공개{{ else }}Public{{ end }}</strong><span>HTTP / HTTPS</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}접근 제한{{ else }}Controlled{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}SSH / 관리자{{ else }}SSH / admin{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}비공개{{ else }}Private{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}DB / Redis / 앱 포트{{ else }}DB / Redis / app ports{{ end }}</span></div>' +
         '</div>' +
-        '<div class="vps-security-visual-note">Expose only what the architecture actually needs.</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}실제 서비스에 필요한 포트만 공개하세요.{{ else }}Expose only what the architecture actually needs.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -748,11 +748,11 @@
         "vps-security-maintenance-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">Maintenance loop</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}유지관리 주기{{ else }}Maintenance loop{{ end }}</div>' +
         '<div class="vps-security-maintenance-grid">' +
-          '<span>Patches</span><span>Least privilege</span><span>Secrets</span><span>Rate limits</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}보안 패치{{ else }}Patches{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}최소 권한{{ else }}Least privilege{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}비밀 정보{{ else }}Secrets{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}요청 속도 제한{{ else }}Rate limits{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">Security degrades when ownership, updates or credentials are left unmanaged.</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}담당자, 업데이트 또는 자격 증명을 관리하지 않으면 보안 수준이 떨어집니다.{{ else }}Security degrades when ownership, updates or credentials are left unmanaged.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -761,12 +761,12 @@
         "vps-security-application-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">Application layer</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}애플리케이션 계층{{ else }}Application layer{{ end }}</div>' +
         '<div class="vps-security-layer-stack">' +
-          '<span>Panel / admin UI</span>' +
-          '<span>CMS / plugins / runtime</span>' +
-          '<span>HTTPS transport</span>' +
-          '<span>DDoS ≠ application security</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}패널 / 관리자 화면{{ else }}Panel / admin UI{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}CMS / 플러그인 / 런타임{{ else }}CMS / plugins / runtime{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}HTTPS 전송 보호{{ else }}HTTPS transport{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}DDoS 보호 ≠ 애플리케이션 보안{{ else }}DDoS ≠ application security{{ end }}</span>' +
         '</div>'
       );
 
@@ -776,11 +776,11 @@
         "vps-security-recovery-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">Recovery controls</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}복구 조치{{ else }}Recovery controls{{ end }}</div>' +
         '<div class="vps-security-recovery-grid">' +
-          '<div><strong>Backup copy</strong><span>Outside the running VPS</span></div>' +
-          '<div><strong>Restore test</strong><span>Prove recovery works</span></div>' +
-          '<div><strong>Logs & alerts</strong><span>Detect failed controls</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}백업 사본{{ else }}Backup copy{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}운영 중인 VPS 외부에 보관{{ else }}Outside the running VPS{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}복원 테스트{{ else }}Restore test{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}실제 복구 가능 확인{{ else }}Prove recovery works{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}로그 및 알림{{ else }}Logs & alerts{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}조치 실패 탐지{{ else }}Detect failed controls{{ end }}</span></div>' +
         '</div>'
       );
 
@@ -790,11 +790,11 @@
         "vps-security-incident-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">Incident path</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}사고 대응 순서{{ else }}Incident path{{ end }}</div>' +
         '<div class="vps-security-incident-flow">' +
-          '<span>Contain</span><i>→</i><span>Rotate secrets</span><i>→</i><span>Rebuild</span><i>→</i><span>Restore</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}피해 확산 차단{{ else }}Contain{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}비밀 정보 교체{{ else }}Rotate secrets{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}재구축{{ else }}Rebuild{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}복원{{ else }}Restore{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">Recover from known-good sources after privileged compromise.</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}관리자 권한 침해 후에는 검증된 정상 소스에서 복구하세요.{{ else }}Recover from known-good sources after privileged compromise.{{ end }}</div>'
       );
 
       wrapSecuritySection(
