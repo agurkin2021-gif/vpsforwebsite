@@ -1351,7 +1351,7 @@
   </section>
 {{ else if $isVpsLocation }}
   {{ $locationAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
-  <section class="vps-page-header vps-location-page-header">
+  <section class="vps-page-header vps-location-page-header">{{ if eq .Language.Lang "ko" }}<style>main .content .highlight pre { overflow-x: auto; max-width: 100%; }</style>{{ else }}{{ end }}
     <div class="container">
       {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-location-breadcrumb") }}
 
