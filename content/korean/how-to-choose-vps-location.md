@@ -1,7 +1,6 @@
 ---
 title: "VPS 위치 선택 방법"
 slug: "vps-위치-선택-방법"
-draft: true
 description: "사용자 분포, 실제 네트워크 경로, 동적 트래픽, 의존 시스템, CDN 전략과 데이터 위치 제약을 기준으로 VPS 지역을 선택하는 방법. 테스트, 판단 도구와 구매 전 체크리스트를 제공합니다."
 image: "images/home/vps-for-website-hero.webp"
 ---
