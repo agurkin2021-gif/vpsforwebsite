@@ -11,6 +11,8 @@
 - FASTPANEL shared hero's 14 user-facing text/ARIA slots are KO-only conditional translations; EN and other languages retain original else copy, layout and affiliate links. Official VDSina and FASTPANEL setup facts rechecked 2026-10-20; one-GB install minimum is not a production capacity promise.
 - Blocking prepublication workflow `.github/workflows/qa-ko-fastpanel.yml` should validate the Hugo build, 390/1280 geometry and all 36 actual form input combinations before merging. After merge, verify main CI -> static Cloudflare generation -> deployed live URL -> separate live browser QA. No publication/complete claim until these succeed. Source of truth remains GitHub main.
 
+- Prepublication [Korean FASTPANEL Chromium run 39468849212](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39468849212) completed **Success**. Hugo 0.158.0 production-style build passed. At **390px and 1280px**, measured document/body scroll widths equal viewport widths; header, hero, H1 and checker bounding rectangles fit. Page produced 31 anchored headings, one table, four selectors/ten options, localized hero, SEO Title/H1/canonical and sponsored partner links, without JS errors. At 390px Chromium selected all **36** combinations of workload (3), site count (3), mail (2) and jobs (2), submitted the form, and confirmed the expected 2 GB / 4 GB / 8 GB Korean guidance. Screenshots were saved as workflow artifacts. This verifies preview QA only; publication/live verification is still pending.
+
 ## Current localization pass — Korean, 2026-10-19
 
 - Owner requested Korean `ko`, natural commercial search language and careful page-by-page work. No bulk or shortened article translation.
