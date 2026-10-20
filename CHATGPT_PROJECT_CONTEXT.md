@@ -3,6 +3,12 @@
 > READ THIS FILE FIRST IN EVERY NEW CHATGPT SESSION BEFORE CHANGING THE REPOSITORY.
 > This file is the persistent project context and decision log for the site.
 
+### Korean FASTPANEL page 10 publication closure — 2026-10-20
+
+- Page 10 `FASTPANEL VPS 호스팅` at `/ko/fastpanel-vps-호스팅/` is **published and verified**: PR #6 merged as source commit `e7b5b485`; Hugo production workflow `39469292860` Success, Cloudflare static preparation `39469292861` Success, generated commit `f863a20e`, Cloudflare deployment Ready.
+- Live Korean page opened and visually inspected in Opera. Production Chromium QA `39469627684` passed real 390/1280 viewport geometry with no overflow/JS errors and **36/36 actual form submissions** (all 3×3×2×2 input combinations). Original English guide and all other languages' visible content unchanged.
+- Core Korean localization progress: **10/15 pages published**. Next page #11: How to host a website on VPS, to translate individually from the English original. Full evidence and route recorded in `research/korean-localization-2026-10-19.md`.
+
 ### Tenth Korean source pass — FASTPANEL VPS Hosting (2026-10-20)
 
 - Page 9 `컨트롤 패널이 있는 VPS` is published from PR #5 source `11aeb5cd`, generated Cloudflare static `74dfa08f`; the live page opened in Opera and the dedicated production Chromium run `39468143187` passed 390px/1280px and nine form scenarios. Page 9 is closed.
