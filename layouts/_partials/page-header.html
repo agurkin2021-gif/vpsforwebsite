@@ -1664,7 +1664,7 @@
 {{ end }}
 
 {{ if or $isVpsVsShared $isVpsWordPress $isVpsWooCommerce $isVpsMultipleWebsites $isVpsSecurity $isVpsBackup $isVpsMonitoring $isVpsSizing $isWebsiteMigration $isManagedVsUnmanaged $isFastpanelVps $isHostWebsiteVps $isVpsLocation $isVpsControlPanel }}
-  <div class="container">
+  <div class="container vps-affiliate-disclosure">
     <p class="mt-3 text-xs leading-relaxed opacity-70">
       {{ T "guide_affiliate_disclosure" }}
       <a href="{{ if eq site.Language.Lang "ko" }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "guide_editorial_disclosure" }}{{ if and (eq site.Language.Lang "ko") (not (site.GetPage "/about/")) }} (영문){{ end }}</a>.

@@ -8,6 +8,9 @@
   <link rel="preload" as="image" href="{{ $hero.RelPermalink }}" imagesrcset="{{ $hero.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
 {{ end }}
 {{ partialCached "local-fonts.html" . }}
+{{ if .IsPage }}
+  <link rel="stylesheet" href="{{ "css/guide-disclosure.v1.css" | relURL }}" />
+{{ end }}
 {{/* Preserve the recovered site's language picker independently of Tailwind pruning. */}}
 {{ $languageCSS := resources.Get "css/language-picker.css" | minify }}
 <style id="language-navigation-css">{{ $languageCSS.Content | safeCSS }}</style>
