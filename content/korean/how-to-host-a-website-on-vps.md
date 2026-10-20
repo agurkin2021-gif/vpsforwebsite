@@ -7,13 +7,13 @@ image: "images/home/vps-for-website-hero.webp"
 
 VPS에 웹사이트를 호스팅하는 방법은 배포할 애플리케이션에 따라 달라집니다. 정적 사이트에는 웹 서버와 DNS가 필요합니다. 워드프레스나 다른 PHP CMS에는 PHP와 데이터베이스도 필요합니다. Node.js 또는 Python 애플리케이션은 보통 리버스 프록시 뒤에서 실행합니다. 이러한 구성 요소를 초기 상태의 VPS에 직접 설치하거나, 컨트롤 패널을 사용해 브라우저에서 관리할 수 있습니다.
 
-이 가이드는 **새 VPS를 준비해 웹사이트를 실제로 공개하기까지**의 절차를 다룹니다. 실제 데이터가 계속 변경되는 기존 운영 사이트를 옮긴다면 [웹사이트 VPS 이전](/website-migration-to-vps/)에서 서비스 전환과 롤백 절차를 확인하세요.
+이 가이드는 **새 VPS를 준비해 웹사이트를 실제로 공개하기까지**의 절차를 다룹니다. 실제 데이터가 계속 변경되는 기존 운영 사이트를 옮긴다면 [웹사이트 VPS 이전]({{< relref "website-migration-to-vps.md" >}})에서 서비스 전환과 롤백 절차를 확인하세요.
 
-VPS 구매의 전반적인 판단 기준은 [웹사이트용 VPS 호스팅](/)을 참고하세요.
+VPS 구매의 전반적인 판단 기준은 [웹사이트용 VPS 호스팅]({{< relref "_index.md" >}})을 참고하세요.
 
 [빠른 배포 순서](#quick-deployment-sequence) · [방식 선택](#choose-manual-panel-or-managed) · [배포 방식 진단](#deployment-path-checker) · [수동 설정](#manual--no-control-panel-path) · [DNS](#point-the-domain-to-the-vps) · [운영 준비 점검표](#production-acceptance-checklist) · [FAQ](#faq)
 
-## 빠른 배포 순서
+## 빠른 배포 순서 {#quick-deployment-sequence}
 
 안정적인 첫 배포는 다음 순서로 진행합니다.
 
@@ -35,11 +35,11 @@ VPS 구매의 전반적인 판단 기준은 [웹사이트용 VPS 호스팅](/)�
 
 일반적인 VPS 가이드에 나온다는 이유만으로 PHP, MySQL, 메일 서버 또는 컨트롤 패널을 설치하지 마세요. 웹사이트에 실제로 필요한 구성 요소만 설치하세요.
 
-## 수동 관리, 패널 또는 관리형 운영 선택
+## 수동 관리, 패널 또는 관리형 운영 선택 {#choose-manual-panel-or-managed}
 
 운영 방식은 세 가지로 구분됩니다.
 
-### 수동 관리 / 컨트롤 패널 없음
+### 수동 관리 / 컨트롤 패널 없음 {#manual--no-control-panel}
 
 초기 상태의 Linux VPS를 선택하고 SSH를 통해 스택을 관리합니다.
 
@@ -53,19 +53,19 @@ VPS 구매의 전반적인 판단 기준은 [웹사이트용 VPS 호스팅](/)�
 
 기존 **컨트롤 패널 없는 VPS**라는 주제는 이 절에 통합되어 있습니다. 같은 검색 의도를 두고 경쟁하는 별도의 URL을 만들지 않습니다.
 
-### 컨트롤 패널
+### 컨트롤 패널 {#control-panel}
 
 브라우저에서 사이트, 도메인, PHP, 데이터베이스, 메일 또는 사용자를 관리하는 것이 반복 작업을 실질적으로 줄여 준다면 호스팅 패널을 사용하세요.
 
-[컨트롤 패널이 있는 VPS](/vps-with-control-panel/)를 참고하세요. 이미 FASTPANEL을 선택했다면 [FASTPANEL VPS 호스팅](/fastpanel-vps-hosting/)을 참고하세요.
+[컨트롤 패널이 있는 VPS]({{< relref "vps-with-control-panel.md" >}})를 참고하세요. 이미 FASTPANEL을 선택했다면 [FASTPANEL VPS 호스팅]({{< relref "fastpanel-vps-hosting.md" >}})을 참고하세요.
 
-### 관리형 운영
+### 관리형 운영 {#managed-administration}
 
 패널과 운영 관리는 서로 다릅니다. 패치, 보안, 백업, 모니터링과 장애 대응을 맡을 사람이 없다면 사이트 공개 전에 책임 주체부터 정하세요.
 
-[관리형 VPS와 비관리형 VPS](/managed-vs-unmanaged-vps/)를 참고하세요.
+[관리형 VPS와 비관리형 VPS]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요.
 
-## 배포 방식 진단
+## 배포 방식 진단 {#deployment-path-checker}
 
 이 도구는 검토할 스택 구성을 알려 줍니다. 애플리케이션 공식 문서를 대신하지는 않습니다.
 
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-## 사전 준비 사항
+## 사전 준비 사항 {#prerequisites}
 
 서버를 설정하기 전에 다음을 준비하세요.
 
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
 - 백업 저장 위치;
 - 웹사이트 가용성을 외부에서 확인할 방법.
 
-필요한 자원이 아직 불확실하다면 배포 전에 [웹사이트용 VPS 사양](/vps-sizing-for-website/)을 확인하세요.
+필요한 자원이 아직 불확실하다면 배포 전에 [웹사이트용 VPS 사양]({{< relref "vps-sizing-for-website.md" >}})을 확인하세요.
 
 VDSina의 현재 Standard VPS 페이지에는 Ubuntu 26.04/24.04/22.04/20.04, Debian 13/12/11/10, AlmaLinux, Rocky, CentOS, Oracle Linux 및 ArchLinux를 포함한 순수 OS 템플릿이 나열되어 있습니다. 이 가이드는 현재 웹 서버 문서와 패키지 설치 절차를 따라가기 쉬운 Ubuntu/Debian 방식의 예제를 사용합니다. 같은 구조를 다른 지원 Linux 배포판에도 적용할 수 있지만 패키지 및 서비스 명령은 달라집니다.
 
@@ -165,7 +165,7 @@ VDSina의 현재 Standard VPS 페이지에는 Ubuntu 26.04/24.04/22.04/20.04, De
 </p>
 <p><small>제휴 고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 제휴 링크로 주문하면 사이트가 수수료를 받을 수 있습니다. 수수료가 아니라 실제 작업 부하를 기준으로 서버 사양과 운영 방식을 선택하세요.</small></p>
 
-## 운영체제 선택
+## 운영체제 선택 {#choose-the-operating-system}
 
 웹사이트 서버를 직접 관리한다면 다음 조건을 충족하는 운영체제를 선택하세요.
 
@@ -179,7 +179,7 @@ VDSina의 현재 Standard VPS 페이지에는 Ubuntu 26.04/24.04/22.04/20.04, De
 
 현재 Linux 환경을 설명하는 간단한 예제로는 Ubuntu 24.04 LTS 또는 Debian 12를 문서 기준으로 삼을 수 있습니다. 애플리케이션 공급업체가 다른 지원 배포판을 지정했다면 해당 요구사항을 따르세요.
 
-## 안전한 첫 SSH 접속
+## 안전한 첫 SSH 접속 {#secure-first-ssh-access}
 
 새 VPS는 관리자 접근 권한을 제공하지만, 실제 운영 작업을 계속 root로 수행해서는 안 됩니다.
 
@@ -203,9 +203,9 @@ usermod -aG sudo deploy
 
 서버 보안을 강화하는 과정에서 유일하게 작동하는 관리 접속 경로를 차단하지 마세요.
 
-SSH와 방화벽의 상세 보안 강화는 [VPS 보안 점검표](/vps-security-checklist/)에서 다룹니다. 이 가이드에는 배포에 필요한 최소 사항만 포함합니다.
+SSH와 방화벽의 상세 보안 강화는 [VPS 보안 점검표]({{< relref path="vps-security-checklist.md" lang="en" >}})에서 다룹니다. 이 가이드에는 배포에 필요한 최소 사항만 포함합니다.
 
-## 스택 설치 전 서버 업데이트
+## 스택 설치 전 서버 업데이트 {#update-the-server-before-installing-the-stack}
 
 Ubuntu/Debian에서는 다음을 실행합니다.
 
@@ -218,13 +218,13 @@ sudo apt upgrade -y
 
 웹사이트를 공개한 뒤로 보안 업데이트를 미루지 마세요.
 
-## 수동 구성 / 컨트롤 패널 없는 방식
+## 수동 구성 / 컨트롤 패널 없는 방식 {#manual--no-control-panel-path}
 
 직접 관리하는 VPS에는 애플리케이션에 필요한 서비스만 설치해야 합니다.
 
 일반적인 구성은 다음과 같습니다.
 
-### 정적 웹사이트
+### 정적 웹사이트 {#static-website}
 
 필요한 구성 요소:
 
@@ -239,7 +239,7 @@ sudo apt upgrade -y
 - MySQL/MariaDB/PostgreSQL;
 - 로컬 메일 서버.
 
-### PHP / 워드프레스 웹사이트
+### PHP / 워드프레스 웹사이트 {#php--wordpress-website}
 
 일반적으로 필요한 구성 요소:
 
@@ -250,9 +250,9 @@ sudo apt upgrade -y
 - DNS;
 - HTTPS.
 
-워드프레스의 자원 사용 특성은 [워드프레스용 VPS](/vps-for-wordpress/)를 참고하세요.
+워드프레스의 자원 사용 특성은 [워드프레스용 VPS]({{< relref "vps-for-wordpress.md" >}})를 참고하세요.
 
-### Node.js / Python / 자체 개발 애플리케이션
+### Node.js / Python / 자체 개발 애플리케이션 {#nodejs--python--custom-application}
 
 일반적인 구성 요소:
 
@@ -267,7 +267,7 @@ sudo apt upgrade -y
 
 개발 서버를 인터넷에 직접 노출하는 구성을 실제 운영 구조로 사용하지 마세요.
 
-## 웹 서버 설치
+## 웹 서버 설치 {#install-the-web-server}
 
 Ubuntu의 현재 서버 문서는 Nginx와 Apache를 모두 지원합니다. 어느 하나가 모든 상황에서 더 좋은 것은 아닙니다.
 
@@ -284,7 +284,7 @@ sudo systemctl status nginx
 
 애플리케이션, 팀 또는 기존 설정에 Apache가 더 잘 맞는다면 Apache를 사용하세요.
 
-## 웹사이트 호스트 이름 설정
+## 웹사이트 호스트 이름 설정 {#configure-the-website-hostname}
 
 DNS와 웹 서버 설정은 같은 작업의 두 부분입니다.
 
@@ -323,11 +323,11 @@ sudo systemctl reload nginx
 
 리버스 프록시를 사용하는 앱이라면 server 블록에서 요청을 로컬 애플리케이션 포트나 소켓으로 전달하도록 설정합니다.
 
-## 파일 또는 애플리케이션 코드 배포
+## 파일 또는 애플리케이션 코드 배포 {#deploy-files-or-application-code}
 
 반복 가능한 배포 방법을 선택하세요.
 
-### SFTP/SCP
+### SFTP/SCP {#sftpscp}
 
 다음과 같은 경우에 적합합니다.
 
@@ -337,15 +337,15 @@ sudo systemctl reload nginx
 
 위험: 운영 디렉터리의 내용이 소스 저장소와 쉽게 달라질 수 있습니다.
 
-### SSH를 통한 rsync
+### SSH를 통한 rsync {#rsync-over-ssh}
 
 반복 가능한 파일 동기화와 효율적인 증분 업데이트에 유용합니다.
 
-### Git 기반 배포
+### Git 기반 배포 {#git-based-deployment}
 
 운영 릴리스를 저장소의 커밋과 일치시켜야 할 때 유용합니다.
 
-### CI/CD
+### CI/CD {#cicd}
 
 자동 빌드·테스트·릴리스 단계를 도입할 만큼 배포가 빈번할 때 유용합니다.
 
@@ -357,7 +357,7 @@ sudo systemctl reload nginx
 - 비밀 정보는 공개 문서 루트 밖에 보관합니다;
 - 모든 사용자가 쓸 수 있는 권한을 손쉬운 해결책으로 사용하지 않습니다.
 
-## PHP / 워드프레스 구성
+## PHP / 워드프레스 구성 {#php--wordpress-path}
 
 Ubuntu/Debian에서 PHP 사이트를 운영하려면 애플리케이션이 지원하는 현재 PHP-FPM 패키지와 필요한 확장 모듈을 설치하세요.
 
@@ -377,9 +377,9 @@ Ubuntu/Debian에서 PHP 사이트를 운영하려면 애플리케이션이 지�
 - wp-cron과 백그라운드 작업을 검증합니다;
 - 작업 부하에 맞게 캐싱을 추가합니다.
 
-사양과 성능에 관한 내용은 여기에서 중복 설명하지 않고 [워드프레스용 VPS](/vps-for-wordpress/)에서 다룹니다.
+사양과 성능에 관한 내용은 여기에서 중복 설명하지 않고 [워드프레스용 VPS]({{< relref "vps-for-wordpress.md" >}})에서 다룹니다.
 
-## Node.js / Python / 자체 개발 앱 구성
+## Node.js / Python / 자체 개발 앱 구성 {#nodejs--python--custom-app-path}
 
 터미널에서 개발용 명령을 수동으로 실행한 상태를 실제 운영 환경이라고 간주하지 마세요.
 
@@ -400,7 +400,7 @@ Ubuntu/Debian에서 PHP 사이트를 운영하려면 애플리케이션이 지�
 
 프레임워크 자체의 운영 환경 배포 지침을 확인하세요.
 
-## 데이터베이스: 필요한 경우에만 설치
+## 데이터베이스: 필요한 경우에만 설치 {#database-install-only-when-required}
 
 정적 웹사이트에는 데이터베이스가 필요하지 않습니다.
 
@@ -416,7 +416,7 @@ Ubuntu/Debian에서 PHP 사이트를 운영하려면 애플리케이션이 지�
 
 웹 서버가 거의 유휴 상태여도 데이터베이스 작업이 VPS의 실제 병목이 될 수 있습니다.
 
-## 파일 소유권, 권한 및 비밀 정보
+## 파일 소유권, 권한 및 비밀 정보 {#file-ownership-permissions-and-secrets}
 
 다음 두 가지 흔한 실수를 피하세요.
 
@@ -434,7 +434,7 @@ Ubuntu/Debian에서 PHP 사이트를 운영하려면 애플리케이션이 지�
 
 정확한 소유권 설정은 애플리케이션과 웹 서버의 운영 방식에 따라 다릅니다. 만능 해결책처럼 `chmod 777`을 복사하지 말고 애플리케이션 문서를 따르세요.
 
-## 공개 DNS 연결 전 테스트
+## 공개 DNS 연결 전 테스트 {#test-before-public-dns}
 
 DNS 연결이 애플리케이션의 첫 실제 테스트가 되게 하지 마세요.
 
@@ -459,9 +459,9 @@ DNS 연결이 애플리케이션의 첫 실제 테스트가 되게 하지 마세
 
 많은 애플리케이션은 서버 IP로 접근할 때와 실제 호스트 이름으로 접근할 때 다르게 작동하므로 hosts 파일을 이용한 테스트가 특히 유용합니다.
 
-기존 운영 사이트라면 [웹사이트 VPS 이전](/website-migration-to-vps/)의 더 엄격한 전환 절차를 사용하세요.
+기존 운영 사이트라면 [웹사이트 VPS 이전]({{< relref "website-migration-to-vps.md" >}})의 더 엄격한 전환 절차를 사용하세요.
 
-## 도메인을 VPS에 연결
+## 도메인을 VPS에 연결 {#point-the-domain-to-the-vps}
 
 DNS 제공업체에서 이 서버에 도달해야 하는 레코드를 설정하세요.
 
@@ -478,9 +478,9 @@ VPS에 IPv6가 실제로 설정되어 있고 접근할 수 있는 경우에만 A
 
 DNS만으로 웹사이트가 작동하는 것은 아닙니다. Nginx/Apache 사이트 설정에도 일치하는 호스트 이름이 있어야 합니다.
 
-기존 운영 사이트를 옮기는 경우 DNS 전환과 마지막 데이터 쓰기 처리는 [웹사이트 VPS 이전](/website-migration-to-vps/)에서 다룹니다.
+기존 운영 사이트를 옮기는 경우 DNS 전환과 마지막 데이터 쓰기 처리는 [웹사이트 VPS 이전]({{< relref "website-migration-to-vps.md" >}})에서 다룹니다.
 
-## DNS 연결 확인 후 HTTPS 추가
+## DNS 연결 확인 후 HTTPS 추가 {#add-https-after-dns-resolves}
 
 공개 호스트 이름이 인증 요청에 응답할 서버로 연결되는 것을 확인한 뒤에 신뢰할 수 있는 인증서를 발급받으세요. 사용할 HTTP/HTTPS 인증 경로가 방화벽과 제공업체 네트워크 규칙에서 이미 허용되어 있는지 확인하세요.
 
@@ -496,7 +496,7 @@ Nginx/Apache에서는 Certbot과 같은 ACME 클라이언트로 Let's Encrypt �
 
 인증서 설정이 정상 작동하는지 확인하기 전에 HTTPS 리다이렉트를 활성화하지 마세요.
 
-## 방화벽 설정
+## 방화벽 설정 {#configure-the-firewall}
 
 방화벽 규칙을 변경하는 동안에도 관리 접속이 유지되도록 하세요.
 
@@ -510,9 +510,9 @@ MySQL/PostgreSQL, Redis 또는 애플리케이션 내부 포트가 기본적으�
 
 UFW를 사용하는 서버에서는 제한적인 규칙을 활성화하기 **전에** 필요한 SSH 접속 경로를 허용하세요.
 
-상세 방화벽 설정과 보안 강화는 [VPS 보안 점검표](/vps-security-checklist/)에서 다룹니다.
+상세 방화벽 설정과 보안 강화는 [VPS 보안 점검표]({{< relref path="vps-security-checklist.md" lang="en" >}})에서 다룹니다.
 
-## Cron 작업, 큐 및 워커
+## Cron 작업, 큐 및 워커 {#cron-jobs-queues-and-workers}
 
 동적 웹사이트는 웹 요청을 처리하는 경로만 설정해 두어 배포 후 문제가 생기는 경우가 많습니다.
 
@@ -534,7 +534,7 @@ UFW를 사용하는 서버에서는 제한적인 규칙을 활성화하기 **전
 - CPU/RAM을 고갈시키는 방식으로 겹쳐 실행되지 않습니다;
 - 서버 재부팅 후에도 다시 작동합니다.
 
-## 로그와 기본 관측 체계
+## 로그와 기본 관측 체계 {#logs-and-basic-observability}
 
 실제 트래픽을 받기 전에 사이트에 문제가 생기면 어디를 확인할지 파악하세요.
 
@@ -551,9 +551,9 @@ UFW를 사용하는 서버에서는 제한적인 규칙을 활성화하기 **전
 
 VPS에 로그인한 사람이 없어도 서버 장애를 알 수 있도록 외부 HTTP(S) 가동 상태 확인을 추가하세요.
 
-임계값과 알림 설계의 상세 내용은 [VPS 모니터링](/vps-monitoring/)에서 다룹니다.
+임계값과 알림 설계의 상세 내용은 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
 
-## 재부팅 검증
+## 재부팅 검증 {#reboot-validation}
 
 처음 구축한 VPS 환경은 첫 재부팅 전까지만 정상 작동하는 경우가 의외로 많습니다.
 
@@ -577,7 +577,7 @@ sudo reboot
 
 누군가 수동으로 명령을 실행해야만 애플리케이션이 다시 작동한다면 배포가 완료된 것이 아닙니다.
 
-## 수동 관리 / 패널 없는 호스팅이 맞지 않는 경우
+## 수동 관리 / 패널 없는 호스팅이 맞지 않는 경우 {#when-manual--no-panel-hosting-is-the-wrong-fit}
 
 다음에 해당한다면 컨트롤 패널이나 관리형 운영을 사용하세요.
 
@@ -591,9 +591,9 @@ sudo reboot
 
 직접 관리하는 VPS는 패널의 자원 사용량을 줄이고 제어 범위를 넓힐 수 있지만 운영 책임까지 줄여 주지는 않습니다.
 
-패널 선택은 [컨트롤 패널이 있는 VPS](/vps-with-control-panel/)를, 운영 책임 주체가 부족한 경우에는 [관리형 VPS와 비관리형 VPS](/managed-vs-unmanaged-vps/)를 참고하세요.
+패널 선택은 [컨트롤 패널이 있는 VPS]({{< relref "vps-with-control-panel.md" >}})를, 운영 책임 주체가 부족한 경우에는 [관리형 VPS와 비관리형 VPS]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요.
 
-## 실제 운영 준비 점검표
+## 실제 운영 준비 점검표 {#production-acceptance-checklist}
 
 | 점검 항목 | 통과 조건 |
 |---|---|
@@ -615,7 +615,7 @@ sudo reboot
 
 홈페이지가 HTTP 200을 반환한다는 사실만으로 웹사이트의 실제 운영 준비가 끝난 것은 아닙니다.
 
-## 백업과 모니터링 인계
+## 백업과 모니터링 인계 {#backups-and-monitoring-handoff}
 
 이 페이지는 운영 인계에 필요한 최소 기준만 정합니다.
 
@@ -630,9 +630,9 @@ sudo reboot
 - CPU/RAM/데이터베이스 부하를 관찰합니다;
 - 인증서 갱신을 확인합니다.
 
-상세 복구 설계는 [VPS 백업 전략](/vps-backup-strategy/)에서 다룹니다. 모니터링 임계값과 알림 설계는 [VPS 모니터링](/vps-monitoring/)에서 다룹니다.
+상세 복구 설계는 [VPS 백업 전략]({{< relref path="vps-backup-strategy.md" lang="en" >}})에서 다룹니다. 모니터링 임계값과 알림 설계는 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
 
-## 여러 웹사이트 운영
+## 여러 웹사이트 운영 {#multiple-websites}
 
 사이트가 여러 개라면 다음 원칙을 지키세요.
 
@@ -644,9 +644,9 @@ sudo reboot
 - 전체 사이트의 최대 부하를 합산하여 계산합니다;
 - 모든 사이트가 여전히 하나의 VPS 장애 범위를 공유한다는 점을 이해합니다.
 
-용량과 격리 계획은 [여러 웹사이트용 VPS](/vps-for-multiple-websites/)를 참고하세요.
+용량과 격리 계획은 [여러 웹사이트용 VPS]({{< relref "vps-for-multiple-websites.md" >}})를 참고하세요.
 
-## 기술 참고 자료
+## 기술 참고 자료 {#technical-references}
 
 - Ubuntu Server: Nginx 설치
 - Ubuntu Server: Nginx 설정
@@ -658,44 +658,44 @@ sudo reboot
 </p>
 <p><small>제휴 고지: 편집자는 VDSina와 업무상 관계가 있습니다. 제휴 링크는 sponsored로 표시됩니다. 주문 전에 현재 VPS 요금, 제공되는 운영체제와 제공업체 약관을 확인하세요.</small></p>
 
-## FAQ
+## FAQ {#faq}
 
-### 컨트롤 패널 없이 VPS에 웹사이트를 호스팅할 수 있나요?
+### 컨트롤 패널 없이 VPS에 웹사이트를 호스팅할 수 있나요? {#can-i-host-a-website-on-a-vps-without-a-control-panel}
 
 예. 초기 상태의 Linux VPS에 SSH와 애플리케이션이 요구하는 웹 서버, 런타임 및 데이터베이스 구성 요소를 갖추면 웹사이트를 호스팅할 수 있습니다. 패널 없는 운영이라는 검색 의도는 별도의 경쟁 페이지가 아니라 이 가이드에서 다룹니다.
 
-### VPS에 웹사이트를 호스팅하려면 Nginx가 필요한가요?
+### VPS에 웹사이트를 호스팅하려면 Nginx가 필요한가요? {#do-i-need-nginx-to-host-a-website-on-vps}
 
 아니요. Nginx와 Apache 모두 일반적인 선택입니다. 애플리케이션, 설정과 관리자의 경험에 맞는 웹 서버를 사용하세요.
 
-### VPS에서 운영하는 모든 웹사이트에 데이터베이스가 필요한가요?
+### VPS에서 운영하는 모든 웹사이트에 데이터베이스가 필요한가요? {#does-every-vps-website-need-a-database}
 
 아니요. 정적 웹사이트에는 필요하지 않습니다. 애플리케이션이 데이터베이스를 요구할 때만 MySQL/MariaDB/PostgreSQL을 설치하세요.
 
-### 웹사이트를 root로 호스팅해야 하나요?
+### 웹사이트를 root로 호스팅해야 하나요? {#should-i-use-root-to-host-the-website}
 
 아니요. Root는 관리 작업을 위한 계정입니다. 필요한 권한만 부여한 적절한 비root 사용자와 서비스로 웹사이트를 실행하고 배포하세요.
 
-### 컨트롤 패널은 언제 사용해야 하나요?
+### 컨트롤 패널은 언제 사용해야 하나요? {#when-should-i-use-a-control-panel}
 
 브라우저에서 사이트, 도메인, PHP, 데이터베이스, 사용자, 메일 또는 백업을 관리하는 것이 패널의 자원 사용량과 제약을 감수할 만큼 반복 관리 작업을 줄여 줄 때 사용하세요.
 
-### cPanel 없이 VPS에 워드프레스를 호스팅할 수 있나요?
+### cPanel 없이 VPS에 워드프레스를 호스팅할 수 있나요? {#can-i-host-wordpress-on-a-vps-without-cpanel}
 
 예. 워드프레스에는 호환되는 웹 서버, PHP, 데이터베이스, 워드프레스 파일, 올바른 권한, DNS와 HTTPS가 필요합니다. 패널은 선택 사항입니다.
 
-### DNS를 언제 VPS로 연결해야 하나요?
+### DNS를 언제 VPS로 연결해야 하나요? {#when-should-i-point-dns-to-the-vps}
 
 새 사이트라면 서버가 실제 호스트 이름의 요청에 응답할 준비가 되었을 때 연결하세요. 기존 운영 사이트라면 먼저 테스트한 뒤 통제된 이전 및 전환 계획을 사용하세요.
 
-### 도메인이 VPS를 가리키는데 왜 다른 사이트가 표시되나요?
+### 도메인이 VPS를 가리키는데 왜 다른 사이트가 표시되나요? {#why-does-my-domain-point-to-the-vps-but-show-the-wrong-site}
 
 DNS는 호스트 이름을 서버 IP로 연결하기만 합니다. Nginx/Apache에도 해당 호스트 이름과 일치하는 server 블록 또는 가상 호스트가 있어야 합니다.
 
-### HTTPS는 언제 활성화해야 하나요?
+### HTTPS는 언제 활성화해야 하나요? {#when-should-i-enable-https}
 
 공개 호스트 이름이 서버로 연결되고 인증 경로가 정상 작동한 뒤에 활성화하세요. 그다음 인증서를 발급하고 루트 도메인과 `www`의 포함 여부를 확인한 뒤 의도한 HTTP-to-HTTPS 리다이렉트를 설정하세요.
 
-### VPS 재부팅 후 무엇을 확인해야 하나요?
+### VPS 재부팅 후 무엇을 확인해야 하나요? {#what-should-i-check-after-rebooting-the-vps}
 
 웹 서버, 애플리케이션 서비스 또는 PHP-FPM, 데이터베이스, 워커, HTTPS, 모니터링과 웹사이트가 모두 수동 조작 없이 다시 작동하는지 확인하세요.

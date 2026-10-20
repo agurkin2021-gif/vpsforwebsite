@@ -1291,10 +1291,10 @@
                 href="{{ $hostAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-host-secondary-cta" href="#quick-deployment-sequence">
-                See deployment sequence
+                {{ if eq site.Language.Lang "ko" }}배포 순서 보기{{ else }}See deployment sequence{{ end }}
               </a>
             </div>
           </div>
@@ -1304,45 +1304,45 @@
             href="{{ $hostAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for hosting a website">
+            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 호스팅용 VPS 옵션 확인{{ else }}Check current VPS options for hosting a website{{ end }}">
             <div class="vps-host-compact-head">
-              <strong>Fresh VPS to live website</strong>
-              <small>Build the stack in the right order, test it, then send production traffic.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS에서 웹사이트 공개까지{{ else }}Fresh VPS to live website{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}올바른 순서로 스택을 구축하고 테스트한 뒤 실제 트래픽을 연결하세요.{{ else }}Build the stack in the right order, test it, then send production traffic.{{ end }}</small>
             </div>
 
             <div class="vps-host-compact-grid">
               <div class="vps-host-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Provision</strong>
-                  <small>OS + secure admin access</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}서버 준비{{ else }}Provision{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}OS + 안전한 관리자 접속{{ else }}OS + secure admin access{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Install stack</strong>
-                  <small>Only what the app needs</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}스택 설치{{ else }}Install stack{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}앱에 필요한 구성 요소만{{ else }}Only what the app needs{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Connect domain</strong>
-                  <small>DNS + HTTPS</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}도메인 연결{{ else }}Connect domain{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}DNS + HTTPS{{ else }}DNS + HTTPS{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Verify</strong>
-                  <small>Reboot + backups + monitoring</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}검증{{ else }}Verify{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}재부팅 + 백업 + 모니터링{{ else }}Reboot + backups + monitoring{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-host-compact-rule">
-              <strong>Install only the services the website actually needs.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}웹사이트에 실제로 필요한 서비스만 설치하세요.{{ else }}Install only the services the website actually needs.{{ end }}</strong>
             </div>
           </a>
         </div>
