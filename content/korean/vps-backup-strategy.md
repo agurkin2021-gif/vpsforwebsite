@@ -557,107 +557,107 @@ VDSina의 자체 이용약관은 백업에 대한 책임이 고객에게 있음�
 </p>
 <p><small>제휴 고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 제휴 링크로 주문하면 사이트가 수수료를 받을 수 있습니다. 제공업체 백업 기능은 독립적인 복구 전략이나 복원 테스트를 대신하지 않습니다.</small></p>
 
-## Recovery runbook
+## 복구 실행 절차서 {#recovery-runbook}
 
-Write down the recovery process before the outage.
+장애가 발생하기 전에 복구 절차를 문서로 작성하세요.
 
-At minimum record:
+최소한 다음 사항을 기록하세요.
 
-- backup destinations;
-- restore-point naming/retention;
-- repository credentials;
-- encryption-key recovery location;
-- which data is DB/files/config;
-- fresh-server provisioning steps;
-- software/runtime versions;
-- restore order;
-- DNS/network steps;
-- external integrations/webhooks;
-- acceptance tests;
-- who makes the recovery/rollback decision.
+- 백업 저장 장소;
+- 복구 지점의 명명 규칙과 보존 기간;
+- 저장소 자격 증명;
+- 암호화 키를 복구할 수 있는 장소;
+- DB, 파일, 설정에 속하는 데이터의 구분;
+- 새 서버를 준비하는 단계;
+- 소프트웨어와 런타임 버전;
+- 복원 순서;
+- DNS와 네트워크 설정 단계;
+- 외부 연동과 웹훅;
+- 완료 판정 테스트;
+- 복구와 롤백을 결정하는 담당자.
 
-Keep the runbook somewhere available even when the VPS itself is unavailable.
+VPS 자체를 사용할 수 없을 때도 접근할 수 있는 장소에 절차서를 보관하세요.
 
-## VPS backup checklist
+## VPS 백업 점검표 {#vps-backup-checklist}
 
-| Control | Pass condition |
+| 관리 항목 | 통과 조건 |
 |---|---|
-| RPO | maximum acceptable data-loss window defined |
-| RTO | maximum acceptable downtime defined |
-| Data inventory | DB, uploads, config, secrets and other state classified |
-| Provider recovery | image/snapshot schedule understood |
-| Database | engine-aware, restorable DB backup method |
-| Offsite copy | independent recovery copy outside VPS failure domain |
-| Credentials | backup account scoped/separated from production |
-| Encryption | sensitive backups encrypted where appropriate |
-| Key recovery | recovery key/password stored outside failed VPS |
-| Retention | multiple historical restore points |
-| Monitoring | failed/partial/stale backup jobs detected |
-| Disk/I/O | backup process cannot silently fill/overload production |
-| Granularity | file/site/DB restore possible where needed |
-| Full recovery | complete VPS/service rebuild path exists |
-| Restore test | isolated restore completed successfully |
-| Measured RTO | actual recovery duration recorded and within target |
-| Runbook | recovery order, credentials, DNS and acceptance tests documented |
-| Owner | named person/team owns backup and restore work |
+| RPO | 허용 가능한 최대 데이터 손실 시간이 정의됨 |
+| RTO | 허용 가능한 최대 서비스 중단 시간이 정의됨 |
+| 데이터 목록 | DB, 업로드, 설정, 비밀 정보와 기타 상태 데이터가 분류됨 |
+| 제공업체 복구 | 이미지 또는 스냅샷 일정이 파악됨 |
+| 데이터베이스 | 엔진에 맞는 실제 복원 가능한 DB 백업 방식 |
+| 외부 사본 | VPS 장애 영역 밖에 독립적인 복구 사본 존재 |
+| 자격 증명 | 백업 계정 권한이 제한되고 운영 계정과 분리됨 |
+| 암호화 | 민감한 백업 데이터가 적절히 암호화됨 |
+| 키 복구 | 복구 키와 비밀번호가 장애 발생 VPS 밖에 저장됨 |
+| 보존 | 과거 시점의 복구 지점이 여러 개 존재 |
+| 모니터링 | 실패, 부분 완료 또는 오래된 백업 작업을 탐지 |
+| 디스크 / I/O | 백업으로 운영 서버의 공간과 자원이 조용히 고갈되지 않음 |
+| 복원 단위 | 필요할 때 파일, 사이트 또는 DB 단위로 복원 가능 |
+| 전체 복구 | VPS와 서비스를 완전히 재구축하는 경로 존재 |
+| 복원 테스트 | 분리된 환경에서 복원을 성공적으로 완료 |
+| 측정 RTO | 실제 복구 시간을 기록했고 목표 안에 들어옴 |
+| 실행 절차서 | 복구 순서, 자격 증명, DNS 및 완료 테스트가 문서화됨 |
+| 담당자 | 백업과 복원을 책임지는 사람 또는 팀이 지정됨 |
 
-## Technical references
+## 기술 참고 자료 {#technical-references}
 
-- NIST SP 800-34 Rev.1 — RPO/RTO and contingency planning
-- NIST SP 1339 — backup creation, testing and recovery exercises
-- Ubuntu — restic backup/restore tool
+- NIST SP 800-34 Rev.1 — RPO/RTO와 비상 계획
+- NIST SP 1339 — 백업 생성, 테스트 및 복구 훈련
+- Ubuntu — restic 백업 / 복원 도구
 - Ubuntu — BorgBackup
-- VDSina Terms — customer backup responsibility
-- VDSina — server backup / restore / new server from backup
-- VDSina — scheduled backups
-- VDSina — download and use a server backup
+- VDSina 이용약관 — 고객의 백업 책임
+- VDSina — 서버 백업 / 복원 / 백업에서 새 서버 생성
+- VDSina — 예약 백업
+- VDSina — 서버 백업 다운로드 및 사용
 
-## FAQ
+## FAQ {#faq}
 
-### What is a good VPS backup strategy?
+### 좋은 VPS 백업 전략이란 무엇인가요? {#what-is-a-good-vps-backup-strategy}
 
-Define RPO/RTO, keep independent recovery copies, protect databases with an application-consistent method, retain multiple versions, monitor failed jobs and regularly restore into a clean test environment.
+RPO와 RTO를 정하고 독립적인 복구 사본을 보관하며, 애플리케이션 일관성을 유지하는 방법으로 데이터베이스를 보호하세요. 여러 버전을 보존하고 작업 실패를 감시하며, 깨끗한 테스트 환경에서 정기적으로 복원을 수행해야 합니다.
 
-### Is a VPS snapshot enough?
+### VPS 스냅샷만으로 충분한가요? {#is-a-vps-snapshot-enough}
 
-Not as the only recovery layer. A provider snapshot/image is useful for fast rollback and full-server recovery, but it may share the same provider/account failure domain and is less convenient for granular restores.
+유일한 복구 계층으로 사용하기에는 충분하지 않습니다. 제공업체의 스냅샷과 이미지는 빠른 롤백과 서버 전체 복구에 유용하지만, 같은 제공업체 또는 계정의 장애 영역에 속할 수 있고 개별 항목 복원은 불편할 수 있습니다.
 
-### What does 3-2-1 mean for a VPS?
+### VPS에서 3-2-1 규칙은 무엇을 의미하나요? {#what-does-3-2-1-mean-for-a-vps}
 
-Keep the live data plus multiple recovery copies using independent storage/failure domains, with at least one copy outside the primary VPS/provider failure path.
+실제 운영 데이터와 여러 복구 사본을 서로 독립적인 저장소 또는 장애 영역에 보관하고, 최소한 하나의 사본은 주 VPS 또는 제공업체 장애 경로 밖에 두는 것을 의미합니다.
 
-### How often should I back up a VPS?
+### VPS를 얼마나 자주 백업해야 하나요? {#how-often-should-i-back-up-a-vps}
 
-Choose frequency from the RPO of each data type. A static site may tolerate daily copies; a transactional database may require hourly or more frequent protection.
+각 데이터 유형의 RPO에 따라 주기를 정하세요. 정적 사이트는 일일 사본으로 충분할 수 있지만, 거래가 발생하는 데이터베이스는 매시간 또는 그보다 자주 보호해야 할 수 있습니다.
 
-### What is the difference between RPO and RTO?
+### RPO와 RTO의 차이는 무엇인가요? {#what-is-the-difference-between-rpo-and-rto}
 
-RPO is the maximum acceptable recent data loss. RTO is the maximum acceptable downtime until the service is restored.
+RPO는 허용 가능한 최근 데이터의 최대 손실량입니다. RTO는 서비스를 복구할 때까지 허용할 수 있는 최대 중단 시간입니다.
 
-### Should I back up the whole VPS or only website files?
+### VPS 전체를 백업해야 하나요, 웹사이트 파일만 백업해야 하나요? {#should-i-back-up-the-whole-vps-or-only-website-files}
 
-Usually both layers are useful. A server image speeds full recovery; file/database backups make granular and application-consistent restores easier.
+대개 두 계층 모두 유용합니다. 서버 이미지는 전체 복구를 빠르게 해 주고, 파일과 데이터베이스 백업은 개별 항목 복원과 애플리케이션 일관성을 유지한 복원을 쉽게 만듭니다.
 
-### How do I back up MySQL or PostgreSQL safely?
+### MySQL 또는 PostgreSQL을 안전하게 백업하는 방법은 무엇인가요? {#how-do-i-back-up-mysql-or-postgresql-safely}
 
-Use an engine-aware logical/native backup or coordinated application-consistent method, then prove it by restoring/importing into an isolated test environment.
+해당 엔진의 논리적 덤프나 전용 백업 도구, 또는 애플리케이션과 일관성을 맞춘 방법을 사용하세요. 그런 다음 분리된 테스트 환경에서 실제로 복원하거나 가져와서 검증하세요.
 
-### Should backups be encrypted?
+### 백업을 암호화해야 하나요? {#should-backups-be-encrypted}
 
-Sensitive recovery data should be encrypted where appropriate, but keep the recovery password/key safely outside the failed VPS.
+민감한 복구 데이터는 적절한 경우 암호화해야 합니다. 다만 복구 비밀번호와 키는 장애가 발생한 VPS 밖의 안전한 장소에 보관하세요.
 
-### Is replication a backup?
+### 복제도 백업인가요? {#is-replication-a-backup}
 
-Not by itself. Replication can copy accidental deletion, corruption or malicious changes. Keep historical/versioned backups in addition to replication/standby.
+복제 자체만으로는 백업이 아닙니다. 실수로 인한 삭제, 손상 또는 악의적인 변경까지 복제할 수 있습니다. 복제나 대기 서버와 별도로 과거 시점의 버전별 백업을 유지하세요.
 
-### Does VDSina provide VPS backups?
+### VDSina는 VPS 백업을 제공하나요? {#does-vdsina-provide-vps-backups}
 
-VDSina documents manual and scheduled backup copies, restore/create-server-from-backup functions and downloadable backup images. Their Terms still place backup responsibility on the customer and recommend periodic restore testing.
+VDSina는 수동 및 예약 백업 사본, 백업에서 복원하거나 서버를 만드는 기능과 다운로드 가능한 백업 이미지를 문서로 안내합니다. 다만 이용약관은 백업 책임을 고객에게 두고 정기적인 복원 테스트를 권장합니다.
 
-### How often should I test restores?
+### 복원 테스트를 얼마나 자주 해야 하나요? {#how-often-should-i-test-restores}
 
-On a defined schedule and after meaningful backup/architecture changes. High-value or rapidly changing systems should be tested often enough that the measured recovery process remains trustworthy.
+정해진 일정에 따라, 그리고 백업이나 시스템 구조가 의미 있게 바뀐 뒤에 수행하세요. 중요도가 높거나 데이터가 빠르게 변하는 시스템에서는 실제 복구 절차를 신뢰할 수 있을 만큼 충분히 자주 테스트해야 합니다.
 
-### What if my RTO is under one hour?
+### RTO가 1시간 미만이라면 어떻게 해야 하나요? {#what-if-my-rto-is-under-one-hour}
 
-A backup-only design may be too slow. Time a full recovery drill and consider automation, prebuilt recovery images, warm standby or architecture changes if the measured RTO misses the target.
+백업만 사용하는 구조는 너무 느릴 수 있습니다. 전체 복구 훈련 시간을 측정하고 실제 RTO가 목표를 초과한다면 자동화, 미리 구축한 복구 이미지, 대기 서버 또는 구조 변경을 검토하세요.
