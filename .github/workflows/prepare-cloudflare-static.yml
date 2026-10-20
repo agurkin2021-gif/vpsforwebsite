@@ -17,6 +17,7 @@ on:
       - "package.json"
       - "scripts/optimize-css.mjs"
       - "scripts/restore-language-navigation.py"
+      - "scripts/audit-language-recovery.py"
       - "recovered-public/**"
   workflow_dispatch:
 
@@ -150,6 +151,9 @@ jobs:
 
       - name: Restore multilingual navigation and hreflang
         run: python scripts/restore-language-navigation.py cloudflare-public recovered-public
+
+      - name: Prevent recovered cache page and language losses
+        run: python scripts/audit-language-recovery.py cloudflare-public recovered-public
 
       - name: Build sitemap from actual deployable HTML
         shell: bash
