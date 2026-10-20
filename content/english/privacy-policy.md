@@ -13,9 +13,9 @@ The hosting platform may process standard request information such as IP address
 
 ## Analytics
 
-Analytics are not currently enabled.
+Google Analytics 4 is enabled on the production website (measurement ID G-J6X9FNRMH5). Its script is loaded after the initial page rendering. Google may process visit, browser and device information and use cookies or similar identifiers according to the service configuration and [Google's privacy policy](https://policies.google.com/privacy).
 
-If analytics are enabled later, this policy will be updated to identify the service and the relevant data handling before that service is used for production tracking.
+The site uses these measurements to understand aggregate site usage, not to verify the performance claims of any VPS provider.
 
 ## Contact submissions
 
@@ -33,7 +33,7 @@ Following an external link takes you to a third-party website with its own priva
 
 ## Cookies
 
-The site does not intentionally enable a marketing or analytics cookie layer. Functional behavior supplied by the browser or hosting platform may still involve technical storage or request processing required to deliver the site.
+The site does not intentionally enable a separate advertising cookie system. Google Analytics 4, the browser and the hosting platform may use cookies, technical storage or request processing to provide their functions. Browser controls can be used to manage supported cookies.
 
 ## Data minimization
 
@@ -41,6 +41,6 @@ The site is built to avoid collecting information that is not needed for its cor
 
 ## Updates
 
-This policy may change if analytics, a contact channel or other data-processing services are enabled. The published policy should describe the services actually in use.
+This policy may change when analytics configuration, contact channels or other data-processing services change. The published policy should describe the services actually in use.
 
-**Last reviewed: 14 October 2026.**
+**Last reviewed: 19 October 2026.**
