@@ -3,3 +3,249 @@ read_more: Read More
 send: Send
 menu-open: Menu Open
 menu-close: Menu Close
+ui_fit_size_deploy: Fit · Size · Deploy
+ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission: 'Disclosure: the editor has a professional relationship
+  with VDSina. Partner links may generate commission.'
+ui_editorial_and_commercial_disclosure: Editorial and commercial disclosure
+ui_see_current_vps_configurations: See current VPS configurations
+ui_vps_for_website_workflow: VPS for website workflow
+ui_vps_for_website: VPS for website
+ui_isolated_cpu_ram_storage: Isolated CPU, RAM & storage
+ui_full_os_web_stack_control: Full OS & web stack control
+ui_fastpanel_control_panel: FASTPANEL control panel
+ui_nginx_or_apache: Nginx or Apache
+ui_mysql_database_workloads: MySQL / database workloads
+ui_ssh_root_access: SSH & root access
+ui_domains_ssl_dns: Domains, SSL & DNS
+ui_wordpress_workloads: WordPress workloads
+ui_woocommerce_workloads: WooCommerce workloads
+ui_multiple_websites: Multiple websites
+ui_website_migration_planning: Website migration planning
+ui_rollback_before_dns_switch: Rollback before DNS switch
+ui_snapshots_scheduled_backups: Snapshots & scheduled backups
+ui_portable_backup_copy: Portable backup copy
+ui_monitoring_before_scaling: Monitoring before scaling
+ui_scale_cpu_ram_storage: Scale CPU, RAM & storage
+ui_choose_server_location_by_latency: Choose server location by latency
+ui_ddos_protection: DDoS protection
+ui_10_gbit_s_public_port: 10 Gbit/s public port
+ui_24_7_support: 24/7 support
+ui_daily_billing: Daily billing
+ui_1_vcpu_1_gb_from_0_07_day: 1 vCPU / 1 GB from $0.07/day
+ui_clone_test_scale_recover: Clone, test, scale, recover
+ui_current_hosting: Current hosting
+ui_shared_hosting: Shared hosting
+ui_light_stable_standard_stack: Light, stable, standard stack
+ui_check_evidence: Check evidence
+ui_limits_or_custom_stack: Limits or custom stack?
+ui_cpu_ram_process_i_o_root: CPU · RAM · process · I/O · root
+ui_decision: Decision
+ui_stay_shared: Stay shared
+ui_light_stable_no_custom_stack: Light, stable, no custom stack
+ui_optimize_first: Optimize first
+ui_plugin_query_bot_cache_or_job_issue: Plugin, query, bot, cache or job issue
+ui_move_to_vps: Move to VPS
+ui_repeated_real_limits_or_custom_software_needs: Repeated real limits or custom software needs
+ui_measure_the_workload_first_move_only_when_the_evidence_points_to_infrastructure: Measure the workload first. Move only when the evidence points to infrastructure.
+ui_sizing_logic: Sizing logic
+ui_size_the_workload_not_visits: Size the workload, not visits
+ui_traffic_volume_is_only_one_signal_resource_pressure_and_workload_shape_determine_the_server: Traffic volume is only one signal. Resource pressure and workload
+  shape determine the server.
+ui_monthly_visits: Monthly visits
+ui_vps_size: VPS size
+ui_compute_pressure: Compute pressure
+ui_php_workers_concurrency_uncached_requests: PHP workers · concurrency · uncached requests
+ui_memory_headroom: Memory headroom
+ui_apps_cache_panel_background_services: Apps · cache · panel · background services
+ui_db_jobs: DB + jobs
+ui_dynamic_work: Dynamic work
+ui_queries_cron_checkout_queue_activity: Queries · cron · checkout · queue activity
+ui_workload_signals: Workload signals
+ui_cacheability: Cacheability
+ui_concurrent_requests: Concurrent requests
+ui_php_workers: PHP workers
+ui_database_load: Database load
+ui_background_jobs: Background jobs
+ui_number_of_sites: Number of sites
+ui_result: Result
+ui_choose_the_smallest_vps_with_measured_headroom: Choose the smallest VPS with measured headroom
+ui_validate_cpu_memory_storage_growth_and_dynamic_workload_together: Validate CPU, memory, storage growth and dynamic workload together.
+ui_provider_audit: Provider audit
+ui_compare_the_terms_that_affect_the_website: Compare the terms that affect the website
+ui_headline_price_is_only_one_input_check_the_infrastructure_and_operating_terms_before_you_commit: Headline price is only one input. Check the infrastructure and
+  operating terms before you commit.
+ui_compute: Compute
+ui_cpu_policy_ram_storage_type_expected_i_o: CPU policy · RAM · storage type · expected I/O
+ui_network: Network
+ui_transfer_port_speed_ip_terms_region_route: Transfer · port speed · IP terms · region · route
+ui_platform: Platform
+ui_os_images_panel_options_license_cost: OS images · panel options · license cost
+ui_operations: Operations
+ui_backups_firewall_ddos_monitoring_support_scope: Backups · firewall · DDoS · monitoring · support scope
+ui_billing_upgrade_path: Billing & upgrade path
+ui_billing_cadence_renewal_terms_add_ons_upgrade_limits_extra_charges: Billing cadence · renewal terms · add-ons · upgrade limits · extra charges
+ui_shortlist: Shortlist
+ui_keep_only_providers_that_match_the_workload_and_operating_model: Keep only providers that match the workload and operating model
+ui_performance_fit: Performance fit
+ui_location_fit: Location fit
+ui_management_fit: Management fit
+ui_cost_fit: Cost fit
+ui_before_paying: Before paying
+ui_verify_the_current_order_page_and_support_scope: Verify the current order page and support scope
+ui_do_not_assume_infrastructure_support_means_managed_server_administration: Do not assume infrastructure support means managed server administration.
+ui_operating_model: Operating model
+ui_choose_how_the_server_will_be_operated: Choose how the server will be operated
+ui_the_panel_operating_system_and_administration_model_change_resource_use_workflow_and_responsibility: The panel, operating system and administration model change
+  resource use, workflow and responsibility.
+ui_domains_ssl_php_versions_databases_multiple_sites: Domains · SSL · PHP versions · databases · multiple sites
+ui_simpler_workflow_panel_uses_ram: Simpler workflow · panel uses RAM
+ui_nginx_or_apache_runtime_database_shell_administration: Nginx or Apache · runtime · database · shell administration
+ui_more_control_more_work_stays_with_you: More control · more work stays with you
+ui_windows_when_required: Windows when required
+ui_use_this_path_for_genuine_iis_or_asp_net_requirements: Use this path for genuine IIS or ASP.NET requirements
+ui_not_the_default_website_hosting_choice: Not the default website-hosting choice
+ui_who_owns_server_administration: Who owns server administration?
+ui_self_managed_vps: Self-managed VPS
+ui_you_own_the_operating_system: You own the operating system
+ui_patching_security_backups_monitoring_incident_response: Patching · security · backups · monitoring · incident response
+ui_administration_help: Administration help
+ui_separate_management_can_own_the_work: Separate management can own the work
+ui_confirm_exactly_what_is_included_and_who_is_responsible_for_the_application_stack: Confirm exactly what is included and who is responsible for the application
+  stack.
+ui_important_distinction: Important distinction
+ui_infrastructure_support_is_not_the_same_as_managed_server_administration: Infrastructure support is not the same as managed server administration.
+ui_migration_preflight: Migration preflight
+ui_map_the_stack_before_you_move_it: Map the stack before you move it
+? ui_build_the_migration_plan_from_the_current_website_dependencies_and_rollback_requirements_before_production_traffic_changes
+: Build the migration plan from the current website, dependencies and rollback requirements before production traffic changes.
+ui_inventory: Inventory
+ui_cms_framework_runtime_versions_db_cron_storage_dns_ssl_email: CMS/framework · runtime versions · DB · cron · storage · DNS · SSL · email
+ui_find_blockers: Find blockers
+ui_extensions_runtime_mismatch_db_assumptions_local_file_dependencies: Extensions · runtime mismatch · DB assumptions · local file dependencies
+ui_build_test_copy: Build test copy
+ui_prepare_the_new_vps_without_touching_production_traffic: Prepare the new VPS without touching production traffic
+ui_sync_validate: Sync & validate
+ui_files_database_integrations_forms_jobs_ssl_mail_behavior: Files · database · integrations · forms · jobs · SSL · mail behavior
+ui_dns_cutover: DNS cutover
+ui_move_production_traffic_only_after_the_new_environment_passes_checks: Move production traffic only after the new environment passes checks
+ui_rollback_path: Rollback path
+ui_keep_the_previous_working_environment_available: Keep the previous working environment available
+ui_know_exactly_how_to_reverse_the_move_if_validation_fails_after_cutover: Know exactly how to reverse the move if validation fails after cutover.
+ui_email_decision: Email decision
+ui_move_mail_only_when_it_should_move: Move mail only when it should move
+ui_keeping_email_on_a_managed_mail_service_can_reduce_deliverability_and_administration_risk: Keeping email on a managed mail service can reduce deliverability and
+  administration risk.
+ui_purchase_decision: Purchase decision
+ui_choose_the_vps_configuration_after_the_migration_inventory_shows_the_real_requirements: Choose the VPS configuration after the migration inventory shows the real
+  requirements.
+ui_architecture_decision: Architecture decision
+ui_keep_it_together_while_the_workload_is_predictable: Keep it together while the workload is predictable
+ui_split_only_when_contention_blast_radius_or_independent_scaling_becomes_more_expensive_than_the_added_complexity: Split only when contention, blast radius or independent
+  scaling becomes more expensive than the added complexity.
+ui_start_simple: Start simple
+ui_one_vps: One VPS
+ui_web: Web
+ui_database: Database
+ui_workers: Workers
+ui_light_jobs: Light jobs
+ui_split_trigger: Split trigger
+ui_cpu_ram_contention: CPU / RAM contention
+ui_workers_delay_requests: Workers delay requests
+ui_independent_scaling: Independent scaling
+ui_failure_isolation: Failure isolation
+ui_risky_staging: Risky staging
+ui_client_service_isolation: Client/service isolation
+ui_web_vps: Web VPS
+ui_user_facing_requests: User-facing requests
+ui_nginx_apache_php_app_runtime_static_delivery: Nginx/Apache · PHP/app runtime · static delivery
+ui_database_vps: Database VPS
+ui_independent_db_resources: Independent DB resources
+ui_queries_storage_memory_failure_isolation: Queries · storage · memory · failure isolation
+ui_worker_vps: Worker VPS
+ui_background_workload: Background workload
+ui_automation_api_queues_ai_agent_jobs: Automation · API · queues · AI-agent jobs
+ui_staging: Staging
+ui_test_risky_changes_away_from_production: Test risky changes away from production
+ui_updates_migrations_architecture_changes: Updates · migrations · architecture changes
+ui_rule: Rule
+ui_split_only_the_component_that_needs_independent_resources_scaling_or_failure_isolation: Split only the component that needs independent resources, scaling or failure
+  isolation.
+ui_reversible_operations: Reversible operations
+ui_change_the_server_without_betting_production: Change the server without betting production
+ui_use_copies_monitoring_and_recovery_points_so_upgrades_and_scaling_decisions_remain_reversible: Use copies, monitoring and recovery points so upgrades and scaling
+  decisions remain reversible.
+ui_clone: Clone
+ui_create_a_copy_before_risky_changes: Create a copy before risky changes
+ui_test: Test
+ui_validate_upgrades_and_architecture_changes_away_from_production: Validate upgrades and architecture changes away from production
+ui_monitor: Monitor
+ui_watch_cpu_memory_storage_growth_and_request_queues: Watch CPU, memory, storage growth and request queues
+ui_scale: Scale
+ui_add_resources_only_when_pressure_is_sustained: Add resources only when pressure is sustained
+ui_cpu_saturation: CPU saturation
+ui_memory_pressure: Memory pressure
+ui_storage_growth: Storage growth
+ui_request_queues: Request queues
+ui_snapshot: Snapshot
+ui_fast_rollback_point: Fast rollback point
+ui_useful_for_quick_reversal_but_not_the_only_recovery_copy: Useful for quick reversal, but not the only recovery copy.
+ui_scheduled_backup: Scheduled backup
+ui_recover_from_a_known_point: Recover from a known point
+ui_restore_the_server_or_create_another_server_from_the_backup: Restore the server or create another server from the backup.
+ui_portable_copy: Portable copy
+ui_keep_recovery_outside_the_running_vps: Keep recovery outside the running VPS
+ui_maintain_an_independent_copy_under_your_own_control: Maintain an independent copy under your own control.
+ui_operating_rule: Operating rule
+ui_measure_first_change_second_keep_a_way_back: Measure first, change second, keep a way back.
+ui_are_you_repeatedly_hitting_real_hosting_limits: Are you repeatedly hitting real hosting limits?
+ui_no_clear_limit_evidence: No clear limit evidence
+ui_occasional_unclear: Occasional / unclear
+ui_yes_repeated_cpu_ram_process_i_o_limits: Yes, repeated CPU/RAM/process/I/O limits
+ui_do_you_need_root_access_custom_software_or_a_custom_runtime: Do you need root access, custom software or a custom runtime?
+ui_no: 'No'
+ui_yes: 'Yes'
+ui_is_there_an_obvious_site_side_issue_to_fix_first: Is there an obvious site-side issue to fix first?
+ui_not_sure: Not sure
+ui_yes_plugin_query_bot_cache_job_issue: Yes — plugin/query/bot/cache/job issue
+ui_no_known_optimize_first_issue: No known optimize-first issue
+ui_is_the_website_business_critical_or_heavily_dynamic: Is the website business-critical or heavily dynamic?
+ui_no_low_risk: No / low-risk
+ui_who_will_operate_the_vps: Who will operate the VPS?
+ui_nobody_is_assigned_yet: Nobody is assigned yet
+ui_paid_managed_administration_is_available: Paid / managed administration is available
+ui_an_internal_operator_can_own_it: An internal operator can own it
+ui_are_security_backup_and_monitoring_responsibilities_defined: Are security, backup and monitoring responsibilities defined?
+? ui_optimize_first_fix_the_known_application_query_bot_cache_or_scheduled_job_problem_before_paying_for_more_infrastructure_re_measure_after_the_fix
+: 'OPTIMIZE FIRST: fix the known application, query, bot, cache or scheduled-job problem before paying for more infrastructure. Re-measure after the fix.'
+? ui_stay_on_shared_hosting_there_is_no_strong_vps_requirement_yet_keep_the_simpler_platform_until_real_limits_or_a_required_server_capability_appear
+: 'STAY ON SHARED HOSTING: there is no strong VPS requirement yet. Keep the simpler platform until real limits or a required server capability appear.'
+? ui_move_to_vps_there_is_a_real_infrastructure_capability_reason_and_operations_ownership_exists_size_the_vps_from_the_measured_workload_then_plan_the_migration
+: 'MOVE TO VPS: there is a real infrastructure/capability reason and operations ownership exists. Size the VPS from the measured workload, then plan the migration.'
+? ui_move_with_managed_admin_help_the_vps_case_is_real_but_business_risk_or_missing_operations_ownership_makes_an_unmanaged_move_a_poor_fit_define_administration_security_backups_and_monitoring_before_cutover
+: 'MOVE WITH MANAGED / ADMIN HELP: the VPS case is real, but business risk or missing operations ownership makes an unmanaged move a poor fit. Define administration,
+  security, backups and monitoring before cutover.'
+? ui_insufficient_evidence_the_case_is_mixed_measure_the_current_bottleneck_and_compare_a_better_shared_managed_option_before_accepting_vps_administration_overhead
+: 'INSUFFICIENT EVIDENCE: the case is mixed. Measure the current bottleneck and compare a better shared/managed option before accepting VPS administration overhead.'
+ui_transfer: Transfer
+ui_price: Price
+ui_best_fit: Best fit
+ui_watch: Watch
+ui_evidence_first: Evidence first
+ui_choose_the_configuration_after_the_checks: Choose the configuration after the checks
+ui_fit: Fit
+ui_confirm_that_a_vps_solves_the_real_problem: Confirm that a VPS solves the real problem
+ui_size: Size
+ui_cpu_ram_storage_dynamic_workload: CPU · RAM · storage · dynamic workload
+ui_verify_terms: Verify terms
+ui_location_transfer_panel_backups_support: Location · transfer · panel · backups · support
+ui_check_current_configurations: Check current configurations
+ui_use_the_provider_s_current_order_page_before_paying: Use the provider's current order page before paying
+ui_buy_only_measured_headroom: Buy only measured headroom
+ui_workload_fit: Workload fit
+ui_growth_room: Growth room
+ui_current_terms: Current terms
+ui_smallest_configuration_that_covers_the_real_workload_with_enough_headroom: Smallest configuration that covers the real workload with enough headroom
+ui_choose_a_vps_configuration: Choose a VPS configuration
+ui_call_to_action: call to action
+ui_select_language: Select language
+publisher_description: Technical editorial project focused on evidence-based VPS hosting, workload sizing, migration, monitoring and operational decisions.

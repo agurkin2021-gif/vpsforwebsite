@@ -4,6 +4,17 @@
 > Read this file together with `CHATGPT_PROJECT_CONTEXT.md` before SEO/content work.
 > Updated: 2026-10-12.
 
+## Korean page-by-page localization — 2026-10-19
+
+- First owner: `/ko/` → exact Title/H1 `웹사이트용 VPS 호스팅`. Root-language URL exception applies; no duplicate keyword-slug homepage.
+- Korean commercial terminology checked against Korean Hostinger/AWS/Google Cloud pages. This adapts the website-hosting purchase intent, not Korea-located-server intent. Volume unverified.
+- Preserved all seven homepage decision sections, 13 FAQs, four reference configurations, operating-responsibility caveats and affiliate disclosure/placement. Rechecked current VDSina USD prices on 2026-10-19.
+- Full homepage HTML UI localized, including 228 formerly hardcoded strings and the five interactive outcomes. Exhaustive comparison of all 216 input combinations passes.
+- Local production checks: exact single H1/Title, one canonical, one en/es/ko/x-default set, Korean JSON-LD, valid links/anchors and all 16 sponsored partner destinations. Preview checks preserve noindex/no canonical/no hreflang/no GA and project-path link resolution.
+- Responsive review: 390/1280 px, no page-width overflow; Korean line wrapping, pricing labels and FAQ typography adjusted. English/Spanish homepage text preserved.
+- `scripts/translation_audit.py` reports only expected price-unit localization and Korean-particle word-boundary mismatches; separate numeric/structural checks confirm unchanged values, section/list counts, images and affiliate URLs. See `research/korean-localization-2026-10-19.md`.
+- Homepage source ready; publication verification pending. Supporting Korean pages remain queued individually, starting with VPS sizing. Do not claim the full Korean site is complete.
+
 ## 1. Operating rules
 
 - Build the site page by page.

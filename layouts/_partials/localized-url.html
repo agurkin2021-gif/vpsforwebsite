@@ -1,0 +1,15 @@
+{{- /* Resolve completed translations by source path; otherwise use the existing English page. */ -}}
+{{- $path := . -}}
+{{- $url := $path | relURL -}}
+{{- if or (strings.HasPrefix $path "#") (strings.HasPrefix $path "http") (strings.HasPrefix $path "mailto:") -}}
+  {{- $url = $path -}}
+{{- else -}}
+  {{- $parts := split $path "#" -}}
+  {{- $target := site.GetPage (index $parts 0) -}}
+  {{- if not $target -}}
+    {{- $target = (index hugo.Sites 0).GetPage (index $parts 0) -}}
+  {{- end -}}
+  {{- with $target -}}{{- $url = .RelPermalink -}}{{- end -}}
+  {{- if gt (len $parts) 1 -}}{{- $url = printf "%s#%s" $url (index $parts 1) -}}{{- end -}}
+{{- end -}}
+{{- return $url -}}

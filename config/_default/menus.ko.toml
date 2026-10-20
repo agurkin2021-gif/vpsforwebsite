@@ -1,0 +1,105 @@
+[[main]]
+name = "홈"
+url = "/"
+weight = 1
+
+[[main]]
+name = "워드프레스"
+url = "/vps-for-wordpress/"
+weight = 2
+
+[[main]]
+name = "우커머스"
+url = "/vps-for-woocommerce/"
+weight = 3
+
+[[main]]
+name = "가이드"
+weight = 4
+
+[[main]]
+parent = "가이드"
+name = "VPS 사양 산정"
+url = "/vps-sizing-for-website/"
+weight = 1
+
+[[main]]
+parent = "가이드"
+name = "웹사이트 이전"
+url = "/website-migration-to-vps/"
+weight = 2
+
+[[main]]
+parent = "가이드"
+name = "관리형·자체 관리형 VPS"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "가이드"
+name = "FASTPANEL VPS 호스팅"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "가이드"
+name = "VPS에 웹사이트 구축"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "가이드"
+name = "VPS 보안 점검표"
+url = "/vps-security-checklist/"
+weight = 6
+
+[[main]]
+parent = "가이드"
+name = "VPS 백업 전략"
+url = "/vps-backup-strategy/"
+weight = 7
+
+[[main]]
+parent = "가이드"
+name = "VPS 모니터링"
+url = "/vps-monitoring/"
+weight = 8
+
+[[main]]
+parent = "가이드"
+name = "VPS 서버 위치"
+url = "/how-to-choose-vps-location/"
+weight = 9
+
+[[main]]
+parent = "가이드"
+name = "VPS와 공유 호스팅 비교"
+url = "/vps-vs-shared-hosting/"
+weight = 10
+
+[[main]]
+parent = "가이드"
+name = "여러 웹사이트 운영"
+url = "/vps-for-multiple-websites/"
+weight = 11
+
+[[main]]
+parent = "가이드"
+name = "서버 관리 패널"
+url = "/vps-with-control-panel/"
+weight = 12
+
+[[footer]]
+name = "사이트 소개"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "문의"
+url = "/contact/"
+weight = 2
+
+[[footer]]
+name = "개인정보 처리방침"
+url = "/privacy-policy/"
+weight = 3

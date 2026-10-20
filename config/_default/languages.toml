@@ -9,3 +9,12 @@ label = "ES"
 locale = "es-ES"
 contentDir = "content/spanish"
 weight = 2
+
+[ko]
+label = "KO"
+languageName = "한국어"
+languageCode = "ko"
+locale = "ko-KR"
+contentDir = "content/korean"
+weight = 3
+hasCJKLanguage = true

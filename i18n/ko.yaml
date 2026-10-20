@@ -1,0 +1,241 @@
+home: 홈
+read_more: 더 보기
+send: 보내기
+menu-open: 메뉴 열기
+menu-close: 메뉴 닫기
+ui_fit_size_deploy: 필요성 확인 · 사양 산정 · 구축
+ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission: '제휴 안내: 편집자는 VDSina와 업무상 관계가 있으며, 제휴 링크를 통해 수수료를 받을 수
+  있습니다.'
+ui_editorial_and_commercial_disclosure: 편집 원칙·제휴 관계 안내
+ui_see_current_vps_configurations: VPS 사양·요금 확인하기
+ui_vps_for_website_workflow: 웹사이트 VPS 선택·운영 과정
+ui_vps_for_website: 웹사이트용 VPS
+ui_isolated_cpu_ram_storage: 할당된 CPU·RAM·저장 공간
+ui_full_os_web_stack_control: 운영체제·웹 환경 직접 제어
+ui_fastpanel_control_panel: FASTPANEL 관리 패널
+ui_nginx_or_apache: Nginx 또는 Apache
+ui_mysql_database_workloads: MySQL·데이터베이스 처리
+ui_ssh_root_access: SSH 접속·root 권한
+ui_domains_ssl_dns: 도메인·SSL·DNS
+ui_wordpress_workloads: 워드프레스 운영
+ui_woocommerce_workloads: 우커머스 운영
+ui_multiple_websites: 여러 웹사이트 운영
+ui_website_migration_planning: 웹사이트 이전 계획
+ui_rollback_before_dns_switch: DNS 전환 전 롤백 준비
+ui_snapshots_scheduled_backups: 스냅샷·예약 백업
+ui_portable_backup_copy: 반출 가능한 백업 사본
+ui_monitoring_before_scaling: 증설 전 모니터링
+ui_scale_cpu_ram_storage: CPU·RAM·저장 공간 확장
+ui_choose_server_location_by_latency: 실측 지연을 고려한 위치 선택
+ui_ddos_protection: DDoS 방어
+ui_10_gbit_s_public_port: 10 Gbit/s 공용 포트
+ui_24_7_support: 24/7 기술 지원
+ui_daily_billing: 일 단위 과금
+ui_1_vcpu_1_gb_from_0_07_day: 1 vCPU / 1 GB, 일 $0.07부터
+ui_clone_test_scale_recover: 복제·테스트·확장·복구
+ui_current_hosting: 현재 호스팅
+ui_shared_hosting: 공유 호스팅
+ui_light_stable_standard_stack: 낮은 부하·안정적 운영·표준 구성
+ui_check_evidence: 사용량·제약 확인
+ui_limits_or_custom_stack: 자원 한도나 구성 제약이 있나요?
+ui_cpu_ram_process_i_o_root: CPU·RAM·프로세스·I/O·root
+ui_decision: 판단
+ui_stay_shared: 공유 호스팅 유지
+ui_light_stable_no_custom_stack: 부하가 낮고 별도 구성이 불필요
+ui_optimize_first: 먼저 최적화
+ui_plugin_query_bot_cache_or_job_issue: 플러그인·쿼리·봇·캐시·작업 문제
+ui_move_to_vps: VPS 이전 검토
+ui_repeated_real_limits_or_custom_software_needs: 반복되는 자원 한도·별도 소프트웨어 필요
+ui_measure_the_workload_first_move_only_when_the_evidence_points_to_infrastructure: 먼저 부하를 측정하세요. 인프라가 문제의 원인일 때 이전을 검토하세요.
+ui_sizing_logic: 사양 산정 기준
+ui_size_the_workload_not_visits: 방문자 수보다 실제 부하
+ui_traffic_volume_is_only_one_signal_resource_pressure_and_workload_shape_determine_the_server: 방문량은 여러 지표 중 하나입니다. 자원 사용량과 처리 특성에 맞춰 서버를 선택하세요.
+ui_monthly_visits: 월 방문자 수
+ui_vps_size: VPS 사양
+ui_compute_pressure: CPU 처리 부하
+ui_php_workers_concurrency_uncached_requests: PHP 워커·동시 처리·캐시되지 않는 요청
+ui_memory_headroom: 메모리 여유
+ui_apps_cache_panel_background_services: 앱·캐시·패널·백그라운드 서비스
+ui_db_jobs: DB·작업
+ui_dynamic_work: 동적 처리
+ui_queries_cron_checkout_queue_activity: 쿼리·cron·결제·대기열 처리
+ui_workload_signals: 부하 판단 지표
+ui_cacheability: 캐시 가능 여부
+ui_concurrent_requests: 동시 요청
+ui_php_workers: PHP 워커
+ui_database_load: DB 부하
+ui_background_jobs: 백그라운드 작업
+ui_number_of_sites: 사이트 수
+ui_result: 결과
+ui_choose_the_smallest_vps_with_measured_headroom: 실측 부하와 여유분을 충족하는 최소 사양 선택
+ui_validate_cpu_memory_storage_growth_and_dynamic_workload_together: CPU·메모리·저장 공간 증가량·동적 부하를 함께 확인하세요.
+ui_provider_audit: 호스팅 업체 검토
+ui_compare_the_terms_that_affect_the_website: 사이트 운영에 영향을 주는 조건 비교
+ui_headline_price_is_only_one_input_check_the_infrastructure_and_operating_terms_before_you_commit: 표시 요금만 보지 말고, 신청 전에 인프라와 운영 조건을 함께 확인하세요.
+ui_compute: 서버 자원
+ui_cpu_policy_ram_storage_type_expected_i_o: CPU 정책·RAM·저장장치·예상 I/O
+ui_network: 네트워크
+ui_transfer_port_speed_ip_terms_region_route: 트래픽·포트 속도·IP 조건·리전·통신 경로
+ui_platform: 플랫폼
+ui_os_images_panel_options_license_cost: OS 이미지·관리 패널·라이선스 비용
+ui_operations: 운영
+ui_backups_firewall_ddos_monitoring_support_scope: 백업·방화벽·DDoS·모니터링·지원 범위
+ui_billing_upgrade_path: 과금·사양 확장
+ui_billing_cadence_renewal_terms_add_ons_upgrade_limits_extra_charges: 청구 주기·갱신 조건·부가 서비스·확장 제한·추가 요금
+ui_shortlist: 후보 선정
+ui_keep_only_providers_that_match_the_workload_and_operating_model: 실제 부하와 운영 방식에 맞는 업체 선택
+ui_performance_fit: 필요 성능
+ui_location_fit: 적합한 위치
+ui_management_fit: 관리 방식
+ui_cost_fit: 운영 예산
+ui_before_paying: 결제 전 확인
+ui_verify_the_current_order_page_and_support_scope: 최신 주문 조건과 지원 범위 확인
+ui_do_not_assume_infrastructure_support_means_managed_server_administration: 인프라 기술 지원에 서버 운영 대행까지 포함된다고 가정하지 마세요.
+ui_operating_model: 운영 방식
+ui_choose_how_the_server_will_be_operated: 서버 관리 방식 선택
+ui_the_panel_operating_system_and_administration_model_change_resource_use_workflow_and_responsibility: 패널·운영체제·관리 방식에 따라 자원 사용량과 작업 절차, 책임 범위가 달라집니다.
+ui_domains_ssl_php_versions_databases_multiple_sites: 도메인·SSL·PHP 버전·DB·여러 사이트
+ui_simpler_workflow_panel_uses_ram: 편리한 관리·패널용 RAM 필요
+ui_nginx_or_apache_runtime_database_shell_administration: Nginx 또는 Apache·런타임·DB·셸 관리
+ui_more_control_more_work_stays_with_you: 폭넓은 제어·직접 관리할 업무 증가
+ui_windows_when_required: 필요한 경우 Windows
+ui_use_this_path_for_genuine_iis_or_asp_net_requirements: IIS·ASP.NET의 Windows 환경이 필요한 경우
+ui_not_the_default_website_hosting_choice: 모든 웹사이트의 기본 선택지는 아닙니다
+ui_who_owns_server_administration: 서버 관리는 누가 담당하나요?
+ui_self_managed_vps: 자체 관리형 VPS
+ui_you_own_the_operating_system: 운영체제 관리는 직접
+ui_patching_security_backups_monitoring_incident_response: 패치·보안·백업·모니터링·장애 대응
+ui_administration_help: 관리 지원 이용
+ui_separate_management_can_own_the_work: 별도 계약으로 관리 업무 위임
+ui_confirm_exactly_what_is_included_and_who_is_responsible_for_the_application_stack: 포함 업무와 애플리케이션 관리 담당자를 구체적으로 확인하세요.
+ui_important_distinction: 구분해야 할 사항
+ui_infrastructure_support_is_not_the_same_as_managed_server_administration: 인프라 기술 지원과 서버 운영 대행은 다릅니다.
+ui_migration_preflight: 이전 전 점검
+ui_map_the_stack_before_you_move_it: 이전 전에 현재 구성부터 파악
+? ui_build_the_migration_plan_from_the_current_website_dependencies_and_rollback_requirements_before_production_traffic_changes
+: 실제 요청을 새 서버로 넘기기 전에 사이트 구성·의존성·롤백 요건을 바탕으로 이전 계획을 세우세요.
+ui_inventory: 구성 목록 작성
+ui_cms_framework_runtime_versions_db_cron_storage_dns_ssl_email: CMS·프레임워크·런타임 버전·DB·cron·저장 공간·DNS·SSL·메일
+ui_find_blockers: 이전 장애 요인 확인
+ui_extensions_runtime_mismatch_db_assumptions_local_file_dependencies: 확장 모듈·런타임 불일치·DB 전제 조건·로컬 파일 의존성
+ui_build_test_copy: 테스트 환경 구성
+ui_prepare_the_new_vps_without_touching_production_traffic: 운영 트래픽에 영향을 주지 않고 새 VPS 준비
+ui_sync_validate: 동기화·검증
+ui_files_database_integrations_forms_jobs_ssl_mail_behavior: 파일·DB·연동·폼·작업·SSL·메일 동작
+ui_dns_cutover: DNS 전환
+ui_move_production_traffic_only_after_the_new_environment_passes_checks: 새 환경의 검증이 끝난 뒤 운영 트래픽 전환
+ui_rollback_path: 롤백 경로
+ui_keep_the_previous_working_environment_available: 기존 정상 환경을 복귀용으로 유지
+ui_know_exactly_how_to_reverse_the_move_if_validation_fails_after_cutover: 전환 후 검증에 실패했을 때 되돌리는 절차를 마련하세요.
+ui_email_decision: 메일 운영 결정
+ui_move_mail_only_when_it_should_move: 메일 이전은 필요한 경우에만
+ui_keeping_email_on_a_managed_mail_service_can_reduce_deliverability_and_administration_risk: 별도 관리형 메일 서비스를 유지하면 전달 실패와 관리 위험을 줄일 수 있습니다.
+ui_purchase_decision: 구매 판단
+ui_choose_the_vps_configuration_after_the_migration_inventory_shows_the_real_requirements: 이전 대상 목록에서 실제 요구사항을 확인한 뒤 VPS 사양을 선택하세요.
+ui_architecture_decision: 서버 구성 판단
+ui_keep_it_together_while_the_workload_is_predictable: 부하를 예측할 수 있다면 한 서버로 시작
+ui_split_only_when_contention_blast_radius_or_independent_scaling_becomes_more_expensive_than_the_added_complexity: 자원 경합·장애 영향·개별 확장 문제의 부담이 분리 운영의 복잡성보다 커질 때 나누세요.
+ui_start_simple: 단순하게 시작
+ui_one_vps: VPS 한 대
+ui_web: 웹 서비스
+ui_database: 데이터베이스
+ui_workers: 워커
+ui_light_jobs: 가벼운 작업
+ui_split_trigger: 분리를 검토할 신호
+ui_cpu_ram_contention: CPU·RAM 자원 경합
+ui_workers_delay_requests: 워커로 인한 요청 지연
+ui_independent_scaling: 개별 확장 필요
+ui_failure_isolation: 장애 격리 필요
+ui_risky_staging: 테스트의 운영 영향
+ui_client_service_isolation: 고객·서비스 분리
+ui_web_vps: 웹 서버 VPS
+ui_user_facing_requests: 이용자 요청 처리
+ui_nginx_apache_php_app_runtime_static_delivery: Nginx·Apache·PHP 및 앱 런타임·정적 전송
+ui_database_vps: 데이터베이스 VPS
+ui_independent_db_resources: DB 전용 자원
+ui_queries_storage_memory_failure_isolation: 쿼리·저장 공간·메모리·장애 격리
+ui_worker_vps: 워커 VPS
+ui_background_workload: 백그라운드 처리
+ui_automation_api_queues_ai_agent_jobs: 자동화·API·대기열·AI 에이전트 작업
+ui_staging: 스테이징
+ui_test_risky_changes_away_from_production: 위험한 변경은 운영 환경과 분리해 테스트
+ui_updates_migrations_architecture_changes: 업데이트·이전·서버 구성 변경
+ui_rule: 원칙
+ui_split_only_the_component_that_needs_independent_resources_scaling_or_failure_isolation: 독립된 자원·개별 확장·장애 격리가 필요한 구성 요소만 분리하세요.
+ui_reversible_operations: 되돌릴 수 있는 운영
+ui_change_the_server_without_betting_production: 운영 위험을 줄이며 서버 변경
+ui_use_copies_monitoring_and_recovery_points_so_upgrades_and_scaling_decisions_remain_reversible: 복제본·모니터링·복구 지점을 활용해 업그레이드와 증설 시 복구 경로를 확보하세요.
+ui_clone: 복제
+ui_create_a_copy_before_risky_changes: 위험한 변경 전에 복제본 생성
+ui_test: 테스트
+ui_validate_upgrades_and_architecture_changes_away_from_production: 운영 환경과 분리해 업그레이드·구성 변경 검증
+ui_monitor: 모니터링
+ui_watch_cpu_memory_storage_growth_and_request_queues: CPU·메모리·저장 공간 증가량·요청 대기열 관찰
+ui_scale: 확장
+ui_add_resources_only_when_pressure_is_sustained: 자원 부족이 지속될 때 증설
+ui_cpu_saturation: CPU 포화
+ui_memory_pressure: 메모리 부족
+ui_storage_growth: 저장 공간 증가
+ui_request_queues: 요청 대기열
+ui_snapshot: 스냅샷
+ui_fast_rollback_point: 빠른 롤백 지점
+ui_useful_for_quick_reversal_but_not_the_only_recovery_copy: 빠른 복귀에 유용하지만 유일한 복구 사본으로 두지 마세요.
+ui_scheduled_backup: 예약 백업
+ui_recover_from_a_known_point: 확인된 시점으로 복구
+ui_restore_the_server_or_create_another_server_from_the_backup: 백업으로 기존 서버를 복원하거나 다른 서버를 만드세요.
+ui_portable_copy: 반출 가능한 사본
+ui_keep_recovery_outside_the_running_vps: 실행 중인 VPS 밖에도 복구 사본 보관
+ui_maintain_an_independent_copy_under_your_own_control: 직접 관리할 수 있는 독립된 사본을 유지하세요.
+ui_operating_rule: 운영 원칙
+ui_measure_first_change_second_keep_a_way_back: 먼저 측정하고, 변경하고, 복구 경로를 남기세요.
+ui_are_you_repeatedly_hitting_real_hosting_limits: 현재 호스팅의 자원 한도에 반복적으로 걸리나요?
+ui_no_clear_limit_evidence: 한도에 도달했다는 근거가 없음
+ui_occasional_unclear: 가끔 발생하거나 원인이 불분명함
+ui_yes_repeated_cpu_ram_process_i_o_limits: CPU·RAM·프로세스·I/O 한도에 반복적으로 도달함
+ui_do_you_need_root_access_custom_software_or_a_custom_runtime: root 권한이나 별도 소프트웨어·런타임이 필요한가요?
+ui_no: 아니요
+ui_yes: 예
+ui_is_there_an_obvious_site_side_issue_to_fix_first: 사이트에서 먼저 해결할 문제가 확인되었나요?
+ui_not_sure: 아직 모르겠음
+ui_yes_plugin_query_bot_cache_job_issue: 플러그인·쿼리·봇·캐시·작업 문제가 있음
+ui_no_known_optimize_first_issue: 먼저 최적화할 문제가 확인되지 않음
+ui_is_the_website_business_critical_or_heavily_dynamic: 사업에 중요한 사이트이거나 동적 처리 비중이 큰가요?
+ui_no_low_risk: 아니요·위험도가 낮음
+ui_who_will_operate_the_vps: VPS 운영은 누가 담당하나요?
+ui_nobody_is_assigned_yet: 아직 담당자가 없음
+ui_paid_managed_administration_is_available: 유료 관리·운영 대행을 이용할 수 있음
+ui_an_internal_operator_can_own_it: 내부 담당자가 책임지고 운영할 수 있음
+ui_are_security_backup_and_monitoring_responsibilities_defined: 보안·백업·모니터링 담당 업무가 정해져 있나요?
+? ui_optimize_first_fix_the_known_application_query_bot_cache_or_scheduled_job_problem_before_paying_for_more_infrastructure_re_measure_after_the_fix
+: '먼저 최적화하세요: 서버 비용을 늘리기 전에 확인된 앱·쿼리·봇·캐시·예약 작업 문제를 해결하세요. 수정 후 사용량을 다시 측정하는 것이 좋습니다.'
+? ui_stay_on_shared_hosting_there_is_no_strong_vps_requirement_yet_keep_the_simpler_platform_until_real_limits_or_a_required_server_capability_appear
+: '공유 호스팅을 유지해도 됩니다: 현재로서는 VPS가 꼭 필요한 근거가 부족합니다. 실제 자원 한도나 필요한 서버 기능이 확인될 때까지 더 단순한 환경을 유지하세요.'
+? ui_move_to_vps_there_is_a_real_infrastructure_capability_reason_and_operations_ownership_exists_size_the_vps_from_the_measured_workload_then_plan_the_migration
+: 'VPS 이전을 검토할 수 있습니다: 인프라·기능상 필요성이 있고 운영 담당자도 정해져 있습니다. 측정한 부하로 적정 사양을 산정한 뒤 이전 계획을 세우세요.'
+? ui_move_with_managed_admin_help_the_vps_case_is_real_but_business_risk_or_missing_operations_ownership_makes_an_unmanaged_move_a_poor_fit_define_administration_security_backups_and_monitoring_before_cutover
+: '관리 지원을 확보한 뒤 이전하세요: VPS의 필요성은 있지만, 사업 위험이나 운영 담당 공백 때문에 자체 관리형으로 바로 옮기는 것은 적합하지 않습니다. 전환 전에 관리·보안·백업·모니터링 업무를 정하세요.'
+? ui_insufficient_evidence_the_case_is_mixed_measure_the_current_bottleneck_and_compare_a_better_shared_managed_option_before_accepting_vps_administration_overhead
+: '판단 근거가 더 필요합니다: 현재 조건만으로는 결론을 내리기 어렵습니다. VPS 관리 부담을 떠안기 전에 병목을 측정하고, 상위 공유 호스팅이나 관리형 서비스도 비교하세요.'
+ui_transfer: 트래픽
+ui_price: 요금
+ui_best_fit: 용도
+ui_watch: 주의
+ui_evidence_first: 측정 근거부터
+ui_choose_the_configuration_after_the_checks: 점검 후 사양 선택
+ui_fit: 필요성 확인
+ui_confirm_that_a_vps_solves_the_real_problem: VPS로 실제 문제를 해결할 수 있는지 확인
+ui_size: 사양 산정
+ui_cpu_ram_storage_dynamic_workload: CPU·RAM·저장 공간·동적 부하
+ui_verify_terms: 조건 확인
+ui_location_transfer_panel_backups_support: 위치·트래픽·패널·백업·지원
+ui_check_current_configurations: 최신 사양·요금 확인
+ui_use_the_provider_s_current_order_page_before_paying: 결제 전 업체의 최신 주문 화면 확인
+ui_buy_only_measured_headroom: 측정한 부하에 필요한 여유만 확보
+ui_workload_fit: 실제 부하
+ui_growth_room: 성장 여유
+ui_current_terms: 최신 조건
+ui_smallest_configuration_that_covers_the_real_workload_with_enough_headroom: 실제 부하를 감당하고 필요한 여유를 남기는 최소 사양
+ui_choose_a_vps_configuration: VPS 사양 선택
+ui_call_to_action: VPS 사양·요금 확인 안내
+ui_select_language: 언어 선택
+publisher_description: 실제 사용량을 근거로 VPS 호스팅, 사양 산정, 사이트 이전, 모니터링과 운영 방식을 안내하는 기술 정보 사이트입니다.

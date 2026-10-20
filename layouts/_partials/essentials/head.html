@@ -27,14 +27,18 @@
   {{ range .AllTranslations }}
     <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" />
   {{ end }}
-  <link rel="alternate" hreflang="x-default" href="{{ site.Home.Permalink }}" />
+  {{ $defaultPage := (index hugo.Sites 0).Home }}
+  {{ range .AllTranslations }}
+    {{ if eq .Language.Lang "en" }}{{ $defaultPage = . }}{{ end }}
+  {{ end }}
+  <link rel="alternate" hreflang="x-default" href="{{ $defaultPage.Permalink }}" />
 {{ end }}
 
 {{ $publisher := dict
   "@type" "Organization"
   "name" "VPSforWebsite.com Editorial"
   "url" site.Home.Permalink
-  "description" "Technical editorial project focused on evidence-based VPS hosting, workload sizing, migration, monitoring and operational decisions."
+  "description" (T "publisher_description")
 }}
 
 {{ if .IsHome }}
@@ -76,7 +80,7 @@
   }}
   <script type="application/ld+json">{{ $webPage | jsonify | safeJS }}</script>
   {{ $breadcrumbItems := slice
-    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.Home.Permalink)
+    (dict "@type" "ListItem" "position" 1 "name" (T "home") "item" site.Home.Permalink)
     (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink)
   }}
   {{ $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $breadcrumbItems }}

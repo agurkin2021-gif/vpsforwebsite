@@ -3,6 +3,19 @@
 > READ THIS FILE FIRST IN EVERY NEW CHATGPT SESSION BEFORE CHANGING THE REPOSITORY.
 > This file is the persistent project context and decision log for the site.
 
+## Current localization pass — Korean, 2026-10-19
+
+- Owner requested Korean `ko`, natural commercial search language and careful page-by-page work. No bulk or shortened article translation.
+- First completed source pass: `/ko/`, Title/H1 `웹사이트용 VPS 호스팅`; all seven feature sections, 13 FAQs, four plan tiers, shared CTA and 228 homepage/diagram/form/switcher UI strings translated.
+- Registered ko/한국어/ko-KR in Hugo, added Korean navigation with real English fallback destinations until supporting pages are translated. No nonexistent Korean routes or thin placeholder articles.
+- All 216 fit-checker input combinations preserve the original five decisions; all results are localized. Preserved 16 rendered homepage affiliate placements and attributes, pricing/spec values, original owner-supplied WebP, and English/Spanish visible text.
+- Hugo 0.158.0 production and project-path preview build/SEO checks pass. Local browser QA at 390/1280 px, language switching and mobile navigation pass. Hangul wrapping, pricing labels and FAQ line-height adjusted without changing other languages.
+- Hreflang duplication from the upstream SEO partial is removed; shared head emits one set and English x-default. Preview retains noindex and omits canonical/hreflang/GA. Homepage Markdown links resolve under the preview base path.
+- Detailed evidence, audit exceptions and the remaining page queue: `research/korean-localization-2026-10-19.md`. No Korean search-volume claims; no invented Korean server locations, Korean-language provider support, KRW billing or local payment options.
+- Deployment uses the current AGENTS.md GitHub main → generated Cloudflare static → connected Worker contract. The old Spanish preview-only/no-production instructions are historical for this new authorized language addition. No manual Worker or generated-content editing.
+- Publication: source is being submitted through GitHub; Action/static output and live `/ko/` still require verification before claiming publication.
+- Next page after the homepage publication gate: VPS sizing for website. The remaining Korean cluster is not yet translated.
+
 ## Project identity
 
 - Project: **vpsforwebsite.com**

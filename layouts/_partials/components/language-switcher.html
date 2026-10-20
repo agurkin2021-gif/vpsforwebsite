@@ -2,7 +2,7 @@
 {{- $class := .Class | default "" -}}
 {{- if gt (len site.Languages) 1 -}}
 <div class="relative {{ $class }}" data-language-switcher>
-  <button type="button" class="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-white bg-transparent border-0 shadow-none rounded-none hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="Select language" aria-expanded="false" aria-haspopup="true" data-language-toggle>
+  <button type="button" class="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-white bg-transparent border-0 shadow-none rounded-none hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="{{ T "ui_select_language" }}" aria-expanded="false" aria-haspopup="true" data-language-toggle>
     {{ upper $current.Language.Lang }}
     <svg aria-hidden="true" viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="m5 7 5 5 5-5z"/></svg>
   </button>
