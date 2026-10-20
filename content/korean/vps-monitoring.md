@@ -481,7 +481,7 @@ VPS 제공업체가 CPU, RAM, 디스크 또는 네트워크의 과거 지표를 
 
 한 명의 운영자가 VPS 한 대 또는 소수를 관리할 때 적합합니다.
 
-### Prometheus / Grafana 구성 {#prometheus-grafana-path}
+### Prometheus / Grafana 구성 {#prometheus--grafana-path}
 
 다음이 필요한 경우 유용합니다.
 
