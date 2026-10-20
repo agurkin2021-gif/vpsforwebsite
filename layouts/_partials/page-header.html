@@ -1611,40 +1611,40 @@
             {{ end }}
 
             <div class="vps-privacy-hero-actions">
-              <a class="btn btn-primary vps-privacy-primary-cta" href="/about/">
-                About our process
+              <a class="btn btn-primary vps-privacy-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else }}About our process{{ end }}
               </a>
-              <a class="vps-privacy-secondary-cta" href="/contact/">
-                Contact
+              <a class="vps-privacy-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else }}/contact/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}문의{{ else }}Contact{{ end }}
               </a>
             </div>
           </div>
 
           <a class="vps-privacy-hero-diagram"
-             href="/contact/"
-             aria-label="Open the VPSforWebsite.com contact and correction page">
+             href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else }}/contact/{{ end }}"
+             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com 문의 및 정보 정정 안내 보기{{ else }}Open the VPSforWebsite.com contact and correction page{{ end }}">
             <div class="vps-privacy-compact-head">
-              <strong>Minimal collection, clear disclosure</strong>
-              <small>The policy describes what the site actually uses now, not planned tracking or integrations.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}최소한의 정보 수집, 명확한 고지{{ else }}Minimal collection, clear disclosure{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}예정된 추적 도구가 아닌, 현재 실제 사용하는 서비스를 기준으로 개인정보 처리 내용을 안내합니다.{{ else }}The policy describes what the site actually uses now, not planned tracking or integrations.{{ end }}</small>
             </div>
 
             <div class="vps-privacy-compact-grid">
               <div class="vps-privacy-compact-item">
-                <span>01</span><div><strong>No account</strong><small>Public informational site</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}계정 필요 없음{{ else }}No account{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}공개 정보 제공 사이트{{ else }}Public informational site{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>02</span><div><strong>Analytics</strong><small>Not enabled in preview</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}방문 분석{{ else }}Analytics{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}운영 사이트는 GA4 사용, 미리보기에서는 비활성화{{ else }}Not enabled in preview{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>03</span><div><strong>Affiliate links</strong><small>Sponsored / nofollow marked</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}제휴 링크{{ else }}Affiliate links{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}sponsored / nofollow 표시{{ else }}Sponsored / nofollow marked{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>04</span><div><strong>Updates</strong><small>Policy follows actual services</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}업데이트{{ else }}Updates{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}실제 사용하는 서비스에 맞춘 방침{{ else }}Policy follows actual services{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-privacy-compact-rule">
-              <strong>Data collection should stay limited to what the site actually needs.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}데이터 수집은 사이트 운영에 실제로 필요한 범위로 제한해야 합니다.{{ else }}Data collection should stay limited to what the site actually needs.{{ end }}</strong>
             </div>
           </a>
         </div>

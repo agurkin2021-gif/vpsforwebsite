@@ -1,9 +1,10 @@
 name: Korean Privacy Policy prepublication QA
 on:
   push:
-    branches: ["work/ko-privacy-20261020"]
+    branches: ["work/ko-privacy-20261020", "work/ko-privacy-hero-audit-20261020"]
     paths:
       - "content/korean/privacy-policy.md"
+      - "layouts/_partials/page-header.html"
       - ".github/workflows/qa-ko-privacy.yml"
   workflow_dispatch:
 permissions:
@@ -73,7 +74,22 @@ jobs:
                 a.equal((await ko.title()).trim(),'개인정보 처리방침');
                 a.deepEqual(await ko.locator('h1').allTextContents(),['개인정보 처리방침']);
                 a.equal(await ko.locator('h2').count(),9);
+                const hero=ko.locator('.vps-privacy-hero');
+                a.equal(await hero.locator('a.vps-privacy-primary-cta').getAttribute('href'),'/ko/about/');
+                a.equal(await hero.locator('a.vps-privacy-secondary-cta').getAttribute('href'),'/ko/contact/');
+                a.equal(await hero.locator('a.vps-privacy-hero-diagram').getAttribute('href'),'/ko/contact/');
+                const heroText=await hero.innerText();
+                for(const phrase of ['검토 원칙 보기','문의','최소한의 정보 수집','계정 필요 없음','방문 분석','운영 사이트는 GA4 사용','제휴 링크','업데이트','데이터 수집은 사이트 운영에']) {
+                  a(heroText.includes(phrase),'Missing Korean hero text: '+phrase);
+                }
+                for(const stale of ['About our process','Minimal collection, clear disclosure','Public informational site','Not enabled in preview']) {
+                  a(!heroText.includes(stale),'Stale English text: '+stale);
+                }
                 await en.goto('http://127.0.0.1:8765/privacy-policy/');
+                const enHero=en.locator('.vps-privacy-hero');
+                a.equal(await enHero.locator('a.vps-privacy-primary-cta').getAttribute('href'),'/about/');
+                a.equal(await enHero.locator('a.vps-privacy-secondary-cta').getAttribute('href'),'/contact/');
+                a((await enHero.innerText()).includes('Minimal collection, clear disclosure'));
                 const ids=page=>page.locator('h2').evaluateAll(nodes=>nodes.map(x=>x.id));
                 a.deepEqual(await ids(ko),await ids(en));
                 a.equal(await ko.locator('link[rel="canonical"]').count(),1);
