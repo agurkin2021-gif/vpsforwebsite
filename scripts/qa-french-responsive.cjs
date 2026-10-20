@@ -48,11 +48,7 @@ async function examine(page,route,width){
   }
   await page.locator('main h1').first().waitFor({timeout:16000});
   await page.evaluate(async()=>{if(document.fonts)await document.fonts.ready;});
-  // Candidate stylesheet preview: the working-branch Chromium run injects only
-  // the proposed FR home CSS; the main-branch run audits deployed CSS alone.
-  if(process.env.GITHUB_REF_NAME==='work/fr-responsive-qa-20261020' && route==='/'){
-    await page.addStyleTag({path:path.resolve('static/css/fr-home-responsive.v1.css')});
-  }
+  // Audit the stylesheet that is actually served by the production page.
   await page.waitForTimeout(120);
   const audit=await page.evaluate(()=>{
     const W=document.documentElement.clientWidth;
