@@ -137,90 +137,90 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-## Start with the audience
+## 중요한 사용자층부터 파악하세요 {#start-with-the-audience}
 
-The first question is not "Where am I?" It is:
+첫 번째 질문은 “나는 어디에 있나?”가 아닙니다. 다음을 확인해야 합니다.
 
-**Where are the people who must wait for this server?**
+**이 서버의 응답을 기다려야 하는 사람들은 어디에 있나요?**
 
-For a public website, that usually means visitors and customers. For an internal application, it may mean employees. For an API, it may be another system rather than a human browser.
+공개 웹사이트라면 대체로 방문자와 고객을 의미합니다. 내부 애플리케이션이라면 직원일 수 있으며, API라면 사람의 브라우저가 아니라 다른 시스템일 수 있습니다.
 
-A sensible first shortlist is the region near the largest concentration of latency-sensitive traffic.
+합리적인 첫 후보 목록은 지연 시간에 민감한 트래픽이 가장 많이 발생하는 지역 주변에서 시작합니다.
 
-Do not automatically host near:
+다음 위치와 가깝다는 이유만으로 호스팅 위치를 결정하지 마세요.
 
-- the site owner;
-- the developer;
-- the billing address;
-- the domain registrar;
-- the company headquarters.
+- 사이트 소유자;
+- 개발자;
+- 청구 주소;
+- 도메인 등록업체;
+- 회사 본사.
 
-Those locations matter only if they also represent the important traffic.
+이 위치가 중요한 것은 실제 핵심 트래픽이 그곳에서 발생하는 경우뿐입니다.
 
-## Weight traffic by business importance
+## 사업상 중요도에 따라 트래픽 가중치 부여 {#weight-traffic-by-business-importance}
 
-Raw visitor count can be misleading.
+단순한 방문자 수는 잘못된 판단을 유도할 수 있습니다.
 
-Suppose:
+예를 들어:
 
-- 60% of visits are anonymous blog traffic from one continent;
-- 30% are paying customers using account pages from another region;
-- 10% are internal staff.
+- 방문의 60%는 한 대륙에서 발생하는 익명 블로그 트래픽;
+- 30%는 다른 지역에서 계정 페이지를 이용하는 유료 고객;
+- 10%는 내부 직원이라고 가정해 봅시다.
 
-If the blog is heavily cached but customers repeatedly hit dynamic account, checkout or API endpoints, the smaller customer region may matter more to origin placement.
+블로그 콘텐츠는 대부분 캐시되지만 고객이 동적 계정, 결제 또는 API 엔드포인트에 반복적으로 접속한다면, 방문자 수가 적은 고객 지역이 원본 서버 위치에 더 중요할 수 있습니다.
 
-Useful audience weights include:
+고려할 만한 사용자 중요도 지표는 다음과 같습니다.
 
-- revenue-producing users;
-- logged-in sessions;
-- checkout/account traffic;
-- support/admin users;
-- peak-hour concurrency;
-- API request volume;
-- business-critical countries or cities.
+- 매출을 발생시키는 사용자;
+- 로그인 세션;
+- 결제·계정 관련 트래픽;
+- 고객 지원·관리자 사용자;
+- 피크 시간대 동시 접속;
+- API 요청량;
+- 사업상 중요한 국가·도시.
 
-Use analytics and server logs to identify where **origin-sensitive** traffic comes from, not just total pageviews.
+전체 페이지뷰만 보지 말고 분석 도구와 서버 로그를 통해 **원본 서버의 응답 시간에 민감한** 트래픽이 어디에서 발생하는지 확인하세요.
 
-## Location matters more as requests become more dynamic
+## 동적 요청이 많을수록 위치가 중요합니다 {#location-matters-more-as-requests-become-more-dynamic}
 
-A static page can often be cached close to users. A dynamic request usually has to reach the origin, execute application logic, query a database and return.
+정적 페이지는 사용자 가까이에서 캐시할 수 있는 경우가 많습니다. 동적 요청은 보통 원본 서버에 도달해 애플리케이션 로직을 실행하고 데이터베이스를 조회한 뒤 결과를 반환해야 합니다.
 
-That makes location more important for:
+따라서 다음과 같은 작업에서 서버 위치의 중요성이 높아집니다.
 
-- WooCommerce cart and checkout;
-- account/login pages;
-- admin panels;
-- APIs;
-- dashboards;
-- search/filter endpoints;
-- uncached WordPress requests;
-- webhooks that require a fast response;
-- applications with many sequential server round trips.
+- WooCommerce 장바구니·결제;
+- 계정·로그인 페이지;
+- 관리자 패널;
+- API;
+- 대시보드;
+- 검색·필터 엔드포인트;
+- 캐시되지 않는 WordPress 요청;
+- 빠른 응답이 필요한 웹훅;
+- 서버 간 순차 왕복 요청이 많은 애플리케이션.
 
-For a store, see [VPS for WooCommerce]({{< relref "vps-for-woocommerce.md" >}}) for the application-side workload. Location is only one part of checkout performance.
+쇼핑몰의 애플리케이션 처리 부하는 [WooCommerce용 VPS]({{< relref "vps-for-woocommerce.md" >}})에서 확인하세요. 위치는 결제 성능을 결정하는 여러 요소 중 하나입니다.
 
-## Geography gives a shortlist, not the winner
+## 지리적 거리는 후보를 좁힐 뿐 정답은 아닙니다 {#geography-gives-a-shortlist-not-the-winner}
 
-Physical distance creates a lower bound on latency, but internet traffic does not travel in a straight line between two pins on a map.
+물리적 거리는 지연 시간의 이론적 하한에 영향을 주지만, 인터넷 트래픽은 지도 위의 두 지점을 직선으로 연결해 이동하지 않습니다.
 
-The real path depends on:
+실제 경로는 다음 요소에 따라 달라집니다.
 
-- ISP routing;
-- peering agreements;
-- transit providers;
-- congestion;
-- cable paths;
-- network failures;
-- route changes;
-- how the VPS provider connects to the destination network.
+- 인터넷 서비스 제공업체(ISP)의 라우팅;
+- 피어링 계약;
+- 트랜짓 사업자;
+- 네트워크 혼잡;
+- 케이블 경로;
+- 네트워크 장애;
+- 경로 변경;
+- VPS 제공업체와 목적지 네트워크의 연결 방식.
 
-A data center that is geographically nearer can still have a worse path to a particular ISP than a slightly farther region.
+지리적으로 더 가까운 데이터센터라도 약간 먼 지역보다 특정 ISP에 대한 네트워크 경로가 나쁠 수 있습니다.
 
-Therefore:
+따라서:
 
-**nearest on the map ≠ automatically lowest real latency**
+**지도상 가장 가까운 위치 ≠ 실제 지연 시간이 가장 낮은 위치**
 
-Use geography to eliminate obviously distant options. Use measurements to choose among plausible ones.
+지리 정보를 활용해 명백히 먼 후보를 제외하세요. 그다음 실측 데이터로 현실적인 후보를 비교하세요.
 
 ## Test the route, not just the map
 
