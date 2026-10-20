@@ -459,117 +459,117 @@ Prometheus Alertmanager는 알림을 그룹화하고 중복을 제거하며 적�
 
 운영 책임을 정하는 전반적인 기준은 [관리형 VPS와 비관리형 VPS]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요.
 
-## Choose the monitoring stack by complexity
+## 복잡도에 맞는 모니터링 도구 선택 {#choose-the-monitoring-stack-by-complexity}
 
-Do not deploy a large observability platform because it is popular.
+관측 도구가 인기 있다는 이유만으로 대규모 플랫폼을 도입하지 마세요.
 
-### Provider dashboard as a starting layer
+### 초기 계층으로 활용하는 제공업체 대시보드 {#provider-dashboard-as-a-starting-layer}
 
-If the VPS provider exposes CPU, RAM, disk or network history, use it as a convenient host-level starting layer.
+VPS 제공업체가 CPU, RAM, 디스크 또는 네트워크의 과거 지표를 제공한다면 서버 수준의 기본 자료로 활용하세요.
 
-Do not confuse provider-side infrastructure charts with complete website monitoring. They may not verify the public HTTP(S) path from outside the provider, application content, database health, background jobs, TLS renewal or alert ownership.
+제공업체의 인프라 그래프와 완전한 웹사이트 모니터링을 혼동하면 안 됩니다. 이런 그래프만으로는 제공업체 외부에서의 공개 HTTP(S) 접근, 애플리케이션 콘텐츠, DB 상태, 백그라운드 작업, TLS 갱신 또는 알림 담당자를 검증하지 못할 수 있습니다.
 
-Treat provider monitoring as one source of evidence, then add the external and application-level checks required by the workload.
+제공업체 모니터링을 여러 근거 중 하나로 사용하고, 워크로드에 필요한 외부 점검과 애플리케이션 수준의 검사를 추가하세요.
 
-### Lightweight single-VPS path
+### VPS 한 대를 위한 경량 구성 {#lightweight-single-vps-path}
 
-A practical small setup can combine:
+실용적인 소규모 구성은 다음을 결합할 수 있습니다.
 
-- external uptime monitor;
-- Netdata or another host-metric agent/dashboard;
-- system/application logs;
-- notifications.
+- 외부 가용성 감시 도구;
+- Netdata 또는 다른 서버 지표 에이전트·대시보드;
+- 시스템·애플리케이션 로그;
+- 알림.
 
-Good when one operator manages one or a few VPS instances.
+한 명의 운영자가 VPS 한 대 또는 소수를 관리할 때 적합합니다.
 
-### Prometheus / Grafana path
+### Prometheus / Grafana 구성 {#prometheus-grafana-path}
 
-Useful when you need:
+다음이 필요한 경우 유용합니다.
 
-- multi-server metrics;
-- longer historical retention;
-- custom queries;
-- service/exporter metrics;
-- shared dashboards;
-- structured alert rules.
+- 여러 서버의 지표;
+- 장기간의 이력 보존;
+- 맞춤형 쿼리;
+- 서비스·exporter 지표;
+- 공유 대시보드;
+- 체계적인 알림 규칙.
 
-Node Exporter supplies Linux host metrics; Prometheus stores/queries them; Grafana visualizes them; Alertmanager can route/group/deduplicate alerts.
+Node Exporter는 Linux 서버 지표를 제공하고, Prometheus는 이를 저장·조회하며, Grafana는 시각화합니다. Alertmanager는 알림을 전달·그룹화하고 중복을 제거할 수 있습니다.
 
-### Hosted monitoring path
+### 호스팅형 모니터링 구성 {#hosted-monitoring-path}
 
-Useful when:
+다음과 같은 경우 유용합니다.
 
-- the monitor must be independent of your VPS/provider;
-- you want less monitoring infrastructure to operate;
-- managed notifications/on-call integrations are valuable.
+- 감시 시스템이 자체 VPS·제공업체와 독립적이어야 할 때;
+- 모니터링 인프라의 운영 부담을 줄이고 싶을 때;
+- 관리형 알림·당직 시스템 연동이 중요할 때.
 
-The monitoring system itself is production infrastructure. Keep its complexity proportional to the risk it reduces.
+모니터링 시스템 자체도 운영 인프라입니다. 위험을 줄이는 효과에 비례하는 수준의 복잡도를 유지하세요.
 
-## Secure the monitoring stack
+## 모니터링 시스템 보안 강화 {#secure-the-monitoring-stack}
 
-Monitoring agents and dashboards can expose sensitive operational data.
+모니터링 에이전트와 대시보드는 민감한 운영 정보를 노출할 수 있습니다.
 
-Protect:
+다음 항목을 보호하세요.
 
-- dashboards;
-- exporters;
-- metrics endpoints;
-- API tokens;
-- notification webhooks;
-- log backends.
+- 대시보드;
+- exporter;
+- 지표 엔드포인트;
+- API 토큰;
+- 알림용 웹훅;
+- 로그 저장 시스템.
 
-Do not expose Prometheus, Node Exporter, Grafana or admin dashboards openly to the internet without an explicit secured access model.
+명시적인 보안 접근 통제 체계 없이 Prometheus, Node Exporter, Grafana 또는 관리자 대시보드를 인터넷에 공개하지 마세요.
 
-Use firewall/private-network/reverse-proxy authentication as appropriate.
+상황에 맞게 방화벽, 사설 네트워크, 리버스 프록시 인증을 사용하세요.
 
-Monitoring does not replace hardening; use [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}}) for the server baseline.
+모니터링이 보안 강화를 대체하지는 않습니다. 서버의 기본 보안 설정은 [VPS 보안 점검표]({{< relref "vps-security-checklist.md" >}})를 참고하세요.
 
-## Monitoring overhead matters
+## 모니터링 자체의 자원 사용량도 중요합니다 {#monitoring-overhead-matters}
 
-Monitoring consumes:
+모니터링은 다음 자원을 소비합니다.
 
 - RAM;
 - CPU;
-- disk for metrics/log retention;
-- network;
-- backup capacity.
+- 지표·로그 보존용 디스크;
+- 네트워크;
+- 백업 용량.
 
-A small agent is usually cheap, but long-retention metrics/logs can become a real storage workload.
+작은 에이전트의 자원 비용은 보통 낮지만, 장기간 보관하는 지표와 로그는 상당한 저장 공간을 요구할 수 있습니다.
 
-Watch the monitoring stack itself:
+모니터링 시스템 자체도 점검하세요.
 
-- agent/service health;
-- scrape failures;
-- storage growth;
-- retention;
-- notification delivery.
+- 에이전트·서비스 상태;
+- 지표 수집 실패;
+- 저장 공간 증가;
+- 보존 기간;
+- 알림 전달 여부.
 
-Do not let observability fill the disk it is supposed to protect.
+디스크를 보호해야 할 관측 시스템이 오히려 디스크를 가득 채우지 않도록 하세요.
 
-## Use trends for capacity planning
+## 용량 계획에 과거 추세 활용 {#use-trends-for-capacity-planning}
 
-Historical monitoring is the best evidence for the next sizing decision.
+과거 모니터링 데이터는 다음 서버 사양을 결정할 때 가장 유용한 근거입니다.
 
-Use trends to answer:
+추세를 통해 다음 질문에 답하세요.
 
-- is CPU saturation sustained or occasional?
-- is available RAM shrinking over weeks?
-- is swap/OOM appearing under legitimate load?
-- how quickly is disk growing?
-- does DB latency rise during peak traffic?
-- do PHP/app queues form?
-- are backup/import jobs creating predictable contention?
+- CPU 포화가 지속되는가, 아니면 가끔 발생하는가?
+- 몇 주 동안 사용 가능한 RAM이 줄어드는가?
+- 정상적인 부하에서도 스왑·OOM이 발생하는가?
+- 디스크 사용량은 얼마나 빨리 증가하는가?
+- 트래픽이 집중될 때 DB 지연 시간이 늘어나는가?
+- PHP·애플리케이션 큐가 쌓이는가?
+- 백업·가져오기 작업이 예측 가능한 자원 경합을 일으키는가?
 
-Do not upgrade merely because one dashboard briefly turned red.
+대시보드가 잠깐 빨간색으로 바뀌었다는 이유만으로 VPS를 업그레이드하지 마세요.
 
-Scale when the **optimized legitimate workload** repeatedly exhausts a resource or when the architecture needs independent scaling.
+**최적화된 정상 워크로드**가 자원을 반복적으로 소진하거나 아키텍처상 독립적인 확장이 필요할 때 확장하세요.
 
-Use [VPS sizing for website]({{< relref "vps-sizing-for-website.md" >}}) to translate monitoring evidence into a resource decision.
+측정 데이터를 자원 결정에 반영하는 방법은 [웹사이트용 VPS 사양 선택]({{< relref "vps-sizing-for-website.md" >}})을 참고하세요.
 
 <p>
-  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS configurations</a>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">현재 VPS 구성 확인</a>
 </p>
-<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Monitoring data should drive the sizing decision; this page does not claim that VDSina provides the monitoring tools described above as a managed service.</small></p>
+<p><small>고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 파트너 링크를 통해 주문하면 사이트가 수수료를 받을 수 있습니다. VPS 사양은 실제 모니터링 데이터에 근거해 결정해야 합니다. 이 페이지는 VDSina가 위에서 설명한 모니터링 도구를 관리형 서비스로 제공한다고 주장하지 않습니다.</small></p>
 
 ## Monitor multiple websites at two levels
 
