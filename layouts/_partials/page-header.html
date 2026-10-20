@@ -506,10 +506,10 @@
                 href="{{ $multiAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-multiweb-secondary-cta" href="#multi-site-vps-architecture-checker">
-                Check architecture
+                {{ if eq .Language.Lang "ko" }}VPS 구성 진단{{ else }}Check architecture{{ end }}
               </a>
             </div>
           </div>
@@ -519,41 +519,41 @@
             href="{{ $multiAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for multiple websites">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 여러 웹사이트용 VPS 옵션 확인{{ else }}Check current VPS options for multiple websites{{ end }}">
             <div class="vps-multiweb-compact-head">
-              <strong>Multiple websites on one VPS</strong>
-              <small>Consolidate only while the shared resource pool and failure domain still make sense.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}VPS 한 대에서 여러 웹사이트{{ else }}Multiple websites on one VPS{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}자원과 장애 위험을 함께 감당할 수 있을 때만 사이트를 통합하세요.{{ else }}Consolidate only while the shared resource pool and failure domain still make sense.{{ end }}</small>
             </div>
 
-            <div class="vps-multiweb-compact-sites" role="group" aria-label="Websites sharing the server">
-              <span>Site A</span>
-              <span>Site B</span>
-              <span>Site C</span>
-              <span>Site D</span>
+            <div class="vps-multiweb-compact-sites" role="group" aria-label="{{ if eq .Language.Lang "ko" }}같은 VPS를 공유하는 웹사이트{{ else }}Websites sharing the server{{ end }}">
+              <span>{{ if eq .Language.Lang "ko" }}사이트 A{{ else }}Site A{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 B{{ else }}Site B{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 C{{ else }}Site C{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 D{{ else }}Site D{{ end }}</span>
             </div>
 
             <div class="vps-multiweb-compact-link" aria-hidden="true">
               <i></i>
-              <span>share one server</span>
+              <span>{{ if eq .Language.Lang "ko" }}서버 한 대 공유{{ else }}share one server{{ end }}</span>
               <i></i>
             </div>
 
             <div class="vps-multiweb-compact-server">
               <div class="vps-multiweb-compact-server-title">
                 <span>VPS</span>
-                <strong>Shared resource pool</strong>
+                <strong>{{ if eq .Language.Lang "ko" }}공유 자원{{ else }}Shared resource pool{{ end }}</strong>
               </div>
               <div class="vps-multiweb-compact-resources">
                 <span>CPU</span>
                 <span>RAM</span>
-                <span>Storage</span>
-                <span>DB / jobs</span>
+                <span>{{ if eq .Language.Lang "ko" }}저장공간{{ else }}Storage{{ end }}</span>
+                <span>{{ if eq .Language.Lang "ko" }}DB / 작업{{ else }}DB / jobs{{ end }}</span>
               </div>
             </div>
 
             <div class="vps-multiweb-compact-risk">
-              <span>Combined peak load</span>
-              <span>Shared failure domain</span>
+              <span>{{ if eq .Language.Lang "ko" }}합산 피크 부하{{ else }}Combined peak load{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}공통 장애 영향 범위{{ else }}Shared failure domain{{ end }}</span>
             </div>
           </a>
         </div>
