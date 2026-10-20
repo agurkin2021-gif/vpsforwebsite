@@ -4,6 +4,8 @@ on:
     branches: ["work/ko-about-20261020"]
     paths:
       - "content/korean/about/_index.md"
+      - "layouts/list.html"
+      - "layouts/_partials/page-header.html"
       - ".github/workflows/qa-ko-about.yml"
   workflow_dispatch:
 permissions:
@@ -48,7 +50,8 @@ jobs:
           const h2=s=>[...s.matchAll(/<h2\b[^>]*\bid=(?:"([^"]+)"|([^\s>]+))/g)].map(x=>x[1]||x[2]);
           const html=fs.readFileSync('public/ko/about/index.html','utf8');
           const original=fs.readFileSync('public/about/index.html','utf8');
-          a.deepEqual(h2(html),h2(original));
+          a.deepEqual(h2(html),koids,'Korean seven About sections are visible');
+          a.equal(h2(original).length,0,'Original English section-list behavior remains unchanged');
           console.log('PASS 7 original anchors, 9 list items, commercial disclosure and exact review date');
           JS
       - name: Install Chromium and serve preview
@@ -79,7 +82,8 @@ jobs:
                 a.equal(await page.locator('h2').count(),7);
                 await en.goto('http://127.0.0.1:8765/about/',{waitUntil:'domcontentloaded'});
                 const ids=p=>p.locator('h2').evaluateAll(nodes=>nodes.map(x=>x.id));
-                a.deepEqual(await ids(page),await ids(en));
+                a.deepEqual(await ids(page),['what-this-site-does','editorial-background','how-recommendations-are-built','what-we-do-not-claim','commercial-relationship-disclosure','review-process','editorial-principle']);
+                a.equal((await ids(en)).length,0,'English About unchanged');
                 a.equal(await page.locator('link[rel="canonical"]').count(),1);
                 a((await page.locator('link[rel="canonical"]').getAttribute('href')).includes('/ko/'));
                 const body=await page.locator('body').innerText();
