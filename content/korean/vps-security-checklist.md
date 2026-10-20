@@ -190,7 +190,7 @@ Ubuntu의 OpenSSH 문서는 공개 키 인증을 지원하며 Ed25519와 같은 
 - root로 실행하는 애플리케이션 없음;
 - 더 안전한 접속을 확인한 뒤 직접 root 로그인과 비밀번호 SSH 접속 제한.
 
-더 높은 수준의 보증이 필요한 환경에서는 OpenSSH가 FIDO/U2F 또는 TOTP 기반 2단계 인증을 포함한 더 강력한 인증 방식도 지원합니다.
+더 높은 수준의 보증이 필요한 환경에서는 OpenSSH가 FIDO/U2F 또는 TOTP 기반 이중 인증을 포함한 더 강력한 인증 방식도 지원합니다.
 
 ### Root 로그인과 비밀번호 인증 {#root-login-and-password-authentication}
 
