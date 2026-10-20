@@ -4029,3 +4029,8 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - Structural gate: backup 22 H2 / 22 H3 / 179 body LI / 25 TR / 2 tables; multisite 19 H2 / 19 H3 / 116 body LI / 32 TR / 4 tables. Form, option values, section IDs, scripts and affiliate placements match English. French paragraphs and UL grouping are not numerically identical to the English source; human semantic proofreading remains a separate gate.
 - French privacy disclosure now follows production GA4 and the English policy last reviewed 2026-10-19; a specific unverified Cloudflare Web Analytics claim was removed. VPS monitoring received three terminology corrections.
 - Production workflow includes `scripts/audit-french-parity.py` after the French HTML/CSS checks. This is a structural-regression guard, not a complete translation or browser-rendering test. Verify Cloudflare generated commit and live French pages after merging; no publication claim on a branch alone.
+
+### 2026-10-20 — French remediation published
+
+- PR #18 source commit `72938326` merged, production Hugo and Cloudflare static Actions completed successfully, and generated commit `0c00b946` passed Workers Builds.
+- French parity publication check passed for 179 LI/25 TR on Backup and 116 LI/32 TR on Multi-site plus matched H2/H3 anchors, options and affiliate counts. Four French public pages were opened in Opera and updated language-specific markers verified. This does not certify every paragraph’s semantic equivalence or mobile viewport geometry.
