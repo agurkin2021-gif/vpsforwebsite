@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 import re
 import sys
 
@@ -28,6 +28,7 @@ TAG_RE = re.compile(r"<link\b[^>]*>", re.I)
 ANCHOR_RE = re.compile(r"<a\b[^>]*>", re.I)
 HTML_LANG_RE = re.compile(r"""<html\b[^>]*\blang\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))""", re.I)
 LEGACY_LIST_RE = re.compile(r"""(<ul\b[^>]*\bid\s*=\s*(?:"language-options"|'language-options'|language-options)[^>]*>)(.*?)(</ul>)""", re.I | re.S)
+GENERATED_LIST_RE = re.compile(r"""(<div\\b[^>]*\\bdata-language-options\\b[^>]*>)(.*?)(</div>)""", re.I | re.S)
 
 
 def attrs(tag):
@@ -68,7 +69,7 @@ def html_language(html):
 
 
 def url_to_rel(url):
-    path = urlparse(url).path or "/"
+    path = unquote(urlparse(url).path or "/")
     if path == "/":
         return Path("index.html")
     if path.endswith("/"):
@@ -101,6 +102,31 @@ def ko_equivalent(en_url):
     else:
         file = ROOT / candidate.lstrip("/")
     return candidate if file.is_file() else "/ko/"
+
+
+def route_exists(url):
+    parsed = urlparse(url)
+    if parsed.netloc and parsed.netloc != "vpsforwebsite.com":
+        return False
+    return (ROOT / url_to_rel(url)).is_file()
+
+
+def rebuild_generated_list(html, routes):
+    m = GENERATED_LIST_RE.search(html)
+    if not m:
+        return html
+    current = html_language(html)
+    items = []
+    for code, label, home in LANGS:
+        href = routes.get(code, home)
+        active = " font-bold" if normalize_lang(current) == code else ""
+        aria = ' aria-current="page"' if normalize_lang(current) == code else ""
+        items.append(
+            f'<a href="{href}" hreflang="{code}" lang="{code}" '
+            f'class="block px-4 py-2 text-sm text-white hover:text-primary hover:bg-white/10{active}"{aria}>'
+            f'{label}</a>'
+        )
+    return html[:m.start()] + m.group(1) + "".join(items) + m.group(3) + html[m.end():]
 
 
 def set_href(tag, href):
@@ -197,8 +223,13 @@ for page in ROOT.rglob("*.html"):
     if ko_url:
         routes["ko"] = ko_url
 
+    # Never publish a switcher link to a missing page; use its recovered homepage.
+    for code, _, home in LANGS:
+        if not route_exists(routes.get(code, home)):
+            routes[code] = home
+
     if "data-language-options" in html:
-        html = patch_switcher_links(html, routes)
+        html = rebuild_generated_list(html, routes)
         patched_generated += 1
     elif "language-options" in html and "language-picker" in html:
         html = rebuild_legacy_list(html, routes)
