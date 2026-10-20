@@ -45,6 +45,19 @@ for lang in LANGS:
     for page in pages:
         rel = page.relative_to(ROOT)
         html = page.read_text(encoding="utf-8", errors="replace")
+        metas = [attrs(tag) for tag in re.findall(r"<meta\\b[^>]*>", html, re.I)]
+        robots = [m.get("content", "").lower() for m in metas if m.get("name", "").lower() == "robots"]
+        is_noindex = any("noindex" in value for value in robots)
+        refresh = next((m.get("content", "") for m in metas
+                        if m.get("http-equiv", "").lower() == "refresh"), "")
+        if refresh:
+            target = re.split(r"url\\s*=", refresh, maxsplit=1, flags=re.I)[-1].strip().strip("'\\\"")
+            target_file = local_file(target)
+            SUMMARY[lang]["redirects"] += 1
+            if target_file is None or not target_file.is_file():
+                ISSUES.append((lang, "BROKEN_REDIRECT", str(rel), target))
+                SUMMARY[lang]["broken_redirects"] += 1
+            continue
         html_tag = re.search(r"<html\b[^>]*>", html, re.I)
         actual = attrs(html_tag.group(0)).get("lang", "") if html_tag else ""
         if actual.lower().split("-")[0] != lang.split("-")[0]:
@@ -70,7 +83,7 @@ for lang in LANGS:
             if p.path.rstrip("/") != urlparse(expected).path.rstrip("/"):
                 ISSUES.append((lang,"WRONG_CANONICAL",str(rel),canon))
                 SUMMARY[lang]["wrong_canonical"] += 1
-        else:
+        elif not is_noindex:
             ISSUES.append((lang, "NO_CANONICAL", str(rel), ""))
             SUMMARY[lang]["no_canonical"] += 1
         urls=set()
@@ -87,7 +100,7 @@ for lang in LANGS:
                     if f is not None and not f.is_file():
                         SUMMARY[lang]["broken_hreflang"] += 1
                         ISSUES.append((lang,"BROKEN_HREFLANG",str(rel),a["hreflang"]+" "+target))
-        if len(urls) < 2:
+        if len(urls) < 2 and not is_noindex:
             SUMMARY[lang]["too_few_hreflangs"] += 1
             ISSUES.append((lang,"TOO_FEW_HREFLANGS",str(rel),len(urls)))
         for a in re.findall(r"<a\b[^>]*>",html,re.I):
@@ -99,12 +112,12 @@ for lang in LANGS:
                 SUMMARY[lang]["broken_links"]+=1
                 if SUMMARY[lang]["broken_links"]<=12:
                     ISSUES.append((lang,"BROKEN_LINK",str(rel),url))
-        if re.search(r"<meta\b[^>]*\bname\s*=\s*[\"']?robots[\"']?[^>]*noindex",html,re.I):
-            SUMMARY[lang]["noindex"]+=1
+        if is_noindex:
+            SUMMARY[lang]["noindex"] += 1
         summary = html[html.find("<main"):html.find("</main>")+7]
         if actual.lower().startswith("en") and lang!="en":
             SUMMARY[lang]["english_fallback"]+=1
-        if len(summary)<800:
+        if len(summary)<800 and not is_noindex:
             SUMMARY[lang]["short_main"]+=1
         if "https://www.vdsina.com/?partner=ni8gzrvz75" in html:
             SUMMARY[lang]["affiliate_present"] += 1
