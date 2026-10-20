@@ -18,6 +18,7 @@ on:
       - "scripts/optimize-css.mjs"
       - "scripts/restore-language-navigation.py"
       - "scripts/audit-language-recovery.py"
+      - "scripts/audit-localized-pages.py"
       - "recovered-public/**"
   workflow_dispatch:
 
@@ -194,6 +195,9 @@ jobs:
           (ROOT / "sitemap.xml").write_text("\n".join(body) + "\n", encoding="utf-8")
           print(f"Merged deploy sitemap URLs: {len(urls)}")
           PY
+
+      - name: Audit restored locale pages and internal links
+        run: python scripts/audit-localized-pages.py cloudflare-public
 
       - name: Commit deployable static site
         shell: bash
