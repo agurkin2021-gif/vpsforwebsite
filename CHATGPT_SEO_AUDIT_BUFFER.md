@@ -23,6 +23,13 @@
 
 - Fifth Korean intent owner: `워드프레스용 VPS` → `/ko/워드프레스용-vps/`. WordPress-specific VPS sizing/requirements; distinct from the broad homepage, generic sizing and WooCommerce transactional intents. Exact Title/H1/slug, 34 original section anchors, four original tables, ten FAQ, seven controls/20 option values and 18 internal Markdown links preserved. Korean only; other languages retain their original visible copy. English fallback routing remains in place for untranslated sibling articles. Original reference VPS specifications, affiliate disclosure and URL unchanged. Numeric prices translated only by unit. Source audit complete on `work/ko-wordpress-20261020`; main CI/publication and responsive/browser checks pending. No Korean search-volume claims. Terminology cross-check: FDC Servers Korean guide (워드프레스용 VPS) and Cafe24 WordPress VPS category.
 
+### 2026-10-20 — Korean page 9: VPS with Control Panel (working branch; QA pending)
+
+- Intent ownership: `컨트롤 패널이 있는 VPS` / `/ko/컨트롤-패널이-있는-vps/`; distinct from branded FASTPANEL deployment, generic VPS purchase, managed-vs-unmanaged responsibility and provider infrastructure dashboard. Korean query volume has not been measured.
+- English source structural parity after block-by-block Korean translation: 19 H2 + 17 H3 = 36 anchored headings, 3 tables / 22 table lines, 123 bullet items, 12 numbered items, 10 FAQ, 7 checker selects and the same 16 option values, 13 original Markdown links including homepage, 2 body VDSina affiliate links. Korean source preserves all source logic conditions/branches verbatim; only seven UI decision strings changed. Three-part work branch `work/ko-control-panel-20261020`; Korean-only 10 hero text/ARIA groups, with English else branches unchanged.
+- Native Korean term `컨트롤 패널이 있는 VPS` describes VPS hosting with a panel; `VPS 관리 패널` is intentionally avoided as primary term because it can refer to a provider's infrastructure dashboard. English SERP reference `research/vps-with-control-panel-serp-2026-10-13.md` retained; supplemental Korean usage reviewed, without measured keyword volumes.
+- Canonical/H1, hreflang, page-width geometry at 390/1280, form decisions, Cloudflare publication and live URL remain gated on successful CI. Isolated QA: `.github/workflows/qa-ko-control-panel.yml`. Do not mark live before verified successful deployment.
+
 ## 1. Operating rules
 
 - Build the site page by page.
