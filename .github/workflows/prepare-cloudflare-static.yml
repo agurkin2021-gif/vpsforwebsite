@@ -156,6 +156,58 @@ jobs:
       - name: Prevent recovered cache page and language losses
         run: python scripts/audit-language-recovery.py cloudflare-public recovered-public
 
+      - name: Verify Bengali critical CSS assets and integrity
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64
+          import hashlib
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path("cloudflare-public")
+          problems = []
+          pages = sorted((root / "bn").rglob("index.html"))
+
+          class CSSLinks(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+              def handle_starttag(self, tag, attributes):
+                  attrs = dict(attributes)
+                  if tag.lower() == "link" and attrs.get("id") == "site-critical-css":
+                      self.links.append(attrs)
+
+          if not pages:
+              raise SystemExit("Bengali page set missing from publishable build")
+
+          for page in pages:
+              parser = CSSLinks()
+              parser.feed(page.read_text(encoding="utf-8"))
+              if len(parser.links) != 1:
+                  problems.append(f"{page}: expected exactly one critical stylesheet")
+                  continue
+              link = parser.links[0]
+              parsed = urlparse(link.get("href", ""))
+              if parsed.hostname not in (None, "vpsforwebsite.com") or not parsed.path.startswith("/css/"):
+                  problems.append(f"{page}: unexpected CSS URL {link.get('href')}")
+                  continue
+              file = root / parsed.path.lstrip("/")
+              if not file.is_file():
+                  problems.append(f"{page}: missing {file}")
+                  continue
+              actual = "sha256-" + base64.b64encode(hashlib.sha256(file.read_bytes()).digest()).decode("ascii")
+              if link.get("integrity") != actual:
+                  problems.append(f"{page}: invalid stylesheet integrity for {file}")
+
+          for issue in problems:
+              print("BENGALI_CSS_ERROR", issue)
+          print(f"Bengali critical CSS verified: {len(pages) - len(problems)}/{len(pages)}")
+          if problems:
+              raise SystemExit(1)
+          PY
+
       - name: Build sitemap from actual deployable HTML
         shell: bash
         run: |
