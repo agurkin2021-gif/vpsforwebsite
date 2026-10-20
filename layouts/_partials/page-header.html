@@ -1503,10 +1503,10 @@
               <a class="btn btn-primary vps-about-primary-cta"
                  href="{{ $aboutAffiliate }}" target="_blank"
                  rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-about-secondary-cta" href="#what-this-site-does">
-                How the site works
+                {{ if eq site.Language.Lang "ko" }}사이트 운영 원칙{{ else }}How the site works{{ end }}
               </a>
             </div>
           </div>
@@ -1514,29 +1514,29 @@
           <a class="vps-about-hero-diagram"
              href="{{ $aboutAffiliate }}" target="_blank"
              rel="sponsored nofollow noopener"
-             aria-label="Check current VPS options">
+             aria-label="{{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check current VPS options{{ end }}">
             <div class="vps-about-compact-head">
-              <strong>Research first, recommendation second</strong>
-              <small>Provider facts stay separate from workload-based editorial guidance.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}조사와 검증을 먼저, 추천은 그다음{{ else }}Research first, recommendation second{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}제공업체의 사실 정보와 워크로드 기준 편집 지침을 구분합니다.{{ else }}Provider facts stay separate from workload-based editorial guidance.{{ end }}</small>
             </div>
 
             <div class="vps-about-compact-grid">
               <div class="vps-about-compact-item">
-                <span>01</span><div><strong>Provider facts</strong><small>CPU, RAM, storage, price</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}제공업체 정보{{ else }}Provider facts{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간, 가격{{ else }}CPU, RAM, storage, price{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>02</span><div><strong>Workload fit</strong><small>Workers, DB, cache, jobs</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}워크로드 적합성{{ else }}Workload fit{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}워커, DB, 캐시, 작업{{ else }}Workers, DB, cache, jobs{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>03</span><div><strong>Constraints</strong><small>Management, backups, growth</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}운영 제약{{ else }}Constraints{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리, 백업, 확장{{ else }}Management, backups, growth{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>04</span><div><strong>Recommendation</strong><small>Smallest safe starting tier</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}추천 기준{{ else }}Recommendation{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}안전하게 시작할 최소 사양{{ else }}Smallest safe starting tier{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-about-compact-rule">
-              <strong>No fixed visitor-count promises. Size from the actual workload.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}방문자 수만으로 성능을 보장하지 않습니다. 실제 워크로드에 맞춰 사양을 결정하세요.{{ else }}No fixed visitor-count promises. Size from the actual workload.{{ end }}</strong>
             </div>
           </a>
         </div>
