@@ -941,3 +941,11 @@ The SEO buffer contains:
 - Publication prepared on main; generated build and live verification pending at this entry.
 
 - Publication verified: source 504c9d82740ee463fd1d518feddab6c243b4f69b; Actions 39425879184 (production build) and 39425879138 (static preparation) succeeded. Generated static 78c0e773216651de686379ed6b4e89f26294c7ff has a successful Cloudflare Workers Builds check. All five published source files match the tested local bytes. Live browser checks on ordinary public URLs pass all 1,312 cases across 164 pages with zero title overflow, neighboring-card intersections, missing styles or navigation/load errors. Every live H1 string matches the baseline. Final Spanish WordPress desktop, breakpoint and mobile screenshots reviewed. This layout repair is complete.
+
+
+### 2026-10-20 — Korean localization: WooCommerce (sixth primary page, pre-deployment)
+- Owner-directed sequence after five published Korean pages: one page at a time; English remains the strict model; do not modify other locales or existing affiliate targets.
+- Work branch `work/ko-woocommerce-20261020`: created `content/korean/vps-for-woocommerce.md` for query/Title/H1 **우커머스용 VPS**, slug `/ko/우커머스용-vps/`; Korean-only labels in WooCommerce hero block of `layouts/_partials/page-header.html`.
+- Parity with English: 37 headings (10 FAQ), 28 table lines / three tables, 131 bullet items, seven numbered steps, 10 select controls / 25 values, 16 Markdown links, all 37 English original heading-anchor IDs preserved, six checker results localized. Unmodified JS decision logic and affiliate destination; English labels remain in Hugo else branches.
+- No source modifications to English or Spanish pages. Hugo production build, Actions, Cloudflare and live responsive layout pending at this entry. WordPress page mobile visual test was not completed before beginning WooCommerce.
+- Detail and ongoing gate tracking: `research/korean-localization-2026-10-19.md`.
