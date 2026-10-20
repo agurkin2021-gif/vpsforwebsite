@@ -29,6 +29,13 @@
 - Audited heading, table, bullet, control-ID/option-value, link and numeric-pricing parity with the English source. Main Hugo build, Cloudflare deployment and live mobile viewport still require verification; do not claim they passed until confirmed.
 - After publication validation, next Korean page is **VPS for WooCommerce**.
 
+### Ninth Korean guide: VPS with Control Panel — 2026-10-20 (prepublication)
+
+- Individual intent owner: `컨트롤 패널이 있는 VPS`, exact Title/H1/slug `/ko/컨트롤-패널이-있는-vps/`. Commercial informational choice of whether a VPS needs a hosting control panel and which operating model fits; distinct from provider dashboard, managed support and the FASTPANEL branded child. Search volume not claimed.
+- Work branch `work/ko-control-panel-20261020`. Complete Korean source `content/korean/vps-with-control-panel.md` produced in three sequential blocks; preserves 36 original section headings and anchors, 3 tables/22 Markdown table lines, 123 unordered bullets, 12 ordered list lines, 10 FAQ, 7 form selects with 16 option values, 13 original article internal-link occurrences and 2 VDSina sponsored content links. The form has seven Korean outcomes with JavaScript logic byte-identical to English after only the result strings are normalized.
+- `layouts/_partials/page-header.html` adds Korean-only strings in the existing control-panel hero; the else branches preserve English/other-language visible content, styles and layout. Korean Markdown link renderer chooses translated targets where present and existing English fallbacks elsewhere.
+- Dedicated branch workflow `.github/workflows/qa-ko-control-panel.yml` builds Hugo production-style and runs Chromium 390px/1280px SEO/responsive checks plus nine actual form submissions; screenshots are retained temporarily. This is a verification plan, not a pass claim. Do not merge/publish before success. User's requested English reference remains unchanged.
+
 ## Project identity
 
 - Project: **vpsforwebsite.com**
