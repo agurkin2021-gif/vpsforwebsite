@@ -1,7 +1,6 @@
 ---
 title: "VPSforWebsite.com 소개"
 description: "VPSforWebsite.com이 VPS 서버 사양, 자원, 호스팅 선택의 장단점, 제공업체 정보와 제휴 추천을 조사하고 검증하는 방식을 설명합니다."
-slug: "vpsforwebsite-소개"
 ---
 
 ## 이 사이트에서 제공하는 정보 {#what-this-site-does}
