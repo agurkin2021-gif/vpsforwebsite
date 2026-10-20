@@ -230,17 +230,17 @@ jobs:
               rel = page.relative_to(root).parent.as_posix()
               url = f"https://vpsforwebsite.com/{rel}/"
 
-              if not re.search(r'<html\\b[^>]*\\blang="fr"', text, re.I):
+              if not re.search(r'<html\b[^>]*\blang="fr"', text, re.I):
                   errors.append(f"{page}: wrong HTML language")
-              canonical = re.search(r'<link\\b(?=[^>]*rel="canonical")[^>]*>', text, re.I)
+              canonical = re.search(r'<link\b(?=[^>]*rel="canonical")[^>]*>', text, re.I)
               if not canonical or f'href="{url}"' not in canonical.group(0):
                   errors.append(f"{page}: wrong canonical")
               titles = re.findall(r'<title>(.*?)</title>', text, re.I | re.S)
-              headings = re.findall(r'<h1\\b[^>]*>(.*?)</h1>', text, re.I | re.S)
+              headings = re.findall(r'<h1\b[^>]*>(.*?)</h1>', text, re.I | re.S)
               if len(titles) != 1 or len(headings) != 1 or html.unescape(re.sub(r'<[^>]+>', '', titles[0])).strip() != html.unescape(re.sub(r'<[^>]+>', '', headings[0])).strip():
                   errors.append(f"{page}: title/H1 mismatch")
 
-              links = re.findall(r'<link\\b(?=[^>]*id="site-critical-css")[^>]*>', text, re.I)
+              links = re.findall(r'<link\b(?=[^>]*id="site-critical-css")[^>]*>', text, re.I)
               if len(links) != 1:
                   errors.append(f"{page}: expected one critical stylesheet")
                   continue
