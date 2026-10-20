@@ -1,0 +1,254 @@
+name: Korean website deployment prepublication QA
+on:
+  push:
+    branches: ["work/ko-host-website-20261020"]
+    paths:
+      - "content/korean/how-to-host-a-website-on-vps.md"
+      - ".github/workflows/qa-ko-host-website.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build baseline and preserve original heading IDs
+        shell: bash
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "http://127.0.0.1:8765/"
+          cp -a public /tmp/ko-host-baseline
+      - name: Complete Korean anchors and isolated hero translation
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re, json, hashlib
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from collections import Counter
+          slug='vps에-웹사이트를-호스팅하는-방법'
+          class Headings(HTMLParser):
+              def __init__(self): super().__init__(); self.ids=[]
+              def handle_starttag(self,t,a):
+                  if t in ('h2','h3') and dict(a).get('id'): self.ids.append((t,dict(a)['id']))
+          en=Path('content/english/how-to-host-a-website-on-vps.md').read_text()
+          kp=Path('content/korean/how-to-host-a-website-on-vps.md'); ko=kp.read_text()
+          ep=Headings();ep.feed(Path('/tmp/ko-host-baseline/how-to-host-a-website-on-vps/index.html').read_text())
+          eh=re.findall(r'^(#{2,3}) (.+)$',en,re.M); kh=list(re.finditer(r'^(#{2,3}) (.+)$',ko,re.M))
+          assert len(eh)==len(kh)==len(ep.ids),(len(eh),len(kh),len(ep.ids))
+          assert [len(x[0]) for x in eh]==[len(x[1]) for x in kh]
+          i=iter(ep.ids)
+          def anchor(m):
+              tag,aid=next(i); assert tag=='h'+str(len(m[1]))
+              return m[1]+' '+re.sub(r'\s*\{#[^}]+\}$','',m[2])+' {#'+aid+'}'
+          ko=re.sub(r'^(#{2,3}) (.+)$',anchor,ko,flags=re.M)
+          links=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',en)
+          kl=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko)
+          assert len(links)==len(kl),(len(links),len(kl))
+          fallback=[]
+          def localized_target(target):
+              m=re.fullmatch(r'\{\{< relref "([^"]+)" >\}\}',target)
+              if m and not (Path('content/korean')/m[1]).is_file():
+                  fallback.append(m[1])
+                  return '{{< relref path="'+m[1]+'" lang="en" >}}'
+              return target
+          expected_links=[localized_target(target) for target in links]
+          li=iter(expected_links)
+          ko=re.sub(r'(\[[^\]\n]*\]\()([^\n]*?)(\))',lambda m:m[1]+next(li)+m[3],ko)
+          kp.write_text(ko)
+          hp=Path('layouts/_partials/page-header.html'); header=hp.read_text()
+          start=header.index('{{ else if $isHostWebsiteVps }}'); end=header.index('{{ else if $isVpsLocation }}',start)
+          block=header[start:end]
+          translations={
+            'Check current VPS options for hosting a website':'웹사이트 호스팅용 VPS 옵션 확인',
+            'Check VPS options':'VPS 옵션 확인',
+            'See deployment sequence':'배포 순서 보기',
+            'Fresh VPS to live website':'새 VPS에서 웹사이트 공개까지',
+            'Build the stack in the right order, test it, then send production traffic.':'올바른 순서로 스택을 구축하고 테스트한 뒤 실제 트래픽을 연결하세요.',
+            'Provision':'서버 준비',
+            'OS + secure admin access':'OS + 안전한 관리자 접속',
+            'Install stack':'스택 설치',
+            'Only what the app needs':'앱에 필요한 구성 요소만',
+            'Connect domain':'도메인 연결',
+            'DNS + HTTPS':'DNS + HTTPS',
+            'Verify':'검증',
+            'Reboot + backups + monitoring':'재부팅 + 백업 + 모니터링',
+            'Install only the services the website actually needs.':'웹사이트에 실제로 필요한 서비스만 설치하세요.'
+          }
+          if '{{ if eq site.Language.Lang "ko" }}새 VPS에서 웹사이트 공개까지' not in block:
+              for original,translated in translations.items():
+                  assert block.count(original)==1,(original,block.count(original))
+                  block=block.replace(original,'{{ if eq site.Language.Lang "ko" }}'+translated+'{{ else }}'+original+'{{ end }}')
+              hp.write_text(header[:start]+block+header[end:])
+          assert re.findall(r'```[^\n]*\n.*?```',en,re.S)==re.findall(r'```[^\n]*\n.*?```',ko,re.S),'Code blocks changed'
+          assert re.findall(r'(?<!`)`([^`\n]+)`(?!`)',en)==re.findall(r'(?<!`)`([^`\n]+)`(?!`)',ko),'Inline commands changed'
+          def script(s):
+              s=re.search(r'<script>(.*?)</script>',s,re.S)[1]
+              return re.sub(r'(result\s*(?:\+=|=)\s*)"(?:[^"\\]|\\.)*"',r'\1"LOCALIZED_OUTPUT"',s)
+          assert script(en)==script(ko),'JavaScript logic or identifiers changed'
+          assert re.findall(r'<(?:option|select|form|button|label)\b[^>]*>',en)==re.findall(r'<(?:option|select|form|button|label)\b[^>]*>',ko),'Form structure changed'
+          def listshape(s): return re.findall(r'^\s*((?:\d+\.|-) )',s,re.M)
+          assert listshape(en)==listshape(ko),'List structure changed'
+          assert [x.count('|') for x in en.splitlines() if x.startswith('|')]==[x.count('|') for x in ko.splitlines() if x.startswith('|')],'Table geometry changed'
+          def numbers(s):
+              s=s.split('---',2)[2];s=re.sub(r'\{#[^}]+\}','',s)
+              return Counter(re.findall(r'\d+(?:\.\d+)*',s))
+          assert numbers(en)==numbers(ko),('Numeric values changed',numbers(en)-numbers(ko),numbers(ko)-numbers(en))
+          assert expected_links==re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko),'Link targets changed'
+          assert re.findall(r'href="([^"]+)"',en)==re.findall(r'href="([^"]+)"',ko),'HTML links changed'
+          info={'slug':slug,'heading_ids':[x[1] for x in ep.ids],'headings':len(eh),'code_blocks':len(re.findall(r'```[^\n]*\n.*?```',en,re.S)),'source_links':len(links),'english_fallback_pages':sorted(set(fallback)),'english_source_sha256':hashlib.sha256(en.encode()).hexdigest()}
+          Path('/tmp/ko-host-invariants.json').write_text(json.dumps(info,ensure_ascii=False,indent=2))
+          print('SOURCE INVARIANTS PASSED',json.dumps(info,ensure_ascii=False))
+          PY
+      - name: Build completed translation and verify unaffected HTML
+        shell: bash
+        run: |
+          rm -rf public
+          hugo --gc --minify --baseURL "http://127.0.0.1:8765/"
+          python3 - <<'PY'
+          from pathlib import Path
+          changed=[]
+          for old in Path('/tmp/ko-host-baseline').rglob('*.html'):
+              rel=old.relative_to('/tmp/ko-host-baseline')
+              if str(rel)=='ko/vps에-웹사이트를-호스팅하는-방법/index.html': continue
+              new=Path('public')/rel
+              if not new.exists() or old.read_bytes()!=new.read_bytes(): changed.append(str(rel))
+          assert not changed,('Unrelated rendered pages changed',changed)
+          print('PASS: every other rendered HTML page is byte-identical to baseline')
+          PY
+          node scripts/optimize-css.mjs public
+          # Production preserves recovered languages absent from Hugo sources.
+          # Copy only missing files into the temporary QA output, never sources.
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          count=0
+          for source in Path('recovered-public').rglob('*'):
+              if not source.is_file(): continue
+              dest=Path('public')/source.relative_to('recovered-public')
+              if dest.exists(): continue
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(source,dest); count+=1
+          print('QA recovery-only fallback files:',count)
+          PY
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public >/tmp/ko-host-http.log 2>&1 &
+          mkdir -p /tmp/ko-host-qa
+          cp /tmp/ko-host-invariants.json /tmp/ko-host-qa/invariants.json
+      - name: Install Chromium and DOM parser
+        shell: bash
+        run: |
+          cd /tmp/ko-host-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test SEO, links, mobile, desktop and all 72 decisions per viewport
+        shell: bash
+        run: |
+          cd /tmp/ko-host-qa
+          cat > check.cjs <<'NODE'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs');
+          const {chromium}=require('playwright');
+          const info=JSON.parse(fs.readFileSync('invariants.json','utf8'));
+          const base='http://127.0.0.1:8765';
+          const url=base+'/ko/'+encodeURIComponent(info.slug)+'/';
+          const expectedTitle='VPS에 웹사이트를 호스팅하는 방법';
+          fs.mkdirSync('shots',{recursive:true});
+          (async()=>{
+            const browser=await chromium.launch();
+            try {
+              for(const width of [390,1280]){
+                const ctx=await browser.newContext({viewport:{width,height:844},isMobile:width===390,hasTouch:width===390});
+                const page=await ctx.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const r=await page.goto(url,{waitUntil:'networkidle'});
+                assert.equal(r.status(),200);
+                assert.equal((await page.title()).trim(),expectedTitle);
+                assert.deepEqual(await page.locator('h1').allTextContents(),[expectedTitle]);
+                assert.equal(await page.locator('html').getAttribute('lang'),'ko-KR');
+                assert.equal(await page.locator('h2,h3').count(),info.headings);
+                for(const id of info.heading_ids)assert.equal(await page.locator('[id="'+id+'"]').count(),1,id);
+                assert.equal(await page.locator('table').count(),2);
+                assert.equal(await page.locator('#deployment-path-checker-form select').count(),5);
+                assert.equal(await page.locator('#deployment-path-checker-form option').count(),12);
+                assert.equal(await page.locator('link[rel=canonical]').count(),1);
+                assert.equal(decodeURI(await page.locator('link[rel=canonical]').getAttribute('href')),decodeURI(url));
+                assert((await page.locator('.vps-host-hero-diagram').innerText()).includes('새 VPS에서 웹사이트 공개까지'));
+                assert(!(await page.locator('.vps-host-page-header').innerText()).includes('Check VPS options'));
+                const partners=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(a=>a.map(x=>({href:x.href,rel:x.rel})));
+                assert(partners.length>=4);
+                assert(partners.every(x=>x.href==='https://www.vdsina.com/?partner=ni8gzrvz75'&&x.rel.includes('sponsored')&&x.rel.includes('nofollow')));
+                const dimensions=await page.evaluate(()=>({width:document.documentElement.clientWidth,html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+                console.log('GEOMETRY',width,dimensions);
+                assert(dimensions.html<=width+2&&dimensions.body<=width+2,'Horizontal page overflow');
+                await page.screenshot({path:'shots/width-'+width+'.png',fullPage:true});
+                if(width===390){
+                  const hrefs=await page.locator('a[href]').evaluateAll(a=>[...new Set(a.map(x=>x.getAttribute('href')))]);
+                  for(const href of hrefs.filter(x=>x.startsWith('#')&&x.length>1))assert.equal(await page.locator('[id="'+decodeURIComponent(href.slice(1))+'"]').count(),1,'Broken anchor '+href);
+                  for(const href of hrefs.filter(x=>x.startsWith('/')&&!x.startsWith('//'))){const response=await ctx.request.get(base+href);assert.equal(response.status(),200,'Broken internal link '+href);}
+                  const langs=await page.locator('link[rel=alternate][hreflang]').evaluateAll(a=>a.map(x=>({lang:x.hreflang,href:x.href})));
+                  assert(langs.some(x=>/^ko(?:-KR)?$/i.test(x.lang)&&decodeURI(x.href)===decodeURI(url)));
+                  assert(langs.some(x=>/^en(?:-[A-Z]{2})?$/i.test(x.lang)));
+                }
+                let n=0;
+                for(const type of ['static','php','app'])for(const panel of ['no','yes'])for(const db of ['no','yes'])for(const mail of ['no','yes'])for(const sites of ['1','few','many']){
+                  for(const [id,v] of Object.entries({'deploy-type':type,'deploy-panel':panel,'deploy-db':db,'deploy-mail':mail,'deploy-sites':sites}))await page.locator('#'+id).selectOption(v);
+                  await page.locator('#deployment-path-checker-form button').click();
+                  const text=await page.locator('#deployment-path-result').innerText();
+                  const prefix=panel==='yes'?'컨트롤 패널 방식:':type==='static'&&db==='no'&&mail==='no'?'정적 사이트 수동 구성:':type==='php'?'PHP / 워드프레스 수동 구성:':type==='app'?'애플리케이션 + 리버스 프록시 구성:':'맞춤형 수동 구성:';
+                  assert(text.startsWith(prefix),JSON.stringify({type,panel,db,mail,sites,text}));
+                  assert.equal(text.includes('사이트가 6+개라면'),sites==='many');
+                  assert.equal(text.includes('로컬 메일 운영에는'),mail==='yes');
+                  n++;
+                }
+                assert.equal(n,72);
+                assert.deepEqual(errors,[]);
+                await page.locator('#deployment-path-result').screenshot({path:'shots/result-'+width+'.png'});
+                console.log('PASS',width,'72 real form submissions, SEO, layout, links');
+                await ctx.close();
+              }
+            } finally {await browser.close();}
+          })().catch(e=>{console.error(e.stack);process.exitCode=1;});
+          NODE
+          node check.cjs
+      - name: Commit only tested Korean source and isolated header strings
+        shell: bash
+        run: |
+          test "${GITHUB_REF_NAME}" = "work/ko-host-website-20261020"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content/korean/how-to-host-a-website-on-vps.md layouts/_partials/page-header.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Complete Korean page 11 anchors and hero after source and 144 browser checks'
+            git push origin HEAD:work/ko-host-website-20261020
+          fi
+          git rev-parse HEAD
+          cat /tmp/ko-host-invariants.json >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: korean-host-website-preview
+          path: |
+            /tmp/ko-host-qa/shots/*.png
+            /tmp/ko-host-invariants.json
+            content/english/how-to-host-a-website-on-vps.md
+            content/korean/how-to-host-a-website-on-vps.md
+            layouts/_partials/page-header.html
+          retention-days: 7
+          if-no-files-found: ignore
