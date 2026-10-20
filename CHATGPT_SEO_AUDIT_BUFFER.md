@@ -4,6 +4,15 @@
 > Read this file together with `CHATGPT_PROJECT_CONTEXT.md` before SEO/content work.
 > Updated: 2026-10-12.
 
+### 2026-10-20 — Korean page 10: branded FASTPANEL VPS hosting (work branch; publication gated)
+
+- Exact commercial query / Title / H1: `FASTPANEL VPS 호스팅`; slug `/ko/fastpanel-vps-호스팅/`. Dedicated branded FASTPANEL use-case, separate from generic panel choice on `컨트롤 패널이 있는 VPS`, broad VPS sizing, WordPress workload and Managed vs Unmanaged responsibility. Korean search volume unverified.
+- 31 anchored headings, 1 plan table (4 rows/6 Markdown lines), 83 bullets, 17 numbered steps, 10 FAQ, 4 checker selectors/10 values, 11 guide links, original 2 VDSina sponsored body links. KO translations preserve source code/score conditions, only three result messages change; all input-state combinations (3×3×2×2=36) are being checked in real Chromium at 390px. Shared FASTPANEL diagram strings scoped to KO only, English unchanged.
+- Official vendor verification 2026-10-20: FASTPANEL is listed as a VDSina Standard preconfigured hosting-panel option on Ubuntu 22. FASTPANEL manual installation minimum 1GB RAM, 5GB free disk, 1 CPU core/1GHz on clean supported 64-bit OS, which is not a full production website sizing guarantee. Never claim all supported manual OS images are VDSina preinstalled FASTPANEL choices.
+- Complete Korean source is in work branch `work/ko-fastpanel-20261020`; isolated `.github/workflows/qa-ko-fastpanel.yml` checks build/SEO/responsive/36 form submissions. Cloudflare live publication still pending. The preceding page 9 was published and validated with production Chromium run `39468143187`.
+
+- Prepublication [Korean FASTPANEL Chromium run 39468849212](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39468849212) completed **Success**. Hugo 0.158.0 production-style build passed. At **390px and 1280px**, measured document/body scroll widths equal viewport widths; header, hero, H1 and checker bounding rectangles fit. Page produced 31 anchored headings, one table, four selectors/ten options, localized hero, SEO Title/H1/canonical and sponsored partner links, without JS errors. At 390px Chromium selected all **36** combinations of workload (3), site count (3), mail (2) and jobs (2), submitted the form, and confirmed the expected 2 GB / 4 GB / 8 GB Korean guidance. Screenshots were saved as workflow artifacts. This verifies preview QA only; publication/live verification is still pending.
+
 ## Korean page-by-page localization — 2026-10-19
 
 - First owner: `/ko/` → exact Title/H1 `웹사이트용 VPS 호스팅`. Root-language URL exception applies; no duplicate keyword-slug homepage.

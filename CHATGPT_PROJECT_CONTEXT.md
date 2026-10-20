@@ -3,6 +3,16 @@
 > READ THIS FILE FIRST IN EVERY NEW CHATGPT SESSION BEFORE CHANGING THE REPOSITORY.
 > This file is the persistent project context and decision log for the site.
 
+### Tenth Korean source pass — FASTPANEL VPS Hosting (2026-10-20)
+
+- Page 9 `컨트롤 패널이 있는 VPS` is published from PR #5 source `11aeb5cd`, generated Cloudflare static `74dfa08f`; the live page opened in Opera and the dedicated production Chromium run `39468143187` passed 390px/1280px and nine form scenarios. Page 9 is closed.
+- Page 10 scoped to the branded intent `FASTPANEL VPS 호스팅`, exact Title=H1 and slug `/ko/fastpanel-vps-호스팅/`. It is the child of the general control-panel page, not a duplicate selection article.
+- On `work/ko-fastpanel-20261020`, complete Korean content has 31 anchored headings (16 H2/15 H3), one plan table/6 lines, 83 bullet points, 17 numbered steps, ten FAQ, original 11 internal Markdown destinations and two unchanged VDSina sponsored article CTAs. All four diagnostic IDs and ten options are unchanged, and original JavaScript conditions/score thresholds are unchanged; three outcomes and all UI copy translated.
+- FASTPANEL shared hero's 14 user-facing text/ARIA slots are KO-only conditional translations; EN and other languages retain original else copy, layout and affiliate links. Official VDSina and FASTPANEL setup facts rechecked 2026-10-20; one-GB install minimum is not a production capacity promise.
+- Blocking prepublication workflow `.github/workflows/qa-ko-fastpanel.yml` should validate the Hugo build, 390/1280 geometry and all 36 actual form input combinations before merging. After merge, verify main CI -> static Cloudflare generation -> deployed live URL -> separate live browser QA. No publication/complete claim until these succeed. Source of truth remains GitHub main.
+
+- Prepublication [Korean FASTPANEL Chromium run 39468849212](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39468849212) completed **Success**. Hugo 0.158.0 production-style build passed. At **390px and 1280px**, measured document/body scroll widths equal viewport widths; header, hero, H1 and checker bounding rectangles fit. Page produced 31 anchored headings, one table, four selectors/ten options, localized hero, SEO Title/H1/canonical and sponsored partner links, without JS errors. At 390px Chromium selected all **36** combinations of workload (3), site count (3), mail (2) and jobs (2), submitted the form, and confirmed the expected 2 GB / 4 GB / 8 GB Korean guidance. Screenshots were saved as workflow artifacts. This verifies preview QA only; publication/live verification is still pending.
+
 ## Current localization pass — Korean, 2026-10-19
 
 - Owner requested Korean `ko`, natural commercial search language and careful page-by-page work. No bulk or shortened article translation.

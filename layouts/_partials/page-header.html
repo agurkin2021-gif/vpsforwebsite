@@ -1213,10 +1213,10 @@
                 href="{{ $fastpanelAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-fastpanel-secondary-cta" href="#quick-answer">
-                See FASTPANEL sizing
+                {{ if eq site.Language.Lang "ko" }}FASTPANEL 사양 보기{{ else }}See FASTPANEL sizing{{ end }}
               </a>
             </div>
           </div>
@@ -1226,45 +1226,45 @@
             href="{{ $fastpanelAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for FASTPANEL hosting">
+            aria-label="{{ if eq site.Language.Lang "ko" }}FASTPANEL 호스팅용 VPS 옵션 확인{{ else }}Check current VPS options for FASTPANEL hosting{{ end }}">
             <div class="vps-fastpanel-compact-head">
-              <strong>Size the VPS for FASTPANEL plus the workload</strong>
-              <small>The panel is only one resource consumer. Websites, database, mail and jobs need headroom too.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}FASTPANEL과 전체 작업 부하에 맞는 VPS 사양{{ else }}Size the VPS for FASTPANEL plus the workload{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}패널뿐 아니라 웹사이트·DB·메일·예약 작업에도 여유 자원이 필요합니다.{{ else }}The panel is only one resource consumer. Websites, database, mail and jobs need headroom too.{{ end }}</small>
             </div>
 
             <div class="vps-fastpanel-compact-grid">
               <div class="vps-fastpanel-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Panel</strong>
-                  <small>FASTPANEL services</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}패널{{ else }}Panel{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}FASTPANEL 서비스{{ else }}FASTPANEL services{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Web stack</strong>
-                  <small>PHP workers + web server</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}웹 서버 구성{{ else }}Web stack{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}PHP 워커 + 웹 서버{{ else }}PHP workers + web server{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Database</strong>
-                  <small>MySQL / MariaDB load</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}데이터베이스{{ else }}Database{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}MySQL / MariaDB 부하{{ else }}MySQL / MariaDB load{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Extras</strong>
-                  <small>Mail + backups + jobs</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}추가 서비스{{ else }}Extras{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}메일 + 백업 + 예약 작업{{ else }}Mail + backups + jobs{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-fastpanel-compact-rule">
-              <strong>Do not treat the 1 GB panel minimum as a default production target.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}패널 최소 요구사항인 RAM 1 GB를 일반 운영 기본값으로 간주하지 마세요.{{ else }}Do not treat the 1 GB panel minimum as a default production target.{{ end }}</strong>
             </div>
           </a>
         </div>
