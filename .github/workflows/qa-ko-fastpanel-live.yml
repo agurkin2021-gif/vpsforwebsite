@@ -1,0 +1,115 @@
+name: Korean FASTPANEL production browser QA
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/qa-ko-fastpanel-live.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/ko-fastpanel-qa
+          cd /tmp/ko-fastpanel-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify published SEO, responsive widths, exhaustive form logic
+        shell: bash
+        run: |
+          cd /tmp/ko-fastpanel-qa
+          cat > check.cjs <<'NODE'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs');
+          const {chromium}=require('playwright');
+          const url="https://vpsforwebsite.com/ko/fastpanel-vps-%ED%98%B8%EC%8A%A4%ED%8C%85/?ko10-live=20261020";
+          const ids=["quick-answer","fastpanel-on-vdsina","fastpanel-system-requirements-vs-real-website-sizing","a-practical-ram-budget","fastpanel-vps-fit-checker","what-fastpanel-manages","what-fastpanel-does-not-manage-for-you","fastpanel-vs-no-control-panel","fastpanel-vs-other-control-panels","create-the-first-website","wordpress-on-fastpanel","multiple-websites-and-user-isolation","email-databases-ssl-and-backups","email","databases","ssl","backups","security-and-updates","when-fastpanel-is-not-the-right-choice","technical-references","faq","what-is-fastpanel-vps-hosting","how-much-ram-does-fastpanel-need","is-1-gb-ram-enough-for-fastpanel-and-wordpress","does-vdsina-offer-fastpanel","is-fastpanel-free","does-fastpanel-make-the-vps-managed","can-fastpanel-host-multiple-websites","can-fastpanel-install-wordpress","do-i-still-need-ssh-with-fastpanel","should-backups-stay-on-the-same-vps"];
+          const shots='/tmp/ko-fastpanel-qa/shots';
+          fs.mkdirSync(shots,{recursive:true});
+          async function run(){
+          const browser=await chromium.launch({headless:true});
+          try {
+          for(const width of [390,1280]){
+           const ctx=await browser.newContext({viewport:{width,height:844},deviceScaleFactor:1,isMobile:width===390,hasTouch:width===390});
+           const page=await ctx.newPage(), errors=[];
+           page.on('pageerror',e=>errors.push(e.message));
+           const resp=await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+           assert(resp&&resp.status()===200,'Page HTTP 200');
+           await page.locator('h1').waitFor({state:'visible'});
+           assert.deepEqual(await page.locator('h1').allTextContents(),['FASTPANEL VPS 호스팅']);
+           assert.equal((await page.title()).trim(),'FASTPANEL VPS 호스팅');
+           assert.equal(await page.locator('h2,h3').count(),31);
+           assert.equal(await page.locator('table').count(),1);
+           assert.equal(await page.locator('#fastpanel-fit-checker select').count(),4);
+           assert.equal(await page.locator('#fastpanel-fit-checker option').count(),10);
+           for(const id of ids)assert.equal(await page.locator('[id="'+id+'"]').count(),1,'Heading ID '+id);
+           assert.equal(await page.locator('link[rel="canonical"]').count(),1);
+           const canon=await page.locator('link[rel="canonical"]').getAttribute('href');
+           assert.equal(decodeURIComponent(new URL(canon).pathname),'/ko/fastpanel-vps-호스팅/','Self-canonical on live Korean article');
+           assert.equal(await page.locator('.vps-fastpanel-hero-diagram').count(),1);
+           assert((await page.locator('.vps-fastpanel-hero-diagram').innerText()).includes('FASTPANEL과 전체 작업 부하에 맞는 VPS 사양'));
+           const ar=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(links=>links.map(x=>x.getAttribute('rel')));
+           assert(ar.length>=4,'4 or more partner placements');
+           assert(ar.every(x=>x&&x.includes('nofollow')&&x.includes('sponsored')),'Sponsored rel');
+           assert((await page.locator('body').innerText()).includes('제휴 고지'));
+           assert((await page.locator('#fastpanel-fit-checker').innerText()).includes('주요 웹사이트 부하 유형'));
+           const m=await page.evaluate(()=>{let e=document.documentElement,b=document.body;return {html:e.scrollWidth,body:b.scrollWidth,viewport:e.clientWidth,critical:[...document.querySelectorAll('header,h1,.vps-fastpanel-hero-grid,#fastpanel-fit-checker')].map(el=>{let r=el.getBoundingClientRect();return {tag:el.tagName,left:r.left,right:r.right,width:r.width}})}});
+           console.log('MEASURE',width,JSON.stringify(m));
+           assert(m.html<=width+2&&m.body<=width+2,'Page-wide overflow at '+width);
+           for(const e of m.critical)if(e.width>0)assert(e.left>=-2&&e.right<=width+2,'Critical section overflow: '+JSON.stringify(e));
+           assert.deepEqual(errors,[],'No JS page errors');
+           await page.screenshot({path:shots+'/width-'+width+'.png',fullPage:true});
+           console.log('PASS responsive and SEO',width);
+           if(width===390){
+           let n=0;
+           for(const workload of ['light','cms','dynamic'])for(const sites of ['1','2','6'])for(const mail of ['no','yes'])for(const jobs of ['no','yes']){
+           await page.reload({waitUntil:'domcontentloaded'});
+           await page.locator('#fp-workload').selectOption(workload);
+           await page.locator('#fp-sites').selectOption(sites);
+           await page.locator('#fp-mail').selectOption(mail);
+           await page.locator('#fp-jobs').selectOption(jobs);
+           await page.locator('#fastpanel-fit-checker button[type=submit]').click();
+           let score=0;
+           if(workload==='cms')score+=2;
+           if(workload==='dynamic')score+=4;
+           if(Number(sites)>=2)score+=2;
+           if(Number(sites)>=6)score+=2;
+           if(mail==='yes')score+=2;
+           if(jobs==='yes')score+=2;
+           const expected=score<=1?'RAM 2 GB 안팎에서 시작:':score<=5?'RAM 4 GB 안팎에서 시작:':'RAM 8 GB 안팎에서 시작하거나 서버 구조 재검토:';
+           const result=(await page.locator('#fastpanel-fit-result').innerText()).trim();
+           assert(result.startsWith(expected),'Wrong score '+score+': '+result);
+           n++;
+           console.log('PASS submitted',n,JSON.stringify({workload,sites,mail,jobs,score,expected}));
+           }
+           assert.equal(n,36);
+           await page.locator('#fastpanel-fit-result').screenshot({path:shots+'/form-result.png'});
+           console.log('PASS 36 real form submissions');
+           }
+           await ctx.close();
+          }
+          } finally {await browser.close()}
+          }
+          run().catch(e=>{console.error(e.stack||e);process.exitCode=1});
+          NODE
+          node check.cjs
+      - name: Save live-page screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-fastpanel-production
+          path: /tmp/ko-fastpanel-qa/shots/*.png
+          retention-days: 7
+          if-no-files-found: ignore
