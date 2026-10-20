@@ -1,7 +1,7 @@
 ---
 url: "/es/acerca-de/"
 aliases:
-  - "/es/about/"
+  - "/about/"
 title: "Acerca de VPSforWebsite.com"
 description: "Cómo investiga VPSforWebsite.com el dimensionamiento de VPS, los recursos del servidor, las ventajas y limitaciones del alojamiento, los datos de proveedores y las recomendaciones de afiliación."
 ---
