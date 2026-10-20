@@ -57,8 +57,8 @@
 <small>Un retour arrière rapide, des copies indépendantes et des restaurations testées répondent à des risques différents.</small></div><div class=vps-backup-compact-grid><div class=vps-backup-compact-item><span>01</span><div><strong>Image du fournisseur</strong>
 <small>Retour arrière rapide</small></div></div><div class=vps-backup-compact-item><span>02</span><div><strong>Sauvegarde de la base de données</strong>
 <small>État de l’application</small></div></div><div class=vps-backup-compact-item><span>03</span><div><strong>Copie externe</strong>
-<small>Domaine de défaillance séparé</small></div></div><div class=vps-backup-compact-item><span>04</span><div><strong>Restore drill</strong>
-<small>Prove RTO in practice</small></div></div></div><div class=vps-backup-compact-rule><strong>Le RPO fixe la perte de données tolérée ; le RTO fixe la durée d’arrêt admissible.</strong></div></a></div></div></div></section><div class="container vps-affiliate-disclosure"><p class="mt-3 text-xs leading-relaxed opacity-70">Information commerciale : l’éditeur entretient une relation professionnelle avec VDSina. Les liens partenaires peuvent générer une commission. <a class="underline" href="/fr/a-propos/">Informations éditoriales et commerciales</a>.</p></div><section class="section-sm"><div class="container"><div class="row justify-center"><div class="lg:col-10"><div class="content">
+<small>Domaine de défaillance séparé</small></div></div><div class=vps-backup-compact-item><span>04</span><div><strong>Exercice de restauration</strong>
+<small>Vérifier le RTO en conditions réelles</small></div></div></div><div class=vps-backup-compact-rule><strong>Le RPO fixe la perte de données tolérée ; le RTO fixe la durée d’arrêt admissible.</strong></div></a></div></div></div></section><div class="container vps-affiliate-disclosure"><p class="mt-3 text-xs leading-relaxed opacity-70">Information commerciale : l’éditeur entretient une relation professionnelle avec VDSina. Les liens partenaires peuvent générer une commission. <a class="underline" href="/fr/a-propos/">Informations éditoriales et commerciales</a>.</p></div><section class="section-sm"><div class="container"><div class="row justify-center"><div class="lg:col-10"><div class="content">
 <p>Une stratégie de sauvegarde VPS ne consiste pas seulement à activer un instantané quotidien. Un véritable plan de reprise précise <strong>la quantité de données que l’on peut perdre (RPO), le délai maximal de rétablissement (RTO), les données à préserver, la localisation de copies indépendantes, leur durée de conservation et la vérification des restaurations</strong>.</p>
 <p>Une architecture robuste associe généralement une reprise rapide chez l’hébergeur, une sauvegarde cohérente des bases de données et une copie chiffrée conservée dans un autre domaine de défaillance. Elle doit aussi désigner un responsable de la surveillance et des incidents. Voir <a href="/fr/vps-infogere-ou-non-infogere/">VPS infogéré ou non infogéré</a>.</p>
 <p>Pour choisir le serveur plutôt que la méthode de reprise, consulter <a href="/fr/">VPS pour site web</a>.</p>
@@ -66,6 +66,8 @@
 
 <h2 id="quick-answer">En bref</h2>
 <p>Les mécanismes de sauvegarde ne sont pas interchangeables. Chaque couche protège contre un type de perte ou réduit un délai de reprise particulier.</p>
+<ul class="vps-localized-details"><li>Une image ou un instantané du fournisseur pour revenir rapidement à un état antérieur</li><li>Une sauvegarde chiffrée et indépendante des fichiers, paramètres et bases dans un autre domaine de défaillance</li><li>Plusieurs points de restauration conservés</li><li>Une fréquence de sauvegarde des bases adaptée à la perte de données admissible</li><li>Des tests de restauration réguliers</li></ul>
+
 <div class="vps-table-scroll" role="region" aria-label="Comparatif des couches de sauvegarde" tabindex="0"><table><thead><tr><th>Couche</th><th>Fonction principale</th><th>Limite à connaître</th></tr></thead><tbody>
 <tr><td><strong>Image ou instantané du fournisseur</strong></td><td>Réinstallation ou retour rapide du serveur entier</td><td>Ne garantit pas l’indépendance vis-à-vis du compte et du fournisseur</td></tr>
 <tr><td><strong>Sauvegarde cohérente de la base de données</strong></td><td>Restitue les données et les transactions de l’application</td><td>Ne reconstruit pas à elle seule le système</td></tr>
@@ -92,6 +94,8 @@
 
 <h2 id="start-with-rpo-and-rto">Commencer par le RPO et le RTO</h2>
 <p>Définissez ces deux objectifs avant de sélectionner un logiciel de sauvegarde ou un fournisseur de stockage.</p>
+<ul class="vps-localized-details"><li>RPO de 24 heures : une copie quotidienne réussie peut suffire</li><li>RPO de 4 heures : une sauvegarde quotidienne ne suffit pas</li><li>RPO de 1 heure : protéger l’état de l’application et de la base au moins toutes les heures</li><li>RPO de quelques minutes : de simples sauvegardes planifiées peuvent être insuffisantes</li><li>Exemple : une base est copiée toutes les heures</li><li>La perte des dernières données est limitée à moins d’une heure</li><li>Mais la création du VPS, la récupération des archives, l’importation et la validation prennent six heures : le RTO n’est pas atteint</li></ul>
+
 <h3 id="recovery-point-objective--rpo">RPO — objectif de point de reprise</h3>
 <p>Le RPO répond à la question : <strong>combien de données récentes peut-on accepter de perdre ?</strong> Un RPO de 24 heures peut autoriser une sauvegarde quotidienne fiable ; un RPO de 4 heures demande des points plus fréquents ; une heure impose une protection des modifications au moins aussi fréquente. Pour un objectif de quelques minutes, des sauvegardes périodiques simples peuvent être insuffisantes.</p>
 <h3 id="recovery-time-objective--rto">RTO — objectif de durée de reprise</h3>
@@ -100,14 +104,16 @@
 <h2 id="what-should-be-backed-up">Que faut-il sauvegarder ?</h2>
 <p>Séparez ce qui peut être reconstruit depuis un dépôt fiable des données et paramètres uniques qui seraient perdus sans sauvegarde.</p>
 <h3 id="rebuildable">Éléments reconstruisibles</h3>
-<ul><li>Système d’exploitation de base et paquets réinstallables ;</li><li>code source déjà conservé dans Git ;</li><li>images de conteneurs reproductibles ;</li><li>logiciels du serveur web provenant de sources connues.</li></ul>
+<ul><li>Système d’exploitation de base ;</li><li>Paquets réinstallables ;</li><li>code source déjà conservé dans Git ;</li><li>images de conteneurs reproductibles ;</li><li>logiciels du serveur web provenant de sources connues.</li></ul>
 <h3 id="stateful--difficult-to-recreate">Données persistantes ou difficiles à recréer</h3>
-<ul><li>Bases de données et informations transactionnelles ;</li><li>médias et fichiers envoyés par les utilisateurs ;</li><li>boîtes mail hébergées sur place ;</li><li>fichiers de configuration, variables d’environnement et secrets indispensables ;</li><li>certificats et clés privées lorsqu’ils ne sont pas aisément remplaçables ;</li><li>données générées par les applications, réglages du panneau et tâches planifiées ;</li><li>zones DNS locales et scripts personnalisés non conservés ailleurs.</li></ul>
+<ul><li>Bases de données et informations transactionnelles ;</li><li>médias et fichiers envoyés par les utilisateurs ;</li><li>boîtes mail hébergées sur place ;</li><li>Fichiers de configuration ;</li><li>Variables d’environnement et secrets indispensables ;</li><li>certificats et clés privées lorsqu’ils ne sont pas aisément remplaçables ;</li><li>Données générées par les applications ;</li><li>Réglages du panneau et du site ;</li><li>Configuration des tâches planifiées et processus de fond ;</li><li>Zones DNS hébergées sur le VPS ;</li><li>Scripts personnalisés non conservés ailleurs.</li></ul>
 <p>Évitez de consacrer tout l’espace aux caches et fichiers temporaires tout en oubliant la base ou les secrets nécessaires au redémarrage.</p>
 
 <h2 id="snapshot-image-file-backup-and-replication-are-different">Instantanés, images, fichiers et réplication : quatre usages distincts</h2>
 <h3 id="provider-snapshot--server-image">Instantané ou image du fournisseur</h3>
 <p>Utile pour revenir rapidement avant une mise à jour risquée, reconstruire une VM complète ou créer un clone. Limites : même domaine de défaillance que le fournisseur, restauration sélective parfois difficile, cohérence des bases non garantie sans précautions, historique insuffisant si l’on ne conserve qu’une image.</p>
+<ul class="vps-localized-details"><li>Instantané : retour rapide après une mise à jour risquée</li><li>Image : récupération de l’ensemble du serveur</li><li>Image : clonage ou recréation de la machine virtuelle</li><li>Limite : copie éventuellement conservée dans le même compte ou chez le même fournisseur</li><li>Limite : restauration ciblée par fichier ou site parfois impossible</li><li>Limite : cohérence des données applicatives et des bases à vérifier</li><li>Limite : une seule image récente ne donne quasiment aucun historique</li><li>Sauvegarde de fichiers : restauration des médias et téléversements</li><li>Sauvegarde de fichiers : restauration des configurations</li><li>Sauvegarde de fichiers : restauration de certaines données applicatives</li><li>Sauvegarde de fichiers : restauration granulaire</li><li>Base de données cohérente : export logique</li><li>Base de données cohérente : outil natif du moteur</li><li>Base de données cohérente : instantané ou procédure coordonnée avec l’application</li></ul>
+
 <h3 id="file-level-backup">Sauvegarde au niveau des fichiers</h3>
 <p>Permet de restaurer des fichiers précis, des médias, la configuration ou les données choisies. Des outils comme restic et Borg prennent en charge les versions et le chiffrement vers un dépôt distant ; leur utilisation doit être adaptée à votre système.</p>
 <h3 id="database-backup">Sauvegarde de la base de données</h3>
@@ -117,56 +123,80 @@
 
 <h2 id="a-practical-3-2-1-model-for-vps">Appliquer la règle 3-2-1 à un VPS</h2>
 <p>Le modèle 3-2-1 vise <strong>trois copies des données essentielles, deux supports ou modes de défaillance distincts et une copie externe</strong>. En pratique : données actives sur le VPS, image de reprise du fournisseur et copie chiffrée des fichiers et bases dans un compte ou service indépendant.</p>
+<ul class="vps-localized-details"><li>Trois copies des données essentielles</li><li>Deux supports ou modes de défaillance différents</li><li>Une copie hors site, indépendante du principal domaine de défaillance</li><li>Copie de production sur le VPS</li><li>Image du fournisseur destinée au retour arrière rapide</li><li>Copie chiffrée des fichiers et bases vers un stockage externe indépendant</li><li>Domaine de défaillance : système de fichiers du VPS</li><li>Domaine de défaillance : stockage des sauvegardes du fournisseur</li><li>Domaine de défaillance : compte du fournisseur</li><li>Domaine de défaillance : compte ou prestataire distinct de stockage objet</li><li>Domaine de défaillance : copie hors ligne ou immuable</li></ul>
+
 <p>Analysez les domaines de défaillance : disque du VPS, compte chez l’hébergeur, stockage de sauvegarde du fournisseur, compte d’un autre opérateur et copie hors ligne ou immuable. Si un intrus disposant de l’accès root peut supprimer toutes les copies avec les mêmes identifiants, l’indépendance reste insuffisante.</p>
 
 <h2 id="database-consistent-backups">Garantir des sauvegardes cohérentes des bases</h2>
 <p>Une base change pendant son utilisation. Pour WordPress avec MySQL ou MariaDB, utilisez des exports logiques, sauvegardes natives ou instantanés coordonnés. Pour PostgreSQL, privilégiez les mécanismes pris en charge par PostgreSQL et, si le RPO le demande, la restauration à un instant donné (PITR).</p>
+<ul class="vps-localized-details"><li>Exports logiques adaptés au moteur</li><li>Outils de sauvegarde natifs de la base</li><li>Instantanés coordonnés</li><li>Logiciel qui gère explicitement la cohérence de la base</li><li>Vérifier que l’export se termine correctement</li><li>Vérifier que le fichier n’est pas vide</li><li>Vérifier qu’une restauration ou importation réussit</li><li>Contrôler des tables et enregistrements représentatifs</li><li>Tester la connexion de l’application et les opérations essentielles de lecture et d’écriture</li></ul>
+
 <p>Contrôlez la réussite de l’export, la présence des fichiers, l’importation réelle, l’existence de tables et d’enregistrements représentatifs, puis la capacité de l’application restaurée à se connecter et effectuer des opérations essentielles. Voir <a href="/fr/vps-pour-wordpress/">VPS pour WordPress</a>.</p>
 
 <h2 id="transactional-sites-need-a-different-rpo">Les sites transactionnels exigent un RPO adapté</h2>
 <p>Une vitrine peut éventuellement accepter les données de la veille. Une boutique recevant des commandes toute la journée ne le peut pas toujours. Protégez commandes, paiements, stocks, comptes, abonnements, formulaires et fichiers selon la perte admissible, et non selon la commodité d’un créneau nocturne.</p>
+<ul class="vps-localized-details"><li>Commandes</li><li>Paiements</li><li>Stock</li><li>Comptes clients</li><li>Abonnements</li><li>Envois de formulaires</li><li>Fichiers déposés par les utilisateurs</li></ul>
+
 <p>Pour la charge propre au commerce électronique, consulter <a href="/fr/vps-pour-woocommerce/">VPS pour WooCommerce</a>.</p>
 
 <h2 id="backup-frequency-and-retention">Fréquence des sauvegardes et durée de conservation</h2>
 <p>L’intervalle de protection des données importantes ne doit pas dépasser leur RPO. On peut sauvegarder la base très fréquemment, les fichiers déposés à l’événement ou à intervalles courts, et la configuration du système après des modifications majeures.</p>
+<ul class="vps-localized-details"><li>Base de données : sauvegardes fréquentes</li><li>Téléversements : copies fréquentes ou déclenchées par événement</li><li>Système et configuration : après changements importants, puis régulièrement</li><li>Image complète du fournisseur : moins fréquente, utile avant les opérations risquées</li><li>Conserver les points horaires récents</li><li>Conserver plusieurs copies quotidiennes</li><li>Conserver plusieurs copies hebdomadaires</li><li>Conserver des copies mensuelles sélectionnées</li><li>Adapter la conservation aux besoins de reprise</li><li>Prendre en compte le coût du stockage</li><li>Prendre en compte la fréquence des changements</li><li>Tenir compte des obligations légales ou de conformité applicables</li><li>Prévoir qu’une compromission ou corruption peut passer longtemps inaperçue</li></ul>
+
 <p>Conservez plusieurs points historiques — par exemple des versions horaires récentes, des copies quotidiennes et hebdomadaires et certaines archives mensuelles — en fonction des volumes, du coût, des exigences métier et des délais possibles de découverte d’une corruption. Ne conservez pas uniquement la dernière sauvegarde.</p>
 
 <h2 id="keep-an-independent-off-server-destination">Conserver une destination indépendante hors du serveur</h2>
 <p>Une copie sur le même disque ne protège ni contre la suppression du VPS, ni contre un compte compromis, une panne de stockage ou un logiciel malveillant. Transférez les archives vers un stockage objet externe, un service indépendant, un serveur de sauvegarde distinct ou un support hors ligne, selon les risques.</p>
+<ul class="vps-localized-details"><li>Perte du disque ou du système de fichiers</li><li>Suppression du serveur</li><li>Compromission de l’accès root</li><li>Rançongiciel</li><li>Erreur de gestion du compte</li><li>Perte de la machine virtuelle côté fournisseur</li><li>Stockage objet indépendant</li><li>Autre prestataire de sauvegarde</li><li>Autre VPS dédié uniquement aux sauvegardes</li><li>Stockage hors ligne contrôlé</li></ul>
+
 <p>Privilégiez la séparation des comptes et des identifiants d’administration ; une destination externe dans le même compte n’est pas toujours un domaine de défaillance réellement indépendant.</p>
 
 <h2 id="encrypt-backups--and-protect-the-recovery-key">Chiffrer les sauvegardes et protéger la clé de reprise</h2>
 <p>Chiffrez les données sensibles pendant le transfert et au repos lorsque nécessaire. La clé ou phrase de passe ne doit exister ni seulement sur le VPS, ni uniquement dans le compte susceptible d’être indisponible, ni dans l’archive qu’elle est censée déchiffrer. Incluez l’accès aux clés dans les tests de restauration.</p>
+<ul class="vps-localized-details"><li>Ne pas garder la seule clé sur le VPS</li><li>Ne pas garder l’unique clé dans le même coffre ou compte susceptible d’être indisponible</li><li>Ne pas stocker la seule clé à l’intérieur de l’archive chiffrée</li></ul>
+
 
 <h2 id="separate-backup-credentials-and-deletion-rights">Séparer les identifiants et les droits de suppression</h2>
 <p>La compromission du serveur de production ne doit pas autoriser la destruction de toutes les sauvegardes. Limitez les droits des identifiants utilisés pour déposer les copies, séparez les accès administrateur, et utilisez si possible une conservation verrouillée, l’immutabilité ou une copie isolée du réseau.</p>
+<ul class="vps-localized-details"><li>Identifiants de sauvegarde avec droits limités</li><li>Droit d’écriture sans suppression globale si la plateforme le permet</li><li>Identifiants administratifs distincts</li><li>Verrouillage de conservation ou immuabilité adaptés au besoin</li><li>Copie hors ligne ou isolée pour les données critiques</li></ul>
+
 <p>Ces mesures complètent <a href="/fr/checklist-securite-vps/">la checklist de sécurité VPS</a>.</p>
 
 <h2 id="monitor-backup-jobs">Surveiller les tâches de sauvegarde</h2>
 <p>Une tâche planifiée peut échouer silencieusement. Surveillez la date de la dernière réussite, les tâches partielles, l’accès au dépôt, l’expiration des identifiants, l’espace libre local et distant, les échecs d’export de base, les durées inhabituelles, les archives anormalement petites et les opérations de rétention.</p>
+<ul class="vps-localized-details"><li>Date de la dernière sauvegarde réussie</li><li>Échecs et exécutions partielles</li><li>Disponibilité du dépôt ou stockage de sauvegarde</li><li>Expiration des identifiants</li><li>Espace disque disponible avant une préparation locale</li><li>Quota du stockage externe</li><li>Erreurs d’export de la base</li><li>Variations de durée des sauvegardes</li><li>Archives anormalement petites</li><li>Échecs de purge ou de conservation des versions</li></ul>
+
 <p>Un statut « tâche exécutée » ne prouve pas qu’une restauration réussira. Voir <a href="/fr/supervision-vps/">Supervision VPS</a>.</p>
 
 <h2 id="test-restores-and-measure-real-rto">Tester les restaurations et mesurer le RTO réel</h2>
 <p>Une sauvegarde n’est crédible que lorsqu’elle permet une reprise. Réalisez un exercice sur un environnement propre, isolé de la production :</p>
-<ol><li>Provisionner un nouveau VPS de test ;</li><li>retrouver le point de sauvegarde choisi et les clés ;</li><li>restaurer fichiers, paramètres et base de données ;</li><li>réinstaller les secrets et certificats nécessaires ;</li><li>configurer services et réseau ;</li><li>démarrer l’application ;</li><li>tester les pages, comptes, transactions et processus en arrière-plan ;</li><li>mesurer et consigner le délai complet.</li></ol>
+<ol><li>Provisionner un nouveau VPS de test ;</li><li>retrouver le point de sauvegarde choisi ;</li><li>retrouver les identifiants et clés de déchiffrement ;</li><li>restaurer les fichiers et paramètres ;</li><li>restaurer ou importer la base de données ;</li><li>réinstaller les secrets et certificats nécessaires ;</li><li>configurer services et réseau ;</li><li>démarrer l’application ;</li><li>tester les pages, comptes et transactions ;</li><li>tester les processus de fond et intégrations ;</li><li>mesurer et consigner le délai complet.</li></ol>
 <p>Si l’objectif de rétablissement est de quatre heures mais que l’exercice en demande huit, la méthode ne respecte pas le besoin, même si tous les fichiers sont récupérés.</p>
 
 <h2 id="restore-granularity-matters">Prévoir plusieurs niveaux de restauration</h2>
 <h3 id="single-filesite-recovery">Récupération d’un fichier ou d’un seul site</h3>
 <p>Indispensable lorsqu’un média est supprimé, une configuration est cassée, un site est compromis ou une table nécessite une récupération spécifique.</p>
+<ul class="vps-localized-details"><li>Restauration ciblée d’un fichier supprimé</li><li>Restauration ciblée d’une configuration défectueuse</li><li>Restauration ciblée d’un site compromis</li><li>Restauration ciblée d’une base ou table endommagée</li><li>Restauration globale d’un VPS supprimé ou hors service</li><li>Restauration globale après une défaillance du système de fichiers</li><li>Restauration globale après une compromission grave</li><li>Restauration globale lors du remplacement du serveur ou du fournisseur</li></ul>
+
 <h3 id="full-server-recovery">Reprise du serveur entier</h3>
 <p>Nécessaire en cas de suppression du VPS, défaillance du système de fichiers, compromission majeure ou changement forcé de prestataire. Une image complète seule rend parfois la restauration d’un fichier pénible ; des fichiers isolés seuls peuvent ralentir le redéploiement complet.</p>
 
 <h2 id="multiple-websites-need-site-level-restore">Plusieurs sites exigent une restauration indépendante</h2>
 <p>Sur un VPS hébergeant plusieurs sites, réparer le site A ne doit pas nécessairement remettre B, C et D à l’état de la veille. Séparez si possible dossiers, bases, utilisateurs et points de sauvegarde. Conservez la possibilité d’une reprise globale lorsque la VM entière est touchée.</p>
+<ul class="vps-localized-details"><li>Une seule racine de documents web</li><li>Une seule base de données</li><li>Un seul compte ou utilisateur de panneau</li><li>Un seul ensemble de médias déposés</li><li>Le VPS complet seulement si nécessaire</li></ul>
+
 <p>Consulter <a href="/fr/vps-pour-plusieurs-sites/">VPS pour plusieurs sites</a>.</p>
 
 <h2 id="backups-can-cause-outages-too">Les sauvegardes peuvent elles-mêmes provoquer des incidents</h2>
 <p>Exports SQL, compression, lecture disque, fichiers temporaires et transfert réseau consomment CPU, E/S, capacité disque et bande passante. Ne préparez pas une archive locale de 30 Go sur un disque n’ayant que 10 Go libres.</p>
+<ul class="vps-localized-details"><li>Charge CPU due aux exports SQL</li><li>Charge CPU de la compression</li><li>Entrées/sorties de lecture sur le disque</li><li>Espace temporaire occupé par la sauvegarde</li><li>Bande passante pour transférer vers le stockage externe</li><li>Éviction des caches</li><li>Chevauchement avec les imports, analyses et pics de trafic</li><li>Transfert direct des archives hors serveur si possible</li><li>Surveillance de l’espace disque temporaire</li><li>Programmation des opérations lourdes hors des heures de pointe</li><li>Limitation du débit quand l’outil le permet</li><li>Mesure de la durée des sauvegardes</li></ul>
+
 <p>Lorsque possible, envoyez le flux directement vers le stockage externe, surveillez l’espace temporaire, limitez le débit et planifiez les opérations les plus lourdes hors des pics de charge.</p>
 
 <h2 id="how-vdsina-backups-fit-the-strategy">Intégrer les sauvegardes VDSina à la stratégie</h2>
 <p>La documentation publique de VDSina décrit des sauvegardes manuelles et programmées, une restauration vers le serveur d’origine, la création d’une nouvelle VM depuis une sauvegarde, le clonage du serveur et le téléchargement d’une image.</p>
+<ul class="vps-localized-details"><li>Copies manuelles de sauvegarde du serveur</li><li>Sauvegardes programmées</li><li>Restauration vers le serveur d’origine</li><li>Création d’un nouveau serveur à partir de la sauvegarde</li><li>Clonage de serveur</li><li>Téléchargement d’une image de sauvegarde</li><li>Utiliser l’image fournisseur comme une couche, et non toute la stratégie</li><li>Tester l’usage de l’image téléchargée dans l’environnement de reprise choisi</li><li>Ne pas présumer qu’elle est lisible sur tous les hyperviseurs sans conversion</li><li>Conserver des sauvegardes de fichiers, bases et applications pour les restaurations ciblées</li><li>Conserver une copie indépendante quand le risque le justifie</li></ul>
+
 <p>Le fichier téléchargeable peut porter un nom de forme <code>vXXX.backup.hosted-by-vdsina.com.img.gz</code>. Il constitue une couche de portabilité utile ; vérifiez néanmoins sa compatibilité avec l’environnement de restauration choisi, les contraintes de stockage et les éventuels ajustements réseau.</p>
 <p>Les conditions du fournisseur laissent au client la responsabilité de ses sauvegardes et recommandent des vérifications régulières. Une image VDSina ne dispense ni d’une copie indépendante, ni d’un export cohérent de base, ni des tests réels.</p>
 <p><a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" rel="sponsored nofollow noopener" target="_blank">Consulter les options VPS et de sauvegarde disponibles</a></p>
@@ -174,25 +204,11 @@
 
 <h2 id="recovery-runbook">Documenter une procédure de reprise</h2>
 <p>Rédigez une procédure accessible même si le VPS est hors ligne : destinations des archives, règles de nommage, versions conservées, identifiants, emplacement des clés, nature des fichiers et bases, provisionnement, ordre de restauration, versions des logiciels, DNS, réseau, connexions externes, critères de validation et responsable de la décision.</p>
+<ul class="vps-localized-details"><li>Emplacements des sauvegardes</li><li>Nommage des points de reprise et durée de conservation</li><li>Identifiants du dépôt</li><li>Lieu de récupération des clés de chiffrement</li><li>Inventaire des fichiers, bases et configurations à reprendre</li><li>Étapes de création d’un serveur de remplacement</li><li>Versions logicielles et environnements d’exécution</li><li>Ordre de restauration</li><li>Étapes réseau et DNS</li><li>Intégrations externes et webhooks</li><li>Tests d’acceptation après reprise</li><li>Responsable de la décision de restauration ou de retour arrière</li></ul>
+
 
 <h2 id="vps-backup-checklist">Checklist des sauvegardes VPS</h2>
-<div class="vps-table-scroll" role="region" tabindex="0" aria-label="Checklist de sauvegarde"><table><thead><tr><th>Contrôle</th><th>Critère de validation</th></tr></thead><tbody>
-<tr><td>RPO et RTO</td><td>Perte maximale et durée d’arrêt admissibles définies</td></tr>
-<tr><td>Inventaire</td><td>Base, médias, paramètres et secrets identifiés</td></tr>
-<tr><td>Image du fournisseur</td><td>Fréquence et méthode de reprise connues</td></tr>
-<tr><td>Base de données</td><td>Export cohérent et restauration testée</td></tr>
-<tr><td>Destination externe</td><td>Copie hors du domaine principal de défaillance</td></tr>
-<tr><td>Identifiants</td><td>Droits limités et séparation des comptes</td></tr>
-<tr><td>Chiffrement et clés</td><td>Archives protégées, clé récupérable sans la VM</td></tr>
-<tr><td>Rétention</td><td>Plusieurs points historiques disponibles</td></tr>
-<tr><td>Surveillance</td><td>Échecs, copies incomplètes et retard détectés</td></tr>
-<tr><td>Disque et E/S</td><td>La sauvegarde ne sature pas la production</td></tr>
-<tr><td>Granularité</td><td>Un fichier, un site ou une base peuvent être restaurés</td></tr>
-<tr><td>Reprise complète</td><td>Procédure de reconstruction entière disponible</td></tr>
-<tr><td>Essai isolé</td><td>Dernière restauration réussie documentée</td></tr>
-<tr><td>RTO mesuré</td><td>Durée réelle inférieure à l’objectif fixé</td></tr>
-<tr><td>Responsable</td><td>Personne ou équipe chargée des tests et incidents</td></tr>
-</tbody></table></div>
+<div class="vps-table-scroll" role="region" tabindex="0" aria-label="Checklist de sauvegarde"><table><thead><tr><th>Contrôle</th><th>Critère de validation</th></tr></thead><tbody><tr><td>RPO</td><td>Fenêtre de perte maximale de données admissible définie</td></tr><tr><td>RTO</td><td>Durée maximale d’indisponibilité définie</td></tr><tr><td>Inventaire</td><td>Bases, téléversements, configurations, secrets et autres données classés</td></tr><tr><td>Reprise chez le fournisseur</td><td>Fréquence des images et procédure de reprise connues</td></tr><tr><td>Base de données</td><td>Méthode de sauvegarde cohérente et restaurable selon le moteur</td></tr><tr><td>Copie externe</td><td>Copie indépendante, hors du domaine de défaillance du VPS</td></tr><tr><td>Identifiants</td><td>Compte de sauvegarde limité et séparé de la production</td></tr><tr><td>Chiffrement</td><td>Données sensibles protégées lorsque nécessaire</td></tr><tr><td>Récupération des clés</td><td>Clé ou mot de passe disponible hors du VPS défaillant</td></tr><tr><td>Conservation</td><td>Plusieurs points historiques disponibles</td></tr><tr><td>Surveillance</td><td>Échecs, copies partielles et archives périmées détectés</td></tr><tr><td>Disque et E/S</td><td>La sauvegarde ne sature pas silencieusement la production</td></tr><tr><td>Granularité</td><td>Restauration de fichiers, sites et bases selon le besoin</td></tr><tr><td>Reprise complète</td><td>Procédure de reconstruction du VPS et du service connue</td></tr><tr><td>Test de restauration</td><td>Restauration isolée réalisée avec succès</td></tr><tr><td>RTO mesuré</td><td>Durée réellement constatée et inférieure à l’objectif</td></tr><tr><td>Procédure écrite</td><td>Ordre, identifiants, DNS et tests d’acceptation documentés</td></tr><tr><td>Responsable</td><td>Personne ou équipe désignée pour les sauvegardes et reprises</td></tr></tbody></table></div>
 
 <h2 id="technical-references">Références techniques</h2>
 <ul><li><a href="https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final">NIST SP 800-34 — continuité et définitions RPO/RTO</a></li>
