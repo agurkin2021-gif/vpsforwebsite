@@ -38,12 +38,28 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - At **390 px and 1280 px**, inspected hero, all seven feature/diagram sections, pricing, methodology, FAQ and final CTA. No page-width overflow. Korean word wrapping and Hangul system-font fallbacks are scoped to ko. Shorter pricing labels and nonbreaking monthly prices prevent narrow-column fragmentation. FAQ line-height/width explicitly accommodates Hangul.
 - Language switching EN → KO → EN and mobile navigation tested. English/Spanish homepage visible word sequences are unchanged, excluding the new KO language option.
 
+
+## Page 2: VPS sizing — `웹사이트용 VPS 사양`
+
+- Query/Title/H1: `웹사이트용 VPS 사양`; slug `/ko/웹사이트용-vps-사양/`. This owns resource selection and sizing, separately from the homepage hosting-purchase intent. No search-volume claim.
+- Full translation preserves all 29 headings (explicit original anchors), four tables, seven FAQs, two interactive tools, worked RAM/CPU/storage/transfer examples, caveats and nine rendered sponsored partner links.
+- RAM terminology: 여유 용량, 동시 실행 워커, 데이터베이스 작업 집합. The UI explains that RAM alone does not determine CPU/I/O suitability; no visitor-capacity guarantee.
+- All 729 diagnostic combinations match the English decision logic. Nine RAM boundaries and the 450+500+6×120+300 MB / 25% example pass (2.4 GB estimate, 4 GB starting tier).
+- Clarified the transfer formula's first term as cacheable requested bytes so dynamic responses are not counted twice. Preserved the original example values. VDSina prices remain USD and were checked with the homepage on 2026-10-19.
+- Four table row counts, form IDs/values/constraints, section anchors, affiliate URLs/rel attributes and English rendered text match the source. Rendered Korean has no untranslated prose; retained Latin tokens are technical names/specs.
+- The first supporting-page pass exposed a shared English disclosure and `/ko/about/` fallback; localized the disclosure and resolved it to the actual English About page until a Korean About page exists.
+- Hugo identifies translations through matching content paths. Do not add an explicit translationKey on only one side: this separates it from the English page's implicit key. Korean slug differs; source filename stays the same.
+- Production: exact Title/H1, self canonical, en/ko/x-default pointing to corresponding articles, Korean WebPage/BreadcrumbList, valid internal links/anchors. Homepage/menu links automatically resolve to the completed Korean article.
+- Production and project-path preview builds pass with Hugo 0.158.0. At 390/1280 px: no page overflow, readable hero/diagrams/forms/FAQ, equivalent-page language switching. The five-column plan table has an accessible horizontally scrollable region and a mobile instruction; its purchase links remain readable. Scope is Korean only.
+- Homepage publication verified: source `37b43069c4156856731cce5fc759ab83ca932c1a`; generated `efc4b33376a3e6a0da20f5f57c2087631f3ebd71`; both GitHub Actions and Cloudflare Workers Builds succeeded; live `/ko/` HTTP 200 with correct Title/H1/canonical/hreflang and deployment sitemap entry.
+- Sizing source/QA complete; its own source commit, generated output and live publication must be recorded after deployment.
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
 
 1. Homepage `/ko/` — implementation and local checks complete; publication verification recorded in the project context.
-2. VPS sizing for website — next.
+2. VPS sizing for website — implementation and local QA complete; publication gate pending.
 3. Website migration to VPS.
 4. Managed vs Unmanaged VPS.
 5. VPS for WordPress.

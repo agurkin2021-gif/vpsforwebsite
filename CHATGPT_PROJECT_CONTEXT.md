@@ -13,8 +13,10 @@
 - Hreflang duplication from the upstream SEO partial is removed; shared head emits one set and English x-default. Preview retains noindex and omits canonical/hreflang/GA. Homepage Markdown links resolve under the preview base path.
 - Detailed evidence, audit exceptions and the remaining page queue: `research/korean-localization-2026-10-19.md`. No Korean search-volume claims; no invented Korean server locations, Korean-language provider support, KRW billing or local payment options.
 - Deployment uses the current AGENTS.md GitHub main → generated Cloudflare static → connected Worker contract. The old Spanish preview-only/no-production instructions are historical for this new authorized language addition. No manual Worker or generated-content editing.
-- Publication: source is being submitted through GitHub; Action/static output and live `/ko/` still require verification before claiming publication.
-- Next page after the homepage publication gate: VPS sizing for website. The remaining Korean cluster is not yet translated.
+- Homepage published: source `37b43069c4156856731cce5fc759ab83ca932c1a`, generated `efc4b33376a3e6a0da20f5f57c2087631f3ebd71`; both Actions and Cloudflare Workers Builds succeeded. Live `/ko/` returns HTTP 200 with correct SEO and sitemap inclusion.
+- Second source pass complete: `웹사이트용 VPS 사양`, `/ko/웹사이트용-vps-사양/`. All 29 headings, four tables, seven FAQs and two tools translated. All 729 diagnostic inputs and nine RAM boundaries preserve the original behavior; worked example returns 2.4 GB and a 4 GB tier. Production/preview builds and responsive/SEO/link checks pass. Sizing publication pending.
+- Shared article disclosure now localized with a working English About fallback. Wide Korean plan comparison table supports horizontal scrolling on mobile; English content and behavior unchanged.
+- Next page after sizing publication: Website migration to VPS. The remaining Korean cluster is not yet translated.
 
 ## Project identity
 

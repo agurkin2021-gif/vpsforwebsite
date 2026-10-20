@@ -249,3 +249,30 @@ ui_choose_a_vps_configuration: Choose a VPS configuration
 ui_call_to_action: call to action
 ui_select_language: Select language
 publisher_description: Technical editorial project focused on evidence-based VPS hosting, workload sizing, migration, monitoring and operational decisions.
+
+sizing_hero_options: "Check VPS options"
+
+sizing_hero_guidance: "See sizing guidance"
+
+sizing_hero_aria: "Check current VPS configurations for website sizing"
+
+sizing_hero_title: "Size from workload, not monthly visits"
+
+sizing_hero_subtitle: "CPU, RAM, storage and dynamic concurrency must be evaluated together."
+
+sizing_hero_cpu: "Dynamic work + concurrency"
+
+sizing_hero_ram: "Workers + DB + services"
+
+sizing_hero_storage: "Storage"
+
+sizing_hero_storage_detail: "Data growth + I/O"
+
+sizing_hero_headroom: "Headroom"
+
+sizing_hero_headroom_detail: "Peaks + jobs + maintenance"
+
+sizing_hero_rule: "Choose the smallest VPS that covers measured workload with safe headroom."
+
+guide_affiliate_disclosure: "Disclosure: the editor has a professional relationship with VDSina. Partner links may generate commission."
+guide_editorial_disclosure: "Editorial and commercial disclosure"

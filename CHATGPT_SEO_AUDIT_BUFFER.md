@@ -13,7 +13,9 @@
 - Local production checks: exact single H1/Title, one canonical, one en/es/ko/x-default set, Korean JSON-LD, valid links/anchors and all 16 sponsored partner destinations. Preview checks preserve noindex/no canonical/no hreflang/no GA and project-path link resolution.
 - Responsive review: 390/1280 px, no page-width overflow; Korean line wrapping, pricing labels and FAQ typography adjusted. English/Spanish homepage text preserved.
 - `scripts/translation_audit.py` reports only expected price-unit localization and Korean-particle word-boundary mismatches; separate numeric/structural checks confirm unchanged values, section/list counts, images and affiliate URLs. See `research/korean-localization-2026-10-19.md`.
-- Homepage source ready; publication verification pending. Supporting Korean pages remain queued individually, starting with VPS sizing. Do not claim the full Korean site is complete.
+- Homepage publication confirmed: source `37b4306`, generated `efc4b33`, Actions and Cloudflare Workers Builds successful; live `/ko/` HTTP 200, exact SEO and sitemap inclusion.
+- Second owner: `웹사이트용 VPS 사양` → `/ko/웹사이트용-vps-사양/`. Full 29-heading article, four tables, seven FAQs, both tools and hero localized. 729 diagnostic combinations, nine RAM threshold cases and worked example pass. en/ko/x-default point to equivalent pages; homepage/menu link to the new Korean owner. Mobile wide-table scrolling preserves legibility. Sizing publication pending.
+- Supporting pages remain queued individually, next Website migration to VPS. Do not claim the full Korean site is complete.
 
 ## 1. Operating rules
 
