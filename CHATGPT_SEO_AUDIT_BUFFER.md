@@ -4,6 +4,12 @@
 > Read this file together with `CHATGPT_PROJECT_CONTEXT.md` before SEO/content work.
 > Updated: 2026-10-12.
 
+### 2026-10-20 — Korean FASTPANEL page 10 published, frozen and QA-closed
+
+- Primary Korean Title=H1 `FASTPANEL VPS 호스팅` and slug `/ko/fastpanel-vps-호스팅/` verified on live Cloudflare (English FASTPANEL owner retained separately).
+- PR #6 merged `e7b5b485`; static deployment `f863a20e` Ready; Hugo CI `39469292860` and static preparation `39469292861` Success; public URL loaded in Opera.
+- Production browser run `39469627684`: HTTP 200, matching single Title/H1, original 31 unique English anchor IDs, 4 select fields/10 option values, one table, affiliate attributes and canonical, no JS exceptions, 390/1280 document widths with no overflow and **36/36 interactive decisions correct**. Korean branded intent remains separate from generic VPS panel selector and managed service articles; no other-language copy altered. Core queue now 10/15, next #11.
+
 ### 2026-10-20 — Korean page 10: branded FASTPANEL VPS hosting (work branch; publication gated)
 
 - Exact commercial query / Title / H1: `FASTPANEL VPS 호스팅`; slug `/ko/fastpanel-vps-호스팅/`. Dedicated branded FASTPANEL use-case, separate from generic panel choice on `컨트롤 패널이 있는 VPS`, broad VPS sizing, WordPress workload and Managed vs Unmanaged responsibility. Korean search volume unverified.
