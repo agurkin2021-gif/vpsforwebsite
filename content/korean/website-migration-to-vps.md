@@ -9,7 +9,7 @@ image: "images/home/vps-for-website-hero.webp"
 
 이 가이드는 **도메인과 공개 URL 구조를 유지하는 이전**을 전제로 합니다. 도메인이나 경로까지 바꾼다면 기존 URL과 새 URL의 매핑 및 영구 리디렉션을 별도의 작업으로 계획해야 합니다.
 
-VPS 선택 자체를 검토하는 단계라면 [웹사이트용 VPS 호스팅]({{< relref "_index.md" >}}) 가이드를 먼저 확인하세요.
+VPS 선택 자체를 검토하는 단계라면 [웹사이트용 VPS 호스팅](/) 가이드를 먼저 확인하세요.
 
 [이전 순서](#quick-migration-plan) · [전환 전 점검](#migration-cutover-preflight) · [최종 동기화](#control-new-writes-and-the-final-sync) · [DNS 전환](#switch-dns-deliberately) · [SEO 점검](#preserve-seo-when-urls-stay-the-same) · [자주 묻는 질문](#faq)
 
@@ -174,9 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 현재 부하, 데이터베이스 동작, 저장 공간 증가량, 관리 패널·메일 서비스의 자원 사용량과 이전 중 작업 공간을 고려하세요. 압축 파일, DB 덤프, 로그, 로컬 백업 임시 보관에도 디스크 공간이 필요할 수 있습니다.
 
-자원 계산은 여기서 반복하지 않고 [웹사이트용 VPS 사양]({{< relref "vps-sizing-for-website.md" >}})에서 안내합니다.
+자원 계산은 여기서 반복하지 않고 [웹사이트용 VPS 사양](/vps-sizing-for-website/)에서 안내합니다.
 
-서버 이전은 운영 책임을 정하는 일이기도 합니다. 기존 호스팅이 서버 관리의 대부분을 대신했다면 전환 후 누가 새 서버를 운영할지 먼저 정하세요. [관리형 VPS와 자체 관리형 VPS 비교]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요. 이후 관리 패널을 사용할지, Linux 스택을 직접 관리할지 결정해야 합니다. [VPS 관리 패널 선택]({{< relref "vps-with-control-panel.md" >}})에서 차이를 확인할 수 있습니다.
+서버 이전은 운영 책임을 정하는 일이기도 합니다. 기존 호스팅이 서버 관리의 대부분을 대신했다면 전환 후 누가 새 서버를 운영할지 먼저 정하세요. [관리형 VPS와 자체 관리형 VPS 비교](/managed-vs-unmanaged-vps/)를 참고하세요. 이후 관리 패널을 사용할지, Linux 스택을 직접 관리할지 결정해야 합니다. [VPS 관리 패널 선택](/vps-with-control-panel/)에서 차이를 확인할 수 있습니다.
 
 <p>
   <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">이전할 VPS 사양 확인하기</a>
@@ -280,7 +280,7 @@ DNS 전환 중 기존 DB와 새 DB가 **모두 쓰기를 허용하면 데이터�
 6. 트래픽을 새 서버로 전환합니다.
 7. 새로운 쓰기 작업이 이제 새 서버에만 저장되는지 확인합니다.
 
-[WooCommerce용 VPS]({{< relref "vps-for-woocommerce.md" >}})를 이전한다면 결제, 주문, 결제 웹훅, 재고, 예약 작업과 거래 관련 메일을 검수에 포함하세요. 정적·캐시 중심 사이트라면 마지막 파일 비교만으로 충분할 수 있습니다.
+[WooCommerce용 VPS](/vps-for-woocommerce/)를 이전한다면 결제, 주문, 결제 웹훅, 재고, 예약 작업과 거래 관련 메일을 검수에 포함하세요. 정적·캐시 중심 사이트라면 마지막 파일 비교만으로 충분할 수 있습니다.
 
 애플리케이션과 동기화 방법이 실제 무중단 전환을 지원하지 않는데도 '무중단 이전'이라고 보장해서는 안 됩니다.
 
@@ -328,7 +328,7 @@ DNS 전환 전에 다음 가운데 하나를 선택하세요.
 
 ## HTTPS·CDN·외부 서비스 검증 {#verify-https-cdn-and-external-services}
 
-새 서버를 어느 리전에 둘지 정하지 않았다면 전환 전에 [VPS 서버 위치 선택]({{< relref "how-to-choose-vps-location.md" >}})을 검토하세요. 나중에 리전을 바꾸면 IP·DNS 이전이 한 번 더 필요할 수 있습니다.
+새 서버를 어느 리전에 둘지 정하지 않았다면 전환 전에 [VPS 서버 위치 선택](/how-to-choose-vps-location/)을 검토하세요. 나중에 리전을 바꾸면 IP·DNS 이전이 한 번 더 필요할 수 있습니다.
 
 IP 주소로 정상 표시되는 새 서버도 실제 도메인에서는 실패할 수 있습니다.
 
@@ -424,13 +424,13 @@ DNS 변경 후에는 다음을 수행합니다.
 
 PHP 버전·확장 모듈, DB 호환성, 업로드, 재작성 규칙, wp-cron, 캐시, SMTP·문의 양식, 관리자 로그인을 확인하세요. 직렬화된 데이터를 손상시킬 수 있는 무분별한 문자열 검색·치환은 피하고, 필요한 경우 워드프레스 구조를 이해하는 도구를 사용하세요.
 
-자원 사용 특성은 [워드프레스용 VPS]({{< relref "vps-for-wordpress.md" >}})에서 확인하세요.
+자원 사용 특성은 [워드프레스용 VPS](/vps-for-wordpress/)에서 확인하세요.
 
 ### 우커머스와 기타 거래 처리 사이트 {#woocommerce-and-other-transactional-sites}
 
 주문, 재고, 결제 콜백, 세션, 예약 작업, 거래 관련 이메일은 계속 변경되는 운영 데이터로 취급하세요. 최초 DB 복사본에만 의존하지 말고 마지막 데이터 쓰기 전환과 동기화를 계획해야 합니다.
 
-자세한 내용은 [우커머스용 VPS]({{< relref "vps-for-woocommerce.md" >}})를 참고하세요.
+자세한 내용은 [우커머스용 VPS](/vps-for-woocommerce/)를 참고하세요.
 
 ### 맞춤형 애플리케이션 {#custom-applications}
 
