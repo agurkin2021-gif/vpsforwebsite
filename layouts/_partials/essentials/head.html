@@ -8,6 +8,11 @@
   <link rel="preload" as="image" href="{{ $hero.RelPermalink }}" imagesrcset="{{ $hero.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
 {{ end }}
 {{ partialCached "local-fonts.html" . }}
+{{/* Preserve the recovered site's language picker independently of Tailwind pruning. */}}
+{{ $languageCSS := resources.Get "css/language-picker.css" | minify }}
+<style id="language-navigation-css">{{ $languageCSS.Content | safeCSS }}</style>
+{{ $languageJS := resources.Get "js/language-picker.js" | fingerprint "sha256" }}
+<script id="language-picker-script" defer src="{{ $languageJS.RelPermalink }}" integrity="{{ $languageJS.Data.Integrity }}" crossorigin="anonymous"></script>
 <script>
   document.documentElement.classList.add("dark");
   try { localStorage.setItem("theme", "dark"); } catch (e) {}
