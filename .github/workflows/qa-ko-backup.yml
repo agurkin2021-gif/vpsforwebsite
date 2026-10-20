@@ -1,0 +1,161 @@
+name: Korean VPS backup strategy prepublication QA
+on:
+  push:
+    branches: ["work/ko-backup-20261020"]
+    paths:
+      - "content/korean/vps-backup-strategy.md"
+      - "layouts/_partials/page-header.html"
+      - "layouts/_markup/render-link.html"
+      - ".github/workflows/qa-ko-backup.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build Hugo from source and start local server
+        shell: bash
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/vps-백업-전략/index.html
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-backup-http.log 2>&1 &
+      - name: Validate full structural and script parity with English
+        shell: bash
+        run: |
+          node <<'JS'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const en=fs.readFileSync('content/english/vps-backup-strategy.md','utf8');
+          const ko=fs.readFileSync('content/korean/vps-backup-strategy.md','utf8');
+          const m=(s,re)=>[...s.matchAll(re)].map(x=>x[1]||x[0]);
+          const headings=s=>m(s,/^#{2,3}\s+(.+)$/gm);
+          const enH=headings(en),koH=headings(ko);
+          assert.equal(enH.length,44);assert.equal(koH.length,44);
+          assert.equal(m(ko,/^#{2,3}\s+.*\{#([\w-]+)\}$/gm).length,44);
+          for(const re of [/^\|.*\|$/gm,/^- /gm,/^\d+\. /gm,/<form\b/g,/<select\b/g,/<option\b/g,/<script>/g,/<\/script>/g,/<a\b/g,/^\x60\x60\x60/gm]){
+            assert.equal(m(en,re).length,m(ko,re).length,'Structure: '+re);
+          }
+          assert.equal(m(ko,/^\|.*\|$/gm).length,27);
+          assert.equal(m(ko,/^- /gm).length,163);
+          assert.equal(m(ko,/^\d+\. /gm).length,14);
+          assert.deepEqual(m(en,/<select[^>]*id="([^"]+)"/g),m(ko,/<select[^>]*id="([^"]+)"/g));
+          assert.deepEqual(m(en,/<option[^>]*value="([^"]+)"/g),m(ko,/<option[^>]*value="([^"]+)"/g));
+          assert.deepEqual(m(en,/\{\{<\s*relref\s+(?:path=)?"([^"]+)"/g),m(ko,/\{\{<\s*relref\s+(?:path=)?"([^"]+)"/g));
+          const clean=s=>s.match(/<script>[\s\S]*?<\/script>/)[0].replace(/result = [^\n]*;/g,'result = LOCALIZED;');
+          assert.equal(clean(en),clean(ko),'JavaScript logic must stay unchanged');
+          assert(!ko.includes('draft: true'),'Page is publishable on branch');
+          console.log('PASS source parity: 44 headings, 27 table rows, 163 bullets, 14 steps, 8 selectors/22 options, 8 internal links and exact JS logic');
+          JS
+      - name: Install Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/ko-backup-qa
+          cd /tmp/ko-backup-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Chromium SEO, EN anchor IDs, responsive layout and all 2304 checker outcomes
+        shell: bash
+        run: |
+          cd /tmp/ko-backup-qa
+          mkdir -p shots
+          cat > check.cjs <<'JS'
+          const assert=require('node:assert/strict');
+          const {chromium}=require('playwright');
+          const koUrl='http://127.0.0.1:8765/ko/'+encodeURIComponent('vps-백업-전략')+'/';
+          const enUrl='http://127.0.0.1:8765/vps-backup-strategy/';
+          const ids=['bk-workload','bk-rpo','bk-rto','bk-offsite','bk-db','bk-restore','bk-creds','bk-versions'];
+          const values=[['static','cms','transactional'],['24','4','1','lt1'],['24','4','1','lt1'],['no','yes'],['na','no','yes'],['no','yes'],['no','yes'],['no','yes']];
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            try {
+              for(const width of [390,1280]){
+                const context=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const page=await context.newPage(),en=await context.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const response=await page.goto(koUrl,{waitUntil:'load',timeout:60000});
+                assert.equal(response.status(),200);
+                assert.equal((await page.title()).trim(),'VPS 백업 전략');
+                assert.deepEqual(await page.locator('h1').allTextContents(),['VPS 백업 전략']);
+                assert.equal(await page.locator('h2,h3').count(),44);
+                assert.equal(await page.locator('table').count(),2);
+                assert.equal(await page.locator('#vps-backup-strategy-checker-form select').count(),8);
+                assert.equal(await page.locator('#vps-backup-strategy-checker-form option').count(),22);
+                await en.goto(enUrl,{waitUntil:'domcontentloaded',timeout:60000});
+                const enIds=await en.locator('h2,h3').evaluateAll(nodes=>nodes.map(x=>x.id));
+                const koIds=await page.locator('h2,h3').evaluateAll(nodes=>nodes.map(x=>x.id));
+                assert.deepEqual(koIds,enIds,'English heading IDs preserved exactly');
+                assert.equal(new Set(koIds).size,44);
+                assert.equal(await page.locator('link[rel="canonical"]').count(),1);
+                const canonical=await page.locator('link[rel="canonical"]').getAttribute('href');
+                assert(canonical.includes('/ko/'),'Korean self canonical');
+                assert.equal(await page.locator('.vps-backup-hero-diagram').count(),1);
+                assert((await page.locator('.vps-backup-hero-diagram').innerText()).includes('복구에는 여러 계층의 백업이 필요합니다'));
+                assert((await page.locator('body').innerText()).includes('제휴 고지'));
+                const ar=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(a=>a.map(x=>x.getAttribute('rel')));
+                assert(ar.length>=3&&ar.every(x=>x&&x.includes('sponsored')&&x.includes('nofollow')));
+                assert.equal(await page.locator('a[href^="//"]').count(),0,'No protocol-relative URLs');
+                const geo=await page.evaluate(()=>{
+                  const d=document.documentElement,b=document.body;
+                  return {w:d.clientWidth,doc:d.scrollWidth,body:b.scrollWidth,boxes:[...document.querySelectorAll('header,h1,.vps-backup-hero-grid,#vps-backup-strategy-checker-form')].map(el=>{const r=el.getBoundingClientRect();return {name:el.tagName,left:r.left,right:r.right,width:r.width}})};
+                });
+                console.log('GEOMETRY',width,JSON.stringify(geo));
+                assert(geo.doc<=width+2&&geo.body<=width+2,'Horizontal overflow');
+                for(const el of geo.boxes)if(el.width>0)assert(el.left>=-2&&el.right<=width+2,'Critical box overflow '+JSON.stringify(el));
+                await page.screenshot({path:'shots/backup-'+width+'.png',fullPage:true});
+                if(width===390){
+                  let combos=[[]];for(const list of values)combos=combos.flatMap(c=>list.map(v=>c.concat(v)));
+                  assert.equal(combos.length,2304);
+                  const actual=await page.evaluate(({ids,combos})=>{
+                    const form=document.getElementById('vps-backup-strategy-checker-form'),output=document.getElementById('vps-backup-strategy-result'),arr=[];
+                    for(const c of combos){ids.forEach((id,i)=>document.getElementById(id).value=c[i]);form.requestSubmit();arr.push(output.textContent);}
+                    return arr;
+                  },{ids,combos});
+                  let cases=[0,0,0,0];
+                  for(let i=0;i<combos.length;i++){
+                    const c=combos[i],gap=c[3]!=='yes'||c[5]!=='yes'||c[6]!=='yes'||c[7]!=='yes'||c[4]==='no';
+                    const low=!gap&&(c[2]==='lt1'||c[2]==='1');
+                    const frequent=!gap&&!low&&(c[0]==='transactional'||c[1]==='lt1'||c[1]==='1');
+                    const expected=gap?'중대한 백업 결함:':low?'짧은 RTO /':frequent?'거래 처리 /':'기본 복구 전략:';
+                    assert(actual[i].startsWith(expected),'Bad result '+i+': '+actual[i]);
+                    cases[gap?0:low?1:frequent?2:3]++;
+                  }
+                  console.log('PASS all 2304 actual browser form submits',JSON.stringify(cases));
+                  await page.locator('#bk-workload').selectOption('transactional');
+                  await page.locator('#vps-backup-strategy-checker-form button[type=submit]').click();
+                  assert((await page.locator('#vps-backup-strategy-result').innerText()).startsWith('짧은 RTO /'));
+                }
+                assert.deepEqual(errors.filter(m=>!(m.startsWith('Failed to register a ServiceWorker')&&m.includes('does not match the current origin'))),[],'Unexpected page JS error');
+                console.log('PASS viewport',width);
+                await context.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
+      - name: Archive preview screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-backup-prepublication
+          path: /tmp/ko-backup-qa/shots/*.png
+          retention-days: 7
+          if-no-files-found: ignore
