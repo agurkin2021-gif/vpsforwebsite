@@ -2,16 +2,16 @@
 {{- $class := .Class | default "" -}}
 {{- $currentLang := $current.Language.Lang -}}
 {{- $targets := slice
-  (dict "lang" "en" "label" "EN" "url" "/")
-  (dict "lang" "bn" "label" "BN" "url" "/bn/")
-  (dict "lang" "pt-BR" "label" "PT-BR" "url" "/pt-br/")
-  (dict "lang" "fr" "label" "FR" "url" "/fr/")
-  (dict "lang" "hi" "label" "HI" "url" "/hi/")
-  (dict "lang" "id" "label" "ID" "url" "/id/")
-  (dict "lang" "ru" "label" "RU" "url" "/ru/")
-  (dict "lang" "es" "label" "ES" "url" "/es/")
-  (dict "lang" "vi" "label" "VI" "url" "/vi/")
-  (dict "lang" "ko" "label" "KO" "url" "/ko/")
+  (dict "lang" "en" "label" "English" "url" "/")
+  (dict "lang" "bn" "label" "বাংলা" "url" "/bn/")
+  (dict "lang" "pt-BR" "label" "Português (Brasil)" "url" "/pt-br/")
+  (dict "lang" "fr" "label" "Français" "url" "/fr/")
+  (dict "lang" "hi" "label" "हिन्दी" "url" "/hi/")
+  (dict "lang" "id" "label" "Bahasa Indonesia" "url" "/id/")
+  (dict "lang" "ru" "label" "Русский" "url" "/ru/")
+  (dict "lang" "es" "label" "Español" "url" "/es/")
+  (dict "lang" "vi" "label" "Tiếng Việt" "url" "/vi/")
+  (dict "lang" "ko" "label" "한국어" "url" "/ko/")
 -}}
 <div class="relative {{ $class }}" data-language-switcher>
   <button type="button" class="inline-flex items-center gap-1.5 px-2 py-1 text-sm font-semibold text-white bg-transparent border-0 shadow-none rounded-none hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" aria-label="{{ T "ui_select_language" }}" aria-expanded="false" aria-haspopup="true" data-language-toggle>
