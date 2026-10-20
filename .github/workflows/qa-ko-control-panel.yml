@@ -1,0 +1,129 @@
+name: Korean control-panel prepublication QA
+
+on:
+  push:
+    branches: ["work/ko-control-panel-20261020"]
+    paths:
+      - "content/korean/vps-with-control-panel.md"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-control-panel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build production-style localized page and launch static server
+        shell: bash
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "http://127.0.0.1:8765/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/컨트롤-패널이-있는-vps/index.html
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-panel-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS "http://127.0.0.1:8765/ko/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%8C%A8%EB%84%90%EC%9D%B4-%EC%9E%88%EB%8A%94-vps/" >/dev/null && break; sleep 1; done
+      - name: Install Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/ko-panel-qa
+          cd /tmp/ko-panel-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify SEO, widths and submitted panel decisions
+        shell: bash
+        run: |
+          cd /tmp/ko-panel-qa
+          cat > test.cjs <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const {chromium} = require('playwright');
+          const url="http://127.0.0.1:8765/ko/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%8C%A8%EB%84%90%EC%9D%B4-%EC%9E%88%EB%8A%94-vps/";
+          const shotDir='/tmp/ko-panel-qa/shots';
+          const ids=["quick-answer","do-you-need-a-control-panel","what-control-panel-means-on-a-vps","provider-infrastructure-panel","web-hosting-control-panel","applicationdeveloper-panel","control-panel-fit-checker","choose-the-panel-class-before-the-brand","traditional-web-hosting-panel","developerapplication-panel","general-server-administration-ui","multi-client--reseller-panel","representative-panel-map","panel-overhead-belongs-in-vps-sizing","operating-system-compatibility-is-a-hard-gate","free-vs-paid-panels","email-and-dns-can-decide-the-panel","multiple-websites-users-and-client-isolation","backups-restore-workflow-and-exit-cost","security-updates-and-root-access","control-panel-is-not-managed-vps","current-vdsina-control-panel-options","when-no-panel-is-better","a-repeatable-control-panel-decision","technical-references","faq","what-is-a-vps-control-panel","do-i-need-a-control-panel-on-a-vps","what-tasks-does-a-vps-control-panel-simplify","which-control-panel-is-best-for-vps","is-a-free-vps-control-panel-really-free","how-much-ram-does-a-vps-control-panel-need","what-multi-site-features-should-i-compare-in-a-vps-control-panel","can-i-install-cpanel-or-plesk-on-any-vps","does-vdsina-include-cpanel-or-plesk","should-i-use-fastpanel-or-the-generic-control-panel-page"];
+          fs.mkdirSync(shotDir,{recursive:true});
+          async function test(){
+           const browser=await chromium.launch({headless:true});
+           try {
+            for(const width of [390,1280]){
+             const ctx=await browser.newContext({viewport:{width,height:844},deviceScaleFactor:1,isMobile:width===390,hasTouch:width===390});
+             const page=await ctx.newPage(),errors=[];
+             page.on('pageerror',e=>errors.push(e.message));
+             const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+             assert.equal(response.status(),200,'HTTP 200');
+             await page.locator('h1').waitFor({state:'visible'});
+             assert.deepEqual(await page.locator('h1').allTextContents(),['컨트롤 패널이 있는 VPS']);
+             assert.equal((await page.title()).trim(),'컨트롤 패널이 있는 VPS');
+             assert.equal(await page.locator('h2,h3').count(),36);
+             assert.equal(await page.locator('table').count(),3);
+             assert.equal(await page.locator('#panel-fit-checker select').count(),7);
+             assert.equal(await page.locator('#panel-fit-checker option').count(),16);
+             for(const id of ids)assert.equal(await page.locator('[id="'+id+'"]').count(),1,'Anchor '+id);
+             assert.equal(await page.locator('link[rel="canonical"]').count(),1);
+             assert.equal(await page.locator('.vps-control-panel-hero-diagram').count(),1);
+             assert((await page.locator('.vps-control-panel-hero-diagram').innerText()).includes('운영 방식에 맞는 패널 선택'));
+             assert((await page.locator('body').innerText()).includes('광고·제휴 고지'));
+             const links=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('rel')));
+             assert(links.length>=4,'Affiliate buttons');
+             assert(links.every(s=>s&&s.includes('sponsored')&&s.includes('nofollow')),'Affiliate attributes');
+             const metrics=await page.evaluate(()=>{const d=document.documentElement,b=document.body;return {html:d.scrollWidth,body:b.scrollWidth,viewport:d.clientWidth,critical:[...document.querySelectorAll('header,h1,.vps-control-panel-hero-grid,#panel-fit-checker')].map(el=>{let r=el.getBoundingClientRect();return {tag:el.tagName,left:r.left,right:r.right,width:r.width}})}});
+             console.log('MEASURE',width,JSON.stringify(metrics));
+             assert(metrics.html<=width+2&&metrics.body<=width+2,'Horizontal overflow '+width);
+             for(const x of metrics.critical)if(x.width>0)assert(x.left>=-2&&x.right<=width+2,'Element overflow '+JSON.stringify(x));
+             assert.deepEqual(errors,[],'No JS errors');
+             await page.screenshot({path:shotDir+'/viewport-'+width+'.png',fullPage:true});
+             console.log('PASS responsive & SEO',width);
+             if(width===390){
+              const cases=[
+               [{},{prefix:'무료·저라이선스 비용 패널 경로:'}],
+               [{'cp-windows':'yes'},{prefix:'WINDOWS 호환 패널 경로:'}],
+               [{'cp-clients':'yes'},{prefix:'다중 사용자·호스팅 패널 경로:'}],
+               [{'cp-apps':'mixed'},{prefix:'개발자·애플리케이션 패널 경로:'}],
+               [{'cp-apps':'custom','cp-cli':'yes'},{prefix:'패널 없음·최소형 패널 경로:'}],
+               [{'cp-mail':'yes'},{prefix:'전통적인 웹사이트·메일 패널 경로:'}],
+               [{'cp-license':'yes'},{prefix:'일반 웹사이트 패널 경로:'}],
+               [{'cp-windows':'yes','cp-clients':'yes'},{prefix:'WINDOWS 호환 패널 경로:'}],
+               [{'cp-sites':'many','cp-license':'yes'},{prefix:'다중 사용자·호스팅 패널 경로:'}]
+              ];
+              for(const [vals,expect] of cases){
+               await page.reload({waitUntil:'domcontentloaded'});
+               for(const [id,val] of Object.entries(vals))await page.locator('#'+id).selectOption(val);
+               await page.locator('#panel-fit-checker button[type=submit]').click();
+               const result=(await page.locator('#panel-fit-result').innerText()).trim();
+               assert(result.startsWith(expect.prefix),'Wrong decision for '+JSON.stringify(vals)+': '+result);
+               console.log('PASS real form',JSON.stringify(vals),expect.prefix);
+              }
+              await page.locator('#panel-fit-result').screenshot({path:shotDir+'/result.png'});
+             }
+             await ctx.close();
+            }
+           }finally{await browser.close()}
+          }
+          test().catch(e=>{console.error(e.stack||e);process.exitCode=1});
+          NODE
+          node test.cjs
+      - name: Store panel QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-control-panel-preview
+          path: /tmp/ko-panel-qa/shots/*.png
+          retention-days: 7
+          if-no-files-found: ignore
