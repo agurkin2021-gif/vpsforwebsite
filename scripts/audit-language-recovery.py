@@ -59,6 +59,8 @@ for code, label, url in LANGS:
 
 checked = 0
 for page in ROOT.rglob("*.html"):
+    if page.name == "404.html":
+        continue  # Error documents have intentionally missing localized 404 routes.
     html = page.read_text(encoding="utf-8", errors="replace")
     match = GENERATED.search(html) or LEGACY.search(html)
     if not match:
