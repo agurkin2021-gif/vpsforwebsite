@@ -120,6 +120,10 @@ jobs:
                 if(geo.html>width+2||geo.body>width+2){
                   const offenders=await page.evaluate(()=>[...document.querySelectorAll('body *')].map(e=>{const r=e.getBoundingClientRect();return {tag:e.tagName,className:typeof e.className==='string'?e.className.slice(0,120):'',left:r.left,right:r.right,width:r.width,text:(e.textContent||'').trim().slice(0,80)}}).filter(x=>x.right>window.innerWidth+2&&x.width>5).sort((a,b)=>b.right-a.right).slice(0,35));
                   console.log('OVERFLOW OFFENDERS',JSON.stringify(offenders));
+                  const scrollables=await page.evaluate(()=>[...document.querySelectorAll('body *')].filter(e=>e.scrollWidth>e.clientWidth+60&&e.clientWidth>0).map(e=>({tag:e.tagName,className:typeof e.className==='string'?e.className.slice(0,100):'',id:e.id,scroll:e.scrollWidth,client:e.clientWidth,overflowX:getComputedStyle(e).overflowX,text:(e.innerText||'').slice(0,95)})).sort((a,b)=>(b.scroll-b.client)-(a.scroll-a.client)).slice(0,35));
+                  console.log('INTERNAL SCROLL WIDTH',JSON.stringify(scrollables));
+                  console.log('EN DOC WIDTH',await en.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth})));
+
                 }
                 a(geo.html<=width+2&&geo.body<=width+2,'Horizontal overflow');
                 for(const box of geo.boxes)if(box.width>0)a(box.left>=-2&&box.right<=width+2,'Overflow '+JSON.stringify(box));
