@@ -82,7 +82,7 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - Source and static audit complete on the working branch; main-branch Hugo CI, Cloudflare publication, live URL and responsive geometry remain to be checked, and must not be marked verified before actual successful results.
 
 
-## Page 6: VPS for WooCommerce — 2026-10-20 (pre-publication)
+## Page 6: VPS for WooCommerce — 2026-10-20 (published; responsive and interactive QA pending)
 
 - Korean Title/H1/slug: **우커머스용 VPS** at `/ko/우커머스용-vps/`. Intent: sizing WooCommerce transactional workload and selecting an operating model; separate from generic WordPress VPS and homepage. Korean usage of 우커머스 cross-checked with Korean commercial hosting material; search-volume figures were not available.
 - Branch: `work/ko-woocommerce-20261020`. Full Korean source at `content/korean/vps-for-woocommerce.md`; English source `content/english/vps-for-woocommerce.md` unchanged.
@@ -90,7 +90,7 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - The checker retains the original 10 control IDs, 25 values and unaltered JavaScript conditions/decision logic. Six outcome strings, all user-facing labels and options, submit button and introductory status are in Korean. Checker script is byte-identical to English after normalizing only the six result strings.
 - The WooCommerce page hero has 15 Korean-only text branches covering CTAs, captions, flow nodes, metrics, and its accessible name. English text is preserved as the else branch; diagram geometry, styles, link target and affiliate rel attributes remain unchanged.
 - All server specifications, VDSina daily USD prices, dates, formulas and WooCommerce/WordPress version figures are preserved. The existing Korean Markdown link renderer sends translated targets to KO and untranslated targets to existing English articles. No false Korean data-center, managed-service or preinstalled-app claims added.
-- Static audit passed for article content, anchor mapping, checker source parity, option IDs/values and affiliate URL. Hugo CI, Cloudflare publication, live browser and 390/1280 responsive geometry must be checked after merging to main. Do not represent these pending stages as completed.
+- Static audit passed for article content, anchor mapping, checker source parity, option IDs/values and affiliate URL. Source commit `b55471f43fa44052c6a1a9fcfc8bc6b75c12cc5c` is on `main`; a follow-up `4af6c69d7b598dd62e6767460877cf3a0e5911d8` localized residual checker Yes/No labels, with generated static update `2f7dfd4877bacd3cdbcfe359becffc782c69753f`. Cloudflare production Deployments showed the latest static build as **100% Ready** and both WooCommerce-related earlier builds as **Ready** on 2026-10-20. The ordinary live URL `/ko/우커머스용-vps/` opened in Opera and exposed its Korean navigation, hero, main article and checker. Dedicated GitHub Hugo CI results, 390/1280 px responsive geometry and browser submit behavior remain unverified; do not mark those as passed.
 
 ## Queue
 
@@ -101,7 +101,7 @@ Complete each page with its own intent review, full translation (including forms
 3. Website migration to VPS — source/build/Cloudflare/live publication verified 2026-10-20.
 4. Managed vs Unmanaged VPS — full translation and source/build/Cloudflare/live page verified; mobile visual QA pending.
 5. VPS for WordPress.
-6. VPS for WooCommerce.
+6. VPS for WooCommerce — published; responsive visual and browser interaction QA pending.
 7. VPS vs Shared Hosting.
 8. VPS for Multiple Websites.
 9. VPS with Control Panel.
