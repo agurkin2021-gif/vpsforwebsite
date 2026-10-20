@@ -61,7 +61,6 @@ jobs:
           links=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',en)
           kl=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko)
           assert len(links)==len(kl),(len(links),len(kl))
-          # Preserve original page targets; use English only when Korean is absent.
           fallback=[]
           def localized_target(target):
               m=re.fullmatch(r'\{\{< relref "([^"]+)" >\}\}',target)
@@ -134,6 +133,20 @@ jobs:
           print('PASS: every other rendered HTML page is byte-identical to baseline')
           PY
           node scripts/optimize-css.mjs public
+          # Production preserves recovered languages absent from Hugo sources.
+          # Copy only missing files into the temporary QA output, never sources.
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          count=0
+          for source in Path('recovered-public').rglob('*'):
+              if not source.is_file(): continue
+              dest=Path('public')/source.relative_to('recovered-public')
+              if dest.exists(): continue
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              shutil.copy2(source,dest); count+=1
+          print('QA recovery-only fallback files:',count)
+          PY
           python3 -m http.server 8765 --bind 127.0.0.1 --directory public >/tmp/ko-host-http.log 2>&1 &
           mkdir -p /tmp/ko-host-qa
           cp /tmp/ko-host-invariants.json /tmp/ko-host-qa/invariants.json
