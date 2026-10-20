@@ -31,7 +31,7 @@ jobs:
           cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
           hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
           node scripts/optimize-css.mjs public
-          test -s public/ko/vpsforwebsite-소개/index.html
+          test -s public/ko/about/index.html
           node <<'JS'
           const fs=require('fs'),a=require('assert').strict;
           const en=fs.readFileSync('content/english/about/_index.md','utf8');
@@ -46,7 +46,7 @@ jobs:
           a(ko.includes('VDSina')&&ko.includes('2026년 10월 14일'));
           a(!ko.includes('draft: true'));
           const h2=s=>[...s.matchAll(/<h2\b[^>]*\bid=(?:"([^"]+)"|([^\s>]+))/g)].map(x=>x[1]||x[2]);
-          const html=fs.readFileSync('public/ko/vpsforwebsite-소개/index.html','utf8');
+          const html=fs.readFileSync('public/ko/about/index.html','utf8');
           const original=fs.readFileSync('public/about/index.html','utf8');
           a.deepEqual(h2(html),h2(original));
           console.log('PASS 7 original anchors, 9 list items, commercial disclosure and exact review date');
@@ -72,7 +72,7 @@ jobs:
                 const ctx=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
                 const page=await ctx.newPage(),en=await ctx.newPage(),errors=[];
                 page.on('pageerror',e=>errors.push(e.message));
-                const r=await page.goto('http://127.0.0.1:8765/ko/'+encodeURIComponent('vpsforwebsite-소개')+'/',{waitUntil:'load'});
+                const r=await page.goto('http://127.0.0.1:8765/ko/'+encodeURIComponent('about')+'/',{waitUntil:'load'});
                 a.equal(r.status(),200);
                 a.equal((await page.title()).trim(),'VPSforWebsite.com 소개');
                 a.deepEqual(await page.locator('h1').allTextContents(),['VPSforWebsite.com 소개']);
