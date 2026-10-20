@@ -233,246 +233,246 @@ document.addEventListener("DOMContentLoaded", function () {
 - 모바일 네트워크;
 - 해당하는 경우 사무실·기업 네트워크;
 - 주요 이용자 인근의 원격 모니터링 프로브;
-- more than one ISP when the market is important.
+- 목표 시장이 중요하다면 둘 이상의 ISP.
 
-Do not test only from the administrator's laptop if the administrator is on another continent.
+관리자가 다른 대륙에 있다면 관리자 노트북에서만 측정해서는 안 됩니다.
 
-### Compare repeated latency, not one ping
+### 한 번의 ping보다 반복 측정한 지연 시간을 비교하세요 {#compare-repeated-latency-not-one-ping}
 
-A single ping is weak evidence.
+ping 한 번의 결과만으로 판단하기는 어렵습니다.
 
-Use repeated samples:
+여러 차례 측정하세요.
 
 ```bash
 ping -c 30 TEST_IP
 ```
 
-On Windows:
+Windows에서는 다음 명령을 사용합니다.
 
 ```text
 ping -n 30 TEST_IP
 ```
 
-Compare candidates at similar times of day.
+비슷한 시간대에 후보를 비교하세요.
 
-Look for:
+다음 항목을 확인하세요.
 
-- typical RTT;
-- consistency;
-- large spikes;
-- endpoint packet loss;
-- whether performance changes at peak hours.
+- 일반적인 RTT;
+- 일관성;
+- 큰 지연 시간 급증;
+- 목적지까지의 패킷 손실;
+- 트래픽이 많은 시간대에 성능이 달라지는지.
 
-There is no universal RTT number that makes one VPS "good." The useful comparison is between candidate regions for the actual workload.
+어떤 VPS든 '좋다'고 판정할 수 있는 보편적인 RTT 수치는 없습니다. 실제 워크로드에 대해 후보 지역을 비교한 결과가 중요합니다.
 
-### Inspect the path with MTR or traceroute
+### MTR 또는 traceroute로 경로를 살펴보세요 {#inspect-the-path-with-mtr-or-traceroute}
 
-On Linux, a typical MTR report:
+Linux에서 사용하는 대표적인 MTR 보고서 명령은 다음과 같습니다.
 
 ```bash
 mtr -rwzc 50 TEST_IP
 ```
 
-Traceroute:
+traceroute 명령은 다음과 같습니다.
 
 ```bash
 traceroute TEST_IP
 ```
 
-Windows:
+Windows에서는 다음과 같이 실행합니다.
 
 ```text
 tracert TEST_IP
 ```
 
-MTR/traceroute can reveal:
+MTR/traceroute를 통해 다음과 같은 문제를 파악할 수 있습니다.
 
-- unexpected geographic detours;
-- unstable transit;
-- large latency jumps;
-- route changes;
-- where a path appears to become inefficient.
+- 예상하지 못한 지리적 우회 경로;
+- 불안정한 중계망;
+- 큰 지연 시간 증가;
+- 경로 변경;
+- 비효율적으로 보이는 경로 구간.
 
-Do not automatically interpret packet loss shown on an intermediate hop as end-to-end loss. Routers can rate-limit diagnostic traffic while forwarding real traffic normally. The destination and repeated end-to-end behavior matter more.
+중간 홉에 표시되는 패킷 손실을 종단 간 손실로 단정하지 마세요. 라우터는 실제 트래픽은 정상 전달하면서 진단 패킷의 응답만 제한할 수 있습니다. 목적지 측정값과 반복적인 종단 간 동작이 더 중요합니다.
 
-### Test HTTP, not only ICMP
+### ICMP뿐 아니라 HTTP도 테스트하세요 {#test-http-not-only-icmp}
 
-Ping measures network round-trip behavior. Users experience HTTP.
+Ping은 네트워크 왕복 시간을 측정하지만 사용자가 실제로 체감하는 것은 HTTP 응답입니다.
 
-If a representative test endpoint exists, compare connection and response timing:
+대표적인 테스트 엔드포인트가 있다면 연결 시간과 응답 시간을 비교하세요.
 
 ```bash
 curl -o /dev/null -s -w 'connect=%{time_connect} ttfb=%{time_starttransfer} total=%{time_total}\n' https://candidate.example/
 ```
 
-For a production application, TTFB also includes origin work. That is useful after deployment, but it means a slow TTFB cannot be blamed on distance alone.
+운영 중인 애플리케이션의 TTFB에는 원본 서버 내부 처리 시간도 포함됩니다. 배포 후에는 유용한 지표지만, TTFB가 느리다는 이유만으로 물리적 거리를 원인으로 단정할 수 없습니다.
 
-After launch, use [VPS Monitoring]({{< relref "vps-monitoring.md" >}}) to keep external latency and application health under observation.
+배포 후에는 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})을 사용해 외부 지연 시간과 애플리케이션 상태를 지속해서 확인하세요.
 
-## Test the networks that matter
+## 중요한 사용자 네트워크를 테스트하세요 {#test-the-networks-that-matter}
 
-A route that is excellent from one ISP may be mediocre from another.
+한 ISP에서 뛰어난 경로라도 다른 ISP에서는 그저 보통일 수 있습니다.
 
-For an important market, test:
+중요한 시장이라면 다음을 측정하세요.
 
-- at least one major consumer ISP;
-- mobile if a large share of users are mobile;
-- corporate/VPN routes if the application is B2B;
-- the actual upstream API or dependency if server-to-server latency matters.
+- 최소 한 곳의 주요 소비자용 ISP;
+- 모바일 이용자 비중이 크다면 모바일 네트워크;
+- B2B 애플리케이션이라면 기업망/VPN 경로;
+- 서버 간 지연 시간이 중요하다면 실제 상위 API 또는 의존 서비스.
 
-The objective is not to find a region that wins every test. It is to find the region with the best compromise for the important traffic.
+모든 테스트에서 1위를 차지하는 지역을 찾는 것이 목적은 아닙니다. 중요한 트래픽을 기준으로 가장 합리적인 절충안을 찾는 것이 목적입니다.
 
-## Keep chatty dependencies close
+## 왕복 요청이 잦은 의존 서비스는 가까이 배치하세요 {#keep-chatty-dependencies-close}
 
-The user-to-VPS route is only one path.
+사용자에서 VPS로 이어지는 경로는 여러 네트워크 경로 중 하나일 뿐입니다.
 
-A dynamic request may look like:
+동적 요청은 다음처럼 처리될 수 있습니다.
 
-**browser → VPS → database → private API → VPS → browser**
+**브라우저 → VPS → 데이터베이스 → 비공개 API → VPS → 브라우저**
 
-If the VPS is near users but the database is far away, the application can spend more time waiting on the database than on the browser connection.
+VPS가 사용자와 가깝더라도 데이터베이스가 멀리 떨어져 있다면 애플리케이션은 브라우저 연결보다 데이터베이스 응답을 기다리는 데 더 많은 시간을 쓸 수 있습니다.
 
-Keep tightly coupled components in the same region or low-latency network where practical:
+서로 밀접하게 연결된 구성요소는 가능한 한 동일 지역이나 저지연 네트워크에 두세요.
 
-- web/app server and primary database;
-- PHP/application workers and Redis;
-- application and private API;
-- app server and file/object service when requests are synchronous and frequent.
+- 웹·앱 서버와 기본 데이터베이스;
+- PHP·애플리케이션 워커와 Redis;
+- 애플리케이션과 비공개 API;
+- 동기 요청이 잦은 경우 앱 서버와 파일·객체 스토리지 서비스.
 
-Do not split components across continents merely because each service looks cheapest in a different location.
+각 서비스가 다른 지역에서 조금 더 저렴해 보인다는 이유만으로 구성요소를 대륙 단위로 분리하지 마세요.
 
-If an external dependency is fixed to one region, measure both sides:
+외부 의존 서비스가 특정 지역에 고정되어 있다면 두 경로를 모두 측정하세요.
 
-1. user → VPS;
-2. VPS → dependency.
+1. 사용자 → VPS;
+2. VPS → 의존 서비스.
 
-Then decide which path dominates the workload.
+그다음 어떤 경로가 워크로드의 응답 시간에 더 큰 영향을 주는지 판단하세요.
 
-## APIs and third-party services can change the best location
+## API와 외부 서비스에 따라 최적 위치가 달라질 수 있습니다 {#apis-and-third-party-services-can-change-the-best-location}
 
-For some workloads, the destination that matters is not the user.
+어떤 워크로드에서는 사용자보다 의존 서비스의 위치가 중요합니다.
 
-Examples:
+예를 들면 다음과 같습니다.
 
-- an app making many calls to a fixed-region API;
-- a private dashboard used globally but backed by one regional database;
-- automation that talks primarily to another server;
-- payment or inventory integrations with strict response windows.
+- 고정된 지역의 API를 자주 호출하는 앱;
+- 전 세계에서 사용하는 비공개 대시보드이지만 데이터베이스는 한 지역에 있는 경우;
+- 주로 다른 서버와 통신하는 자동화 도구;
+- 응답 시간 제한이 엄격한 결제·재고 연동.
 
-If the application performs several synchronous calls to the same remote dependency for every page request, moving the VPS closer to users can make the browser path shorter while making the application path longer.
+페이지 요청마다 동일한 원격 서비스에 여러 차례 동기 호출을 수행한다면 VPS를 사용자 쪽으로 옮길수록 브라우저 경로는 짧아지더라도 애플리케이션의 의존 서비스 경로가 길어질 수 있습니다.
 
-Measure the complete transaction.
+하나의 요청이 완료되는 전체 시간을 측정하세요.
 
-## CDN vs origin location
+## CDN과 원본 서버 위치 {#cdn-vs-origin-location}
 
-A CDN changes the location decision, but it does not make origin geography irrelevant.
+CDN을 사용하면 위치 선택 기준은 달라지지만 원본 서버의 지리적 위치가 중요하지 않아지는 것은 아닙니다.
 
-A CDN can serve cacheable files near users, including:
+CDN은 다음과 같은 캐시 가능 파일을 사용자 가까이에서 제공할 수 있습니다.
 
-- images;
+- 이미지;
 - CSS;
 - JavaScript;
-- downloads;
-- cacheable HTML where configured safely.
+- 다운로드 파일;
+- 안전하게 캐시하도록 설정한 HTML.
 
-That can greatly reduce the distance traveled for those requests.
+이러한 요청에서 데이터가 이동하는 거리를 크게 줄일 수 있습니다.
 
-But the origin still matters for traffic such as:
+하지만 다음 트래픽에서는 원본 서버의 위치가 여전히 중요합니다.
 
-- login;
-- cart/checkout;
-- account pages;
-- uncached CMS requests;
-- personalized HTML;
-- API calls;
-- cache misses;
-- purge/refill events;
-- admin traffic.
+- 로그인;
+- 장바구니·결제;
+- 계정 페이지;
+- 캐시되지 않는 CMS 요청;
+- 사용자별 HTML;
+- API 호출;
+- 캐시 미스;
+- 캐시 삭제·재적재;
+- 관리자 트래픽.
 
-A global static-heavy website can tolerate a more central origin if a CDN handles most user-facing bytes. A highly dynamic site should care much more about origin placement.
+정적 콘텐츠가 많은 글로벌 웹사이트는 CDN이 사용자에게 제공하는 데이터 대부분을 처리한다면 상대적으로 중앙에 위치한 원본 서버를 사용할 수 있습니다. 반면 동적 요청이 많은 사이트는 원본 서버 위치에 훨씬 더 신경 써야 합니다.
 
-Google also describes CDNs as a way to reduce latency by serving content from locations closer to users; that does not mean the origin disappears from the architecture.
+Google 역시 사용자와 가까운 곳에서 콘텐츠를 제공해 지연 시간을 줄이는 CDN의 역할을 설명합니다. 그렇다고 원본 서버가 아키텍처에서 사라지는 것은 아닙니다.
 
-## A CDN does not make every region equivalent
+## CDN을 사용해도 모든 지역의 성능이 같지는 않습니다 {#a-cdn-does-not-make-every-region-equivalent}
 
-Two origin regions behind the same CDN can still produce different real performance.
+동일한 CDN 뒤에 있더라도 원본 서버가 있는 두 지역의 실제 성능은 다를 수 있습니다.
 
-Dynamic requests reach the origin. Cache misses reach the origin. The CDN itself must fetch refreshed content from the origin.
+동적 요청은 원본 서버로 향합니다. 캐시 미스도 원본 서버에 도달합니다. CDN 역시 새 콘텐츠를 원본 서버에서 가져와야 합니다.
 
-For a global audience, test:
+전 세계 이용자를 대상으로 한다면 다음을 비교하세요.
 
-- cached page performance;
-- uncached page performance;
-- login/account/API endpoints;
-- origin TTFB;
-- cache-miss behavior.
+- 캐시된 페이지의 성능;
+- 캐시되지 않은 페이지의 성능;
+- 로그인·계정·API 엔드포인트;
+- 원본 서버 TTFB;
+- 캐시 미스 시 동작.
 
-Do not select a distant origin solely because the homepage looks fast from cache.
+캐시 덕분에 홈페이지가 빠르게 열린다는 이유만으로 멀리 있는 원본 서버를 선택하지 마세요.
 
-## Global audience: one origin + CDN or multi-region?
+## 글로벌 이용자: 단일 원본 서버 + CDN 또는 다중 지역? {#global-audience-one-origin--cdn-or-multi-region}
 
-A global audience does not automatically justify multiple VPS regions.
+이용자가 전 세계에 있다는 이유만으로 여러 지역에 VPS를 둘 필요는 없습니다.
 
-### One origin + CDN
+### 단일 원본 서버 + CDN {#one-origin--cdn}
 
-This is usually the simpler first architecture when:
+다음 조건에서는 대체로 가장 단순한 초기 아키텍처입니다.
 
-- most content is cacheable;
-- one region contains the largest or most valuable dynamic audience;
-- the application/database is stateful;
-- the operational team is small;
-- short extra latency for distant dynamic users is acceptable.
+- 콘텐츠 대부분이 캐시 가능;
+- 중요한 동적 사용자 트래픽이 한 지역에 집중;
+- 애플리케이션·데이터베이스가 상태를 유지해야 함;
+- 운영팀 규모가 작음;
+- 먼 지역 사용자가 동적 요청에서 약간의 추가 지연을 감수할 수 있음.
 
-Choose the origin around the most important dynamic traffic and dependencies. Use the CDN for distributed cacheable delivery.
+가장 중요한 동적 트래픽과 의존 서비스에 적합한 곳에 원본 서버를 배치하세요. CDN으로 여러 지역에 캐시 가능 콘텐츠를 전달하세요.
 
-### Multi-region may be justified
+### 다중 지역 구성이 필요할 수 있습니다 {#multi-region-may-be-justified}
 
-Multiple application regions can make sense when:
+다음과 같은 상황에서 여러 애플리케이션 지역을 검토할 수 있습니다.
 
-- dynamic users are genuinely distributed;
-- latency budgets are tight;
-- regional failover is a business requirement;
-- the application is designed for distributed state;
-- databases/queues/sessions can be replicated safely;
-- the team can operate more than one failure domain.
+- 동적 서비스를 사용하는 사람이 실제로 여러 지역에 분산;
+- 허용 가능한 지연 시간이 매우 짧음;
+- 지역 장애 발생 시 전환이 비즈니스 요구사항;
+- 애플리케이션이 분산 상태를 처리하도록 설계됨;
+- 데이터베이스·큐·세션을 안전하게 복제 가능;
+- 운영팀이 여러 장애 영역을 관리할 수 있음.
 
-Multi-region introduces complexity:
+다중 지역 구성에는 다음 복잡성이 추가됩니다.
 
-- data replication;
-- write consistency;
-- session handling;
-- cache invalidation;
-- failover;
-- deployment coordination;
-- monitoring;
-- cost.
+- 데이터 복제;
+- 쓰기 일관성;
+- 세션 처리;
+- 캐시 무효화;
+- 장애 조치;
+- 배포 조율;
+- 모니터링;
+- 비용.
 
-Do not add regions merely because the provider offers them.
+제공업체가 여러 지역을 제공한다는 이유만으로 지역을 늘리지 마세요.
 
-## Two-region audiences need a weighted decision
+## 이용자가 두 지역에 분산됐다면 가중치를 두어 결정하세요 {#two-region-audiences-need-a-weighted-decision}
 
-If the audience is split between two regions, there are three common patterns:
+이용자가 두 지역에 나뉘어 있다면 일반적으로 세 가지 구성이 있습니다.
 
-| Pattern | When it fits |
+| 구성 | 적합한 조건 |
 |---|---|
-| Origin near the larger/more valuable audience | one region clearly matters more for dynamic traffic |
-| Middle/central region + CDN | dynamic traffic is moderate and route quality is acceptable to both sides |
-| Multi-region application | dynamic traffic is important on both sides and the app can handle distributed state |
+| 더 크거나 가치가 높은 이용자층과 가까운 원본 서버 | 동적 트래픽에서 한 지역의 중요도가 분명히 더 높음 |
+| 중간·중앙 지역 + CDN | 동적 트래픽이 보통 수준이고 양쪽 지역으로의 네트워크 경로가 충분히 양호함 |
+| 다중 지역 애플리케이션 | 양쪽 지역의 동적 트래픽이 중요하고 애플리케이션이 분산 상태를 처리할 수 있음 |
 
-Do not pick the geographic midpoint without testing. Internet routing does not guarantee that the midpoint gives the best path to both markets.
+실제 테스트 없이 지리적 중간 지점을 선택하지 마세요. 인터넷 라우팅은 중간 지점이 두 시장 모두에 가장 좋은 경로를 제공한다고 보장하지 않습니다.
 
-## Physical location vs IP geolocation
+## 물리적 위치와 IP 지리정보의 차이 {#physical-location-vs-ip-geolocation}
 
-An IP address can be labeled by a geolocation database differently from where the server hardware physically sits.
+GeoIP 데이터베이스가 IP 주소에 표시하는 위치는 실제 서버 장비가 설치된 장소와 다를 수 있습니다.
 
-When physical placement matters, verify:
+물리적 배치가 중요할 때는 다음을 확인하세요.
 
-- the provider's stated data-center city/region;
-- the actual service endpoint;
-- network route characteristics;
-- contractual data-location wording where required.
+- 제공업체가 명시한 데이터센터 도시·지역;
+- 실제 서비스 엔드포인트;
+- 네트워크 경로 특성;
+- 필요한 경우 계약서상의 데이터 위치 문구.
 
-Do not infer physical location from one GeoIP website.
+GeoIP 웹사이트 한 곳의 결과만으로 물리적 위치를 추정하지 마세요.
 
 GeoIP can matter to applications, fraud systems or localized services, but that is a separate issue from actual network latency.
 
