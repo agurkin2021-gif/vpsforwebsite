@@ -571,102 +571,102 @@ Node Exporter는 Linux 서버 지표를 제공하고, Prometheus는 이를 저�
 </p>
 <p><small>고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 파트너 링크를 통해 주문하면 사이트가 수수료를 받을 수 있습니다. VPS 사양은 실제 모니터링 데이터에 근거해 결정해야 합니다. 이 페이지는 VDSina가 위에서 설명한 모니터링 도구를 관리형 서비스로 제공한다고 주장하지 않습니다.</small></p>
 
-## Monitor multiple websites at two levels
+## 여러 웹사이트를 두 수준에서 모니터링 {#monitor-multiple-websites-at-two-levels}
 
-On a multi-site VPS, monitor:
+여러 사이트가 실행되는 VPS에서는 다음 두 수준을 감시하세요.
 
-### Server level
+### 서버 수준 {#server-level}
 
-- CPU/RAM/swap;
-- disk/inodes/I/O;
-- database;
-- network;
-- core services.
+- CPU/RAM/스왑;
+- 디스크·inode·I/O;
+- 데이터베이스;
+- 네트워크;
+- 핵심 서비스.
 
-### Site level
+### 사이트 수준 {#site-level}
 
-- each important hostname;
+- 중요한 각 호스트 이름;
 - TLS;
 - 응답 시간;
 - 5xx;
-- app/job failures;
-- per-site logs or worker pressure where available.
+- 앱·작업 실패;
+- 가능한 경우 사이트별 로그 또는 워커 부하.
 
-A server can be healthy while one virtual host, certificate or website is broken.
+서버 자체는 정상이어도 하나의 가상 호스트, 인증서 또는 웹사이트에는 장애가 발생할 수 있습니다.
 
-Use [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}) for the consolidation/failure-domain decision.
+사이트 통합과 장애 영역에 대한 판단은 [여러 웹사이트용 VPS]({{< relref "vps-for-multiple-websites.md" >}})를 참고하세요.
 
-## VPS monitoring checklist
+## VPS 모니터링 체크리스트 {#vps-monitoring-checklist}
 
-| Signal | Pass condition |
+| 지표 | 통과 기준 |
 |---|---|
-| External uptime | important hostname checked from outside the VPS |
-| HTTP health | expected status/content/health endpoint validated |
-| CPU | sustained utilization/load/per-process history retained |
-| RAM | available memory, swap and OOM visible |
-| Disk | capacity + growth monitored |
-| Inodes | inode exhaustion monitored separately |
-| I/O | latency/I/O wait visible when storage matters |
-| Network | throughput/errors/path symptoms observable |
-| Services | web/runtime/DB/worker health monitored |
-| Database | availability/latency/connections relevant to app visible |
-| Jobs | cron/queue/background failures or backlog observable |
-| TLS/DNS | expiry and resolution failures detectable |
-| Backups | latest-success age and job failures monitored |
-| Logs | web/app/DB/system logs available for incident correlation |
-| Alerts | warning/critical + duration/debounce rules configured |
-| Notification | important alerts leave the VPS failure domain |
-| Ownership | named responder + first-action runbook |
-| Retention | enough metric/log history for trend and root-cause analysis |
-| Security | monitoring endpoints/dashboards not unintentionally public |
-| Capacity | trends feed the next optimize/scale decision |
+| 외부 가용성 | 중요한 호스트 이름을 VPS 외부에서 점검 |
+| HTTP 상태 | 예상한 상태 코드·콘텐츠·상태 확인 엔드포인트 검증 |
+| CPU | 지속 사용률·부하·프로세스별 사용 이력 보존 |
+| RAM | 가용 메모리, 스왑 및 OOM 확인 가능 |
+| 디스크 | 용량과 사용량 증가 추적 |
+| Inode | inode 고갈 여부를 별도로 감시 |
+| I/O | 스토리지가 중요할 때 지연 시간·I/O 대기 확인 가능 |
+| 네트워크 | 처리량·오류·전송 경로 문제 징후를 관찰 가능 |
+| 서비스 | 웹 서버·실행 환경·DB·워커 상태 감시 |
+| 데이터베이스 | 앱에 필요한 가용성·지연 시간·연결 상태 확인 가능 |
+| 작업 | cron·큐·백그라운드 작업의 실패 또는 적체 확인 가능 |
+| TLS/DNS | 만료·이름 해석 오류 감지 가능 |
+| 백업 | 마지막 성공 시점과 백업 작업 실패 감시 |
+| 로그 | 사고 원인 연관 분석에 필요한 웹·앱·DB·시스템 로그 보유 |
+| 알림 | 경고·위험 및 지속 시간·디바운스 규칙 설정 |
+| 통지 | 중요한 알림이 VPS 장애 영역 외부로 전달 |
+| 담당자 | 지정된 대응 담당자와 최초 조치 절차서 |
+| 이력 보존 | 추세·근본 원인 분석에 충분한 지표·로그 이력 |
+| 보안 | 모니터링 엔드포인트·대시보드가 의도치 않게 공개되지 않음 |
+| 용량 계획 | 추세를 다음 최적화·확장 결정에 활용 |
 
-## Technical references
+## 기술 참고 자료 {#technical-references}
 
-- Prometheus — monitoring Linux host metrics with Node Exporter
+- Prometheus — Node Exporter를 이용한 Linux 호스트 지표 모니터링
 - Prometheus — Alertmanager
-- Uptime Kuma — official project
-- [VPS Backup Strategy]({{< relref "vps-backup-strategy.md" >}})
-- [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}})
+- Uptime Kuma — 공식 프로젝트
+- [VPS 백업 전략]({{< relref "vps-backup-strategy.md" >}})
+- [VPS 보안 점검표]({{< relref "vps-security-checklist.md" >}})
 
-## FAQ
+## FAQ {#faq}
 
-### What should I monitor on a VPS?
+### VPS에서 무엇을 모니터링해야 하나요? {#what-should-i-monitor-on-a-vps}
 
-At minimum monitor external website availability, CPU, available RAM/swap/OOM, disk capacity, inodes, core services, application health, TLS expiry, backup freshness and alert delivery.
+최소한 외부 웹사이트 가용성, CPU, 사용 가능한 RAM·스왑·OOM, 디스크 용량, inode, 핵심 서비스, 애플리케이션 상태, TLS 만료일, 최근 백업 상태와 알림 전달 여부를 감시하세요.
 
-### Is CPU over 80% always bad?
+### CPU 사용률이 80%를 넘으면 항상 문제인가요? {#is-cpu-over-80-always-bad}
 
-No. Short high-CPU bursts can be normal. Investigate sustained utilization together with load, request latency, queues and the process doing the work.
+아닙니다. CPU 사용률이 잠시 높아지는 것은 정상일 수 있습니다. 지속적인 사용률과 함께 부하, 요청 지연 시간, 큐 적체 및 실제 CPU를 사용하는 프로세스를 조사해야 합니다.
 
-### Why is Linux RAM almost full?
+### Linux RAM은 왜 거의 가득 차 있나요? {#why-is-linux-ram-almost-full}
 
-Linux uses free memory for cache. Monitor available memory, swap activity, OOM events and process growth rather than alarming on used percentage alone.
+Linux는 남는 메모리를 캐시로 사용합니다. 사용률만 보고 경고하기보다 가용 메모리, 스왑 활동, OOM 발생 기록과 프로세스 메모리 증가를 감시하세요.
 
-### What should I monitor for disk problems?
+### 디스크 문제를 찾으려면 무엇을 확인해야 하나요? {#what-should-i-monitor-for-disk-problems}
 
-Monitor filesystem capacity, inode use, storage growth and I/O latency/wait. Free GB alone does not cover every disk failure mode.
+파일시스템 용량, inode 사용량, 저장 공간 증가와 I/O 지연·대기 시간을 확인하세요. 남은 GB만으로 모든 디스크 장애 유형을 파악할 수는 없습니다.
 
-### Is ping enough for uptime monitoring?
+### 가용성 모니터링에 ping만으로 충분한가요? {#is-ping-enough-for-uptime-monitoring}
 
-No. Ping can succeed while the website, database or TLS path is broken. Use HTTP(S) and application/service checks for user-facing health.
+아닙니다. 웹사이트, 데이터베이스 또는 TLS 경로에 장애가 있어도 ping은 성공할 수 있습니다. 사용자에게 보이는 상태는 HTTP(S)와 애플리케이션·서비스 점검으로 확인하세요.
 
-### Should the uptime monitor run on the same VPS?
+### 가용성 감시 도구를 같은 VPS에서 실행해야 하나요? {#should-the-uptime-monitor-run-on-the-same-vps}
 
-Not as the only monitor. A complete VPS or network failure can take the monitor down with the website. Keep at least the critical availability/notification path outside that failure domain.
+유일한 감시 도구를 같은 VPS에 두면 안 됩니다. VPS 전체나 네트워크 장애 시 감시 도구도 웹사이트와 함께 중단될 수 있습니다. 적어도 핵심 가용성 점검·알림 경로는 해당 장애 영역 밖에 두세요.
 
-### Which VPS monitoring tool is best?
+### 어떤 VPS 모니터링 도구가 가장 좋은가요? {#which-vps-monitoring-tool-is-best}
 
-There is no universal best tool. A single VPS may need only external uptime plus a lightweight host-metric agent. A fleet may justify Prometheus, Grafana and Alertmanager. Choose by required visibility, retention and operating complexity.
+모든 환경에 가장 좋은 단일 도구는 없습니다. VPS 한 대에는 외부 가용성 점검과 가벼운 서버 지표 에이전트만 필요할 수 있습니다. 여러 서버에는 Prometheus, Grafana와 Alertmanager가 적합할 수 있습니다. 필요한 관측 범위, 이력 보존과 운영 복잡도를 기준으로 선택하세요.
 
-### Do I need Prometheus and Grafana for one VPS?
+### VPS 한 대에도 Prometheus와 Grafana가 필요한가요? {#do-i-need-prometheus-and-grafana-for-one-vps}
 
-Not necessarily. They are powerful when you need long-term metrics, custom queries and multiple servers, but a lightweight agent plus external uptime monitoring can be enough for a small deployment.
+반드시 그렇지는 않습니다. 장기 지표, 맞춤형 쿼리와 여러 서버를 관리할 때 강력하지만 작은 환경에서는 가벼운 에이전트와 외부 가용성 점검으로 충분할 수 있습니다.
 
-### How should I monitor backups?
+### 백업은 어떻게 모니터링하나요? {#how-should-i-monitor-backups}
 
-Alert on failed jobs and on the age of the latest successful backup compared with the RPO. Then verify recoverability separately with restore tests.
+작업 실패와 마지막 성공 백업의 경과 시간이 RPO를 초과하는 상황에 알림을 설정하세요. 실제 복원 가능성은 별도의 복원 테스트로 확인해야 합니다.
 
-### When should monitoring trigger a VPS upgrade?
+### 언제 VPS 업그레이드를 고려해야 하나요? {#when-should-monitoring-trigger-a-vps-upgrade}
 
-When historical evidence shows that an optimized legitimate workload repeatedly exhausts CPU, RAM, storage/I/O or another resource. One isolated spike is not enough evidence.
+최적화된 정상 워크로드가 CPU, RAM, 스토리지·I/O 또는 다른 자원을 반복적으로 소진한다는 과거 지표가 있을 때입니다. 일회성 급증은 업그레이드의 충분한 근거가 아닙니다.
