@@ -4034,3 +4034,10 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 
 - PR #18 source commit `72938326` merged, production Hugo and Cloudflare static Actions completed successfully, and generated commit `0c00b946` passed Workers Builds.
 - French parity publication check passed for 179 LI/25 TR on Backup and 116 LI/32 TR on Multi-site plus matched H2/H3 anchors, options and affiliate counts. Four French public pages were opened in Opera and updated language-specific markers verified. This does not certify every paragraph’s semantic equivalence or mobile viewport geometry.
+
+### 2026-10-20 — French responsive containment repair
+
+- All 18 published French routes tested in Chromium at eight viewport widths (144 cases). Baseline: four mobile-width homepage box-escape failures at 320/360/390/430 px, despite a hidden document scrollbar; 16 submitted French calculator/checker forms produced results.
+- French-only, homepage-only CSS at `static/css/fr-home-responsive.v1.css` repairs headings, CTA wrapping, narrow pricing-card grid sizing. `recovered-public/fr/index.html` links it; all URLs, locale headers, Title=H1, canonical, hreflang, prices, links, calculator behavior, and other language files remain unchanged.
+- Working-branch QA run 39511266323 passed all 144 responsive cases and 16 form submissions with proposed CSS injected into the live page for preview. The `qa-french-responsive.yml` main-branch job waits for generated static output and Cloudflare Worker readiness and then tests the actual deployed page without CSS injection.
+- This is a viewport/interaction validation, not a pixel-perfect visual approval or a full line-by-line translation comparison. Production confirmation is required.

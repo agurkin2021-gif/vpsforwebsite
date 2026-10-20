@@ -1,0 +1,71 @@
+name: French responsive Chromium audit
+
+on:
+  push:
+    branches:
+      - main
+      - work/fr-responsive-qa-20261020
+    paths:
+      - ".github/workflows/qa-french-responsive.yml"
+      - "scripts/qa-french-responsive.cjs"
+      - "recovered-public/fr/**"
+      - "cloudflare-public/fr/**"
+      - "assets/css/**"
+      - "static/css/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: read
+
+jobs:
+  responsive:
+    if: github.ref_name != 'main' || startsWith(github.event.head_commit.message, 'Prepare vpsforwebsite Cloudflare static site')
+    name: 18 pages x 8 viewport widths
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Confirm released Cloudflare Worker is ready
+        if: github.ref_name == 'main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in $(seq 1 40); do
+            data="$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/check-runs?per_page=50")"
+            if echo "$data" | jq -e '.check_runs[] | select(.name == "Workers Builds: vpsforwebsite" and .conclusion == "success")' >/dev/null; then
+              echo "Cloudflare Worker Ready for $GITHUB_SHA"
+              exit 0
+            fi
+            if echo "$data" | jq -e '.check_runs[] | select(.name == "Workers Builds: vpsforwebsite" and .conclusion == "failure")' >/dev/null; then
+              echo "Cloudflare Worker deployment failed"
+              exit 1
+            fi
+            sleep 10
+          done
+          echo "Cloudflare Worker deployment not confirmed"
+          exit 1
+      - name: Install Chromium and Playwright
+        run: |
+          mkdir -p /tmp/fr-browser-qa
+          cd /tmp/fr-browser-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Check all French pages, viewports, menus and checkers
+        env:
+          NODE_PATH: /tmp/fr-browser-qa/node_modules
+        run: node scripts/qa-french-responsive.cjs
+      - name: Preserve report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: french-18-page-responsive-report
+          path: /tmp/qa-fr-responsive/*
+          retention-days: 7
+          if-no-files-found: ignore
