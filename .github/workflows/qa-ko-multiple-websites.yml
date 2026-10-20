@@ -106,7 +106,7 @@ jobs:
                 assert.equal(await page.locator('#multi-site-architecture-checker select').count(),7);
                 assert.equal(await page.locator('#multi-site-architecture-checker option').count(),18);
                 for(const id of anchors)assert.equal(await page.locator('[id="'+id+'"]').count(),1,'Unique heading anchor '+id);
-                assert.equal(await page.locator('link[rel="canonical"]').count(),0,'Preview must have no canonical');
+                assert.equal(await page.locator('link[rel="canonical"]').count(),1,'Local Hugo build must have one canonical');
                 assert.equal(await page.locator('.vps-multiweb-hero-diagram').count(),1);
                 const hero=await page.locator('.vps-multiweb-hero-diagram').innerText();
                 assert(hero.includes('VPS 한 대에서 여러 웹사이트'),'Korean hero is localized');
