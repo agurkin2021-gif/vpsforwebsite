@@ -78,14 +78,14 @@ VDSina Standard 가격은 2026년 10월 13일에 재확인한 값입니다.
     <label for="wc-limits" class="form-label">현재 호스팅에서 자원 제한이 반복되거나 필요한 서버 기능이 부족한가요?</label>
     <select id="wc-limits" class="form-input">
       <option value="no">아니요 / 측정하지 않음</option>
-      <option value="yes">Yes</option>
+      <option value="yes">예</option>
     </select>
   </div>
   <div class="mb-6">
     <label for="wc-external" class="form-label">주요 장애나 지연의 원인이 결제·배송·세금·SMTP 등 외부 서비스로 확인됐나요?</label>
     <select id="wc-external" class="form-input">
       <option value="no">아니요 / 확인되지 않음</option>
-      <option value="yes">Yes</option>
+      <option value="yes">예</option>
     </select>
   </div>
   <div class="mb-6">
@@ -106,7 +106,7 @@ VDSina Standard 가격은 2026년 10월 13일에 재확인한 값입니다.
   </div>
   <div class="mb-6">
     <label for="wc-jobs" class="form-label">무거운 플러그인, 가져오기, 웹훅, 구독 또는 예약 작업이 있나요?</label>
-    <select id="wc-jobs" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <select id="wc-jobs" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="wc-db" class="form-label">데이터베이스 및 주문 처리 부하</label>
@@ -118,18 +118,18 @@ VDSina Standard 가격은 2026년 10월 13일에 재확인한 값입니다.
   </div>
   <div class="mb-6">
     <label for="wc-panel" class="form-label">같은 VPS에서 관리 패널이나 메일 서버도 운영하나요?</label>
-    <select id="wc-panel" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <select id="wc-panel" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="wc-spikes" class="form-label">할인 행사·뉴스레터·프로모션 때 부하가 급증하나요?</label>
-    <select id="wc-spikes" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <select id="wc-spikes" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="wc-operator" class="form-label">VPS를 직접 운영·관리할 담당자가 있나요?</label>
     <select id="wc-operator" class="form-input">
-      <option value="no">No</option>
+      <option value="no">아니요</option>
       <option value="help">관리형 또는 유료 관리자 도움이 있어야 가능</option>
-      <option value="yes">Yes</option>
+      <option value="yes">예</option>
     </select>
   </div>
   <button class="btn btn-primary" type="submit">우커머스 VPS 적합성 진단</button>
