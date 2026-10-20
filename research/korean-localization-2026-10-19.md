@@ -70,7 +70,7 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - Full article translated page by page in the work branch. Parity audit: **36 headings (17 H2, 19 H3), 40 table lines, 118 unordered bullets, 16 numbered items, nine FAQ, one form with eight selects, 18 option values, one body VDSina affiliate link**; all match English. Original HTML IDs, values and DOM elements preserved, 36 stable section anchors added.
 - Interactive Management Fit Checker preserves the exact English conditional decision tree and returns four complete Korean messages. Removing only the result strings makes its JavaScript identical to English. Relevant internal links point to completed Korean pages, or existing English pages for untranslated guides.
 - Shared managed hero's 14 labels, calls to action, accessible label and diagram captions translated in Korean-only Hugo branches. Existing English strings and other hero layouts unchanged.
-- Complete Hugo build, production SEO, responsive layout and live Cloudflare publication are **not yet verified** at this ledger entry; do not mark page finished before these checks.
+- Hugo production validation `39443264213` and Cloudflare static preparation `39443264612` passed. Source `06478c9d49740bd1b36fdce2f0eb647210e144bd`; generated static `674030133f94b8800ddc5073194c3c75b0c62a8c`; Cloudflare Workers Builds: success. Live ordinary URL `/ko/관리형-vps와-비관리형-vps/` opened in Opera with Korean title, hero and interactive checker. Generated HTML: one exact H1/Title, four tables, eight select fields, 18 values, four localized result messages, self-canonical, index/follow, complete hreflang, working Korean/English internal fallbacks and three sponsored affiliate placements. Browser screenshot/mobile geometry and actual submit UI testing remain unverified because browser screenshot access disconnected and Desktop Commander monthly quota was reached.
 
 ## Queue
 
@@ -79,7 +79,7 @@ Complete each page with its own intent review, full translation (including forms
 1. Homepage `/ko/` — implementation and local checks complete; publication verification recorded in the project context.
 2. VPS sizing for website — implementation and local QA complete; publication gate pending.
 3. Website migration to VPS — source/build/Cloudflare/live publication verified 2026-10-20.
-4. Managed vs Unmanaged VPS — full translation and source audit complete; publication pending.
+4. Managed vs Unmanaged VPS — full translation and source/build/Cloudflare/live page verified; mobile visual QA pending.
 5. VPS for WordPress.
 6. VPS for WooCommerce.
 7. VPS vs Shared Hosting.
