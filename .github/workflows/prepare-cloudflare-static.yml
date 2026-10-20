@@ -204,12 +204,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Never rebase stale generated HTML over newer source or recovered pages.
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            echo "Newer commits exist; this build is stale. Skip generated commit."
+            exit 0
+          fi
           git add -f cloudflare-public
           git diff --cached --quiet && exit 0
           git commit -m "Prepare vpsforwebsite Cloudflare static site"
-          git reset --hard HEAD
-          git clean -fd
-          git pull --rebase origin main
-          git push
+          if ! git push origin HEAD:main; then
+            echo "Branch moved while publishing. Do not force/rebase generated content."
+            exit 0
+          fi
 
 # recovery-overlay-refresh
