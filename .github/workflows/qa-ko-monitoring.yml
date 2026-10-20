@@ -1,0 +1,147 @@
+name: Korean VPS Monitoring prepublication QA
+on:
+  push:
+    branches: ["work/ko-monitoring-20261020"]
+    paths:
+      - "content/korean/vps-monitoring.md"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-monitoring.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Hugo production build
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/vps-모니터링/index.html
+      - name: Source parity and EN-only fallback regression
+        run: |
+          node <<'JS'
+          const fs=require('fs'),a=require('assert').strict,cp=require('child_process');
+          const en=fs.readFileSync('content/english/vps-monitoring.md','utf8');
+          const ko=fs.readFileSync('content/korean/vps-monitoring.md','utf8');
+          const m=(s,r)=>[...s.matchAll(r)].map(x=>x[1]||x[0]);
+          const sl=s=>s.toLowerCase()==='prometheus / grafana path'?'prometheus--grafana-path':s.toLowerCase().replace(/[^a-z0-9 -]/g,'').trim().replace(/\s+/g,'-');
+          const heads=m(en,/^#{2,3}\s+(.+)$/gm);
+          a.equal(heads.length,46);
+          a.deepEqual(m(ko,/^#{2,3}\s+.*\{#([\w-]+)\}$/gm),heads.map(sl));
+          for(const r of [/^\|.*\|$/gm,/^- /gm,/^\d+\. /gm,/^\x60{3}/gm,/<form\b/g,/<select\b/g,/<option\b/g,/<script>/g,/<a\b/g])
+            a.equal(m(en,r).length,m(ko,r).length,'Structure '+r);
+          a.equal(m(ko,/^\|.*\|$/gm).length,29);
+          a.equal(m(ko,/^- /gm).length,188);
+          a.equal(m(ko,/<select\b/g).length,9);
+          a.equal(m(ko,/<option\b/g).length,21);
+          for(const r of [/<select[^>]*id="([^"]+)"/g,/<option[^>]*value="([^"]+)"/g,/\{\{<\s*relref\s+(?:path=)?"([^"]+)"/g])
+            a.deepEqual(m(en,r),m(ko,r),'Identifiers/links '+r);
+          a.deepEqual(m(en,/\x60{3}([\s\S]*?)\x60{3}/g),m(ko,/\x60{3}([\s\S]*?)\x60{3}/g));
+          const script=s=>s.match(/<script>[\s\S]*?<\/script>/)[0].replace(/result = [^\n]*;/g,'result = LOCALIZED;');
+          a.equal(script(en),script(ko),'JS logic unchanged');
+          const nums=s=>m(s.replace(/\{#[\w-]+\}/g,''),/(?<![a-zA-Z0-9])(?:\d+(?:\.\d+)?)(?:%|GB|TB)?/g).sort();
+          a.deepEqual(nums(en),nums(ko),'Numeric literal parity');
+          const h=fs.readFileSync('layouts/_partials/page-header.html','utf8');
+          const main=cp.execFileSync('git',['show','origin/main:layouts/_partials/page-header.html'],{encoding:'utf8'});
+          const part=s=>{const i=s.indexOf('{{ else if $isVpsMonitoring }}');return s.slice(i,s.indexOf('{{ else if ',i+25));};
+          const fallback=part(h).replace(/\{\{ if eq \.Language\.Lang "ko" \}\}[\s\S]*?\{\{ else \}\}([\s\S]*?)\{\{ end \}\}/g,'$1');
+          a.equal(fallback,part(main),'English hero fallback identical');
+          a(!ko.includes('draft: true'));
+          console.log('PASS: 46 heading IDs, 29 table lines, 188 bullets, 9/21 form options, scripts, links, code, numbers, English fallback');
+          JS
+      - name: Start preview and install Chromium
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-monitoring-http.log 2>&1 &
+          mkdir -p /tmp/ko-monitoring-qa
+          cd /tmp/ko-monitoring-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser SEO, responsive design and all checker outcomes
+        run: |
+          cd /tmp/ko-monitoring-qa
+          mkdir -p shots
+          cat > check.cjs <<'JS'
+          const a=require('assert').strict,{chromium}=require('playwright');
+          const url='http://127.0.0.1:8765/ko/'+encodeURIComponent('vps-모니터링')+'/';
+          const ids=['mon-workload','mon-external','mon-metrics','mon-disk','mon-app','mon-jobs','mon-alerts','mon-notify','mon-owner'];
+          const values=[['static','cms','transactional','multi'],['no','yes'],['no','yes'],['no','yes'],['no','yes'],['no','yes','na'],['no','yes'],['no','yes'],['no','yes']];
+          (async()=>{
+            const browser=await chromium.launch();
+            try{
+              for(const width of [390,1280]){
+                const ctx=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const page=await ctx.newPage(),en=await ctx.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const res=await page.goto(url,{waitUntil:'load',timeout:60000});
+                a.equal(res.status(),200);
+                a.equal((await page.title()).trim(),'VPS 모니터링');
+                a.deepEqual(await page.locator('h1').allTextContents(),['VPS 모니터링']);
+                a.equal(await page.locator('h2,h3').count(),46);
+                a.equal(await page.locator('table').count(),2);
+                a.equal(await page.locator('#vps-monitoring-checker select').count(),9);
+                a.equal(await page.locator('#vps-monitoring-checker option').count(),21);
+                await en.goto('http://127.0.0.1:8765/vps-monitoring/',{waitUntil:'domcontentloaded'});
+                const extract=p=>p.locator('h2,h3').evaluateAll(nodes=>nodes.map(n=>n.id));
+                a.deepEqual(await extract(page),await extract(en));
+                a.equal(await page.locator('link[rel="canonical"]').count(),1);
+                a((await page.locator('link[rel="canonical"]').getAttribute('href')).includes('/ko/'));
+                a((await page.locator('.vps-monitor-hero-diagram').innerText()).includes('서버 자체뿐 아니라 장애 경로를 감시하세요'));
+                a((await page.locator('body').innerText()).includes('고지:'));
+                const links=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(nodes=>nodes.map(x=>x.rel));
+                a(links.length>=3&&links.every(x=>x.includes('sponsored')&&x.includes('nofollow')));
+                a.equal(await page.locator('a[href^="//"]').count(),0);
+                const g=await page.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+                a(g.html<=width+2&&g.body<=width+2,'Horizontal overflow '+JSON.stringify(g));
+                await page.screenshot({path:'shots/monitoring-'+width+'.png',fullPage:true});
+                if(width===390){
+                  let combos=[[]];for(const opts of values)combos=combos.flatMap(c=>opts.map(v=>[...c,v]));
+                  a.equal(combos.length,1536);
+                  const got=await page.evaluate(({ids,combos})=>{
+                    const form=document.getElementById('vps-monitoring-checker'),res=document.getElementById('vps-monitoring-result'),out=[];
+                    for(const c of combos){ids.forEach((id,i)=>document.getElementById(id).value=c[i]);form.requestSubmit();out.push(res.textContent);}
+                    return out;
+                  },{ids,combos});
+                  const count=[0,0,0,0];
+                  for(let i=0;i<got.length;i++){
+                    const c=combos[i],blind=c.slice(1,5).some(x=>x!=='yes'),alert=c.slice(6).some(x=>x!=='yes'),jobs=c[5]!=='no'||c[0]==='static';
+                    const expect=blind?'사각지대 발견:':alert?'알림 / 책임 체계 미흡:':!jobs?'기본 모니터링:':'운영 환경의 기본 모니터링 확보:';
+                    a(got[i].startsWith(expect),'Form case '+i+': '+got[i]);
+                    count[blind?0:alert?1:!jobs?2:3]++;
+                  }
+                  console.log('PASS all 1536 browser submissions',JSON.stringify(count));
+                }
+                a.deepEqual(errors.filter(x=>!(x.startsWith('Failed to register a ServiceWorker')&&x.includes('does not match the current origin'))),[]);
+                console.log('PASS browser',width);
+                await ctx.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-monitoring-prepublication
+          path: /tmp/ko-monitoring-qa/shots/*.png
+          if-no-files-found: ignore
+          retention-days: 7

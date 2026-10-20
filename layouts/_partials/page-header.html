@@ -901,10 +901,10 @@
                 href="{{ $monitorAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-monitor-secondary-cta" href="#quick-answer">
-                Monitoring baseline
+                {{ if eq .Language.Lang "ko" }}모니터링 기본 구성{{ else }}Monitoring baseline{{ end }}
               </a>
             </div>
           </div>
@@ -914,45 +914,45 @@
             href="{{ $monitorAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for a monitored server">
+            aria-label="{{ if eq .Language.Lang "ko" }}모니터링하는 서버의 현재 VPS 옵션 확인{{ else }}Check current VPS options for a monitored server{{ end }}">
             <div class="vps-monitor-compact-head">
-              <strong>Monitor the failure path, not only the server</strong>
-              <small>Availability, host pressure, application health and alerts answer different questions.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}서버 자체뿐 아니라 장애 경로를 감시하세요{{ else }}Monitor the failure path, not only the server{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}가용성, 서버 부하, 애플리케이션 상태와 알림은 서로 다른 문제를 확인합니다.{{ else }}Availability, host pressure, application health and alerts answer different questions.{{ end }}</small>
             </div>
 
             <div class="vps-monitor-compact-grid">
               <div class="vps-monitor-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>External uptime</strong>
-                  <small>Can users reach the site?</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}외부 가용성{{ else }}External uptime{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}사용자가 사이트에 접속할 수 있나요?{{ else }}Can users reach the site?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Host metrics</strong>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 지표{{ else }}Host metrics{{ end }}</strong>
                   <small>CPU, RAM, disk, network</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Service health</strong>
-                  <small>Web, DB, jobs, TLS</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}서비스 상태{{ else }}Service health{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}웹, DB, 작업, TLS{{ else }}Web, DB, jobs, TLS{{ end }}</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Alerts & owner</strong>
-                  <small>Detect, notify, respond</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}알림 및 담당자{{ else }}Alerts & owner{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}감지, 통보, 대응{{ else }}Detect, notify, respond{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-monitor-compact-rule">
-              <strong>The monitor and notification path must survive failure of the VPS being watched.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}감시 대상 VPS에 장애가 생겨도 감시 도구와 알림 경로는 작동해야 합니다.{{ else }}The monitor and notification path must survive failure of the VPS being watched.{{ end }}</strong>
             </div>
           </a>
         </div>
