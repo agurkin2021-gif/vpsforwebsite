@@ -13113,3 +13113,23 @@ html:lang(ko) .content .vps-table-scroll td:last-child {
 @media (max-width: 767px) {
   .vps-table-scroll-hint { display: block; font-size: .85rem; }
 }
+
+/* VPS vs Shared Hosting: align affiliate disclosure with outcome cards */
+/* The notice follows the enhancement script and must share the 1040px header width. */
+body:has(.vps-vs-shared-page-header) main > .vps-vs-shared-page-header + script + .container {
+  width: 1040px !important;
+  max-width: 1040px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+@media (max-width: 1100px) {
+  body:has(.vps-vs-shared-page-header) main > .vps-vs-shared-page-header + script + .container {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+}
+@media (max-width: 767px) {
+  body:has(.vps-vs-shared-page-header) main > .vps-vs-shared-page-header + script + .container {
+    width: calc(100% - 36px) !important;
+  }
+}
