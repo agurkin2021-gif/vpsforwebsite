@@ -64,6 +64,14 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - Production validation workflow `39439557832` and Cloudflare static preparation workflow `39439558022` passed after the fallback-link fix in source `24ee5c9775c9dbe6107e474e9ecddc9bb0877f04`. Static commit `69b1bbc2eaec9e77d457fda5bdd5f250d285e5ab` passed Cloudflare Workers Builds. Rendered Korean URL has one matching Title/H1, self-canonical, index/follow, valid hreflang and sitemap inclusion; four affiliate placements with correct sponsored attributes. The ordinary live page was opened in Opera, displaying the localized hero, body and checker instead of 404. Resized mobile and desktop layout geometry was not separately tested in this session.
 - Next individual page after publication validation: **Managed vs Unmanaged VPS**.
 
+## Page 4: Managed vs Unmanaged VPS — 2026-10-20
+
+- Korean query, exact Title and H1: **관리형 VPS와 비관리형 VPS**; slug `/ko/관리형-vps와-비관리형-vps/`. Scope: management and operational task ownership; Korean search volume has not been verified.
+- Full article translated page by page in the work branch. Parity audit: **36 headings (17 H2, 19 H3), 40 table lines, 118 unordered bullets, 16 numbered items, nine FAQ, one form with eight selects, 18 option values, one body VDSina affiliate link**; all match English. Original HTML IDs, values and DOM elements preserved, 36 stable section anchors added.
+- Interactive Management Fit Checker preserves the exact English conditional decision tree and returns four complete Korean messages. Removing only the result strings makes its JavaScript identical to English. Relevant internal links point to completed Korean pages, or existing English pages for untranslated guides.
+- Shared managed hero's 14 labels, calls to action, accessible label and diagram captions translated in Korean-only Hugo branches. Existing English strings and other hero layouts unchanged.
+- Complete Hugo build, production SEO, responsive layout and live Cloudflare publication are **not yet verified** at this ledger entry; do not mark page finished before these checks.
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
@@ -71,7 +79,7 @@ Complete each page with its own intent review, full translation (including forms
 1. Homepage `/ko/` — implementation and local checks complete; publication verification recorded in the project context.
 2. VPS sizing for website — implementation and local QA complete; publication gate pending.
 3. Website migration to VPS — source/build/Cloudflare/live publication verified 2026-10-20.
-4. Managed vs Unmanaged VPS.
+4. Managed vs Unmanaged VPS — full translation and source audit complete; publication pending.
 5. VPS for WordPress.
 6. VPS for WooCommerce.
 7. VPS vs Shared Hosting.
