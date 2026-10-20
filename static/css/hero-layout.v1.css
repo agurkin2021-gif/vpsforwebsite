@@ -1,0 +1,9 @@
+/* Shared by Hugo and recovered pages. Keep translated titles inside their
+   own column; long words may break only when they cannot fit on a line. */
+.vps-page-header [class*="-hero-copy"] h1,
+.vps-home .vps-hero .vps-hero-copy h1 {
+  max-width: 100% !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+  overflow-wrap: anywhere !important;
+}

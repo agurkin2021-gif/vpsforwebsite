@@ -249,16 +249,19 @@ for page in ROOT.rglob("*.html"):
         seo_routes["ko"] = actual_ko
     html = replace_alternates(html, seo_routes, bool(actual_ko))
 
-    # Recovered pages also need the shared viewport-safe guide menu styles.
-    # Hugo pages already include this link in the head; keep the pass idempotent.
-    if not any(attrs(tag.group(0)).get("id") == "guide-navigation-css"
-               for tag in TAG_RE.finditer(html)):
-        html = html.replace(
-            "</head>",
-            '<link id="guide-navigation-css" rel="stylesheet" '
-            'href="/css/guide-navigation.v1.css"></head>',
-            1,
-        )
+    # Recovered pages need the same responsive fixes as Hugo pages. Preserve
+    # their immutable fingerprinted CSS and add each shared stylesheet once.
+    link_ids = {attrs(tag.group(0)).get("id") for tag in TAG_RE.finditer(html)}
+    for style_id, href in (
+        ("guide-navigation-css", "/css/guide-navigation.v1.css"),
+        ("hero-layout-css", "/css/hero-layout.v1.css"),
+    ):
+        if style_id not in link_ids:
+            html = html.replace(
+                "</head>",
+                f'<link id="{style_id}" rel="stylesheet" href="{href}"></head>',
+                1,
+            )
 
     if html != original:
         page.write_text(html, encoding="utf-8")

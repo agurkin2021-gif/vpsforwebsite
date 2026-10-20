@@ -3955,3 +3955,8 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - The current Spanish Hugo-managed pages still have some English UI/diagram strings; availability checks do not establish full translation parity with the original cached Spanish homepage. Keep that as a distinct localization follow-up.
 
 - Publication/live validation complete: source `43a1783e5642`, generated `4b619b761664`, both Actions and Cloudflare successful. Public crawl of 222 URLs and the link/asset/SRI audit report zero errors; all 162 original-language pages are available. Actual navigation passed all nine locales on desktop, short desktop and mobile viewports, including the repaired 404 language destinations.
+
+### 2026-10-20 - Hero title wrapping
+
+- Fixed responsive title overflow across Hugo and recovered pages, including homepages. All title/H1 strings, primary queries, routes, canonical/hreflang destinations, body text and internal/affiliate links are preserved. Only wrapping inside the existing hero column changes; no content expansion or new SEO owners.
+- Local browser checks pass title bounds and neighboring-card separation on all 164 real pages at eight viewport widths; strict localization and link/asset/SRI audits pass. Publication/live verification is recorded in CHATGPT_PROJECT_CONTEXT.md.
