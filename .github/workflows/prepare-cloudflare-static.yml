@@ -208,6 +208,74 @@ jobs:
               raise SystemExit(1)
           PY
 
+      - name: Verify French translated pages and CSS
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64
+          import hashlib
+          import html
+          import re
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path("cloudflare-public")
+          pages = sorted((root / "fr").rglob("index.html"))
+          errors = []
+          if len(pages) < 18:
+              errors.append(f"Expected at least 18 French pages, found {len(pages)}")
+
+          for page in pages:
+              text = page.read_text(encoding="utf-8")
+              rel = page.relative_to(root).parent.as_posix()
+              url = f"https://vpsforwebsite.com/{rel}/"
+
+              if not re.search(r'<html\\b[^>]*\\blang="fr"', text, re.I):
+                  errors.append(f"{page}: wrong HTML language")
+              canonical = re.search(r'<link\\b(?=[^>]*rel="canonical")[^>]*>', text, re.I)
+              if not canonical or f'href="{url}"' not in canonical.group(0):
+                  errors.append(f"{page}: wrong canonical")
+              titles = re.findall(r'<title>(.*?)</title>', text, re.I | re.S)
+              headings = re.findall(r'<h1\\b[^>]*>(.*?)</h1>', text, re.I | re.S)
+              if len(titles) != 1 or len(headings) != 1 or html.unescape(re.sub(r'<[^>]+>', '', titles[0])).strip() != html.unescape(re.sub(r'<[^>]+>', '', headings[0])).strip():
+                  errors.append(f"{page}: title/H1 mismatch")
+
+              links = re.findall(r'<link\\b(?=[^>]*id="site-critical-css")[^>]*>', text, re.I)
+              if len(links) != 1:
+                  errors.append(f"{page}: expected one critical stylesheet")
+                  continue
+              link = links[0]
+              href = re.search(r'href="([^"]+)"', link)
+              sri = re.search(r'integrity="([^"]+)"', link)
+              parsed = urlparse(href.group(1) if href else "")
+              if parsed.netloc not in ("", "vpsforwebsite.com") or not parsed.path.startswith("/css/"):
+                  errors.append(f"{page}: invalid stylesheet URL")
+                  continue
+              css = root / parsed.path.lstrip("/")
+              if not css.is_file():
+                  errors.append(f"{page}: missing stylesheet {css}")
+                  continue
+              actual = "sha256-" + base64.b64encode(hashlib.sha256(css.read_bytes()).digest()).decode("ascii")
+              if not sri or sri.group(1) != actual:
+                  errors.append(f"{page}: stylesheet SRI mismatch")
+
+          for slug, h1, form in [
+              ("strategie-sauvegarde-vps", "Stratégie de sauvegarde VPS", "vps-backup-strategy-checker-form"),
+              ("vps-pour-plusieurs-sites", "VPS pour plusieurs sites", "multi-site-architecture-checker"),
+          ]:
+              page = root / "fr" / slug / "index.html"
+              if page.is_file():
+                  text = page.read_text(encoding="utf-8")
+                  if f"<h1>{h1}</h1>" not in text or form not in text:
+                      errors.append(f"{page}: incomplete French article or calculator")
+
+          for error in errors:
+              print("FRENCH_PAGE_ERROR", error)
+          print(f"French pages verified: {len(pages)}, errors: {len(errors)}")
+          if errors:
+              raise SystemExit(1)
+          PY
+
       - name: Build sitemap from actual deployable HTML
         shell: bash
         run: |
