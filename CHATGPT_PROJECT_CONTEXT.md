@@ -22,6 +22,13 @@
 
 - Korean fourth guide (Managed vs Unmanaged VPS) translated individually on work branch `work/ko-managed-vs-unmanaged-20261020`: exact target Title/H1 `관리형 VPS와 비관리형 VPS`, slug `/ko/관리형-vps와-비관리형-vps/`, source `content/korean/managed-vs-unmanaged-vps.md`. All 36 headings, 40 table lines, 118 bullets, 16 numbered questions, 9 FAQs, original form controls/values and affiliate links preserved; all 36 headings have explicit stable anchors. Interactive Management Fit Checker has the same condition tree and four localized outcomes; source JavaScript normalizes byte-identically to English apart from output messages. Only this guide's shared hero labels were localized conditionally for ko; English and other languages remain as before. Korean-aware internal links resolve completed pages or real English fallbacks. Hugo production validation run `39443264213` succeeded; static preparation run `39443264612` succeeded. Source commit `06478c9d49740bd1b36fdce2f0eb647210e144bd` generated publishable static commit `674030133f94b8800ddc5073194c3c75b0c62a8c`. Cloudflare Workers Builds completed successfully. Live Korean URL opened in Opera after deployment with the correct Korean title, hero and checker. Production HTML has 17 H2 + 19 H3, four tables, eight form selects/18 options, three sponsored affiliate links, index/follow, self-canonical, correct localized article links and hreflang. Independent mobile viewport geometry and end-to-end submit interaction were not browser-tested (Opera screenshot connector unavailable; remote Desktop Commander quota exhausted). Next Korean guide: VPS for WordPress.
 
+### Fifth Korean page: WordPress VPS — 2026-10-20
+
+- Continuing the owner's one-page-at-a-time instruction. Selected exact Korean query/Title/H1 **워드프레스용 VPS**, slug `/ko/워드프레스용-vps/`; file `content/korean/vps-for-wordpress.md`.
+- Complete Korean translation in branch `work/ko-wordpress-20261020`: 34 headings, four tables, ten FAQ, one seven-select WordPress VPS Fit Checker with preserved algorithm/inputs, all English section anchor IDs, internal-link fallbacks, original VDSina affiliate URL and numeric examples. WordPress hero and diagram translated with Korean-only conditions in `layouts/_partials/page-header.html`. English/Spanish text/logic retained.
+- Audited heading, table, bullet, control-ID/option-value, link and numeric-pricing parity with the English source. Main Hugo build, Cloudflare deployment and live mobile viewport still require verification; do not claim they passed until confirmed.
+- After publication validation, next Korean page is **VPS for WooCommerce**.
+
 ## Project identity
 
 - Project: **vpsforwebsite.com**

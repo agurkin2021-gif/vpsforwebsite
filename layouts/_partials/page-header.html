@@ -240,22 +240,22 @@
       <div class="vps-wordpress-hero">
         <div class="vps-wordpress-hero-grid">
           <div class="vps-wordpress-hero-copy">
-            <div class="vps-wordpress-eyebrow">WordPress VPS guide</div>
+            <div class="vps-wordpress-eyebrow">{{ if eq .Language.Lang "ko" }}워드프레스 VPS 가이드{{ else }}WordPress VPS guide{{ end }}</div>
             <h1>{{ .Title }}</h1>
             {{ with .Params.description }}
               <p>{{ . | markdownify }}</p>
             {{ end }}
 
-            <div class="vps-wordpress-hero-checks" role="group" aria-label="WordPress VPS factors beyond RAM">
-              <span class="vps-wordpress-hero-checks-title">Beyond CPU and RAM</span>
+            <div class="vps-wordpress-hero-checks" role="group" aria-label="{{ if eq .Language.Lang "ko" }}RAM 외에 고려할 워드프레스 VPS 요소{{ else }}WordPress VPS factors beyond RAM{{ end }}">
+              <span class="vps-wordpress-hero-checks-title">{{ if eq .Language.Lang "ko" }}CPU와 RAM 외의 요소{{ else }}Beyond CPU and RAM{{ end }}</span>
               <div class="vps-wordpress-hero-checks-grid">
                 <div class="vps-wordpress-hero-check">
-                  <strong>SSD / NVMe storage</strong>
-                  <span>Database queries, cache warmups, updates and backups are sensitive to storage latency.</span>
+                  <strong>{{ if eq .Language.Lang "ko" }}SSD / NVMe 스토리지{{ else }}SSD / NVMe storage{{ end }}</strong>
+                  <span>{{ if eq .Language.Lang "ko" }}데이터베이스 쿼리, 캐시 초기화, 업데이트 및 백업 성능은 저장장치 지연 시간의 영향을 받습니다.{{ else }}Database queries, cache warmups, updates and backups are sensitive to storage latency.{{ end }}</span>
                 </div>
                 <div class="vps-wordpress-hero-check">
-                  <strong>Server location</strong>
-                  <span>Choose a region near the main audience; extra RAM cannot remove network latency.</span>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 위치{{ else }}Server location{{ end }}</strong>
+                  <span>{{ if eq .Language.Lang "ko" }}주요 방문자와 가까운 지역을 선택하세요. RAM을 늘려도 네트워크 지연은 사라지지 않습니다.{{ else }}Choose a region near the main audience; extra RAM cannot remove network latency.{{ end }}</span>
                 </div>
               </div>
             </div>
@@ -266,7 +266,7 @@
                 href="{{ $wpAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check current WordPress VPS options
+                {{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else }}Check current WordPress VPS options{{ end }}
               </a>
             </div>
           </div>
@@ -276,19 +276,19 @@
             href="{{ $wpAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current WordPress VPS options">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else }}Check current WordPress VPS options{{ end }}">
             <div class="vps-wordpress-stack-head">
               <span class="vps-wordpress-wpmark">WP</span>
               <div>
-                <strong>WordPress workload</strong>
-                <small>Size the dynamic work, not visitor count.</small>
+                {{ if eq .Language.Lang "ko" }}<strong>워드프레스 작업 부하</strong>{{ else }}<strong>WordPress workload</strong>{{ end }}
+                <small>{{ if eq .Language.Lang "ko" }}방문자 수보다 동적 처리량을 기준으로 사양을 결정하세요.{{ else }}Size the dynamic work, not visitor count.{{ end }}</small>
               </div>
             </div>
 
             <div class="vps-wordpress-stack-grid">
               <div class="vps-wordpress-stack-node">
                 <span>PHP</span>
-                <strong>PHP-FPM workers</strong>
+                {{ if eq .Language.Lang "ko" }}<strong>PHP-FPM 워커</strong>{{ else }}<strong>PHP-FPM workers</strong>{{ end }}
               </div>
               <div class="vps-wordpress-stack-node">
                 <span>DB</span>
@@ -300,19 +300,19 @@
               </div>
               <div class="vps-wordpress-stack-node">
                 <span>CA</span>
-                <strong>Page / object cache</strong>
+                {{ if eq .Language.Lang "ko" }}<strong>페이지 / 객체 캐시</strong>{{ else }}<strong>Page / object cache</strong>{{ end }}
               </div>
             </div>
 
             <div class="vps-wordpress-signal-row">
-              <span>PHP workers</span>
-              <span>DB load</span>
-              <span>Plugins</span>
-              <span>Cron / jobs</span>
+              {{ if eq .Language.Lang "ko" }}<span>PHP 워커</span>{{ else }}<span>PHP workers</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>DB 부하</span>{{ else }}<span>DB load</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>플러그인</span>{{ else }}<span>Plugins</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>Cron / 백그라운드 작업</span>{{ else }}<span>Cron / jobs</span>{{ end }}
             </div>
 
             <div class="vps-wordpress-stack-rule">
-              <strong>VPS size = real WordPress workload + operating headroom</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}VPS 사양 = 실제 워드프레스 작업 부하 + 운영 여유 용량{{ else }}VPS size = real WordPress workload + operating headroom{{ end }}</strong>
             </div>
           </a>
         </div>
