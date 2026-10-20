@@ -59,9 +59,9 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - Korean query, Title and H1: **웹사이트 VPS 이전**; slug: \`/ko/웹사이트-vps-이전/\`. This article owns the cutover/migration intent, not VPS purchase selection or WordPress-specific resource sizing. Korean query volume not verified.
 - Full English article translated individually: all **31 original headings** retained as anchored sections, both Markdown tables (**22 table lines**), **25 numbered steps**, **106 bullet points** and all **8 FAQ items** preserved in the same order.
 - Ten-field interactive preflight form preserves field IDs, option values, readiness conditions, CSS classes and submit behavior; labels, both outcomes and all missing-item names are Korean. **All 2,304 distinct field-value combinations** were simulated against the unchanged English decision logic; zero category mismatches.
-- All eight article relref destinations, two article affiliate URLs and their \`rel="sponsored nofollow noopener"\` attributes preserved. English-only supporting destinations continue to resolve to their real English pages until their Korean counterparts are created.
+- All eight internal link targets and two article affiliate URLs with their \`rel="sponsored nofollow noopener"\` attributes preserved. Hugo rejects relref for untranslated Korean targets, so the guide now uses the existing Korean-aware Markdown link renderer: completed targets resolve to Korean, others to working English pages.
 - Dedicated migration hero translated for Korean via narrowly scoped Hugo language conditionals. Original English visible labels, markup and links remain untouched. Korean nav will resolve to this guide once generated.
-- Source/structure review completed; Hugo production build, generated HTML/canonical/hreflang, responsive-browser review and live Cloudflare deployment are separate publication gates and **not claimed as passed at this point**.
+- Production validation workflow `39439557832` and Cloudflare static preparation workflow `39439558022` passed after the fallback-link fix in source `24ee5c9775c9dbe6107e474e9ecddc9bb0877f04`. Static commit `69b1bbc2eaec9e77d457fda5bdd5f250d285e5ab` passed Cloudflare Workers Builds. Rendered Korean URL has one matching Title/H1, self-canonical, index/follow, valid hreflang and sitemap inclusion; four affiliate placements with correct sponsored attributes. The ordinary live page was opened in Opera, displaying the localized hero, body and checker instead of 404. Resized mobile and desktop layout geometry was not separately tested in this session.
 - Next individual page after publication validation: **Managed vs Unmanaged VPS**.
 
 ## Queue
@@ -70,7 +70,7 @@ Complete each page with its own intent review, full translation (including forms
 
 1. Homepage `/ko/` — implementation and local checks complete; publication verification recorded in the project context.
 2. VPS sizing for website — implementation and local QA complete; publication gate pending.
-3. Website migration to VPS — source complete; publication verification pending.
+3. Website migration to VPS — source/build/Cloudflare/live publication verified 2026-10-20.
 4. Managed vs Unmanaged VPS.
 5. VPS for WordPress.
 6. VPS for WooCommerce.
