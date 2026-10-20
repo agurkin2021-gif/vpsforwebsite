@@ -321,7 +321,7 @@ curl -o /dev/null -s -w 'connect=%{time_connect} ttfb=%{time_starttransfer} tota
 - B2B 애플리케이션이라면 기업·VPN 경로;
 - 서버 간 지연 시간이 중요하다면 실제 상위 API 또는 의존 시스템.
 
-목표는 모든 테스트에서 1등인 지역을 찾는 것이 아니라 중요한 트래픽에 가장 적합한 절충점을 찾는 것입니다.
+목표는 모든 테스트에서 항상 최고인 지역을 찾는 것이 아니라 중요한 트래픽에 가장 적합한 절충점을 찾는 것입니다.
 
 ## 통신이 잦은 의존 시스템은 가까이 배치하세요 {#keep-chatty-dependencies-close}
 
