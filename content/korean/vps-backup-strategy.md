@@ -6,97 +6,97 @@ description: "VPS 백업 전략: RPO와 RTO를 정의하고 제공업체 백업 
 image: "images/home/vps-for-website-hero.webp"
 ---
 
-VPS Backup Strategy is not “turn on snapshots once a day.” A usable recovery plan defines **how much data you can lose (RPO), how long recovery may take (RTO), which data must survive, where independent copies live, how long versions are retained, and whether anybody has actually restored them**.
+VPS 백업 전략은 단순히 “하루에 한 번 스냅샷을 켜는 것”이 아닙니다. 실제로 사용할 수 있는 복구 계획은 **허용 가능한 데이터 손실량(RPO), 복구에 걸릴 수 있는 시간(RTO), 반드시 보존해야 하는 데이터, 독립된 사본의 보관 장소, 백업 버전의 보존 기간, 실제로 복원을 수행해 봤는지**를 정의해야 합니다.
 
-A strong VPS plan usually combines fast provider-side recovery with an independent off-server copy and application-aware database backups. The exact mix depends on how quickly the data changes and how costly downtime is.
+견고한 VPS 복구 계획은 대체로 제공업체 측의 빠른 복구 방법, 서버 외부의 독립적인 사본, 애플리케이션에 맞는 데이터베이스 백업을 결합합니다. 적절한 구성은 데이터가 얼마나 빨리 변하는지, 서비스 중단 비용이 얼마나 큰지에 따라 달라집니다.
 
-Backup strategy also needs a named owner. If nobody is responsible for job failures, restore tests and recovery decisions, resolve that operating model first: see [Managed vs Unmanaged VPS]({{< relref "managed-vs-unmanaged-vps.md" >}}).
+백업 전략에는 담당자도 명확히 지정해야 합니다. 작업 실패, 복원 테스트, 복구 결정을 책임질 사람이 없다면 운영 방식부터 정하세요. [관리형 VPS와 비관리형 VPS]({{< relref "managed-vs-unmanaged-vps.md" >}})를 참고하세요.
 
-For the broader server decision, see [VPS for website]({{< relref "_index.md" >}}).
+서버 선택의 전반적인 기준은 [웹사이트용 VPS 호스팅]({{< relref "_index.md" >}})을 참고하세요.
 
-[Quick answer](#quick-answer) · [Checker](#vps-backup-strategy-checker) · [RPO / RTO](#start-with-rpo-and-rto) · [Backup layers](#snapshot-image-file-backup-and-replication-are-different) · [3-2-1](#a-practical-3-2-1-model-for-vps) · [Restore tests](#test-restores-and-measure-real-rto) · [VDSina](#how-vdsina-backups-fit-the-strategy) · [FAQ](#faq)
+[핵심 요약](#quick-answer) · [진단 도구](#vps-backup-strategy-checker) · [RPO / RTO](#start-with-rpo-and-rto) · [백업 계층](#snapshot-image-file-backup-and-replication-are-different) · [3-2-1](#a-practical-3-2-1-model-for-vps) · [복원 테스트](#test-restores-and-measure-real-rto) · [VDSina](#how-vdsina-backups-fit-the-strategy) · [FAQ](#faq)
 
-## Quick answer
+## 핵심 요약 {#quick-answer}
 
-A practical VPS recovery design has several layers:
+실용적인 VPS 복구 구조는 여러 계층으로 구성됩니다.
 
-| Layer | Main job | What it does not prove |
+| 계층 | 주요 역할 | 이것만으로 보장하지 못하는 사항 |
 |---|---|---|
-| **Provider backup image / snapshot** | fast full-server rollback or rebuild | independent recovery if the provider account/storage is unavailable |
-| **Database-consistent backup** | recover application state and recent writes | complete server configuration by itself |
-| **File/config backup** | restore uploads, configs, app data and selected files | fast whole-server recovery |
-| **Independent offsite copy** | survive primary provider/account/server failure | low RTO unless restore is rehearsed |
-| **Restore drill** | prove the copies, keys and runbook actually work | future backups will keep working unless monitored |
+| **제공업체 백업 이미지 / 스냅샷** | 서버 전체를 빠르게 이전 상태로 되돌리거나 재구축 | 제공업체 계정 또는 저장소를 사용할 수 없을 때의 독립적인 복구 |
+| **데이터베이스 일관성을 보장하는 백업** | 애플리케이션 상태와 최근 변경 데이터를 복원 | 서버 전체 설정의 복원 |
+| **파일 / 설정 백업** | 업로드, 설정, 앱 데이터 및 선택한 파일 복원 | 서버 전체를 신속하게 복구하는 능력 |
+| **독립적인 외부 사본** | 주 제공업체, 계정 또는 서버 장애에도 데이터 보존 | 복원을 연습하지 않았다면 짧은 RTO 달성 |
+| **복원 훈련** | 사본, 복구 키와 실행 절차가 실제로 작동함을 입증 | 지속적인 감시가 없다면 이후 백업도 계속 성공한다는 보장 |
 
-For many ordinary website VPS deployments, a good baseline is:
+일반적인 웹사이트 VPS 배포에서는 다음 구성을 기본으로 삼을 수 있습니다.
 
-- provider-side image/snapshot for fast rollback;
-- encrypted independent backup of files/config/database to another failure domain;
-- multiple restore points;
-- database backup frequency chosen from acceptable data loss;
-- regular restore tests.
+- 빠른 롤백을 위한 제공업체 측 이미지 또는 스냅샷;
+- 파일, 설정과 데이터베이스를 다른 장애 영역으로 보내는 암호화된 독립 백업;
+- 여러 복구 지점;
+- 허용 가능한 데이터 손실량에 맞춘 데이터베이스 백업 주기;
+- 정기적인 복원 테스트.
 
-That is more useful than relying on one “successful backup” status.
+단 하나의 “백업 성공” 상태에 의존하는 것보다 훨씬 유용합니다.
 
-## VPS Backup Strategy Checker
+## VPS 백업 전략 진단 {#vps-backup-strategy-checker}
 
-This checker identifies the recovery architecture you need. It does not guarantee recovery.
+이 진단 도구는 필요한 복구 구조를 판단하는 데 도움을 줍니다. 복구 성공을 보장하지는 않습니다.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="vps-backup-strategy-checker-form">
   <div class="mb-6">
-    <label for="bk-workload" class="form-label">Workload type</label>
+    <label for="bk-workload" class="form-label">작업 부하 유형</label>
     <select id="bk-workload" class="form-input">
-      <option value="static">Static / brochure / rarely changing site</option>
-      <option value="cms">WordPress / CMS / business website</option>
-      <option value="transactional">WooCommerce / orders / membership / frequent writes</option>
+      <option value="static">정적 / 소개용 / 변경이 드문 사이트</option>
+      <option value="cms">워드프레스 / CMS / 비즈니스 웹사이트</option>
+      <option value="transactional">우커머스 / 주문 / 회원 관리 / 잦은 데이터 쓰기</option>
     </select>
   </div>
   <div class="mb-6">
-    <label for="bk-rpo" class="form-label">Maximum acceptable data loss (RPO)</label>
+    <label for="bk-rpo" class="form-label">허용 가능한 최대 데이터 손실량(RPO)</label>
     <select id="bk-rpo" class="form-input">
-      <option value="24">Up to 24 hours</option>
-      <option value="4">Up to 4 hours</option>
-      <option value="1">Up to 1 hour</option>
-      <option value="lt1">Less than 1 hour</option>
+      <option value="24">최대 24시간</option>
+      <option value="4">최대 4시간</option>
+      <option value="1">최대 1시간</option>
+      <option value="lt1">1시간 미만</option>
     </select>
   </div>
   <div class="mb-6">
-    <label for="bk-rto" class="form-label">Maximum acceptable downtime (RTO)</label>
+    <label for="bk-rto" class="form-label">허용 가능한 최대 서비스 중단 시간(RTO)</label>
     <select id="bk-rto" class="form-input">
-      <option value="24">Up to 24 hours</option>
-      <option value="4">Up to 4 hours</option>
-      <option value="1">Around 1 hour</option>
-      <option value="lt1">Less than 1 hour</option>
+      <option value="24">최대 24시간</option>
+      <option value="4">최대 4시간</option>
+      <option value="1">약 1시간</option>
+      <option value="lt1">1시간 미만</option>
     </select>
   </div>
   <div class="mb-6">
-    <label for="bk-offsite" class="form-label">Independent off-server / offsite copy exists?</label>
-    <select id="bk-offsite" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <label for="bk-offsite" class="form-label">서버 외부에 독립적인 백업 사본이 있습니까?</label>
+    <select id="bk-offsite" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
-    <label for="bk-db" class="form-label">Database-consistent backup method verified?</label>
+    <label for="bk-db" class="form-label">데이터베이스 일관성을 보장하는 백업 방법을 검증했습니까?</label>
     <select id="bk-db" class="form-input">
-      <option value="na">Not applicable / no database</option>
-      <option value="no">No / unknown</option>
-      <option value="yes">Yes</option>
+      <option value="na">해당 없음 / 데이터베이스 없음</option>
+      <option value="no">아니요 / 확인하지 않음</option>
+      <option value="yes">예</option>
     </select>
   </div>
   <div class="mb-6">
-    <label for="bk-restore" class="form-label">Recent restore test completed successfully?</label>
-    <select id="bk-restore" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <label for="bk-restore" class="form-label">최근 복원 테스트를 성공적으로 완료했습니까?</label>
+    <select id="bk-restore" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
-    <label for="bk-creds" class="form-label">Backup credentials / encryption recovery key are separated from the VPS?</label>
-    <select id="bk-creds" class="form-input"><option value="no">No / unknown</option><option value="yes">Yes</option></select>
+    <label for="bk-creds" class="form-label">백업 자격 증명과 암호화 복구 키를 VPS와 분리해 보관합니까?</label>
+    <select id="bk-creds" class="form-input"><option value="no">아니요 / 확인하지 않음</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
-    <label for="bk-versions" class="form-label">Multiple restore points / retention history available?</label>
-    <select id="bk-versions" class="form-input"><option value="no">Only latest / unknown</option><option value="yes">Yes</option></select>
+    <label for="bk-versions" class="form-label">복구 지점 여러 개와 보존 이력이 있습니까?</label>
+    <select id="bk-versions" class="form-input"><option value="no">최신 사본 하나만 / 확인하지 않음</option><option value="yes">예</option></select>
   </div>
-  <button class="btn btn-primary" type="submit">Check backup strategy</button>
+  <button class="btn btn-primary" type="submit">백업 전략 확인</button>
 </form>
-<p id="vps-backup-strategy-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">Choose the recovery requirements that actually apply.</p>
+<p id="vps-backup-strategy-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">실제로 필요한 복구 요건을 선택하세요.</p>
 </div>
 
 <script>
@@ -122,13 +122,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var result;
 
     if (criticalGap) {
-      result = "CRITICAL BACKUP GAPS: the strategy still depends on an unproven or non-independent recovery path. Add offsite/independent copies, multiple restore points, separated recovery credentials/keys, database-consistent backup where required, and a real restore test.";
+      result = "중대한 백업 결함: 복구 전략이 아직 검증되지 않았거나 독립적이지 않은 복구 경로에 의존하고 있습니다. 독립적인 외부 사본과 여러 복구 지점, 별도로 보관하는 복구 자격 증명 및 키, 필요한 데이터베이스 일관성 백업과 실제 복원 테스트를 마련하세요.";
     } else if (rto === "lt1" || rto === "1") {
-      result = "LOW-RTO / RECHECK DR ARCHITECTURE: backups may be correct, but a manual rebuild can still miss a one-hour recovery target. Time a full recovery drill and consider automation, prebuilt images, warm standby or workload separation if the measured RTO is too slow.";
+      result = "짧은 RTO / 재해 복구 구조 재검토: 백업 자체가 올바르더라도 수동 재구축으로는 1시간 복구 목표를 지키지 못할 수 있습니다. 전체 복구 시간을 측정하고, 실제 RTO가 너무 길면 자동화, 사전 구축 이미지, 대기 서버 또는 작업 부하 분리를 검토하세요.";
     } else if (workload === "transactional" || rpo === "lt1" || rpo === "1") {
-      result = "TRANSACTIONAL / FREQUENT-DB-BACKUP PATH: keep the independent recovery layers, but set database protection frequency to meet the required RPO. A nightly backup cannot satisfy a one-hour data-loss target.";
+      result = "거래 처리 / 빈번한 DB 백업: 독립적인 복구 계층을 유지하면서 필요한 RPO를 충족하도록 데이터베이스 보호 주기를 정하세요. 하루 한 번의 백업으로는 1시간 데이터 손실 목표를 달성할 수 없습니다.";
     } else {
-      result = "BASIC RECOVERY STRATEGY: the core layers are present. Keep provider recovery points plus independent offsite backups, monitor job failures, retain multiple versions and repeat timed restore drills.";
+      result = "기본 복구 전략: 핵심 계층이 갖춰져 있습니다. 제공업체 복구 지점과 독립적인 외부 백업을 유지하고, 작업 실패를 감시하며, 여러 버전을 보존하고 실제 시간을 측정하는 복원 훈련을 반복하세요.";
     }
 
     document.getElementById("vps-backup-strategy-result").textContent = result;
@@ -136,42 +136,42 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-## Start with RPO and RTO
+## RPO와 RTO부터 정의 {#start-with-rpo-and-rto}
 
-Two numbers should drive the strategy.
+전략을 결정하는 핵심 숫자는 두 가지입니다.
 
-### Recovery Point Objective — RPO
+### 복구 시점 목표 — RPO {#recovery-point-objective--rpo}
 
-RPO answers:
+RPO는 다음 질문에 답합니다.
 
-**How much recent data can the business afford to lose?**
+**비즈니스가 최근 데이터 중 얼마나 잃어도 감당할 수 있습니까?**
 
-If the RPO is:
+RPO가 다음과 같다면:
 
-- **24 hours** — a daily successful recovery point may be acceptable;
-- **4 hours** — daily backups are insufficient;
-- **1 hour** — the changing application/database state needs protection at least that frequently;
-- **minutes** — ordinary scheduled backups alone may not be enough.
+- **24시간** — 하루에 한 번 성공적으로 생성한 복구 지점이 허용될 수 있습니다;
+- **4시간** — 일일 백업만으로는 부족합니다;
+- **1시간** — 변경되는 애플리케이션과 데이터베이스 상태를 최소한 그 주기로 보호해야 합니다;
+- **수분 단위** — 일반적인 예약 백업만으로 충분하지 않을 수 있습니다.
 
-RPO is about **data loss**, not downtime.
+RPO는 서비스 중단 시간이 아니라 **데이터 손실량**에 관한 지표입니다.
 
-### Recovery Time Objective — RTO
+### 복구 시간 목표 — RTO {#recovery-time-objective--rto}
 
-RTO answers:
+RTO는 다음 질문에 답합니다.
 
-**How long may the website/service remain unavailable?**
+**웹사이트나 서비스를 얼마나 오랫동안 사용할 수 없어도 됩니까?**
 
-A backup can meet the RPO and still fail the RTO.
+백업이 RPO를 충족하더라도 RTO를 충족하지 못할 수 있습니다.
 
-Example:
+예를 들면 다음과 같습니다.
 
-- database copied every hour;
-- most recent data loss is under one hour;
-- but reprovisioning the VPS, downloading data, restoring the DB and validating the site takes six hours.
+- 데이터베이스를 매시간 복사합니다;
+- 최근 데이터의 손실량은 1시간 미만입니다;
+- 그러나 VPS를 다시 만들고 데이터를 내려받아 DB를 복원하고 사이트를 검증하는 데 6시간이 걸립니다.
 
-That strategy may satisfy a one-hour RPO but has an actual RTO near six hours.
+이 전략은 1시간 RPO를 충족할 수 있지만 실제 RTO는 약 6시간입니다.
 
-NIST contingency-planning guidance defines RPO as the recovery point in time and RTO as the maximum acceptable unavailability window. Use those targets before choosing tools.
+NIST의 비상 계획 지침은 RPO를 복구 기준 시점으로, RTO를 허용 가능한 최대 서비스 중단 시간으로 정의합니다. 도구를 선택하기 전에 이 목표부터 정하세요.
 
 ## What should be backed up?
 
