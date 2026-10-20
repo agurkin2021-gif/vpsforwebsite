@@ -1,5 +1,11 @@
 {{- if eq .Page.Language.Lang "ko" -}}
-  {{- $url := partial "localized-url.html" .Destination -}}
+  {{- /* Angle-bracket relref shortcodes expand after Markdown render hooks.
+        Preserve their placeholder; relURL would prepend an extra slash and
+        turn a local /ko/... link into a protocol-relative //ko/... URL. */ -}}
+  {{- $url := .Destination -}}
+  {{- if not (strings.Contains .Destination "HAHAHUGOSHORTCODE") -}}
+    {{- $url = partial "localized-url.html" .Destination -}}
+  {{- end -}}
   <a href="{{ $url | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
 {{- else -}}
   {{- /* Preserve the theme module's behavior for existing languages. */ -}}
