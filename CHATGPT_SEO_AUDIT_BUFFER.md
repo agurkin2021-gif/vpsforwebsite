@@ -3966,3 +3966,9 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 
 - Fixed responsive title overflow across Hugo and recovered pages, including homepages. All title/H1 strings, primary queries, routes, canonical/hreflang destinations, body text and internal/affiliate links are preserved. Only wrapping inside the existing hero column changes; no content expansion or new SEO owners.
 - Local browser checks pass title bounds and neighboring-card separation on all 164 real pages at eight viewport widths; strict localization and link/asset/SRI audits pass. Publication/live verification is recorded in CHATGPT_PROJECT_CONTEXT.md.
+
+
+### 2026-10-20 — Korean WooCommerce page localization (pre-publication)
+- Query/Title/H1 **우커머스용 VPS**, slug `/ko/우커머스용-vps/`. Differentiated transactional PHP/DB/checkouts and WooCommerce sizing intent from generic WordPress sizing and hosting homepage. Korean term 우커머스 established from Korean hosting usage; no quantified keyword search volume claim.
+- Full English article structure preserved: 37 headings and original anchor IDs, 10 FAQ, three tables / 28 lines, 131 unordered items, seven numbered actions, 16 internal Markdown links, original VDSina partner destination and disclosure. All prices/specification and WooCommerce software requirements unchanged.
+- Korean-only hero/ARIA text added within the WooCommerce section. Korean-aware links resolve to completed KO pages or existing EN fallback. Canonical, hreflang, sitemap, rendered Title/H1 and responsive visual geometry await production build/publication verification; do not mark the page live before confirming these gates.
