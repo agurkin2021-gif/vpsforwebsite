@@ -45,35 +45,35 @@ Nginx에 장애가 생기거나 데이터베이스가 멈추고 디스크가 가
   </div>
   <div class="mb-6">
     <label for="mon-external" class="form-label">VPS 외부에서 HTTP(S) 가용성을 확인하고 있나요?</label>
-    <select id="mon-external" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <select id="mon-external" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-metrics" class="form-label">CPU/RAM/디스크/네트워크의 과거 지표를 보존하나요?</label>
-    <select id="mon-metrics" class="form-input"><option value="no">No / only ad-hoc top/htop</option><option value="yes">Yes</option></select>
+    <select id="mon-metrics" class="form-input"><option value="no">아니요 / 가끔 top·htop만 확인</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-disk" class="form-label">디스크 용량, inode와 스토리지 부하를 감시하나요?</label>
-    <select id="mon-disk" class="form-input"><option value="no">No / only free GB</option><option value="yes">Yes</option></select>
+    <select id="mon-disk" class="form-input"><option value="no">아니요 / 남은 GB만 확인</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-app" class="form-label">핵심 서비스와 애플리케이션 상태 점검이 설정되어 있나요?</label>
-    <select id="mon-app" class="form-input"><option value="no">No / only ping</option><option value="yes">Yes</option></select>
+    <select id="mon-app" class="form-input"><option value="no">아니요 / ping만 확인</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-jobs" class="form-label">해당하는 경우 DB / 큐 / cron / 최근 백업 상태를 감시하나요?</label>
-    <select id="mon-jobs" class="form-input"><option value="no">No / unknown</option><option value="yes">Yes</option><option value="na">Not applicable</option></select>
+    <select id="mon-jobs" class="form-input"><option value="no">아니요 / 알 수 없음</option><option value="yes">예</option><option value="na">해당 없음</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-alerts" class="form-label">심각도와 지속 시간 조건을 적용한 자동 알림이 있나요?</label>
-    <select id="mon-alerts" class="form-input"><option value="no">No / dashboard only</option><option value="yes">Yes</option></select>
+    <select id="mon-alerts" class="form-input"><option value="no">아니요 / 대시보드만 있음</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-notify" class="form-label">이 VPS가 중단되어도 알림 경로가 유지되나요?</label>
-    <select id="mon-notify" class="form-input"><option value="no">No / same VPS only</option><option value="yes">Yes</option></select>
+    <select id="mon-notify" class="form-input"><option value="no">아니요 / 같은 VPS 안에서만 작동</option><option value="yes">예</option></select>
   </div>
   <div class="mb-6">
     <label for="mon-owner" class="form-label">지정된 담당자와 최초 대응 절차서가 있나요?</label>
-    <select id="mon-owner" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
+    <select id="mon-owner" class="form-input"><option value="no">아니요</option><option value="yes">예</option></select>
   </div>
   <button class="btn btn-primary" type="submit">모니터링 기본 구성 점검</button>
 </form>
