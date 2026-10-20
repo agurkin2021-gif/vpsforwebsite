@@ -36,6 +36,8 @@
 - `layouts/_partials/page-header.html` adds Korean-only strings in the existing control-panel hero; the else branches preserve English/other-language visible content, styles and layout. Korean Markdown link renderer chooses translated targets where present and existing English fallbacks elsewhere.
 - Dedicated branch workflow `.github/workflows/qa-ko-control-panel.yml` builds Hugo production-style and runs Chromium 390px/1280px SEO/responsive checks plus nine actual form submissions; screenshots are retained temporarily. This is a verification plan, not a pass claim. Do not merge/publish before success. User's requested English reference remains unchanged.
 
+- Prepublication [Chromium run 39466993685](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39466993685) finished **Success**. Measured HTML and body widths exactly 390/390px and 1280/1280px; header, title, hero grid and form stayed inside both viewports; no page-wide horizontal overflow or JavaScript errors. All 36 section anchors, three tables, seven controls/16 options, Korean Title/H1, canonical, hero and sponsored links passed. Nine actual form interactions (seven result branches plus two priority cases) returned expected Korean outcomes. Screenshots stored as temporary GitHub Actions artifacts. Publication/live gate still pending.
+
 ## Project identity
 
 - Project: **vpsforwebsite.com**
