@@ -146,7 +146,7 @@ jobs:
                   await page.locator('#sec-recovery').selectOption('yes');
                   await page.locator('#sec-admin').selectOption('yes');
                   await page.locator('#vps-security-checker button[type=submit]').click();
-                  assert((await page.locator('#vps-security-result').innerText()).startsWith('중대한 누락:'));
+                  assert((await page.locator('#vps-security-result').innerText()).startsWith('운영 기본 보안 준비 완료:'));
                 }
                 assert.deepEqual(errors,[],'Page JS errors');
                 console.log('PASS width',width);
