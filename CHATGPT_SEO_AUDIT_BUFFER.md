@@ -30,6 +30,8 @@
 - Native Korean term `컨트롤 패널이 있는 VPS` describes VPS hosting with a panel; `VPS 관리 패널` is intentionally avoided as primary term because it can refer to a provider's infrastructure dashboard. English SERP reference `research/vps-with-control-panel-serp-2026-10-13.md` retained; supplemental Korean usage reviewed, without measured keyword volumes.
 - Canonical/H1, hreflang, page-width geometry at 390/1280, form decisions, Cloudflare publication and live URL remain gated on successful CI. Isolated QA: `.github/workflows/qa-ko-control-panel.yml`. Do not mark live before verified successful deployment.
 
+- Prepublication [Chromium run 39466993685](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39466993685) finished **Success**. Measured HTML and body widths exactly 390/390px and 1280/1280px; header, title, hero grid and form stayed inside both viewports; no page-wide horizontal overflow or JavaScript errors. All 36 section anchors, three tables, seven controls/16 options, Korean Title/H1, canonical, hero and sponsored links passed. Nine actual form interactions (seven result branches plus two priority cases) returned expected Korean outcomes. Screenshots stored as temporary GitHub Actions artifacts. Publication/live gate still pending.
+
 ## 1. Operating rules
 
 - Build the site page by page.
