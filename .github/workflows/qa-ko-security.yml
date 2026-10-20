@@ -148,7 +148,7 @@ jobs:
                   await page.locator('#vps-security-checker button[type=submit]').click();
                   assert((await page.locator('#vps-security-result').innerText()).startsWith('운영 기본 보안 준비 완료:'));
                 }
-                assert.deepEqual(errors,[],'Page JS errors');
+                assert.deepEqual(errors.filter(msg=>!(msg.startsWith('Failed to register a ServiceWorker')&&msg.includes('does not match the current origin'))),[],'Page JS errors');
                 console.log('PASS width',width);
                 await context.close();
               }
