@@ -24,7 +24,7 @@ features:
       - "Quédate en el alojamiento compartido si el sitio es ligero, estable y no necesita acceso root ni una plataforma personalizada."
       - "Optimiza primero si el consumo excesivo lo provoca un complemento, una consulta, un bot, una tarea cron o un problema de caché."
       - "Pasa a un VPS cuando las necesidades legítimas de CPU, memoria, procesos, E/S o software superen repetidamente los límites del alojamiento actual."
-      - "Antes de migrar, asegúrate de poder asumir la administración del sistema operativo de un VPS autogestionado: utiliza la [lista de seguridad para VPS](/es/seguridad-vps/), la [estrategia de copias de seguridad](/es/copias-de-seguridad-vps/) y la [supervisión del VPS](/es/monitorizacion-vps/) como base para producción."
+      - "Antes de migrar, asegúrate de poder asumir la administración del sistema operativo de un VPS autogestionado: utiliza la [lista de seguridad para VPS](/seguridad-vps/), la [estrategia de copias de seguridad](/copias-de-seguridad-vps/) y la [supervisión del VPS](/monitorizacion-vps/) como base para producción."
     fit_checker:
       enable: true
       title: "Comprobador de necesidades y preparación para un VPS"
@@ -34,12 +34,12 @@ features:
     button:
       enable: true
       label: "Comparar VPS y alojamiento compartido"
-      link: "/es/vps-vs-hosting-compartido/"
+      link: "/vps-vs-hosting-compartido/"
 
   - id: "vps-sizing"
     title: "Configuraciones de VPS para cargas habituales de sitios web"
     image: "images/home/vps-sizing.svg"
-    content: "Compara las configuraciones actuales de VPS según la carga de trabajo y después utiliza la guía de dimensionamiento para calcular CPU, RAM y almacenamiento a partir de mediciones, no de estimaciones de visitantes. [Consultar la guía completa para dimensionar un VPS →](/es/elegir-recursos-vps/)"
+    content: "Compara las configuraciones actuales de VPS según la carga de trabajo y después utiliza la guía de dimensionamiento para calcular CPU, RAM y almacenamiento a partir de mediciones, no de estimaciones de visitantes. [Consultar la guía completa para dimensionar un VPS →](/elegir-recursos-vps/)"
     plans:
       enable: true
       checked: "Precios de VDSina Standard comprobados el 13 de octubre de 2026."
@@ -72,9 +72,9 @@ features:
       affiliate_link: "https://www.vdsina.com/?partner=ni8gzrvz75"
       note: "Los precios y las condiciones del proveedor pueden cambiar. Actualmente indica facturación diaria y un puerto de Internet de 10 Gbit/s en los VPS Standard. Comprueba las condiciones de contratación antes de pagar."
     bulletpoints:
-      - "Cada carga necesita un margen distinto: [WordPress](/es/vps-para-wordpress/) depende de los procesos PHP, la caché y los complementos; [WooCommerce](/es/vps-para-woocommerce/) añade sesiones sin caché, pagos y consultas a la base de datos; [varios sitios web](/es/vps-para-varios-sitios-web/) compiten por CPU, RAM, almacenamiento y procesos."
+      - "Cada carga necesita un margen distinto: [WordPress](/vps-para-wordpress/) depende de los procesos PHP, la caché y los complementos; [WooCommerce](/vps-para-woocommerce/) añade sesiones sin caché, pagos y consultas a la base de datos; [varios sitios web](/vps-para-varios-sitios-web/) compiten por CPU, RAM, almacenamiento y procesos."
       - "Antes de pagar, comprueba el crecimiento del almacenamiento, la transferencia permitida, las condiciones de IP, la ubicación, la política de copias de seguridad, las ampliaciones, el alcance de la administración, los costes de panel o licencias y la facturación vigente."
-      - "La [ubicación del servidor](/es/elegir-ubicacion-vps/) afecta a la latencia para tus usuarios. Una CDN como Cloudflare puede descargar la entrega de archivos estáticos y algunas solicitudes al origen, pero no elimina el trabajo dinámico de PHP, aplicaciones o bases de datos en el VPS."
+      - "La [ubicación del servidor](/elegir-ubicacion-vps/) afecta a la latencia para tus usuarios. Una CDN como Cloudflare puede descargar la entrega de archivos estáticos y algunas solicitudes al origen, pero no elimina el trabajo dinámico de PHP, aplicaciones o bases de datos en el VPS."
       - "El precio mostrado corresponde a infraestructura: las licencias de panel, las copias externas, la administración, la supervisión y otros servicios opcionales pueden cobrarse aparte."
     methodology:
       enable: true
@@ -87,7 +87,7 @@ features:
     button:
       enable: true
       label: "Calcula los recursos de tu VPS"
-      link: "/es/elegir-recursos-vps/"
+      link: "/elegir-recursos-vps/"
 
   - id: "provider-checklist"
     title: "Qué comprobar antes de elegir un proveedor de VPS"
@@ -99,25 +99,25 @@ features:
       - "**Plataforma:** sistemas operativos admitidos, imágenes, opciones de panel y coste de licencias."
       - "**Operaciones:** instantáneas y copias, cortafuegos y protección DDoS, supervisión, ampliaciones y alcance del soporte."
       - "**Facturación:** periodicidad diaria o mensual, renovaciones, complementos, límites actuales y cargos adicionales."
-      - "No presupongas que el soporte del proveedor incluye administrar el servidor. [Comparar VPS administrado y no administrado →](/es/vps-administrado-vs-no-administrado/)"
+      - "No presupongas que el soporte del proveedor incluye administrar el servidor. [Comparar VPS administrado y no administrado →](/vps-administrado-vs-no-administrado/)"
     button:
       enable: true
       label: "Elegir la ubicación del VPS"
-      link: "/es/elegir-ubicacion-vps/"
+      link: "/elegir-ubicacion-vps/"
 
   - id: "management-path"
     title: "Decide cómo administrarás el servidor"
     image: "images/home/vps-management.svg"
     content: "Elegir un VPS también implica decidir cómo administrarlo. Define el método de gestión antes de dimensionar el servidor: el panel, el sistema operativo y el modelo de administración afectan al consumo de recursos y a tus responsabilidades."
     bulletpoints:
-      - "**FASTPANEL / panel de control:** facilita gestionar dominios, SSL, versiones de PHP, bases de datos y varios sitios; reserva RAM para el propio panel. [Alojamiento VPS con FASTPANEL →](/es/vps-con-fastpanel/)"
-      - "**Ubuntu / Linux sin panel:** administra la plataforma web por SSH con Nginx o Apache, el entorno de ejecución y la base de datos; tendrás más control, pero también más trabajo. [Cómo alojar un sitio web en un VPS →](/es/alojar-un-sitio-web-en-vps/)"
+      - "**FASTPANEL / panel de control:** facilita gestionar dominios, SSL, versiones de PHP, bases de datos y varios sitios; reserva RAM para el propio panel. [Alojamiento VPS con FASTPANEL →](/vps-con-fastpanel/)"
+      - "**Ubuntu / Linux sin panel:** administra la plataforma web por SSH con Nginx o Apache, el entorno de ejecución y la base de datos; tendrás más control, pero también más trabajo. [Cómo alojar un sitio web en un VPS →](/alojar-un-sitio-web-en-vps/)"
       - "**Windows Server:** elige esta opción cuando el sitio realmente necesite IIS o ASP.NET, no como alternativa predeterminada de alojamiento."
-      - "**El soporte no equivale a un servicio administrado:** la ayuda con la infraestructura puede resolver bloqueos, pero en un VPS autogestionado la administración del sistema y la aplicación sigue siendo responsabilidad del cliente, salvo que se contrate aparte. [Comparar VPS administrado y no administrado →](/es/vps-administrado-vs-no-administrado/)"
+      - "**El soporte no equivale a un servicio administrado:** la ayuda con la infraestructura puede resolver bloqueos, pero en un VPS autogestionado la administración del sistema y la aplicación sigue siendo responsabilidad del cliente, salvo que se contrate aparte. [Comparar VPS administrado y no administrado →](/vps-administrado-vs-no-administrado/)"
     button:
       enable: true
       label: "Comparar opciones de panel de control"
-      link: "/es/vps-con-panel-de-control/"
+      link: "/vps-con-panel-de-control/"
 
   - id: "migration-preflight"
     title: "Evalúa los riesgos antes de migrar"
@@ -132,7 +132,7 @@ features:
     button:
       enable: true
       label: "Planificar la migración"
-      link: "/es/migrar-un-sitio-web-a-vps/"
+      link: "/migrar-un-sitio-web-a-vps/"
 
   - id: "architecture-planner"
     title: "¿Un solo VPS o cargas separadas?"
@@ -148,7 +148,7 @@ features:
     button:
       enable: true
       label: "Planificar varios sitios web"
-      link: "/es/vps-para-varios-sitios-web/"
+      link: "/vps-para-varios-sitios-web/"
 
   - id: "safe-growth"
     title: "Clona, prueba, amplía y recupera"
@@ -174,19 +174,19 @@ faq:
     - question: "¿Qué es un VPS para un sitio web?"
       answer: "Es un servidor virtual aislado con CPU, RAM y almacenamiento asignados donde controlas el sistema operativo y la plataforma web. Ese mayor control también implica más responsabilidades de administración que un alojamiento compartido habitual."
     - question: "¿Cuál es el mejor VPS para un sitio web?"
-      answer: "No existe un VPS universalmente mejor. La opción adecuada es la configuración más pequeña que cubra la carga dinámica real, la base de datos, el entorno de administración y las necesidades de crecimiento con margen suficiente. Consulta [cómo dimensionar un VPS para un sitio web](/es/elegir-recursos-vps/) para calcularlo en detalle."
+      answer: "No existe un VPS universalmente mejor. La opción adecuada es la configuración más pequeña que cubra la carga dinámica real, la base de datos, el entorno de administración y las necesidades de crecimiento con margen suficiente. Consulta [cómo dimensionar un VPS para un sitio web](/elegir-recursos-vps/) para calcularlo en detalle."
     - question: "¿Cuánto cuesta al mes un VPS para un sitio web?"
       answer: "Los ejemplos actuales de planes Standard de esta página van desde $2.10/month por 1 vCPU / 1 GB hasta $40.20/month por 4 vCPU / 8 GB. El precio por sí solo no determina si un plan es adecuado y las tarifas pueden cambiar."
     - question: "¿Se puede alojar un sitio web en un VPS de $5?"
       answer: "Sí, para algunas cargas ligeras, de prueba, estáticas o con una caché muy eficaz. Pero un precio bajo no garantiza que sirva para producción. Una base de datos, un panel, el correo, varios procesos PHP o de aplicación y las tareas en segundo plano pueden hacer insuficiente un VPS con poca RAM."
     - question: "¿Qué desventajas tiene alojar un sitio en un VPS?"
-      answer: "Frente al alojamiento compartido habitual, un VPS autoadministrado exige gestionar el sistema operativo, instalar parches, mantener la seguridad, hacer copias de seguridad, supervisar el servicio, responder a incidentes y encargarse de la instalación o migración. Las licencias de panel y la administración de pago pueden añadir costes. Si nadie asumirá esas tareas, consulta [VPS administrado frente a no administrado](/es/vps-administrado-vs-no-administrado/) antes de migrar."
+      answer: "Frente al alojamiento compartido habitual, un VPS autoadministrado exige gestionar el sistema operativo, instalar parches, mantener la seguridad, hacer copias de seguridad, supervisar el servicio, responder a incidentes y encargarse de la instalación o migración. Las licencias de panel y la administración de pago pueden añadir costes. Si nadie asumirá esas tareas, consulta [VPS administrado frente a no administrado](/vps-administrado-vs-no-administrado/) antes de migrar."
     - question: "¿Un VPS incluye dominio y correo electrónico?"
       answer: "No lo des por hecho. El precio de un VPS suele corresponder a la infraestructura; el registro del dominio, el correo administrado, las licencias de panel, las copias de seguridad y la administración pueden cobrarse aparte. Comprueba las condiciones actuales y decide si conviene mantener el correo en un proveedor especializado."
     - question: "¿Puedo ampliar un VPS más adelante?"
       answer: "A menudo sí, pero las reglas dependen del proveedor y del recurso. Antes de contratar, comprueba si puedes aumentar CPU, RAM y almacenamiento sin migrar, si necesitas reiniciar o trasladar el servidor y si hay límites distintos para reducir recursos. Decide cuándo ampliar a partir de datos de supervisión, no de estimaciones de tráfico."
     - question: "¿Importa la ubicación del servidor?"
-      answer: "Sí. Una ruta de red más corta puede reducir la latencia, especialmente en solicitudes dinámicas. [Elige la ubicación del VPS](/es/elegir-ubicacion-vps/) según el público principal, las rutas reales, las dependencias y los requisitos operativos; utiliza caché o una CDN cuando corresponda."
+      answer: "Sí. Una ruta de red más corta puede reducir la latencia, especialmente en solicitudes dinámicas. [Elige la ubicación del VPS](/elegir-ubicacion-vps/) según el público principal, las rutas reales, las dependencias y los requisitos operativos; utiliza caché o una CDN cuando corresponda."
     - question: "¿Cloudflare u otra CDN permiten contratar un VPS más pequeño?"
       answer: "A veces reducen la transferencia de archivos estáticos y las solicitudes repetidas al servidor de origen, pero no eliminan el trabajo de aplicaciones, PHP, API o bases de datos que no puede servirse desde caché. Dimensiona el VPS según la carga dinámica que siga llegando al servidor."
     - question: "¿Una instantánea equivale a una copia de seguridad?"
