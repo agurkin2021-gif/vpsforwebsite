@@ -112,6 +112,13 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - The published page was also read from the connected Opera tab at `https://vpsforwebsite.com/ko/여러-웹사이트용-vps/`, with Korean content and section links. Opera screenshot capability later returned `Browser not connected`; manual screenshot is not claimed. The independent production Chromium QA closes the previously pending layout and interactive tests.
 - **Page 8 is complete and published: 8/15 core pages** in the translation queue. Next core Korean page: **VPS with Control Panel**, page 9. Work on that page alone, from its English original.
 
+## Page 9: VPS with Control Panel — 2026-10-20 (work branch; prepublication)
+
+- Exact keyword / Korean Title / H1: **컨트롤 패널이 있는 VPS**, slug `/ko/컨트롤-패널이-있는-vps/`, source `content/korean/vps-with-control-panel.md`. Query volume unverified. This owns the panel-or-no-panel decision, panel category, OS compatibility, mail/DNS needs, resource overhead, multi-client isolation and backup/exit model; separate from the FASTPANEL-specific child.
+- Sequential translation blocks: (1) introduction, panel layers, full 7-field checker; (2) category/brand map, resources, OS, licensing, mail, user isolation and backup/exit; (3) security, managed-vs-panel, provider options, no-panel alternative, steps and ten FAQ.
+- English parity on work branch `work/ko-control-panel-20261020`: 36 headings (19 H2, 17 H3), 36 original anchor IDs, 3 tables/22 Markdown lines, 123 bullets, 12 ordered list lines, 7 selects/16 unchanged option values, 10 FAQ, 13 Markdown links, original 2 VDSina body links with sponsored rel attributes. JS logic source exactly matches English after normalizing seven Korean result strings. Shared header's control-panel hero labels/ARIA localized only in KO, English in else branches.
+- Dedicated prepublication CI/Playwright workflow `.github/workflows/qa-ko-control-panel.yml` checks Korean SEO, 390/1280 page geometry, interactive checker submissions and screenshot artifacts. **Not yet verified passed/published.** Hold merge until checks pass and live page deploy verification.
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
