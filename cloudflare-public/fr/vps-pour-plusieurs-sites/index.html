@@ -107,7 +107,14 @@
 
 <h2 id="isolate-each-site-deliberately">Isoler chaque site de façon explicite</h2>
 <p>La séparation logique doit être conçue, non supposée. Utilisez des répertoires web distincts, des permissions minimales, des comptes système séparés lorsque le risque l’exige, des identifiants de base par application, des fichiers de configuration propres et des journaux identifiables.</p>
-<p>Une compromission d’un site ne doit pas donner sans raison l’accès en écriture aux fichiers et aux données de tous les autres. L’isolation n’est cependant pas absolue sur une machine unique : le système, le réseau, le stockage et le noyau restent des composants communs.</p>
+<div class="vps-table-scroll" role="region" tabindex="0" aria-label="Périmètres d’isolation"><table><thead><tr><th>Périmètre</th><th>Rôle de la séparation</th></tr></thead><tbody>
+<tr><td>Compte système ou de panneau</td><td>Limite l’exposition des fichiers et des identifiants entre sites indépendants</td></tr>
+<tr><td>Racine du site</td><td>Sépare code, fichiers servis et déploiements</td></tr>
+<tr><td>Pool PHP-FPM ou processus applicatif</td><td>Autorise des utilisateurs et paramètres d’exécution distincts</td></tr>
+<tr><td>Base et utilisateur BDD</td><td>Réduit la portée des accès et facilite les restaurations ciblées</td></tr>
+<tr><td>Journaux</td><td>Facilite le diagnostic et l’attribution des incidents</td></tr>
+<tr><td>Secrets et fichiers d’environnement</td><td>Empêche l’accès accidentel aux identifiants des autres applications</td></tr>
+</tbody></table></div><p>Une compromission d’un site ne doit pas donner sans raison l’accès en écriture aux fichiers et aux données de tous les autres. L’isolation n’est cependant pas absolue sur une machine unique : le système, le réseau, le stockage et le noyau restent des composants communs.</p>
 
 <h2 id="separate-php-pools-app-services-and-database-credentials">Séparer les pools PHP, les services applicatifs et les identifiants BDD</h2>
 <p>Pour PHP-FPM, des pools dédiés peuvent fournir des utilisateurs Unix, paramètres et limites différents. Pour Node.js ou Python, exécutez les applications sous des comptes et services appropriés, sans privilèges root. Attribuez à chaque application son compte de base de données avec les seules permissions nécessaires.</p>
