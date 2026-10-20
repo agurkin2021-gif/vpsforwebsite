@@ -25,7 +25,7 @@
     {{- range $targets -}}
       {{- $targetLang := .lang -}}
       {{- $url := .url | relURL -}}
-      {{- if or (eq $targetLang "en") (eq $targetLang "es") (eq $targetLang "ko") -}}
+      {{- if and (ne $current.Kind "404") (or (eq $targetLang "en") (eq $targetLang "es") (eq $targetLang "ko")) -}}
         {{- range $current.AllTranslations -}}
           {{- if eq .Language.Lang $targetLang -}}
             {{- $url = .RelPermalink -}}

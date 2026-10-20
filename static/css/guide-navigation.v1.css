@@ -1,0 +1,11 @@
+/* Keep every guide reachable when translated labels make the menu taller. */
+@media (min-width: 1024px) {
+  .header .nav-dropdown-list {
+    max-height: calc(100vh - 100px) !important;
+    max-height: calc(100dvh - 100px) !important;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+}

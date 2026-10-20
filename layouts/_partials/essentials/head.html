@@ -8,6 +8,7 @@
   <link rel="preload" as="image" href="{{ $hero.RelPermalink }}" imagesrcset="{{ $hero.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
 {{ end }}
 {{ partialCached "local-fonts.html" . }}
+<link id="guide-navigation-css" rel="stylesheet" href="{{ "css/guide-navigation.v1.css" | relURL }}" />
 {{ if .IsPage }}
   <link rel="stylesheet" href="{{ "css/guide-disclosure.v1.css" | relURL }}" />
 {{ end }}
@@ -27,7 +28,7 @@
 {{ partialCached "site-verifications.html" . }}
 
 {{ $isPreview := or (strings.Contains site.BaseURL "raw.githack.com") (strings.Contains site.BaseURL "github.io") }}
-{{ if or (.Param "noindex") $isPreview }}
+{{ if or (.Param "noindex") $isPreview (eq .Kind "404") }}
   <meta name="robots" content="noindex,nofollow" />
 {{ else }}
   <meta name="robots" content="index,follow" />

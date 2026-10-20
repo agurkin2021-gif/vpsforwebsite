@@ -249,6 +249,17 @@ for page in ROOT.rglob("*.html"):
         seo_routes["ko"] = actual_ko
     html = replace_alternates(html, seo_routes, bool(actual_ko))
 
+    # Recovered pages also need the shared viewport-safe guide menu styles.
+    # Hugo pages already include this link in the head; keep the pass idempotent.
+    if not any(attrs(tag.group(0)).get("id") == "guide-navigation-css"
+               for tag in TAG_RE.finditer(html)):
+        html = html.replace(
+            "</head>",
+            '<link id="guide-navigation-css" rel="stylesheet" '
+            'href="/css/guide-navigation.v1.css"></head>',
+            1,
+        )
+
     if html != original:
         page.write_text(html, encoding="utf-8")
         changed += 1

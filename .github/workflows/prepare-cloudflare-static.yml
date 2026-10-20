@@ -19,6 +19,8 @@ on:
       - "scripts/restore-language-navigation.py"
       - "scripts/audit-language-recovery.py"
       - "scripts/audit-localized-pages.py"
+      - "scripts/audit-site-integrity.py"
+      - "scripts/test-site-integrity.py"
       - "recovered-public/**"
   workflow_dispatch:
 
@@ -155,6 +157,11 @@ jobs:
 
       - name: Prevent recovered cache page and language losses
         run: python scripts/audit-language-recovery.py cloudflare-public recovered-public
+
+      - name: Verify every local page link and asset dependency
+        run: |
+          python scripts/test-site-integrity.py
+          python scripts/audit-site-integrity.py cloudflare-public
 
       - name: Verify Bengali critical CSS assets and integrity
         shell: bash

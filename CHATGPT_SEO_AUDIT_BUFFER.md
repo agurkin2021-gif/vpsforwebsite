@@ -3945,3 +3945,11 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 
 - Preserved all owner queries, titles/H1s, canonicals, link destinations and page text. Updated only the GA loading schedule and the owner-provided homepage artwork; no further lossy image conversion is permitted for that asset.
 - All 19 production documents / 22 source-build documents remain valid. Fresh-release Lighthouse scores are mobile 93/100/100/100 in three consecutive runs and desktop 100/100/100/100. These use a query URL to obtain the new release while the owner-managed two-hour Cloudflare HTML cache expires; they are not fresh Google-hosted PSI scores.
+
+
+### 2026-10-20 - Post-migration availability audit
+
+- Audited all 162 existing pages in the nine original locales plus two HTML redirect aliases; all public URLs return 200 and no recovered article is missing. Korean localization remains outside the restoration scope.
+- Restored missing critical stylesheet dependencies for 12 service pages; preserved current text, titles/H1s, canonical ownership and all link destinations. Fixed guide-menu overflow that prevented reaching lower items and corrected 404 language choices to real language homepages. Error pages now carry noindex instead of nonexistent translated hreflang targets.
+- Added a blocking publish-time local link/asset/SRI audit. The corrected build passes all 167 HTML files and existing strict localization/recovery audits. No new SEO owners, invented pages, bulk translations or content expansion.
+- The current Spanish Hugo-managed pages still have some English UI/diagram strings; availability checks do not establish full translation parity with the original cached Spanish homepage. Keep that as a distinct localization follow-up.
