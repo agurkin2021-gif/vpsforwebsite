@@ -101,6 +101,15 @@ The current deployment contract in AGENTS.md supersedes the old Spanish-only pre
 - At 390px the production form was actually filled and submitted through Chromium for **six** independent decision outcomes: stay on shared hosting, optimize first, move to VPS, move with paid/managed administration, assign an operator before moving, and reconsider the current plan. All six returned their expected Korean result text. Both viewport screenshots and a form-result screenshot were saved as the workflow's temporary artifact. These checks measure layout geometry and program functionality; they do not constitute a manual inspection of every scroll position.
 - Page 7 publication and the previously open responsive/form QA are **closed**. Next individual Korean translation in the established queue: **VPS for Multiple Websites**. Continue one page at a time against the English source. English and other languages must not be edited.
 
+## Page 8: VPS for Multiple Websites — 2026-10-20 (working branch; prepublication)
+
+- Exact target/Title/H1: **여러 웹사이트용 VPS**, slug `/ko/여러-웹사이트용-vps/`; this article owns cross-site workload consolidation and failure-risk separation, not general VPS purchase intent. Search volumes have not been measured.
+- Source `content/korean/vps-for-multiple-websites.md` on branch `work/ko-multiple-websites-20261020`. Translated deliberately in three sequential block commits: introduction/sizing/checker/IP, per-site isolation/agency operations, backup/splitting/monitoring/FAQ.
+- Structural parity to English: 38 H2/H3 headings (including ten FAQ), all 38 original English generated heading anchors preserved, four tables/36 table lines, 110 unordered list items, four numbered steps, 7 select controls/18 unchanged option values, 18 Markdown links, same server specs/USD numeric values, and one body VDSina affiliate URL. Comparison of source form JavaScript after normalizing localized outcome text is byte-identical to English: scoring, thresholds and four base outcomes/three management clauses preserved.
+- Shared multi-site hero has 16 Korean-only user-visible translations with English else branches; affiliate and diagram layout/ARIA semantics preserved. Other locales not edited.
+- Prepublication branch workflow `.github/workflows/qa-ko-multiple-websites.yml` builds Hugo, checks mobile/desktop geometry, headings/links and 18 live browser form interactions, and saves screenshots. Wait for its verified success and for main/Cloudflare live publication before marking this page complete.
+
+
 ## Queue
 
 Complete each page with its own intent review, full translation (including forms/scripts/hero diagrams), link mapping, rendered SEO, responsive checks and publication verification. Do not mark the whole Korean section complete after the homepage.
