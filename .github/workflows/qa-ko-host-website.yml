@@ -61,8 +61,7 @@ jobs:
           links=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',en)
           kl=re.findall(r'\[[^\]\n]*\]\(([^\n]*?)\)',ko)
           assert len(links)==len(kl),(len(links),len(kl))
-          # Keep each original page target. Missing Korean counterparts resolve
-          # explicitly to the English original instead of breaking the build.
+          # Preserve original page targets; use English only when Korean is absent.
           fallback=[]
           def localized_target(target):
               m=re.fullmatch(r'\{\{< relref "([^"]+)" >\}\}',target)
@@ -169,7 +168,7 @@ jobs:
                 assert.equal(r.status(),200);
                 assert.equal((await page.title()).trim(),expectedTitle);
                 assert.deepEqual(await page.locator('h1').allTextContents(),[expectedTitle]);
-                assert.equal(await page.locator('html').getAttribute('lang'),'ko');
+                assert.equal(await page.locator('html').getAttribute('lang'),'ko-KR');
                 assert.equal(await page.locator('h2,h3').count(),info.headings);
                 for(const id of info.heading_ids)assert.equal(await page.locator('[id="'+id+'"]').count(),1,id);
                 assert.equal(await page.locator('table').count(),2);
@@ -191,8 +190,8 @@ jobs:
                   for(const href of hrefs.filter(x=>x.startsWith('#')&&x.length>1))assert.equal(await page.locator('[id="'+decodeURIComponent(href.slice(1))+'"]').count(),1,'Broken anchor '+href);
                   for(const href of hrefs.filter(x=>x.startsWith('/')&&!x.startsWith('//'))){const response=await ctx.request.get(base+href);assert.equal(response.status(),200,'Broken internal link '+href);}
                   const langs=await page.locator('link[rel=alternate][hreflang]').evaluateAll(a=>a.map(x=>({lang:x.hreflang,href:x.href})));
-                  assert(langs.some(x=>x.lang==='ko'&&decodeURI(x.href)===decodeURI(url)));
-                  assert(langs.some(x=>x.lang==='en'));
+                  assert(langs.some(x=>/^ko(?:-KR)?$/i.test(x.lang)&&decodeURI(x.href)===decodeURI(url)));
+                  assert(langs.some(x=>/^en(?:-[A-Z]{2})?$/i.test(x.lang)));
                 }
                 let n=0;
                 for(const type of ['static','php','app'])for(const panel of ['no','yes'])for(const db of ['no','yes'])for(const mail of ['no','yes'])for(const sites of ['1','few','many']){
@@ -237,5 +236,6 @@ jobs:
             /tmp/ko-host-invariants.json
             content/english/how-to-host-a-website-on-vps.md
             content/korean/how-to-host-a-website-on-vps.md
+            layouts/_partials/page-header.html
           retention-days: 7
           if-no-files-found: ignore
