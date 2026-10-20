@@ -1,0 +1,109 @@
+name: Korean About prepublication QA
+on:
+  push:
+    branches: ["work/ko-about-20261020"]
+    paths:
+      - "content/korean/about/_index.md"
+      - "layouts/list.html"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-about.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build and check About source parity
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/about/index.html
+          node <<'JS'
+          const fs=require('fs'),a=require('assert').strict;
+          const en=fs.readFileSync('content/english/about/_index.md','utf8');
+          const ko=fs.readFileSync('content/korean/about/_index.md','utf8');
+          const m=(s,r)=>[...s.matchAll(r)].map(x=>x[1]||x[0]);
+          const heading=m(en,/^## (.+)$/gm);
+          const koids=m(ko,/^## .* \{#([\w-]+)\}$/gm);
+          a.equal(heading.length,7);
+          a.deepEqual(koids,heading.map(x=>x.toLowerCase().replace(/[^a-z0-9 -]/g,'').replace(/\s+/g,'-')));
+          for(const re of [/^- /gm,/^\d+\. /gm,/^\|.*\|$/gm,/\]\((https?:\/\/[^)]+)\)/g])
+            a.deepEqual(m(en,re),m(ko,re),'Structure '+re);
+          a(ko.includes('VDSina')&&ko.includes('2026년 10월 14일'));
+          a(!ko.includes('draft: true'));
+          const h2=s=>[...s.matchAll(/<h2\b[^>]*\bid=(?:"([^"]+)"|([^\s>]+))/g)].map(x=>x[1]||x[2]);
+          const html=fs.readFileSync('public/ko/about/index.html','utf8');
+          const original=fs.readFileSync('public/about/index.html','utf8');
+          a.deepEqual(h2(html),koids,'Korean seven About sections are visible');
+          a.equal(h2(original).length,0,'Original English section-list behavior remains unchanged');
+          console.log('PASS 7 original anchors, 9 list items, commercial disclosure and exact review date');
+          JS
+      - name: Install Chromium and serve preview
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-about-http.log 2>&1 &
+          mkdir -p /tmp/ko-about-qa
+          cd /tmp/ko-about-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser SEO, text, geometry and EN fallback
+        run: |
+          cd /tmp/ko-about-qa
+          mkdir -p shots
+          cat > check.cjs <<'JS'
+          const a=require('assert').strict,{chromium}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch();
+            try{
+              for(const width of [390,1280]){
+                const ctx=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const page=await ctx.newPage(),en=await ctx.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const r=await page.goto('http://127.0.0.1:8765/ko/'+encodeURIComponent('about')+'/',{waitUntil:'load'});
+                a.equal(r.status(),200);
+                a.equal((await page.title()).trim(),'VPSforWebsite.com 소개');
+                a.deepEqual(await page.locator('h1').allTextContents(),['VPSforWebsite.com 소개']);
+                a.equal(await page.locator('h2').count(),7);
+                await en.goto('http://127.0.0.1:8765/about/',{waitUntil:'domcontentloaded'});
+                const ids=p=>p.locator('h2').evaluateAll(nodes=>nodes.map(x=>x.id));
+                a.deepEqual(await ids(page),['what-this-site-does','editorial-background','how-recommendations-are-built','what-we-do-not-claim','commercial-relationship-disclosure','review-process','editorial-principle']);
+                a.equal((await ids(en)).length,0,'English About unchanged');
+                a.equal(await page.locator('link[rel="canonical"]').count(),1);
+                a((await page.locator('link[rel="canonical"]').getAttribute('href')).includes('/ko/'));
+                const body=await page.locator('body').innerText();
+                a(body.includes('VDSina')&&body.includes('2026년 10월 14일'));
+                const geo=await page.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+                a(geo.html<=width+2&&geo.body<=width+2,'Overflow '+JSON.stringify(geo));
+                a.deepEqual(errors.filter(s=>!(s.startsWith('Failed to register a ServiceWorker')&&s.includes('does not match the current origin'))),[]);
+                await page.screenshot({path:'shots/about-'+width+'.png',fullPage:true});
+                console.log('PASS viewport '+width,JSON.stringify(geo));
+                await ctx.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-about-prepublication
+          path: /tmp/ko-about-qa/shots/*.png
+          if-no-files-found: ignore
+          retention-days: 7
