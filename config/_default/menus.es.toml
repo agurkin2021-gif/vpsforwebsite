@@ -5,12 +5,12 @@ weight = 1
 
 [[main]]
 name = "WordPress"
-url = "/vps-for-wordpress/"
+url = "/vps-para-wordpress/"
 weight = 2
 
 [[main]]
 name = "WooCommerce"
-url = "/vps-for-woocommerce/"
+url = "/vps-para-woocommerce/"
 weight = 3
 
 [[main]]
@@ -20,86 +20,86 @@ weight = 4
 [[main]]
 parent = "Guías"
 name = "Dimensionamiento del VPS"
-url = "/vps-sizing-for-website/"
+url = "/elegir-recursos-vps/"
 weight = 1
 
 [[main]]
 parent = "Guías"
 name = "Migración del sitio web"
-url = "/website-migration-to-vps/"
+url = "/migrar-un-sitio-web-a-vps/"
 weight = 2
 
 [[main]]
 parent = "Guías"
 name = "VPS administrado o no administrado"
-url = "/managed-vs-unmanaged-vps/"
+url = "/vps-administrado-vs-no-administrado/"
 weight = 3
 
 [[main]]
 parent = "Guías"
 name = "Alojamiento VPS con FASTPANEL"
-url = "/fastpanel-vps-hosting/"
+url = "/vps-con-fastpanel/"
 weight = 4
 
 [[main]]
 parent = "Guías"
 name = "Alojar un sitio web en un VPS"
-url = "/how-to-host-a-website-on-vps/"
+url = "/alojar-un-sitio-web-en-vps/"
 weight = 5
 
 [[main]]
 parent = "Guías"
 name = "Seguridad del VPS"
-url = "/vps-security-checklist/"
+url = "/seguridad-vps/"
 weight = 6
 
 [[main]]
 parent = "Guías"
 name = "Copias de seguridad del VPS"
-url = "/vps-backup-strategy/"
+url = "/copias-de-seguridad-vps/"
 weight = 7
 
 [[main]]
 parent = "Guías"
 name = "Supervisión del VPS"
-url = "/vps-monitoring/"
+url = "/monitorizacion-vps/"
 weight = 8
 
 [[main]]
 parent = "Guías"
 name = "Ubicación del VPS"
-url = "/how-to-choose-vps-location/"
+url = "/elegir-ubicacion-vps/"
 weight = 9
 
 [[main]]
 parent = "Guías"
 name = "VPS frente a alojamiento compartido"
-url = "/vps-vs-shared-hosting/"
+url = "/vps-vs-hosting-compartido/"
 weight = 10
 
 [[main]]
 parent = "Guías"
 name = "Varios sitios web"
-url = "/vps-for-multiple-websites/"
+url = "/vps-para-varios-sitios-web/"
 weight = 11
 
 [[main]]
 parent = "Guías"
 name = "Panel de control"
-url = "/vps-with-control-panel/"
+url = "/vps-con-panel-de-control/"
 weight = 12
 
 [[footer]]
 name = "Acerca de"
-url = "/about/"
+url = "/acerca-de/"
 weight = 1
 
 [[footer]]
 name = "Contacto"
-url = "/contact/"
+url = "/contacto/"
 weight = 2
 
 [[footer]]
 name = "Privacidad"
-url = "/privacy-policy/"
+url = "/politica-de-privacidad/"
 weight = 3
