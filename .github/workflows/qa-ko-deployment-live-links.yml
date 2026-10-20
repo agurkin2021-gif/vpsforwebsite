@@ -1,0 +1,153 @@
+name: Korean deployment guide live link regression QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/qa-ko-deployment-live-links.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ko-deployment-live-link-qa
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependencies
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Verify the deployed Korean page and every checker combination
+        env:
+          QA_RUN_ID: ${{ github.run_id }}
+        run: |
+          mkdir -p qa-ko11-artifacts
+          cat > /tmp/ko11-live-qa.cjs <<'JS'
+          const { chromium } = require(process.cwd() + '/node_modules/playwright');
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const origin = 'https://vpsforwebsite.com';
+          const route = '/ko/vps에-웹사이트를-호스팅하는-방법/';
+          const title = 'VPS에 웹사이트를 호스팅하는 방법';
+          const report = { run: process.env.QA_RUN_ID, url: origin + route, viewports: [], submissions: 0, internalDestinations: 0 };
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              const context = await browser.newContext();
+              const page = await context.newPage();
+              const errors = [];
+              page.on('pageerror', e => errors.push(e.message));
+              let links;
+              for (const width of [390, 1280]) {
+                await page.setViewportSize({ width, height: 900 });
+                const response = await page.goto(origin + route + '?ko11-link-qa=' + report.run, { waitUntil: 'networkidle', timeout: 60000 });
+                assert.equal(response.status(), 200, 'Korean article must return HTTP 200');
+                assert.equal((await page.title()).trim(), title);
+                assert.equal(await page.locator('h1').count(), 1);
+                assert.equal((await page.locator('h1').innerText()).trim(), title);
+                assert.ok((await page.locator('html').getAttribute('lang')).startsWith('ko'));
+                const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+                assert.equal(decodeURI(canonical), origin + route);
+                const robots = await page.locator('meta[name="robots"]').getAttribute('content');
+                assert.ok(!robots.includes('noindex'), 'Production article must remain indexable');
+                const geometry = await page.evaluate(() => ({ viewport: innerWidth, html: document.documentElement.scrollWidth, body: document.body.scrollWidth }));
+                assert.ok(geometry.html <= width && geometry.body <= width, JSON.stringify(geometry));
+                report.viewports.push(geometry);
+                links = await page.locator('main a[href]').evaluateAll(nodes => nodes.map(a => ({ raw: a.getAttribute('href'), url: a.href })));
+                assert.ok(links.length > 15, 'Expected the complete article link set');
+                for (const link of links) {
+                  assert.ok(!link.raw.startsWith('//'), 'Protocol-relative article link: ' + link.raw);
+                  const url = new URL(link.url);
+                  assert.ok(!['ko', 'vps-security-checklist', 'vps-backup-strategy', 'vps-monitoring'].includes(url.hostname), 'Malformed internal hostname: ' + url.href);
+                  if (link.raw.startsWith('/')) assert.equal(url.origin, origin);
+                  if (link.raw.startsWith('#')) assert.ok(await page.locator('[id=' + JSON.stringify(decodeURIComponent(link.raw.slice(1))) + ']').count(), 'Missing section: ' + link.raw);
+                }
+                const fields = { 'deploy-type': ['static', 'php', 'app'], 'deploy-panel': ['no', 'yes'], 'deploy-db': ['no', 'yes'], 'deploy-mail': ['no', 'yes'], 'deploy-sites': ['1', 'few', 'many'] };
+                assert.equal(await page.locator('#deployment-path-checker-form select').count(), 5);
+                for (const [id, values] of Object.entries(fields)) {
+                  assert.deepEqual(await page.locator('#' + id + ' option').evaluateAll(nodes => nodes.map(n => n.value)), values);
+                }
+                for (const type of fields['deploy-type']) for (const panel of fields['deploy-panel']) for (const db of fields['deploy-db']) for (const mail of fields['deploy-mail']) for (const sites of fields['deploy-sites']) {
+                  for (const [id, value] of Object.entries({ 'deploy-type': type, 'deploy-panel': panel, 'deploy-db': db, 'deploy-mail': mail, 'deploy-sites': sites })) await page.locator('#' + id).selectOption(value);
+                  await page.locator('#deployment-path-checker-form button[type="submit"]').click();
+                  const result = await page.locator('#deployment-path-result').innerText();
+                  const expected = panel === 'yes' ? '컨트롤 패널 방식:' : type === 'static' && db === 'no' && mail === 'no' ? '정적 사이트 수동 구성:' : type === 'php' ? 'PHP / 워드프레스 수동 구성:' : type === 'app' ? '애플리케이션 + 리버스 프록시 구성:' : '맞춤형 수동 구성:';
+                  assert.ok(result.startsWith(expected), JSON.stringify({ type, panel, db, mail, sites, result }));
+                  assert.equal(result.includes('사이트가 6+개라면'), sites === 'many');
+                  assert.equal(result.includes('로컬 메일 운영에는'), mail === 'yes');
+                  report.submissions++;
+                }
+                await page.screenshot({ path: 'qa-ko11-artifacts/viewport-' + width + '.png', fullPage: true });
+              }
+              const destinations = [...new Set(links.map(l => l.url).filter(s => new URL(s).origin === origin))];
+              for (const destination of destinations) {
+                const url = new URL(destination);
+                url.search = '';
+                const response = await context.request.get(url.href, { timeout: 30000 });
+                assert.equal(response.status(), 200, 'Broken article destination: ' + url.href);
+                if (url.hash) {
+                  const html = await response.text();
+                  const id = decodeURIComponent(url.hash.slice(1));
+                  assert.ok(html.includes('id="' + id + '"') || html.includes("id='" + id + "'") || html.includes('id=' + id + '>') || html.includes('id=' + id + ' '), 'Missing destination anchor: ' + url.href);
+                }
+              }
+              report.internalDestinations = destinations.length;
+              assert.equal(report.submissions, 144);
+              assert.deepEqual(errors, []);
+              report.javascriptErrors = errors.length;
+              report.status = 'passed';
+              fs.writeFileSync('qa-ko11-artifacts/report.json', JSON.stringify(report, null, 2));
+              console.log(JSON.stringify(report, null, 2));
+              await context.close();
+            } finally { await browser.close(); }
+          })().catch(error => { console.error(error); process.exit(1); });
+          JS
+          node /tmp/ko11-live-qa.cjs
+      - name: Preserve verified continuation state in project ledgers
+        env:
+          QA_RUN_ID: ${{ github.run_id }}
+        run: |
+          git fetch origin main
+          git checkout -B ko11-verified-ledger origin/main
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads(Path('qa-ko11-artifacts/report.json').read_text())
+          assert report['status'] == 'passed' and report['submissions'] == 144
+          marker = '### Korean page 11: live publication and internal-link regression closure — 2026-10-20'
+          note = f'''\n\n{marker}\n\n- Page 11 `VPS에 웹사이트를 호스팅하는 방법` at `/ko/vps에-웹사이트를-호스팅하는-방법/` is published. Original article source commit `b997a5b9a0dfdff5ef7919c14939aa19d70cf5ae`; Korean-only render-hook correction `3f763abbc6b3b3f6cec3b9be67563a7cd0449075`.\n- A post-publication Opera check exposed protocol-relative internal links such as `//ko/...`. Angle-bracket relref placeholders must not pass through relURL before their later expansion. The render hook now preserves those placeholders in its Korean branch; the English/other-language branch is unchanged. No article prose, commands, tables, numbers or checker JavaScript were changed by this repair.\n- Production Chromium QA run `{os.environ['QA_RUN_ID']}` passed at 390px and 1280px: HTTP 200, exact single Title/H1, self-canonical, indexability, no page-width overflow, no JavaScript errors, no protocol-relative article links, and all {report['internalDestinations']} distinct same-origin article destinations/anchors reachable. All 72 checker input combinations passed at each viewport (144 actual submissions). Screenshots and JSON report are stored as run artifacts.\n- Core Korean queue is now 11/15 published. Continue with page 12 `VPS Security Checklist`, then Backup Strategy, Monitoring and Location; About/Contact/Privacy remain separate final passes. Translate one page and one block at a time; preserve the English reference and other locales.\n'''
+          for filename in ['CHATGPT_PROJECT_CONTEXT.md', 'CHATGPT_SEO_AUDIT_BUFFER.md', 'research/korean-localization-2026-10-19.md']:
+              path = Path(filename)
+              original = path.read_bytes()
+              if marker.encode() in original:
+                  continue
+              split = original.index(b'\n') + 1
+              updated = original[:split] + note.encode('utf-8') + original[split:]
+              if filename.startswith('research/'):
+                  updated = updated.replace(b'11. How to host a website on VPS.\n', b'11. How to host a website on VPS - published; live links, 390/1280px and all 72 checker combinations per viewport verified.\n')
+              path.write_bytes(updated)
+          PY
+          git add CHATGPT_PROJECT_CONTEXT.md CHATGPT_SEO_AUDIT_BUFFER.md research/korean-localization-2026-10-19.md
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Record Korean page 11 live verification and repaired internal links'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: korean-deployment-live-link-qa
+          path: qa-ko11-artifacts
+          retention-days: 7
