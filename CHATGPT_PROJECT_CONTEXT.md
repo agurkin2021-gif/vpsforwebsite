@@ -1,5 +1,16 @@
 # CHATGPT PROJECT CONTEXT — vpsforwebsite.com
 
+### Korean localization 20/20 completion and production verification — 2026-10-20
+
+- Sole site in scope: **vpsforwebsite.com**, repository **agurkin2021-gif/vpsforwebsite**, branch `main`. Source-path audit on 2026-10-20 finds **20 English Markdown paths and 20 matching Korean Markdown paths; none missing**. All 15 planned core commercial/technical Korean pages are published. Two shared section content paths, About, Contact and Privacy Policy also have KO equivalents. Do **not** restart the 11/15 queue described in stale entries below.
+- Page 15, `content/korean/how-to-choose-vps-location.md`, was merged by **PR #11** and is live at `/ko/vps-위치-선택-방법/`; 48 original English anchor IDs, 34 original table lines, 140 bullets, 11 numbered steps, six selects/16 values, original JS logic, numeric facts and affiliate links were QA-verified. **PR #12** added Korean Privacy Policy at `/ko/개인정보-처리방침/`, retaining GA4 ID `G-J6X9FNRMH5`, VDSina disclosures and original privacy URL.
+- **PR #13** (merge `086c868a9216de90619d001850de2d8de26a75aa`) published Korean About at `/ko/about/`: 7 section IDs and 9 list items preserved, review date **14 October 2026**, VDSina commercial disclosure. English `content/english/about/_index.md` contained the 7 sections but existing `layouts/list.html` did not render section `.Content`. Added a **Korean-only** list section render and Korean-only About hero/diagram strings, leaving English/other-language fallback untouched. Hugo/Chromium 390/1280 QA **39490700135 SUCCESS**; production workflows passed and Opera confirmed all seven sections live.
+- **PR #14** (merge `25017d637caeaab43b5164865aad7d3f3ac25971`) published Korean Contact at `/ko/contact/`. Preserves exactly two source paragraphs, `noindex: true` and `sitemap.disable: true`, and makes no claim of an active public contact form. Korean-only hero/diagram labels and native `/ko/`, `/ko/about/` links added. Existing KO-only list render extended to Contact; EN/ES remain as before. Hugo/Chromium 390/1280 QA **39492168453 SUCCESS**; all three production workflows passed, static HTML generated and Opera confirmed live translated Contact/links.
+- Final Opera production checks verified KO Location, Privacy, About and Contact public URLs; Privacy contains the original GA4 ID and VDSina disclosure, and About/Contact sections no longer 404. The Korean footer now resolves all About, Contact and Privacy destinations natively rather than falling back to English.
+- A separate temporary experimental branch `work/ko-location-20261020` was created before the concurrent PR #11 merged page 15. **Do not merge this duplicate branch**. Canonical released page-15 branch was `work/ko-vps-location-20261020`, already merged via PR #11.
+- Next phase is a **sitewide post-publication Korean regression/content sweep**, not translating new core pages. Strictly preserve the English reference, all other locales, URL targets, partner links, original numbers/tables/code/JavaScript. Only authorized domain: vpsforwebsite.com; never touch vpsubuntu.com.
+
+
 
 ### Korean page 11: live publication and internal-link regression closure — 2026-10-20
 
