@@ -16,6 +16,7 @@ on:
       - "go.mod"
       - "package.json"
       - "scripts/optimize-css.mjs"
+      - "scripts/restore-language-navigation.py"
       - "recovered-public/**"
   workflow_dispatch:
 
@@ -146,6 +147,9 @@ jobs:
 
           print(f"Known cache-miss fallback pages created: {created}")
           PY
+
+      - name: Restore multilingual navigation and hreflang
+        run: python scripts/restore-language-navigation.py cloudflare-public recovered-public
 
       - name: Build sitemap from actual deployable HTML
         shell: bash
