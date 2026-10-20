@@ -15,7 +15,7 @@ VPS 보안 점검표는 인터넷에 연결된 자체 관리 서버의 보안을
 
 [기본 보안](#security-baseline-in-order) · [진단 도구](#vps-security-baseline-checker) · [SSH](#harden-administrative-access) · [방화벽](#firewall-only-the-services-you-need) · [업데이트](#patching-and-automatic-security-updates) · [백업](#backups-are-a-security-control) · [사고 대응](#after-a-suspected-compromise) · [FAQ](#faq)
 
-## 기본 보안 적용 순서
+## 기본 보안 적용 순서 {#security-baseline-in-order}
 
 일반적인 공개 Linux VPS에서는 다음 순서로 진행합니다.
 
@@ -38,7 +38,7 @@ VPS 보안 점검표는 인터넷에 연결된 자체 관리 서버의 보안을
 
 명령을 무작정 붙여 넣어 원격 접속을 강화하지 마세요. 정상적인 관리자의 접속을 막는 보안 변경은 서비스 장애입니다.
 
-## VPS 기본 보안 진단
+## VPS 기본 보안 진단 {#vps-security-baseline-checker}
 
 이 도구로 기본 보안 조치의 누락 사항을 확인하세요. 서버가 안전하다는 인증을 제공하지는 않습니다.
 
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-## 접속 설정 변경 전 복구 경로 확보
+## 접속 설정 변경 전 복구 경로 확보 {#keep-a-recovery-path-before-changing-access}
 
 SSH를 제한하거나 엄격한 방화벽을 활성화하기 전에 잘못된 규칙을 적용해도 복구할 수 있는지 확인하세요.
 
@@ -148,7 +148,7 @@ SSH를 제한하거나 엄격한 방화벽을 활성화하기 전에 잘못된 �
 
 첫 배포 절차는 [VPS에 웹사이트를 호스팅하는 방법]({{< relref "how-to-host-a-website-on-vps.md" >}})에서 다룹니다.
 
-## 차단하기 전에 공개 서비스 파악
+## 차단하기 전에 공개 서비스 파악 {#inventory-exposed-services-before-blocking}
 
 어떤 포트가 열려 있는지 추측하지 마세요.
 
@@ -177,7 +177,7 @@ sudo ss -lntup
 
 방화벽으로 숨기는 데만 의존하지 말고 사용하지 않는 서비스를 제거하세요.
 
-## 관리자 접속 보안 강화
+## 관리자 접속 보안 강화 {#harden-administrative-access}
 
 Ubuntu의 OpenSSH 문서는 공개 키 인증을 지원하며 Ed25519와 같은 최신 키 알고리즘을 권장합니다.
 
@@ -192,7 +192,7 @@ Ubuntu의 OpenSSH 문서는 공개 키 인증을 지원하며 Ed25519와 같은 
 
 더 높은 수준의 보증이 필요한 환경에서는 OpenSSH가 FIDO/U2F 또는 TOTP 기반 2단계 인증을 포함한 더 강력한 인증 방식도 지원합니다.
 
-### Root 로그인과 비밀번호 인증
+### Root 로그인과 비밀번호 인증 {#root-login-and-password-authentication}
 
 키 기반 접속과 콘솔 복구를 확인하기 전에 이러한 옵션을 무작정 설정하지 마세요.
 
@@ -207,7 +207,7 @@ Ubuntu의 OpenSSH 문서는 공개 키 인증을 지원하며 Ed25519와 같은 
 
 SSH 포트를 22에서 다른 번호로 변경하면 스캐너가 만드는 불필요한 시도는 줄일 수 있지만, 키 인증, 최소 권한, 방화벽 정책과 소프트웨어 유지 관리를 대신할 수는 **없습니다**.
 
-## 방화벽: 필요한 서비스만 허용
+## 방화벽: 필요한 서비스만 허용 {#firewall-only-the-services-you-need}
 
 Ubuntu의 기본 호스트 방화벽 프런트엔드는 UFW입니다.
 
@@ -229,7 +229,7 @@ sudo ufw status verbose
 
 구성이 다르다면 일반적인 “22/80/443 허용” 목록을 그대로 복사하지 마세요.
 
-### 제공업체 방화벽과 호스트 방화벽
+### 제공업체 방화벽과 호스트 방화벽 {#provider-firewall-and-host-firewall}
 
 제공업체 또는 네트워크 방화벽은 트래픽이 VM에 도달하기 전에 차단할 수 있습니다.
 
@@ -237,7 +237,7 @@ sudo ufw status verbose
 
 두 가지를 함께 사용하면 유용한 다층 방어가 될 수 있지만, 규칙이 문서화되어 있고 서로 충돌하지 않아야 합니다.
 
-## 데이터베이스와 내부 서비스는 기본적으로 비공개 유지
+## 데이터베이스와 내부 서비스는 기본적으로 비공개 유지 {#keep-databases-and-internal-services-private-by-default}
 
 서비스가 수신 중이라는 이유만으로 MySQL/MariaDB/PostgreSQL, Redis, 내부 Node/Python 애플리케이션 포트나 제어 소켓을 인터넷에 공개하지 마세요.
 
@@ -250,7 +250,7 @@ sudo ufw status verbose
 
 구조상 꼭 필요하고 접근을 강력하게 제한한 경우에만 데이터베이스 포트를 공개하세요.
 
-## 패치와 자동 보안 업데이트
+## 패치와 자동 보안 업데이트 {#patching-and-automatic-security-updates}
 
 지원되는 OS라도 패치 담당자가 없으면 점차 오래된 상태가 됩니다.
 
@@ -269,7 +269,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 “자동 업데이트를 활성화했다”는 사실을 패치 관리 전체로 여기지 마세요.
 
-## Fail2ban, CrowdSec 및 요청 속도 제한
+## Fail2ban, CrowdSec 및 요청 속도 제한 {#fail2ban-crowdsec-and-rate-limiting}
 
 무차별 대입 방어 도구는 반복되는 악의적인 시도를 줄일 수 있습니다.
 
@@ -284,7 +284,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 차단 도구가 약한 비밀번호, 패치하지 않은 패널 또는 공개된 데이터베이스를 안전하게 만들어 주지는 않습니다.
 
-## 애플리케이션과 데이터베이스의 최소 권한
+## 애플리케이션과 데이터베이스의 최소 권한 {#least-privilege-for-applications-and-databases}
 
 최소 권한 원칙은 전체 스택에 적용됩니다.
 
@@ -306,7 +306,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 여러 사이트의 격리는 [여러 웹사이트용 VPS]({{< relref "vps-for-multiple-websites.md" >}})를 참고하세요.
 
-## 비밀 정보와 자격 증명 보호
+## 비밀 정보와 자격 증명 보호 {#protect-secrets-and-credentials}
 
 운영 환경의 자격 증명을 다음 위치에 두지 마세요.
 
@@ -329,7 +329,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 직원이나 계약자가 업무를 떠나거나 침해가 의심되면 자격 증명을 교체하세요.
 
-## 컨트롤 패널과 관리 인터페이스
+## 컨트롤 패널과 관리 인터페이스 {#control-panels-and-admin-interfaces}
 
 컨트롤 패널은 높은 권한을 가진 관리 애플리케이션입니다.
 
@@ -348,7 +348,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 패널 선택은 [컨트롤 패널이 있는 VPS]({{< relref "vps-with-control-panel.md" >}})를 참고하세요. 특정 패널을 사용하는 방식은 [FASTPANEL VPS 호스팅]({{< relref "fastpanel-vps-hosting.md" >}})을 참고하세요.
 
-## 애플리케이션, CMS 및 런타임 업데이트
+## 애플리케이션, CMS 및 런타임 업데이트 {#application-cms-and-runtime-updates}
 
 운영체제의 패치를 모두 적용했더라도 취약한 애플리케이션을 운영하고 있을 수 있습니다.
 
@@ -367,7 +367,7 @@ Ubuntu 문서에 따르면 업데이트된 코드가 실제로 적용되려면 �
 
 워드프레스 운영은 [워드프레스용 VPS]({{< relref "vps-for-wordpress.md" >}})를 참고하세요. 거래가 발생하는 쇼핑몰은 [WooCommerce용 VPS]({{< relref "vps-for-woocommerce.md" >}})를 참고하세요.
 
-## HTTPS는 전송을 보호할 뿐 서버 전체를 보호하지 않음
+## HTTPS는 전송을 보호할 뿐 서버 전체를 보호하지 않음 {#https-protects-transport-not-the-whole-server}
 
 로그인이나 민감한 데이터를 처리하는 운영 웹사이트에는 HTTPS가 필요하며, 공개 사이트에서도 일반적인 기본 요건입니다.
 
@@ -385,7 +385,7 @@ HTTPS는 클라이언트와 서버 사이에서 전송되는 데이터를 보호
 
 인증서 갱신을 확인하고 만료와 갱신 실패를 감시하세요.
 
-## DDoS 보호는 애플리케이션 보안이 아님
+## DDoS 보호는 애플리케이션 보안이 아님 {#ddos-protection-is-not-application-security}
 
 VDSina는 현재 Standard VPS에 무료 DDoS 보호를 제공한다고 안내합니다.
 
@@ -408,7 +408,7 @@ VDSina는 현재 Standard VPS에 무료 DDoS 보호를 제공한다고 안내합
 </p>
 <p><small>제휴 고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 제휴 링크로 주문하면 사이트가 수수료를 받을 수 있습니다. 제공업체의 DDoS 보호와 기술 지원은 게스트 OS 및 애플리케이션의 보안 강화나 운영 관리를 대신하지 않습니다.</small></p>
 
-## 백업도 보안 조치임
+## 백업도 보안 조치임 {#backups-are-a-security-control}
 
 보안에는 침해, 랜섬웨어, 잘못된 업데이트와 실수로 인한 삭제 후 복구할 수 있는 능력도 포함됩니다.
 
@@ -426,7 +426,7 @@ CISA는 중요 데이터의 오프라인 암호화 백업을 유지하고 재해
 
 RPO/RTO, 보존 기간과 백업 구조의 상세 설계는 [VPS 백업 전략]({{< relref path="vps-backup-strategy.md" lang="en" >}})에서 다룹니다.
 
-## 로그, 알림 및 감사 기록
+## 로그, 알림 및 감사 기록 {#logs-alerts-and-audit-trail}
 
 안전한 설정도 관찰하지 않으면 문제가 생겨도 알아차리지 못할 수 있습니다.
 
@@ -448,7 +448,7 @@ RPO/RTO, 보존 기간과 백업 구조의 상세 설계는 [VPS 백업 전략](
 
 임계값과 알림의 상세 설계는 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
 
-## 침해가 의심될 때
+## 침해가 의심될 때 {#after-a-suspected-compromise}
 
 관리자 또는 root 권한 침해가 의심된다면 임시방편의 “정리”만으로 서버가 안전하다고 바로 판단하지 마세요.
 
@@ -467,7 +467,7 @@ CISA의 사고 대응 지침은 격리, 증거와 로그 검토, 검증된 백�
 
 비즈니스에 중요한 시스템이라면 자격을 갖춘 사고 대응 또는 보안 전문가를 참여시키세요.
 
-## 점검표 반복 적용
+## 점검표 반복 적용 {#repeat-the-checklist}
 
 보안은 서버를 처음 준비할 때 한 번으로 끝나는 작업이 아닙니다.
 
@@ -489,7 +489,7 @@ CISA의 사고 대응 지침은 격리, 증거와 로그 검토, 검증된 백�
 
 대규모 이전, 패널 변경, 새 서비스 추가 또는 구조 변경 뒤에도 점검표를 다시 적용하세요.
 
-## 실제 운영 보안 점검표
+## 실제 운영 보안 점검표 {#production-security-checklist}
 
 | 보안 조치 | 통과 조건 |
 |---|---|
@@ -511,7 +511,7 @@ CISA의 사고 대응 지침은 격리, 증거와 로그 검토, 검증된 백�
 | 사고 대응 | 담당자, 격리와 안전한 복구 경로가 정해져 있음 |
 | 정기 감사 | 다음 점검 날짜와 절차가 있음 |
 
-## 기술 참고 자료
+## 기술 참고 자료 {#technical-references}
 
 - Ubuntu Server — OpenSSH
 - Ubuntu Server — 방화벽/UFW
@@ -520,44 +520,44 @@ CISA의 사고 대응 지침은 격리, 증거와 로그 검토, 검증된 백�
 - VDSina Standard VPS
 - VDSina QA — DDoS 보호 범위
 
-## FAQ
+## FAQ {#faq}
 
-### 새 VPS에서 무엇부터 보호해야 하나요?
+### 새 VPS에서 무엇부터 보호해야 하나요? {#what-should-i-secure-first-on-a-new-vps}
 
 콘솔과 복구 접속을 유지하고, 별도의 비root 관리 계정에서 SSH 키 로그인을 설정하고 테스트한 뒤, 수신 서비스를 파악하고 나서 SSH와 방화벽 정책을 강화하세요. 접속을 확인하기 전에 관리자를 차단할 수 있는 변경을 여러 개 한꺼번에 적용하지 마세요.
 
-### SSH 비밀번호 로그인을 비활성화해야 하나요?
+### SSH 비밀번호 로그인을 비활성화해야 하나요? {#should-i-disable-ssh-password-login}
 
 일반적인 VPS 관리에서는 키 기반 관리자 인증이 더 강력하지만, 먼저 키 로그인과 복구 콘솔을 확인하세요. 유일하게 작동하는 접속 경로를 비활성화하지 마세요.
 
-### SSH 포트를 변경해야 하나요?
+### SSH 포트를 변경해야 하나요? {#should-i-change-the-ssh-port}
 
 스캐너와 로그의 불필요한 기록을 줄일 수는 있지만 핵심 보안 조치는 아닙니다. 강력한 인증, 최소 권한, 방화벽 정책과 패치가 더 중요합니다.
 
-### Fail2ban이 필요한가요?
+### Fail2ban이 필요한가요? {#do-i-need-fail2ban}
 
 항상 필요한 것은 아니지만 반복되는 로그인 악용에 대한 다층 방어 수단으로 유용할 수 있습니다. SSH 키, 패치 또는 올바른 서비스 공개 범위를 대신하지는 않습니다.
 
-### VPS에서 어떤 포트를 열어야 하나요?
+### VPS에서 어떤 포트를 열어야 하나요? {#which-ports-should-be-open-on-a-vps}
 
 구조상 필요한 포트만 열어야 합니다. 공개 웹 서버에는 일반적으로 HTTP/HTTPS와 통제된 관리자 접속 경로가 필요합니다. 데이터베이스와 내부 애플리케이션 서비스는 보통 비공개로 유지해야 합니다.
 
-### 방화벽이 취약한 애플리케이션을 보호하나요?
+### 방화벽이 취약한 애플리케이션을 보호하나요? {#does-a-firewall-protect-a-vulnerable-application}
 
 아니요. 방화벽은 네트워크 노출 범위를 제한합니다. 외부에서 접근할 수 있는 웹 애플리케이션에는 여전히 안전한 코드, 지원되는 의존성, 업데이트와 애플리케이션 수준의 보안 조치가 필요합니다.
 
-### 자동 보안 업데이트만으로 충분한가요?
+### 자동 보안 업데이트만으로 충분한가요? {#are-automatic-security-updates-enough}
 
 아니요. 지원되는 OS 패키지에는 도움이 되지만 타사 애플리케이션과 의존성은 별도의 업데이트가 필요할 수 있으며, 서비스 재시작이나 재부팅도 운영 과정에서 처리해야 할 수 있습니다.
 
-### HTTPS만으로 VPS를 보호할 수 있나요?
+### HTTPS만으로 VPS를 보호할 수 있나요? {#is-https-enough-to-secure-a-vps}
 
 아니요. HTTPS는 전송을 보호합니다. 취약한 SSH, 공개된 데이터베이스, 취약한 플러그인, 오래된 패키지, 유출된 비밀 정보나 백업 부재를 해결하지는 못합니다.
 
-### VDSina의 DDoS 보호만으로 웹사이트를 보호할 수 있나요?
+### VDSina의 DDoS 보호만으로 웹사이트를 보호할 수 있나요? {#is-vdsina-ddos-protection-enough-to-secure-the-website}
 
 아니요. VDSina는 현재 무료 DDoS 보호를 안내하고 있으며, 공개 QA에서는 무료 보호가 SLA 없는 L3-L4 범위라고 설명합니다. 게스트 OS, 접속, 애플리케이션과 복구에 대한 보안 조치는 여전히 필요합니다.
 
-### VPS 침해가 의심되면 어떻게 해야 하나요?
+### VPS 침해가 의심되면 어떻게 해야 하나요? {#what-should-i-do-if-i-suspect-the-vps-was-compromised}
 
 서버를 격리하고 관련 증거와 로그를 보존하며, 깨끗한 시스템에서 노출된 자격 증명을 교체하세요. 관리자 권한 침해가 의심되면 정상임이 확인된 소스와 검증된 백업으로 다시 구축하는 방식을 우선하세요. 중요한 시스템이라면 사고 대응 전문가를 참여시키세요.
