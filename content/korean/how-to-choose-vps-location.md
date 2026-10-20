@@ -6,99 +6,99 @@ description: "사용자 분포, 실제 네트워크 경로, 동적 트래픽, �
 image: "images/home/vps-for-website-hero.webp"
 ---
 
-The best VPS location is not automatically the country closest to you. Choose the region around the **users and systems that actually exchange latency-sensitive traffic with the server**, then verify the real network path before buying.
+가장 좋은 VPS 위치가 반드시 자신과 가장 가까운 국가인 것은 아닙니다. **서버와 지연 시간에 민감한 트래픽을 실제로 주고받는 사용자와 시스템**을 기준으로 지역을 선택하고, 구매 전에 실제 네트워크 경로를 확인하세요.
 
-For most websites, start near the largest or most valuable audience. Then check routing, dynamic traffic, database/API dependencies, CDN behavior and any real data-location requirement.
+대부분의 웹사이트는 규모가 가장 크거나 사업상 중요한 사용자층에 가까운 지역부터 검토합니다. 이후 라우팅, 동적 트래픽, 데이터베이스·API 의존 관계, CDN 동작과 실제 데이터 위치 요구사항을 확인하세요.
 
-For the broader VPS decision, see [VPS for website]({{< relref "_index.md" >}}).
+VPS 선택의 전반적인 기준은 [웹사이트용 VPS]({{< relref "_index.md" >}})를 참고하세요.
 
-[Quick answer](#quick-answer) · [Location checker](#vps-location-decision-checker) · [Audience](#start-with-the-audience) · [Route testing](#test-the-route-not-just-the-map) · [CDN](#cdn-vs-origin-location) · [Dependencies](#keep-chatty-dependencies-close) · [Global audience](#global-audience-one-origin--cdn-or-multi-region) · [SEO](#does-vps-location-affect-seo) · [Checklist](#vps-location-pre-purchase-checklist) · [FAQ](#faq)
+[핵심 요약](#quick-answer) · [위치 선택 진단](#vps-location-decision-checker) · [사용자 분포](#start-with-the-audience) · [경로 테스트](#test-the-route-not-just-the-map) · [CDN](#cdn-vs-origin-location) · [의존 시스템](#keep-chatty-dependencies-close) · [전 세계 사용자](#global-audience-one-origin--cdn-or-multi-region) · [SEO](#does-vps-location-affect-seo) · [체크리스트](#vps-location-pre-purchase-checklist) · [FAQ](#faq)
 
-## Quick answer
+## 핵심 요약 {#quick-answer}
 
-Use this order:
+다음 순서로 결정하세요.
 
-1. **Find the important users.** Map where paying customers, logged-in users and peak-hour traffic actually come from.
-2. **Identify the important dependency.** The database, private API or upstream service may matter as much as the browser.
-3. **Shortlist nearby regions.** Geography gives you candidates, not the final answer.
-4. **Test real routes.** Compare latency, route stability and packet loss from representative networks.
-5. **Separate CDN traffic from origin traffic.** Cached assets can move to the edge; dynamic requests still reach the origin.
-6. **Apply data-location constraints.** Legal, contractual or organizational requirements can override the lowest-latency option.
-7. **Choose resources separately.** Location does not replace CPU/RAM/storage sizing.
+1. **중요한 사용자 파악.** 결제 고객, 로그인한 사용자, 피크 시간대 트래픽이 실제로 어디에서 발생하는지 확인하세요.
+2. **핵심 의존 시스템 확인.** 데이터베이스, 비공개 API 또는 상위 서비스가 브라우저만큼 중요할 수 있습니다.
+3. **인접 지역 후보 선정.** 지리적 위치는 후보를 좁혀 줄 뿐 최종 답이 아닙니다.
+4. **실제 네트워크 경로 테스트.** 주요 사용자 네트워크에서 지연 시간, 경로 안정성과 패킷 손실을 비교하세요.
+5. **CDN 트래픽과 원본 서버 트래픽 구분.** 캐시된 파일은 엣지에서 제공되지만 동적 요청은 여전히 원본 서버에 도달합니다.
+6. **데이터 위치 제약 적용.** 법률, 계약 또는 조직의 요구사항에 따라 지연 시간이 가장 낮은 지역을 선택하지 못할 수도 있습니다.
+7. **서버 자원은 별도로 결정.** 위치를 잘 선택한다고 CPU·RAM·스토리지 사양을 적절하게 선정할 필요가 없어지는 것은 아닙니다.
 
-| Question | What it changes |
+| 질문 | 결정에 미치는 영향 |
 |---|---|
-| Where are the important users? | first region shortlist |
-| How dynamic is the site? | how much origin latency users feel |
-| Where is the database/API? | whether cross-region round trips dominate |
-| Is a CDN in front? | how much static/cacheable traffic is moved to the edge |
-| Is data location constrained? | which regions are even eligible |
-| How do candidate routes actually perform? | final region choice |
-| Is traffic truly global and dynamic? | whether one origin is enough |
+| 중요한 사용자는 어디에 있나요? | 초기 지역 후보 목록 |
+| 사이트는 얼마나 동적인가요? | 사용자가 체감하는 원본 서버 지연 시간 |
+| 데이터베이스·API는 어디에 있나요? | 지역 간 왕복 요청이 성능을 좌우하는지 |
+| 앞단에 CDN이 있나요? | 정적·캐시 가능 트래픽이 엣지로 얼마나 이동하는지 |
+| 데이터 위치에 제약이 있나요? | 선택 가능한 지역의 범위 |
+| 후보 지역의 실제 경로 성능은 어떤가요? | 최종 지역 선택 |
+| 트래픽이 전 세계에 분산되어 있고 동적인가요? | 원본 서버 한 곳으로 충분한지 |
 
-There is no universal "best VPS country." The best location is workload-specific.
+모든 경우에 적합한 “최고의 VPS 국가”는 없습니다. 적합한 위치는 워크로드에 따라 달라집니다.
 
-## VPS Location Decision Checker
+## VPS 위치 선택 진단 {#vps-location-decision-checker}
 
-Use the checker to identify the correct **decision pattern** before comparing providers. It does not predict a guaranteed latency or select a specific provider location.
+이 진단 도구는 제공업체를 비교하기 전에 알맞은 **선택 기준**을 확인하는 데 도움을 줍니다. 특정 지연 시간을 보장하거나 제공업체의 실제 서버 지역을 지정하지는 않습니다.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="vps-location-checker">
   <div class="mb-6">
-    <label for="loc-audience" class="form-label">Where is the important audience?</label>
+    <label for="loc-audience" class="form-label">중요한 사용자는 어디에 있나요?</label>
     <select id="loc-audience" class="form-input">
-      <option value="concentrated">Mostly in one country / nearby region</option>
-      <option value="split">Split between two major regions</option>
-      <option value="global">Broadly global / no dominant region</option>
+      <option value="concentrated">대부분 한 국가 또는 인접 지역에 집중</option>
+      <option value="split">두 주요 지역에 분산</option>
+      <option value="global">전 세계에 분산 / 우세한 지역 없음</option>
     </select>
   </div>
 
   <div class="mb-6">
-    <label for="loc-dynamic" class="form-label">How much latency-sensitive dynamic traffic reaches the origin?</label>
+    <label for="loc-dynamic" class="form-label">지연 시간에 민감한 동적 트래픽이 원본 서버에 얼마나 도달하나요?</label>
     <select id="loc-dynamic" class="form-input">
-      <option value="low">Low — mostly static/cacheable content</option>
-      <option value="medium">Medium — CMS/logins/forms/some uncached traffic</option>
-      <option value="high">High — checkout/API/dashboard/real-time or heavily dynamic app</option>
+      <option value="low">낮음 — 대부분 정적·캐시 가능 콘텐츠</option>
+      <option value="medium">보통 — CMS·로그인·양식·일부 캐시되지 않는 요청</option>
+      <option value="high">높음 — 결제·API·대시보드·실시간 처리 또는 동적 앱</option>
     </select>
   </div>
 
   <div class="mb-6">
-    <label for="loc-dependency" class="form-label">Where is the critical database/API/private dependency?</label>
+    <label for="loc-dependency" class="form-label">핵심 데이터베이스·API·비공개 의존 시스템은 어디에 있나요?</label>
     <select id="loc-dependency" class="form-input">
-      <option value="same">It will run on the same VPS / same region</option>
-      <option value="fixed">It is fixed in one specific external region</option>
-      <option value="distributed">Dependencies are distributed / no single region</option>
-      <option value="none">No important latency-sensitive dependency</option>
+      <option value="same">같은 VPS 또는 같은 지역에서 실행</option>
+      <option value="fixed">특정 외부 지역에 고정됨</option>
+      <option value="distributed">의존 시스템이 분산됨 / 단일 지역 없음</option>
+      <option value="none">지연 시간에 민감한 주요 의존 시스템 없음</option>
     </select>
   </div>
 
   <div class="mb-6">
-    <label for="loc-cdn" class="form-label">Will a CDN cache public static/cacheable content?</label>
+    <label for="loc-cdn" class="form-label">CDN이 공개된 정적·캐시 가능 콘텐츠를 저장하나요?</label>
     <select id="loc-cdn" class="form-input">
-      <option value="yes">Yes</option>
-      <option value="no">No / not decided</option>
+      <option value="yes">예</option>
+      <option value="no">아니요 / 미정</option>
     </select>
   </div>
 
   <div class="mb-6">
-    <label for="loc-compliance" class="form-label">Is the physical/data location constrained by law, contract or internal policy?</label>
+    <label for="loc-compliance" class="form-label">법률·계약·내부 정책으로 실제 서버·데이터 위치에 제약이 있나요?</label>
     <select id="loc-compliance" class="form-input">
-      <option value="no">No known hard constraint</option>
-      <option value="yes">Yes / possibly — only certain regions are eligible</option>
+      <option value="no">알려진 강제 제약 없음</option>
+      <option value="yes">예 / 가능성 있음 — 특정 지역만 선택 가능</option>
     </select>
   </div>
 
   <div class="mb-6">
-    <label for="loc-tested" class="form-label">Have candidate regions been tested from representative user networks?</label>
+    <label for="loc-tested" class="form-label">실제 사용자와 유사한 네트워크에서 후보 지역을 테스트했나요?</label>
     <select id="loc-tested" class="form-input">
-      <option value="no">No</option>
+      <option value="no">아니요</option>
       <option value="yes">Yes</option>
     </select>
   </div>
 
-  <button class="btn btn-primary" type="submit">Choose location strategy</button>
+  <button class="btn btn-primary" type="submit">VPS 위치 전략 선택</button>
 </form>
-<p id="vps-location-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">Use real audience and route data; do not select a region from a map alone.</p>
+<p id="vps-location-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">실제 사용자 분포와 네트워크 경로 데이터를 사용하세요. 지도만 보고 지역을 결정하지 마세요.</p>
 </div>
 
 <script>
@@ -119,17 +119,17 @@ document.addEventListener("DOMContentLoaded", function () {
     var result;
 
     if (compliance === "yes") {
-      result = "DATA-LOCATION CONSTRAINT: first restrict the shortlist to regions that satisfy the real legal, contractual or policy requirement. Then compare routing and latency inside that eligible set. Do not treat this checker as legal advice.";
+      result = "데이터 위치 제약: 실제 법률·계약·정책 요구사항을 충족하는 지역으로 후보를 먼저 제한하세요. 이후 선택 가능한 지역 안에서 경로와 지연 시간을 비교하세요. 이 진단 결과는 법률 자문이 아닙니다.";
     } else if (dependency === "fixed" && dynamic !== "low") {
-      result = "DEPENDENCY-FIRST / CO-LOCATE: a chatty database or API fixed in another region can dominate response time. Prefer a VPS region that keeps the application close to that dependency unless user-side measurements prove another architecture is better.";
+      result = "의존 시스템 우선 / 인접 배치: 다른 지역에 고정된 데이터베이스나 API와 잦은 통신이 응답 시간을 좌우할 수 있습니다. 사용자 측 측정에서 다른 구성이 더 낫다고 입증되지 않는다면 애플리케이션을 핵심 의존 시스템에 가까이 배치하세요.";
     } else if (audience === "global" && dynamic === "high") {
-      result = "MULTI-REGION MAY BE JUSTIFIED: a truly global, latency-sensitive dynamic workload can outgrow one origin. Validate state replication, database consistency, failover and operating complexity before adding regions.";
+      result = "다중 지역 구성이 필요할 수 있음: 지연 시간에 민감한 동적 워크로드가 전 세계에 분산되면 원본 서버 한 곳으로 부족할 수 있습니다. 지역을 추가하기 전에 상태 복제, 데이터베이스 일관성, 장애 전환 및 운영 복잡도를 검증하세요.";
     } else if ((audience === "global" || audience === "split") && cdn === "yes" && dynamic !== "high") {
-      result = "CENTRAL ORIGIN + CDN: place the origin where the most important dynamic traffic and dependencies fit best, and let the CDN serve cacheable content near distributed users. Confirm the remaining dynamic path with real tests.";
+      result = "중앙 원본 서버 + CDN: 중요한 동적 트래픽과 의존 시스템에 적합한 위치에 원본 서버를 배치하고, CDN으로 분산된 사용자에게 캐시 가능한 콘텐츠를 제공하세요. 남는 동적 요청 경로는 실제 테스트로 확인하세요.";
     } else if (tested === "no") {
-      result = "TEST BEFORE BUYING: geography gives you a shortlist, not the winner. Obtain test IPs/endpoints or use short-lived instances and compare real routes from representative user networks before committing.";
+      result = "구매 전 테스트: 지리는 후보 지역을 좁혀 줄 뿐 최적 지역을 확정하지는 않습니다. 테스트 IP·엔드포인트 또는 단기 인스턴스를 사용해 주요 사용자 네트워크에서 실제 경로를 비교하세요.";
     } else {
-      result = "USER-FIRST REGION: choose the tested region that performs best for the largest or most valuable latency-sensitive audience while keeping critical dependencies and operating constraints acceptable.";
+      result = "사용자 우선 지역: 핵심 의존 시스템과 운영 제약을 충족하면서 규모가 크거나 가치가 높은 지연 시간 민감 사용자층에 가장 좋은 성능을 보인 테스트 지역을 선택하세요.";
     }
 
     document.getElementById("vps-location-result").textContent = result;
