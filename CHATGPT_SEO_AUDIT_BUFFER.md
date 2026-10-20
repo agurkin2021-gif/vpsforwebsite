@@ -4041,3 +4041,10 @@ Visual QA passed for top, checker and checklist table. No known P0/P1 content/on
 - French-only, homepage-only CSS at `static/css/fr-home-responsive.v1.css` repairs headings, CTA wrapping, narrow pricing-card grid sizing. `recovered-public/fr/index.html` links it; all URLs, locale headers, Title=H1, canonical, hreflang, prices, links, calculator behavior, and other language files remain unchanged.
 - Working-branch QA run 39511266323 passed all 144 responsive cases and 16 form submissions with proposed CSS injected into the live page for preview. The `qa-french-responsive.yml` main-branch job waits for generated static output and Cloudflare Worker readiness and then tests the actual deployed page without CSS injection.
 - This is a viewport/interaction validation, not a pixel-perfect visual approval or a full line-by-line translation comparison. Production confirmation is required.
+
+### 2026-10-20 — French mobile QA production closeout
+
+- Source repair `2285cbb`; static output `6d299c9`; Cloudflare Workers Builds success. The only deploy HTML change was `cloudflare-public/fr/index.html`, which now loads the dedicated `/css/fr-home-responsive.v1.css` asset; no other language or SEO-owner paths were touched.
+- Live Playwright run 39512070347 checked 18 French routes across eight viewports: 144/144 cases passed with zero errors, including CSS loading, visible H1/H2/H3/CTA/card bounds, table scroll containers, language switchers and 16 form results. This run was explicitly **without CSS injection**; the first passing run 39511266323 was only the prepublication candidate check.
+- Automated future testing uses the `workflow_run` event on successful Cloudflare static preparation and a Worker Ready gate; non-French generated changes skip the browser sweep. The runner no longer injects preview CSS.
+- French responsiveness is validated; English-paragraph linguistic parity remains a separate content-review topic.
