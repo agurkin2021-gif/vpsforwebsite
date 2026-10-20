@@ -410,88 +410,88 @@ Google도 CDN이 사용자와 가까운 위치에서 콘텐츠를 제공해 지�
 
 캐시된 홈페이지가 빠르게 보인다는 이유만으로 먼 원본 서버 지역을 선택하지 마세요.
 
-## Global audience: one origin + CDN or multi-region?
+## 전 세계 사용자: 단일 원본 서버 + CDN 또는 다중 지역 구성? {#global-audience-one-origin--cdn-or-multi-region}
 
-A global audience does not automatically justify multiple VPS regions.
+사용자가 전 세계에 있다고 해서 반드시 VPS를 여러 지역에 배치해야 하는 것은 아닙니다.
 
-### One origin + CDN
+### 원본 서버 한 곳 + CDN {#one-origin--cdn}
 
-This is usually the simpler first architecture when:
+다음과 같은 경우 보통 더 단순한 첫 번째 구성입니다.
 
-- most content is cacheable;
-- one region contains the largest or most valuable dynamic audience;
-- the application/database is stateful;
-- the operational team is small;
-- short extra latency for distant dynamic users is acceptable.
+- 대부분의 콘텐츠를 캐시할 수 있음;
+- 한 지역에 규모가 가장 크거나 사업상 가장 중요한 동적 사용자층이 있음;
+- 애플리케이션·데이터베이스가 상태를 저장하는 구조임;
+- 운영 인력이 적음;
+- 먼 지역의 동적 사용자에게 약간의 추가 지연이 허용됨.
 
-Choose the origin around the most important dynamic traffic and dependencies. Use the CDN for distributed cacheable delivery.
+핵심 동적 트래픽과 의존 시스템에 적합한 위치에 원본 서버를 배치하세요. 분산된 사용자에게는 CDN으로 캐시 가능한 콘텐츠를 전달하세요.
 
-### Multi-region may be justified
+### 다중 지역 구성이 필요할 수 있습니다 {#multi-region-may-be-justified}
 
-Multiple application regions can make sense when:
+다음과 같은 조건이라면 여러 애플리케이션 지역이 합리적일 수 있습니다.
 
-- dynamic users are genuinely distributed;
-- latency budgets are tight;
-- regional failover is a business requirement;
-- the application is designed for distributed state;
-- databases/queues/sessions can be replicated safely;
-- the team can operate more than one failure domain.
+- 동적 사용자가 실제로 여러 지역에 넓게 분포함;
+- 허용 가능한 지연 시간 기준이 엄격함;
+- 지역별 장애 전환이 사업상 요구사항임;
+- 애플리케이션이 분산 상태 관리를 고려해 설계됨;
+- 데이터베이스·큐·세션을 안전하게 복제할 수 있음;
+- 운영팀이 서로 다른 장애 영역을 관리할 수 있음.
 
-Multi-region introduces complexity:
+다중 지역 구성은 다음과 같은 복잡성을 추가합니다.
 
-- data replication;
-- write consistency;
-- session handling;
-- cache invalidation;
-- failover;
-- deployment coordination;
-- monitoring;
-- cost.
+- 데이터 복제;
+- 쓰기 일관성;
+- 세션 처리;
+- 캐시 무효화;
+- 장애 전환;
+- 배포 조정;
+- 모니터링;
+- 비용.
 
-Do not add regions merely because the provider offers them.
+제공업체가 여러 지역을 제공한다는 이유만으로 지역을 늘리지 마세요.
 
-## Two-region audiences need a weighted decision
+## 두 지역에 분산된 사용자층은 가중치를 적용해 판단하세요 {#two-region-audiences-need-a-weighted-decision}
 
-If the audience is split between two regions, there are three common patterns:
+사용자층이 두 지역에 나뉘어 있다면 보통 다음 세 가지 구성을 검토합니다.
 
-| Pattern | When it fits |
+| 구성 방식 | 적합한 경우 |
 |---|---|
-| Origin near the larger/more valuable audience | one region clearly matters more for dynamic traffic |
-| Middle/central region + CDN | dynamic traffic is moderate and route quality is acceptable to both sides |
-| Multi-region application | dynamic traffic is important on both sides and the app can handle distributed state |
+| 더 크거나 중요한 사용자층 가까이에 원본 서버 배치 | 한 지역의 동적 트래픽이 분명히 더 중요할 때 |
+| 중앙 지역의 원본 서버 + CDN | 동적 트래픽이 보통 수준이고 양쪽 지역의 경로 품질이 양호할 때 |
+| 다중 지역 애플리케이션 | 양쪽의 동적 트래픽이 중요하고 앱이 분산 상태를 처리할 수 있을 때 |
 
-Do not pick the geographic midpoint without testing. Internet routing does not guarantee that the midpoint gives the best path to both markets.
+테스트 없이 지리적 중간 지점을 선택하지 마세요. 인터넷 라우팅은 중간 지점이 양쪽 시장에 최상의 경로를 제공한다고 보장하지 않습니다.
 
-## Physical location vs IP geolocation
+## 물리적 서버 위치와 IP 지리 정보 {#physical-location-vs-ip-geolocation}
 
-An IP address can be labeled by a geolocation database differently from where the server hardware physically sits.
+IP 주소가 지리 정보 데이터베이스에 표시되는 위치는 서버 하드웨어가 실제로 설치된 위치와 다를 수 있습니다.
 
-When physical placement matters, verify:
+물리적 위치가 중요하다면 다음을 확인하세요.
 
-- the provider's stated data-center city/region;
-- the actual service endpoint;
-- network route characteristics;
-- contractual data-location wording where required.
+- 제공업체가 명시한 데이터센터 도시·지역;
+- 실제 서비스 엔드포인트;
+- 네트워크 경로 특성;
+- 필요한 경우 계약서의 데이터 위치 관련 문구.
 
-Do not infer physical location from one GeoIP website.
+GeoIP 웹사이트 한 곳의 결과만으로 물리적 서버 위치를 단정하지 마세요.
 
-GeoIP can matter to applications, fraud systems or localized services, but that is a separate issue from actual network latency.
+GeoIP는 애플리케이션, 사기 방지 시스템 또는 지역화 서비스에 영향을 줄 수 있지만 실제 네트워크 지연 시간과는 별도의 문제입니다.
 
-## Jurisdiction and data residency
+## 관할권과 데이터 보관 위치 {#jurisdiction-and-data-residency}
 
-Location can be constrained by more than performance.
+위치 선택에는 성능 외에도 제약이 있을 수 있습니다.
 
-Examples include:
+예시:
 
-- contractual data-residency requirements;
-- regulated customer data;
-- internal company policy;
-- client procurement requirements;
-- restrictions on cross-border processing or storage.
+- 계약상 데이터 보관 지역 요구사항;
+- 규제를 받는 고객 데이터;
+- 회사 내부 정책;
+- 고객사 구매·조달 요구사항;
+- 국경 간 데이터 처리·저장 제한.
 
-If a requirement is real, first define which regions are legally/contractually eligible. Then optimize performance inside that set.
+실제 요구사항이 존재한다면 법률·계약상 선택할 수 있는 지역을 먼저 확정하세요. 그 범위 안에서 성능을 최적화합니다.
 
-This page does not provide legal advice. For regulated or contractually restricted data, confirm the requirement with qualified legal/compliance guidance and the provider's current contractual documentation.
+이 페이지는 법률 자문을 제공하지 않습니다. 규제를 받거나 계약으로 제한된 데이터는 관련 자격을 갖춘 법률·규정 준수 전문가의 조언과 제공업체의 최신 계약 문서로 요구사항을 확인하세요.
 
 ## Does VPS location affect SEO?
 
