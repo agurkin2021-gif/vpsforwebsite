@@ -2,7 +2,6 @@
 title: "개인정보 처리방침"
 description: "VPSforWebsite.com의 개인정보 보호, 방문 분석, 제휴 링크 및 상업적 관계에 관한 고지입니다."
 slug: "개인정보-처리방침"
-draft: true
 ---
 
 ## 개요 {#overview}
