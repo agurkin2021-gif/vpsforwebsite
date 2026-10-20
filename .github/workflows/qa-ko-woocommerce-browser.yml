@@ -1,0 +1,124 @@
+name: Korean WooCommerce browser QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/qa-ko-woocommerce-browser.yml
+      - content/korean/vps-for-woocommerce.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Install standalone Playwright and Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/ko-woo-browser-qa
+          cd /tmp/ko-woo-browser-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Check production mobile and desktop layout and form results
+        shell: bash
+        run: |
+          cd /tmp/ko-woo-browser-qa
+          cat > check.cjs <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const { chromium } = require('playwright');
+
+          const url = 'https://vpsforwebsite.com/ko/%EC%9A%B0%EC%BB%A4%EB%A8%B8%EC%8A%A4%EC%9A%A9-vps/';
+          const out = '/tmp/ko-woo-browser-qa/screenshots';
+          fs.mkdirSync(out, { recursive: true });
+
+          async function check() {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              for (const width of [390, 1280]) {
+                const context = await browser.newContext({
+                  viewport: { width, height: 844 },
+                  deviceScaleFactor: 1,
+                  isMobile: width === 390,
+                  hasTouch: width === 390
+                });
+                const page = await context.newPage();
+                const errors = [];
+                page.on('pageerror', error => errors.push(error.message));
+                const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+                assert(response && response.status() === 200, 'Expected HTTP 200 at ' + width);
+                await page.locator('h1').first().waitFor({ state: 'visible', timeout: 15000 });
+                assert.equal((await page.locator('h1').allTextContents()).length, 1, 'One H1');
+                assert.equal((await page.locator('h1').innerText()).trim(), '우커머스용 VPS');
+                assert.equal(await page.locator('table').count(), 3, 'Three tables');
+                const form = page.locator('#woocommerce-vps-fit-checker-form');
+                assert.equal(await form.locator('select').count(), 10, 'Ten select fields');
+                assert.equal(await form.locator('option').count(), 25, '25 options');
+                const dimensions = await page.evaluate(() => {
+                  const e = document.documentElement, b = document.body;
+                  const viewport = document.documentElement.clientWidth;
+                  const critical = [...document.querySelectorAll('h1, header, #woocommerce-vps-fit-checker-form')].map(el => {
+                    const r = el.getBoundingClientRect();
+                    return { tag: el.tagName, left: r.left, right: r.right, width: r.width };
+                  });
+                  return {
+                    viewport, htmlScrollWidth: e.scrollWidth, bodyScrollWidth: b.scrollWidth,
+                    critical: critical.filter(x => x.width > 0)
+                  };
+                });
+                console.log('VIEWPORT', width, JSON.stringify(dimensions));
+                assert(dimensions.htmlScrollWidth <= width + 2,
+                       'Horizontal page overflow at ' + width + ': ' + dimensions.htmlScrollWidth);
+                for (const rect of dimensions.critical) {
+                  assert(rect.left >= -2 && rect.right <= width + 2,
+                         'Critical block crosses viewport at ' + width + ': ' + JSON.stringify(rect));
+                }
+                assert.equal(errors.length, 0, 'No JavaScript page errors: ' + errors.join('; '));
+                await page.screenshot({ path: out + '/viewport-' + width + '.png' });
+                console.log('PASS layout and content at', width);
+
+                if (width === 390) {
+                  const result = page.locator('#woocommerce-vps-fit-result');
+                  const send = async(expected) => {
+                    await form.locator('button[type=submit]').click();
+                    const value = (await result.innerText()).trim();
+                    assert(value.startsWith(expected), 'Expected result ' + expected + ', got ' + value);
+                    console.log('PASS form outcome:', expected);
+                  };
+                  await send('관리형·공유 호스팅으로 충분할 수 있음');
+                  await page.locator('#wc-external').selectOption('yes');
+                  await send('외부 서비스·애플리케이션부터 진단');
+                  await page.locator('#wc-external').selectOption('no');
+                  await page.locator('#wc-stage').selectOption('business');
+                  await send('관리형·관리자 지원 권장');
+                  await page.locator('#wc-operator').selectOption('yes');
+                  await page.locator('#wc-checkout').selectOption('high');
+                  await page.locator('#wc-db').selectOption('heavy');
+                  await send('8 GB 또는 아키텍처 재검토');
+                  await result.screenshot({ path: out + '/form-result.png' });
+                }
+                await context.close();
+              }
+            } finally {
+              await browser.close();
+            }
+          }
+
+          check().catch(error => { console.error(error.stack || error); process.exitCode = 1; });
+          NODE
+          node check.cjs
+
+      - name: Preserve responsive evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-woocommerce-browser-screenshots
+          path: /tmp/ko-woo-browser-qa/screenshots/*.png
+          if-no-files-found: ignore
+          retention-days: 7
