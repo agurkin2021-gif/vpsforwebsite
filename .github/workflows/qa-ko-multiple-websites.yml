@@ -1,0 +1,173 @@
+name: Korean multi-website pre-publication QA
+
+on:
+  push:
+    branches: ["work/ko-multiple-websites-20261020"]
+    paths:
+      - "content/korean/vps-for-multiple-websites.md"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-multiple-websites.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+
+      - name: Build localized Hugo preview and start local server
+        shell: bash
+        run: |
+          npm install
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --baseURL "http://127.0.0.1:8765/"
+          rm -rf public
+          hugo --gc --minify --baseURL "http://127.0.0.1:8765/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/여러-웹사이트용-vps/index.html
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public > /tmp/ko-multiple-qa-http.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS "http://127.0.0.1:8765/ko/%EC%97%AC%EB%9F%AC-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-vps/" >/dev/null && break; sleep 1; done
+
+      - name: Install Chromium
+        shell: bash
+        run: |
+          mkdir -p /tmp/ko-multiple-qa
+          cd /tmp/ko-multiple-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Check SEO, full layout and actual architecture decisions
+        shell: bash
+        run: |
+          cd /tmp/ko-multiple-qa
+          cat > check.cjs <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const { chromium } = require('playwright');
+          const url='http://127.0.0.1:8765/ko/%EC%97%AC%EB%9F%AC-%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9A%A9-vps/';
+          const shots='/tmp/ko-multiple-qa/shots';
+          fs.mkdirSync(shots,{recursive:true});
+          const anchors=[
+          'quick-answer','multi-site-vps-architecture-checker','count-workload-not-domains',
+          'how-many-websites-can-one-vps-host','one-ip-can-host-many-websites','isolate-each-site-deliberately',
+          'separate-php-pools-app-services-and-database-credentials','mixed-workloads-need-different-budgets',
+          'static--cached-sites','wordpress','woocommerce--membership--transactional-sites','custom-apps',
+          'your-own-sites-can-become-noisy-neighbors','combined-peaks-matter-more-than-average-usage',
+          'manual-control-panel-or-containers','manual-server-blocks--virtual-hosts','hosting-control-panel',
+          'containers','agency-and-client-websites','backups-and-restore-granularity','one-vps-is-one-failure-domain',
+          'when-to-split-sites-or-workloads','monitoring-a-multi-site-vps','server-level','site-level',
+          'multi-site-launch-checklist','current-multi-site-vps-examples','faq',
+          'how-many-websites-can-i-host-on-one-vps','do-multiple-websites-need-separate-ip-addresses',
+          'can-several-wordpress-sites-share-one-vps','should-every-site-have-a-separate-php-fpm-pool',
+          'can-one-woocommerce-store-share-a-vps-with-other-sites',
+          'is-a-control-panel-better-for-hosting-multiple-websites',
+          'are-containers-required-for-multiple-websites',
+          'what-is-the-main-risk-of-hosting-many-websites-on-one-vps',
+          'should-agencies-put-all-clients-on-one-vps','when-should-i-split-into-multiple-vps-servers'
+          ];
+
+          async function run() {
+            const browser=await chromium.launch({headless:true});
+            try {
+              for(const width of [390,1280]) {
+                const context=await browser.newContext({
+                  viewport:{width,height:844},deviceScaleFactor:1,
+                  isMobile:width===390,hasTouch:width===390
+                });
+                const page=await context.newPage(),errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                const resp=await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
+                assert(resp && resp.status()===200,'HTTP 200');
+                await page.locator('h1').waitFor({state:'visible',timeout:15000});
+                assert.equal((await page.locator('h1').allTextContents()).length,1);
+                assert.equal((await page.locator('h1').innerText()).trim(),'여러 웹사이트용 VPS');
+                assert.equal((await page.title()).trim(),'여러 웹사이트용 VPS');
+                assert.equal(await page.locator('h2,h3').count(),38);
+                assert.equal(await page.locator('table').count(),4);
+                assert.equal(await page.locator('#multi-site-architecture-checker select').count(),7);
+                assert.equal(await page.locator('#multi-site-architecture-checker option').count(),18);
+                for(const id of anchors)assert.equal(await page.locator('[id="'+id+'"]').count(),1,'Unique heading anchor '+id);
+                assert.equal(await page.locator('link[rel="canonical"]').count(),0,'Preview must have no canonical');
+                assert.equal(await page.locator('.vps-multiweb-hero-diagram').count(),1);
+                const hero=await page.locator('.vps-multiweb-hero-diagram').innerText();
+                assert(hero.includes('VPS 한 대에서 여러 웹사이트'),'Korean hero is localized');
+                const rels=await page.locator('a[href*="partner=ni8gzrvz75"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('rel')));
+                assert(rels.length>=3,'Affiliate links present');
+                assert(rels.every(x=>x && x.includes('sponsored') && x.includes('nofollow')),'Affiliate links sponsored');
+                const size=await page.evaluate(()=>{
+                  const e=document.documentElement,b=document.body;
+                  return {html:e.scrollWidth,body:b.scrollWidth,viewport:e.clientWidth,
+                    critical:[...document.querySelectorAll('header, h1, .vps-multiweb-hero-grid, #multi-site-architecture-checker')].map(el=>{
+                      const r=el.getBoundingClientRect();
+                      return {tag:el.tagName,left:r.left,right:r.right,width:r.width};
+                    })};
+                });
+                console.log('MEASURE',width,JSON.stringify(size));
+                assert(size.html<=width+2&&size.body<=width+2,'Horizontal overflow '+width);
+                for(const r of size.critical)if(r.width>0)assert(r.left>=-2&&r.right<=width+2,'Critical overflow '+JSON.stringify(r));
+                assert.deepEqual(errors,[],'JavaScript errors');
+                await page.screenshot({path:shots+'/viewport-'+width+'.png',fullPage:true});
+                console.log('PASS responsive translated layout',width);
+                if(width===390){
+                  const scenarios=[
+                    [{},'VPS 한 대 / 가벼운 사이트 구성:'],
+                    [{'ms-critical':'yes'},'중요 사이트 분리 권장:'],
+                    [{'ms-mixed':'yes'},'작업 분리·구성 재검토 권장:'],
+                    [{'ms-count':'many','ms-heavy':'store','ms-clients':'yes'},'작업 분리·구성 재검토 권장:'],
+                    [{'ms-clients':'yes'},'VPS 한 대 + 강화된 격리:'],
+                    [{'ms-count':'medium','ms-heavy':'wordpress','ms-peaks':'yes'},'VPS 한 대 + 강화된 격리:']
+                  ];
+                  const suffixes={
+                    panel:'선택한 관리 패널이 필요한',
+                    manual:'시스템 사용자, Nginx',
+                    containers:'컨테이너는 프로세스'
+                  };
+                  for(const [changes,expected] of scenarios){
+                    for(const [panel,suffix] of Object.entries(suffixes)){
+                      await page.reload({waitUntil:'domcontentloaded'});
+                      for(const [key,value] of Object.entries({...changes,'ms-panel':panel}))
+                        await page.locator('#'+key).selectOption(value);
+                      await page.locator('#multi-site-architecture-checker button[type=submit]').click();
+                      const answer=(await page.locator('#multi-site-architecture-result').innerText()).trim();
+                      assert(answer.startsWith(expected),'Wrong decision for '+JSON.stringify(changes)+' '+answer);
+                      assert(answer.includes(suffix),'Wrong management advice for '+panel);
+                      console.log('PASS live form logic',expected,panel);
+                    }
+                  }
+                  await page.locator('#multi-site-architecture-result').screenshot({path:shots+'/result.png'});
+                }
+                await context.close();
+              }
+            }finally{await browser.close();}
+          }
+          run().catch(e=>{console.error(e.stack||e);process.exitCode=1});
+          NODE
+          node check.cjs
+
+      - name: Store QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-multiple-websites-preview
+          path: /tmp/ko-multiple-qa/shots/*.png
+          retention-days: 7
+          if-no-files-found: ignore
