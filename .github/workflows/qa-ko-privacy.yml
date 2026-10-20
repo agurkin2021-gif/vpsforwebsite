@@ -1,0 +1,93 @@
+name: Korean Privacy Policy prepublication QA
+on:
+  push:
+    branches: ["work/ko-privacy-20261020"]
+    paths:
+      - "content/korean/privacy-policy.md"
+      - ".github/workflows/qa-ko-privacy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Build and check source accuracy
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/개인정보-처리방침/index.html
+          node <<'JS'
+          const fs=require('fs'),a=require('assert').strict;
+          const en=fs.readFileSync('content/english/privacy-policy.md','utf8'),ko=fs.readFileSync('content/korean/privacy-policy.md','utf8');
+          const m=(s,re)=>[...s.matchAll(re)].map(x=>x[1]||x[0]);
+          const english=m(en,/^## (.+)$/gm);
+          const koIds=m(ko,/^## .* \{#([\w-]+)\}$/gm);
+          a.equal(english.length,9);
+          a.deepEqual(koIds,english.map(x=>x.toLowerCase().replace(/[^a-z0-9 -]/g,'').replace(/\s+/g,'-')));
+          a.deepEqual(m(en,/\]\((https?:\/\/[^)]+)\)/g),m(ko,/\]\((https?:\/\/[^)]+)\)/g));
+          a(en.includes('G-J6X9FNRMH5')&&ko.includes('G-J6X9FNRMH5'));
+          a(en.includes('rel="sponsored nofollow"')&&ko.includes('rel="sponsored nofollow"'));
+          a(en.includes('19 October 2026')&&ko.includes('2026년 10월 19일'));
+          a(!ko.includes('draft: true'));
+          console.log('PASS 9 section anchors, analytics measurement ID, original Google privacy link, affiliate disclosure and review date');
+          JS
+      - name: Start HTTP and install browser
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public >/tmp/ko-privacy-http.log 2>&1 &
+          mkdir -p /tmp/ko-privacy-qa
+          cd /tmp/ko-privacy-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Inspect mobile and desktop public page preview
+        run: |
+          cd /tmp/ko-privacy-qa
+          cat > check.cjs <<'JS'
+          const a=require('assert').strict,{chromium}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch();
+            try{
+              for(const width of [390,1280]){
+                const context=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const ko=await context.newPage(),en=await context.newPage(),errors=[];
+                ko.on('pageerror',e=>errors.push(e.message));
+                const url='http://127.0.0.1:8765/ko/'+encodeURIComponent('개인정보-처리방침')+'/';
+                const r=await ko.goto(url,{waitUntil:'load'});
+                a.equal(r.status(),200);
+                a.equal((await ko.title()).trim(),'개인정보 처리방침');
+                a.deepEqual(await ko.locator('h1').allTextContents(),['개인정보 처리방침']);
+                a.equal(await ko.locator('h2').count(),9);
+                await en.goto('http://127.0.0.1:8765/privacy-policy/');
+                const ids=page=>page.locator('h2').evaluateAll(nodes=>nodes.map(x=>x.id));
+                a.deepEqual(await ids(ko),await ids(en));
+                a.equal(await ko.locator('link[rel="canonical"]').count(),1);
+                a((await ko.locator('link[rel="canonical"]').getAttribute('href')).includes('/ko/'));
+                const body=await ko.locator('body').innerText();
+                a(body.includes('G-J6X9FNRMH5')&&body.includes('VDSina')&&body.includes('2026년 10월 19일'));
+                a.equal(await ko.locator('a[href="https://policies.google.com/privacy"]').count(),1);
+                const dims=await ko.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+                a(dims.html<=width+2&&dims.body<=width+2,'Horizontal overflow '+JSON.stringify(dims));
+                a.deepEqual(errors.filter(s=>!(s.startsWith('Failed to register a ServiceWorker')&&s.includes('does not match the current origin'))),[]);
+                console.log('PASS',width,dims);
+                await context.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
