@@ -6,78 +6,78 @@ description: "외부 가용성 점검, CPU·RAM·디스크·네트워크 지표,
 image: "images/home/vps-for-website-hero.webp"
 ---
 
-VPS Monitoring should answer more than “is the server up?” A production monitoring baseline needs **external availability checks, historical host metrics, service/application health, logs, actionable alerts and a named response owner**.
+VPS 모니터링은 단순히 “서버가 켜져 있는가?”에 답하는 데 그쳐서는 안 됩니다. 운영 환경의 기본 모니터링에는 **외부 가용성 점검, 과거 서버 지표, 서비스와 애플리케이션 상태, 로그, 대응 가능한 알림, 명확히 지정된 담당자**가 필요합니다.
 
-A VPS can respond to ping while Nginx is broken, the database is stalled, the disk is full or the TLS certificate is about to expire. Monitoring therefore has to cover both the server and the user-facing website.
+Nginx에 장애가 생기거나 데이터베이스가 멈추고 디스크가 가득 찼거나 TLS 인증서가 만료 직전이어도 VPS는 ping에 응답할 수 있습니다. 따라서 모니터링은 서버 자체뿐 아니라 사용자가 접속하는 웹사이트도 확인해야 합니다.
 
-For the broader server decision, see [VPS for website]({{< relref "_index.md" >}}).
+서버 선택의 전반적인 기준은 [웹사이트용 VPS]({{< relref "_index.md" >}})를 참고하세요.
 
-[Quick answer](#quick-answer) · [Checker](#vps-monitoring-baseline-checker) · [Host metrics](#monitor-cpu-memory-disk-and-network) · [Application health](#monitor-services-and-application-health) · [Alerts](#build-actionable-alerts) · [Capacity](#use-trends-for-capacity-planning) · [FAQ](#faq)
+[핵심 요약](#quick-answer) · [진단 도구](#vps-monitoring-baseline-checker) · [서버 지표](#monitor-cpu-memory-disk-and-network) · [애플리케이션 상태](#monitor-services-and-application-health) · [알림](#build-actionable-alerts) · [용량 계획](#use-trends-for-capacity-planning) · [FAQ](#faq)
 
-## Quick answer
+## 핵심 요약 {#quick-answer}
 
-A practical VPS monitoring stack has five layers:
+실용적인 VPS 모니터링 구성은 다섯 계층으로 이루어집니다.
 
-| Layer | What it tells you | Typical failure it catches |
+| 계층 | 확인할 수 있는 사항 | 감지할 수 있는 대표적인 장애 |
 |---|---|---|
-| **External availability** | whether users can reach the site from outside the VPS | VPS/network/site is unreachable |
-| **Host metrics** | CPU, RAM, swap, disk, inodes, I/O and network trends | memory leak, disk fill, sustained CPU pressure |
-| **Service/application health** | whether web server, runtime, DB and critical endpoints actually work | Nginx/PHP/DB/app failure while server remains online |
-| **Logs/events** | what changed or failed | 5xx spike, OOM, failed worker, DB error |
-| **Alerting + ownership** | whether the right person is notified and can act | silent outage or ignored dashboard |
+| **외부 가용성** | 사용자가 VPS 외부에서 웹사이트에 접속할 수 있는지 | VPS·네트워크·웹사이트 접속 불가 |
+| **서버 지표** | CPU, RAM, 스왑, 디스크, inode, I/O, 네트워크의 추세 | 메모리 누수, 디스크 포화, 지속적인 CPU 부하 |
+| **서비스·애플리케이션 상태** | 웹 서버, 실행 환경, DB와 핵심 엔드포인트가 실제로 작동하는지 | 서버는 온라인이지만 Nginx·PHP·DB·앱에 장애가 발생하는 상황 |
+| **로그·이벤트** | 무엇이 변경되거나 실패했는지 | 5xx 급증, OOM, 워커 실패, DB 오류 |
+| **알림 및 담당자** | 적절한 담당자에게 통보되어 조치할 수 있는지 | 아무도 모르는 장애 또는 방치된 대시보드 |
 
-Do not make the only uptime monitor run on the same VPS it is supposed to watch. If that VPS or its network path fails completely, the monitor can disappear with it.
+가용성 확인 도구를 감시 대상과 동일한 VPS에서만 실행하지 마세요. VPS나 네트워크 경로가 완전히 장애를 일으키면 감시 도구도 함께 중단될 수 있습니다.
 
-## VPS Monitoring Baseline Checker
+## VPS 모니터링 기본 구성 진단 {#vps-monitoring-baseline-checker}
 
-Use this checker to find blind spots. It does not guarantee uptime.
+이 진단 도구로 모니터링 사각지대를 찾을 수 있습니다. 가동 시간을 보장하는 도구는 아닙니다.
 
 <div class="rounded-2xl bg-light p-6 dark:bg-darkmode-light">
 <form id="vps-monitoring-checker">
   <div class="mb-6">
-    <label for="mon-workload" class="form-label">Main workload</label>
+    <label for="mon-workload" class="form-label">주요 워크로드</label>
     <select id="mon-workload" class="form-input">
-      <option value="static">Static / simple website</option>
+      <option value="static">정적 / 단순 웹사이트</option>
       <option value="cms">WordPress / CMS</option>
-      <option value="transactional">WooCommerce / transactional site</option>
-      <option value="multi">Multiple websites / mixed portfolio</option>
+      <option value="transactional">WooCommerce / 거래 처리 웹사이트</option>
+      <option value="multi">여러 웹사이트 / 혼합 운영 환경</option>
     </select>
   </div>
   <div class="mb-6">
-    <label for="mon-external" class="form-label">External HTTP(S) uptime check from outside this VPS?</label>
+    <label for="mon-external" class="form-label">VPS 외부에서 HTTP(S) 가용성을 확인하고 있나요?</label>
     <select id="mon-external" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-metrics" class="form-label">Historical CPU/RAM/disk/network metrics retained?</label>
+    <label for="mon-metrics" class="form-label">CPU/RAM/디스크/네트워크의 과거 지표를 보존하나요?</label>
     <select id="mon-metrics" class="form-input"><option value="no">No / only ad-hoc top/htop</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-disk" class="form-label">Disk capacity, inodes and storage pressure monitored?</label>
+    <label for="mon-disk" class="form-label">디스크 용량, inode와 스토리지 부하를 감시하나요?</label>
     <select id="mon-disk" class="form-input"><option value="no">No / only free GB</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-app" class="form-label">Critical service/application health checks configured?</label>
+    <label for="mon-app" class="form-label">핵심 서비스와 애플리케이션 상태 점검이 설정되어 있나요?</label>
     <select id="mon-app" class="form-input"><option value="no">No / only ping</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-jobs" class="form-label">DB / queue / cron / backup freshness monitored where applicable?</label>
+    <label for="mon-jobs" class="form-label">해당하는 경우 DB / 큐 / cron / 최근 백업 상태를 감시하나요?</label>
     <select id="mon-jobs" class="form-input"><option value="no">No / unknown</option><option value="yes">Yes</option><option value="na">Not applicable</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-alerts" class="form-label">Automatic alerts configured with useful severity/duration rules?</label>
+    <label for="mon-alerts" class="form-label">심각도와 지속 시간 조건을 적용한 자동 알림이 있나요?</label>
     <select id="mon-alerts" class="form-input"><option value="no">No / dashboard only</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-notify" class="form-label">Notification path survives failure of this VPS?</label>
+    <label for="mon-notify" class="form-label">이 VPS가 중단되어도 알림 경로가 유지되나요?</label>
     <select id="mon-notify" class="form-input"><option value="no">No / same VPS only</option><option value="yes">Yes</option></select>
   </div>
   <div class="mb-6">
-    <label for="mon-owner" class="form-label">Named owner and first-response runbook exist?</label>
+    <label for="mon-owner" class="form-label">지정된 담당자와 최초 대응 절차서가 있나요?</label>
     <select id="mon-owner" class="form-input"><option value="no">No</option><option value="yes">Yes</option></select>
   </div>
-  <button class="btn btn-primary" type="submit">Check monitoring baseline</button>
+  <button class="btn btn-primary" type="submit">모니터링 기본 구성 점검</button>
 </form>
-<p id="vps-monitoring-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">Mark only monitoring that is actually collecting data and delivering alerts.</p>
+<p id="vps-monitoring-result" class="mt-6 rounded border border-border p-4 dark:border-darkmode-border" role="status" aria-live="polite">실제로 데이터를 수집하고 알림을 전달하는 항목만 선택하세요.</p>
 </div>
 
 <script>
@@ -103,13 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var result;
 
     if (!external || !metrics || !app || !disk) {
-      result = "BLIND SPOTS: the monitoring stack cannot yet see one or more fundamental failure modes. Add independent availability checks, retained host metrics, disk/inode visibility and real service/application health checks.";
+      result = "사각지대 발견: 기본적인 장애 유형 중 일부를 아직 감지할 수 없습니다. 독립적인 가용성 점검, 과거 서버 지표, 디스크와 inode 모니터링, 실제 서비스 및 애플리케이션 상태 점검을 추가하세요.";
     } else if (!alerts || !notify || !owner) {
-      result = "ALERTING / OWNERSHIP INCOMPLETE: the data may exist, but an incident can still remain unnoticed or unowned. Add actionable alerts, an independent notification path and a named response runbook.";
+      result = "알림 / 책임 체계 미흡: 지표를 수집하더라도 장애가 감지되지 않거나 담당자가 없을 수 있습니다. 대응 가능한 알림, 독립적인 알림 경로와 담당자가 명시된 대응 절차서를 마련하세요.";
     } else if (!jobs && (workload === "transactional" || workload === "cms" || workload === "multi")) {
-      result = "BASIC MONITORING: infrastructure monitoring is present, but application jobs/database/backup freshness are still a blind spot for this workload.";
+      result = "기본 모니터링: 인프라 감시는 마련되어 있지만 이 워크로드의 애플리케이션 작업, 데이터베이스 또는 최근 백업 상태는 여전히 사각지대입니다.";
     } else {
-      result = "PRODUCTION MONITORING BASELINE: external availability, retained metrics, service health, alerts and response ownership are present. Continue tuning thresholds from real baselines; this is not a guarantee of uptime.";
+      result = "운영 환경의 기본 모니터링 확보: 외부 가용성, 과거 지표, 서비스 상태, 알림과 대응 담당자가 마련되어 있습니다. 실제 정상 상태를 기준으로 임계값을 계속 조정하세요. 가동 시간을 보장하지는 않습니다.";
     }
 
     document.getElementById("vps-monitoring-result").textContent = result;
@@ -117,31 +117,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-## Monitor the website from outside the VPS
+## VPS 외부에서 웹사이트 모니터링 {#monitor-the-website-from-outside-the-vps}
 
-An internal command can tell you that Nginx is running. It cannot prove that a real user on the internet can reach the website.
+내부 명령으로 Nginx가 실행 중인지 확인할 수는 있습니다. 하지만 인터넷의 실제 사용자가 웹사이트에 접속할 수 있는지는 증명하지 못합니다.
 
-Use an external monitor for important hostnames.
+중요한 호스트 이름에는 외부 감시 도구를 사용하세요.
 
-Useful checks include:
+유용한 점검 항목은 다음과 같습니다.
 
-- HTTP/HTTPS availability;
-- expected status code;
-- response time;
-- keyword/content check;
-- DNS resolution;
-- TLS certificate status/expiry;
-- TCP port checks where relevant.
+- HTTP/HTTPS 가용성;
+- 예상한 상태 코드;
+- 응답 시간;
+- 키워드·콘텐츠 점검;
+- DNS 이름 해석;
+- TLS 인증서 상태·만료일;
+- 필요한 경우 TCP 포트 점검.
 
-Where false positives matter, require repeated failures or confirmation from more than one location before paging somebody.
+오탐의 영향이 크다면 담당자를 호출하기 전에 장애가 반복되는지 또는 둘 이상의 지역에서 동일한 문제가 확인되는지 검증하세요.
 
-Self-hosted tools such as Uptime Kuma can perform HTTP(S), keyword, TCP, ping and DNS checks, but place the monitor outside the failure domain of the production VPS.
+Uptime Kuma 같은 자체 호스팅 도구는 HTTP(S), 키워드, TCP, ping 및 DNS를 점검할 수 있습니다. 다만 감시 시스템은 운영 VPS와 독립된 장애 영역에 배치해야 합니다.
 
-A monitoring server that shares the same VPS, provider network or DNS failure can be useful for dashboards, but it is not an independent availability check.
+같은 VPS, 제공업체 네트워크 또는 DNS 장애에 영향을 받는 감시 서버는 대시보드 용도로 유용할 수 있지만 독립적인 가용성 점검으로 볼 수는 없습니다.
 
-## Real-time diagnostics are not historical monitoring
+## 실시간 진단은 과거 지표 모니터링과 다릅니다 {#real-time-diagnostics-are-not-historical-monitoring}
 
-Commands such as:
+다음과 같은 명령은:
 
 ```bash
 top
@@ -151,23 +151,23 @@ df -h
 ss -s
 ```
 
-are useful when you are already investigating a problem.
+이미 발생한 문제를 조사할 때 유용합니다.
 
-They do not tell you:
+그러나 다음 정보는 알려주지 못합니다.
 
-- what happened at 03:12;
-- whether RAM grew steadily for six hours;
-- whether disk latency spiked during a backup;
-- whether the website was down for ten minutes;
-- whether a problem is getting worse week by week.
+- 03:12에 무슨 일이 있었는지;
+- RAM 사용량이 6시간 동안 지속적으로 증가했는지;
+- 백업 중 디스크 지연 시간이 급증했는지;
+- 웹사이트가 10분 동안 중단되었는지;
+- 문제가 주마다 악화되고 있는지.
 
-Retain time-series history for the signals that affect uptime and capacity.
+가용성과 용량에 영향을 주는 지표는 시계열 이력을 보존하세요.
 
-For a single VPS, a lightweight monitoring agent may be enough. For a fleet or longer retention/custom dashboards, Prometheus + Node Exporter + Grafana is a common architecture.
+VPS 한 대라면 가벼운 모니터링 에이전트만으로 충분할 수 있습니다. 여러 서버, 장기 보존 또는 맞춤형 대시보드가 필요하면 Prometheus + Node Exporter + Grafana 구성이 흔히 사용됩니다.
 
-Prometheus Node Exporter exposes host/kernel metrics that Prometheus can scrape, including CPU, filesystem and network data.
+Prometheus Node Exporter는 CPU, 파일시스템과 네트워크 데이터를 포함한 호스트·커널 지표를 Prometheus가 수집할 수 있도록 제공합니다.
 
-## Monitor CPU, memory, disk and network
+## CPU, 메모리, 디스크와 네트워크 모니터링 {#monitor-cpu-memory-disk-and-network}
 
 ### CPU
 
@@ -303,7 +303,7 @@ Track:
 - certificate expiration;
 - certificate hostname mismatch;
 - failed renewal;
-- DNS resolution;
+- DNS 이름 해석;
 - accidental record changes where tooling supports it.
 
 A useful example is to warn well before certificate expiry, such as **14 days**, then escalate closer to expiry, such as **7 days**. The exact window should match how quickly somebody can fix renewal.
@@ -587,7 +587,7 @@ On a multi-site VPS, monitor:
 
 - each important hostname;
 - TLS;
-- response time;
+- 응답 시간;
 - 5xx;
 - app/job failures;
 - per-site logs or worker pressure where available.
