@@ -1,7 +1,6 @@
 ---
 title: "VPS 백업 전략"
 slug: "vps-백업-전략"
-draft: true
 description: "VPS 백업 전략: RPO와 RTO를 정의하고 제공업체 백업 이미지와 독립적인 외부 백업을 결합하며, 데이터베이스와 비밀 정보를 보호하고 보존 정책과 실제 복원 테스트로 복구 가능성을 확인합니다."
 image: "images/home/vps-for-website-hero.webp"
 ---
