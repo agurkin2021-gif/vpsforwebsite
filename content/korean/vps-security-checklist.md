@@ -424,7 +424,7 @@ VDSina는 현재 Standard VPS에 무료 DDoS 보호를 제공한다고 안내합
 
 CISA는 중요 데이터의 오프라인 암호화 백업을 유지하고 재해 복구 상황을 가정해 복원을 정기적으로 테스트할 것을 권장합니다.
 
-RPO/RTO, 보존 기간과 백업 구조의 상세 설계는 [VPS 백업 전략]({{< relref path="vps-backup-strategy.md" lang="en" >}})에서 다룹니다.
+RPO/RTO, 보존 기간과 백업 구조의 상세 설계는 [VPS 백업 전략]({{< relref "vps-backup-strategy.md" >}})에서 다룹니다.
 
 ## 로그, 알림 및 감사 기록 {#logs-alerts-and-audit-trail}
 
@@ -446,7 +446,7 @@ RPO/RTO, 보존 기간과 백업 구조의 상세 설계는 [VPS 백업 전략](
 
 사고를 조사할 수 있을 만큼 충분히 오래 로그를 보관하세요.
 
-임계값과 알림의 상세 설계는 [VPS 모니터링]({{< relref path="vps-monitoring.md" lang="en" >}})에서 다룹니다.
+임계값과 알림의 상세 설계는 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})에서 다룹니다.
 
 ## 침해가 의심될 때 {#after-a-suspected-compromise}
 
