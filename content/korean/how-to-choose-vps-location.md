@@ -323,92 +323,92 @@ curl -o /dev/null -s -w 'connect=%{time_connect} ttfb=%{time_starttransfer} tota
 
 목표는 모든 테스트에서 1등인 지역을 찾는 것이 아니라 중요한 트래픽에 가장 적합한 절충점을 찾는 것입니다.
 
-## Keep chatty dependencies close
+## 통신이 잦은 의존 시스템은 가까이 배치하세요 {#keep-chatty-dependencies-close}
 
-The user-to-VPS route is only one path.
+사용자에서 VPS까지의 경로가 전부는 아닙니다.
 
-A dynamic request may look like:
+동적 요청은 다음과 같이 처리될 수 있습니다.
 
-**browser → VPS → database → private API → VPS → browser**
+**브라우저 → VPS → 데이터베이스 → 비공개 API → VPS → 브라우저**
 
-If the VPS is near users but the database is far away, the application can spend more time waiting on the database than on the browser connection.
+VPS가 사용자와 가까워도 데이터베이스가 멀리 있다면 브라우저 연결보다 데이터베이스 응답을 기다리는 시간이 더 길어질 수 있습니다.
 
-Keep tightly coupled components in the same region or low-latency network where practical:
+가능하다면 긴밀하게 연결된 구성 요소를 같은 지역 또는 지연 시간이 낮은 네트워크에 배치하세요.
 
-- web/app server and primary database;
-- PHP/application workers and Redis;
-- application and private API;
-- app server and file/object service when requests are synchronous and frequent.
+- 웹·애플리케이션 서버와 기본 데이터베이스;
+- PHP·애플리케이션 워커와 Redis;
+- 애플리케이션과 비공개 API;
+- 요청이 동기적이고 빈번한 경우 앱 서버와 파일·객체 저장 서비스.
 
-Do not split components across continents merely because each service looks cheapest in a different location.
+각 서비스가 다른 지역에서 조금 더 저렴해 보인다는 이유만으로 구성 요소를 대륙 간에 분리하지 마세요.
 
-If an external dependency is fixed to one region, measure both sides:
+외부 의존 시스템이 특정 지역에 고정되어 있다면 양쪽 경로를 모두 측정하세요.
 
-1. user → VPS;
-2. VPS → dependency.
+1. 사용자 → VPS;
+2. VPS → 의존 시스템.
 
-Then decide which path dominates the workload.
+그런 다음 실제 워크로드에서 어떤 경로의 지연이 큰 영향을 미치는지 판단하세요.
 
-## APIs and third-party services can change the best location
+## API와 외부 서비스가 최적 위치를 바꿀 수 있습니다 {#apis-and-third-party-services-can-change-the-best-location}
 
-For some workloads, the destination that matters is not the user.
+일부 워크로드에서 중요한 통신 상대는 최종 사용자가 아닙니다.
 
-Examples:
+예시:
 
-- an app making many calls to a fixed-region API;
-- a private dashboard used globally but backed by one regional database;
-- automation that talks primarily to another server;
-- payment or inventory integrations with strict response windows.
+- 특정 지역의 API에 여러 번 호출하는 앱;
+- 전 세계에서 사용하는 비공개 대시보드지만 데이터베이스는 한 지역에 있는 경우;
+- 주로 다른 서버와 통신하는 자동화 작업;
+- 응답 시간 제한이 엄격한 결제·재고 연동.
 
-If the application performs several synchronous calls to the same remote dependency for every page request, moving the VPS closer to users can make the browser path shorter while making the application path longer.
+애플리케이션이 페이지 요청마다 동일한 원격 의존 서비스에 여러 번 동기 호출한다면, VPS를 사용자 쪽으로 옮겨 브라우저 경로를 단축해도 애플리케이션 내부 경로는 오히려 길어질 수 있습니다.
 
-Measure the complete transaction.
+전체 거래 처리 흐름의 시간을 측정하세요.
 
-## CDN vs origin location
+## CDN과 원본 서버 위치 {#cdn-vs-origin-location}
 
-A CDN changes the location decision, but it does not make origin geography irrelevant.
+CDN은 위치 선택의 조건을 바꾸지만, 원본 서버의 지리적 위치를 중요하지 않게 만들지는 않습니다.
 
-A CDN can serve cacheable files near users, including:
+CDN은 다음을 포함한 캐시 가능한 파일을 사용자 가까이에서 제공할 수 있습니다.
 
-- images;
+- 이미지;
 - CSS;
 - JavaScript;
-- downloads;
-- cacheable HTML where configured safely.
+- 다운로드 파일;
+- 안전하게 설정한 경우 캐시 가능한 HTML.
 
-That can greatly reduce the distance traveled for those requests.
+이런 요청은 데이터가 이동해야 하는 거리가 크게 줄어들 수 있습니다.
 
-But the origin still matters for traffic such as:
+하지만 원본 서버는 다음 요청에서 여전히 중요합니다.
 
-- login;
-- cart/checkout;
-- account pages;
-- uncached CMS requests;
-- personalized HTML;
-- API calls;
-- cache misses;
-- purge/refill events;
-- admin traffic.
+- 로그인;
+- 장바구니·결제;
+- 계정 페이지;
+- 캐시되지 않는 CMS 요청;
+- 개인화된 HTML;
+- API 호출;
+- 캐시 미스;
+- 캐시 삭제·재적재 이벤트;
+- 관리자 트래픽.
 
-A global static-heavy website can tolerate a more central origin if a CDN handles most user-facing bytes. A highly dynamic site should care much more about origin placement.
+전 세계 사용자가 있는 정적 콘텐츠 중심 사이트는 CDN이 사용자에게 제공되는 대부분의 데이터를 처리한다면 비교적 중앙에 위치한 원본 서버를 허용할 수 있습니다. 반대로 동적 요청이 많은 사이트는 원본 서버 위치를 훨씬 신중하게 선택해야 합니다.
 
-Google also describes CDNs as a way to reduce latency by serving content from locations closer to users; that does not mean the origin disappears from the architecture.
+Google도 CDN이 사용자와 가까운 위치에서 콘텐츠를 제공해 지연 시간을 줄이는 수단이라고 설명합니다. 그렇다고 아키텍처에서 원본 서버가 사라지는 것은 아닙니다.
 
-## A CDN does not make every region equivalent
+## CDN이 있어도 모든 지역의 성능이 같지는 않습니다 {#a-cdn-does-not-make-every-region-equivalent}
 
-Two origin regions behind the same CDN can still produce different real performance.
+같은 CDN을 사용하더라도 서로 다른 원본 서버 지역은 실제 성능 차이가 날 수 있습니다.
 
-Dynamic requests reach the origin. Cache misses reach the origin. The CDN itself must fetch refreshed content from the origin.
+동적 요청과 캐시 미스는 원본 서버까지 이동합니다. CDN도 갱신된 콘텐츠를 원본 서버에서 가져와야 합니다.
 
-For a global audience, test:
+전 세계 사용자를 대상으로 한다면 다음을 테스트하세요.
 
-- cached page performance;
-- uncached page performance;
-- login/account/API endpoints;
-- origin TTFB;
-- cache-miss behavior.
+- 캐시된 페이지 성능;
+- 캐시되지 않은 페이지 성능;
+- 로그인·계정·API 엔드포인트;
+- 원본 서버 TTFB;
+- 캐시 미스 발생 시 동작.
 
-Do not select a distant origin solely because the homepage looks fast from cache.
+캐시된 홈페이지가 빠르게 보인다는 이유만으로 먼 원본 서버 지역을 선택하지 마세요.
 
 ## Global audience: one origin + CDN or multi-region?
 
