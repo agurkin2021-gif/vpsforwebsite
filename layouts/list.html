@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "page-header" . }}
 
-  {{ if and (eq .Language.Lang "ko") (eq .Section "about") }}
+  {{ if and (eq .Language.Lang "ko") (or (eq .Section "about") (eq .Section "contact")) }}
     <section class="section-sm">
       <div class="container">
         <div class="row justify-center">

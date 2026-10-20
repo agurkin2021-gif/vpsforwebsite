@@ -1,0 +1,117 @@
+name: Korean Contact prepublication QA
+on:
+  push:
+    branches: ["work/ko-contact-20261020"]
+    paths:
+      - "content/korean/contact/_index.md"
+      - "layouts/list.html"
+      - "layouts/_partials/page-header.html"
+      - ".github/workflows/qa-ko-contact.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.158.0"
+          extended: true
+      - name: Hugo build and contact policy parity
+        run: |
+          npm install --no-audit --no-fund
+          hugo mod get
+          cat static/images/home/vps-hero-right.webp.b64.* | tr -d '\n' | base64 --decode > static/images/home/vps-hero-right.webp
+          hugo --gc --minify --baseURL "https://vpsforwebsite.com/"
+          node scripts/optimize-css.mjs public
+          test -s public/ko/contact/index.html
+          node <<'JS'
+          const fs=require('fs'),a=require('assert').strict,cp=require('child_process');
+          const en=fs.readFileSync('content/english/contact/_index.md','utf8');
+          const ko=fs.readFileSync('content/korean/contact/_index.md','utf8');
+          for(const flag of ['noindex: true','sitemap:\n  disable: true'])
+            a(en.includes(flag)&&ko.includes(flag),'SEO policy '+flag);
+          a.equal((ko.match(/\n\n/g)||[]).length,(en.match(/\n\n/g)||[]).length,'two original paragraphs retained');
+          a(!ko.includes('<form')&&!ko.includes('draft: true'));
+          const list=fs.readFileSync('layouts/list.html','utf8');
+          a(list.includes('(eq .Section "about") (eq .Section "contact")'),'Both KO info sections are rendered');
+          const part=s=>{const start=s.indexOf('{{ else if $isContactPage }}');return s.slice(start,s.indexOf('{{ else if $isPrivacyPage }}',start));};
+          const h=fs.readFileSync('layouts/_partials/page-header.html','utf8');
+          const main=cp.execFileSync('git',['show','origin/main:layouts/_partials/page-header.html'],{encoding:'utf8'});
+          a.equal(part(h).replace(/\{\{ if eq site\.Language\.Lang "ko" \}\}[\s\S]*?\{\{ else \}\}([\s\S]*?)\{\{ end \}\}/g,'$1'),part(main),'Original English Contact hero exactly preserved');
+          const html=fs.readFileSync('public/ko/contact/index.html','utf8');
+          a(html.includes('현재 공개 문의 양식을 통한')||html.includes('현재 공개 문의 양식을 운영'));
+          a(html.includes('href=/ko/about/')||html.includes('href="/ko/about/"'));
+          a(!fs.readFileSync('public/ko/sitemap.xml','utf8').includes('/ko/contact/'),'No sitemap entry');
+          console.log('PASS Korean noindex/disabled sitemap, two paragraphs, English unchanged and localized KO links');
+          JS
+      - name: Serve preview and install Chromium
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory public >/tmp/ko-contact-http.log 2>&1 &
+          mkdir -p /tmp/ko-contact-qa
+          cd /tmp/ko-contact-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser mobile and desktop noindex and links
+        run: |
+          cd /tmp/ko-contact-qa
+          mkdir -p shots
+          cat > check.cjs <<'JS'
+          const a=require('assert').strict,{chromium}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch();
+            try{
+              for(const width of [390,1280]){
+                const ctx=await browser.newContext({viewport:{width,height:860},isMobile:width===390,hasTouch:width===390});
+                const ko=await ctx.newPage(),en=await ctx.newPage(),errors=[];
+                ko.on('pageerror',e=>errors.push(e.message));
+                const res=await ko.goto('http://127.0.0.1:8765/ko/contact/',{waitUntil:'load'});
+                a.equal(res.status(),200);
+                a.equal((await ko.title()).trim(),'문의');
+                a.deepEqual(await ko.locator('h1').allTextContents(),['문의']);
+                a.equal(await ko.locator('h2,h3').count(),0);
+                a.equal(await ko.locator('.content p').count(),2,'Two original translated paragraphs visible');
+                const body=await ko.locator('body').innerText();
+                a(body.includes('VPSforWebsite.com은 현재 공개 문의 양식을 운영하지 않으며'));
+                a(body.includes('정보 정정'));
+                a.equal(await ko.locator('form').count(),0);
+                const robots=await ko.locator('meta[name="robots"]').evaluateAll(nodes=>nodes.map(n=>(n.content||'').toLowerCase()));
+                a(robots.length>0&&robots.every(x=>x.includes('noindex')),'All robots metadata must be noindex '+JSON.stringify(robots));
+                a.equal(await ko.locator('.vps-contact-primary-cta').getAttribute('href'),'/ko/');
+                a.equal(await ko.locator('.vps-contact-secondary-cta').getAttribute('href'),'/ko/about/');
+                a.equal(await ko.locator('.vps-contact-hero-diagram').getAttribute('href'),'/ko/about/');
+                await en.goto('http://127.0.0.1:8765/contact/',{waitUntil:'domcontentloaded'});
+                a.equal(await en.locator('.vps-contact-primary-cta').getAttribute('href'),'/');
+                a.equal(await en.locator('.vps-contact-secondary-cta').getAttribute('href'),'/about/');
+                a.equal(await en.locator('h2,h3').count(),0);
+                const size=await ko.evaluate(()=>({html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+                a(size.html<=width+2&&size.body<=width+2,'Horizontal overflow '+JSON.stringify(size));
+                a.deepEqual(errors.filter(s=>!(s.startsWith('Failed to register a ServiceWorker')&&s.includes('does not match the current origin'))),[]);
+                await ko.screenshot({path:'shots/contact-'+width+'.png',fullPage:true});
+                console.log('PASS browser',width,JSON.stringify(size));
+                await ctx.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e.stack||e);process.exitCode=1;});
+          JS
+          node check.cjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: korean-contact-prepublication
+          path: /tmp/ko-contact-qa/shots/*.png
+          if-no-files-found: ignore
+          retention-days: 7
