@@ -1135,10 +1135,10 @@
                 href="{{ $managedAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-managed-secondary-cta" href="#quick-answer">
-                Compare management
+                {{ if eq site.Language.Lang "ko" }}관리 방식 비교{{ else }}Compare management{{ end }}
               </a>
             </div>
           </div>
@@ -1148,45 +1148,45 @@
             href="{{ $managedAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for managed or unmanaged hosting">
+            aria-label="{{ if eq site.Language.Lang "ko" }}관리형 및 비관리형 VPS의 현재 구성 확인{{ else }}Check current VPS options for managed or unmanaged hosting{{ end }}">
             <div class="vps-managed-compact-head">
-              <strong>The real difference is operational ownership</strong>
-              <small>CPU, RAM and storage can be identical. Responsibility after provisioning is what changes.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}실제 차이는 서버 운영 책임에 있습니다{{ else }}The real difference is operational ownership{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간은 같을 수 있습니다. 서버 개설 후 누가 관리하는지가 다릅니다.{{ else }}CPU, RAM and storage can be identical. Responsibility after provisioning is what changes.{{ end }}</small>
             </div>
 
             <div class="vps-managed-compact-grid">
               <div class="vps-managed-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>Patching</strong>
-                  <small>Who owns OS + security updates?</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}패치{{ else }}Patching{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}OS·보안 업데이트 담당자는 누구인가요?{{ else }}Who owns OS + security updates?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>Backups</strong>
-                  <small>Who verifies restore readiness?</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}백업{{ else }}Backups{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}복구 가능 여부는 누가 검증하나요?{{ else }}Who verifies restore readiness?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>Monitoring</strong>
-                  <small>Who sees and acts on alerts?</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}모니터링{{ else }}Monitoring{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}알림을 확인하고 조치하는 사람은 누구인가요?{{ else }}Who sees and acts on alerts?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>Incidents</strong>
-                  <small>Who responds when production fails?</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}장애 대응{{ else }}Incidents{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}운영 중인 사이트에 장애가 나면 누가 대응하나요?{{ else }}Who responds when production fails?{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-managed-compact-rule">
-              <strong>Do not buy the word “managed” — buy a written scope of owned tasks.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}‘관리형’이라는 명칭이 아니라 담당 업무를 명시한 서비스 범위를 확인하세요.{{ else }}Do not buy the word “managed” — buy a written scope of owned tasks.{{ end }}</strong>
             </div>
           </a>
         </div>
