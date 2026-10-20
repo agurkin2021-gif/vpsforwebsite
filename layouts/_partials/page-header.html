@@ -389,10 +389,10 @@
                 href="{{ $wcAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                Check VPS options
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-woocommerce-secondary-cta" href="#quick-answer">
-                See sizing guidance
+                {{ if eq .Language.Lang "ko" }}VPS 사양 선택 가이드{{ else }}See sizing guidance{{ end }}
               </a>
             </div>
           </div>
@@ -402,46 +402,46 @@
             href="{{ $wcAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="Check current VPS options for WooCommerce">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 우커머스 VPS 옵션 확인{{ else }}Check current VPS options for WooCommerce{{ end }}">
             <div class="vps-woocommerce-compact-head">
-              <strong>WooCommerce dynamic path</strong>
-              <small>Three workloads dominate the uncached store path.</small>
+              <strong>{{ if eq .Language.Lang "ko" }}우커머스의 동적 처리 경로{{ else }}WooCommerce dynamic path{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}캐시되지 않는 쇼핑몰 처리량은 세 가지 작업이 좌우합니다.{{ else }}Three workloads dominate the uncached store path.{{ end }}</small>
             </div>
 
             <div class="vps-woocommerce-compact-flow">
               <div class="vps-woocommerce-compact-step">
                 <span>01</span>
                 <div>
-                  <strong>Checkout</strong>
-                  <small>PHP workers + session state</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}결제{{ else }}Checkout{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}PHP 워커 + 세션 상태{{ else }}PHP workers + session state{{ end }}</small>
                 </div>
               </div>
 
               <div class="vps-woocommerce-compact-step">
                 <span>02</span>
                 <div>
-                  <strong>Orders & stock</strong>
-                  <small>Database writes + inventory updates</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}주문·재고{{ else }}Orders & stock{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}데이터베이스 쓰기 + 재고 업데이트{{ else }}Database writes + inventory updates{{ end }}</small>
                 </div>
               </div>
 
               <div class="vps-woocommerce-compact-step">
                 <span>03</span>
                 <div>
-                  <strong>Async work</strong>
-                  <small>Webhooks + Action Scheduler</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}비동기 작업{{ else }}Async work{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}웹훅 + Action Scheduler{{ else }}Webhooks + Action Scheduler{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-woocommerce-compact-signals">
-              <span>PHP workers</span>
-              <span>DB writes</span>
-              <span>Sale peaks</span>
+              <span>{{ if eq .Language.Lang "ko" }}PHP 워커{{ else }}PHP workers{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}DB 쓰기{{ else }}DB writes{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}행사 피크{{ else }}Sale peaks{{ end }}</span>
             </div>
 
             <div class="vps-woocommerce-compact-rule">
-              <strong>Size the VPS for peak dynamic concurrency, not monthly visits.</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}월간 방문자 수가 아니라 피크 시간대의 동시 동적 요청에 맞춰 VPS를 선택하세요.{{ else }}Size the VPS for peak dynamic concurrency, not monthly visits.{{ end }}</strong>
             </div>
           </a>
         </div>
