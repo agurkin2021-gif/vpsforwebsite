@@ -40,6 +40,7 @@ const fail=(route,width,message,detail)=>{findings.push({route,width,message,det
 async function examine(page,route,width){
   const url='https://vpsforwebsite.com/fr'+route+'?responsive-qa=20261020-'+width;
   const errors=[];
+  page.removeAllListeners('pageerror');
   page.on('pageerror',e=>errors.push(e.message));
   let resp=await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
   if(!resp || resp.status()!==200){
@@ -47,6 +48,11 @@ async function examine(page,route,width){
   }
   await page.locator('main h1').first().waitFor({timeout:16000});
   await page.evaluate(async()=>{if(document.fonts)await document.fonts.ready;});
+  // Candidate stylesheet preview: the working-branch Chromium run injects only
+  // the proposed FR home CSS; the main-branch run audits deployed CSS alone.
+  if(process.env.GITHUB_REF_NAME==='work/fr-responsive-qa-20261020' && route==='/'){
+    await page.addStyleTag({path:path.resolve('static/css/fr-home-responsive.v1.css')});
+  }
   await page.waitForTimeout(120);
   const audit=await page.evaluate(()=>{
     const W=document.documentElement.clientWidth;
