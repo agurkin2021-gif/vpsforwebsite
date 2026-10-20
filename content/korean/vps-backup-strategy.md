@@ -356,206 +356,206 @@ WooCommerce, 회원 관리, 청구 또는 주문 시스템에서는 최근에 �
 
 “최신 버전” 하나만 보관하지 마세요.
 
-## Keep an independent off-server destination
+## 독립적인 서버 외부 백업 저장소 유지 {#keep-an-independent-off-server-destination}
 
-A backup on the same VPS disk does not protect against:
+같은 VPS 디스크에 백업을 보관하면 다음 상황을 막을 수 없습니다.
 
-- disk/filesystem loss;
-- server deletion;
-- root compromise;
-- ransomware;
-- account mistake;
-- provider-side loss of that VM.
+- 디스크 또는 파일 시스템 손실;
+- 서버 삭제;
+- root 권한 침해;
+- 랜섬웨어;
+- 계정 관리 실수;
+- 제공업체 측에서 해당 가상 머신이 사라지는 사고.
 
-Move or stream recovery data outside the VPS.
+복구 데이터를 VPS 외부로 전송하거나 직접 스트리밍하세요.
 
-Possible destinations:
+가능한 저장 장소는 다음과 같습니다.
 
-- object storage;
-- another backup service/provider;
-- another VPS used only for backups;
-- offline/controlled storage.
+- 객체 저장소;
+- 다른 백업 서비스 또는 제공업체;
+- 백업 전용으로 사용하는 별도의 VPS;
+- 오프라인 또는 접근을 통제하는 저장소.
 
-Separate provider/account credentials where practical.
+가능하다면 제공업체나 계정의 자격 증명도 분리하세요.
 
-## Encrypt backups — and protect the recovery key
+## 백업 암호화와 복구 키 보호 {#encrypt-backups--and-protect-the-recovery-key}
 
-Encrypt sensitive backup data in transit and at rest where appropriate.
+민감한 백업 데이터는 적절한 경우 전송 중과 저장 중 모두 암호화하세요.
 
-But encryption creates another recovery dependency.
+하지만 암호화는 또 하나의 복구 의존성을 만듭니다.
 
-Do not store the **only** backup password/key:
+백업 비밀번호나 키의 **유일한 사본**을 다음 장소에만 두지 마세요.
 
-- only on the VPS;
-- only in the same password vault/account that might be unavailable;
-- only inside the encrypted backup itself.
+- VPS 내부에만;
+- 사용할 수 없게 될 수 있는 동일한 비밀번호 금고 또는 계정에만;
+- 암호화된 백업 자체 안에만.
 
-Keep recovery credentials/keys in a secure independent location and include key availability in restore drills.
+복구 자격 증명과 키는 안전하고 독립적인 장소에 보관하고, 복원 훈련에서 키를 실제로 사용할 수 있는지도 확인하세요.
 
-## Separate backup credentials and deletion rights
+## 백업 자격 증명과 삭제 권한 분리 {#separate-backup-credentials-and-deletion-rights}
 
-A production-server compromise should not automatically give an attacker permission to erase every recovery copy.
+운영 서버가 침해되더라도 공격자가 모든 복구 사본을 자동으로 삭제할 수 있어서는 안 됩니다.
 
-Prefer:
+가능하면 다음 방식을 선택하세요.
 
-- scoped backup credentials;
-- write access without broad delete privileges where the storage supports it;
-- separate administrative credentials;
-- retention lock/immutability where appropriate;
-- offline/air-gapped copy for high-value data.
+- 사용 범위를 제한한 백업 자격 증명;
+- 저장소에서 지원한다면 광범위한 삭제 권한 없이 쓰기 권한만 부여;
+- 별도의 관리자 자격 증명;
+- 필요한 경우 보존 잠금 또는 변경 불가능한 저장 방식;
+- 가치가 높은 데이터를 위한 오프라인 또는 네트워크에서 분리된 사본.
 
-The exact design depends on the storage service.
+정확한 구성은 저장 서비스에 따라 달라집니다.
 
-This is one reason backups are also a security control; see [VPS Security Checklist]({{< relref "vps-security-checklist.md" >}}).
+이것이 백업을 보안 조치로도 간주하는 이유 중 하나입니다. [VPS 보안 점검표]({{< relref "vps-security-checklist.md" >}})를 참고하세요.
 
-## Monitor backup jobs
+## 백업 작업 모니터링 {#monitor-backup-jobs}
 
-Automation reduces forgotten backups, but failed automation can fail silently.
+자동화는 백업 누락을 줄이지만, 자동 작업의 실패는 알아차리지 못한 채 계속될 수 있습니다.
 
-Monitor:
+다음 항목을 감시하세요.
 
-- last successful backup time;
-- failed/partial jobs;
-- repository/storage availability;
-- credential expiry;
-- free disk before local staging;
-- offsite storage quota;
-- DB dump failures;
-- backup duration changes;
-- unusually small backup size;
-- retention/prune failures.
+- 마지막 백업 성공 시각;
+- 실패하거나 일부만 완료된 작업;
+- 저장소 접근 가능 여부;
+- 자격 증명 만료;
+- 로컬 임시 파일 저장 전의 디스크 여유 공간;
+- 외부 저장소의 할당량;
+- DB 덤프 실패;
+- 백업 소요 시간 변화;
+- 비정상적으로 작은 백업 크기;
+- 보존 기간 관리 또는 오래된 백업 정리 실패.
 
-A green cron/service status proves the command ran. It does not prove the restore works.
+cron이나 서비스 상태가 녹색이라는 사실은 명령이 실행되었다는 뜻일 뿐, 복원이 가능하다는 증거는 아닙니다.
 
-Broader server/service alert design belongs to [VPS Monitoring]({{< relref "vps-monitoring.md" >}}); backup-job health remains part of the recovery strategy itself.
+서버와 서비스 전반의 알림 설계는 [VPS 모니터링]({{< relref "vps-monitoring.md" >}})에서 다룹니다. 백업 작업의 정상 작동 여부는 복구 전략 자체에서도 관리해야 합니다.
 
-## Test restores and measure real RTO
+## 복원을 테스트하고 실제 RTO 측정 {#test-restores-and-measure-real-rto}
 
-A backup becomes credible when it restores.
+백업의 신뢰성은 복원할 수 있을 때 입증됩니다.
 
-Run recovery drills into an isolated clean destination.
+분리된 깨끗한 환경에서 복구 훈련을 수행하세요.
 
-Test enough of the full sequence:
+전체 절차에서 충분한 부분을 테스트해야 합니다.
 
-1. provision a fresh VPS/test environment;
-2. retrieve the correct backup point;
-3. retrieve encryption/repository credentials;
-4. restore files/configuration;
-5. restore/import the database;
-6. restore required secrets/certificates;
-7. configure services/networking;
-8. start the application;
-9. test important pages and transactions;
-10. verify background jobs/integrations;
-11. measure elapsed recovery time.
+1. 새 VPS 또는 테스트 환경을 준비합니다;
+2. 올바른 백업 지점을 가져옵니다;
+3. 암호화 키와 저장소 자격 증명을 확보합니다;
+4. 파일과 설정을 복원합니다;
+5. 데이터베이스를 복원하거나 가져옵니다;
+6. 필요한 비밀 정보와 인증서를 복원합니다;
+7. 서비스와 네트워크를 설정합니다;
+8. 애플리케이션을 시작합니다;
+9. 중요한 페이지와 거래를 테스트합니다;
+10. 백그라운드 작업과 외부 연동을 확인합니다;
+11. 실제 복구에 걸린 시간을 측정합니다.
 
-Record the measured result.
+측정한 결과를 기록하세요.
 
-If the business RTO is four hours and the test takes eight, the backup strategy has failed the business requirement even if every file restored successfully.
+비즈니스의 RTO가 4시간인데 테스트에 8시간이 걸린다면, 모든 파일을 정상적으로 복원했더라도 백업 전략이 비즈니스 요구사항을 충족하지 못한 것입니다.
 
-NIST guidance emphasizes regular backup creation, restoration testing and recovery exercises.
+NIST 지침은 정기적인 백업 생성, 복원 테스트와 복구 훈련의 중요성을 강조합니다.
 
-## Restore granularity matters
+## 복원 단위도 중요합니다 {#restore-granularity-matters}
 
-A good strategy supports the failure you actually have.
+좋은 전략은 실제로 발생한 장애 범위에 맞춰 복원할 수 있어야 합니다.
 
-### Single-file/site recovery
+### 개별 파일 또는 사이트 복원 {#single-filesite-recovery}
 
-Needed for:
+다음 상황에 필요합니다.
 
-- deleted upload;
-- broken config;
-- one compromised site;
-- one bad database/table recovery.
+- 업로드 파일 삭제;
+- 잘못된 설정;
+- 한 사이트만 침해된 경우;
+- 특정 데이터베이스 또는 테이블의 잘못된 변경을 되돌릴 때.
 
-### Full-server recovery
+### 서버 전체 복구 {#full-server-recovery}
 
-Needed for:
+다음 상황에 필요합니다.
 
-- dead/deleted VPS;
-- filesystem failure;
-- severe compromise;
-- provider/server replacement.
+- VPS 고장 또는 삭제;
+- 파일 시스템 장애;
+- 심각한 침해;
+- 제공업체 또는 서버 교체.
 
-If the only backup is a full disk image, restoring one file may be inconvenient.
+백업이 전체 디스크 이미지뿐이라면 파일 하나만 복원하기 불편할 수 있습니다.
 
-If the only backup is selected files, rebuilding the complete VPS may take too long.
+일부 파일만 백업했다면 VPS 전체를 재구축하는 데 너무 오래 걸릴 수 있습니다.
 
-Layer the methods.
+두 방식을 계층적으로 조합하세요.
 
-## Multiple websites need site-level restore
+## 여러 웹사이트에는 사이트별 복원이 필요합니다 {#multiple-websites-need-site-level-restore}
 
-On a multi-site VPS, do not design recovery so that fixing Site A automatically rolls Site B/C/D back to yesterday.
+여러 사이트를 운영하는 VPS에서는 사이트 A를 복원하면서 사이트 B/C/D까지 자동으로 어제 상태로 돌아가도록 복구 구조를 설계하지 마세요.
 
-Prefer backups that let you restore:
+가능하면 다음 범위를 개별적으로 복원할 수 있어야 합니다.
 
-- one document root;
-- one database;
-- one panel/user;
-- one set of uploads;
-- the full VPS only when required.
+- 한 사이트의 문서 루트;
+- 한 데이터베이스;
+- 한 패널 계정 또는 사용자;
+- 한 사이트의 업로드 파일;
+- 필요한 경우에만 VPS 전체.
 
-For the architecture/failure-domain decision, see [VPS for Multiple Websites]({{< relref "vps-for-multiple-websites.md" >}}).
+구조와 장애 영역에 관한 결정은 [여러 웹사이트용 VPS]({{< relref "vps-for-multiple-websites.md" >}})를 참고하세요.
 
-## Backups can cause outages too
+## 백업 작업 자체가 장애를 일으킬 수도 있습니다 {#backups-can-cause-outages-too}
 
-Backup work consumes resources.
+백업 작업은 서버 자원을 소비합니다.
 
-Potential impact:
+가능한 영향:
 
-- DB dump CPU;
-- compression CPU;
-- read I/O;
-- temporary disk usage;
-- object-storage upload bandwidth;
-- cache eviction;
-- backup overlap with imports/scans/traffic peaks.
+- DB 덤프 중 CPU 사용;
+- 압축 작업의 CPU 사용;
+- 디스크 읽기 I/O;
+- 임시 디스크 공간 사용;
+- 객체 저장소 업로드 대역폭;
+- 캐시 퇴출;
+- 가져오기, 스캔 또는 트래픽 최고점과 백업 작업의 겹침.
 
-Avoid building a 30 GB local archive when the VPS has only 10 GB free.
+VPS의 여유 공간이 10 GB뿐인데 로컬에 30 GB 백업 아카이브를 만들도록 설계하지 마세요.
 
-Where practical:
+가능하다면 다음을 수행하세요.
 
-- stream backups directly off-server;
-- monitor temporary disk usage;
-- schedule heavy backup work outside traffic peaks;
-- rate-limit where the tool supports it;
-- measure backup duration.
+- 백업을 서버 외부로 직접 스트리밍;
+- 임시 디스크 사용량 감시;
+- 무거운 백업 작업을 트래픽이 적을 때 실행;
+- 도구에서 지원하는 경우 속도 제한;
+- 백업 소요 시간 측정.
 
-## How VDSina backups fit the strategy
+## VDSina 백업 기능을 전략에 활용하는 방법 {#how-vdsina-backups-fit-the-strategy}
 
-VDSina's public documentation currently describes several useful recovery functions:
+VDSina의 공개 문서에는 현재 다음과 같은 유용한 복구 기능이 설명되어 있습니다.
 
-- manual server backup copies;
-- scheduled backups;
-- restore a backup to the server it came from;
-- create a new server from a backup;
-- clone a server;
-- download a backup image.
+- 수동 서버 백업 사본;
+- 예약 백업;
+- 백업을 원래 서버에 복원;
+- 백업에서 새 서버 생성;
+- 서버 복제;
+- 백업 이미지 다운로드.
 
-The download documentation shows a backup filename in the form:
+다운로드 안내에는 다음 형태의 백업 파일명이 나옵니다.
 
 `vXXX.backup.hosted-by-vdsina.com.img.gz`
 
-That downloadable image is a useful portability layer because a recovery copy does not have to remain only inside the provider panel.
+다운로드할 수 있는 이미지는 복구 사본이 제공업체 패널 안에만 남지 않아도 된다는 점에서 유용한 이식성 계층입니다.
 
-However:
+하지만 다음 사항을 지키세요.
 
-- treat the provider image as **one layer**, not the entire strategy;
-- test how your chosen recovery environment uses the downloaded image;
-- do not assume every hypervisor can consume it directly without conversion;
-- keep application/file/database backups for granular recovery;
-- keep an independent failure-domain copy where the risk justifies it.
+- 제공업체 이미지는 전체 전략이 아닌 **하나의 계층**으로 취급합니다;
+- 선택한 복구 환경에서 내려받은 이미지를 어떻게 사용하는지 테스트합니다;
+- 모든 하이퍼바이저가 변환 없이 직접 읽을 수 있다고 가정하지 않습니다;
+- 세부 복구를 위해 애플리케이션, 파일, 데이터베이스 백업을 유지합니다;
+- 위험이 정당화하는 경우 독립된 장애 영역에 사본을 둡니다.
 
-VDSina's own Terms explicitly state that the customer is responsible for backups and recommends a routine backup process plus periodic restore testing.
+VDSina의 자체 이용약관은 백업에 대한 책임이 고객에게 있음을 명시하며, 정기적인 백업 절차와 주기적인 복원 테스트를 권장합니다.
 
-When creating a new VDSina server from a provider backup, their QA notes that the backup/new server must meet provider constraints such as data-center placement and sufficient disk quota; network settings may also require adjustment after restoration.
+제공업체 백업으로 새 VDSina 서버를 만들 때는 해당 QA에 따르면 데이터센터 배치와 충분한 디스크 용량 등 제공업체의 제약을 충족해야 합니다. 복원 후 네트워크 설정을 조정해야 할 수도 있습니다.
 
-Do not confuse backup with migration. A backup can be part of a migration safety net, but live cutover, final writes, DNS and rollback are separate concerns; see [Website migration to VPS]({{< relref "website-migration-to-vps.md" >}}).
+백업과 마이그레이션을 혼동하지 마세요. 백업은 이전 작업의 안전망이 될 수 있지만, 실제 서비스 전환, 마지막 데이터 쓰기, DNS 및 롤백은 별도의 작업입니다. [웹사이트 VPS 이전]({{< relref "website-migration-to-vps.md" >}})을 참고하세요.
 
 <p>
-  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">Check current VPS backup options</a>
+  <a class="btn btn-primary" href="https://www.vdsina.com/?partner=ni8gzrvz75" target="_blank" rel="sponsored nofollow noopener">현재 VPS 백업 옵션 확인</a>
 </p>
-<p><small>Disclosure: the editor has a professional relationship with VDSina, and this site may earn a commission if you order through this partner link. Provider backup features do not replace an independent recovery strategy or restore testing.</small></p>
+<p><small>제휴 고지: 편집자는 VDSina와 업무상 관계가 있으며, 이 제휴 링크로 주문하면 사이트가 수수료를 받을 수 있습니다. 제공업체 백업 기능은 독립적인 복구 전략이나 복원 테스트를 대신하지 않습니다.</small></p>
 
 ## Recovery runbook
 
