@@ -87,8 +87,8 @@ jobs:
                 a(body.includes('VPSforWebsite.com은 현재 공개 문의 양식을 운영하지 않으며'));
                 a(body.includes('정보 정정'));
                 a.equal(await ko.locator('form').count(),0);
-                const robots=(await ko.locator('meta[name="robots"]').getAttribute('content')||'').toLowerCase();
-                a(robots.includes('noindex'),'noindex metadata '+robots);
+                const robots=await ko.locator('meta[name="robots"]').evaluateAll(nodes=>nodes.map(n=>(n.content||'').toLowerCase()));
+                a(robots.length>0&&robots.every(x=>x.includes('noindex')),'All robots metadata must be noindex '+JSON.stringify(robots));
                 a.equal(await ko.locator('.vps-contact-primary-cta').getAttribute('href'),'/ko/');
                 a.equal(await ko.locator('.vps-contact-secondary-cta').getAttribute('href'),'/ko/about/');
                 a.equal(await ko.locator('.vps-contact-hero-diagram').getAttribute('href'),'/ko/about/');
