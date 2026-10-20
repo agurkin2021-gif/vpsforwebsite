@@ -1557,40 +1557,40 @@
             {{ end }}
 
             <div class="vps-contact-hero-actions">
-              <a class="btn btn-primary vps-contact-primary-cta" href="/">
+              <a class="btn btn-primary vps-contact-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/{{ else }}/{{ end }}">
                 VPS for website
               </a>
-              <a class="vps-contact-secondary-cta" href="/about/">
-                About our process
+              <a class="vps-contact-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else }}About our process{{ end }}
               </a>
             </div>
           </div>
 
           <a class="vps-contact-hero-diagram"
-             href="/about/"
-             aria-label="Read how VPSforWebsite.com reviews and corrects information">
+             href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}"
+             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com의 검토 및 정정 절차 보기{{ else }}Read how VPSforWebsite.com reviews and corrects information{{ end }}">
             <div class="vps-contact-compact-head">
-              <strong>Corrections should be evidence-based</strong>
-              <small>Useful feedback identifies the claim, the source and what needs to be checked.</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}정보 정정은 근거를 기준으로 검토합니다{{ else }}Corrections should be evidence-based{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}유용한 제보에는 확인할 주장, 정보 출처와 점검 항목이 명시되어야 합니다.{{ else }}Useful feedback identifies the claim, the source and what needs to be checked.{{ end }}</small>
             </div>
 
             <div class="vps-contact-compact-grid">
               <div class="vps-contact-compact-item">
-                <span>01</span><div><strong>Identify</strong><small>Which claim or page?</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}대상 확인{{ else }}Identify{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}어떤 주장 또는 페이지인가요?{{ else }}Which claim or page?{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>02</span><div><strong>Source</strong><small>Provide current evidence</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}근거 자료{{ else }}Source{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}최신 근거 제시{{ else }}Provide current evidence{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>03</span><div><strong>Review</strong><small>Check provider + context</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}검토{{ else }}Review{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}제공업체와 맥락 확인{{ else }}Check provider + context{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>04</span><div><strong>Update</strong><small>Correct the published guidance</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}수정{{ else }}Update{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}게시된 안내 수정{{ else }}Correct the published guidance{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-contact-compact-rule">
-              <strong>The preview does not collect form submissions yet.</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}현재 공개 문의 양식 제출 정보를 수집하지 않습니다.{{ else }}The preview does not collect form submissions yet.{{ end }}</strong>
             </div>
           </a>
         </div>
