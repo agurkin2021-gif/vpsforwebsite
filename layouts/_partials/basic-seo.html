@@ -17,6 +17,9 @@
 {{ if and (eq .Language.Lang "de") (eq .Kind "404") }}
   {{ $title = "Seite nicht gefunden" }}
 {{ end }}
+{{ if and (eq .Language.Lang "it") (eq .Kind "404") }}
+  {{ $title = "Pagina non trovata" }}
+{{ end }}
 
 
 <!-- checking description -->

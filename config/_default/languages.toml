@@ -30,3 +30,15 @@ weight = 4
 [de.params.metadata]
 description = "VPS-Ressourcen für Websites nach Arbeitslast, CMS, Datenbankbedarf und Wachstum auswählen."
 author = "VPSforWebsite.com Redaktion"
+
+[it]
+label = "IT"
+languageName = "Italiano"
+languageCode = "it"
+locale = "it-IT"
+contentDir = "content/italian"
+weight = 5
+
+[it.params.metadata]
+description = "Scegli le risorse VPS per il tuo sito in base al carico di lavoro, al CMS, al database e alla crescita prevista."
+author = "Redazione VPSforWebsite.com"

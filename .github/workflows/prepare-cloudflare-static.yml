@@ -22,6 +22,8 @@ on:
       - "scripts/audit-french-parity.py"
       - "scripts/audit-german.py"
       - "scripts/qa-german.cjs"
+      - "scripts/audit-italian.py"
+      - "scripts/qa-italian.cjs"
       - "scripts/translation_audit.py"
       - "scripts/audit-site-integrity.py"
       - "scripts/test-site-integrity.py"
@@ -38,7 +40,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 85
     steps:
       - uses: actions/checkout@v4
         with:
@@ -363,6 +365,25 @@ jobs:
           path: |
             ${{ runner.temp }}/german-audit.json
             ${{ runner.temp }}/german-browser/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Verify complete Italian source, SEO and interactive structure
+        run: python scripts/audit-italian.py cloudflare-public --report "${{ runner.temp }}/italian-audit.json"
+
+      - name: Verify Italian responsive pages and every calculator decision
+        shell: bash
+        run: |
+          NODE_PATH="$RUNNER_TEMP/de-qa/node_modules" node scripts/qa-italian.cjs cloudflare-public "$RUNNER_TEMP/italian-audit.json" "$RUNNER_TEMP/italian-browser"
+
+      - name: Retain Italian localization verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: italian-localization-qa
+          path: |
+            ${{ runner.temp }}/italian-audit.json
+            ${{ runner.temp }}/italian-browser/
           retention-days: 7
           if-no-files-found: ignore
 

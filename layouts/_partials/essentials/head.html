@@ -10,6 +10,9 @@
 {{ partialCached "local-fonts.html" . }}
 <link id="guide-navigation-css" rel="stylesheet" href="{{ "css/guide-navigation.v1.css" | relURL }}" />
 <link id="hero-layout-css" rel="stylesheet" href="{{ "css/hero-layout.v1.css" | relURL }}" />
+{{ if eq .Language.Lang "it" }}
+  <link id="italian-responsive-css" rel="stylesheet" href="{{ "css/it-responsive.v1.css" | relURL }}" />
+{{ end }}
 {{ if eq .Language.Lang "de" }}
   <link id="german-responsive-css" rel="stylesheet" href="{{ "css/de-responsive.v1.css" | relURL }}" />
 {{ end }}
@@ -48,7 +51,7 @@
 {{ end }}
 
 {{ $publisherName := "VPSforWebsite.com Editorial" }}
-{{ if eq .Language.Lang "de" }}{{ $publisherName = "VPSforWebsite.com Redaktion" }}{{ end }}
+{{ if eq .Language.Lang "de" }}{{ $publisherName = "VPSforWebsite.com Redaktion" }}{{ else if eq .Language.Lang "it" }}{{ $publisherName = "Redazione VPSforWebsite.com" }}{{ end }}
 {{ $publisher := dict
   "@type" "Organization"
   "name" $publisherName
