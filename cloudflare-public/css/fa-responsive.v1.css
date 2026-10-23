@@ -6,6 +6,12 @@
   font-weight: 100 900;
   font-display: swap;
 }
+/* The original home hero and calculator use theme font variables (including
+   an !important heading rule). Scope their native font to Persian main content. */
+html:lang(fa) main {
+  --font-primary: Vazirmatn, Tahoma, sans-serif;
+  --font-secondary: Vazirmatn, Tahoma, sans-serif;
+}
 html:lang(fa) body,
 html:lang(fa) h1, html:lang(fa) h2, html:lang(fa) h3,
 html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6,
