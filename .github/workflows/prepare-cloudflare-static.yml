@@ -20,6 +20,9 @@ on:
       - "scripts/audit-language-recovery.py"
       - "scripts/audit-localized-pages.py"
       - "scripts/audit-french-parity.py"
+      - "scripts/audit-german.py"
+      - "scripts/qa-german.cjs"
+      - "scripts/translation_audit.py"
       - "scripts/audit-site-integrity.py"
       - "scripts/test-site-integrity.py"
       - "recovered-public/**"
@@ -294,11 +297,20 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from xml.sax.saxutils import escape
-          import re
+          from html.parser import HTMLParser
 
           ROOT = Path("cloudflare-public")
           BASE = "https://vpsforwebsite.com"
           urls = set()
+
+          class Robots(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.noindex = False
+              def handle_starttag(self, tag, attributes):
+                  attrs = dict(attributes)
+                  if tag.lower() == "meta" and (attrs.get("name") or "").lower() == "robots":
+                      self.noindex = self.noindex or "noindex" in (attrs.get("content") or "").lower()
 
           for page in ROOT.rglob("*.html"):
               rel = page.relative_to(ROOT)
@@ -308,7 +320,9 @@ jobs:
                   html = page.read_text(encoding="utf-8", errors="ignore")
               except Exception:
                   continue
-              if re.search(r"<meta\\b[^>]*name=(?:\"|')?robots(?:\"|')?[^>]*content=(?:\"|')?[^>]*noindex", html, re.I):
+              robots = Robots()
+              robots.feed(html)
+              if robots.noindex:
                   continue
 
               if rel.as_posix() == "index.html":
@@ -330,6 +344,27 @@ jobs:
 
       - name: Audit restored locale pages and internal links
         run: python scripts/audit-localized-pages.py cloudflare-public
+
+      - name: Verify complete German source, SEO and interactive structure
+        run: python scripts/audit-german.py cloudflare-public --report "${{ runner.temp }}/german-audit.json"
+
+      - name: Verify German responsive pages and every calculator decision
+        shell: bash
+        run: |
+          npm install --prefix "$RUNNER_TEMP/de-qa" --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/de-qa/node_modules/.bin/playwright" install --with-deps chromium
+          NODE_PATH="$RUNNER_TEMP/de-qa/node_modules" node scripts/qa-german.cjs cloudflare-public "$RUNNER_TEMP/german-audit.json" "$RUNNER_TEMP/german-browser"
+
+      - name: Retain German localization verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: german-localization-qa
+          path: |
+            ${{ runner.temp }}/german-audit.json
+            ${{ runner.temp }}/german-browser/
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Commit deployable static site
         shell: bash

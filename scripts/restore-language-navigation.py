@@ -19,6 +19,7 @@ LANGS = [
     ("es", "Español", "/es/"),
     ("vi", "Tiếng Việt", "/vi/"),
     ("ko", "한국어", "/ko/"),
+    ("de", "Deutsch", "/de/"),
 ]
 LANG_CODES = [x[0] for x in LANGS]
 HOME = {code: url for code, _, url in LANGS}
@@ -46,6 +47,14 @@ def normalize_lang(value):
         if low == code.lower() or low.startswith(code.lower() + "-"):
             return code
     return value or "en"
+
+
+def is_noindex(html):
+    for tag in re.finditer(r"<meta\b[^>]*>", html, re.I):
+        attributes = attrs(tag.group(0))
+        if attributes.get("name", "").lower() == "robots" and "noindex" in attributes.get("content", "").lower():
+            return True
+    return False
 
 
 def extract_alternates(html):
@@ -83,6 +92,8 @@ def ref_for(rel, html):
         return same
     current = extract_alternates(html)
     en = current.get("en") or current.get("x-default")
+    if not en and html_language(html) == "de":
+        en = ENGLISH_BY_DE.get("/" + rel.parent.as_posix() + "/")
     if en:
         candidate = RECOVERED / url_to_rel(en)
         if candidate.is_file():
@@ -109,6 +120,34 @@ def route_exists(url):
     if parsed.netloc and parsed.netloc != "vpsforwebsite.com":
         return False
     return (ROOT / url_to_rel(url)).is_file()
+
+
+def german_equivalents():
+    """Read Hugo's actual DE/EN pairs before rewriting recovered navigation.
+
+    Source filenames connect translations even when their public slugs differ.
+    Noindex service pages omit head alternates, so use their Hugo picker pairs.
+    Never treat a fallback language homepage as an equivalent inner article.
+    """
+    pairs = {}
+    for page in (ROOT / "de").rglob("index.html"):
+        html = page.read_text(encoding="utf-8", errors="strict")
+        current = extract_alternates(html)
+        en_url = current.get("en")
+        if not en_url:
+            picker = LEGACY_LIST_RE.search(html) or GENERATED_LIST_RE.search(html)
+            if picker:
+                for tag in ANCHOR_RE.finditer(picker.group(2)):
+                    a = attrs(tag.group(0))
+                    if normalize_lang(a.get("hreflang", "")) == "en":
+                        en_url = a.get("href")
+                        break
+        de_url = "/" + page.relative_to(ROOT).parent.as_posix() + "/"
+        if en_url and route_exists(en_url):
+            en_path = unquote(urlparse(en_url).path or "/")
+            if en_path != "/" or de_url == "/de/":
+                pairs[en_path] = de_url
+    return pairs
 
 
 def rebuild_generated_list(html, routes):
@@ -190,6 +229,8 @@ def replace_alternates(html, routes, include_ko):
 changed = 0
 patched_generated = 0
 patched_legacy = 0
+GERMAN_BY_EN = german_equivalents()
+ENGLISH_BY_DE = {de: en for en, de in GERMAN_BY_EN.items()}
 
 for page in ROOT.rglob("*.html"):
     if page.name == "404.html":
@@ -208,6 +249,10 @@ for page in ROOT.rglob("*.html"):
     routes = {}
     routes.update(legacy)
     routes.update(current)
+    if html_language(html) == "de":
+        own_url = "/" + rel.parent.as_posix() + "/"
+        if own_url in ENGLISH_BY_DE:
+            routes["en"] = ENGLISH_BY_DE[own_url]
 
     # Always keep every language visible in the selector. When an equivalent
     # static translation is unavailable, fall back to that language homepage.
@@ -215,6 +260,16 @@ for page in ROOT.rglob("*.html"):
         routes.setdefault(code, home)
 
     en_url = routes.get("en", "/")
+    en_reference = current.get("en") or legacy.get("en")
+    if html_language(html) == "en":
+        en_reference = "/" if rel.as_posix() == "index.html" else "/" + rel.parent.as_posix() + "/"
+    elif html_language(html) == "de":
+        en_reference = ENGLISH_BY_DE.get("/" + rel.parent.as_posix() + "/") or en_reference
+    de_url = current.get("de")
+    if not de_url and en_reference:
+        de_url = GERMAN_BY_EN.get(unquote(urlparse(en_reference).path or "/"))
+    if de_url and route_exists(de_url):
+        routes["de"] = de_url
     ko_url = current.get("ko")
     if not ko_url:
         candidate = ko_equivalent(en_url)
@@ -247,7 +302,16 @@ for page in ROOT.rglob("*.html"):
             actual_ko = candidate
     if actual_ko:
         seo_routes["ko"] = actual_ko
-    html = replace_alternates(html, seo_routes, bool(actual_ko))
+    # A language-home fallback is navigation, never an article hreflang target.
+    # Contact/noindex pages retain the existing indexing policy; do not invent
+    # a DE alternate for them merely because a localized picker target exists.
+    noindex = is_noindex(html)
+    if de_url and route_exists(de_url) and not noindex:
+        seo_routes["de"] = de_url
+    else:
+        seo_routes.pop("de", None)
+    if not (noindex and html_language(html) == "de"):
+        html = replace_alternates(html, seo_routes, bool(actual_ko))
 
     # Recovered pages need the same responsive fixes as Hugo pages. Preserve
     # their immutable fingerprinted CSS and add each shared stylesheet once.

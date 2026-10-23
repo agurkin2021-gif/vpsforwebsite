@@ -88,10 +88,10 @@
                 href="{{ $vsAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-vs-shared-secondary-cta" href="#quick-comparison">
-                {{ if eq .Language.Lang "ko" }}빠른 비교 보기{{ else }}See quick comparison{{ end }}
+                {{ if eq .Language.Lang "ko" }}빠른 비교 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_quick_comparison" }}{{ else }}See quick comparison{{ end }}
               </a>
             </div>
           </div>
@@ -101,66 +101,66 @@
             href="{{ $vsAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인 — 공유 호스팅과 VPS 비교{{ else }}Check current VPS configurations — Shared hosting compared with VPS{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인 — 공유 호스팅과 VPS 비교{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_configurations_shared_hosting_compared_with_vps" }}{{ else }}Check current VPS configurations — Shared hosting compared with VPS{{ end }}">
             <div class="vps-vs-shared-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}제어권이 커질수록 서버 운영 책임도 늘어납니다{{ else }}More control means more server responsibility{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}사이트 규모가 아니라 운영 방식, 자원 제한, 소프트웨어 선택 자유도를 비교하세요.{{ else }}Compare the operating model, resource limits and software freedom — not site size alone.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}제어권이 커질수록 서버 운영 책임도 늘어납니다{{ else if eq site.Language.Lang "de" }}{{ T "hero_more_control_means_more_server_responsibility" }}{{ else }}More control means more server responsibility{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}사이트 규모가 아니라 운영 방식, 자원 제한, 소프트웨어 선택 자유도를 비교하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_compare_the_operating_model_resource_limits_and_software_freedom_not_site_size_alone" }}{{ else }}Compare the operating model, resource limits and software freedom — not site size alone.{{ end }}</small>
             </div>
 
             <div class="vps-vs-shared-compact-grid">
               <div class="vps-vs-shared-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}서버 관리{{ else }}Administration{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}공급업체 관리 vs 직접 관리{{ else }}Provider-managed vs self-managed{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 관리{{ else if eq site.Language.Lang "de" }}{{ T "hero_administration" }}{{ else }}Administration{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}공급업체 관리 vs 직접 관리{{ else if eq site.Language.Lang "de" }}{{ T "hero_provider_managed_vs_self_managed" }}{{ else }}Provider-managed vs self-managed{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}소프트웨어{{ else }}Software{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}제한된 구성 vs 유연한 구성{{ else }}Restricted stack vs flexible stack{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}소프트웨어{{ else if eq site.Language.Lang "de" }}{{ T "hero_software" }}{{ else }}Software{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}제한된 구성 vs 유연한 구성{{ else if eq site.Language.Lang "de" }}{{ T "hero_restricted_stack_vs_flexible_stack" }}{{ else }}Restricted stack vs flexible stack{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}자원{{ else }}Resources{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}계정별 제한 vs VPS 자원 할당{{ else }}Account limits vs VPS allocation{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}자원{{ else if eq site.Language.Lang "de" }}{{ T "hero_resources" }}{{ else }}Resources{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}계정별 제한 vs VPS 자원 할당{{ else if eq site.Language.Lang "de" }}{{ T "hero_account_limits_vs_vps_allocation" }}{{ else }}Account limits vs VPS allocation{{ end }}</small>
                 </div>
               </div>
               <div class="vps-vs-shared-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}운영{{ else }}Operations{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}간편함 vs 제어권과 책임{{ else }}Simplicity vs control + ownership{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}운영{{ else if eq site.Language.Lang "de" }}{{ T "hero_operations" }}{{ else }}Operations{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}간편함 vs 제어권과 책임{{ else if eq site.Language.Lang "de" }}{{ T "hero_simplicity_vs_control_ownership" }}{{ else }}Simplicity vs control + ownership{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-vs-shared-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}실제 자원 제약이나 필요한 기능을 해결할 때만 VPS로 이전하세요.{{ else }}Move only when the extra control solves a real limit or capability need.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}실제 자원 제약이나 필요한 기능을 해결할 때만 VPS로 이전하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_move_only_when_the_extra_control_solves_a_real_limit_or_capability_need" }}{{ else }}Move only when the extra control solves a real limit or capability need.{{ end }}</strong>
             </div>
           </a>
         </div>
       </div>
 
-      <nav class="vps-vs-shared-outcomes" aria-label="{{ if eq .Language.Lang "ko" }}공유 호스팅과 VPS 선택 결과{{ else }}VPS vs Shared Hosting decision outcomes{{ end }}">
+      <nav class="vps-vs-shared-outcomes" aria-label="{{ if eq .Language.Lang "ko" }}공유 호스팅과 VPS 선택 결과{{ else if eq site.Language.Lang "de" }}{{ T "hero_vps_vs_shared_hosting_decision_outcomes" }}{{ else }}VPS vs Shared Hosting decision outcomes{{ end }}">
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-stay" href="#stay-on-shared-hosting-when">
           <span>01</span>
-          <strong>{{ if eq .Language.Lang "ko" }}공유 호스팅 유지{{ else }}Stay on shared hosting{{ end }}</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}공유 호스팅 유지{{ else if eq site.Language.Lang "de" }}{{ T "hero_stay_on_shared_hosting" }}{{ else }}Stay on shared hosting{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-optimize" href="#optimize-first-when-the-site-is-the-bottleneck">
           <span>02</span>
-          <strong>{{ if eq .Language.Lang "ko" }}먼저 최적화{{ else }}Optimize first{{ end }}</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}먼저 최적화{{ else if eq site.Language.Lang "de" }}{{ T "hero_optimize_first" }}{{ else }}Optimize first{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-move" href="#move-to-vps-when">
           <span>03</span>
-          <strong>{{ if eq .Language.Lang "ko" }}VPS로 이전{{ else }}Move to VPS{{ end }}</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}VPS로 이전{{ else if eq site.Language.Lang "de" }}{{ T "hero_move_to_vps" }}{{ else }}Move to VPS{{ end }}</strong>
         </a>
         <a class="vps-vs-shared-outcome vps-vs-shared-outcome-help" href="#middle-paths-between-shared-hosting-and-raw-vps">
           <span>04</span>
-          <strong>{{ if eq .Language.Lang "ko" }}관리형·유료 관리자 지원과 함께 이전{{ else }}Move with managed / admin help{{ end }}</strong>
+          <strong>{{ if eq .Language.Lang "ko" }}관리형·유료 관리자 지원과 함께 이전{{ else if eq site.Language.Lang "de" }}{{ T "hero_move_with_managed_admin_help" }}{{ else }}Move with managed / admin help{{ end }}</strong>
         </a>
       </nav>
     </div>
@@ -220,7 +220,7 @@
       vps.href = "https://www.vdsina.com/?partner=ni8gzrvz75";
       vps.target = "_blank";
       vps.rel = "sponsored nofollow noopener";
-      vps.setAttribute("aria-label", "{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인{{ else }}Check current VPS configurations{{ end }}");
+      vps.setAttribute("aria-label", "{{ if eq .Language.Lang "ko" }}현재 VPS 사양 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_configurations" }}{{ else }}Check current VPS configurations{{ end }}");
       vpsNodes.forEach(function (item) { vps.appendChild(item); });
 
       grid.appendChild(shared);
@@ -240,22 +240,22 @@
       <div class="vps-wordpress-hero">
         <div class="vps-wordpress-hero-grid">
           <div class="vps-wordpress-hero-copy">
-            <div class="vps-wordpress-eyebrow">{{ if eq .Language.Lang "ko" }}워드프레스 VPS 가이드{{ else }}WordPress VPS guide{{ end }}</div>
+            <div class="vps-wordpress-eyebrow">{{ if eq .Language.Lang "ko" }}워드프레스 VPS 가이드{{ else if eq site.Language.Lang "de" }}{{ T "hero_wordpress_vps_guide" }}{{ else }}WordPress VPS guide{{ end }}</div>
             <h1>{{ .Title }}</h1>
             {{ with .Params.description }}
               <p>{{ . | markdownify }}</p>
             {{ end }}
 
-            <div class="vps-wordpress-hero-checks" role="group" aria-label="{{ if eq .Language.Lang "ko" }}RAM 외에 고려할 워드프레스 VPS 요소{{ else }}WordPress VPS factors beyond RAM{{ end }}">
-              <span class="vps-wordpress-hero-checks-title">{{ if eq .Language.Lang "ko" }}CPU와 RAM 외의 요소{{ else }}Beyond CPU and RAM{{ end }}</span>
+            <div class="vps-wordpress-hero-checks" role="group" aria-label="{{ if eq .Language.Lang "ko" }}RAM 외에 고려할 워드프레스 VPS 요소{{ else if eq site.Language.Lang "de" }}{{ T "hero_wordpress_vps_factors_beyond_ram" }}{{ else }}WordPress VPS factors beyond RAM{{ end }}">
+              <span class="vps-wordpress-hero-checks-title">{{ if eq .Language.Lang "ko" }}CPU와 RAM 외의 요소{{ else if eq site.Language.Lang "de" }}{{ T "hero_beyond_cpu_and_ram" }}{{ else }}Beyond CPU and RAM{{ end }}</span>
               <div class="vps-wordpress-hero-checks-grid">
                 <div class="vps-wordpress-hero-check">
-                  <strong>{{ if eq .Language.Lang "ko" }}SSD / NVMe 스토리지{{ else }}SSD / NVMe storage{{ end }}</strong>
-                  <span>{{ if eq .Language.Lang "ko" }}데이터베이스 쿼리, 캐시 초기화, 업데이트 및 백업 성능은 저장장치 지연 시간의 영향을 받습니다.{{ else }}Database queries, cache warmups, updates and backups are sensitive to storage latency.{{ end }}</span>
+                  <strong>{{ if eq .Language.Lang "ko" }}SSD / NVMe 스토리지{{ else if eq site.Language.Lang "de" }}{{ T "hero_ssd_nvme_storage" }}{{ else }}SSD / NVMe storage{{ end }}</strong>
+                  <span>{{ if eq .Language.Lang "ko" }}데이터베이스 쿼리, 캐시 초기화, 업데이트 및 백업 성능은 저장장치 지연 시간의 영향을 받습니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_database_queries_cache_warmups_updates_and_backups_are_sensitive_to_storage_latency" }}{{ else }}Database queries, cache warmups, updates and backups are sensitive to storage latency.{{ end }}</span>
                 </div>
                 <div class="vps-wordpress-hero-check">
-                  <strong>{{ if eq .Language.Lang "ko" }}서버 위치{{ else }}Server location{{ end }}</strong>
-                  <span>{{ if eq .Language.Lang "ko" }}주요 방문자와 가까운 지역을 선택하세요. RAM을 늘려도 네트워크 지연은 사라지지 않습니다.{{ else }}Choose a region near the main audience; extra RAM cannot remove network latency.{{ end }}</span>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 위치{{ else if eq site.Language.Lang "de" }}{{ T "hero_server_location" }}{{ else }}Server location{{ end }}</strong>
+                  <span>{{ if eq .Language.Lang "ko" }}주요 방문자와 가까운 지역을 선택하세요. RAM을 늘려도 네트워크 지연은 사라지지 않습니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_choose_a_region_near_the_main_audience_extra_ram_cannot_remove_network_latency" }}{{ else }}Choose a region near the main audience; extra RAM cannot remove network latency.{{ end }}</span>
                 </div>
               </div>
             </div>
@@ -266,7 +266,7 @@
                 href="{{ $wpAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else }}Check current WordPress VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_wordpress_vps_options" }}{{ else }}Check current WordPress VPS options{{ end }}
               </a>
             </div>
           </div>
@@ -276,19 +276,19 @@
             href="{{ $wpAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else }}Check current WordPress VPS options{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 워드프레스 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_wordpress_vps_options" }}{{ else }}Check current WordPress VPS options{{ end }}">
             <div class="vps-wordpress-stack-head">
               <span class="vps-wordpress-wpmark">WP</span>
               <div>
-                {{ if eq .Language.Lang "ko" }}<strong>워드프레스 작업 부하</strong>{{ else }}<strong>WordPress workload</strong>{{ end }}
-                <small>{{ if eq .Language.Lang "ko" }}방문자 수보다 동적 처리량을 기준으로 사양을 결정하세요.{{ else }}Size the dynamic work, not visitor count.{{ end }}</small>
+                {{ if eq .Language.Lang "ko" }}<strong>워드프레스 작업 부하</strong>{{ else if eq site.Language.Lang "de" }}{{ T "hero_wordpress_workload_html" | safeHTML }}{{ else }}<strong>WordPress workload</strong>{{ end }}
+                <small>{{ if eq .Language.Lang "ko" }}방문자 수보다 동적 처리량을 기준으로 사양을 결정하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_size_the_dynamic_work_not_visitor_count" }}{{ else }}Size the dynamic work, not visitor count.{{ end }}</small>
               </div>
             </div>
 
             <div class="vps-wordpress-stack-grid">
               <div class="vps-wordpress-stack-node">
                 <span>PHP</span>
-                {{ if eq .Language.Lang "ko" }}<strong>PHP-FPM 워커</strong>{{ else }}<strong>PHP-FPM workers</strong>{{ end }}
+                {{ if eq .Language.Lang "ko" }}<strong>PHP-FPM 워커</strong>{{ else if eq site.Language.Lang "de" }}{{ T "hero_php_fpm_workers_html" | safeHTML }}{{ else }}<strong>PHP-FPM workers</strong>{{ end }}
               </div>
               <div class="vps-wordpress-stack-node">
                 <span>DB</span>
@@ -300,19 +300,19 @@
               </div>
               <div class="vps-wordpress-stack-node">
                 <span>CA</span>
-                {{ if eq .Language.Lang "ko" }}<strong>페이지 / 객체 캐시</strong>{{ else }}<strong>Page / object cache</strong>{{ end }}
+                {{ if eq .Language.Lang "ko" }}<strong>페이지 / 객체 캐시</strong>{{ else if eq site.Language.Lang "de" }}{{ T "hero_page_object_cache_html" | safeHTML }}{{ else }}<strong>Page / object cache</strong>{{ end }}
               </div>
             </div>
 
             <div class="vps-wordpress-signal-row">
-              {{ if eq .Language.Lang "ko" }}<span>PHP 워커</span>{{ else }}<span>PHP workers</span>{{ end }}
-              {{ if eq .Language.Lang "ko" }}<span>DB 부하</span>{{ else }}<span>DB load</span>{{ end }}
-              {{ if eq .Language.Lang "ko" }}<span>플러그인</span>{{ else }}<span>Plugins</span>{{ end }}
-              {{ if eq .Language.Lang "ko" }}<span>Cron / 백그라운드 작업</span>{{ else }}<span>Cron / jobs</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>PHP 워커</span>{{ else if eq site.Language.Lang "de" }}{{ T "hero_php_workers_html" | safeHTML }}{{ else }}<span>PHP workers</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>DB 부하</span>{{ else if eq site.Language.Lang "de" }}{{ T "hero_db_load_html" | safeHTML }}{{ else }}<span>DB load</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>플러그인</span>{{ else if eq site.Language.Lang "de" }}{{ T "hero_plugins_html" | safeHTML }}{{ else }}<span>Plugins</span>{{ end }}
+              {{ if eq .Language.Lang "ko" }}<span>Cron / 백그라운드 작업</span>{{ else if eq site.Language.Lang "de" }}{{ T "hero_cron_jobs_html" | safeHTML }}{{ else }}<span>Cron / jobs</span>{{ end }}
             </div>
 
             <div class="vps-wordpress-stack-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}VPS 사양 = 실제 워드프레스 작업 부하 + 운영 여유 용량{{ else }}VPS size = real WordPress workload + operating headroom{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}VPS 사양 = 실제 워드프레스 작업 부하 + 운영 여유 용량{{ else if eq site.Language.Lang "de" }}{{ T "hero_vps_size_real_wordpress_workload_operating_headroom" }}{{ else }}VPS size = real WordPress workload + operating headroom{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -389,10 +389,10 @@
                 href="{{ $wcAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-woocommerce-secondary-cta" href="#quick-answer">
-                {{ if eq .Language.Lang "ko" }}VPS 사양 선택 가이드{{ else }}See sizing guidance{{ end }}
+                {{ if eq .Language.Lang "ko" }}VPS 사양 선택 가이드{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_sizing_guidance" }}{{ else }}See sizing guidance{{ end }}
               </a>
             </div>
           </div>
@@ -402,46 +402,46 @@
             href="{{ $wcAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}현재 우커머스 VPS 옵션 확인{{ else }}Check current VPS options for WooCommerce{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 우커머스 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_woocommerce" }}{{ else }}Check current VPS options for WooCommerce{{ end }}">
             <div class="vps-woocommerce-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}우커머스의 동적 처리 경로{{ else }}WooCommerce dynamic path{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}캐시되지 않는 쇼핑몰 처리량은 세 가지 작업이 좌우합니다.{{ else }}Three workloads dominate the uncached store path.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}우커머스의 동적 처리 경로{{ else if eq site.Language.Lang "de" }}{{ T "hero_woocommerce_dynamic_path" }}{{ else }}WooCommerce dynamic path{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}캐시되지 않는 쇼핑몰 처리량은 세 가지 작업이 좌우합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_three_workloads_dominate_the_uncached_store_path" }}{{ else }}Three workloads dominate the uncached store path.{{ end }}</small>
             </div>
 
             <div class="vps-woocommerce-compact-flow">
               <div class="vps-woocommerce-compact-step">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}결제{{ else }}Checkout{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}PHP 워커 + 세션 상태{{ else }}PHP workers + session state{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}결제{{ else if eq site.Language.Lang "de" }}{{ T "hero_checkout" }}{{ else }}Checkout{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}PHP 워커 + 세션 상태{{ else if eq site.Language.Lang "de" }}{{ T "hero_php_workers_session_state" }}{{ else }}PHP workers + session state{{ end }}</small>
                 </div>
               </div>
 
               <div class="vps-woocommerce-compact-step">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}주문·재고{{ else }}Orders & stock{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}데이터베이스 쓰기 + 재고 업데이트{{ else }}Database writes + inventory updates{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}주문·재고{{ else if eq site.Language.Lang "de" }}{{ T "hero_orders_stock" }}{{ else }}Orders & stock{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}데이터베이스 쓰기 + 재고 업데이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_database_writes_inventory_updates" }}{{ else }}Database writes + inventory updates{{ end }}</small>
                 </div>
               </div>
 
               <div class="vps-woocommerce-compact-step">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}비동기 작업{{ else }}Async work{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}웹훅 + Action Scheduler{{ else }}Webhooks + Action Scheduler{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}비동기 작업{{ else if eq site.Language.Lang "de" }}{{ T "hero_async_work" }}{{ else }}Async work{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}웹훅 + Action Scheduler{{ else if eq site.Language.Lang "de" }}{{ T "hero_webhooks_action_scheduler" }}{{ else }}Webhooks + Action Scheduler{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-woocommerce-compact-signals">
-              <span>{{ if eq .Language.Lang "ko" }}PHP 워커{{ else }}PHP workers{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}DB 쓰기{{ else }}DB writes{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}행사 피크{{ else }}Sale peaks{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}PHP 워커{{ else if eq site.Language.Lang "de" }}{{ T "hero_php_workers" }}{{ else }}PHP workers{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}DB 쓰기{{ else if eq site.Language.Lang "de" }}{{ T "hero_db_writes" }}{{ else }}DB writes{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}행사 피크{{ else if eq site.Language.Lang "de" }}{{ T "hero_sale_peaks" }}{{ else }}Sale peaks{{ end }}</span>
             </div>
 
             <div class="vps-woocommerce-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}월간 방문자 수가 아니라 피크 시간대의 동시 동적 요청에 맞춰 VPS를 선택하세요.{{ else }}Size the VPS for peak dynamic concurrency, not monthly visits.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}월간 방문자 수가 아니라 피크 시간대의 동시 동적 요청에 맞춰 VPS를 선택하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_size_the_vps_for_peak_dynamic_concurrency_not_monthly_visits" }}{{ else }}Size the VPS for peak dynamic concurrency, not monthly visits.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -506,10 +506,10 @@
                 href="{{ $multiAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-multiweb-secondary-cta" href="#multi-site-vps-architecture-checker">
-                {{ if eq .Language.Lang "ko" }}VPS 구성 진단{{ else }}Check architecture{{ end }}
+                {{ if eq .Language.Lang "ko" }}VPS 구성 진단{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_architecture" }}{{ else }}Check architecture{{ end }}
               </a>
             </div>
           </div>
@@ -519,41 +519,41 @@
             href="{{ $multiAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}현재 여러 웹사이트용 VPS 옵션 확인{{ else }}Check current VPS options for multiple websites{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}현재 여러 웹사이트용 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_multiple_websites" }}{{ else }}Check current VPS options for multiple websites{{ end }}">
             <div class="vps-multiweb-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}VPS 한 대에서 여러 웹사이트{{ else }}Multiple websites on one VPS{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}자원과 장애 위험을 함께 감당할 수 있을 때만 사이트를 통합하세요.{{ else }}Consolidate only while the shared resource pool and failure domain still make sense.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}VPS 한 대에서 여러 웹사이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_multiple_websites_on_one_vps" }}{{ else }}Multiple websites on one VPS{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}자원과 장애 위험을 함께 감당할 수 있을 때만 사이트를 통합하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_consolidate_only_while_the_shared_resource_pool_and_failure_domain_still_make_sense" }}{{ else }}Consolidate only while the shared resource pool and failure domain still make sense.{{ end }}</small>
             </div>
 
-            <div class="vps-multiweb-compact-sites" role="group" aria-label="{{ if eq .Language.Lang "ko" }}같은 VPS를 공유하는 웹사이트{{ else }}Websites sharing the server{{ end }}">
-              <span>{{ if eq .Language.Lang "ko" }}사이트 A{{ else }}Site A{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}사이트 B{{ else }}Site B{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}사이트 C{{ else }}Site C{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}사이트 D{{ else }}Site D{{ end }}</span>
+            <div class="vps-multiweb-compact-sites" role="group" aria-label="{{ if eq .Language.Lang "ko" }}같은 VPS를 공유하는 웹사이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_websites_sharing_the_server" }}{{ else }}Websites sharing the server{{ end }}">
+              <span>{{ if eq .Language.Lang "ko" }}사이트 A{{ else if eq site.Language.Lang "de" }}{{ T "hero_site_a" }}{{ else }}Site A{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 B{{ else if eq site.Language.Lang "de" }}{{ T "hero_site_b" }}{{ else }}Site B{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 C{{ else if eq site.Language.Lang "de" }}{{ T "hero_site_c" }}{{ else }}Site C{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}사이트 D{{ else if eq site.Language.Lang "de" }}{{ T "hero_site_d" }}{{ else }}Site D{{ end }}</span>
             </div>
 
             <div class="vps-multiweb-compact-link" aria-hidden="true">
               <i></i>
-              <span>{{ if eq .Language.Lang "ko" }}서버 한 대 공유{{ else }}share one server{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}서버 한 대 공유{{ else if eq site.Language.Lang "de" }}{{ T "hero_share_one_server" }}{{ else }}share one server{{ end }}</span>
               <i></i>
             </div>
 
             <div class="vps-multiweb-compact-server">
               <div class="vps-multiweb-compact-server-title">
                 <span>VPS</span>
-                <strong>{{ if eq .Language.Lang "ko" }}공유 자원{{ else }}Shared resource pool{{ end }}</strong>
+                <strong>{{ if eq .Language.Lang "ko" }}공유 자원{{ else if eq site.Language.Lang "de" }}{{ T "hero_shared_resource_pool" }}{{ else }}Shared resource pool{{ end }}</strong>
               </div>
               <div class="vps-multiweb-compact-resources">
                 <span>CPU</span>
                 <span>RAM</span>
-                <span>{{ if eq .Language.Lang "ko" }}저장공간{{ else }}Storage{{ end }}</span>
-                <span>{{ if eq .Language.Lang "ko" }}DB / 작업{{ else }}DB / jobs{{ end }}</span>
+                <span>{{ if eq .Language.Lang "ko" }}저장공간{{ else if eq site.Language.Lang "de" }}{{ T "hero_storage" }}{{ else }}Storage{{ end }}</span>
+                <span>{{ if eq .Language.Lang "ko" }}DB / 작업{{ else if eq site.Language.Lang "de" }}{{ T "hero_db_jobs" }}{{ else }}DB / jobs{{ end }}</span>
               </div>
             </div>
 
             <div class="vps-multiweb-compact-risk">
-              <span>{{ if eq .Language.Lang "ko" }}합산 피크 부하{{ else }}Combined peak load{{ end }}</span>
-              <span>{{ if eq .Language.Lang "ko" }}공통 장애 영향 범위{{ else }}Shared failure domain{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}합산 피크 부하{{ else if eq site.Language.Lang "de" }}{{ T "hero_combined_peak_load" }}{{ else }}Combined peak load{{ end }}</span>
+              <span>{{ if eq .Language.Lang "ko" }}공통 장애 영향 범위{{ else if eq site.Language.Lang "de" }}{{ T "hero_shared_failure_domain" }}{{ else }}Shared failure domain{{ end }}</span>
             </div>
           </a>
         </div>
@@ -580,10 +580,10 @@
                 href="{{ $securityAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-security-secondary-cta" href="#security-baseline-in-order">
-                {{ if eq .Language.Lang "ko" }}기본 보안 점검{{ else }}Security baseline{{ end }}
+                {{ if eq .Language.Lang "ko" }}기본 보안 점검{{ else if eq site.Language.Lang "de" }}{{ T "hero_security_baseline" }}{{ else }}Security baseline{{ end }}
               </a>
             </div>
           </div>
@@ -593,45 +593,45 @@
             href="{{ $securityAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}보안을 강화할 서버용 VPS 옵션 확인{{ else }}Check current VPS options for a hardened server{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}보안을 강화할 서버용 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_a_hardened_server" }}{{ else }}Check current VPS options for a hardened server{{ end }}">
             <div class="vps-security-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}올바른 순서로 보안 강화{{ else }}Harden in the right order{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}복구 경로를 먼저 확보하고 외부 노출을 줄인 뒤 서버를 지속적으로 관리하세요.{{ else }}Preserve recovery first, then reduce exposure and maintain the server.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}올바른 순서로 보안 강화{{ else if eq site.Language.Lang "de" }}{{ T "hero_harden_in_the_right_order" }}{{ else }}Harden in the right order{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}복구 경로를 먼저 확보하고 외부 노출을 줄인 뒤 서버를 지속적으로 관리하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_preserve_recovery_first_then_reduce_exposure_and_maintain_the_server" }}{{ else }}Preserve recovery first, then reduce exposure and maintain the server.{{ end }}</small>
             </div>
 
             <div class="vps-security-compact-grid">
               <div class="vps-security-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}복구 경로{{ else }}Recovery path{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}콘솔 / 복구 접속{{ else }}Console / rescue access{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}복구 경로{{ else if eq site.Language.Lang "de" }}{{ T "hero_recovery_path" }}{{ else }}Recovery path{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}콘솔 / 복구 접속{{ else if eq site.Language.Lang "de" }}{{ T "hero_console_rescue_access" }}{{ else }}Console / rescue access{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}관리자 접속{{ else }}Admin access{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}개별 사용자 + SSH 키{{ else }}Named user + SSH key{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}관리자 접속{{ else if eq site.Language.Lang "de" }}{{ T "hero_admin_access" }}{{ else }}Admin access{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}개별 사용자 + SSH 키{{ else if eq site.Language.Lang "de" }}{{ T "hero_named_user_ssh_key" }}{{ else }}Named user + SSH key{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}공개 노출{{ else }}Exposure{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}포트 + 방화벽{{ else }}Ports + firewall{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}공개 노출{{ else if eq site.Language.Lang "de" }}{{ T "hero_exposure" }}{{ else }}Exposure{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}포트 + 방화벽{{ else if eq site.Language.Lang "de" }}{{ T "hero_ports_firewall" }}{{ else }}Ports + firewall{{ end }}</small>
                 </div>
               </div>
               <div class="vps-security-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}유지관리{{ else }}Maintenance{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}패치 + 백업 + 알림{{ else }}Patches + backups + alerts{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}유지관리{{ else if eq site.Language.Lang "de" }}{{ T "hero_maintenance" }}{{ else }}Maintenance{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}패치 + 백업 + 알림{{ else if eq site.Language.Lang "de" }}{{ T "hero_patches_backups_alerts" }}{{ else }}Patches + backups + alerts{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-security-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}두 번째 관리자 접속 경로를 테스트하기 전에는 원격 접속을 제한하지 마세요.{{ else }}Do not tighten remote access until a second tested admin path works.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}두 번째 관리자 접속 경로를 테스트하기 전에는 원격 접속을 제한하지 마세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_do_not_tighten_remote_access_until_a_second_tested_admin_path_works" }}{{ else }}Do not tighten remote access until a second tested admin path works.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -720,11 +720,11 @@
         "vps-security-access-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}접속 설정 순서{{ else }}Access sequence{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}접속 설정 순서{{ else if eq site.Language.Lang "de" }}{{ T "hero_access_sequence" }}{{ else }}Access sequence{{ end }}</div>' +
         '<div class="vps-security-visual-steps">' +
-          '<span>{{ if eq .Language.Lang "ko" }}콘솔{{ else }}Console{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}전용 관리자{{ else }}Named admin{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}SSH 키{{ else }}SSH key{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}기존 접속 제한{{ else }}Restrict old access{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}콘솔{{ else if eq site.Language.Lang "de" }}{{ T "hero_console" }}{{ else }}Console{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}전용 관리자{{ else if eq site.Language.Lang "de" }}{{ T "hero_named_admin" }}{{ else }}Named admin{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}SSH 키{{ else if eq site.Language.Lang "de" }}{{ T "hero_ssh_key" }}{{ else }}SSH key{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}기존 접속 제한{{ else if eq site.Language.Lang "de" }}{{ T "hero_restrict_old_access" }}{{ else }}Restrict old access{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}새 경로를 테스트하는 동안 기존 세션 하나를 유지하세요.{{ else }}Keep one working session open while testing the replacement path.{{ end }}</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}새 경로를 테스트하는 동안 기존 세션 하나를 유지하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_keep_one_working_session_open_while_testing_the_replacement_path" }}{{ else }}Keep one working session open while testing the replacement path.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -733,13 +733,13 @@
         "vps-security-network-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}네트워크 노출{{ else }}Network exposure{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}네트워크 노출{{ else if eq site.Language.Lang "de" }}{{ T "hero_network_exposure" }}{{ else }}Network exposure{{ end }}</div>' +
         '<div class="vps-security-network-grid">' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}공개{{ else }}Public{{ end }}</strong><span>HTTP / HTTPS</span></div>' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}접근 제한{{ else }}Controlled{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}SSH / 관리자{{ else }}SSH / admin{{ end }}</span></div>' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}비공개{{ else }}Private{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}DB / Redis / 앱 포트{{ else }}DB / Redis / app ports{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}공개{{ else if eq site.Language.Lang "de" }}{{ T "hero_public" }}{{ else }}Public{{ end }}</strong><span>HTTP / HTTPS</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}접근 제한{{ else if eq site.Language.Lang "de" }}{{ T "hero_controlled" }}{{ else }}Controlled{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}SSH / 관리자{{ else if eq site.Language.Lang "de" }}{{ T "hero_ssh_admin" }}{{ else }}SSH / admin{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}비공개{{ else if eq site.Language.Lang "de" }}{{ T "hero_private" }}{{ else }}Private{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}DB / Redis / 앱 포트{{ else if eq site.Language.Lang "de" }}{{ T "hero_db_redis_app_ports" }}{{ else }}DB / Redis / app ports{{ end }}</span></div>' +
         '</div>' +
-        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}실제 서비스에 필요한 포트만 공개하세요.{{ else }}Expose only what the architecture actually needs.{{ end }}</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}실제 서비스에 필요한 포트만 공개하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_expose_only_what_the_architecture_actually_needs" }}{{ else }}Expose only what the architecture actually needs.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -748,11 +748,11 @@
         "vps-security-maintenance-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}유지관리 주기{{ else }}Maintenance loop{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}유지관리 주기{{ else if eq site.Language.Lang "de" }}{{ T "hero_maintenance_loop" }}{{ else }}Maintenance loop{{ end }}</div>' +
         '<div class="vps-security-maintenance-grid">' +
-          '<span>{{ if eq .Language.Lang "ko" }}보안 패치{{ else }}Patches{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}최소 권한{{ else }}Least privilege{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}비밀 정보{{ else }}Secrets{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}요청 속도 제한{{ else }}Rate limits{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}보안 패치{{ else if eq site.Language.Lang "de" }}{{ T "hero_patches" }}{{ else }}Patches{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}최소 권한{{ else if eq site.Language.Lang "de" }}{{ T "hero_least_privilege" }}{{ else }}Least privilege{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}비밀 정보{{ else if eq site.Language.Lang "de" }}{{ T "hero_secrets" }}{{ else }}Secrets{{ end }}</span><span>{{ if eq .Language.Lang "ko" }}요청 속도 제한{{ else if eq site.Language.Lang "de" }}{{ T "hero_rate_limits" }}{{ else }}Rate limits{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}담당자, 업데이트 또는 자격 증명을 관리하지 않으면 보안 수준이 떨어집니다.{{ else }}Security degrades when ownership, updates or credentials are left unmanaged.{{ end }}</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}담당자, 업데이트 또는 자격 증명을 관리하지 않으면 보안 수준이 떨어집니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_security_degrades_when_ownership_updates_or_credentials_are_left_unmanaged" }}{{ else }}Security degrades when ownership, updates or credentials are left unmanaged.{{ end }}</div>'
       );
 
       wrapSecurityFeature(
@@ -761,12 +761,12 @@
         "vps-security-application-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}애플리케이션 계층{{ else }}Application layer{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}애플리케이션 계층{{ else if eq site.Language.Lang "de" }}{{ T "hero_application_layer" }}{{ else }}Application layer{{ end }}</div>' +
         '<div class="vps-security-layer-stack">' +
-          '<span>{{ if eq .Language.Lang "ko" }}패널 / 관리자 화면{{ else }}Panel / admin UI{{ end }}</span>' +
-          '<span>{{ if eq .Language.Lang "ko" }}CMS / 플러그인 / 런타임{{ else }}CMS / plugins / runtime{{ end }}</span>' +
-          '<span>{{ if eq .Language.Lang "ko" }}HTTPS 전송 보호{{ else }}HTTPS transport{{ end }}</span>' +
-          '<span>{{ if eq .Language.Lang "ko" }}DDoS 보호 ≠ 애플리케이션 보안{{ else }}DDoS ≠ application security{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}패널 / 관리자 화면{{ else if eq site.Language.Lang "de" }}{{ T "hero_panel_admin_ui" }}{{ else }}Panel / admin UI{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}CMS / 플러그인 / 런타임{{ else if eq site.Language.Lang "de" }}{{ T "hero_cms_plugins_runtime" }}{{ else }}CMS / plugins / runtime{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}HTTPS 전송 보호{{ else if eq site.Language.Lang "de" }}{{ T "hero_https_transport" }}{{ else }}HTTPS transport{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}DDoS 보호 ≠ 애플리케이션 보안{{ else if eq site.Language.Lang "de" }}{{ T "hero_ddos_application_security" }}{{ else }}DDoS ≠ application security{{ end }}</span>' +
         '</div>'
       );
 
@@ -776,11 +776,11 @@
         "vps-security-recovery-section",
         false,
         false,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}복구 조치{{ else }}Recovery controls{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}복구 조치{{ else if eq site.Language.Lang "de" }}{{ T "hero_recovery_controls" }}{{ else }}Recovery controls{{ end }}</div>' +
         '<div class="vps-security-recovery-grid">' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}백업 사본{{ else }}Backup copy{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}운영 중인 VPS 외부에 보관{{ else }}Outside the running VPS{{ end }}</span></div>' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}복원 테스트{{ else }}Restore test{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}실제 복구 가능 확인{{ else }}Prove recovery works{{ end }}</span></div>' +
-          '<div><strong>{{ if eq .Language.Lang "ko" }}로그 및 알림{{ else }}Logs & alerts{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}조치 실패 탐지{{ else }}Detect failed controls{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}백업 사본{{ else if eq site.Language.Lang "de" }}{{ T "hero_backup_copy" }}{{ else }}Backup copy{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}운영 중인 VPS 외부에 보관{{ else if eq site.Language.Lang "de" }}{{ T "hero_outside_the_running_vps" }}{{ else }}Outside the running VPS{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}복원 테스트{{ else if eq site.Language.Lang "de" }}{{ T "hero_restore_test" }}{{ else }}Restore test{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}실제 복구 가능 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_prove_recovery_works" }}{{ else }}Prove recovery works{{ end }}</span></div>' +
+          '<div><strong>{{ if eq .Language.Lang "ko" }}로그 및 알림{{ else if eq site.Language.Lang "de" }}{{ T "hero_logs_alerts" }}{{ else }}Logs & alerts{{ end }}</strong><span>{{ if eq .Language.Lang "ko" }}조치 실패 탐지{{ else if eq site.Language.Lang "de" }}{{ T "hero_detect_failed_controls" }}{{ else }}Detect failed controls{{ end }}</span></div>' +
         '</div>'
       );
 
@@ -790,11 +790,11 @@
         "vps-security-incident-section",
         true,
         true,
-        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}사고 대응 순서{{ else }}Incident path{{ end }}</div>' +
+        '<div class="vps-security-visual-kicker">{{ if eq .Language.Lang "ko" }}사고 대응 순서{{ else if eq site.Language.Lang "de" }}{{ T "hero_incident_path" }}{{ else }}Incident path{{ end }}</div>' +
         '<div class="vps-security-incident-flow">' +
-          '<span>{{ if eq .Language.Lang "ko" }}피해 확산 차단{{ else }}Contain{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}비밀 정보 교체{{ else }}Rotate secrets{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}재구축{{ else }}Rebuild{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}복원{{ else }}Restore{{ end }}</span>' +
+          '<span>{{ if eq .Language.Lang "ko" }}피해 확산 차단{{ else if eq site.Language.Lang "de" }}{{ T "hero_contain" }}{{ else }}Contain{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}비밀 정보 교체{{ else if eq site.Language.Lang "de" }}{{ T "hero_rotate_secrets" }}{{ else }}Rotate secrets{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}재구축{{ else if eq site.Language.Lang "de" }}{{ T "hero_rebuild" }}{{ else }}Rebuild{{ end }}</span><i>→</i><span>{{ if eq .Language.Lang "ko" }}복원{{ else if eq site.Language.Lang "de" }}{{ T "hero_restore" }}{{ else }}Restore{{ end }}</span>' +
         '</div>' +
-        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}관리자 권한 침해 후에는 검증된 정상 소스에서 복구하세요.{{ else }}Recover from known-good sources after privileged compromise.{{ end }}</div>'
+        '<div class="vps-security-visual-note">{{ if eq .Language.Lang "ko" }}관리자 권한 침해 후에는 검증된 정상 소스에서 복구하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_recover_from_known_good_sources_after_privileged_compromise" }}{{ else }}Recover from known-good sources after privileged compromise.{{ end }}</div>'
       );
 
       wrapSecuritySection(
@@ -823,10 +823,10 @@
                 href="{{ $backupAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-backup-secondary-cta" href="#quick-answer">
-                {{ if eq .Language.Lang "ko" }}백업 전략{{ else }}Backup strategy{{ end }}
+                {{ if eq .Language.Lang "ko" }}백업 전략{{ else if eq site.Language.Lang "de" }}{{ T "hero_backup_strategy" }}{{ else }}Backup strategy{{ end }}
               </a>
             </div>
           </div>
@@ -836,45 +836,45 @@
             href="{{ $backupAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}백업 준비가 된 서버를 위한 VPS 옵션 확인{{ else }}Check current VPS options for a backup-ready server{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}백업 준비가 된 서버를 위한 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_a_backup_ready_server" }}{{ else }}Check current VPS options for a backup-ready server{{ end }}">
             <div class="vps-backup-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}복구에는 여러 계층의 백업이 필요합니다{{ else }}Recovery needs more than one backup{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}빠른 롤백, 독립적인 사본과 검증된 복원은 서로 다른 장애에 대비합니다.{{ else }}Fast rollback, independent copies and tested restores solve different failure modes.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}복구에는 여러 계층의 백업이 필요합니다{{ else if eq site.Language.Lang "de" }}{{ T "hero_recovery_needs_more_than_one_backup" }}{{ else }}Recovery needs more than one backup{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}빠른 롤백, 독립적인 사본과 검증된 복원은 서로 다른 장애에 대비합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_fast_rollback_independent_copies_and_tested_restores_solve_different_failure_modes" }}{{ else }}Fast rollback, independent copies and tested restores solve different failure modes.{{ end }}</small>
             </div>
 
             <div class="vps-backup-compact-grid">
               <div class="vps-backup-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}제공업체 이미지{{ else }}Provider image{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}빠른 서버 롤백{{ else }}Fast server rollback{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}제공업체 이미지{{ else if eq site.Language.Lang "de" }}{{ T "hero_provider_image" }}{{ else }}Provider image{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}빠른 서버 롤백{{ else if eq site.Language.Lang "de" }}{{ T "hero_fast_server_rollback" }}{{ else }}Fast server rollback{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}데이터베이스 백업{{ else }}Database backup{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}애플리케이션 상태{{ else }}Application state{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}데이터베이스 백업{{ else if eq site.Language.Lang "de" }}{{ T "hero_database_backup" }}{{ else }}Database backup{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}애플리케이션 상태{{ else if eq site.Language.Lang "de" }}{{ T "hero_application_state" }}{{ else }}Application state{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}외부 사본{{ else }}Offsite copy{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}독립된 장애 영역{{ else }}Separate failure domain{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}외부 사본{{ else if eq site.Language.Lang "de" }}{{ T "hero_offsite_copy" }}{{ else }}Offsite copy{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}독립된 장애 영역{{ else if eq site.Language.Lang "de" }}{{ T "hero_separate_failure_domain" }}{{ else }}Separate failure domain{{ end }}</small>
                 </div>
               </div>
               <div class="vps-backup-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}복원 훈련{{ else }}Restore drill{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}실제 RTO 검증{{ else }}Prove RTO in practice{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}복원 훈련{{ else if eq site.Language.Lang "de" }}{{ T "hero_restore_drill" }}{{ else }}Restore drill{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}실제 RTO 검증{{ else if eq site.Language.Lang "de" }}{{ T "hero_prove_rto_in_practice" }}{{ else }}Prove RTO in practice{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-backup-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}RPO는 허용 가능한 데이터 손실량을, RTO는 허용 가능한 서비스 중단 시간을 정의합니다.{{ else }}RPO defines acceptable data loss. RTO defines acceptable downtime.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}RPO는 허용 가능한 데이터 손실량을, RTO는 허용 가능한 서비스 중단 시간을 정의합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_rpo_defines_acceptable_data_loss_rto_defines_acceptable_downtime" }}{{ else }}RPO defines acceptable data loss. RTO defines acceptable downtime.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -901,10 +901,10 @@
                 href="{{ $monitorAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-monitor-secondary-cta" href="#quick-answer">
-                {{ if eq .Language.Lang "ko" }}모니터링 기본 구성{{ else }}Monitoring baseline{{ end }}
+                {{ if eq .Language.Lang "ko" }}모니터링 기본 구성{{ else if eq site.Language.Lang "de" }}{{ T "hero_monitoring_baseline" }}{{ else }}Monitoring baseline{{ end }}
               </a>
             </div>
           </div>
@@ -914,45 +914,45 @@
             href="{{ $monitorAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}모니터링하는 서버의 현재 VPS 옵션 확인{{ else }}Check current VPS options for a monitored server{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}모니터링하는 서버의 현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_a_monitored_server" }}{{ else }}Check current VPS options for a monitored server{{ end }}">
             <div class="vps-monitor-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}서버 자체뿐 아니라 장애 경로를 감시하세요{{ else }}Monitor the failure path, not only the server{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}가용성, 서버 부하, 애플리케이션 상태와 알림은 서로 다른 문제를 확인합니다.{{ else }}Availability, host pressure, application health and alerts answer different questions.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}서버 자체뿐 아니라 장애 경로를 감시하세요{{ else if eq site.Language.Lang "de" }}{{ T "hero_monitor_the_failure_path_not_only_the_server" }}{{ else }}Monitor the failure path, not only the server{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}가용성, 서버 부하, 애플리케이션 상태와 알림은 서로 다른 문제를 확인합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_availability_host_pressure_application_health_and_alerts_answer_different_questions" }}{{ else }}Availability, host pressure, application health and alerts answer different questions.{{ end }}</small>
             </div>
 
             <div class="vps-monitor-compact-grid">
               <div class="vps-monitor-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}외부 가용성{{ else }}External uptime{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}사용자가 사이트에 접속할 수 있나요?{{ else }}Can users reach the site?{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}외부 가용성{{ else if eq site.Language.Lang "de" }}{{ T "hero_external_uptime" }}{{ else }}External uptime{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}사용자가 사이트에 접속할 수 있나요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_can_users_reach_the_site" }}{{ else }}Can users reach the site?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}서버 지표{{ else }}Host metrics{{ end }}</strong>
-                  <small>CPU, RAM, disk, network</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}서버 지표{{ else if eq site.Language.Lang "de" }}{{ T "hero_host_metrics" }}{{ else }}Host metrics{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "de" }}CPU, RAM, Speicher, Netzwerk{{ else }}CPU, RAM, disk, network{{ end }}</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}서비스 상태{{ else }}Service health{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}웹, DB, 작업, TLS{{ else }}Web, DB, jobs, TLS{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}서비스 상태{{ else if eq site.Language.Lang "de" }}{{ T "hero_service_health" }}{{ else }}Service health{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}웹, DB, 작업, TLS{{ else if eq site.Language.Lang "de" }}{{ T "hero_web_db_jobs_tls" }}{{ else }}Web, DB, jobs, TLS{{ end }}</small>
                 </div>
               </div>
               <div class="vps-monitor-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}알림 및 담당자{{ else }}Alerts & owner{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}감지, 통보, 대응{{ else }}Detect, notify, respond{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}알림 및 담당자{{ else if eq site.Language.Lang "de" }}{{ T "hero_alerts_owner" }}{{ else }}Alerts & owner{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}감지, 통보, 대응{{ else if eq site.Language.Lang "de" }}{{ T "hero_detect_notify_respond" }}{{ else }}Detect, notify, respond{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-monitor-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}감시 대상 VPS에 장애가 생겨도 감시 도구와 알림 경로는 작동해야 합니다.{{ else }}The monitor and notification path must survive failure of the VPS being watched.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}감시 대상 VPS에 장애가 생겨도 감시 도구와 알림 경로는 작동해야 합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_the_monitor_and_notification_path_must_survive_failure_of_the_vps_being_watched" }}{{ else }}The monitor and notification path must survive failure of the VPS being watched.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1057,10 +1057,10 @@
                 href="{{ $migrationAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}VPS 사양 확인하기{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}VPS 사양 확인하기{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-migrate-secondary-cta" href="#quick-migration-plan">
-                {{ if eq site.Language.Lang "ko" }}이전 계획 보기{{ else }}See migration plan{{ end }}
+                {{ if eq site.Language.Lang "ko" }}이전 계획 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_migration_plan" }}{{ else }}See migration plan{{ end }}
               </a>
             </div>
           </div>
@@ -1070,45 +1070,45 @@
             href="{{ $migrationAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 이전용 VPS 사양 확인하기{{ else }}Check current VPS options for website migration{{ end }}">
+            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 이전용 VPS 사양 확인하기{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_website_migration" }}{{ else }}Check current VPS options for website migration{{ end }}">
             <div class="vps-migrate-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}트래픽을 옮기기 전에 웹사이트를 먼저 이전하세요{{ else }}Move the website before you move the traffic{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}새 서버를 먼저 구축하고 검증하세요. DNS 전환은 마지막에 통제된 방식으로 진행해야 합니다.{{ else }}Build and validate the destination first. DNS should be the final controlled step.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}트래픽을 옮기기 전에 웹사이트를 먼저 이전하세요{{ else if eq site.Language.Lang "de" }}{{ T "hero_move_the_website_before_you_move_the_traffic" }}{{ else }}Move the website before you move the traffic{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}새 서버를 먼저 구축하고 검증하세요. DNS 전환은 마지막에 통제된 방식으로 진행해야 합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_build_and_validate_the_destination_first_dns_should_be_the_final_controlled_step" }}{{ else }}Build and validate the destination first. DNS should be the final controlled step.{{ end }}</small>
             </div>
 
             <div class="vps-migrate-compact-grid">
               <div class="vps-migrate-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}현황 파악{{ else }}Inventory{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}기술 환경·데이터·DNS·메일{{ else }}Stack, data, DNS, mail{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}현황 파악{{ else if eq site.Language.Lang "de" }}{{ T "hero_inventory" }}{{ else }}Inventory{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}기술 환경·데이터·DNS·메일{{ else if eq site.Language.Lang "de" }}{{ T "hero_stack_data_dns_mail" }}{{ else }}Stack, data, DNS, mail{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}구축·테스트{{ else }}Build & test{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}새 VPS를 병렬로 준비{{ else }}Prepare VPS in parallel{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}구축·테스트{{ else if eq site.Language.Lang "de" }}{{ T "hero_build_test" }}{{ else }}Build & test{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}새 VPS를 병렬로 준비{{ else if eq site.Language.Lang "de" }}{{ T "hero_prepare_vps_in_parallel" }}{{ else }}Prepare VPS in parallel{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}최종 동기화{{ else }}Final sync{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}마지막 데이터 쓰기 관리{{ else }}Control last writes{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}최종 동기화{{ else if eq site.Language.Lang "de" }}{{ T "hero_final_sync" }}{{ else }}Final sync{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}마지막 데이터 쓰기 관리{{ else if eq site.Language.Lang "de" }}{{ T "hero_control_last_writes" }}{{ else }}Control last writes{{ end }}</small>
                 </div>
               </div>
               <div class="vps-migrate-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}DNS 전환{{ else }}DNS cutover{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}모니터링·롤백 경로 유지{{ else }}Monitor + keep rollback{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}DNS 전환{{ else if eq site.Language.Lang "de" }}{{ T "hero_dns_cutover" }}{{ else }}DNS cutover{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}모니터링·롤백 경로 유지{{ else if eq site.Language.Lang "de" }}{{ T "hero_monitor_keep_rollback" }}{{ else }}Monitor + keep rollback{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-migrate-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS가 검수 기준을 통과하기 전에는 기존 호스팅을 종료하지 마세요.{{ else }}Do not retire the old host until the new VPS passes acceptance checks.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS가 검수 기준을 통과하기 전에는 기존 호스팅을 종료하지 마세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_do_not_retire_the_old_host_until_the_new_vps_passes_acceptance_checks" }}{{ else }}Do not retire the old host until the new VPS passes acceptance checks.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1135,10 +1135,10 @@
                 href="{{ $managedAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-managed-secondary-cta" href="#quick-answer">
-                {{ if eq site.Language.Lang "ko" }}관리 방식 비교{{ else }}Compare management{{ end }}
+                {{ if eq site.Language.Lang "ko" }}관리 방식 비교{{ else if eq site.Language.Lang "de" }}{{ T "hero_compare_management" }}{{ else }}Compare management{{ end }}
               </a>
             </div>
           </div>
@@ -1148,45 +1148,45 @@
             href="{{ $managedAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq site.Language.Lang "ko" }}관리형 및 비관리형 VPS의 현재 구성 확인{{ else }}Check current VPS options for managed or unmanaged hosting{{ end }}">
+            aria-label="{{ if eq site.Language.Lang "ko" }}관리형 및 비관리형 VPS의 현재 구성 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_managed_or_unmanaged_hosting" }}{{ else }}Check current VPS options for managed or unmanaged hosting{{ end }}">
             <div class="vps-managed-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}실제 차이는 서버 운영 책임에 있습니다{{ else }}The real difference is operational ownership{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간은 같을 수 있습니다. 서버 개설 후 누가 관리하는지가 다릅니다.{{ else }}CPU, RAM and storage can be identical. Responsibility after provisioning is what changes.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}실제 차이는 서버 운영 책임에 있습니다{{ else if eq site.Language.Lang "de" }}{{ T "hero_the_real_difference_is_operational_ownership" }}{{ else }}The real difference is operational ownership{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간은 같을 수 있습니다. 서버 개설 후 누가 관리하는지가 다릅니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_cpu_ram_and_storage_can_be_identical_responsibility_after_provisioning_is_what_changes" }}{{ else }}CPU, RAM and storage can be identical. Responsibility after provisioning is what changes.{{ end }}</small>
             </div>
 
             <div class="vps-managed-compact-grid">
               <div class="vps-managed-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}패치{{ else }}Patching{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}OS·보안 업데이트 담당자는 누구인가요?{{ else }}Who owns OS + security updates?{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}패치{{ else if eq site.Language.Lang "de" }}{{ T "hero_patching" }}{{ else }}Patching{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}OS·보안 업데이트 담당자는 누구인가요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_who_owns_os_security_updates" }}{{ else }}Who owns OS + security updates?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}백업{{ else }}Backups{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}복구 가능 여부는 누가 검증하나요?{{ else }}Who verifies restore readiness?{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}백업{{ else if eq site.Language.Lang "de" }}{{ T "hero_backups" }}{{ else }}Backups{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}복구 가능 여부는 누가 검증하나요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_who_verifies_restore_readiness" }}{{ else }}Who verifies restore readiness?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}모니터링{{ else }}Monitoring{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}알림을 확인하고 조치하는 사람은 누구인가요?{{ else }}Who sees and acts on alerts?{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}모니터링{{ else if eq site.Language.Lang "de" }}{{ T "hero_monitoring" }}{{ else }}Monitoring{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}알림을 확인하고 조치하는 사람은 누구인가요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_who_sees_and_acts_on_alerts" }}{{ else }}Who sees and acts on alerts?{{ end }}</small>
                 </div>
               </div>
               <div class="vps-managed-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}장애 대응{{ else }}Incidents{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}운영 중인 사이트에 장애가 나면 누가 대응하나요?{{ else }}Who responds when production fails?{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}장애 대응{{ else if eq site.Language.Lang "de" }}{{ T "hero_incidents" }}{{ else }}Incidents{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}운영 중인 사이트에 장애가 나면 누가 대응하나요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_who_responds_when_production_fails" }}{{ else }}Who responds when production fails?{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-managed-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}‘관리형’이라는 명칭이 아니라 담당 업무를 명시한 서비스 범위를 확인하세요.{{ else }}Do not buy the word “managed” — buy a written scope of owned tasks.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}‘관리형’이라는 명칭이 아니라 담당 업무를 명시한 서비스 범위를 확인하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_do_not_buy_the_word_managed_buy_a_written_scope_of_owned_tasks" }}{{ else }}Do not buy the word “managed” — buy a written scope of owned tasks.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1213,10 +1213,10 @@
                 href="{{ $fastpanelAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-fastpanel-secondary-cta" href="#quick-answer">
-                {{ if eq site.Language.Lang "ko" }}FASTPANEL 사양 보기{{ else }}See FASTPANEL sizing{{ end }}
+                {{ if eq site.Language.Lang "ko" }}FASTPANEL 사양 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_fastpanel_sizing" }}{{ else }}See FASTPANEL sizing{{ end }}
               </a>
             </div>
           </div>
@@ -1226,45 +1226,45 @@
             href="{{ $fastpanelAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq site.Language.Lang "ko" }}FASTPANEL 호스팅용 VPS 옵션 확인{{ else }}Check current VPS options for FASTPANEL hosting{{ end }}">
+            aria-label="{{ if eq site.Language.Lang "ko" }}FASTPANEL 호스팅용 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_fastpanel_hosting" }}{{ else }}Check current VPS options for FASTPANEL hosting{{ end }}">
             <div class="vps-fastpanel-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}FASTPANEL과 전체 작업 부하에 맞는 VPS 사양{{ else }}Size the VPS for FASTPANEL plus the workload{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}패널뿐 아니라 웹사이트·DB·메일·예약 작업에도 여유 자원이 필요합니다.{{ else }}The panel is only one resource consumer. Websites, database, mail and jobs need headroom too.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}FASTPANEL과 전체 작업 부하에 맞는 VPS 사양{{ else if eq site.Language.Lang "de" }}{{ T "hero_size_the_vps_for_fastpanel_plus_the_workload" }}{{ else }}Size the VPS for FASTPANEL plus the workload{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}패널뿐 아니라 웹사이트·DB·메일·예약 작업에도 여유 자원이 필요합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_the_panel_is_only_one_resource_consumer_websites_database_mail_and_jobs_need_headroom_too" }}{{ else }}The panel is only one resource consumer. Websites, database, mail and jobs need headroom too.{{ end }}</small>
             </div>
 
             <div class="vps-fastpanel-compact-grid">
               <div class="vps-fastpanel-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}패널{{ else }}Panel{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}FASTPANEL 서비스{{ else }}FASTPANEL services{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}패널{{ else if eq site.Language.Lang "de" }}{{ T "hero_panel" }}{{ else }}Panel{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}FASTPANEL 서비스{{ else if eq site.Language.Lang "de" }}{{ T "hero_fastpanel_services" }}{{ else }}FASTPANEL services{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}웹 서버 구성{{ else }}Web stack{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}PHP 워커 + 웹 서버{{ else }}PHP workers + web server{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}웹 서버 구성{{ else if eq site.Language.Lang "de" }}{{ T "hero_web_stack" }}{{ else }}Web stack{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}PHP 워커 + 웹 서버{{ else if eq site.Language.Lang "de" }}{{ T "hero_php_workers_web_server" }}{{ else }}PHP workers + web server{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}데이터베이스{{ else }}Database{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}MySQL / MariaDB 부하{{ else }}MySQL / MariaDB load{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}데이터베이스{{ else if eq site.Language.Lang "de" }}{{ T "hero_database" }}{{ else }}Database{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}MySQL / MariaDB 부하{{ else if eq site.Language.Lang "de" }}{{ T "hero_mysql_mariadb_load" }}{{ else }}MySQL / MariaDB load{{ end }}</small>
                 </div>
               </div>
               <div class="vps-fastpanel-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}추가 서비스{{ else }}Extras{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}메일 + 백업 + 예약 작업{{ else }}Mail + backups + jobs{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}추가 서비스{{ else if eq site.Language.Lang "de" }}{{ T "hero_extras" }}{{ else }}Extras{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}메일 + 백업 + 예약 작업{{ else if eq site.Language.Lang "de" }}{{ T "hero_mail_backups_jobs" }}{{ else }}Mail + backups + jobs{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-fastpanel-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}패널 최소 요구사항인 RAM 1 GB를 일반 운영 기본값으로 간주하지 마세요.{{ else }}Do not treat the 1 GB panel minimum as a default production target.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}패널 최소 요구사항인 RAM 1 GB를 일반 운영 기본값으로 간주하지 마세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_do_not_treat_the_1_gb_panel_minimum_as_a_default_production_target" }}{{ else }}Do not treat the 1 GB panel minimum as a default production target.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1291,10 +1291,10 @@
                 href="{{ $hostAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-host-secondary-cta" href="#quick-deployment-sequence">
-                {{ if eq site.Language.Lang "ko" }}배포 순서 보기{{ else }}See deployment sequence{{ end }}
+                {{ if eq site.Language.Lang "ko" }}배포 순서 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_deployment_sequence" }}{{ else }}See deployment sequence{{ end }}
               </a>
             </div>
           </div>
@@ -1304,45 +1304,45 @@
             href="{{ $hostAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 호스팅용 VPS 옵션 확인{{ else }}Check current VPS options for hosting a website{{ end }}">
+            aria-label="{{ if eq site.Language.Lang "ko" }}웹사이트 호스팅용 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_for_hosting_a_website" }}{{ else }}Check current VPS options for hosting a website{{ end }}">
             <div class="vps-host-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS에서 웹사이트 공개까지{{ else }}Fresh VPS to live website{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}올바른 순서로 스택을 구축하고 테스트한 뒤 실제 트래픽을 연결하세요.{{ else }}Build the stack in the right order, test it, then send production traffic.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}새 VPS에서 웹사이트 공개까지{{ else if eq site.Language.Lang "de" }}{{ T "hero_fresh_vps_to_live_website" }}{{ else }}Fresh VPS to live website{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}올바른 순서로 스택을 구축하고 테스트한 뒤 실제 트래픽을 연결하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_build_the_stack_in_the_right_order_test_it_then_send_production_traffic" }}{{ else }}Build the stack in the right order, test it, then send production traffic.{{ end }}</small>
             </div>
 
             <div class="vps-host-compact-grid">
               <div class="vps-host-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}서버 준비{{ else }}Provision{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}OS + 안전한 관리자 접속{{ else }}OS + secure admin access{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}서버 준비{{ else if eq site.Language.Lang "de" }}{{ T "hero_provision" }}{{ else }}Provision{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}OS + 안전한 관리자 접속{{ else if eq site.Language.Lang "de" }}{{ T "hero_os_secure_admin_access" }}{{ else }}OS + secure admin access{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}스택 설치{{ else }}Install stack{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}앱에 필요한 구성 요소만{{ else }}Only what the app needs{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}스택 설치{{ else if eq site.Language.Lang "de" }}{{ T "hero_install_stack" }}{{ else }}Install stack{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}앱에 필요한 구성 요소만{{ else if eq site.Language.Lang "de" }}{{ T "hero_only_what_the_app_needs" }}{{ else }}Only what the app needs{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}도메인 연결{{ else }}Connect domain{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}DNS + HTTPS{{ else }}DNS + HTTPS{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}도메인 연결{{ else if eq site.Language.Lang "de" }}{{ T "hero_connect_domain" }}{{ else }}Connect domain{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}DNS + HTTPS{{ else if eq site.Language.Lang "de" }}{{ T "hero_dns_https" }}{{ else }}DNS + HTTPS{{ end }}</small>
                 </div>
               </div>
               <div class="vps-host-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq site.Language.Lang "ko" }}검증{{ else }}Verify{{ end }}</strong>
-                  <small>{{ if eq site.Language.Lang "ko" }}재부팅 + 백업 + 모니터링{{ else }}Reboot + backups + monitoring{{ end }}</small>
+                  <strong>{{ if eq site.Language.Lang "ko" }}검증{{ else if eq site.Language.Lang "de" }}{{ T "hero_verify" }}{{ else }}Verify{{ end }}</strong>
+                  <small>{{ if eq site.Language.Lang "ko" }}재부팅 + 백업 + 모니터링{{ else if eq site.Language.Lang "de" }}{{ T "hero_reboot_backups_monitoring" }}{{ else }}Reboot + backups + monitoring{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-host-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}웹사이트에 실제로 필요한 서비스만 설치하세요.{{ else }}Install only the services the website actually needs.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}웹사이트에 실제로 필요한 서비스만 설치하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_install_only_the_services_the_website_actually_needs" }}{{ else }}Install only the services the website actually needs.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1351,7 +1351,7 @@
   </section>
 {{ else if $isVpsLocation }}
   {{ $locationAffiliate := "https://www.vdsina.com/?partner=ni8gzrvz75" }}
-  <section class="vps-page-header vps-location-page-header">{{ if eq .Language.Lang "ko" }}<style>main .content .highlight pre { overflow-x: auto; max-width: 100%; }</style>{{ else }}{{ end }}
+  <section class="vps-page-header vps-location-page-header">{{ if in (slice "ko" "de") .Language.Lang }}<style>main .content .highlight pre { overflow-x: auto; max-width: 100%; }</style>{{ else }}{{ end }}
     <div class="container">
       {{ partial "components/breadcrumb" (dict "Context" . "Class" "vps-location-breadcrumb") }}
 
@@ -1369,10 +1369,10 @@
                 href="{{ $locationAffiliate }}"
                 target="_blank"
                 rel="sponsored nofollow noopener">
-                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq .Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-location-secondary-cta" href="#quick-answer">
-                {{ if eq .Language.Lang "ko" }}VPS 위치 선택 가이드{{ else }}See location guidance{{ end }}
+                {{ if eq .Language.Lang "ko" }}VPS 위치 선택 가이드{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_location_guidance" }}{{ else }}See location guidance{{ end }}
               </a>
             </div>
           </div>
@@ -1382,45 +1382,45 @@
             href="{{ $locationAffiliate }}"
             target="_blank"
             rel="sponsored nofollow noopener"
-            aria-label="{{ if eq .Language.Lang "ko" }}위치별 현재 VPS 옵션 확인{{ else }}Check current VPS options by location{{ end }}">
+            aria-label="{{ if eq .Language.Lang "ko" }}위치별 현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_by_location" }}{{ else }}Check current VPS options by location{{ end }}">
             <div class="vps-location-compact-head">
-              <strong>{{ if eq .Language.Lang "ko" }}지도보다 실제 네트워크 경로를 확인하세요{{ else }}Choose the route, not the map{{ end }}</strong>
-              <small>{{ if eq .Language.Lang "ko" }}국가 이름보다 사용자 분포, 동적 트래픽, 의존 시스템과 실제 네트워크 경로가 중요합니다.{{ else }}Audience, dynamic traffic, dependencies and real network paths matter more than country labels.{{ end }}</small>
+              <strong>{{ if eq .Language.Lang "ko" }}지도보다 실제 네트워크 경로를 확인하세요{{ else if eq site.Language.Lang "de" }}{{ T "hero_choose_the_route_not_the_map" }}{{ else }}Choose the route, not the map{{ end }}</strong>
+              <small>{{ if eq .Language.Lang "ko" }}국가 이름보다 사용자 분포, 동적 트래픽, 의존 시스템과 실제 네트워크 경로가 중요합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_audience_dynamic_traffic_dependencies_and_real_network_paths_matter_more_than_country_labels" }}{{ else }}Audience, dynamic traffic, dependencies and real network paths matter more than country labels.{{ end }}</small>
             </div>
 
             <div class="vps-location-compact-grid">
               <div class="vps-location-compact-item">
                 <span>01</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}사용자 분포{{ else }}Audience{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}중요한 사용자 우선{{ else }}Important users first{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}사용자 분포{{ else if eq site.Language.Lang "de" }}{{ T "hero_audience" }}{{ else }}Audience{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}중요한 사용자 우선{{ else if eq site.Language.Lang "de" }}{{ T "hero_important_users_first" }}{{ else }}Important users first{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>02</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}의존 시스템{{ else }}Dependencies{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}DB + API + 서비스{{ else }}DB + APIs + services{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}의존 시스템{{ else if eq site.Language.Lang "de" }}{{ T "hero_dependencies" }}{{ else }}Dependencies{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}DB + API + 서비스{{ else if eq site.Language.Lang "de" }}{{ T "hero_db_apis_services" }}{{ else }}DB + APIs + services{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>03</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}네트워크 경로 테스트{{ else }}Route test{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}지연 시간 + 안정성 + 손실{{ else }}Latency + stability + loss{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}네트워크 경로 테스트{{ else if eq site.Language.Lang "de" }}{{ T "hero_route_test" }}{{ else }}Route test{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}지연 시간 + 안정성 + 손실{{ else if eq site.Language.Lang "de" }}{{ T "hero_latency_stability_loss" }}{{ else }}Latency + stability + loss{{ end }}</small>
                 </div>
               </div>
               <div class="vps-location-compact-item">
                 <span>04</span>
                 <div>
-                  <strong>{{ if eq .Language.Lang "ko" }}제약 조건{{ else }}Constraints{{ end }}</strong>
-                  <small>{{ if eq .Language.Lang "ko" }}CDN + 데이터 위치{{ else }}CDN + data location{{ end }}</small>
+                  <strong>{{ if eq .Language.Lang "ko" }}제약 조건{{ else if eq site.Language.Lang "de" }}{{ T "hero_constraints" }}{{ else }}Constraints{{ end }}</strong>
+                  <small>{{ if eq .Language.Lang "ko" }}CDN + 데이터 위치{{ else if eq site.Language.Lang "de" }}{{ T "hero_cdn_data_location" }}{{ else }}CDN + data location{{ end }}</small>
                 </div>
               </div>
             </div>
 
             <div class="vps-location-compact-rule">
-              <strong>{{ if eq .Language.Lang "ko" }}지리 정보는 후보를 제시하고, 실제 라우팅이 최적 지역을 결정합니다.{{ else }}Geography gives you candidates. Real routing chooses the region.{{ end }}</strong>
+              <strong>{{ if eq .Language.Lang "ko" }}지리 정보는 후보를 제시하고, 실제 라우팅이 최적 지역을 결정합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_geography_gives_you_candidates_real_routing_chooses_the_region" }}{{ else }}Geography gives you candidates. Real routing chooses the region.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1445,10 +1445,10 @@
               <a class="btn btn-primary vps-control-panel-primary-cta"
                  href="{{ $panelAffiliate }}" target="_blank"
                  rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-control-panel-secondary-cta" href="#quick-answer">
-                {{ if eq site.Language.Lang "ko" }}패널 선택 안내{{ else }}See panel guidance{{ end }}
+                {{ if eq site.Language.Lang "ko" }}패널 선택 안내{{ else if eq site.Language.Lang "de" }}{{ T "hero_see_panel_guidance" }}{{ else }}See panel guidance{{ end }}
               </a>
             </div>
           </div>
@@ -1456,29 +1456,29 @@
           <a class="vps-control-panel-hero-diagram"
              href="{{ $panelAffiliate }}" target="_blank"
              rel="sponsored nofollow noopener"
-             aria-label="{{ if eq site.Language.Lang "ko" }}컨트롤 패널이 있는 VPS 구성 확인{{ else }}Check current VPS options with a control panel{{ end }}">
+             aria-label="{{ if eq site.Language.Lang "ko" }}컨트롤 패널이 있는 VPS 구성 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options_with_a_control_panel" }}{{ else }}Check current VPS options with a control panel{{ end }}">
             <div class="vps-control-panel-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}운영 방식에 맞는 패널 선택{{ else }}Choose the panel by operating model{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}웹사이트·사용자·메일·운영체제·라이선스를 기준으로 선택하세요.{{ else }}Websites, users, mail, operating system and licensing define the right panel class.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}운영 방식에 맞는 패널 선택{{ else if eq site.Language.Lang "de" }}{{ T "hero_choose_the_panel_by_operating_model" }}{{ else }}Choose the panel by operating model{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}웹사이트·사용자·메일·운영체제·라이선스를 기준으로 선택하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_websites_users_mail_operating_system_and_licensing_define_the_right_panel_class" }}{{ else }}Websites, users, mail, operating system and licensing define the right panel class.{{ end }}</small>
             </div>
 
             <div class="vps-control-panel-compact-grid">
               <div class="vps-control-panel-compact-item">
-                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}웹사이트{{ else }}Sites{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}하나 또는 여러 개?{{ else }}One site or many?{{ end }}</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}웹사이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_sites" }}{{ else }}Sites{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}하나 또는 여러 개?{{ else if eq site.Language.Lang "de" }}{{ T "hero_one_site_or_many" }}{{ else }}One site or many?{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}사용자{{ else }}Users{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리자 또는 고객?{{ else }}Single admin or clients?{{ end }}</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}사용자{{ else if eq site.Language.Lang "de" }}{{ T "hero_users" }}{{ else }}Users{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리자 또는 고객?{{ else if eq site.Language.Lang "de" }}{{ T "hero_single_admin_or_clients" }}{{ else }}Single admin or clients?{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}서비스{{ else }}Services{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}메일·DNS·DB·백업{{ else }}Mail, DNS, DB, backups{{ end }}</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}서비스{{ else if eq site.Language.Lang "de" }}{{ T "hero_services" }}{{ else }}Services{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}메일·DNS·DB·백업{{ else if eq site.Language.Lang "de" }}{{ T "hero_mail_dns_db_backups" }}{{ else }}Mail, DNS, DB, backups{{ end }}</small></div>
               </div>
               <div class="vps-control-panel-compact-item">
-                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}플랫폼{{ else }}Platform{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}Linux·Windows와 라이선스{{ else }}Linux / Windows + license{{ end }}</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}플랫폼{{ else if eq site.Language.Lang "de" }}{{ T "hero_platform" }}{{ else }}Platform{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}Linux·Windows와 라이선스{{ else if eq site.Language.Lang "de" }}{{ T "hero_linux_windows_license" }}{{ else }}Linux / Windows + license{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-control-panel-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}추가 자원과 제약을 감수할 만큼 관리 업무를 줄일 때만 패널을 사용하세요.{{ else }}Use a panel only when it removes enough admin work to justify its overhead and constraints.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}추가 자원과 제약을 감수할 만큼 관리 업무를 줄일 때만 패널을 사용하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_use_a_panel_only_when_it_removes_enough_admin_work_to_justify_its_overhead_and_constraints" }}{{ else }}Use a panel only when it removes enough admin work to justify its overhead and constraints.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1503,10 +1503,10 @@
               <a class="btn btn-primary vps-about-primary-cta"
                  href="{{ $aboutAffiliate }}" target="_blank"
                  rel="sponsored nofollow noopener">
-                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else }}Check VPS options{{ end }}
+                {{ if eq site.Language.Lang "ko" }}VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_vps_options" }}{{ else }}Check VPS options{{ end }}
               </a>
               <a class="vps-about-secondary-cta" href="#what-this-site-does">
-                {{ if eq site.Language.Lang "ko" }}사이트 운영 원칙{{ else }}How the site works{{ end }}
+                {{ if eq site.Language.Lang "ko" }}사이트 운영 원칙{{ else if eq site.Language.Lang "de" }}{{ T "hero_how_the_site_works" }}{{ else }}How the site works{{ end }}
               </a>
             </div>
           </div>
@@ -1514,29 +1514,29 @@
           <a class="vps-about-hero-diagram"
              href="{{ $aboutAffiliate }}" target="_blank"
              rel="sponsored nofollow noopener"
-             aria-label="{{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else }}Check current VPS options{{ end }}">
+             aria-label="{{ if eq site.Language.Lang "ko" }}현재 VPS 옵션 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_current_vps_options" }}{{ else }}Check current VPS options{{ end }}">
             <div class="vps-about-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}조사와 검증을 먼저, 추천은 그다음{{ else }}Research first, recommendation second{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}제공업체의 사실 정보와 워크로드 기준 편집 지침을 구분합니다.{{ else }}Provider facts stay separate from workload-based editorial guidance.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}조사와 검증을 먼저, 추천은 그다음{{ else if eq site.Language.Lang "de" }}{{ T "hero_research_first_recommendation_second" }}{{ else }}Research first, recommendation second{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}제공업체의 사실 정보와 워크로드 기준 편집 지침을 구분합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_provider_facts_stay_separate_from_workload_based_editorial_guidance" }}{{ else }}Provider facts stay separate from workload-based editorial guidance.{{ end }}</small>
             </div>
 
             <div class="vps-about-compact-grid">
               <div class="vps-about-compact-item">
-                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}제공업체 정보{{ else }}Provider facts{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간, 가격{{ else }}CPU, RAM, storage, price{{ end }}</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}제공업체 정보{{ else if eq site.Language.Lang "de" }}{{ T "hero_provider_facts" }}{{ else }}Provider facts{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}CPU, RAM, 저장 공간, 가격{{ else if eq site.Language.Lang "de" }}{{ T "hero_cpu_ram_storage_price" }}{{ else }}CPU, RAM, storage, price{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}워크로드 적합성{{ else }}Workload fit{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}워커, DB, 캐시, 작업{{ else }}Workers, DB, cache, jobs{{ end }}</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}워크로드 적합성{{ else if eq site.Language.Lang "de" }}{{ T "hero_workload_fit" }}{{ else }}Workload fit{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}워커, DB, 캐시, 작업{{ else if eq site.Language.Lang "de" }}{{ T "hero_workers_db_cache_jobs" }}{{ else }}Workers, DB, cache, jobs{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}운영 제약{{ else }}Constraints{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리, 백업, 확장{{ else }}Management, backups, growth{{ end }}</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}운영 제약{{ else if eq site.Language.Lang "de" }}{{ T "hero_constraints" }}{{ else }}Constraints{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}관리, 백업, 확장{{ else if eq site.Language.Lang "de" }}{{ T "hero_management_backups_growth" }}{{ else }}Management, backups, growth{{ end }}</small></div>
               </div>
               <div class="vps-about-compact-item">
-                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}추천 기준{{ else }}Recommendation{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}안전하게 시작할 최소 사양{{ else }}Smallest safe starting tier{{ end }}</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}추천 기준{{ else if eq site.Language.Lang "de" }}{{ T "hero_recommendation" }}{{ else }}Recommendation{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}안전하게 시작할 최소 사양{{ else if eq site.Language.Lang "de" }}{{ T "hero_smallest_safe_starting_tier" }}{{ else }}Smallest safe starting tier{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-about-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}방문자 수만으로 성능을 보장하지 않습니다. 실제 워크로드에 맞춰 사양을 결정하세요.{{ else }}No fixed visitor-count promises. Size from the actual workload.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}방문자 수만으로 성능을 보장하지 않습니다. 실제 워크로드에 맞춰 사양을 결정하세요.{{ else if eq site.Language.Lang "de" }}{{ T "hero_no_fixed_visitor_count_promises_size_from_the_actual_workload" }}{{ else }}No fixed visitor-count promises. Size from the actual workload.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1557,40 +1557,40 @@
             {{ end }}
 
             <div class="vps-contact-hero-actions">
-              <a class="btn btn-primary vps-contact-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/{{ else }}/{{ end }}">
-                VPS for website
+              <a class="btn btn-primary vps-contact-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/{{ else if eq site.Language.Lang "de" }}{{ site.Home.RelPermalink }}{{ else }}/{{ end }}">
+                {{ if eq site.Language.Lang "de" }}{{ T "ui_vps_for_website" }}{{ else }}VPS for website{{ end }}
               </a>
-              <a class="vps-contact-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}">
-                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else }}About our process{{ end }}
+              <a class="vps-contact-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/about/" }}{{ else }}/about/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_about_our_process" }}{{ else }}About our process{{ end }}
               </a>
             </div>
           </div>
 
           <a class="vps-contact-hero-diagram"
-             href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}"
-             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com의 검토 및 정정 절차 보기{{ else }}Read how VPSforWebsite.com reviews and corrects information{{ end }}">
+             href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/about/" }}{{ else }}/about/{{ end }}"
+             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com의 검토 및 정정 절차 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_read_how_vpsforwebsite_com_reviews_and_corrects_information" }}{{ else }}Read how VPSforWebsite.com reviews and corrects information{{ end }}">
             <div class="vps-contact-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}정보 정정은 근거를 기준으로 검토합니다{{ else }}Corrections should be evidence-based{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}유용한 제보에는 확인할 주장, 정보 출처와 점검 항목이 명시되어야 합니다.{{ else }}Useful feedback identifies the claim, the source and what needs to be checked.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}정보 정정은 근거를 기준으로 검토합니다{{ else if eq site.Language.Lang "de" }}{{ T "hero_corrections_should_be_evidence_based" }}{{ else }}Corrections should be evidence-based{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}유용한 제보에는 확인할 주장, 정보 출처와 점검 항목이 명시되어야 합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_useful_feedback_identifies_the_claim_the_source_and_what_needs_to_be_checked" }}{{ else }}Useful feedback identifies the claim, the source and what needs to be checked.{{ end }}</small>
             </div>
 
             <div class="vps-contact-compact-grid">
               <div class="vps-contact-compact-item">
-                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}대상 확인{{ else }}Identify{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}어떤 주장 또는 페이지인가요?{{ else }}Which claim or page?{{ end }}</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}대상 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_identify" }}{{ else }}Identify{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}어떤 주장 또는 페이지인가요?{{ else if eq site.Language.Lang "de" }}{{ T "hero_which_claim_or_page" }}{{ else }}Which claim or page?{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}근거 자료{{ else }}Source{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}최신 근거 제시{{ else }}Provide current evidence{{ end }}</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}근거 자료{{ else if eq site.Language.Lang "de" }}{{ T "hero_source" }}{{ else }}Source{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}최신 근거 제시{{ else if eq site.Language.Lang "de" }}{{ T "hero_provide_current_evidence" }}{{ else }}Provide current evidence{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}검토{{ else }}Review{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}제공업체와 맥락 확인{{ else }}Check provider + context{{ end }}</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}검토{{ else if eq site.Language.Lang "de" }}{{ T "hero_review" }}{{ else }}Review{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}제공업체와 맥락 확인{{ else if eq site.Language.Lang "de" }}{{ T "hero_check_provider_context" }}{{ else }}Check provider + context{{ end }}</small></div>
               </div>
               <div class="vps-contact-compact-item">
-                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}수정{{ else }}Update{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}게시된 안내 수정{{ else }}Correct the published guidance{{ end }}</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}수정{{ else if eq site.Language.Lang "de" }}{{ T "hero_update" }}{{ else }}Update{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}게시된 안내 수정{{ else if eq site.Language.Lang "de" }}{{ T "hero_correct_the_published_guidance" }}{{ else }}Correct the published guidance{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-contact-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}현재 공개 문의 양식 제출 정보를 수집하지 않습니다.{{ else }}The preview does not collect form submissions yet.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}현재 공개 문의 양식 제출 정보를 수집하지 않습니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_the_preview_does_not_collect_form_submissions_yet" }}{{ else }}The preview does not collect form submissions yet.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1611,40 +1611,40 @@
             {{ end }}
 
             <div class="vps-privacy-hero-actions">
-              <a class="btn btn-primary vps-privacy-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else }}/about/{{ end }}">
-                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else }}About our process{{ end }}
+              <a class="btn btn-primary vps-privacy-primary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/about/{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/about/" }}{{ else }}/about/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}검토 원칙 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_about_our_process" }}{{ else }}About our process{{ end }}
               </a>
-              <a class="vps-privacy-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else }}/contact/{{ end }}">
-                {{ if eq site.Language.Lang "ko" }}문의{{ else }}Contact{{ end }}
+              <a class="vps-privacy-secondary-cta" href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/contact/" }}{{ else }}/contact/{{ end }}">
+                {{ if eq site.Language.Lang "ko" }}문의{{ else if eq site.Language.Lang "de" }}{{ T "hero_contact" }}{{ else }}Contact{{ end }}
               </a>
             </div>
           </div>
 
           <a class="vps-privacy-hero-diagram"
-             href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else }}/contact/{{ end }}"
-             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com 문의 및 정보 정정 안내 보기{{ else }}Open the VPSforWebsite.com contact and correction page{{ end }}">
+             href="{{ if eq site.Language.Lang "ko" }}/ko/contact/{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/contact/" }}{{ else }}/contact/{{ end }}"
+             aria-label="{{ if eq site.Language.Lang "ko" }}VPSforWebsite.com 문의 및 정보 정정 안내 보기{{ else if eq site.Language.Lang "de" }}{{ T "hero_open_the_vpsforwebsite_com_contact_and_correction_page" }}{{ else }}Open the VPSforWebsite.com contact and correction page{{ end }}">
             <div class="vps-privacy-compact-head">
-              <strong>{{ if eq site.Language.Lang "ko" }}최소한의 정보 수집, 명확한 고지{{ else }}Minimal collection, clear disclosure{{ end }}</strong>
-              <small>{{ if eq site.Language.Lang "ko" }}예정된 추적 도구가 아닌, 현재 실제 사용하는 서비스를 기준으로 개인정보 처리 내용을 안내합니다.{{ else }}The policy describes what the site actually uses now, not planned tracking or integrations.{{ end }}</small>
+              <strong>{{ if eq site.Language.Lang "ko" }}최소한의 정보 수집, 명확한 고지{{ else if eq site.Language.Lang "de" }}{{ T "hero_minimal_collection_clear_disclosure" }}{{ else }}Minimal collection, clear disclosure{{ end }}</strong>
+              <small>{{ if eq site.Language.Lang "ko" }}예정된 추적 도구가 아닌, 현재 실제 사용하는 서비스를 기준으로 개인정보 처리 내용을 안내합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_the_policy_describes_what_the_site_actually_uses_now_not_planned_tracking_or_integrations" }}{{ else }}The policy describes what the site actually uses now, not planned tracking or integrations.{{ end }}</small>
             </div>
 
             <div class="vps-privacy-compact-grid">
               <div class="vps-privacy-compact-item">
-                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}계정 필요 없음{{ else }}No account{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}공개 정보 제공 사이트{{ else }}Public informational site{{ end }}</small></div>
+                <span>01</span><div><strong>{{ if eq site.Language.Lang "ko" }}계정 필요 없음{{ else if eq site.Language.Lang "de" }}{{ T "hero_no_account" }}{{ else }}No account{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}공개 정보 제공 사이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_public_informational_site" }}{{ else }}Public informational site{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}방문 분석{{ else }}Analytics{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}운영 사이트는 GA4 사용, 미리보기에서는 비활성화{{ else }}Not enabled in preview{{ end }}</small></div>
+                <span>02</span><div><strong>{{ if eq site.Language.Lang "ko" }}방문 분석{{ else if eq site.Language.Lang "de" }}{{ T "hero_analytics" }}{{ else }}Analytics{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}운영 사이트는 GA4 사용, 미리보기에서는 비활성화{{ else if eq site.Language.Lang "de" }}{{ T "hero_not_enabled_in_preview" }}{{ else }}Not enabled in preview{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}제휴 링크{{ else }}Affiliate links{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}sponsored / nofollow 표시{{ else }}Sponsored / nofollow marked{{ end }}</small></div>
+                <span>03</span><div><strong>{{ if eq site.Language.Lang "ko" }}제휴 링크{{ else if eq site.Language.Lang "de" }}{{ T "hero_affiliate_links" }}{{ else }}Affiliate links{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}sponsored / nofollow 표시{{ else if eq site.Language.Lang "de" }}{{ T "hero_sponsored_nofollow_marked" }}{{ else }}Sponsored / nofollow marked{{ end }}</small></div>
               </div>
               <div class="vps-privacy-compact-item">
-                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}업데이트{{ else }}Updates{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}실제 사용하는 서비스에 맞춘 방침{{ else }}Policy follows actual services{{ end }}</small></div>
+                <span>04</span><div><strong>{{ if eq site.Language.Lang "ko" }}업데이트{{ else if eq site.Language.Lang "de" }}{{ T "hero_updates" }}{{ else }}Updates{{ end }}</strong><small>{{ if eq site.Language.Lang "ko" }}실제 사용하는 서비스에 맞춘 방침{{ else if eq site.Language.Lang "de" }}{{ T "hero_policy_follows_actual_services" }}{{ else }}Policy follows actual services{{ end }}</small></div>
               </div>
             </div>
 
             <div class="vps-privacy-compact-rule">
-              <strong>{{ if eq site.Language.Lang "ko" }}데이터 수집은 사이트 운영에 실제로 필요한 범위로 제한해야 합니다.{{ else }}Data collection should stay limited to what the site actually needs.{{ end }}</strong>
+              <strong>{{ if eq site.Language.Lang "ko" }}데이터 수집은 사이트 운영에 실제로 필요한 범위로 제한해야 합니다.{{ else if eq site.Language.Lang "de" }}{{ T "hero_data_collection_should_stay_limited_to_what_the_site_actually_needs" }}{{ else }}Data collection should stay limited to what the site actually needs.{{ end }}</strong>
             </div>
           </a>
         </div>
@@ -1667,7 +1667,7 @@
   <div class="container vps-affiliate-disclosure">
     <p class="mt-3 text-xs leading-relaxed opacity-70">
       {{ T "guide_affiliate_disclosure" }}
-      <a href="{{ if eq site.Language.Lang "ko" }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "guide_editorial_disclosure" }}{{ if and (eq site.Language.Lang "ko") (not (site.GetPage "/about/")) }} (영문){{ end }}</a>.
+      <a href="{{ if eq site.Language.Lang "ko" }}{{ partial "localized-url.html" "/about/" }}{{ else if eq site.Language.Lang "de" }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "guide_editorial_disclosure" }}{{ if and (eq site.Language.Lang "ko") (not (site.GetPage "/about/")) }} (영문){{ end }}</a>.
     </p>
   </div>
 {{ end }}

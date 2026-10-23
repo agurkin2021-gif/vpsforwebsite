@@ -47,7 +47,7 @@
                   <a
                     class="nav-dropdown-link {{ if $active }}active{{- end -}}"
                     {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
-                    href="{{- if findRE `^#` .URL -}}{{- if not $.IsHome -}}{{- site.Home.RelPermalink -}}{{- end }}{{- .URL -}}{{- else -}}{{- if eq site.Language.Lang "ko" -}}{{- partial "localized-url.html" .URL -}}{{- else -}}{{- .URL | relLangURL -}}{{- end -}}{{- end -}}">
+                    href="{{- if findRE `^#` .URL -}}{{- if not $.IsHome -}}{{- site.Home.RelPermalink -}}{{- end }}{{- .URL -}}{{- else -}}{{- if in (slice "ko" "de") site.Language.Lang -}}{{- partial "localized-url.html" .URL -}}{{- else -}}{{- .URL | relLangURL -}}{{- end -}}{{- end -}}">
                     {{ .Name }}{{ if and (eq site.Language.Lang "ko") .URL (not (site.GetPage .URL)) }} <span class="text-xs opacity-70">(영문)</span>{{ end }}
                   </a>
                 </li>
@@ -59,7 +59,7 @@
             <a
               class="nav-link {{ if $active }}active{{- end -}}"
               {{ if findRE `^http` .URL }}target="_blank" rel="noopener"{{ end }}
-              href="{{- if findRE `^#` .URL -}}{{- if not $.IsHome -}}{{- site.Home.RelPermalink -}}{{- end }}{{- .URL -}}{{- else -}}{{- if eq site.Language.Lang "ko" -}}{{- partial "localized-url.html" .URL -}}{{- else -}}{{- .URL | relLangURL -}}{{- end -}}{{- end -}}">
+              href="{{- if findRE `^#` .URL -}}{{- if not $.IsHome -}}{{- site.Home.RelPermalink -}}{{- end }}{{- .URL -}}{{- else -}}{{- if in (slice "ko" "de") site.Language.Lang -}}{{- partial "localized-url.html" .URL -}}{{- else -}}{{- .URL | relLangURL -}}{{- end -}}{{- end -}}">
               {{ .Name }}{{ if and (eq site.Language.Lang "ko") .URL (not (site.GetPage .URL)) }} <span class="text-xs opacity-70">(영문)</span>{{ end }}
             </a>
           </li>

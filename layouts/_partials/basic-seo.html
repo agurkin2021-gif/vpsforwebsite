@@ -14,6 +14,9 @@
 {{ else if .Params.title }}
   {{ $title = .Params.title }}
 {{ end }}
+{{ if and (eq .Language.Lang "de") (eq .Kind "404") }}
+  {{ $title = "Seite nicht gefunden" }}
+{{ end }}
 
 
 <!-- checking description -->

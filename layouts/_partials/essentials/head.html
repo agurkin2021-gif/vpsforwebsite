@@ -10,6 +10,9 @@
 {{ partialCached "local-fonts.html" . }}
 <link id="guide-navigation-css" rel="stylesheet" href="{{ "css/guide-navigation.v1.css" | relURL }}" />
 <link id="hero-layout-css" rel="stylesheet" href="{{ "css/hero-layout.v1.css" | relURL }}" />
+{{ if eq .Language.Lang "de" }}
+  <link id="german-responsive-css" rel="stylesheet" href="{{ "css/de-responsive.v1.css" | relURL }}" />
+{{ end }}
 {{ if .IsPage }}
   <link rel="stylesheet" href="{{ "css/guide-disclosure.v1.css" | relURL }}" />
 {{ end }}
@@ -44,9 +47,11 @@
   <link rel="alternate" hreflang="x-default" href="{{ $defaultPage.Permalink }}" />
 {{ end }}
 
+{{ $publisherName := "VPSforWebsite.com Editorial" }}
+{{ if eq .Language.Lang "de" }}{{ $publisherName = "VPSforWebsite.com Redaktion" }}{{ end }}
 {{ $publisher := dict
   "@type" "Organization"
-  "name" "VPSforWebsite.com Editorial"
+  "name" $publisherName
   "url" site.Home.Permalink
   "description" (T "publisher_description")
 }}

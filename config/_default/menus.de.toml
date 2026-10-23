@@ -1,0 +1,105 @@
+[[main]]
+name = "Startseite"
+url = "/"
+weight = 1
+
+[[main]]
+name = "WordPress"
+url = "/vps-for-wordpress/"
+weight = 2
+
+[[main]]
+name = "WooCommerce"
+url = "/vps-for-woocommerce/"
+weight = 3
+
+[[main]]
+name = "Ratgeber"
+weight = 4
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS für Websites dimensionieren"
+url = "/vps-sizing-for-website/"
+weight = 1
+
+[[main]]
+parent = "Ratgeber"
+name = "Website auf einen VPS umziehen"
+url = "/website-migration-to-vps/"
+weight = 2
+
+[[main]]
+parent = "Ratgeber"
+name = "Managed VPS vs. Unmanaged VPS"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS-Hosting mit FASTPANEL"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "Ratgeber"
+name = "Website auf einem VPS hosten"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS-Sicherheitscheckliste"
+url = "/vps-security-checklist/"
+weight = 6
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS-Backup-Strategie"
+url = "/vps-backup-strategy/"
+weight = 7
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS-Monitoring"
+url = "/vps-monitoring/"
+weight = 8
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS-Standort auswählen"
+url = "/how-to-choose-vps-location/"
+weight = 9
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS vs. Shared Hosting"
+url = "/vps-vs-shared-hosting/"
+weight = 10
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS für mehrere Websites"
+url = "/vps-for-multiple-websites/"
+weight = 11
+
+[[main]]
+parent = "Ratgeber"
+name = "VPS mit Control Panel"
+url = "/vps-with-control-panel/"
+weight = 12
+
+[[footer]]
+name = "Über VPSforWebsite.com"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "Kontakt"
+url = "/contact/"
+weight = 2
+
+[[footer]]
+name = "Datenschutzerklärung"
+url = "/privacy-policy/"
+weight = 3

@@ -18,3 +18,15 @@ locale = "ko-KR"
 contentDir = "content/korean"
 weight = 3
 hasCJKLanguage = true
+
+[de]
+label = "DE"
+languageName = "Deutsch"
+languageCode = "de"
+locale = "de-DE"
+contentDir = "content/german"
+weight = 4
+
+[de.params.metadata]
+description = "VPS-Ressourcen für Websites nach Arbeitslast, CMS, Datenbankbedarf und Wachstum auswählen."
+author = "VPSforWebsite.com Redaktion"
