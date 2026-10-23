@@ -1,0 +1,513 @@
+home: صفحه اصلی
+read_more: ادامه مطلب
+send: ارسال
+menu-open: باز کردن منو
+menu-close: بستن منو
+ui_fit_size_deploy: ارزیابی تناسب · تعیین منابع · استقرار
+ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission: 'شفافیت: نویسنده با VDSina رابطه حرفه‌ای دارد. لینک‌های همکاری در فروش ممکن است کمیسیون ایجاد کنند.'
+ui_editorial_and_commercial_disclosure: شفافیت تحریریه و روابط تجاری
+ui_see_current_vps_configurations: مشاهده تنظیمات فعلی VPS
+ui_vps_for_website_workflow: مراحل انتخاب و راه‌اندازی VPS برای سایت
+ui_vps_for_website: سرور مجازی برای سایت
+ui_isolated_cpu_ram_storage: پردازنده، رم و ذخیره‌سازی ایزوله
+ui_full_os_web_stack_control: کنترل کامل سیستم‌عامل و نرم‌افزارهای وب
+ui_fastpanel_control_panel: کنترل پنل FASTPANEL
+ui_nginx_or_apache: Nginx یا Apache
+ui_mysql_database_workloads: بار کاری MySQL و پایگاه داده
+ui_ssh_root_access: دسترسی SSH و root
+ui_domains_ssl_dns: دامنه‌ها، SSL و DNS
+ui_wordpress_workloads: بار کاری وردپرس
+ui_woocommerce_workloads: بار کاری ووکامرس
+ui_multiple_websites: چند سایت
+ui_website_migration_planning: برنامه‌ریزی انتقال سایت
+ui_rollback_before_dns_switch: آماده‌سازی بازگشت پیش از تغییر DNS
+ui_snapshots_scheduled_backups: اسنپ‌شات و پشتیبان‌گیری زمان‌بندی‌شده
+ui_portable_backup_copy: نسخه پشتیبان قابل انتقال
+ui_monitoring_before_scaling: مانیتورینگ پیش از افزایش ظرفیت
+ui_scale_cpu_ram_storage: افزایش پردازنده، رم و ذخیره‌سازی
+ui_choose_server_location_by_latency: انتخاب موقعیت سرور بر اساس تأخیر
+ui_ddos_protection: حفاظت در برابر DDoS
+ui_10_gbit_s_public_port: پورت عمومی 10 Gbit/s
+ui_24_7_support: پشتیبانی 24/7
+ui_daily_billing: صورتحساب روزانه
+ui_1_vcpu_1_gb_from_0_07_day: 1 vCPU / 1 GB از $0.07/روز
+ui_clone_test_scale_recover: کپی، آزمایش، افزایش ظرفیت، بازیابی
+ui_current_hosting: هاست فعلی
+ui_shared_hosting: هاست اشتراکی
+ui_light_stable_standard_stack: سبک، پایدار، نرم‌افزارهای استاندارد
+ui_check_evidence: بررسی شواهد
+ui_limits_or_custom_stack: محدودیت یا نرم‌افزار سفارشی؟
+ui_cpu_ram_process_i_o_root: پردازنده · رم · پردازش · I/O · root
+ui_decision: تصمیم
+ui_stay_shared: ماندن روی هاست اشتراکی
+ui_light_stable_no_custom_stack: سبک و پایدار، بدون نرم‌افزار سفارشی
+ui_optimize_first: ابتدا بهینه‌سازی
+ui_plugin_query_bot_cache_or_job_issue: مشکل افزونه، کوئری، ربات، کش یا وظیفه
+ui_move_to_vps: انتقال به VPS
+ui_repeated_real_limits_or_custom_software_needs: محدودیت واقعی مکرر یا نیاز نرم‌افزاری سفارشی
+ui_measure_the_workload_first_move_only_when_the_evidence_points_to_infrastructure: ابتدا بار کاری را اندازه بگیرید. فقط وقتی شواهد مشکل زیرساخت را نشان می‌دهند، منتقل شوید.
+ui_sizing_logic: منطق تعیین منابع
+ui_size_the_workload_not_visits: منابع برای بار کاری، نه تعداد بازدید
+ui_traffic_volume_is_only_one_signal_resource_pressure_and_workload_shape_determine_the_server: حجم ترافیک فقط یک نشانه است. فشار منابع و نوع بار کاری، نیاز سرور را تعیین می‌کنند.
+ui_monthly_visits: بازدید ماهانه
+ui_vps_size: منابع VPS
+ui_compute_pressure: فشار پردازشی
+ui_php_workers_concurrency_uncached_requests: پردازشگرهای PHP · هم‌زمانی · درخواست بدون کش
+ui_memory_headroom: حاشیه حافظه
+ui_apps_cache_panel_background_services: برنامه‌ها · کش · پنل · سرویس‌های پس‌زمینه
+ui_db_jobs: پایگاه داده + وظایف
+ui_dynamic_work: پردازش پویا
+ui_queries_cron_checkout_queue_activity: کوئری‌ها · کران · پرداخت · فعالیت صف
+ui_workload_signals: نشانه‌های بار کاری
+ui_cacheability: قابلیت کش شدن
+ui_concurrent_requests: درخواست‌های هم‌زمان
+ui_php_workers: پردازشگرهای PHP
+ui_database_load: بار پایگاه داده
+ui_background_jobs: وظایف پس‌زمینه
+ui_number_of_sites: تعداد سایت‌ها
+ui_result: نتیجه
+ui_choose_the_smallest_vps_with_measured_headroom: کوچک‌ترین VPS با حاشیه ظرفیت اندازه‌گیری‌شده
+ui_validate_cpu_memory_storage_growth_and_dynamic_workload_together: پردازنده، حافظه، رشد ذخیره‌سازی و بار کاری پویا را با هم بسنجید.
+ui_provider_audit: ارزیابی ارائه‌دهنده
+ui_compare_the_terms_that_affect_the_website: شرایط مؤثر بر سایت را مقایسه کنید
+ui_headline_price_is_only_one_input_check_the_infrastructure_and_operating_terms_before_you_commit: قیمت اعلامی تنها یکی از معیارهاست. پیش از تصمیم نهایی، شرایط زیرساخت و بهره‌برداری را بررسی کنید.
+ui_compute: توان پردازشی
+ui_cpu_policy_ram_storage_type_expected_i_o: سیاست پردازنده · رم · نوع ذخیره‌سازی · I/O مورد نیاز
+ui_network: شبکه
+ui_transfer_port_speed_ip_terms_region_route: ترافیک · سرعت پورت · شرایط IP · منطقه · مسیر
+ui_platform: بستر
+ui_os_images_panel_options_license_cost: ایمیج سیستم‌عامل · گزینه‌های پنل · هزینه مجوز
+ui_operations: بهره‌برداری
+ui_backups_firewall_ddos_monitoring_support_scope: پشتیبان‌گیری · فایروال · DDoS · مانیتورینگ · محدوده پشتیبانی
+ui_billing_upgrade_path: صورتحساب و مسیر ارتقا
+ui_billing_cadence_renewal_terms_add_ons_upgrade_limits_extra_charges: دوره صورتحساب · شرایط تمدید · خدمات جانبی · محدودیت ارتقا · هزینه اضافی
+ui_shortlist: گزینه‌های نهایی
+ui_keep_only_providers_that_match_the_workload_and_operating_model: فقط ارائه‌دهندگان متناسب با بار کاری و روش بهره‌برداری را نگه دارید
+ui_performance_fit: تناسب عملکرد
+ui_location_fit: تناسب موقعیت
+ui_management_fit: تناسب مدیریت
+ui_cost_fit: تناسب هزینه
+ui_before_paying: پیش از پرداخت
+ui_verify_the_current_order_page_and_support_scope: صفحه سفارش فعلی و محدوده پشتیبانی را بررسی کنید
+ui_do_not_assume_infrastructure_support_means_managed_server_administration: پشتیبانی زیرساخت را معادل خدمات مدیریت سرور ندانید.
+ui_operating_model: مدل بهره‌برداری
+ui_choose_how_the_server_will_be_operated: روش اداره سرور را انتخاب کنید
+ui_the_panel_operating_system_and_administration_model_change_resource_use_workflow_and_responsibility: پنل، سیستم‌عامل و مدل مدیریت، مصرف منابع، فرایند کار و مسئولیت‌ها را تغییر می‌دهند.
+ui_domains_ssl_php_versions_databases_multiple_sites: دامنه‌ها · SSL · نسخه‌های PHP · پایگاه‌های داده · چند سایت
+ui_simpler_workflow_panel_uses_ram: کار ساده‌تر · مصرف رم توسط پنل
+ui_nginx_or_apache_runtime_database_shell_administration: Nginx یا Apache · محیط اجرا · پایگاه داده · مدیریت از طریق شل
+ui_more_control_more_work_stays_with_you: کنترل بیشتر · مسئولیت بیشتر برای شما
+ui_windows_when_required: ویندوز در صورت نیاز
+ui_use_this_path_for_genuine_iis_or_asp_net_requirements: برای نیاز واقعی به IIS یا ASP.NET
+ui_not_the_default_website_hosting_choice: گزینه پیش‌فرض میزبانی سایت نیست
+ui_who_owns_server_administration: مسئول مدیریت سرور کیست؟
+ui_self_managed_vps: VPS خودمدیریت‌شده
+ui_you_own_the_operating_system: مسئولیت سیستم‌عامل با شماست
+ui_patching_security_backups_monitoring_incident_response: وصله‌ها · امنیت · پشتیبان‌گیری · مانیتورینگ · پاسخ به رخداد
+ui_administration_help: کمک در مدیریت
+ui_separate_management_can_own_the_work: خدمات مدیریت جداگانه می‌تواند این مسئولیت را بپذیرد
+ui_confirm_exactly_what_is_included_and_who_is_responsible_for_the_application_stack: دقیقاً مشخص کنید چه خدماتی پوشش داده می‌شود و مسئول مجموعه نرم‌افزارهای برنامه کیست.
+ui_important_distinction: تفاوت مهم
+ui_infrastructure_support_is_not_the_same_as_managed_server_administration: پشتیبانی زیرساخت با خدمات مدیریت سرور یکسان نیست.
+ui_migration_preflight: ارزیابی پیش از انتقال
+ui_map_the_stack_before_you_move_it: پیش از انتقال، اجزای نرم‌افزاری را مشخص کنید
+? ui_build_the_migration_plan_from_the_current_website_dependencies_and_rollback_requirements_before_production_traffic_changes
+: پیش از تغییر مسیر ترافیک واقعی، برنامه انتقال را بر اساس سایت فعلی، وابستگی‌ها و نیازهای بازگشت تدوین کنید.
+ui_inventory: فهرست اجزا
+ui_cms_framework_runtime_versions_db_cron_storage_dns_ssl_email: CMS/فریم‌ورک · نسخه محیط اجرا · پایگاه داده · کران · ذخیره‌سازی · DNS · SSL · ایمیل
+ui_find_blockers: یافتن موانع
+ui_extensions_runtime_mismatch_db_assumptions_local_file_dependencies: افزونه‌ها · ناسازگاری محیط اجرا · پیش‌فرض‌های پایگاه داده · وابستگی به فایل محلی
+ui_build_test_copy: ساخت نسخه آزمایشی
+ui_prepare_the_new_vps_without_touching_production_traffic: VPS جدید را بدون تغییر ترافیک عملیاتی آماده کنید
+ui_sync_validate: همگام‌سازی و اعتبارسنجی
+ui_files_database_integrations_forms_jobs_ssl_mail_behavior: فایل‌ها · پایگاه داده · اتصال سرویس‌ها · فرم‌ها · وظایف · SSL · عملکرد ایمیل
+ui_dns_cutover: تغییر DNS
+ui_move_production_traffic_only_after_the_new_environment_passes_checks: ترافیک واقعی را فقط پس از موفقیت آزمایش‌های محیط جدید منتقل کنید
+ui_rollback_path: مسیر بازگشت
+ui_keep_the_previous_working_environment_available: محیط قبلی سالم را در دسترس نگه دارید
+ui_know_exactly_how_to_reverse_the_move_if_validation_fails_after_cutover: اگر پس از انتقال، اعتبارسنجی ناموفق بود، دقیقاً بدانید چگونه به وضعیت قبلی برگردید.
+ui_email_decision: تصمیم درباره ایمیل
+ui_move_mail_only_when_it_should_move: ایمیل را فقط در صورت لزوم منتقل کنید
+ui_keeping_email_on_a_managed_mail_service_can_reduce_deliverability_and_administration_risk: نگه داشتن ایمیل روی سرویس مدیریت‌شده می‌تواند ریسک تحویل ایمیل و مدیریت را کاهش دهد.
+ui_purchase_decision: تصمیم خرید
+ui_choose_the_vps_configuration_after_the_migration_inventory_shows_the_real_requirements: تنظیمات VPS را پس از روشن شدن نیازهای واقعی در فهرست انتقال انتخاب کنید.
+ui_architecture_decision: تصمیم معماری
+ui_keep_it_together_while_the_workload_is_predictable: تا وقتی بار کاری قابل پیش‌بینی است، اجزا را کنار هم نگه دارید
+ui_split_only_when_contention_blast_radius_or_independent_scaling_becomes_more_expensive_than_the_added_complexity: فقط وقتی هزینه رقابت منابع، دامنه خرابی یا نیاز به مقیاس‌پذیری مستقل از پیچیدگی اضافه بیشتر می‌شود، اجزا را تفکیک کنید.
+ui_start_simple: ساده شروع کنید
+ui_one_vps: یک VPS
+ui_web: وب
+ui_database: پایگاه داده
+ui_workers: پردازشگرها
+ui_light_jobs: وظایف سبک
+ui_split_trigger: زمان تفکیک
+ui_cpu_ram_contention: رقابت بر سر پردازنده و رم
+ui_workers_delay_requests: تأخیر درخواست‌ها به‌علت پردازشگرها
+ui_independent_scaling: مقیاس‌پذیری مستقل
+ui_failure_isolation: جداسازی خرابی
+ui_risky_staging: آزمایش تغییرات پرریسک
+ui_client_service_isolation: جداسازی مشتریان و سرویس‌ها
+ui_web_vps: VPS وب
+ui_user_facing_requests: درخواست‌های کاربران
+ui_nginx_apache_php_app_runtime_static_delivery: Nginx/Apache · اجرای PHP/برنامه · تحویل محتوای استاتیک
+ui_database_vps: VPS پایگاه داده
+ui_independent_db_resources: منابع مستقل پایگاه داده
+ui_queries_storage_memory_failure_isolation: کوئری‌ها · ذخیره‌سازی · حافظه · جداسازی خرابی
+ui_worker_vps: VPS پردازشگر
+ui_background_workload: بار کاری پس‌زمینه
+ui_automation_api_queues_ai_agent_jobs: اتوماسیون · API · صف‌ها · وظایف عامل هوش مصنوعی
+ui_staging: محیط آزمایشی
+ui_test_risky_changes_away_from_production: تغییرات پرریسک را خارج از محیط عملیاتی آزمایش کنید
+ui_updates_migrations_architecture_changes: به‌روزرسانی‌ها · انتقال‌ها · تغییر معماری
+ui_rule: قاعده
+ui_split_only_the_component_that_needs_independent_resources_scaling_or_failure_isolation: فقط جزئی را جدا کنید که به منابع، مقیاس‌پذیری یا جداسازی خرابی مستقل نیاز دارد.
+ui_reversible_operations: عملیات برگشت‌پذیر
+ui_change_the_server_without_betting_production: تغییر سرور بدون به خطر انداختن محیط عملیاتی
+ui_use_copies_monitoring_and_recovery_points_so_upgrades_and_scaling_decisions_remain_reversible: از کپی‌ها، مانیتورینگ و نقاط بازیابی استفاده کنید تا ارتقا و افزایش ظرفیت برگشت‌پذیر بمانند.
+ui_clone: کپی
+ui_create_a_copy_before_risky_changes: پیش از تغییرات پرریسک نسخه کپی بسازید
+ui_test: آزمایش
+ui_validate_upgrades_and_architecture_changes_away_from_production: ارتقا و تغییر معماری را خارج از محیط عملیاتی بررسی کنید
+ui_monitor: مانیتورینگ
+ui_watch_cpu_memory_storage_growth_and_request_queues: پردازنده، حافظه، رشد ذخیره‌سازی و صف درخواست‌ها را زیر نظر بگیرید
+ui_scale: افزایش ظرفیت
+ui_add_resources_only_when_pressure_is_sustained: فقط در صورت فشار مداوم، منابع اضافه کنید
+ui_cpu_saturation: اشباع پردازنده
+ui_memory_pressure: فشار حافظه
+ui_storage_growth: رشد ذخیره‌سازی
+ui_request_queues: صف درخواست‌ها
+ui_snapshot: اسنپ‌شات
+ui_fast_rollback_point: نقطه بازگشت سریع
+ui_useful_for_quick_reversal_but_not_the_only_recovery_copy: برای بازگشت سریع مفید است، اما نباید تنها نسخه بازیابی باشد.
+ui_scheduled_backup: پشتیبان‌گیری زمان‌بندی‌شده
+ui_recover_from_a_known_point: بازیابی از نقطه مشخص
+ui_restore_the_server_or_create_another_server_from_the_backup: سرور را بازیابی کنید یا از نسخه پشتیبان، سرور دیگری بسازید.
+ui_portable_copy: نسخه قابل انتقال
+ui_keep_recovery_outside_the_running_vps: نسخه بازیابی را خارج از VPS فعال نگه دارید
+ui_maintain_an_independent_copy_under_your_own_control: یک نسخه مستقل تحت کنترل خودتان نگه دارید.
+ui_operating_rule: قاعده بهره‌برداری
+ui_measure_first_change_second_keep_a_way_back: اول اندازه‌گیری، سپس تغییر؛ همیشه راه بازگشت داشته باشید.
+ui_are_you_repeatedly_hitting_real_hosting_limits: آیا مرتباً به محدودیت واقعی هاست می‌رسید؟
+ui_no_clear_limit_evidence: شواهد روشنی از محدودیت ندارم
+ui_occasional_unclear: گاهی / نامشخص
+ui_yes_repeated_cpu_ram_process_i_o_limits: بله، محدودیت مکرر پردازنده، رم، پردازش یا I/O
+ui_do_you_need_root_access_custom_software_or_a_custom_runtime: آیا به دسترسی root، نرم‌افزار سفارشی یا محیط اجرای سفارشی نیاز دارید؟
+ui_no: خیر
+ui_yes: بله
+ui_is_there_an_obvious_site_side_issue_to_fix_first: آیا مشکل مشخصی در خود سایت هست که ابتدا باید رفع شود؟
+ui_not_sure: مطمئن نیستم
+ui_yes_plugin_query_bot_cache_job_issue: بله؛ مشکل افزونه، کوئری، ربات، کش یا وظیفه
+ui_no_known_optimize_first_issue: مشکل شناخته‌شده‌ای برای بهینه‌سازی اولیه ندارم
+ui_is_the_website_business_critical_or_heavily_dynamic: آیا سایت برای کسب‌وکار حیاتی است یا بار پویای سنگینی دارد؟
+ui_no_low_risk: خیر / کم‌ریسک
+ui_who_will_operate_the_vps: چه کسی VPS را اداره خواهد کرد؟
+ui_nobody_is_assigned_yet: هنوز مسئولی تعیین نشده است
+ui_paid_managed_administration_is_available: خدمات مدیریت پولی در دسترس است
+ui_an_internal_operator_can_own_it: یک مسئول داخلی می‌تواند آن را اداره کند
+ui_are_security_backup_and_monitoring_responsibilities_defined: آیا مسئولیت امنیت، پشتیبان‌گیری و مانیتورینگ مشخص است؟
+? ui_optimize_first_fix_the_known_application_query_bot_cache_or_scheduled_job_problem_before_paying_for_more_infrastructure_re_measure_after_the_fix
+: 'ابتدا بهینه‌سازی کنید: پیش از پرداخت برای زیرساخت بیشتر، مشکل شناخته‌شده برنامه، کوئری، ربات، کش یا وظیفه زمان‌بندی‌شده را رفع کنید. پس از رفع مشکل، دوباره اندازه‌گیری کنید.'
+? ui_stay_on_shared_hosting_there_is_no_strong_vps_requirement_yet_keep_the_simpler_platform_until_real_limits_or_a_required_server_capability_appear
+: 'روی هاست اشتراکی بمانید: هنوز نیاز قانع‌کننده‌ای به VPS وجود ندارد. تا زمانی که محدودیت واقعی یا نیاز به قابلیت خاص سرور ایجاد نشده، بستر ساده‌تر را حفظ کنید.'
+? ui_move_to_vps_there_is_a_real_infrastructure_capability_reason_and_operations_ownership_exists_size_the_vps_from_the_measured_workload_then_plan_the_migration
+: 'به VPS منتقل شوید: نیاز واقعی زیرساختی یا قابلیتی وجود دارد و مسئول بهره‌برداری مشخص است. منابع VPS را از بار کاری اندازه‌گیری‌شده تعیین کنید، سپس برای انتقال برنامه بریزید.'
+? ui_move_with_managed_admin_help_the_vps_case_is_real_but_business_risk_or_missing_operations_ownership_makes_an_unmanaged_move_a_poor_fit_define_administration_security_backups_and_monitoring_before_cutover
+: 'با کمک خدمات مدیریت منتقل شوید: نیاز به VPS واقعی است، اما ریسک کسب‌وکار یا نبود مسئول بهره‌برداری، انتقال به سرویس مدیریت‌نشده را نامناسب می‌کند. پیش از انتقال، مدیریت، امنیت، پشتیبان‌گیری و مانیتورینگ را مشخص کنید.'
+? ui_insufficient_evidence_the_case_is_mixed_measure_the_current_bottleneck_and_compare_a_better_shared_managed_option_before_accepting_vps_administration_overhead
+: 'شواهد کافی نیست: وضعیت ترکیبی است. پیش از پذیرفتن بار مدیریت VPS، گلوگاه فعلی را اندازه بگیرید و یک گزینه اشتراکی یا مدیریت‌شده بهتر را نیز مقایسه کنید.'
+ui_transfer: ترافیک
+ui_price: قیمت
+ui_best_fit: مناسب برای
+ui_watch: نکته مهم
+ui_evidence_first: ابتدا شواهد
+ui_choose_the_configuration_after_the_checks: پس از بررسی‌ها، تنظیمات را انتخاب کنید
+ui_fit: تناسب
+ui_confirm_that_a_vps_solves_the_real_problem: مطمئن شوید VPS مشکل واقعی را حل می‌کند
+ui_size: تعیین منابع
+ui_cpu_ram_storage_dynamic_workload: پردازنده · رم · ذخیره‌سازی · بار کاری پویا
+ui_verify_terms: بررسی شرایط
+ui_location_transfer_panel_backups_support: موقعیت · ترافیک · پنل · پشتیبان‌گیری · پشتیبانی
+ui_check_current_configurations: بررسی تنظیمات فعلی
+ui_use_the_provider_s_current_order_page_before_paying: پیش از پرداخت، صفحه سفارش فعلی ارائه‌دهنده را بررسی کنید
+ui_buy_only_measured_headroom: فقط حاشیه ظرفیت اندازه‌گیری‌شده بخرید
+ui_workload_fit: تناسب با بار کاری
+ui_growth_room: ظرفیت رشد
+ui_current_terms: شرایط فعلی
+ui_smallest_configuration_that_covers_the_real_workload_with_enough_headroom: کوچک‌ترین پیکربندی پوشش‌دهنده بار واقعی با حاشیه ظرفیت کافی
+ui_choose_a_vps_configuration: انتخاب تنظیمات VPS
+ui_call_to_action: اقدام بعدی
+ui_select_language: انتخاب زبان
+publisher_description: پروژه تحریریه فنی با تمرکز بر میزبانی VPS مبتنی بر شواهد، تعیین منابع بر اساس بار کاری، انتقال، مانیتورینگ و تصمیم‌های عملیاتی.
+sizing_hero_options: بررسی گزینه‌های VPS
+sizing_hero_guidance: راهنمای تعیین منابع
+sizing_hero_aria: بررسی تنظیمات فعلی VPS برای تعیین منابع سایت
+sizing_hero_title: منابع بر اساس بار کاری، نه بازدید ماهانه
+sizing_hero_subtitle: پردازنده، رم، ذخیره‌سازی و هم‌زمانی درخواست‌های پویا باید با هم ارزیابی شوند.
+sizing_hero_cpu: کار پویا + هم‌زمانی
+sizing_hero_ram: پردازشگرها + پایگاه داده + سرویس‌ها
+sizing_hero_storage: ذخیره‌سازی
+sizing_hero_storage_detail: رشد داده + ورودی/خروجی
+sizing_hero_headroom: حاشیه ظرفیت
+sizing_hero_headroom_detail: اوج مصرف + وظایف + نگهداری
+sizing_hero_rule: کوچک‌ترین VPS را انتخاب کنید که بار اندازه‌گیری‌شده را با حاشیه ظرفیت امن پوشش دهد.
+guide_affiliate_disclosure: 'شفافیت: نویسنده با VDSina رابطه حرفه‌ای دارد. لینک‌های همکاری در فروش ممکن است کمیسیون ایجاد کنند.'
+guide_editorial_disclosure: شفافیت تحریریه و روابط تجاری
+hero_check_vps_options: بررسی گزینه‌های VPS
+hero_see_quick_comparison: مقایسه سریع
+hero_check_current_vps_configurations_shared_hosting_compared_with_vps: بررسی تنظیمات فعلی VPS؛ مقایسه هاست اشتراکی و سرور مجازی
+hero_more_control_means_more_server_responsibility: کنترل بیشتر، مسئولیت بیشتر سرور
+hero_compare_the_operating_model_resource_limits_and_software_freedom_not_site_size_alone: مدل بهره‌برداری، محدودیت منابع و آزادی نرم‌افزاری را مقایسه کنید، نه فقط اندازه سایت را.
+hero_administration: مدیریت
+hero_provider_managed_vs_self_managed: مدیریت ارائه‌دهنده یا مدیریت توسط شما
+hero_software: نرم‌افزار
+hero_restricted_stack_vs_flexible_stack: نرم‌افزارهای محدود یا انعطاف‌پذیر
+hero_resources: منابع
+hero_account_limits_vs_vps_allocation: محدودیت حساب یا منابع تخصیص‌یافته VPS
+hero_operations: بهره‌برداری
+hero_simplicity_vs_control_ownership: سادگی یا کنترل همراه با مسئولیت
+hero_move_only_when_the_extra_control_solves_a_real_limit_or_capability_need: فقط زمانی منتقل شوید که کنترل بیشتر، محدودیت واقعی یا نیاز قابلیتی را برطرف کند.
+hero_vps_vs_shared_hosting_decision_outcomes: نتایج انتخاب بین VPS و هاست اشتراکی
+hero_stay_on_shared_hosting: ماندن روی هاست اشتراکی
+hero_optimize_first: ابتدا بهینه‌سازی
+hero_move_to_vps: انتقال به VPS
+hero_move_with_managed_admin_help: انتقال با کمک خدمات مدیریت
+hero_check_current_vps_configurations: بررسی تنظیمات فعلی VPS
+hero_wordpress_vps_guide: راهنمای VPS وردپرس
+hero_wordpress_vps_factors_beyond_ram: عوامل VPS وردپرس فراتر از رم
+hero_beyond_cpu_and_ram: فراتر از پردازنده و رم
+hero_ssd_nvme_storage: ذخیره‌سازی SSD / NVMe
+hero_database_queries_cache_warmups_updates_and_backups_are_sensitive_to_storage_latency: کوئری‌های پایگاه داده، آماده‌سازی کش، به‌روزرسانی و پشتیبان‌گیری به تأخیر ذخیره‌سازی حساس‌اند.
+hero_server_location: موقعیت سرور
+hero_choose_a_region_near_the_main_audience_extra_ram_cannot_remove_network_latency: منطقه نزدیک به مخاطبان اصلی را انتخاب کنید؛ رم بیشتر تأخیر شبکه را برطرف نمی‌کند.
+hero_check_current_wordpress_vps_options: بررسی گزینه‌های فعلی VPS وردپرس
+hero_wordpress_workload_html: <strong>بار کاری وردپرس</strong>
+hero_size_the_dynamic_work_not_visitor_count: منابع را برای پردازش پویا تعیین کنید، نه تعداد بازدیدکنندگان.
+hero_php_fpm_workers_html: <strong>پردازشگرهای PHP-FPM</strong>
+hero_page_object_cache_html: <strong>کش صفحه / آبجکت</strong>
+hero_php_workers_html: <span>پردازشگرهای PHP</span>
+hero_db_load_html: <span>بار پایگاه داده</span>
+hero_plugins_html: <span>افزونه‌ها</span>
+hero_cron_jobs_html: <span>کران / وظایف</span>
+hero_vps_size_real_wordpress_workload_operating_headroom: منابع VPS = بار واقعی وردپرس + حاشیه ظرفیت عملیاتی
+hero_see_sizing_guidance: راهنمای تعیین منابع
+hero_check_current_vps_options_for_woocommerce: بررسی گزینه‌های فعلی VPS ووکامرس
+hero_woocommerce_dynamic_path: مسیر پویای ووکامرس
+hero_three_workloads_dominate_the_uncached_store_path: سه بار کاری، بیشترین سهم را در مسیر بدون کش فروشگاه دارند.
+hero_checkout: پرداخت
+hero_php_workers_session_state: پردازشگرهای PHP + وضعیت نشست
+hero_orders_stock: سفارش و موجودی
+hero_database_writes_inventory_updates: نوشتن در پایگاه داده + به‌روزرسانی موجودی
+hero_async_work: کار ناهمگام
+hero_webhooks_action_scheduler: وب‌هوک‌ها + Action Scheduler
+hero_php_workers: پردازشگرهای PHP
+hero_db_writes: نوشتن در پایگاه داده
+hero_sale_peaks: اوج فروش
+hero_size_the_vps_for_peak_dynamic_concurrency_not_monthly_visits: منابع VPS را برای اوج هم‌زمانی درخواست‌های پویا تعیین کنید، نه بازدید ماهانه.
+hero_check_architecture: بررسی معماری
+hero_check_current_vps_options_for_multiple_websites: بررسی گزینه‌های فعلی VPS برای چند سایت
+hero_multiple_websites_on_one_vps: چند سایت روی یک VPS
+hero_consolidate_only_while_the_shared_resource_pool_and_failure_domain_still_make_sense: تجمیع را فقط تا زمانی ادامه دهید که اشتراک منابع و دامنه خرابی مشترک منطقی باشند.
+hero_websites_sharing_the_server: سایت‌های روی سرور مشترک
+hero_site_a: سایت A
+hero_site_b: سایت B
+hero_site_c: سایت C
+hero_site_d: سایت D
+hero_share_one_server: روی یک سرور مشترک
+hero_shared_resource_pool: مجموعه منابع مشترک
+hero_storage: ذخیره‌سازی
+hero_db_jobs: پایگاه داده / وظایف
+hero_combined_peak_load: مجموع بار اوج
+hero_shared_failure_domain: دامنه خرابی مشترک
+hero_security_baseline: مبنای امنیت
+hero_check_current_vps_options_for_a_hardened_server: بررسی گزینه‌های فعلی VPS برای سرور ایمن‌سازی‌شده
+hero_harden_in_the_right_order: ایمن‌سازی با ترتیب درست
+hero_preserve_recovery_first_then_reduce_exposure_and_maintain_the_server: ابتدا مسیر بازیابی را حفظ کنید؛ سپس سطح دسترسی عمومی را کاهش دهید و سرور را نگهداری کنید.
+hero_recovery_path: مسیر بازیابی
+hero_console_rescue_access: دسترسی کنسول / نجات
+hero_admin_access: دسترسی مدیریت
+hero_named_user_ssh_key: کاربر مشخص + کلید SSH
+hero_exposure: سطح دسترسی عمومی
+hero_ports_firewall: پورت‌ها + فایروال
+hero_maintenance: نگهداری
+hero_patches_backups_alerts: وصله‌ها + پشتیبان‌گیری + هشدارها
+hero_do_not_tighten_remote_access_until_a_second_tested_admin_path_works: تا وقتی مسیر مدیریت دوم را آزمایش نکرده‌اید، دسترسی از راه دور را محدودتر نکنید.
+hero_access_sequence: ترتیب تنظیم دسترسی
+hero_console: کنسول
+hero_named_admin: مدیر با حساب مشخص
+hero_ssh_key: کلید SSH
+hero_restrict_old_access: محدودسازی دسترسی قدیمی
+hero_keep_one_working_session_open_while_testing_the_replacement_path: هنگام آزمایش مسیر جایگزین، یک نشست فعال و سالم را باز نگه دارید.
+hero_network_exposure: دسترسی شبکه
+hero_public: عمومی
+hero_controlled: کنترل‌شده
+hero_ssh_admin: SSH / مدیریت
+hero_private: خصوصی
+hero_db_redis_app_ports: پورت‌های پایگاه داده / Redis / برنامه
+hero_expose_only_what_the_architecture_actually_needs: فقط آنچه معماری واقعاً نیاز دارد در دسترس عمومی قرار دهید.
+hero_maintenance_loop: چرخه نگهداری
+hero_patches: وصله‌ها
+hero_least_privilege: حداقل سطح دسترسی
+hero_secrets: اطلاعات محرمانه
+hero_rate_limits: محدودیت نرخ درخواست
+hero_security_degrades_when_ownership_updates_or_credentials_are_left_unmanaged: نبود مسئول مشخص و رها کردن به‌روزرسانی‌ها یا اطلاعات ورود، امنیت را تضعیف می‌کند.
+hero_application_layer: لایه برنامه
+hero_panel_admin_ui: پنل / رابط مدیریت
+hero_cms_plugins_runtime: CMS / افزونه‌ها / محیط اجرا
+hero_https_transport: ارتباط HTTPS
+hero_ddos_application_security: حفاظت DDoS ≠ امنیت برنامه
+hero_recovery_controls: کنترل‌های بازیابی
+hero_backup_copy: نسخه پشتیبان
+hero_outside_the_running_vps: خارج از VPS فعال
+hero_restore_test: آزمایش بازیابی
+hero_prove_recovery_works: اطمینان از کارکرد بازیابی
+hero_logs_alerts: لاگ‌ها و هشدارها
+hero_detect_failed_controls: تشخیص شکست کنترل‌ها
+hero_incident_path: مسیر پاسخ به رخداد
+hero_contain: مهار
+hero_rotate_secrets: تعویض اطلاعات محرمانه
+hero_rebuild: بازسازی
+hero_restore: بازیابی
+hero_recover_from_known_good_sources_after_privileged_compromise: پس از نفوذ با دسترسی سطح بالا، از منابع سالم و مورد اعتماد بازیابی کنید.
+hero_backup_strategy: استراتژی پشتیبان‌گیری
+hero_check_current_vps_options_for_a_backup_ready_server: بررسی گزینه‌های فعلی VPS با آمادگی پشتیبان‌گیری
+hero_recovery_needs_more_than_one_backup: بازیابی به بیش از یک نسخه پشتیبان نیاز دارد
+hero_fast_rollback_independent_copies_and_tested_restores_solve_different_failure_modes: بازگشت سریع، نسخه مستقل و بازیابی آزمایش‌شده، هرکدام نوع متفاوتی از خرابی را پوشش می‌دهند.
+hero_provider_image: ایمیج ارائه‌دهنده
+hero_fast_server_rollback: بازگشت سریع سرور
+hero_database_backup: پشتیبان پایگاه داده
+hero_application_state: وضعیت برنامه
+hero_offsite_copy: نسخه خارج از محل
+hero_separate_failure_domain: دامنه خرابی مستقل
+hero_restore_drill: تمرین بازیابی
+hero_prove_rto_in_practice: سنجش عملی RTO
+hero_rpo_defines_acceptable_data_loss_rto_defines_acceptable_downtime: RPO میزان قابل قبول از دست رفتن داده و RTO مدت قابل قبول قطعی را مشخص می‌کند.
+hero_monitoring_baseline: مبنای مانیتورینگ
+hero_check_current_vps_options_for_a_monitored_server: بررسی گزینه‌های فعلی VPS برای سرور تحت پایش
+hero_monitor_the_failure_path_not_only_the_server: مسیر خرابی را پایش کنید، نه فقط سرور را
+hero_availability_host_pressure_application_health_and_alerts_answer_different_questions: دسترس‌پذیری، فشار منابع میزبان، سلامت برنامه و هشدارها به پرسش‌های متفاوتی پاسخ می‌دهند.
+hero_external_uptime: پایش دسترس‌پذیری از بیرون
+hero_can_users_reach_the_site: آیا کاربران به سایت دسترسی دارند؟
+hero_host_metrics: شاخص‌های میزبان
+hero_service_health: سلامت سرویس
+hero_web_db_jobs_tls: وب، پایگاه داده، وظایف، TLS
+hero_alerts_owner: هشدار و مسئول
+hero_detect_notify_respond: تشخیص، اطلاع‌رسانی، پاسخ
+hero_the_monitor_and_notification_path_must_survive_failure_of_the_vps_being_watched: سامانه پایش و مسیر اطلاع‌رسانی باید با خرابی VPS تحت نظارت همچنان کار کنند.
+hero_see_migration_plan: مشاهده برنامه انتقال
+hero_check_current_vps_options_for_website_migration: بررسی گزینه‌های فعلی VPS برای انتقال سایت
+hero_move_the_website_before_you_move_the_traffic: پیش از ترافیک، خود سایت را منتقل کنید
+hero_build_and_validate_the_destination_first_dns_should_be_the_final_controlled_step: ابتدا مقصد را آماده و اعتبارسنجی کنید. تغییر DNS باید آخرین گام کنترل‌شده باشد.
+hero_inventory: فهرست اجزا
+hero_stack_data_dns_mail: نرم‌افزارها، داده، DNS، ایمیل
+hero_build_test: آماده‌سازی و آزمایش
+hero_prepare_vps_in_parallel: آماده‌سازی موازی VPS
+hero_final_sync: همگام‌سازی نهایی
+hero_control_last_writes: کنترل آخرین ثبت داده‌ها
+hero_dns_cutover: تغییر DNS
+hero_monitor_keep_rollback: پایش + حفظ امکان بازگشت
+hero_do_not_retire_the_old_host_until_the_new_vps_passes_acceptance_checks: تا وقتی VPS جدید آزمون‌های پذیرش را نگذرانده، هاست قبلی را از مدار خارج نکنید.
+hero_compare_management: مقایسه روش مدیریت
+hero_check_current_vps_options_for_managed_or_unmanaged_hosting: بررسی گزینه‌های فعلی VPS مدیریت‌شده یا مدیریت‌نشده
+hero_the_real_difference_is_operational_ownership: تفاوت اصلی در مسئولیت بهره‌برداری است
+hero_cpu_ram_and_storage_can_be_identical_responsibility_after_provisioning_is_what_changes: پردازنده، رم و ذخیره‌سازی می‌توانند یکسان باشند. آنچه تغییر می‌کند، مسئولیت پس از تحویل سرور است.
+hero_patching: نصب وصله‌ها
+hero_who_owns_os_security_updates: مسئول به‌روزرسانی سیستم‌عامل و امنیت کیست؟
+hero_backups: پشتیبان‌گیری
+hero_who_verifies_restore_readiness: چه کسی آمادگی بازیابی را بررسی می‌کند؟
+hero_monitoring: مانیتورینگ
+hero_who_sees_and_acts_on_alerts: چه کسی هشدارها را می‌بیند و اقدام می‌کند؟
+hero_incidents: رخدادها
+hero_who_responds_when_production_fails: هنگام خرابی محیط عملیاتی چه کسی پاسخ می‌دهد؟
+hero_do_not_buy_the_word_managed_buy_a_written_scope_of_owned_tasks: به واژه «مدیریت‌شده» اکتفا نکنید؛ محدوده مکتوب وظایف و مسئولیت‌ها را بخواهید.
+hero_see_fastpanel_sizing: منابع مورد نیاز FASTPANEL
+hero_check_current_vps_options_for_fastpanel_hosting: بررسی گزینه‌های فعلی VPS برای میزبانی FASTPANEL
+hero_size_the_vps_for_fastpanel_plus_the_workload: منابع VPS را برای FASTPANEL و بار کاری تعیین کنید
+hero_the_panel_is_only_one_resource_consumer_websites_database_mail_and_jobs_need_headroom_too: پنل فقط یکی از مصرف‌کنندگان منابع است. سایت‌ها، پایگاه داده، ایمیل و وظایف هم به حاشیه ظرفیت نیاز دارند.
+hero_panel: پنل
+hero_fastpanel_services: سرویس‌های FASTPANEL
+hero_web_stack: نرم‌افزارهای وب
+hero_php_workers_web_server: پردازشگرهای PHP + وب‌سرور
+hero_database: پایگاه داده
+hero_mysql_mariadb_load: بار MySQL / MariaDB
+hero_extras: موارد اضافه
+hero_mail_backups_jobs: ایمیل + پشتیبان‌گیری + وظایف
+hero_do_not_treat_the_1_gb_panel_minimum_as_a_default_production_target: حداقل 1 GB برای پنل را مقدار پیش‌فرض مناسب محیط عملیاتی ندانید.
+hero_see_deployment_sequence: مشاهده ترتیب استقرار
+hero_check_current_vps_options_for_hosting_a_website: بررسی گزینه‌های فعلی VPS برای میزبانی سایت
+hero_fresh_vps_to_live_website: از VPS تازه تا سایت فعال
+hero_build_the_stack_in_the_right_order_test_it_then_send_production_traffic: اجزای نرم‌افزاری را به ترتیب درست آماده و آزمایش کنید، سپس ترافیک واقعی را هدایت کنید.
+hero_provision: آماده‌سازی
+hero_os_secure_admin_access: سیستم‌عامل + دسترسی امن مدیریت
+hero_install_stack: نصب نرم‌افزارها
+hero_only_what_the_app_needs: فقط نیازهای برنامه
+hero_connect_domain: اتصال دامنه
+hero_dns_https: DNS + HTTPS
+hero_verify: بررسی
+hero_reboot_backups_monitoring: راه‌اندازی مجدد + پشتیبان‌گیری + مانیتورینگ
+hero_install_only_the_services_the_website_actually_needs: فقط سرویس‌هایی را نصب کنید که سایت واقعاً نیاز دارد.
+hero_see_location_guidance: راهنمای انتخاب موقعیت
+hero_check_current_vps_options_by_location: بررسی گزینه‌های فعلی VPS بر اساس موقعیت
+hero_choose_the_route_not_the_map: مسیر شبکه را بسنجید، نه فقط نقشه را
+hero_audience_dynamic_traffic_dependencies_and_real_network_paths_matter_more_than_country_labels: مخاطبان، ترافیک پویا، وابستگی‌ها و مسیرهای واقعی شبکه از نام کشورها مهم‌ترند.
+hero_audience: مخاطبان
+hero_important_users_first: اول کاربران مهم
+hero_dependencies: وابستگی‌ها
+hero_db_apis_services: پایگاه داده + APIها + سرویس‌ها
+hero_route_test: آزمایش مسیر
+hero_latency_stability_loss: تأخیر + پایداری + اتلاف بسته
+hero_constraints: محدودیت‌ها
+hero_cdn_data_location: CDN + محل داده‌ها
+hero_geography_gives_you_candidates_real_routing_chooses_the_region: جغرافیا گزینه‌های اولیه را مشخص می‌کند؛ مسیر واقعی شبکه، منطقه مناسب را تعیین می‌کند.
+hero_see_panel_guidance: راهنمای انتخاب پنل
+hero_check_current_vps_options_with_a_control_panel: بررسی گزینه‌های فعلی VPS با کنترل پنل
+hero_choose_the_panel_by_operating_model: پنل را بر اساس مدل بهره‌برداری انتخاب کنید
+hero_websites_users_mail_operating_system_and_licensing_define_the_right_panel_class: سایت‌ها، کاربران، ایمیل، سیستم‌عامل و مجوزها، نوع مناسب پنل را مشخص می‌کنند.
+hero_sites: سایت‌ها
+hero_one_site_or_many: یک سایت یا چند سایت؟
+hero_users: کاربران
+hero_single_admin_or_clients: یک مدیر یا مشتریان؟
+hero_services: سرویس‌ها
+hero_mail_dns_db_backups: ایمیل، DNS، پایگاه داده، پشتیبان‌گیری
+hero_platform: بستر
+hero_linux_windows_license: Linux / Windows + مجوز
+hero_use_a_panel_only_when_it_removes_enough_admin_work_to_justify_its_overhead_and_constraints: فقط وقتی از پنل استفاده کنید که کاهش کار مدیریت، هزینه منابع و محدودیت‌های آن را توجیه کند.
+hero_how_the_site_works: روش کار سایت
+hero_check_current_vps_options: بررسی گزینه‌های فعلی VPS
+hero_research_first_recommendation_second: ابتدا پژوهش، سپس توصیه
+hero_provider_facts_stay_separate_from_workload_based_editorial_guidance: اطلاعات ارائه‌دهنده از راهنمای تحریریه مبتنی بر بار کاری جدا نگه داشته می‌شود.
+hero_provider_facts: اطلاعات ارائه‌دهنده
+hero_cpu_ram_storage_price: پردازنده، رم، ذخیره‌سازی، قیمت
+hero_workload_fit: تناسب با بار کاری
+hero_workers_db_cache_jobs: پردازشگرها، پایگاه داده، کش، وظایف
+hero_management_backups_growth: مدیریت، پشتیبان‌گیری، رشد
+hero_recommendation: توصیه
+hero_smallest_safe_starting_tier: کوچک‌ترین طرح امن برای شروع
+hero_no_fixed_visitor_count_promises_size_from_the_actual_workload: وعده ثابت درباره تعداد بازدیدکنندگان نداریم. منابع بر اساس بار واقعی تعیین می‌شوند.
+hero_about_our_process: درباره فرایند ما
+hero_read_how_vpsforwebsite_com_reviews_and_corrects_information: روش بررسی و اصلاح اطلاعات در VPSforWebsite.com را بخوانید
+hero_corrections_should_be_evidence_based: اصلاحات باید مبتنی بر شواهد باشند
+hero_useful_feedback_identifies_the_claim_the_source_and_what_needs_to_be_checked: بازخورد مفید، ادعا، منبع و مورد نیازمند بررسی را مشخص می‌کند.
+hero_identify: مشخص‌سازی
+hero_which_claim_or_page: کدام ادعا یا صفحه؟
+hero_source: منبع
+hero_provide_current_evidence: ارائه شواهد به‌روز
+hero_review: بازبینی
+hero_check_provider_context: بررسی ارائه‌دهنده و زمینه موضوع
+hero_update: به‌روزرسانی
+hero_correct_the_published_guidance: اصلاح راهنمای منتشرشده
+hero_the_preview_does_not_collect_form_submissions_yet: نسخه پیش‌نمایش هنوز اطلاعات ارسالی فرم‌ها را جمع‌آوری نمی‌کند.
+hero_contact: تماس با ما
+hero_open_the_vpsforwebsite_com_contact_and_correction_page: باز کردن صفحه تماس و اصلاح اطلاعات VPSforWebsite.com
+hero_minimal_collection_clear_disclosure: جمع‌آوری حداقلی، اطلاع‌رسانی شفاف
+hero_the_policy_describes_what_the_site_actually_uses_now_not_planned_tracking_or_integrations: این سیاست خدمات فعلی سایت را توضیح می‌دهد، نه رهگیری یا اتصال‌هایی که صرفاً در برنامه آینده هستند.
+hero_no_account: بدون حساب کاربری
+hero_public_informational_site: سایت اطلاع‌رسانی عمومی
+hero_analytics: تحلیل بازدید
+hero_not_enabled_in_preview: در پیش‌نمایش فعال نیست
+hero_affiliate_links: لینک‌های همکاری در فروش
+hero_sponsored_nofollow_marked: دارای نشان sponsored / nofollow
+hero_updates: به‌روزرسانی‌ها
+hero_policy_follows_actual_services: سیاست مطابق خدمات واقعی
+hero_data_collection_should_stay_limited_to_what_the_site_actually_needs: جمع‌آوری داده باید به نیاز واقعی سایت محدود بماند.
+search_no_results: نتیجه‌ای یافت نشد
+search_initial_message: برای جست‌وجو چیزی بنویسید...

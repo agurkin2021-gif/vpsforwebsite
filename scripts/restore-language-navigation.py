@@ -21,6 +21,7 @@ LANGS = [
     ("ko", "한국어", "/ko/"),
     ("de", "Deutsch", "/de/"),
     ("it", "Italiano", "/it/"),
+    ("fa", "فارسی", "/fa/"),
 ]
 LANG_CODES = [x[0] for x in LANGS]
 HOME = {code: url for code, _, url in LANGS}
@@ -230,7 +231,7 @@ def replace_alternates(html, routes, include_ko):
 changed = 0
 patched_generated = 0
 patched_legacy = 0
-LOCALES_BY_EN = {language: source_equivalents(language) for language in ("de", "it")}
+LOCALES_BY_EN = {language: source_equivalents(language) for language in ("de", "it", "fa")}
 ENGLISH_BY_LOCALE = {language: {localized: en for en, localized in pairs.items()}
                      for language, pairs in LOCALES_BY_EN.items()}
 

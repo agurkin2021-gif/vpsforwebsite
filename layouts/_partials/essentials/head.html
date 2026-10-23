@@ -8,6 +8,10 @@
   <link rel="preload" as="image" href="{{ $hero.RelPermalink }}" imagesrcset="{{ $hero.RelPermalink }} 579w" imagesizes="(min-width: 1024px) 560px, (min-width: 768px) 45vw, calc(75vw - 57px)" fetchpriority="high" />
 {{ end }}
 {{ partialCached "local-fonts.html" . }}
+{{ if eq .Language.Lang "fa" }}
+  <link rel="preload" href="{{ "fonts/vazirmatn/Vazirmatn-variable.woff2" | relURL }}" as="font" type="font/woff2" crossorigin />
+  <link id="persian-responsive-css" rel="stylesheet" href="{{ "css/fa-responsive.v1.css" | relURL }}" />
+{{ end }}
 <link id="guide-navigation-css" rel="stylesheet" href="{{ "css/guide-navigation.v1.css" | relURL }}" />
 <link id="hero-layout-css" rel="stylesheet" href="{{ "css/hero-layout.v1.css" | relURL }}" />
 {{ if eq .Language.Lang "it" }}
@@ -51,7 +55,7 @@
 {{ end }}
 
 {{ $publisherName := "VPSforWebsite.com Editorial" }}
-{{ if eq .Language.Lang "de" }}{{ $publisherName = "VPSforWebsite.com Redaktion" }}{{ else if eq .Language.Lang "it" }}{{ $publisherName = "Redazione VPSforWebsite.com" }}{{ end }}
+{{ if eq .Language.Lang "de" }}{{ $publisherName = "VPSforWebsite.com Redaktion" }}{{ else if eq .Language.Lang "it" }}{{ $publisherName = "Redazione VPSforWebsite.com" }}{{ else if eq .Language.Lang "fa" }}{{ $publisherName = "تحریریه VPSforWebsite.com" }}{{ end }}
 {{ $publisher := dict
   "@type" "Organization"
   "name" $publisherName

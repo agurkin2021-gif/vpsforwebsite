@@ -1,0 +1,46 @@
+/* Vazirmatn v33.003, SIL OFL 1.1; self-hosted only for the Persian locale. */
+@font-face {
+  font-family: Vazirmatn;
+  src: url('../fonts/vazirmatn/Vazirmatn-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+html:lang(fa) body,
+html:lang(fa) h1, html:lang(fa) h2, html:lang(fa) h3,
+html:lang(fa) h4, html:lang(fa) h5, html:lang(fa) h6,
+html:lang(fa) button, html:lang(fa) input, html:lang(fa) select,
+html:lang(fa) textarea, html:lang(fa) .btn,
+html:lang(fa) .content label, html:lang(fa) .content legend {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  letter-spacing: normal;
+}
+html:lang(fa) main .content { min-width: 0; overflow-wrap: anywhere; text-align: start; }
+html:lang(fa) .vps-home .vps-hero-copy,
+html:lang(fa) .vps-home .vps-hero-copy h1 { text-align: right; }
+html:lang(fa) .content td { unicode-bidi: normal; }
+html:lang(fa) bdi[dir=ltr] { direction: ltr; unicode-bidi: isolate; }
+html:lang(fa) main h1, html:lang(fa) main h2, html:lang(fa) main h3,
+html:lang(fa) main .btn { overflow-wrap: anywhere; }
+html:lang(fa) main h1, html:lang(fa) main h2, html:lang(fa) main h3 { line-height: 1.65; }
+html:lang(fa) main p, html:lang(fa) main li { line-height: 1.9; }
+html:lang(fa) .content ul, html:lang(fa) .content ol { padding-left: 0; padding-inline-start: 1.65em; }
+html:lang(fa) .content li { padding-left: 0; padding-inline-start: .35em; }
+html:lang(fa) .content th, html:lang(fa) .content td,
+html:lang(fa) .content form { text-align: start; }
+html:lang(fa) .content .vps-table-scroll { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+html:lang(fa) .content .vps-table-scroll table { min-width: 720px; margin-block: 0; }
+html:lang(fa) pre { direction: ltr; text-align: left; unicode-bidi: isolate; max-width: 100%; overflow-x: auto; }
+html:lang(fa) code { direction: ltr; unicode-bidi: isolate; font-family: ui-monospace, Consolas, monospace; }
+html:lang(fa) input[type=number], html:lang(fa) input[type=email], html:lang(fa) input[type=url] { direction: ltr; text-align: left; }
+html:lang(fa) select { background-position: left .65rem center; padding-left: 2rem; padding-right: .75rem; }
+html:lang(fa) .navbar > .ml-auto { margin-left: 0; margin-right: auto; }
+html:lang(fa) .navbar-brand { direction: ltr; unicode-bidi: isolate; }
+html:lang(fa) .language-picker { font-family: Vazirmatn, Arial, sans-serif; }
+html:lang(fa) .nav-dropdown-list { text-align: right; }
+html:lang(fa) main svg { direction: ltr; }
+html:lang(fa) main svg text { font-family: Vazirmatn, Tahoma, sans-serif !important; unicode-bidi: plaintext; }
+@media (min-width: 1024px) {
+  html:lang(fa) .navbar > .ml-auto { margin-right: 0; }
+  html:lang(fa) .nav-dropdown-list { right: 0; left: auto; }
+}

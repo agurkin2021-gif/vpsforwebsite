@@ -22,6 +22,10 @@
 {{ end }}
 
 
+{{ if and (eq .Language.Lang "fa") (eq .Kind "404") }}
+  {{ $title = "صفحه پیدا نشد" }}
+{{ end }}
+
 <!-- checking description -->
 {{ $description := .Summary }}
 {{ if .Params.meta_description }}

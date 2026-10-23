@@ -23,7 +23,7 @@
                 <p class="vps-hero-lead">{{ $heroLead | safeHTML }}</p>
                 <p class="vps-hero-detail">{{ $heroDetail | safeHTML }}</p>
               </div>
-            {{ else if in (slice "ko" "de" "it") site.Language.Lang }}
+            {{ else if in (slice "ko" "de" "it" "fa") site.Language.Lang }}
               <div class="vps-hero-copy-text">
                 {{ range $i, $paragraph := split .content "\n\n" }}
                   <p class="{{ if eq $i 0 }}vps-hero-lead{{ else }}vps-hero-detail{{ end }}">{{ $paragraph | markdownify }}</p>
@@ -37,7 +37,7 @@
                 {{ if .enable }}
                   {{ $href := .link }}
                   {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                    {{ if in (slice "ko" "de" "it") site.Language.Lang }}
+                    {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -57,7 +57,7 @@
                 {{ if .enable }}
                   {{ $href := .link }}
                   {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                    {{ if in (slice "ko" "de" "it") site.Language.Lang }}
+                    {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -76,7 +76,7 @@
             </div>
             <p class="mt-3 max-w-xl text-xs leading-relaxed opacity-70">
               {{ T "ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission" }}
-              <a href="{{ if in (slice "ko" "de" "it") site.Language.Lang }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "ui_editorial_and_commercial_disclosure" }}</a>.
+              <a href="{{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "ui_editorial_and_commercial_disclosure" }}</a>.
             </p>
           </div>
           <div class="md:col-6 lg:col-6">
@@ -114,66 +114,66 @@
       <div class="container">
         <div class="vps-workflow-strip-inner">
           <div class="vps-workflow-run">
-            <span>{{ T "ui_vps_for_website" }}</span>
-            <span>{{ T "ui_isolated_cpu_ram_storage" }}</span>
-            <span>{{ T "ui_full_os_web_stack_control" }}</span>
-            <span>Ubuntu / Linux</span>
-            <span>{{ T "ui_fastpanel_control_panel" }}</span>
-            <span>{{ T "ui_nginx_or_apache" }}</span>
-            <span>PHP / Node / Python</span>
-            <span>{{ T "ui_mysql_database_workloads" }}</span>
-            <span>{{ T "ui_ssh_root_access" }}</span>
-            <span>{{ T "ui_domains_ssl_dns" }}</span>
-            <span>{{ T "ui_wordpress_workloads" }}</span>
-            <span>{{ T "ui_woocommerce_workloads" }}</span>
-            <span>{{ T "ui_multiple_websites" }}</span>
-            <span>{{ T "ui_website_migration_planning" }}</span>
-            <span>{{ T "ui_rollback_before_dns_switch" }}</span>
-            <span>{{ T "ui_snapshots_scheduled_backups" }}</span>
-            <span>{{ T "ui_portable_backup_copy" }}</span>
-            <span>{{ T "ui_monitoring_before_scaling" }}</span>
-            <span>{{ T "ui_scale_cpu_ram_storage" }}</span>
-            <span>{{ T "ui_choose_server_location_by_latency" }}</span>
-            <span>{{ T "ui_ddos_protection" }}</span>
-            <span>{{ T "ui_10_gbit_s_public_port" }}</span>
-            <span>{{ T "ui_24_7_support" }}</span>
-            <span>{{ T "ui_daily_billing" }}</span>
-            <span>{{ T "ui_1_vcpu_1_gb_from_0_07_day" }}</span>
-            <span>1 vCPU / 2 GB / 40 GB</span>
-            <span>2 vCPU / 4 GB / 80 GB</span>
-            <span>4 vCPU / 8 GB / 160 GB</span>
-            <span>{{ T "ui_clone_test_scale_recover" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_vps_for_website" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_isolated_cpu_ram_storage" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_full_os_web_stack_control" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>Ubuntu / Linux</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_fastpanel_control_panel" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_nginx_or_apache" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>PHP / Node / Python</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_mysql_database_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_ssh_root_access" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_domains_ssl_dns" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_wordpress_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_woocommerce_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_multiple_websites" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_website_migration_planning" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_rollback_before_dns_switch" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_snapshots_scheduled_backups" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_portable_backup_copy" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_monitoring_before_scaling" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_scale_cpu_ram_storage" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_choose_server_location_by_latency" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_ddos_protection" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_10_gbit_s_public_port" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_24_7_support" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_daily_billing" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_1_vcpu_1_gb_from_0_07_day" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>1 vCPU / 2 GB / 40 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>2 vCPU / 4 GB / 80 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>4 vCPU / 8 GB / 160 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_clone_test_scale_recover" }}</span>
           </div>
           <div class="vps-workflow-run" aria-hidden="true">
-            <span>{{ T "ui_vps_for_website" }}</span>
-            <span>{{ T "ui_isolated_cpu_ram_storage" }}</span>
-            <span>{{ T "ui_full_os_web_stack_control" }}</span>
-            <span>Ubuntu / Linux</span>
-            <span>{{ T "ui_fastpanel_control_panel" }}</span>
-            <span>{{ T "ui_nginx_or_apache" }}</span>
-            <span>PHP / Node / Python</span>
-            <span>{{ T "ui_mysql_database_workloads" }}</span>
-            <span>{{ T "ui_ssh_root_access" }}</span>
-            <span>{{ T "ui_domains_ssl_dns" }}</span>
-            <span>{{ T "ui_wordpress_workloads" }}</span>
-            <span>{{ T "ui_woocommerce_workloads" }}</span>
-            <span>{{ T "ui_multiple_websites" }}</span>
-            <span>{{ T "ui_website_migration_planning" }}</span>
-            <span>{{ T "ui_rollback_before_dns_switch" }}</span>
-            <span>{{ T "ui_snapshots_scheduled_backups" }}</span>
-            <span>{{ T "ui_portable_backup_copy" }}</span>
-            <span>{{ T "ui_monitoring_before_scaling" }}</span>
-            <span>{{ T "ui_scale_cpu_ram_storage" }}</span>
-            <span>{{ T "ui_choose_server_location_by_latency" }}</span>
-            <span>{{ T "ui_ddos_protection" }}</span>
-            <span>{{ T "ui_10_gbit_s_public_port" }}</span>
-            <span>{{ T "ui_24_7_support" }}</span>
-            <span>{{ T "ui_daily_billing" }}</span>
-            <span>{{ T "ui_1_vcpu_1_gb_from_0_07_day" }}</span>
-            <span>1 vCPU / 2 GB / 40 GB</span>
-            <span>2 vCPU / 4 GB / 80 GB</span>
-            <span>4 vCPU / 8 GB / 160 GB</span>
-            <span>{{ T "ui_clone_test_scale_recover" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_vps_for_website" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_isolated_cpu_ram_storage" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_full_os_web_stack_control" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>Ubuntu / Linux</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_fastpanel_control_panel" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_nginx_or_apache" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>PHP / Node / Python</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_mysql_database_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_ssh_root_access" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_domains_ssl_dns" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_wordpress_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_woocommerce_workloads" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_multiple_websites" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_website_migration_planning" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_rollback_before_dns_switch" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_snapshots_scheduled_backups" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_portable_backup_copy" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_monitoring_before_scaling" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_scale_cpu_ram_storage" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_choose_server_location_by_latency" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_ddos_protection" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_10_gbit_s_public_port" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_24_7_support" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_daily_billing" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_1_vcpu_1_gb_from_0_07_day" }}</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>1 vCPU / 2 GB / 40 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>2 vCPU / 4 GB / 80 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>4 vCPU / 8 GB / 160 GB</span>
+            <span{{ if eq site.Language.Lang "fa" }} dir="auto"{{ end }}>{{ T "ui_clone_test_scale_recover" }}</span>
           </div>
         </div>
       </div>
@@ -649,13 +649,13 @@
               {{ .title | markdownify }}
             </h2>
             <p class="mb-8 text-lg">
-              {{ if in (slice "ko" "de" "it") site.Language.Lang }}{{ $page.RenderString .content }}{{ else }}{{ .content | markdownify }}{{ end }}
+              {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}{{ $page.RenderString .content }}{{ else }}{{ .content | markdownify }}{{ end }}
             </p>
             <ul>
               {{ range .bulletpoints }}
                 <li class="relative mb-4 pl-6">
                   {{ partial "ui-icon.html" (dict "Name" "check" "Class" "absolute left-0 top-1.5") }}
-                  {{ if in (slice "ko" "de" "it") site.Language.Lang }}{{ $page.RenderString . }}{{ else }}{{ . | markdownify }}{{ end }}
+                  {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}{{ $page.RenderString . }}{{ else }}{{ . | markdownify }}{{ end }}
                 </li>
               {{ end }}
             </ul>
@@ -664,7 +664,7 @@
               {{ if .enable }}
                 {{ $href := .link }}
                 {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                  {{ if in (slice "ko" "de" "it") site.Language.Lang }}
+                  {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -844,7 +844,7 @@
                   {{ .question | markdownify }}
                 </summary>
                 <div class="content mt-4">
-                  {{ if in (slice "ko" "de" "it") site.Language.Lang }}{{ $page.RenderString .answer }}{{ else }}{{ .answer | markdownify }}{{ end }}
+                  {{ if in (slice "ko" "de" "it" "fa") site.Language.Lang }}{{ $page.RenderString .answer }}{{ else }}{{ .answer | markdownify }}{{ end }}
                 </div>
               </details>
             {{ end }}

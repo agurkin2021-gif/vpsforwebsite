@@ -1,4 +1,4 @@
-{{- if in (slice "ko" "de" "it") .Page.Language.Lang -}}
+{{- if in (slice "ko" "de" "it" "fa") .Page.Language.Lang -}}
   {{- /* Angle-bracket relref shortcodes expand after Markdown render hooks.
         Preserve their placeholder; relURL would prepend an extra slash and
         turn a local /ko/... link into a protocol-relative //ko/... URL. */ -}}

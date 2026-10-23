@@ -21,6 +21,7 @@ LANGS = [
     ("ko", "한국어", "/ko/"),
     ("de", "Deutsch", "/de/"),
     ("it", "Italiano", "/it/"),
+    ("fa", "فارسی", "/fa/"),
 ]
 LEGACY = re.compile(r"""<ul\b[^>]*\bid\s*=\s*(?:"language-options"|'language-options'|language-options)[^>]*>(.*?)</ul>""", re.I | re.S)
 GENERATED = re.compile(r"""<div\b[^>]*\bdata-language-options\b[^>]*>(.*?)</div>""", re.I | re.S)

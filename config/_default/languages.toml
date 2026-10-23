@@ -42,3 +42,16 @@ weight = 5
 [it.params.metadata]
 description = "Scegli le risorse VPS per il tuo sito in base al carico di lavoro, al CMS, al database e alla crescita prevista."
 author = "Redazione VPSforWebsite.com"
+
+[fa]
+label = "FA"
+languageName = "فارسی"
+languageCode = "fa"
+locale = "fa-IR"
+contentDir = "content/persian"
+languageDirection = "rtl"
+weight = 6
+
+[fa.params.metadata]
+description = "منابع سرور مجازی سایت را بر اساس بار کاری، سیستم مدیریت محتوا، نیاز پایگاه داده و رشد پیش رو انتخاب کنید."
+author = "تحریریه VPSforWebsite.com"
