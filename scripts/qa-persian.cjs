@@ -119,7 +119,7 @@ async function inspect(page, route, width) {
     const outside=important.map(box).filter(r=>r.left< -2.5||r.right>W+2.5);
     const clipped=[...document.querySelectorAll('main h1,main h2,main h3,main button,main a.btn')].filter(visible).filter(el=>el.scrollWidth>el.clientWidth+3&&!['auto','scroll'].includes(getComputedStyle(el).overflowX)).map(box);
     const wrongCodeDirection=[...document.querySelectorAll('main pre,main code,main bdi[dir="ltr"],main input[type="number"],main input[type="email"],main input[type="url"]')].filter(el=>getComputedStyle(el).direction!=='ltr').map(box);
-    const wrongLabelFont=[...document.querySelectorAll('main .content label,main .content legend')].filter(el=>!getComputedStyle(el).fontFamily.includes('Vazirmatn')).map(box);
+    const wrongLabelFont=[...document.querySelectorAll('main h1,main h2,main h3,main label,main legend')].filter(el=>!getComputedStyle(el).fontFamily.includes('Vazirmatn')).map(box);
     const svgClipped=[...document.querySelectorAll('main svg text')].filter(visible).filter(el=>{const r=el.getBoundingClientRect(),s=el.ownerSVGElement.getBoundingClientRect();return r.left<s.left-2||r.right>s.right+2||r.top<s.top-2||r.bottom>s.bottom+2;}).map(box);
     return {width:W,doc:document.documentElement.scrollWidth,body:document.body.scrollWidth,outside,clipped,wrongCodeDirection,wrongLabelFont,svgClipped,persianFont:document.fonts.check('16px Vazirmatn'),bodyFont:getComputedStyle(document.body).fontFamily,lang:document.documentElement.lang,dir:document.documentElement.dir,title:document.title,h1:[...document.querySelectorAll('main h1')].map(x=>x.innerText.trim()),brokenImages:[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.src)};
   });
