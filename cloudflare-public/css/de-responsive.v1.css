@@ -1,0 +1,34 @@
+/* German text uses the existing layout, fonts and colors. Long compounds may
+   wrap within their column; wide comparison tables keep their own scrollbar. */
+html:lang(de) main .content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+html:lang(de) main h2,
+html:lang(de) main h3,
+html:lang(de) main .btn {
+  overflow-wrap: anywhere;
+}
+
+html:lang(de) .content .vps-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+html:lang(de) .content .vps-table-scroll table {
+  min-width: 720px;
+  margin-block: 0;
+}
+
+html:lang(de) .content .vps-table-scroll th:last-child,
+html:lang(de) .content .vps-table-scroll td:last-child {
+  min-width: 100px;
+}
+
+html:lang(de) .content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
