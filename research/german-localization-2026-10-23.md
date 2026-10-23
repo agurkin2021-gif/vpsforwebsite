@@ -2,7 +2,7 @@
 
 ## Status and reference
 
-English reference: the clean `vpsforwebsite-german` checkout at commit `bc66649`. German product sources are frozen for final validation. Complete source/rendered parity, the corrected project-prefix preview and the final all-page browser run pass. **The final post-prefix-fix production rebuild, source publication and live verification are pending.** This document does not claim that the German release is live.
+English reference: the clean `vpsforwebsite-german` checkout at commit `bc66649`. **The complete German release is published and live-verified at 2026-10-23T03:34:31.715Z.** Complete source/rendered parity, project-prefix preview, production build, automated deployment and actual live browser/SEO checks pass. The final section records commit IDs, workflow evidence and verified scope.
 
 The implementation follows the existing English information architecture and source content. It adds the German locale to the Hugo source and established generated-output deployment pipeline. No generated recovery output is used as an editable source, and no existing English content is rewritten.
 
@@ -60,7 +60,7 @@ These are editorial localization choices, **not measured search-volume or rankin
 4. Registered `de`, `Deutsch`, `de-DE`, `content/german`, localized menus and publisher metadata. Added 248/248 English dictionary keys, 257 guide/diagram strings and two upstream fallback-search messages, totaling 507 keys. Search remains disabled. Deutsch is the eleventh language-selector entry.
 5. Extended existing shared hero/header conditions with German branches while preserving the English and Korean branches. Added translated guide diagrams, complete support-page rendering, a German 404 and a text-localized CTA SVG.
 6. Built the complete production-origin Hugo output, applied the existing recovery-overlay/navigation workflow, and ran source/rendered audits. Separately built the project-prefix preview and fixed its German-only navigation normalization defects.
-7. Completed final real-browser checks for all pages and forms. The coordinator is rebuilding production output after the preview-only routing fix, then will publish source and verify live output. Those remaining outcomes must be entered in the pending section below.
+7. Completed final real-browser checks for all pages and forms, rebuilt production after the routing and final copy fixes, published the source through the existing pipeline and verified the actual live release. The final section contains the complete evidence.
 
 ## Preserved content and behavior
 
@@ -132,14 +132,18 @@ Built with Hugo v0.158.0 at `https://preview.github.io/vpsforwebsite/`. All 19 G
 
 The initial preview exposed already-prefixed menu URLs failing source-path translation lookup and fallback language links losing the base path. German-only normalization fixes were rebuilt and independently checked: **380 header/footer links**, **209 picker links**, **200 main-content internal links**, and **265 HTML asset references** pass. Explicit About, Contact and Privacy routes resolve correctly. Seven recovered-only language placeholders require the separate overlay stage; their 133 picker links have the correct preview prefix, but their file existence is not claimed for a bare Hugo preview.
 
-## Pending final verification and publication
+## Final verification and publication
 
-The following fields are intentionally incomplete. The coordinator must replace them with actual results; the completed local checks are not a publication or live-site sign-off.
+The complete source, automated publication and actual live-site checks have passed. Local and production evidence are distinguished below.
 
 - **Final production rebuild and integrity/recovery command logs:** PASS, exit 0, all listed totals reconfirmed; UTF-8 log `qa-output/final-local-validation.log`, source/HTML report `qa-output/german-audit.json`. The preview-only fixes preserved all 202 HTML hashes. Subsequent sequential builds changed only German Contact and Monitoring for the two final copy fixes, both separately browser-verified.
 - **Final existing-locale check:** all existing-language HTML hashes remained unchanged in every final rebuild, preserving the independent 41-page EN/KO/ES visible-content and structure regression result. No additional form logic changes followed the exhaustive browser pass.
-- **Source commit and push:** `[PENDING — commit SHA, branch and push result.]`
-- **Generated deployment workflow:** `[PENDING — workflow/run URL, conclusion and deployed commit.]`
-- **Production/live verification:** `[PENDING — verified URL(s), HTTP/status evidence, German navigation, titles/H1, canonical/hreflang, asset rendering, checker operation, sitemap/Contact noindex and check timestamp.]`
+- **Source commit and push:** `1cb67568f28920751bf886c28a1c520f2adf38ce` published to `main`; reviewed tree SHA `342046cd2acf67172f84f1243c05de44d8d4270c` exactly matched the Git index. All 49 uploaded Git blobs were SHA-verified.
+- **Generated deployment workflow:** [Run 39894681997](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39894681997) **success**, generated commit `2ff6c42d8911e438c4fe2eb0d768c4c042d9d47a`; German CI summary 18 pages / 90 geometry / 16 forms / 18,736 cases / zero failures. Cloudflare Workers deployment succeeded with build and version IDs recorded below.
+- **Production/live verification:** completed at `2026-10-23T03:34:31.715Z`; all 18 routes HTTP 200 with exact translated content, SEO/menu/anchor/sitemap parity, plus separate live Chromium at 390/1280 and exhaustive form checks. Full evidence follows.
 
-No source commit, push, deployment or live-site change is performed by preparing this report. Context and SEO-buffer updates are maintained separately by the coordinator.
+- **Published and live-verified at 2026-10-23T03:34:31.715Z.** Source `main` commit `1cb67568f28920751bf886c28a1c520f2adf38ce`; generated deployment commit `2ff6c42d8911e438c4fe2eb0d768c4c042d9d47a`. [Prepare Cloudflare static site](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39894681997) completed **success**, including the final-source German run: 18 pages, 90 geometry cases, 16 forms, 18,736 input states, zero findings. [Browser reports/screenshots](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39894681997/artifacts/12475648879) are retained for seven days. Production Hugo validation, Korean link routing and Korean multi-site browser checks also succeeded.
+- Cloudflare **Workers Builds: vpsforwebsite** succeeded for the generated commit: build `668cb30d-a5e8-4799-869d-61a246321b0b`, deployed version `ca86803c-7296-4876-b7fd-1dcb8fa312a1`. No manual Worker/static asset changes were made.
+- The existing [French responsive Chromium audit](https://github.com/agurkin2021-gif/vpsforwebsite/actions/runs/39894883021) also completed successfully. Actual live `robots.txt` allows the German routes, and the fetched owner hero is HTTP 200, 51,196 bytes, with the exact original SHA-256 `af91640a83f2564d6b91777550e9b9d6435eeca232b876473037c58f95346fb1` (`qa-output/live-seo/robots-hero.json`).
+- Independent actual live HTTPS/SEO verification passed **18/18 HTTP 200** routes with German Title/H1 and content matching the final build; 360 menu/footer links, 313 internal German links and 114 anchors pass. Sitemap contains exactly 17 indexable German routes; Contact remains noindex without canonical/hreflang. Separate actual live Chromium passed **36 viewport cases (390/1280), all 16 forms and all 18,736 input states against live English, zero findings**, plus actual pointer submissions and equivalent-language roundtrips. Evidence is under `qa-output/live-seo/` and `qa-output/browser-live/` in the isolated checkout.
+- The complete German cluster is published at **https://vpsforwebsite.com/de/**. No German page or publication gate remains pending. English reference and other-language prose, original code/price values and owner artwork remain preserved.
