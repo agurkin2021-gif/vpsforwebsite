@@ -1,0 +1,59 @@
+/* Vazirmatn v33.003, SIL OFL 1.1; self-hosted only for the Arabic locale. */
+@font-face {
+  font-family: Vazirmatn;
+  src: url('../fonts/vazirmatn/Vazirmatn-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+/* The original home hero and calculator use theme font variables (including
+   an !important heading rule). Scope their native font to Arabic main content. */
+html:lang(ar) main {
+  --font-primary: Vazirmatn, Tahoma, sans-serif;
+  --font-secondary: Vazirmatn, Tahoma, sans-serif;
+}
+html:lang(ar) body,
+html:lang(ar) h1, html:lang(ar) h2, html:lang(ar) h3,
+html:lang(ar) h4, html:lang(ar) h5, html:lang(ar) h6,
+html:lang(ar) button, html:lang(ar) input, html:lang(ar) select,
+html:lang(ar) textarea, html:lang(ar) .btn,
+html:lang(ar) .content label, html:lang(ar) .content legend {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  letter-spacing: normal;
+}
+html:lang(ar) main .content { min-width: 0; overflow-wrap: anywhere; text-align: start; }
+html:lang(ar) .vps-home .vps-hero-copy,
+html:lang(ar) .vps-home .vps-hero-copy h1 { text-align: right; }
+html:lang(ar) .content td { unicode-bidi: normal; }
+html:lang(ar) bdi[dir=ltr] { direction: ltr; unicode-bidi: isolate; }
+/* Keep a wrapped Latin specification together as one directional unit. */
+html:lang(ar) .content td bdi[dir=ltr] {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
+  text-align: left;
+}
+html:lang(ar) main h1, html:lang(ar) main h2, html:lang(ar) main h3,
+html:lang(ar) main .btn { overflow-wrap: anywhere; }
+html:lang(ar) main h1, html:lang(ar) main h2, html:lang(ar) main h3 { line-height: 1.65; }
+html:lang(ar) main p, html:lang(ar) main li { line-height: 1.9; }
+html:lang(ar) .content ul, html:lang(ar) .content ol { padding-left: 0; padding-inline-start: 1.65em; }
+html:lang(ar) .content li { padding-left: 0; padding-inline-start: .35em; }
+html:lang(ar) .content th, html:lang(ar) .content td,
+html:lang(ar) .content form { text-align: start; }
+html:lang(ar) .content .vps-table-scroll { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+html:lang(ar) .content .vps-table-scroll table { min-width: 720px; margin-block: 0; }
+html:lang(ar) pre { direction: ltr; text-align: left; unicode-bidi: isolate; max-width: 100%; overflow-x: auto; }
+html:lang(ar) code { direction: ltr; unicode-bidi: isolate; font-family: ui-monospace, Consolas, monospace; }
+html:lang(ar) input[type=number], html:lang(ar) input[type=email], html:lang(ar) input[type=url] { direction: ltr; text-align: left; }
+html:lang(ar) select { background-position: left .65rem center; padding-left: 2rem; padding-right: .75rem; }
+html:lang(ar) .navbar > .ml-auto { margin-left: 0; margin-right: auto; }
+html:lang(ar) .navbar-brand { direction: ltr; unicode-bidi: isolate; }
+html:lang(ar) .language-picker { font-family: Vazirmatn, Arial, sans-serif; }
+html:lang(ar) .nav-dropdown-list { text-align: right; }
+html:lang(ar) main svg { direction: ltr; }
+html:lang(ar) main svg text { font-family: Vazirmatn, Tahoma, sans-serif !important; unicode-bidi: plaintext; }
+@media (min-width: 1024px) {
+  html:lang(ar) .navbar > .ml-auto { margin-right: 0; }
+  html:lang(ar) .nav-dropdown-list { right: 0; left: auto; }
+}
