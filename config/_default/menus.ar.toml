@@ -1,0 +1,105 @@
+[[main]]
+name = "الرئيسية"
+url = "/"
+weight = 1
+
+[[main]]
+name = "ووردبريس"
+url = "/vps-for-wordpress/"
+weight = 2
+
+[[main]]
+name = "ووكومرس"
+url = "/vps-for-woocommerce/"
+weight = 3
+
+[[main]]
+name = "الأدلة"
+weight = 4
+
+[[main]]
+parent = "الأدلة"
+name = "تحديد موارد VPS للمواقع"
+url = "/vps-sizing-for-website/"
+weight = 1
+
+[[main]]
+parent = "الأدلة"
+name = "نقل موقع إلى VPS"
+url = "/website-migration-to-vps/"
+weight = 2
+
+[[main]]
+parent = "الأدلة"
+name = "VPS المدار مقابل غير المدار"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "الأدلة"
+name = "استضافة VPS مع FASTPANEL"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "الأدلة"
+name = "كيفية استضافة موقع على VPS"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "الأدلة"
+name = "قائمة التحقق من أمان VPS"
+url = "/vps-security-checklist/"
+weight = 6
+
+[[main]]
+parent = "الأدلة"
+name = "استراتيجية النسخ الاحتياطي لخادم VPS"
+url = "/vps-backup-strategy/"
+weight = 7
+
+[[main]]
+parent = "الأدلة"
+name = "مراقبة VPS"
+url = "/vps-monitoring/"
+weight = 8
+
+[[main]]
+parent = "الأدلة"
+name = "كيفية اختيار موقع خادم VPS"
+url = "/how-to-choose-vps-location/"
+weight = 9
+
+[[main]]
+parent = "الأدلة"
+name = "VPS مقابل الاستضافة المشتركة"
+url = "/vps-vs-shared-hosting/"
+weight = 10
+
+[[main]]
+parent = "الأدلة"
+name = "VPS لمواقع متعددة"
+url = "/vps-for-multiple-websites/"
+weight = 11
+
+[[main]]
+parent = "الأدلة"
+name = "VPS مع لوحة تحكم"
+url = "/vps-with-control-panel/"
+weight = 12
+
+[[footer]]
+name = "من نحن"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "اتصل بنا"
+url = "/contact/"
+weight = 2
+
+[[footer]]
+name = "سياسة الخصوصية"
+url = "/privacy-policy/"
+weight = 3

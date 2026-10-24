@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <section class="section-sm text-center">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="sm:col-10 md:col-8 lg:col-6">
+          <span
+            class="text-[8rem] block font-bold text-text-dark dark:text-darkmode-text-dark">
+            404
+          </span>
+          <h1 class="h2 mb-4">الصفحة غير موجودة</h1>
+          <div class="content">
+            <p>
+              ربما حُذفت الصفحة التي تبحث عنها أو تغير اسمها،
+              أو أنها غير متاحة مؤقتًا.
+            </p>
+          </div>
+          <a
+            href="{{ site.Home.RelPermalink }}"
+            class="btn btn-primary mt-8">
+            العودة إلى الصفحة الرئيسية
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

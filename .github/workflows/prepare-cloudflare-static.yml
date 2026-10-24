@@ -26,6 +26,8 @@ on:
       - "scripts/qa-italian.cjs"
       - "scripts/audit-persian.py"
       - "scripts/qa-persian.cjs"
+      - "scripts/audit-arabic.py"
+      - "scripts/qa-arabic.cjs"
       - "scripts/translation_audit.py"
       - "scripts/audit-site-integrity.py"
       - "scripts/test-site-integrity.py"
@@ -42,7 +44,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 155
     steps:
       - uses: actions/checkout@v4
         with:
@@ -405,6 +407,25 @@ jobs:
           path: |
             ${{ runner.temp }}/persian-audit.json
             ${{ runner.temp }}/persian-browser/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Verify complete Arabic source, SEO and interactive structure
+        run: python scripts/audit-arabic.py cloudflare-public --report "${{ runner.temp }}/arabic-audit.json"
+
+      - name: Verify Arabic RTL pages and every calculator decision
+        shell: bash
+        run: |
+          NODE_PATH="$RUNNER_TEMP/de-qa/node_modules" node scripts/qa-arabic.cjs cloudflare-public "$RUNNER_TEMP/arabic-audit.json" "$RUNNER_TEMP/arabic-browser"
+
+      - name: Retain Arabic localization verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: arabic-localization-qa
+          path: |
+            ${{ runner.temp }}/arabic-audit.json
+            ${{ runner.temp }}/arabic-browser/
           retention-days: 7
           if-no-files-found: ignore
 

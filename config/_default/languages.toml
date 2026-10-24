@@ -55,3 +55,16 @@ weight = 6
 [fa.params.metadata]
 description = "منابع سرور مجازی سایت را بر اساس بار کاری، سیستم مدیریت محتوا، نیاز پایگاه داده و رشد پیش رو انتخاب کنید."
 author = "تحریریه VPSforWebsite.com"
+
+[ar]
+label = "AR"
+languageName = "العربية"
+languageCode = "ar"
+locale = "ar"
+contentDir = "content/arabic"
+languageDirection = "rtl"
+weight = 7
+
+[ar.params.metadata]
+description = "اختر موارد VPS لموقعك وفق عبء العمل ونظام إدارة المحتوى واحتياجات قاعدة البيانات والنمو المتوقع."
+author = "فريق تحرير VPSforWebsite.com"
