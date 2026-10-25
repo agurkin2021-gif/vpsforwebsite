@@ -17,14 +17,21 @@ For each page: compare the entire English reference, review Indonesian meaning a
 - Refined 125 text-node occurrences and two result messages. Replaced literal or misleading phrasing around sizing, provider selection, management responsibilities, migration blockers, workload separation and recovery. Preserved all original explanations and decision paths. Title/H1 and `/id/` stay unchanged; description/Open Graph/JSON-LD descriptions now use a concise buying-oriented Indonesian summary.
 - All original anchor IDs, links, sponsor attributes/placements, technical specifications, calculator controls/values/logic and owner image remain intact. The homepage's 9 H2, 6 H3, 40 list items, 13 FAQ details and one form are preserved.
 - Browser baseline exposed clipped plan-card headings, a fixed-width CTA and narrow-screen section overflow; document scrollWidth alone hid the defect. `static/css/id-home-responsive.v1.css` scopes the known corrective pattern to the Indonesian homepage at widths below 768 px and is linked only by that page.
-- Local and live publication evidence will be recorded here after the checks finish. Do not describe the remaining 17 pages as fully proofread from this initial inventory alone.
+- Homepage published: source `323049765d75134cb5c78cc0671a461f4abee7c3` -> successful Prepare static run `40152556847` -> generated `96cdfb180175f4dfbd32bd6bced611c7d8ba1554` -> successful Cloudflare Workers check. Ordinary live `/id/`: 8 viewport widths, 216 English-compared calculator states, pointer submission and language roundtrip passed without findings (2026-10-25T02:02Z UTC / 24 October local). Live scroll checks show no vertical overlap of calculator, plan cards or FAQ; screenshot-only clipping was lazy content-visibility measurement, not a fixed height in production.
+
+## Page 2: WordPress
+
+- Query/Title/H1 `VPS untuk WordPress`, `/id/vps-untuk-wordpress/`: existing title and slug match natural Indonesian hosting-selection intent. Retained without unnecessary redirect.
+- Reviewed all 418 fragments and compared the complete English page. Refined 146 text-node occurrences and three calculator messages. Kept all four tables, 10 FAQ answers, seven select controls, 20 options, links/IDs and decision logic. Corrected literal phrasing around long-running tasks, persistent cache, worker concurrency, headroom, deployment and management. Clear purchase CTA: `Lihat pilihan paket VPS WordPress`.
+- Primary technical checks: [WordPress requirements](https://wordpress.org/about/requirements/), [caching](https://developer.wordpress.org/advanced-administration/performance/cache/), [object cache](https://developer.wordpress.org/reference/classes/wp_object_cache/), [system scheduler](https://developer.wordpress.org/plugins/cron/hooking-wp-cron-into-the-system-task-scheduler/), and [VDSina Standard](https://www.vdsina.com/pricing/standard). Specifications and logic preserved; reviewed price/date fields advanced, explicit USD currency note added.
+- Local Chromium: 8 viewport widths, 1,296 exhaustive English-compared states, actual submit and EN↔ID roundtrip, zero findings. Title does not collide with the adjacent illustration; screenshots reviewed. Publication pending.
 
 ## Sequential queue
 
 | Page | Existing route | Status |
 | --- | --- | --- |
-| VPS untuk Website | `/id/` | In review; publication pending |
-| VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Next |
+| VPS untuk Website | `/id/` | Published and live-verified |
+| VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Reviewed and locally verified; publication pending |
 | VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Pending |
 | Menentukan Spesifikasi VPS untuk Website | `/id/menentukan-spesifikasi-vps/` | Pending title/slug review |
 | VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Pending |
