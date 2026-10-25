@@ -1,0 +1,43 @@
+/* Turkish text uses the existing layout, fonts and colors. Long compounds may
+   wrap within their column; wide comparison tables keep their own scrollbar. */
+html:lang(tr) main .content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+html:lang(tr) main h2,
+html:lang(tr) main h3,
+html:lang(tr) main .btn {
+  overflow-wrap: anywhere;
+}
+
+html:lang(tr) .content .vps-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+html:lang(tr) .content .vps-table-scroll table {
+  min-width: 720px;
+  margin-block: 0;
+}
+
+html:lang(tr) .content .vps-table-scroll th:last-child,
+html:lang(tr) .content .vps-table-scroll td:last-child {
+  min-width: 100px;
+}
+
+html:lang(tr) .content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+html:lang(tr) main .btn {
+  white-space: normal;
+  line-height: 1.5;
+}
+html:lang(tr) main h1 {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
