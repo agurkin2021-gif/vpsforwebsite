@@ -68,3 +68,16 @@ weight = 7
 [ar.params.metadata]
 description = "اختر موارد VPS لموقعك وفق عبء العمل ونظام إدارة المحتوى واحتياجات قاعدة البيانات والنمو المتوقع."
 author = "فريق تحرير VPSforWebsite.com"
+
+[ja]
+label = "JA"
+languageName = "日本語"
+languageCode = "ja"
+locale = "ja-JP"
+contentDir = "content/japanese"
+hasCJKLanguage = true
+weight = 8
+
+[ja.params.metadata]
+description = "Webサイトの処理負荷、CMS、データベース、成長見込みに合わせてVPSのスペックを選ぶための情報サイトです。"
+author = "VPSforWebsite.com 編集部"

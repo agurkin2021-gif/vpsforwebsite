@@ -1,0 +1,208 @@
+{
+  "language": "ja",
+  "reviewedOn": "2026-10-25",
+  "method": "Individual full-page translation and review against the English source; shared UI separately reviewed",
+  "textHashEncoding": "UTF-8 with LF line endings; font uses original bytes",
+  "sourceFiles": [
+    {
+      "source": "_index.md",
+      "englishSha256": "e1517e66468db266aea69691d8136471125f921e7cbfe671ad3d5e461e999f16",
+      "japaneseSha256": "59513babd6edf6f0c7ebdec949f4f73a6cb7a830ab575185e9c45193771fe1b2",
+      "reviewedUnits": 110
+    },
+    {
+      "source": "about/_index.md",
+      "englishSha256": "91d23d56a08dbd9a1f95b30fd7cfb38f2374637e3800e78ac177ced7e8b8e674",
+      "japaneseSha256": "2a65f5370033dd76c472274b8fa3bca2e9bb48c6e360487c2b4b0c210860f0e5",
+      "reviewedUnits": 33
+    },
+    {
+      "source": "contact/_index.md",
+      "englishSha256": "3f0144e830168bdd12bc4e888fc8d2d7726fa846114b87433e9e0f120550b30b",
+      "japaneseSha256": "d67cbbe4c9e6da2d0b51d9f254259624ffae2f6027ed6455a77df8cb0e617f07",
+      "reviewedUnits": 4
+    },
+    {
+      "source": "fastpanel-vps-hosting.md",
+      "englishSha256": "2a9173cce21daaaa073058ac6e50e2e2f61d8caca6e41561d0e5b0b807d752d1",
+      "japaneseSha256": "7c87c3ed50c3057c89b5a00453e256344ec46628c3480f0a59ebef03f82746ab",
+      "reviewedUnits": 225
+    },
+    {
+      "source": "how-to-choose-vps-location.md",
+      "englishSha256": "2fa70419a108a359090f0f44a0109feb621fcc761a5072bb53f099a442e703c7",
+      "japaneseSha256": "bcd5de512e54d6c4fc82153fcd8180175c7b9889e248b1ab5b776e30490ae6f9",
+      "reviewedUnits": 393
+    },
+    {
+      "source": "how-to-host-a-website-on-vps.md",
+      "englishSha256": "8d94536b69d4b054681fee6e10751e87c8084c91813a58a53fdf2ef4b225a336",
+      "japaneseSha256": "e5297ceca6a80c21b2a02e8354ca0c64fc18ca6703e9a2d876d0c7071757178b",
+      "reviewedUnits": 395
+    },
+    {
+      "source": "managed-vs-unmanaged-vps.md",
+      "englishSha256": "a0d17e4f150538ea632249ea14f27b549b4c5a40bd462d665531d3a855b80c11",
+      "japaneseSha256": "8eecad1279043520fbcf89ba1c1dbaffe1f33e4d14392333959ce59217386330",
+      "reviewedUnits": 311
+    },
+    {
+      "source": "privacy-policy.md",
+      "englishSha256": "90276abb84faeda8012ab2f8b58129b23511cff3900b13ae0493b1d62a8093b3",
+      "japaneseSha256": "364478ecd5b34573912f5cd0e04ab81dea1a3c3faed1d2d31679c8fdb0f32ee3",
+      "reviewedUnits": 23
+    },
+    {
+      "source": "sections/_index.md",
+      "englishSha256": "d3dbb0591691ccc780c664ff6135e7bed22e0f1030385ba23466b3b94f0595b4",
+      "japaneseSha256": "891f95d46a5b27ba7b408f20d2053fbe771c0420d71876d5ef8778179bc61b39",
+      "reviewedUnits": 1
+    },
+    {
+      "source": "sections/call-to-action.md",
+      "englishSha256": "fee26c84cceb25406ee8f26aee8652cb0a3b47a03afdb3b80a3dfd36ff0dc0d6",
+      "japaneseSha256": "bc01eefd58fd0e9f4eacd3c30bad032d0004c4d73aa1ce1fbf6d65bb8a451fd1",
+      "reviewedUnits": 3
+    },
+    {
+      "source": "vps-backup-strategy.md",
+      "englishSha256": "cd0842e8bd0043ea63387bb6a8309d5cd10a1c9347d30534624ec863e0ce73fb",
+      "japaneseSha256": "73f948766fb890869be905758306ed6c3a242ca27fc5c144267aab54f3bf8772",
+      "reviewedUnits": 397
+    },
+    {
+      "source": "vps-for-multiple-websites.md",
+      "englishSha256": "0dd6282694c24d9cfa17f7f41f110e3e1d5dc488a2f9a97bd7b3efd1e1bb160a",
+      "japaneseSha256": "c25b9ee829017d0111c41e40ed9ae94f72df5059f34b9de36f0fb98fba5afb6f",
+      "reviewedUnits": 294
+    },
+    {
+      "source": "vps-for-woocommerce.md",
+      "englishSha256": "6161a50e862360432e75607c1a2182c9cd6b6b4985e14d98bea599e1ca758b57",
+      "japaneseSha256": "2d69fd1f83bf984c36e9b67c04191d0f58699bdfd7c607b13e34affe55753f04",
+      "reviewedUnits": 337
+    },
+    {
+      "source": "vps-for-wordpress.md",
+      "englishSha256": "59658291601e7f924c6caa5e87f11fd916bd3761ed236af13577738c953ad17f",
+      "japaneseSha256": "7eaf20e770ce8e28265d816b6af4b9872b21b415f420bf0e36c0d30edfac33ca",
+      "reviewedUnits": 292
+    },
+    {
+      "source": "vps-monitoring.md",
+      "englishSha256": "6d8eba598c07a9d0c82feb15111ec7df3984f377f26093e81e9ce8082de7556f",
+      "japaneseSha256": "e9ef2ae1178a79a7a408a1eabba879657ad95e3bcd58f4f38560e31482d55e32",
+      "reviewedUnits": 404
+    },
+    {
+      "source": "vps-security-checklist.md",
+      "englishSha256": "7392e899785f26c99d25a14b602b6bc6ca6dfe09cb64aa5c4d4a4d223fe11b9f",
+      "japaneseSha256": "35a67619f6e8269041d78c85d9bcac8214de9e3670e36818b70fa2b3da04c86a",
+      "reviewedUnits": 332
+    },
+    {
+      "source": "vps-sizing-for-website.md",
+      "englishSha256": "83e6f5ac5d916c85e4865e8133b4e426d2a4bb778c20cbe6209f24ac3332a5e2",
+      "japaneseSha256": "b938bd3306ec9bd60557451777398f067d190f76d12badf3b644fae7aefa2542",
+      "reviewedUnits": 258
+    },
+    {
+      "source": "vps-vs-shared-hosting.md",
+      "englishSha256": "e00e42f669ecf2fae1f30d5d9a14e13c2bf2f32131975251a2664a7305335a82",
+      "japaneseSha256": "ea8dec87ab69da92855b2b0771216dc77ca92552c8d4e3d36b0f90395eddfa06",
+      "reviewedUnits": 288
+    },
+    {
+      "source": "vps-with-control-panel.md",
+      "englishSha256": "a174afa167acc97f5d8fa0adc412bd3aea8d3f21ff4d680f925396b1793edb55",
+      "japaneseSha256": "11eb1a369ec29dd51773c912006754c3b2f158ccf5873a69f2f95d28d3c1b2b3",
+      "reviewedUnits": 307
+    },
+    {
+      "source": "website-migration-to-vps.md",
+      "englishSha256": "324bb8a079319b241f89aa1ada42cacf5f8b528fadd9f116ad693052b84b11a4",
+      "japaneseSha256": "0a0bb82dd305f485dad156298eb182f5ff9240891920890d8c88c70fc5c2542d",
+      "reviewedUnits": 292
+    }
+  ],
+  "sharedUiEntries": 507,
+  "assets": {
+    "i18n/ja.yaml": "339792eeb01f1bea87c5df4dcd013c35ffeb5f5c94c07ef701fefb2560e78344",
+    "static/fonts/noto-sans-jp/NotoSansJP-site.woff2": "7a3dc156d1dee1d1831b343b8079d70766fbbe5aee7b2497746f668c24cf295c",
+    "static/images/home/vps-cta-ja.svg": "c49dc92261f3cf6418522d73752791bde5f205053e1a6246ccdbd39c87fcd381"
+  },
+  "routes": {
+    "_index.md": [
+      "Webサイト向けVPS",
+      ""
+    ],
+    "vps-for-wordpress.md": [
+      "WordPress向けVPS",
+      "wordpress向けvps"
+    ],
+    "vps-for-woocommerce.md": [
+      "WooCommerce向けVPS",
+      "woocommerce向けvps"
+    ],
+    "vps-sizing-for-website.md": [
+      "VPSのスペックの選び方",
+      "vpsのスペックの選び方"
+    ],
+    "vps-vs-shared-hosting.md": [
+      "VPSと共用サーバーの違い",
+      "vpsと共用サーバーの違い"
+    ],
+    "vps-for-multiple-websites.md": [
+      "複数サイト向けVPS",
+      "複数サイト向けvps"
+    ],
+    "vps-with-control-panel.md": [
+      "コントロールパネル付きVPS",
+      "コントロールパネル付きvps"
+    ],
+    "managed-vs-unmanaged-vps.md": [
+      "マネージドVPSとアンマネージドVPSの違い",
+      "マネージドvpsとアンマネージドvpsの違い"
+    ],
+    "fastpanel-vps-hosting.md": [
+      "FASTPANEL対応VPS",
+      "fastpanel対応vps"
+    ],
+    "how-to-host-a-website-on-vps.md": [
+      "VPSでWebサイトを公開する方法",
+      "vpsでwebサイトを公開する方法"
+    ],
+    "website-migration-to-vps.md": [
+      "WebサイトのVPS移行",
+      "webサイトのvps移行"
+    ],
+    "vps-security-checklist.md": [
+      "VPSのセキュリティチェックリスト",
+      "vpsのセキュリティチェックリスト"
+    ],
+    "vps-backup-strategy.md": [
+      "VPSのバックアップ戦略",
+      "vpsのバックアップ戦略"
+    ],
+    "vps-monitoring.md": [
+      "VPSの監視",
+      "vpsの監視"
+    ],
+    "how-to-choose-vps-location.md": [
+      "VPSのリージョンの選び方",
+      "vpsのリージョンの選び方"
+    ],
+    "about/_index.md": [
+      "当サイトについて",
+      "当サイトについて"
+    ],
+    "contact/_index.md": [
+      "お問い合わせ",
+      "お問い合わせ"
+    ],
+    "privacy-policy.md": [
+      "プライバシーポリシー",
+      "プライバシーポリシー"
+    ]
+  }
+}

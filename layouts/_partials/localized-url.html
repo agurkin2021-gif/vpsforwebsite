@@ -6,7 +6,7 @@
 {{- else -}}
   {{- $parts := split $path "#" -}}
   {{- $lookupPath := index $parts 0 -}}
-  {{- if in (slice "de" "it" "fa" "ar") site.Language.Lang -}}
+  {{- if in (slice "de" "it" "fa" "ar" "ja") site.Language.Lang -}}
     {{- /* Hugo menu URLs already include a project BaseURL path. GetPage
           expects the source path instead; strip only that known prefix.
           RelPermalink adds it back after choosing the German translation. */ -}}

@@ -1,0 +1,105 @@
+[[main]]
+name = "ホーム"
+url = "/"
+weight = 1
+
+[[main]]
+name = "WordPress"
+url = "/vps-for-wordpress/"
+weight = 2
+
+[[main]]
+name = "WooCommerce"
+url = "/vps-for-woocommerce/"
+weight = 3
+
+[[main]]
+name = "ガイド"
+weight = 4
+
+[[main]]
+parent = "ガイド"
+name = "VPSのスペックの選び方"
+url = "/vps-sizing-for-website/"
+weight = 1
+
+[[main]]
+parent = "ガイド"
+name = "WebサイトのVPS移行"
+url = "/website-migration-to-vps/"
+weight = 2
+
+[[main]]
+parent = "ガイド"
+name = "マネージドVPSとアンマネージドVPSの違い"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "ガイド"
+name = "FASTPANEL対応VPS"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "ガイド"
+name = "VPSでWebサイトを公開する方法"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "ガイド"
+name = "VPSのセキュリティチェックリスト"
+url = "/vps-security-checklist/"
+weight = 6
+
+[[main]]
+parent = "ガイド"
+name = "VPSのバックアップ戦略"
+url = "/vps-backup-strategy/"
+weight = 7
+
+[[main]]
+parent = "ガイド"
+name = "VPSの監視"
+url = "/vps-monitoring/"
+weight = 8
+
+[[main]]
+parent = "ガイド"
+name = "VPSのリージョンの選び方"
+url = "/how-to-choose-vps-location/"
+weight = 9
+
+[[main]]
+parent = "ガイド"
+name = "VPSと共用サーバーの違い"
+url = "/vps-vs-shared-hosting/"
+weight = 10
+
+[[main]]
+parent = "ガイド"
+name = "複数サイト向けVPS"
+url = "/vps-for-multiple-websites/"
+weight = 11
+
+[[main]]
+parent = "ガイド"
+name = "コントロールパネル付きVPS"
+url = "/vps-with-control-panel/"
+weight = 12
+
+[[footer]]
+name = "当サイトについて"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "お問い合わせ"
+url = "/contact/"
+weight = 2
+
+[[footer]]
+name = "プライバシーポリシー"
+url = "/privacy-policy/"
+weight = 3

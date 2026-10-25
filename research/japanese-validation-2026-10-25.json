@@ -1,0 +1,142 @@
+{
+  "stage": "local-validation-complete",
+  "date": "2026-10-25",
+  "baseline": "0c6e648abb71e00b9751806ad0d30281cb1f8ea9",
+  "browser": {
+    "status": "completed",
+    "startedAt": "2026-10-25T04:04:17.743Z",
+    "updatedAt": "2026-10-25T04:13:45.870Z",
+    "mode": "local",
+    "pages": 18,
+    "geometryCases": 144,
+    "forms": 16,
+    "formCases": 18736,
+    "findings": [],
+    "formReports": [
+      {
+        "route": "/ja/",
+        "id": "homepage-vps-fit-checker",
+        "cases": 216,
+        "outcomes": 5
+      },
+      {
+        "route": "/ja/fastpanel対応vps/",
+        "id": "fastpanel-fit-checker",
+        "cases": 36,
+        "outcomes": 3
+      },
+      {
+        "route": "/ja/vpsのリージョンの選び方/",
+        "id": "vps-location-checker",
+        "cases": 288,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/vpsでwebサイトを公開する方法/",
+        "id": "deployment-path-checker-form",
+        "cases": 72,
+        "outcomes": 18
+      },
+      {
+        "route": "/ja/マネージドvpsとアンマネージドvpsの違い/",
+        "id": "management-fit-checker-form",
+        "cases": 576,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/vpsのバックアップ戦略/",
+        "id": "vps-backup-strategy-checker-form",
+        "cases": 2304,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/複数サイト向けvps/",
+        "id": "multi-site-architecture-checker",
+        "cases": 576,
+        "outcomes": 12
+      },
+      {
+        "route": "/ja/woocommerce向けvps/",
+        "id": "woocommerce-vps-fit-checker-form",
+        "cases": 7776,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/wordpress向けvps/",
+        "id": "wordpress-vps-fit-checker-form",
+        "cases": 1296,
+        "outcomes": 8
+      },
+      {
+        "route": "/ja/vpsの監視/",
+        "id": "vps-monitoring-checker",
+        "cases": 1536,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/vpsのセキュリティチェックリスト/",
+        "id": "vps-security-checker",
+        "cases": 512,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/vpsのスペックの選び方/",
+        "id": "ram-budget-estimator-form",
+        "cases": 11,
+        "outcomes": 10
+      },
+      {
+        "route": "/ja/vpsのスペックの選び方/",
+        "id": "shared-hosting-diagnostic",
+        "cases": 729,
+        "outcomes": 174
+      },
+      {
+        "route": "/ja/vpsと共用サーバーの違い/",
+        "id": "shared-vs-vps-checker",
+        "cases": 216,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/コントロールパネル付きvps/",
+        "id": "panel-fit-checker",
+        "cases": 288,
+        "outcomes": 7
+      },
+      {
+        "route": "/ja/webサイトのvps移行/",
+        "id": "migration-preflight",
+        "cases": 2304,
+        "outcomes": 1024
+      }
+    ]
+  },
+  "static": {
+    "sourceFiles": 20,
+    "publicPages": 18,
+    "forms": 16,
+    "errors": 0
+  },
+  "siteIntegrity": {
+    "pages": 278,
+    "targets": 380,
+    "stylesheets": 96,
+    "errors": 0
+  },
+  "preview": {
+    "pages": 18,
+    "targets": 155,
+    "errors": 0
+  },
+  "recovery": {
+    "preservedPages": 159,
+    "languages": 15,
+    "selectors": 270,
+    "errors": 0
+  },
+  "sitemap": {
+    "total": 257,
+    "japanese": 17
+  },
+  "production": "pending"
+}

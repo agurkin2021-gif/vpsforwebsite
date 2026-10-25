@@ -23,7 +23,7 @@
                     {{ site.Home.RelPermalink }}
                   {{ end }}{{ .URL }}
                 {{ else }}
-                  {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}{{ partial "localized-url.html" .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}
+                  {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}{{ partial "localized-url.html" .URL }}{{ else }}{{ .URL | relLangURL }}{{ end }}
                 {{ end }}"
                 >{{ .Name }}{{ if and (eq site.Language.Lang "ko") .URL (not (site.GetPage .URL)) }} <span class="text-xs opacity-70">(영문)</span>{{ end }}</a
               >

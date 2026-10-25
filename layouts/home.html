@@ -23,7 +23,7 @@
                 <p class="vps-hero-lead">{{ $heroLead | safeHTML }}</p>
                 <p class="vps-hero-detail">{{ $heroDetail | safeHTML }}</p>
               </div>
-            {{ else if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}
+            {{ else if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}
               <div class="vps-hero-copy-text">
                 {{ range $i, $paragraph := split .content "\n\n" }}
                   <p class="{{ if eq $i 0 }}vps-hero-lead{{ else }}vps-hero-detail{{ end }}">{{ $paragraph | markdownify }}</p>
@@ -37,7 +37,7 @@
                 {{ if .enable }}
                   {{ $href := .link }}
                   {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                    {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}
+                    {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -57,7 +57,7 @@
                 {{ if .enable }}
                   {{ $href := .link }}
                   {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                    {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}
+                    {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -76,7 +76,7 @@
             </div>
             <p class="mt-3 max-w-xl text-xs leading-relaxed opacity-70">
               {{ T "ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission" }}
-              <a href="{{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "ui_editorial_and_commercial_disclosure" }}</a>.
+              <a href="{{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}{{ partial "localized-url.html" "/about/" }}{{ else }}{{ "about/" | relLangURL }}{{ end }}" class="underline">{{ T "ui_editorial_and_commercial_disclosure" }}</a>.
             </p>
           </div>
           <div class="md:col-6 lg:col-6">
@@ -649,13 +649,13 @@
               {{ .title | markdownify }}
             </h2>
             <p class="mb-8 text-lg">
-              {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}{{ $page.RenderString .content }}{{ else }}{{ .content | markdownify }}{{ end }}
+              {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}{{ $page.RenderString .content }}{{ else }}{{ .content | markdownify }}{{ end }}
             </p>
             <ul>
               {{ range .bulletpoints }}
                 <li class="relative mb-4 pl-6">
                   {{ partial "ui-icon.html" (dict "Name" "check" "Class" "absolute left-0 top-1.5") }}
-                  {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}{{ $page.RenderString . }}{{ else }}{{ . | markdownify }}{{ end }}
+                  {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}{{ $page.RenderString . }}{{ else }}{{ . | markdownify }}{{ end }}
                 </li>
               {{ end }}
             </ul>
@@ -664,7 +664,7 @@
               {{ if .enable }}
                 {{ $href := .link }}
                 {{ if and (not (strings.HasPrefix .link `http`)) (not (strings.HasPrefix .link `#`)) }}
-                  {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}
+                  {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}
                     {{ $href = partial "localized-url.html" .link }}
                   {{ else }}
                     {{ $href = (strings.TrimPrefix "/" .link) | relLangURL }}
@@ -844,7 +844,7 @@
                   {{ .question | markdownify }}
                 </summary>
                 <div class="content mt-4">
-                  {{ if in (slice "ko" "de" "it" "fa" "ar") site.Language.Lang }}{{ $page.RenderString .answer }}{{ else }}{{ .answer | markdownify }}{{ end }}
+                  {{ if in (slice "ko" "de" "it" "fa" "ar" "ja") site.Language.Lang }}{{ $page.RenderString .answer }}{{ else }}{{ .answer | markdownify }}{{ end }}
                 </div>
               </details>
             {{ end }}
