@@ -1,5 +1,15 @@
 # CHATGPT SEO AUDIT BUFFER — vpsforwebsite.com
 
+### Indonesian adaptation — complete editorial pass, 24 October 2026
+
+- All 18 Indonesian pages have now been reviewed individually, including full article text, hero, metadata, FAQs and forms. Recovered source stays under recovered-public/id; all existing routes are retained. Commercial intent uses natural Indonesian and recognizable industry terms, without unsupported cheapest/best or Indonesia-location claims.
+- Pages 1–7 are published. Latest guide release: source 5295c9275584d6158391593cf3b1dcedf5c55e0b -> successful Prepare run 40153943455 -> generated 77f577d1a318747387aa4cebace4bbe0e97bd2aa -> successful Cloudflare Workers check. All five ordinary guide URLs returned 200 and their complete main text matched the revised source.
+- Remaining eleven pages have passed individual local Chromium checks. Across the complete language: 144 viewport/page cases, 16 forms and 18,736 English-compared input states, with final reports clear. The security page had 37 English dynamic-diagram labels, now translated. About was missing seven body sections and Contact was missing its policy; restored from actual English Markdown, with scoped readable article styling. Privacy matches delayed GA4 and existing data practices.
+- Discovered and fixed EN/ID noindex contact switcher fallback to homepage in restore-language-navigation.py. Both existing contact pages now navigate to their true EN/ID equivalents, remain noindex, and receive no SEO alternates. Restoration is idempotent. The other locale page maps and fallbacks remain in place.
+- Reproducible full-language browser audit: scripts/qa-indonesian.cjs and research/indonesian-routes.json. Use INDONESIAN_QA_LIVE=1 for production. Source publication and final full-language live browser verification for pages 8–18 are the remaining release steps; record receipts before declaring deployment complete.
+- Detailed page review and sources: research/indonesian-localization-2026-10-24.md. Working checkout: vpsforwebsite-indonesian; do not overwrite the older dirty task checkouts.
+
+
 ### Indonesian adaptation progress — 2026-10-24, pages 1–7
 
 - User requests careful page-by-page Indonesian adaptation. Each page has an individual text review, replacement map and browser report; this is not an automated bulk translation. Source remains recovered-public/id. Existing design, href destinations, IDs, controls, algorithms and numeric examples are preserved.

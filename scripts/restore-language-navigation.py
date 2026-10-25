@@ -26,6 +26,9 @@ LANGS = [
 ]
 LANG_CODES = [x[0] for x in LANGS]
 HOME = {code: url for code, _, url in LANGS}
+# Recovered contact pages intentionally have no SEO alternates. Keep the
+# verified EN/ID navigation pair without using homepage fallbacks as evidence.
+CONTACT_PAIR = {"en": "/contact/", "id": "/id/kontak/"}
 
 ATTR_RE = re.compile(r"""([:\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))""", re.I)
 TAG_RE = re.compile(r"<link\b[^>]*>", re.I)
@@ -253,6 +256,10 @@ for page in ROOT.rglob("*.html"):
     routes = {}
     routes.update(legacy)
     routes.update(current)
+    own_url = "/" + rel.parent.as_posix() + "/"
+    paired_contact = is_noindex(html) and own_url in CONTACT_PAIR.values()
+    if paired_contact:
+        routes.update(CONTACT_PAIR)
     if html_language(html) in ENGLISH_BY_LOCALE:
         own_url = "/" + rel.parent.as_posix() + "/"
         english_pairs = ENGLISH_BY_LOCALE[html_language(html)]
@@ -266,6 +273,8 @@ for page in ROOT.rglob("*.html"):
 
     en_url = routes.get("en", "/")
     en_reference = current.get("en") or legacy.get("en")
+    if paired_contact:
+        en_reference = CONTACT_PAIR["en"]
     if html_language(html) == "en":
         en_reference = "/" if rel.as_posix() == "index.html" else "/" + rel.parent.as_posix() + "/"
     elif html_language(html) in ENGLISH_BY_LOCALE:
@@ -319,7 +328,10 @@ for page in ROOT.rglob("*.html"):
             seo_routes[language] = native_urls[language]
         else:
             seo_routes.pop(language, None)
-    if not (noindex and html_language(html) in LOCALES_BY_EN):
+    if paired_contact:
+        # Navigation does not opt a noindex contact page into hreflang SEO.
+        html = TAG_RE.sub(lambda m: "" if "alternate" in attrs(m.group(0)).get("rel", "").lower().split() and attrs(m.group(0)).get("hreflang") else m.group(0), html)
+    elif not (noindex and html_language(html) in LOCALES_BY_EN):
         html = replace_alternates(html, seo_routes, bool(actual_ko))
 
     # Recovered pages need the same responsive fixes as Hugo pages. Preserve

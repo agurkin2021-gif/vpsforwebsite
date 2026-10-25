@@ -1,0 +1,95 @@
+{
+  "routes": [
+    {
+      "id": "/id/",
+      "en": "/",
+      "source": "_index.md"
+    },
+    {
+      "id": "/id/cara-hosting-website-di-vps/",
+      "en": "/how-to-host-a-website-on-vps/",
+      "source": "how-to-host-a-website-on-vps.md"
+    },
+    {
+      "id": "/id/cara-memilih-lokasi-vps/",
+      "en": "/how-to-choose-vps-location/",
+      "source": "how-to-choose-vps-location.md"
+    },
+    {
+      "id": "/id/checklist-keamanan-vps/",
+      "en": "/vps-security-checklist/",
+      "source": "vps-security-checklist.md"
+    },
+    {
+      "id": "/id/hosting-vps-fastpanel/",
+      "en": "/fastpanel-vps-hosting/",
+      "source": "fastpanel-vps-hosting.md"
+    },
+    {
+      "id": "/id/kebijakan-privasi/",
+      "en": "/privacy-policy/",
+      "source": "privacy-policy.md"
+    },
+    {
+      "id": "/id/kontak/",
+      "en": "/contact/",
+      "source": "contact.md"
+    },
+    {
+      "id": "/id/menentukan-spesifikasi-vps/",
+      "en": "/vps-sizing-for-website/",
+      "source": "vps-sizing-for-website.md"
+    },
+    {
+      "id": "/id/migrasi-website-ke-vps/",
+      "en": "/website-migration-to-vps/",
+      "source": "website-migration-to-vps.md"
+    },
+    {
+      "id": "/id/monitoring-vps/",
+      "en": "/vps-monitoring/",
+      "source": "vps-monitoring.md"
+    },
+    {
+      "id": "/id/strategi-backup-vps/",
+      "en": "/vps-backup-strategy/",
+      "source": "vps-backup-strategy.md"
+    },
+    {
+      "id": "/id/tentang/",
+      "en": "/about/",
+      "source": "about.md"
+    },
+    {
+      "id": "/id/vps-dengan-panel-kontrol/",
+      "en": "/vps-with-control-panel/",
+      "source": "vps-with-control-panel.md"
+    },
+    {
+      "id": "/id/vps-managed-vs-unmanaged/",
+      "en": "/managed-vs-unmanaged-vps/",
+      "source": "managed-vs-unmanaged-vps.md"
+    },
+    {
+      "id": "/id/vps-untuk-banyak-website/",
+      "en": "/vps-for-multiple-websites/",
+      "source": "vps-for-multiple-websites.md"
+    },
+    {
+      "id": "/id/vps-untuk-woocommerce/",
+      "en": "/vps-for-woocommerce/",
+      "source": "vps-for-woocommerce.md"
+    },
+    {
+      "id": "/id/vps-untuk-wordpress/",
+      "en": "/vps-for-wordpress/",
+      "source": "vps-for-wordpress.md"
+    },
+    {
+      "id": "/id/vps-vs-shared-hosting/",
+      "en": "/vps-vs-shared-hosting/",
+      "source": "vps-vs-shared-hosting.md"
+    }
+  ],
+  "expectedForms": 16
+}

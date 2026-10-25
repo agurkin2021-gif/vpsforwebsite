@@ -24,7 +24,7 @@ For each page: individually review Indonesian meaning and terminology against th
 - Query/Title/H1 `VPS untuk WordPress`, `/id/vps-untuk-wordpress/`: existing title and slug match natural Indonesian hosting-selection intent. Retained without unnecessary redirect.
 - Reviewed all 418 fragments and compared the complete English page. Refined 146 text-node occurrences and three calculator messages. Kept all four tables, 10 FAQ answers, seven select controls, 20 options, links/IDs and decision logic. Corrected literal phrasing around long-running tasks, persistent cache, worker concurrency, headroom, deployment and management. Clear purchase CTA: `Lihat pilihan paket VPS WordPress`.
 - Primary technical checks: [WordPress requirements](https://wordpress.org/about/requirements/), [caching](https://developer.wordpress.org/advanced-administration/performance/cache/), [object cache](https://developer.wordpress.org/reference/classes/wp_object_cache/), [system scheduler](https://developer.wordpress.org/plugins/cron/hooking-wp-cron-into-the-system-task-scheduler/), and [VDSina Standard](https://www.vdsina.com/pricing/standard). Specifications and logic preserved; reviewed price/date fields advanced, explicit USD currency note added.
-- Local Chromium: 8 viewport widths, 1,296 exhaustive English-compared states, actual submit and EN↔ID roundtrip, zero findings. Title does not collide with the adjacent illustration; screenshots reviewed. Publication pending.
+- Local Chromium: 8 viewport widths, 1,296 exhaustive English-compared states, actual submit and EN↔ID roundtrip, zero findings. Title does not collide with the adjacent illustration; screenshots reviewed. Published and live-verified: source d4a1486df23801d15480f09ff161bc70c328f0e5, generated 17b931b71c6ddda1d79f2f4013328ef93201c163; full live browser checks passed.
 
 ## Pages 3–7: individually reviewed guides
 
@@ -55,27 +55,88 @@ For each page: individually review Indonesian meaning and terminology against th
 
 Primary additional sources: [WooCommerce scaling baseline](https://developer.woocommerce.com/2024/08/22/scaling-with-woocommerce/), [server requirements](https://woocommerce.com/document/server-requirements/), [cache exclusions](https://developer.woocommerce.com/docs/best-practices/performance/configuring-caching-plugins/), [HPOS](https://developer.woocommerce.com/docs/features/orders/high-performance-order-storage/), [scheduled actions](https://woocommerce.com/document/understanding-the-woocommerce-system-status-report/scheduled-actions/), [FASTPANEL installation](https://kb.fastpanel.direct/quick_start/how-to-install-fastpanel/), [free Standard license](https://kb.fastpanel.direct/quick_start/license-order/), [Extended licenses](https://kb.fastpanel.direct/licenses/intro/). WooCommerce docs scaling URL failed through the web extractor but direct HTTPS returned 200; original working reference retained.
 
+## Pages 8–18: individual completion review
+
+### /id/vps-dengan-panel-kontrol/
+
+- Reviewed 422 existing visible fragments, with any missing body restored explicitly. Panel choice, license costs, server dashboard versus website panel, operating duties and practical buying criteria.
+- Eight viewport cases, 288 English-compared form states, final local checks passed.
+
+### /id/vps-managed-vs-unmanaged/
+
+- Reviewed 439 existing visible fragments, with any missing body restored explicitly. Management scope, contract responsibilities, recovery ownership and total operating cost.
+- Eight viewport cases, 576 English-compared form states, final local checks passed.
+
+### /id/cara-hosting-website-di-vps/
+
+- Reviewed 519 existing visible fragments, with any missing body restored explicitly. Deployment sequence, SSH, file permissions, DNS, TLS, services and reboot checks. Every code block preserved.
+- Eight viewport cases, 72 English-compared form states, final local checks passed.
+
+### /id/migrasi-website-ke-vps/
+
+- Reviewed 378 existing visible fragments, with any missing body restored explicitly. Final writes, private testing, DNS, email records, serialized WordPress data, rollback synchronization and SEO continuity.
+- Eight viewport cases, 2304 English-compared form states, final local checks passed.
+
+### /id/checklist-keamanan-vps/
+
+- Reviewed 439 existing visible fragments, with any missing body restored explicitly. SSH recovery sequence, public ports, least privilege, credentials and incident recovery. Also translated 37 English labels injected by the visual-diagram script; no algorithm changes.
+- Eight viewport cases, 512 English-compared form states, final local checks passed.
+
+### /id/strategi-backup-vps/
+
+- Reviewed 500 existing visible fragments, with any missing body restored explicitly. RPO versus RTO, database consistency, off-server copies, encryption keys, retention, restore drills and correct 3-2-1 definition.
+- Eight viewport cases, 2304 English-compared form states, final local checks passed.
+
+### /id/monitoring-vps/
+
+- Reviewed 514 existing visible fragments, with any missing body restored explicitly. External checks, historical metrics, application health, useful alert thresholds, independent notifications and capacity decisions.
+- Eight viewport cases, 1536 English-compared form states, final local checks passed.
+
+### /id/cara-memilih-lokasi-vps/
+
+- Reviewed 501 existing visible fragments, with any missing body restored explicitly. User and dependency locations, routing tests, dynamic requests, CDN, geographical labels and real placement constraints. No Indonesian datacenter claim added.
+- Eight viewport cases, 288 English-compared form states, final local checks passed.
+
+### /id/tentang/
+
+- Reviewed 21 existing visible fragments, with any missing body restored explicitly. Restored seven missing editorial/disclosure sections from content/english/about/_index.md. Preserved historical English review date. Title/H1 Tentang matches existing slug. Scoped article-body CSS fixes alignment and heading contrast in the recovered stylesheet.
+- Eight viewport cases, 0 English-compared form states, final local checks passed.
+
+### /id/kontak/
+
+- Reviewed 22 existing visible fragments, with any missing body restored explicitly. Restored the two missing contact-policy paragraphs from English source. Removed obsolete preview language. Preserved noindex and no public form; no contact channel invented. Verified EN/ID contact switcher pair fixed without adding SEO alternates.
+- Eight viewport cases, 0 English-compared form states, final local checks passed.
+
+### /id/kebijakan-privasi/
+
+- Reviewed 47 existing visible fragments, with any missing body restored explicitly. Reviewed against actual delayed GA4 implementation, English policy and Google policy. Refined browser/device and cookie descriptions; translated remaining schema author description. No consent features or retention promises invented.
+- Eight viewport cases, 0 English-compared form states, final local checks passed.
+
+Additional primary references: [Ubuntu OpenSSH](https://ubuntu.com/server/docs/how-to/security/openssh-server/), [Ubuntu firewall](https://ubuntu.com/server/docs/how-to/security/firewalls/), [CISA 3-2-1 backup rule](https://www.cisa.gov/sites/default/files/publications/data_backup_options.pdf), [Prometheus Node Exporter](https://prometheus.io/docs/guides/node-exporter/), [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), [Uptime Kuma](https://github.com/louislam/uptime-kuma), [Google international sites](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites), [Google privacy policy](https://policies.google.com/privacy). Full articles were manually reviewed; scripts apply reviewed per-page text edits and assert unchanged links, IDs, form controls, code blocks and calculator logic. About/Contact body restoration is the documented structural exception.
+
+Re-run browser checks with Playwright and Chromium installed: `node scripts/qa-indonesian.cjs cloudflare-public research/indonesian-routes.json qa-output/indonesian`. Default widths: 320, 360, 390, 430, 768, 1024, 1280, 1920. Set `CHROME_PATH` if using installed Chrome; set `INDONESIAN_QA_LIVE=1` for ordinary production URLs.
+
 ## Sequential queue
 
 | Page | Existing route | Status |
 | --- | --- | --- |
 | VPS untuk Website | `/id/` | Published and live-verified |
 | VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Published and live-verified |
-| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Reviewed, local QA passed; publication pending |
-| Menentukan Spesifikasi VPS | `/id/menentukan-spesifikasi-vps/` | Reviewed, local QA passed; publication pending |
-| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Reviewed, local QA passed; publication pending |
-| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Reviewed, local QA passed; publication pending |
-| Hosting VPS FASTPANEL | `/id/hosting-vps-fastpanel/` | Reviewed, local QA passed; publication pending |
-| VPS dengan Panel Kontrol | `/id/vps-dengan-panel-kontrol/` | Pending |
-| VPS Managed vs Unmanaged | `/id/vps-managed-vs-unmanaged/` | Pending |
-| Cara Hosting Website di VPS | `/id/cara-hosting-website-di-vps/` | Pending |
-| Migrasi Website ke VPS | `/id/migrasi-website-ke-vps/` | Pending |
-| Checklist Keamanan VPS | `/id/checklist-keamanan-vps/` | Pending |
-| Strategi Backup VPS | `/id/strategi-backup-vps/` | Pending |
-| Monitoring VPS | `/id/monitoring-vps/` | Pending |
-| Cara Memilih Lokasi VPS | `/id/cara-memilih-lokasi-vps/` | Pending |
-| Tentang VPSforWebsite.com | `/id/tentang/` | Pending full English-source body review |
-| Kontak | `/id/kontak/` | Pending; preserve noindex |
-| Kebijakan Privasi | `/id/kebijakan-privasi/` | Pending |
+| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Published; live content verified |
+| Menentukan Spesifikasi VPS | `/id/menentukan-spesifikasi-vps/` | Published; live content verified |
+| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Published; live content verified |
+| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Published; live content verified |
+| Hosting VPS FASTPANEL | `/id/hosting-vps-fastpanel/` | Published; live content verified |
+| VPS dengan Panel Kontrol | `/id/vps-dengan-panel-kontrol/` | Reviewed, local QA passed; final publication pending |
+| VPS Managed vs Unmanaged | `/id/vps-managed-vs-unmanaged/` | Reviewed, local QA passed; final publication pending |
+| Cara Hosting Website di VPS | `/id/cara-hosting-website-di-vps/` | Reviewed, local QA passed; final publication pending |
+| Migrasi Website ke VPS | `/id/migrasi-website-ke-vps/` | Reviewed, local QA passed; final publication pending |
+| Checklist Keamanan VPS | `/id/checklist-keamanan-vps/` | Reviewed, local QA passed; final publication pending |
+| Strategi Backup VPS | `/id/strategi-backup-vps/` | Reviewed, local QA passed; final publication pending |
+| Monitoring VPS | `/id/monitoring-vps/` | Reviewed, local QA passed; final publication pending |
+| Cara Memilih Lokasi VPS | `/id/cara-memilih-lokasi-vps/` | Reviewed, local QA passed; final publication pending |
+| Tentang | `/id/tentang/` | Reviewed, local QA passed; final publication pending |
+| Kontak | `/id/kontak/` | Reviewed, local QA passed; final publication pending |
+| Kebijakan Privasi | `/id/kebijakan-privasi/` | Reviewed, local QA passed; final publication pending |
 
 The initial inventory confirms matching rendered H2/H3/list/table/control counts on all 18 pages. Structural parity is not evidence of completed linguistic review. About requires the full English Markdown source as reference because its existing English public template omits body sections.
