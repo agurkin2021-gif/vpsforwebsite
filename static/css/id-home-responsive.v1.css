@@ -1,0 +1,51 @@
+/* Indonesian homepage small-screen layout correction.
+   Scope strictly to /id/ (html lang=id + .vps-home) to preserve other locales.
+   Keep content, visual design, dimensions and affiliate links unchanged. */
+@media (max-width: 767px) {
+  html:lang(id) .vps-home .vps-home-section .row,
+  html:lang(id) .vps-home .vps-home-section .row > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  html:lang(id) .vps-home .vps-home-section h2 {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  html:lang(id) .vps-home #vps-plan-options {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  html:lang(id) .vps-home #vps-plan-options > .vps-plan-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
+
+  html:lang(id) .vps-home #vps-plan-options .vps-plan-card h3,
+  html:lang(id) .vps-home #vps-plan-options .vps-plan-card dl,
+  html:lang(id) .vps-home #vps-plan-options .vps-plan-card dt,
+  html:lang(id) .vps-home #vps-plan-options .vps-plan-card dd {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  html:lang(id) .vps-home a.btn,
+  html:lang(id) .vps-home button.btn {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+}

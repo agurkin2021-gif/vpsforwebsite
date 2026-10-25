@@ -1,5 +1,14 @@
 # CHATGPT PROJECT CONTEXT — vpsforwebsite.com
 
+### Indonesian page-by-page adaptation — 2026-10-24, page 1 (homepage)
+
+- Current owner request: careful Indonesian commercial adaptation, natural titles/URLs, complete pages individually with responsive checks. Indonesian already has 18 recovered routes; review and improve those sources instead of creating a duplicate locale. Current pass is `/id/`; subsequent pages must not be marked reviewed from inventory counts alone.
+- Homepage query = Title = H1 remains `VPS untuk Website`, canonical `/id/`. Reviewed all 477 visible text fragments, seven decision sections, four configuration cards, 13 FAQ answers, six selects/15 options and all five calculator outcomes. Refined 125 text occurrences and two outcome messages for natural Indonesian meaning; updated the description consistently in HTML/Open Graph/JSON-LD. All original anchors, destinations, sponsor attributes, layout structure and calculator decisions remain intact.
+- Rechecked the four Standard configurations and USD prices against `https://www.vdsina.com/pricing/standard` on 24 October 2026. Added an explicit USD note and advanced this page's price-review/dateModified fields; no invented Indonesian server location or rupiah price. Industry terminology checked against Indonesian providers, without search-volume claims. Full method/queue: `research/indonesian-localization-2026-10-24.md`.
+- Fixed homepage mobile clipping of tariff headings, a fixed-width CTA and section headings using `static/css/id-home-responsive.v1.css`, linked only by the Indonesian homepage and scoped below 768 px. Original owner artwork is preserved. Local Chromium passes 8 viewport widths (320/360/390/430/768/1024/1280/1920), all 216 input combinations compared with English, actual pointer submission and EN↔ID roundtrip; zero findings. Mobile/desktop screenshots reviewed.
+- Source edits are `recovered-public/id/index.html`, the Indonesian-only stylesheet and documentation. Main → successful generated-static build → Cloudflare success → ordinary live URL remains mandatory. Publication/live verification pending; the next full-page review is WordPress.
+
+
 ### Arabic complete localization — 2026-10-23 (published and live-verified)
 
 - Owner authorization: complete Arabic localization from the English reference, adaptive titles, URLs and all content, all phases in one pass without questions. This supersedes historical Spanish-only, preview-only and one-page-per-turn limits. German, Italian and Persian are already complete.
