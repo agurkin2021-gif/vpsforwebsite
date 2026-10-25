@@ -1,8 +1,8 @@
-# Indonesian adaptation: one complete page per release
+# Indonesian adaptation: individual page review and verification
 
 The owner's current request is careful Indonesian commercial localization, with natural titles and URLs, full page-by-page review and responsive verification. Indonesian already has 18 recovered pages; this is a quality and completeness pass over that existing version, not a new duplicate language or a bulk rewrite. Source stays in `recovered-public/id/` until an explicit Hugo migration is needed. Do not remove functioning existing URLs.
 
-For each page: compare the entire English reference, review Indonesian meaning and terminology, preserve section/anchor/form/affiliate parity, fix responsive defects within the Indonesian scope, publish from main, wait for the generated static commit and its successful Cloudflare build, then verify the ordinary live URL before starting the next page.
+For each page: individually review Indonesian meaning and terminology against the English reference and primary technical documentation; preserve section/anchor/form/affiliate parity and verify responsive behavior. Review the next page while prior publication checks run. Only checked sources are published from main; wait for generated static and Cloudflare success and verify every ordinary live URL. Release grouping does not replace individual editorial review.
 
 ## Language and search intent
 
@@ -26,17 +26,46 @@ For each page: compare the entire English reference, review Indonesian meaning a
 - Primary technical checks: [WordPress requirements](https://wordpress.org/about/requirements/), [caching](https://developer.wordpress.org/advanced-administration/performance/cache/), [object cache](https://developer.wordpress.org/reference/classes/wp_object_cache/), [system scheduler](https://developer.wordpress.org/plugins/cron/hooking-wp-cron-into-the-system-task-scheduler/), and [VDSina Standard](https://www.vdsina.com/pricing/standard). Specifications and logic preserved; reviewed price/date fields advanced, explicit USD currency note added.
 - Local Chromium: 8 viewport widths, 1,296 exhaustive English-compared states, actual submit and EN↔ID roundtrip, zero findings. Title does not collide with the adjacent illustration; screenshots reviewed. Publication pending.
 
+## Pages 3–7: individually reviewed guides
+
+### /id/vps-untuk-woocommerce/
+
+- Reviewed 458 visible fragments; refined 129 text-node occurrences and 3 calculator messages. Checkout/account concurrency, cache exclusions, payment callbacks, scheduled actions, HPOS and transaction-aware migration. Official WooCommerce requirements/cache/HPOS/Action Scheduler and historic scaling baseline checked.
+- Eight viewport widths, 7776 English-compared input states, all final checks passed. Main structure, controls, numbers, hrefs and anchors retained.
+
+### /id/menentukan-spesifikasi-vps/
+
+- Reviewed 374 visible fragments; refined 93 text-node occurrences and 2 calculator messages. Query/Title/H1 shortened to Menentukan Spesifikasi VPS, matching the existing slug without redirect. Clarified resource budgets, CloudLinux limits, worker concurrency and total cost. Both calculators preserve their algorithms; QA normalizes Indonesian decimal comma 2,4 against English 2.4, without dropping numeric assertions.
+- Eight viewport widths, 740 English-compared input states, all final checks passed. Main structure, controls, numbers, hrefs and anchors retained.
+
+### /id/vps-vs-shared-hosting/
+
+- Reviewed 381 visible fragments; refined 90 text-node occurrences and 0 calculator messages. Natural purchase comparison: management duties, actual hosting limits, root/runtime needs, bundled services, ongoing costs and migration readiness. Six decision outcomes unchanged.
+- Eight viewport widths, 216 English-compared input states, all final checks passed. Main structure, controls, numbers, hrefs and anchors retained.
+
+### /id/vps-untuk-banyak-website/
+
+- Reviewed 409 visible fragments; refined 89 text-node occurrences and 1 calculator messages. Clarified shared outage risk, per-client isolation, combined peak usage and per-site recovery. Replaced an exposed internal SEO-planning aside with useful agency/hosting guidance. One calculator suffix clarified; all branches preserved.
+- Eight viewport widths, 576 English-compared input states, all final checks passed. Main structure, controls, numbers, hrefs and anchors retained.
+
+### /id/hosting-vps-fastpanel/
+
+- Reviewed 318 visible fragments; refined 82 text-node occurrences and 0 calculator messages. Query/Title/H1 now Hosting VPS FASTPANEL, matching the existing slug. Clarified clean OS installation, panel minimum versus production capacity, setup and operations. Verified Standard free license and paid Extended features including Node.js; accurate licensing nuance added from official documentation.
+- Eight viewport widths, 36 English-compared input states, all final checks passed. Main structure, controls, numbers, hrefs and anchors retained.
+
+Primary additional sources: [WooCommerce scaling baseline](https://developer.woocommerce.com/2024/08/22/scaling-with-woocommerce/), [server requirements](https://woocommerce.com/document/server-requirements/), [cache exclusions](https://developer.woocommerce.com/docs/best-practices/performance/configuring-caching-plugins/), [HPOS](https://developer.woocommerce.com/docs/features/orders/high-performance-order-storage/), [scheduled actions](https://woocommerce.com/document/understanding-the-woocommerce-system-status-report/scheduled-actions/), [FASTPANEL installation](https://kb.fastpanel.direct/quick_start/how-to-install-fastpanel/), [free Standard license](https://kb.fastpanel.direct/quick_start/license-order/), [Extended licenses](https://kb.fastpanel.direct/licenses/intro/). WooCommerce docs scaling URL failed through the web extractor but direct HTTPS returned 200; original working reference retained.
+
 ## Sequential queue
 
 | Page | Existing route | Status |
 | --- | --- | --- |
 | VPS untuk Website | `/id/` | Published and live-verified |
-| VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Reviewed and locally verified; publication pending |
-| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Pending |
-| Menentukan Spesifikasi VPS untuk Website | `/id/menentukan-spesifikasi-vps/` | Pending title/slug review |
-| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Pending |
-| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Pending |
-| Hosting VPS dengan FASTPANEL | `/id/hosting-vps-fastpanel/` | Pending title/slug review |
+| VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Published and live-verified |
+| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Reviewed, local QA passed; publication pending |
+| Menentukan Spesifikasi VPS | `/id/menentukan-spesifikasi-vps/` | Reviewed, local QA passed; publication pending |
+| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Reviewed, local QA passed; publication pending |
+| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Reviewed, local QA passed; publication pending |
+| Hosting VPS FASTPANEL | `/id/hosting-vps-fastpanel/` | Reviewed, local QA passed; publication pending |
 | VPS dengan Panel Kontrol | `/id/vps-dengan-panel-kontrol/` | Pending |
 | VPS Managed vs Unmanaged | `/id/vps-managed-vs-unmanaged/` | Pending |
 | Cara Hosting Website di VPS | `/id/cara-hosting-website-di-vps/` | Pending |

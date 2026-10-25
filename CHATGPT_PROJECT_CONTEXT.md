@@ -1,11 +1,21 @@
 # CHATGPT PROJECT CONTEXT — vpsforwebsite.com
 
+### Indonesian adaptation progress — 2026-10-24, pages 1–7
+
+- User requests careful page-by-page Indonesian adaptation. Each page has an individual text review, replacement map and browser report; this is not an automated bulk translation. Source remains recovered-public/id. Existing design, href destinations, IDs, controls, algorithms and numeric examples are preserved.
+- Homepage and WordPress are published and live-verified. WordPress: source d4a1486df23801d15480f09ff161bc70c328f0e5 -> successful Prepare static run 40153165344 -> generated 17b931b71c6ddda1d79f2f4013328ef93201c163 -> successful Cloudflare build; ordinary live URL 200 with revised CTA, 8 widths and 1,296 English-compared input states passed.
+- Five further pages were reviewed sequentially: WooCommerce, sizing, shared hosting comparison, multiple websites, FASTPANEL. Their independent local browser checks cover 40 viewport cases and 9,344 input states across six forms, with no final findings. Source publication/live verification pending for these five pages. Later pages remain pending; do not claim all 18 completed.
+- Two title/slug mismatches fixed by refining the title while preserving working URLs: Menentukan Spesifikasi VPS and Hosting VPS FASTPANEL. Descriptions emphasize the page-specific buying or comparison task. Prices explicitly USD and checked against VDSina Standard on 24 October. A product-facing SEO-planning aside was replaced with useful user guidance on the multi-site and FASTPANEL pages.
+- FASTPANEL licensing was checked against official license-order and extended-license docs: Standard is free, Extended features are paid; Node.js backend is an Extended feature. This factual clarification prevents the translated page from implying all features are free. Preserve all numerical specs and prices. Method, page counts and queue: research/indonesian-localization-2026-10-24.md.
+- Individual editing continues while prior release CI runs; publication waits for required checks. This avoids idle time without combining the editorial review of unrelated pages. The earlier self-imposed wait-before-reading-next-page procedure is superseded; the owner's page-by-page quality requirement remains.
+
+
 ### Indonesian page 2 — WordPress, 2026-10-24
 
 - Page 1 is published and live-verified (details below). Page 2 is `/id/vps-untuk-wordpress/`; query = Title = H1 stays `VPS untuk WordPress`, matching the existing native slug. No duplicate route or unsupported best/cheapest claim.
 - Reviewed all 418 visible fragments against English: hero, 21 H2 sections, four tables, 10 FAQ answers, all seven controls/20 options and calculator branches. Refined 146 text-node occurrences and three result messages. Clarified PHP workers/concurrency, RAM headroom versus backup, long-running jobs, cache persistence, database working sets, management responsibilities and buying CTAs. Metadata/JSON-LD description matches the reviewed hero introduction. All links, IDs, controls, algorithms, numeric configurations and affiliate attributes remain intact.
 - Verified current requirements/cache/WP-Cron against official WordPress documentation; rechecked VDSina Standard USD prices and FASTPANEL Ubuntu 22 listing. Updated only this page's price-review date and dateModified to 24 October 2026. Local Chromium: all 8 viewport widths, all 1,296 English-compared calculator input states, pointer submission, language roundtrip; zero findings. Mobile/desktop hero screenshots reviewed. Source remains `recovered-public/id/`.
-- WordPress source publication and ordinary live verification pending. Following full-page review: WooCommerce. Remaining pages have not yet received this editorial pass.
+- WordPress source publication and ordinary live verification complete (receipt in latest progress entry). Following full-page review: WooCommerce. Remaining pages have not yet received this editorial pass.
 
 
 ### Indonesian page-by-page adaptation — 2026-10-24, page 1 (homepage)
