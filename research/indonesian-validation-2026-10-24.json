@@ -1,0 +1,257 @@
+{
+  "status": "completed",
+  "startedAt": "2026-10-25T02:45:15.951Z",
+  "updatedAt": "2026-10-25T02:54:22.574Z",
+  "mode": "production",
+  "pages": 18,
+  "geometryCases": 144,
+  "forms": 16,
+  "formCases": 18736,
+  "findings": [],
+  "sourceCommit": "bcfbe0603cf5162ddd265fbff66116c32a877c58",
+  "prepareRun": 40155389753,
+  "generatedCommit": "891cfd8a5e70267a6b20f72f6512826565423473",
+  "cloudflareWorkersBuild": "success",
+  "widths": [
+    320,
+    360,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1920
+  ],
+  "languageRoundtrips": "All 18 pages EN to ID and ID to EN",
+  "httpAndMetadata": {
+    "pages": [
+      {
+        "route": "/id/",
+        "status": 200,
+        "title": "VPS untuk Website",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/cara-hosting-website-di-vps/",
+        "status": 200,
+        "title": "Cara Hosting Website di VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/cara-memilih-lokasi-vps/",
+        "status": 200,
+        "title": "Cara Memilih Lokasi VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/checklist-keamanan-vps/",
+        "status": 200,
+        "title": "Checklist Keamanan VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/hosting-vps-fastpanel/",
+        "status": 200,
+        "title": "Hosting VPS FASTPANEL",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/kebijakan-privasi/",
+        "status": 200,
+        "title": "Kebijakan Privasi",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/kontak/",
+        "status": 200,
+        "title": "Kontak",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/menentukan-spesifikasi-vps/",
+        "status": 200,
+        "title": "Menentukan Spesifikasi VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/migrasi-website-ke-vps/",
+        "status": 200,
+        "title": "Migrasi Website ke VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/monitoring-vps/",
+        "status": 200,
+        "title": "Monitoring VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/strategi-backup-vps/",
+        "status": 200,
+        "title": "Strategi Backup VPS",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/tentang/",
+        "status": 200,
+        "title": "Tentang",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-dengan-panel-kontrol/",
+        "status": 200,
+        "title": "VPS dengan Panel Kontrol",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-managed-vs-unmanaged/",
+        "status": 200,
+        "title": "VPS Managed vs Unmanaged",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-untuk-banyak-website/",
+        "status": 200,
+        "title": "VPS untuk Banyak Website",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-untuk-woocommerce/",
+        "status": 200,
+        "title": "VPS untuk WooCommerce",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-untuk-wordpress/",
+        "status": 200,
+        "title": "VPS untuk WordPress",
+        "sourceTextMatched": true,
+        "languages": 14
+      },
+      {
+        "route": "/id/vps-vs-shared-hosting/",
+        "status": 200,
+        "title": "VPS vs Shared Hosting",
+        "sourceTextMatched": true,
+        "languages": 14
+      }
+    ],
+    "indexableIndonesianPagesInSitemap": 17,
+    "noindexContactExcluded": true,
+    "stylesMatchSource": true
+  },
+  "formReports": [
+    {
+      "route": "/id/",
+      "id": "homepage-vps-fit-checker",
+      "cases": 216,
+      "outcomes": 5
+    },
+    {
+      "route": "/id/cara-hosting-website-di-vps/",
+      "id": "deployment-path-checker-form",
+      "cases": 72,
+      "outcomes": 18
+    },
+    {
+      "route": "/id/cara-memilih-lokasi-vps/",
+      "id": "vps-location-checker",
+      "cases": 288,
+      "outcomes": 6
+    },
+    {
+      "route": "/id/checklist-keamanan-vps/",
+      "id": "vps-security-checker",
+      "cases": 512,
+      "outcomes": 6
+    },
+    {
+      "route": "/id/hosting-vps-fastpanel/",
+      "id": "fastpanel-fit-checker",
+      "cases": 36,
+      "outcomes": 3
+    },
+    {
+      "route": "/id/menentukan-spesifikasi-vps/",
+      "id": "ram-budget-estimator-form",
+      "cases": 11,
+      "outcomes": 10
+    },
+    {
+      "route": "/id/menentukan-spesifikasi-vps/",
+      "id": "shared-hosting-diagnostic",
+      "cases": 729,
+      "outcomes": 174
+    },
+    {
+      "route": "/id/migrasi-website-ke-vps/",
+      "id": "migration-preflight",
+      "cases": 2304,
+      "outcomes": 1024
+    },
+    {
+      "route": "/id/monitoring-vps/",
+      "id": "vps-monitoring-checker",
+      "cases": 1536,
+      "outcomes": 4
+    },
+    {
+      "route": "/id/strategi-backup-vps/",
+      "id": "vps-backup-strategy-checker-form",
+      "cases": 2304,
+      "outcomes": 4
+    },
+    {
+      "route": "/id/vps-dengan-panel-kontrol/",
+      "id": "panel-fit-checker",
+      "cases": 288,
+      "outcomes": 7
+    },
+    {
+      "route": "/id/vps-managed-vs-unmanaged/",
+      "id": "management-fit-checker-form",
+      "cases": 576,
+      "outcomes": 4
+    },
+    {
+      "route": "/id/vps-untuk-banyak-website/",
+      "id": "multi-site-architecture-checker",
+      "cases": 576,
+      "outcomes": 12
+    },
+    {
+      "route": "/id/vps-untuk-woocommerce/",
+      "id": "woocommerce-vps-fit-checker-form",
+      "cases": 7776,
+      "outcomes": 6
+    },
+    {
+      "route": "/id/vps-untuk-wordpress/",
+      "id": "wordpress-vps-fit-checker-form",
+      "cases": 1296,
+      "outcomes": 8
+    },
+    {
+      "route": "/id/vps-vs-shared-hosting/",
+      "id": "shared-vs-vps-checker",
+      "cases": 216,
+      "outcomes": 6
+    }
+  ]
+}

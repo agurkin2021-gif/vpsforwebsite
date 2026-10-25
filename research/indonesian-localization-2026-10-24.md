@@ -116,27 +116,31 @@ Additional primary references: [Ubuntu OpenSSH](https://ubuntu.com/server/docs/h
 
 Re-run browser checks with Playwright and Chromium installed: `node scripts/qa-indonesian.cjs cloudflare-public research/indonesian-routes.json qa-output/indonesian`. Default widths: 320, 360, 390, 430, 768, 1024, 1280, 1920. Set `CHROME_PATH` if using installed Chrome; set `INDONESIAN_QA_LIVE=1` for ordinary production URLs.
 
-## Sequential queue
+## Final production verification
+
+Final release: source `bcfbe0603cf5162ddd265fbff66116c32a877c58` -> Prepare run `40155389753` successful -> generated `891cfd8a5e70267a6b20f72f6512826565423473` -> Cloudflare Workers success. Full live browser run completed 2026-10-25T02:54:22.574Z: **18 pages, 144 viewport cases, 16 forms, 18,736 input states, zero findings**, with actual form submissions and EN/ID roundtrips for every page. All ordinary URLs returned 200; full main text and metadata match source. Seventeen indexable routes are in the sitemap; noindex Contact is excluded. Structured evidence is in `indonesian-validation-2026-10-24.json`.
+
+## Completed page inventory
 
 | Page | Existing route | Status |
 | --- | --- | --- |
 | VPS untuk Website | `/id/` | Published and live-verified |
 | VPS untuk WordPress | `/id/vps-untuk-wordpress/` | Published and live-verified |
-| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Published; live content verified |
-| Menentukan Spesifikasi VPS | `/id/menentukan-spesifikasi-vps/` | Published; live content verified |
-| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Published; live content verified |
-| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Published; live content verified |
-| Hosting VPS FASTPANEL | `/id/hosting-vps-fastpanel/` | Published; live content verified |
-| VPS dengan Panel Kontrol | `/id/vps-dengan-panel-kontrol/` | Reviewed, local QA passed; final publication pending |
-| VPS Managed vs Unmanaged | `/id/vps-managed-vs-unmanaged/` | Reviewed, local QA passed; final publication pending |
-| Cara Hosting Website di VPS | `/id/cara-hosting-website-di-vps/` | Reviewed, local QA passed; final publication pending |
-| Migrasi Website ke VPS | `/id/migrasi-website-ke-vps/` | Reviewed, local QA passed; final publication pending |
-| Checklist Keamanan VPS | `/id/checklist-keamanan-vps/` | Reviewed, local QA passed; final publication pending |
-| Strategi Backup VPS | `/id/strategi-backup-vps/` | Reviewed, local QA passed; final publication pending |
-| Monitoring VPS | `/id/monitoring-vps/` | Reviewed, local QA passed; final publication pending |
-| Cara Memilih Lokasi VPS | `/id/cara-memilih-lokasi-vps/` | Reviewed, local QA passed; final publication pending |
-| Tentang | `/id/tentang/` | Reviewed, local QA passed; final publication pending |
-| Kontak | `/id/kontak/` | Reviewed, local QA passed; final publication pending |
-| Kebijakan Privasi | `/id/kebijakan-privasi/` | Reviewed, local QA passed; final publication pending |
+| VPS untuk WooCommerce | `/id/vps-untuk-woocommerce/` | Published and live-verified |
+| Menentukan Spesifikasi VPS | `/id/menentukan-spesifikasi-vps/` | Published and live-verified |
+| VPS vs Shared Hosting | `/id/vps-vs-shared-hosting/` | Published and live-verified |
+| VPS untuk Banyak Website | `/id/vps-untuk-banyak-website/` | Published and live-verified |
+| Hosting VPS FASTPANEL | `/id/hosting-vps-fastpanel/` | Published and live-verified |
+| VPS dengan Panel Kontrol | `/id/vps-dengan-panel-kontrol/` | Published and live-verified |
+| VPS Managed vs Unmanaged | `/id/vps-managed-vs-unmanaged/` | Published and live-verified |
+| Cara Hosting Website di VPS | `/id/cara-hosting-website-di-vps/` | Published and live-verified |
+| Migrasi Website ke VPS | `/id/migrasi-website-ke-vps/` | Published and live-verified |
+| Checklist Keamanan VPS | `/id/checklist-keamanan-vps/` | Published and live-verified |
+| Strategi Backup VPS | `/id/strategi-backup-vps/` | Published and live-verified |
+| Monitoring VPS | `/id/monitoring-vps/` | Published and live-verified |
+| Cara Memilih Lokasi VPS | `/id/cara-memilih-lokasi-vps/` | Published and live-verified |
+| Tentang | `/id/tentang/` | Published and live-verified |
+| Kontak | `/id/kontak/` | Published and live-verified |
+| Kebijakan Privasi | `/id/kebijakan-privasi/` | Published and live-verified |
 
 The initial inventory confirms matching rendered H2/H3/list/table/control counts on all 18 pages. Structural parity is not evidence of completed linguistic review. About requires the full English Markdown source as reference because its existing English public template omits body sections.
