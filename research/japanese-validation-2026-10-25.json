@@ -1,8 +1,296 @@
 {
-  "stage": "local-validation-complete",
+  "stage": "production-published-and-verified",
   "date": "2026-10-25",
   "baseline": "0c6e648abb71e00b9751806ad0d30281cb1f8ea9",
-  "browser": {
+  "static": {
+    "sourceFiles": 20,
+    "publicPages": 18,
+    "forms": 16,
+    "errors": 0
+  },
+  "siteIntegrity": {
+    "pages": 278,
+    "targets": 380,
+    "stylesheets": 96,
+    "errors": 0
+  },
+  "preview": {
+    "pages": 18,
+    "targets": 155,
+    "errors": 0
+  },
+  "recovery": {
+    "preservedPages": 159,
+    "languages": 15,
+    "selectors": 270,
+    "errors": 0
+  },
+  "sitemap": {
+    "total": 257,
+    "japanese": 17
+  },
+  "production": {
+    "sourceCommit": "d7e9a0a08aaa71f5722361e12a090fa28256ecfc",
+    "prepareRun": 40161564786,
+    "prepareConclusion": "success",
+    "generatedCommit": "405596b6200bfb546f6fb555e3254c4e88648ada",
+    "cloudflareBuild": "b4813e5b-fa21-469c-806a-5c9bfceb664e",
+    "cloudflareVersion": "66572106-8850-44c3-a2fa-2589d9602e13",
+    "cloudflareConclusion": "success",
+    "http": {
+      "passed": true,
+      "pages": [
+        {
+          "route": "/ja/",
+          "status": 200,
+          "title": "Webサイト向けVPS",
+          "mainTextSha256": "f66a809158a26b7083b8100f74005f9ff53c16a186ff7fc2e7536972127ee004",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/当サイトについて/",
+          "status": 200,
+          "title": "当サイトについて",
+          "mainTextSha256": "c8669d40f758c5dac0d6334b7bb4e308f7f3fab7842f2a5bab2f5654f66e0a6f",
+          "languages": 15,
+          "jsonLdObjects": 0
+        },
+        {
+          "route": "/ja/お問い合わせ/",
+          "status": 200,
+          "title": "お問い合わせ",
+          "mainTextSha256": "05de5db049a05727a977721dc2042a1ae2f1310f439f51bb424361555de65303",
+          "languages": 15,
+          "jsonLdObjects": 0
+        },
+        {
+          "route": "/ja/fastpanel対応vps/",
+          "status": 200,
+          "title": "FASTPANEL対応VPS",
+          "mainTextSha256": "5a06e6a5d2d83f5af14ab351f4e0ca7f1c2e87b2bc997d8b572608ef410c1fa9",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsのリージョンの選び方/",
+          "status": 200,
+          "title": "VPSのリージョンの選び方",
+          "mainTextSha256": "9eaac803126e7239740f10a85edb280c9cf9f19f03c991c7f135ea2ec481663c",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsでwebサイトを公開する方法/",
+          "status": 200,
+          "title": "VPSでWebサイトを公開する方法",
+          "mainTextSha256": "87ea58a046d323fb291ff637107ddb8e18553b97432e861d6ac2d87d0d85f55e",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/マネージドvpsとアンマネージドvpsの違い/",
+          "status": 200,
+          "title": "マネージドVPSとアンマネージドVPSの違い",
+          "mainTextSha256": "2757a1905e045befb01864a1fbc43527ffb696e8a9daf396b19c958aba6ae340",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/プライバシーポリシー/",
+          "status": 200,
+          "title": "プライバシーポリシー",
+          "mainTextSha256": "d12fbeccdb821ce226eef3863d1a4e1586b1df210be7752a9f127db758e881df",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsのバックアップ戦略/",
+          "status": 200,
+          "title": "VPSのバックアップ戦略",
+          "mainTextSha256": "b5d7cadbdcd1173f78afb09e3c1561eaf2334336c9b173a23a9f1c294f96b6be",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/複数サイト向けvps/",
+          "status": 200,
+          "title": "複数サイト向けVPS",
+          "mainTextSha256": "fba6267a6c8222c9dc006c071a11c1619a6c5174c0c854eb8b31e8b4c13fdd30",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/woocommerce向けvps/",
+          "status": 200,
+          "title": "WooCommerce向けVPS",
+          "mainTextSha256": "341551e501f1e15aa1d2d108acd75902574d66d08d180f02f994e6681efdf419",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/wordpress向けvps/",
+          "status": 200,
+          "title": "WordPress向けVPS",
+          "mainTextSha256": "15d1d9a0aa649dc0e9663e4593b79b3155ab07c3056ac7fb7d76c980cfc72abf",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsの監視/",
+          "status": 200,
+          "title": "VPSの監視",
+          "mainTextSha256": "86c0df74933d66eae98ab1c41674073fbd549d15c8b718f782f1105f06b7f43a",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsのセキュリティチェックリスト/",
+          "status": 200,
+          "title": "VPSのセキュリティチェックリスト",
+          "mainTextSha256": "401f29b8a89eb0452c01ad0ec8e53aee341bbb189196016428d0349b96cbe544",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsのスペックの選び方/",
+          "status": 200,
+          "title": "VPSのスペックの選び方",
+          "mainTextSha256": "feb9dad2e04e088cd1a260dca14731fbc02ce9f814b478568d9e693e59d343bd",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/vpsと共用サーバーの違い/",
+          "status": 200,
+          "title": "VPSと共用サーバーの違い",
+          "mainTextSha256": "9274e4acce7a9f31641b8508bfc35716b6178c6564ae9dc9b8e7829b042d244d",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/コントロールパネル付きvps/",
+          "status": 200,
+          "title": "コントロールパネル付きVPS",
+          "mainTextSha256": "e2696ebadf01642676a28ff77074f6271758dfeac082a0cadc947372ff16ea47",
+          "languages": 15,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/ja/webサイトのvps移行/",
+          "status": 200,
+          "title": "WebサイトのVPS移行",
+          "mainTextSha256": "ad2f4490f7a75a35288f3b28acc8f6d0987aaf859f3a251b51be970ea14b4f0f",
+          "languages": 15,
+          "jsonLdObjects": 2
+        }
+      ],
+      "homes": [
+        {
+          "route": "/",
+          "status": 200,
+          "lang": "en-US"
+        },
+        {
+          "route": "/bn/",
+          "status": 200,
+          "lang": "bn"
+        },
+        {
+          "route": "/pt-br/",
+          "status": 200,
+          "lang": "pt-BR"
+        },
+        {
+          "route": "/fr/",
+          "status": 200,
+          "lang": "fr"
+        },
+        {
+          "route": "/hi/",
+          "status": 200,
+          "lang": "hi"
+        },
+        {
+          "route": "/id/",
+          "status": 200,
+          "lang": "id"
+        },
+        {
+          "route": "/ru/",
+          "status": 200,
+          "lang": "ru"
+        },
+        {
+          "route": "/es/",
+          "status": 200,
+          "lang": "es-ES"
+        },
+        {
+          "route": "/vi/",
+          "status": 200,
+          "lang": "vi"
+        },
+        {
+          "route": "/ko/",
+          "status": 200,
+          "lang": "ko-KR"
+        },
+        {
+          "route": "/de/",
+          "status": 200,
+          "lang": "de-DE"
+        },
+        {
+          "route": "/it/",
+          "status": 200,
+          "lang": "it-IT"
+        },
+        {
+          "route": "/fa/",
+          "status": 200,
+          "lang": "fa-IR"
+        },
+        {
+          "route": "/ar/",
+          "status": 200,
+          "lang": "ar"
+        },
+        {
+          "route": "/ja/",
+          "status": 200,
+          "lang": "ja-JP"
+        }
+      ],
+      "assets": [
+        {
+          "path": "/css/ja-responsive.v1.css",
+          "sha256": "73d15a7d97a6ae76b793476a7ce6395cf25436951f8e7822d8d65b83357bacd5",
+          "bytes": 1989
+        },
+        {
+          "path": "/fonts/noto-sans-jp/NotoSansJP-site.woff2",
+          "sha256": "7a3dc156d1dee1d1831b343b8079d70766fbbe5aee7b2497746f668c24cf295c",
+          "bytes": 358884
+        },
+        {
+          "path": "/images/home/vps-cta-ja.svg",
+          "sha256": "e812d14a7d007c6b046ef2e5773ed244eebc048b529b6df7a658b1df8d5eb28e",
+          "bytes": 97194
+        }
+      ],
+      "sitemap": {
+        "total": 257,
+        "japanese": 17
+      },
+      "localized404": {
+        "status": 404,
+        "title": "ページが見つかりません"
+      },
+      "errors": []
+    }
+  },
+  "localBrowser": {
     "status": "completed",
     "startedAt": "2026-10-25T04:04:17.743Z",
     "updatedAt": "2026-10-25T04:13:45.870Z",
@@ -111,32 +399,132 @@
       }
     ]
   },
-  "static": {
-    "sourceFiles": 20,
-    "publicPages": 18,
-    "forms": 16,
-    "errors": 0
-  },
-  "siteIntegrity": {
-    "pages": 278,
-    "targets": 380,
-    "stylesheets": 96,
-    "errors": 0
-  },
-  "preview": {
+  "productionBrowser": {
+    "status": "completed",
+    "startedAt": "2026-10-25T04:25:12.210Z",
+    "updatedAt": "2026-10-25T04:36:40.248Z",
+    "mode": "production",
     "pages": 18,
-    "targets": 155,
-    "errors": 0
-  },
-  "recovery": {
-    "preservedPages": 159,
-    "languages": 15,
-    "selectors": 270,
-    "errors": 0
-  },
-  "sitemap": {
-    "total": 257,
-    "japanese": 17
-  },
-  "production": "pending"
+    "geometryCases": 144,
+    "forms": 16,
+    "formCases": 18736,
+    "findings": [],
+    "equivalentLanguageRoundtrips": 18,
+    "resume": {
+      "reason": "Windows EPERM renaming local report after all form matrices passed",
+      "sourceReport": "qa-output/production-browser/report.json",
+      "preservedWidths": [
+        320,
+        360,
+        390
+      ],
+      "preservedForms": 16,
+      "preservedFormCases": 18736,
+      "resumedWidths": [
+        430,
+        768,
+        1024,
+        1280,
+        1920
+      ]
+    },
+    "formReports": [
+      {
+        "route": "/ja/",
+        "id": "homepage-vps-fit-checker",
+        "cases": 216,
+        "outcomes": 5
+      },
+      {
+        "route": "/ja/fastpanel対応vps/",
+        "id": "fastpanel-fit-checker",
+        "cases": 36,
+        "outcomes": 3
+      },
+      {
+        "route": "/ja/vpsのリージョンの選び方/",
+        "id": "vps-location-checker",
+        "cases": 288,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/vpsでwebサイトを公開する方法/",
+        "id": "deployment-path-checker-form",
+        "cases": 72,
+        "outcomes": 18
+      },
+      {
+        "route": "/ja/マネージドvpsとアンマネージドvpsの違い/",
+        "id": "management-fit-checker-form",
+        "cases": 576,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/vpsのバックアップ戦略/",
+        "id": "vps-backup-strategy-checker-form",
+        "cases": 2304,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/複数サイト向けvps/",
+        "id": "multi-site-architecture-checker",
+        "cases": 576,
+        "outcomes": 12
+      },
+      {
+        "route": "/ja/woocommerce向けvps/",
+        "id": "woocommerce-vps-fit-checker-form",
+        "cases": 7776,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/wordpress向けvps/",
+        "id": "wordpress-vps-fit-checker-form",
+        "cases": 1296,
+        "outcomes": 8
+      },
+      {
+        "route": "/ja/vpsの監視/",
+        "id": "vps-monitoring-checker",
+        "cases": 1536,
+        "outcomes": 4
+      },
+      {
+        "route": "/ja/vpsのセキュリティチェックリスト/",
+        "id": "vps-security-checker",
+        "cases": 512,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/vpsのスペックの選び方/",
+        "id": "ram-budget-estimator-form",
+        "cases": 11,
+        "outcomes": 10
+      },
+      {
+        "route": "/ja/vpsのスペックの選び方/",
+        "id": "shared-hosting-diagnostic",
+        "cases": 729,
+        "outcomes": 174
+      },
+      {
+        "route": "/ja/vpsと共用サーバーの違い/",
+        "id": "shared-vs-vps-checker",
+        "cases": 216,
+        "outcomes": 6
+      },
+      {
+        "route": "/ja/コントロールパネル付きvps/",
+        "id": "panel-fit-checker",
+        "cases": 288,
+        "outcomes": 7
+      },
+      {
+        "route": "/ja/webサイトのvps移行/",
+        "id": "migration-preflight",
+        "cases": 2304,
+        "outcomes": 1024
+      }
+    ]
+  }
 }
