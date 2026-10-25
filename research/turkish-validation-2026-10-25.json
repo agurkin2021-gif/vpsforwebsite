@@ -1,0 +1,151 @@
+{
+  "stage": "local-validation-complete",
+  "date": "2026-10-25",
+  "baseline": "beddb96fc3fd406c1122930dfc6e7b2a0e81c65e",
+  "browser": {
+    "status": "completed",
+    "startedAt": "2026-10-25T13:44:35.857Z",
+    "updatedAt": "2026-10-25T13:53:40.043Z",
+    "mode": "local",
+    "pages": 18,
+    "geometryCases": 144,
+    "forms": 16,
+    "formCases": 18736,
+    "findings": []
+  },
+  "formReports": [
+    {
+      "route": "/tr/",
+      "id": "homepage-vps-fit-checker",
+      "cases": 216,
+      "outcomes": 5
+    },
+    {
+      "route": "/tr/fastpanel-ile-vps-hosting/",
+      "id": "fastpanel-fit-checker",
+      "cases": 36,
+      "outcomes": 3
+    },
+    {
+      "route": "/tr/vps-sunucu-konumu-secimi/",
+      "id": "vps-location-checker",
+      "cases": 288,
+      "outcomes": 6
+    },
+    {
+      "route": "/tr/vps-uzerinde-web-sitesi-yayinlama/",
+      "id": "deployment-path-checker-form",
+      "cases": 72,
+      "outcomes": 18
+    },
+    {
+      "route": "/tr/yonetilen-ve-yonetilmeyen-vps-karsilastirmasi/",
+      "id": "management-fit-checker-form",
+      "cases": 576,
+      "outcomes": 4
+    },
+    {
+      "route": "/tr/vps-yedekleme-stratejisi/",
+      "id": "vps-backup-strategy-checker-form",
+      "cases": 2304,
+      "outcomes": 4
+    },
+    {
+      "route": "/tr/birden-fazla-web-sitesi-icin-vps/",
+      "id": "multi-site-architecture-checker",
+      "cases": 576,
+      "outcomes": 12
+    },
+    {
+      "route": "/tr/woocommerce-icin-vps/",
+      "id": "woocommerce-vps-fit-checker-form",
+      "cases": 7776,
+      "outcomes": 6
+    },
+    {
+      "route": "/tr/wordpress-icin-vps/",
+      "id": "wordpress-vps-fit-checker-form",
+      "cases": 1296,
+      "outcomes": 8
+    },
+    {
+      "route": "/tr/vps-izleme/",
+      "id": "vps-monitoring-checker",
+      "cases": 1536,
+      "outcomes": 4
+    },
+    {
+      "route": "/tr/vps-guvenlik-kontrol-listesi/",
+      "id": "vps-security-checker",
+      "cases": 512,
+      "outcomes": 6
+    },
+    {
+      "route": "/tr/web-sitesi-icin-vps-kaynak-secimi/",
+      "id": "ram-budget-estimator-form",
+      "cases": 11,
+      "outcomes": 10
+    },
+    {
+      "route": "/tr/web-sitesi-icin-vps-kaynak-secimi/",
+      "id": "shared-hosting-diagnostic",
+      "cases": 729,
+      "outcomes": 174
+    },
+    {
+      "route": "/tr/vps-ve-paylasimli-hosting-karsilastirmasi/",
+      "id": "shared-vs-vps-checker",
+      "cases": 216,
+      "outcomes": 6
+    },
+    {
+      "route": "/tr/kontrol-panelli-vps/",
+      "id": "panel-fit-checker",
+      "cases": 288,
+      "outcomes": 7
+    },
+    {
+      "route": "/tr/web-sitesini-vps-sunucuya-tasima/",
+      "id": "migration-preflight",
+      "cases": 2304,
+      "outcomes": 1024
+    }
+  ],
+  "finalGeometry": {
+    "status": "completed",
+    "startedAt": "2026-10-25T13:51:56.556Z",
+    "updatedAt": "2026-10-25T13:53:01.456Z",
+    "pages": 18,
+    "geometryCases": 144,
+    "findings": []
+  },
+  "scriptsUnchangedAfterTableFix": true,
+  "static": {
+    "sourceFiles": 20,
+    "pages": 18,
+    "forms": 16,
+    "errors": 0
+  },
+  "siteIntegrity": {
+    "pages": 297,
+    "targets": 420,
+    "stylesheets": 116,
+    "errors": 0
+  },
+  "preview": {
+    "pages": 18,
+    "targets": 155,
+    "errors": 0
+  },
+  "recovery": {
+    "preservedPages": 159,
+    "languages": 16,
+    "selectors": 288,
+    "errors": 0
+  },
+  "sitemap": {
+    "total": 274,
+    "turkish": 17
+  },
+  "production": "pending"
+}

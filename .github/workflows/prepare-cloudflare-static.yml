@@ -31,6 +31,9 @@ on:
       - "scripts/audit-japanese.py"
       - "scripts/qa-japanese.cjs"
       - "scripts/build-japanese-font.py"
+      - "scripts/audit-turkish.py"
+      - "scripts/qa-turkish.cjs"
+      - "scripts/build-turkish-fonts.py"
       - "scripts/translation_audit.py"
       - "scripts/audit-site-integrity.py"
       - "scripts/test-site-integrity.py"
@@ -448,6 +451,25 @@ jobs:
           path: |
             ${{ runner.temp }}/japanese-audit.json
             ${{ runner.temp }}/japanese-browser/
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Verify complete Turkish source, SEO and interactive structure
+        run: python scripts/audit-turkish.py cloudflare-public --report "${{ runner.temp }}/turkish-audit.json"
+
+      - name: Verify Turkish responsive pages and every calculator decision
+        shell: bash
+        run: |
+          NODE_PATH="$RUNNER_TEMP/de-qa/node_modules" node scripts/qa-turkish.cjs cloudflare-public "$RUNNER_TEMP/turkish-audit.json" "$RUNNER_TEMP/turkish-browser"
+
+      - name: Retain Turkish localization verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: turkish-localization-qa
+          path: |
+            ${{ runner.temp }}/turkish-audit.json
+            ${{ runner.temp }}/turkish-browser/
           retention-days: 7
           if-no-files-found: ignore
 

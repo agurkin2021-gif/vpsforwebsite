@@ -1,0 +1,513 @@
+home: Ana sayfa
+read_more: Devamını oku
+send: Gönder
+menu-open: Menüyü aç
+menu-close: Menüyü kapat
+ui_fit_size_deploy: Uygunluğu değerlendir · Kaynakları seç · Yayına al
+ui_disclosure_the_editor_has_a_professional_relationship_with_vdsina_partner_links_may_generate_commission: 'Açıklama: editörün VDSina ile profesyonel bir ilişkisi vardır. İş ortaklığı bağlantıları komisyon geliri sağlayabilir.'
+ui_editorial_and_commercial_disclosure: Yayıncılık ve ticari ilişkiler hakkında açıklama
+ui_see_current_vps_configurations: Güncel VPS yapılandırmalarını inceleyin
+ui_vps_for_website_workflow: Web sitesi için VPS iş akışı
+ui_vps_for_website: Web sitesi için VPS
+ui_isolated_cpu_ram_storage: İzole CPU, RAM ve depolama
+ui_full_os_web_stack_control: İşletim sistemi ve web yazılımları üzerinde tam kontrol
+ui_fastpanel_control_panel: FASTPANEL kontrol paneli
+ui_nginx_or_apache: Nginx veya Apache
+ui_mysql_database_workloads: MySQL / veritabanı iş yükleri
+ui_ssh_root_access: SSH ve root erişimi
+ui_domains_ssl_dns: Alan adları, SSL ve DNS
+ui_wordpress_workloads: WordPress iş yükleri
+ui_woocommerce_workloads: WooCommerce iş yükleri
+ui_multiple_websites: Birden fazla web sitesi
+ui_website_migration_planning: Web sitesi taşıma planı
+ui_rollback_before_dns_switch: DNS geçişinden önce geri dönüş planı
+ui_snapshots_scheduled_backups: Anlık görüntüler ve zamanlanmış yedekler
+ui_portable_backup_copy: Taşınabilir yedek kopyası
+ui_monitoring_before_scaling: Kaynak artırmadan önce izleme
+ui_scale_cpu_ram_storage: CPU, RAM ve depolamayı artırın
+ui_choose_server_location_by_latency: Sunucu konumunu gecikmeye göre seçin
+ui_ddos_protection: DDoS koruması
+ui_10_gbit_s_public_port: 10 Gbit/s genel ağ bağlantısı
+ui_24_7_support: 7/24 destek
+ui_daily_billing: Günlük ücretlendirme
+ui_1_vcpu_1_gb_from_0_07_day: 1 vCPU / 1 GB, günlük $0.07'dan başlayan fiyatlarla
+ui_clone_test_scale_recover: Klonlayın, test edin, ölçeklendirin, kurtarın
+ui_current_hosting: Mevcut hosting
+ui_shared_hosting: Paylaşımlı hosting
+ui_light_stable_standard_stack: Hafif, kararlı, standart yazılım ortamı
+ui_check_evidence: Ölçümleri inceleyin
+ui_limits_or_custom_stack: Kaynak sınırı mı, özel yazılım ihtiyacı mı?
+ui_cpu_ram_process_i_o_root: CPU · RAM · işlem · G/Ç · root
+ui_decision: Karar
+ui_stay_shared: Paylaşımlı hostingde kalın
+ui_light_stable_no_custom_stack: Hafif, kararlı, özel yazılım gerektirmeyen iş yükü
+ui_optimize_first: Önce optimizasyon
+ui_plugin_query_bot_cache_or_job_issue: Eklenti, sorgu, bot, önbellek veya görev sorunu
+ui_move_to_vps: VPS'e geçin
+ui_repeated_real_limits_or_custom_software_needs: Tekrarlayan kaynak darboğazları veya özel yazılım ihtiyaçları
+ui_measure_the_workload_first_move_only_when_the_evidence_points_to_infrastructure: Önce iş yükünü ölçün. Ancak bulgular altyapıyı işaret ediyorsa geçiş yapın.
+ui_sizing_logic: Kaynak seçimi mantığı
+ui_size_the_workload_not_visits: Ziyaret sayısına değil, iş yüküne göre boyutlandırın
+ui_traffic_volume_is_only_one_signal_resource_pressure_and_workload_shape_determine_the_server: Trafik hacmi göstergelerden yalnızca biridir. Sunucu seçimini kaynak baskısı ve iş yükünün niteliği belirler.
+ui_monthly_visits: Aylık ziyaret
+ui_vps_size: VPS kapasitesi
+ui_compute_pressure: İşlemci yükü
+ui_php_workers_concurrency_uncached_requests: PHP işçi süreçleri · eşzamanlılık · önbelleksiz istekler
+ui_memory_headroom: Bellek payı
+ui_apps_cache_panel_background_services: Uygulamalar · önbellek · panel · arka plan servisleri
+ui_db_jobs: Veritabanı + görevler
+ui_dynamic_work: Dinamik işlemler
+ui_queries_cron_checkout_queue_activity: Sorgular · cron · ödeme · kuyruk işlemleri
+ui_workload_signals: İş yükü göstergeleri
+ui_cacheability: Önbelleğe alınabilirlik
+ui_concurrent_requests: Eşzamanlı istekler
+ui_php_workers: PHP işçi süreçleri
+ui_database_load: Veritabanı yükü
+ui_background_jobs: Arka plan görevleri
+ui_number_of_sites: Site sayısı
+ui_result: Sonuç
+ui_choose_the_smallest_vps_with_measured_headroom: Ölçülen ihtiyaca ve yeterli kapasite payına sahip en küçük VPS'i seçin
+ui_validate_cpu_memory_storage_growth_and_dynamic_workload_together: CPU, bellek, depolama artışı ve dinamik iş yükünü birlikte doğrulayın.
+ui_provider_audit: Sağlayıcı değerlendirmesi
+ui_compare_the_terms_that_affect_the_website: Web sitenizi etkileyen koşulları karşılaştırın
+ui_headline_price_is_only_one_input_check_the_infrastructure_and_operating_terms_before_you_commit: İlan edilen fiyat tek başına yeterli değildir. Satın almadan önce altyapıyı ve işletim koşullarını inceleyin.
+ui_compute: İşlem kaynakları
+ui_cpu_policy_ram_storage_type_expected_i_o: CPU kullanım politikası · RAM · depolama türü · beklenen G/Ç
+ui_network: Ağ
+ui_transfer_port_speed_ip_terms_region_route: Veri aktarımı · port hızı · IP koşulları · bölge · ağ rotası
+ui_platform: Platform
+ui_os_images_panel_options_license_cost: İşletim sistemi imajları · panel seçenekleri · lisans maliyeti
+ui_operations: İşletim
+ui_backups_firewall_ddos_monitoring_support_scope: Yedekler · güvenlik duvarı · DDoS · izleme · destek kapsamı
+ui_billing_upgrade_path: Ücretlendirme ve yükseltme seçenekleri
+ui_billing_cadence_renewal_terms_add_ons_upgrade_limits_extra_charges: Ödeme dönemi · yenileme koşulları · ek hizmetler · yükseltme sınırları · ek ücretler
+ui_shortlist: Kısa liste
+ui_keep_only_providers_that_match_the_workload_and_operating_model: İş yüküne ve yönetim modeline uyan sağlayıcıları seçin
+ui_performance_fit: Performans uyumu
+ui_location_fit: Konum uyumu
+ui_management_fit: Yönetim uyumu
+ui_cost_fit: Maliyet uyumu
+ui_before_paying: Ödeme yapmadan önce
+ui_verify_the_current_order_page_and_support_scope: Güncel sipariş sayfasını ve destek kapsamını doğrulayın
+ui_do_not_assume_infrastructure_support_means_managed_server_administration: Altyapı desteğinin sunucu yönetimini de içerdiğini varsaymayın.
+ui_operating_model: Yönetim modeli
+ui_choose_how_the_server_will_be_operated: Sunucunun nasıl yönetileceğini belirleyin
+ui_the_panel_operating_system_and_administration_model_change_resource_use_workflow_and_responsibility: Panel, işletim sistemi ve yönetim modeli; kaynak tüketimini, iş akışını ve sorumlulukları değiştirir.
+ui_domains_ssl_php_versions_databases_multiple_sites: Alan adları · SSL · PHP sürümleri · veritabanları · birden fazla site
+ui_simpler_workflow_panel_uses_ram: Daha kolay yönetim · panel RAM tüketir
+ui_nginx_or_apache_runtime_database_shell_administration: Nginx veya Apache · çalışma ortamı · veritabanı · komut satırından yönetim
+ui_more_control_more_work_stays_with_you: Daha fazla kontrol · daha fazla sorumluluk
+ui_windows_when_required: Gerektiğinde Windows
+ui_use_this_path_for_genuine_iis_or_asp_net_requirements: Gerçek bir IIS veya ASP.NET gereksiniminiz varsa bu seçeneği değerlendirin
+ui_not_the_default_website_hosting_choice: Web sitesi barındırmada varsayılan tercih değildir
+ui_who_owns_server_administration: Sunucu yönetiminden kim sorumlu?
+ui_self_managed_vps: Kendi yönettiğiniz VPS
+ui_you_own_the_operating_system: İşletim sistemi sizin sorumluluğunuzda
+ui_patching_security_backups_monitoring_incident_response: Yamalar · güvenlik · yedekler · izleme · olay müdahalesi
+ui_administration_help: Yönetim desteği
+ui_separate_management_can_own_the_work: Ayrı bir yönetim hizmeti bu işleri üstlenebilir
+ui_confirm_exactly_what_is_included_and_who_is_responsible_for_the_application_stack: Hizmete tam olarak nelerin dahil olduğunu ve uygulama katmanından kimin sorumlu olduğunu doğrulayın.
+ui_important_distinction: Temel ayrım
+ui_infrastructure_support_is_not_the_same_as_managed_server_administration: Altyapı desteği, yönetilen sunucu hizmetiyle aynı şey değildir.
+ui_migration_preflight: Taşıma öncesi hazırlık
+ui_map_the_stack_before_you_move_it: Taşımadan önce yazılım ortamının envanterini çıkarın
+? ui_build_the_migration_plan_from_the_current_website_dependencies_and_rollback_requirements_before_production_traffic_changes
+: Canlı trafiği yönlendirmeden önce mevcut siteyi, bağımlılıkları ve geri dönüş gereksinimlerini temel alan bir taşıma planı hazırlayın.
+ui_inventory: Envanter
+ui_cms_framework_runtime_versions_db_cron_storage_dns_ssl_email: CMS/framework · çalışma ortamı sürümleri · veritabanı · cron · depolama · DNS · SSL · e-posta
+ui_find_blockers: Engelleri belirleyin
+ui_extensions_runtime_mismatch_db_assumptions_local_file_dependencies: Eklentiler · sürüm uyumsuzlukları · veritabanı varsayımları · yerel dosya bağımlılıkları
+ui_build_test_copy: Test kopyası oluşturun
+ui_prepare_the_new_vps_without_touching_production_traffic: Canlı trafiği etkilemeden yeni VPS'i hazırlayın
+ui_sync_validate: Eşitleyin ve doğrulayın
+ui_files_database_integrations_forms_jobs_ssl_mail_behavior: Dosyalar · veritabanı · entegrasyonlar · formlar · görevler · SSL · e-posta işleyişi
+ui_dns_cutover: DNS geçişi
+ui_move_production_traffic_only_after_the_new_environment_passes_checks: Canlı trafiği yalnızca yeni ortam kontrollerden geçtikten sonra yönlendirin
+ui_rollback_path: Geri dönüş yolu
+ui_keep_the_previous_working_environment_available: Önceki çalışan ortamı erişilebilir tutun
+ui_know_exactly_how_to_reverse_the_move_if_validation_fails_after_cutover: Geçiş sonrası doğrulama başarısız olursa eski ortama tam olarak nasıl döneceğinizi bilin.
+ui_email_decision: E-posta kararı
+ui_move_mail_only_when_it_should_move: E-postayı yalnızca gerektiğinde taşıyın
+ui_keeping_email_on_a_managed_mail_service_can_reduce_deliverability_and_administration_risk: E-postayı yönetilen bir e-posta hizmetinde tutmak, teslimat ve yönetim risklerini azaltabilir.
+ui_purchase_decision: Satın alma kararı
+ui_choose_the_vps_configuration_after_the_migration_inventory_shows_the_real_requirements: Gerçek gereksinimler taşıma envanterinde netleştikten sonra VPS yapılandırmasını seçin.
+ui_architecture_decision: Mimari karar
+ui_keep_it_together_while_the_workload_is_predictable: İş yükü öngörülebilirken bileşenleri bir arada tutun
+ui_split_only_when_contention_blast_radius_or_independent_scaling_becomes_more_expensive_than_the_added_complexity: Kaynak rekabeti, arızanın yayılma riski veya bağımsız ölçeklendirme ihtiyacı, ek karmaşıklıktan daha maliyetli olduğunda bileşenleri ayırın.
+ui_start_simple: Basit başlayın
+ui_one_vps: Tek VPS
+ui_web: Web
+ui_database: Veritabanı
+ui_workers: İşçi süreçleri
+ui_light_jobs: Hafif görevler
+ui_split_trigger: Ayırmayı gerektiren durum
+ui_cpu_ram_contention: CPU / RAM rekabeti
+ui_workers_delay_requests: İşçi süreçleri istekleri geciktiriyor
+ui_independent_scaling: Bağımsız ölçeklendirme
+ui_failure_isolation: Arızaları yalıtma
+ui_risky_staging: Riskli test ortamı
+ui_client_service_isolation: Müşteri/hizmet yalıtımı
+ui_web_vps: Web VPS'i
+ui_user_facing_requests: Kullanıcı istekleri
+ui_nginx_apache_php_app_runtime_static_delivery: Nginx/Apache · PHP/uygulama ortamı · statik içerik sunumu
+ui_database_vps: Veritabanı VPS'i
+ui_independent_db_resources: Bağımsız veritabanı kaynakları
+ui_queries_storage_memory_failure_isolation: Sorgular · depolama · bellek · arıza yalıtımı
+ui_worker_vps: İşçi süreçleri için VPS
+ui_background_workload: Arka plan iş yükü
+ui_automation_api_queues_ai_agent_jobs: Otomasyon · API · kuyruklar · yapay zekâ ajanı görevleri
+ui_staging: Test ortamı
+ui_test_risky_changes_away_from_production: Riskli değişiklikleri canlı ortamdan ayrı test edin
+ui_updates_migrations_architecture_changes: Güncellemeler · taşımalar · mimari değişiklikler
+ui_rule: Kural
+ui_split_only_the_component_that_needs_independent_resources_scaling_or_failure_isolation: Yalnızca bağımsız kaynak, ölçeklendirme veya arıza yalıtımı gerektiren bileşeni ayırın.
+ui_reversible_operations: Geri alınabilir işlemler
+ui_change_the_server_without_betting_production: Canlı ortamı riske atmadan sunucuda değişiklik yapın
+ui_use_copies_monitoring_and_recovery_points_so_upgrades_and_scaling_decisions_remain_reversible: Kopyalar, izleme ve kurtarma noktaları kullanarak yükseltme ve kaynak artırma kararlarını geri alınabilir tutun.
+ui_clone: Klonlayın
+ui_create_a_copy_before_risky_changes: Riskli değişikliklerden önce kopya oluşturun
+ui_test: Test edin
+ui_validate_upgrades_and_architecture_changes_away_from_production: Yükseltmeleri ve mimari değişiklikleri canlı ortamın dışında doğrulayın
+ui_monitor: İzleyin
+ui_watch_cpu_memory_storage_growth_and_request_queues: CPU'yu, belleği, depolama artışını ve istek kuyruklarını izleyin
+ui_scale: Ölçeklendirin
+ui_add_resources_only_when_pressure_is_sustained: Kaynakları yalnızca yük sürekli hale geldiğinde artırın
+ui_cpu_saturation: CPU kapasitesinin dolması
+ui_memory_pressure: Bellek baskısı
+ui_storage_growth: Depolama artışı
+ui_request_queues: İstek kuyrukları
+ui_snapshot: Anlık görüntü
+ui_fast_rollback_point: Hızlı geri dönüş noktası
+ui_useful_for_quick_reversal_but_not_the_only_recovery_copy: Hızlı geri dönüş için yararlıdır; ancak tek kurtarma kopyanız olmamalıdır.
+ui_scheduled_backup: Zamanlanmış yedek
+ui_recover_from_a_known_point: Bilinen bir noktaya geri dönün
+ui_restore_the_server_or_create_another_server_from_the_backup: Sunucuyu geri yükleyin veya yedekten başka bir sunucu oluşturun.
+ui_portable_copy: Taşınabilir kopya
+ui_keep_recovery_outside_the_running_vps: Kurtarma kopyasını çalışan VPS'in dışında tutun
+ui_maintain_an_independent_copy_under_your_own_control: Kendi kontrolünüzde bağımsız bir kopya saklayın.
+ui_operating_rule: İşletim kuralı
+ui_measure_first_change_second_keep_a_way_back: Önce ölçün, sonra değiştirin; geri dönüş yolunu açık tutun.
+ui_are_you_repeatedly_hitting_real_hosting_limits: Hosting kaynak sınırlarına tekrar tekrar takılıyor musunuz?
+ui_no_clear_limit_evidence: Kaynak sınırına dair belirgin bulgu yok
+ui_occasional_unclear: Ara sıra / belirsiz
+ui_yes_repeated_cpu_ram_process_i_o_limits: Evet, CPU/RAM/işlem/G/Ç sınırlarına tekrar tekrar takılıyorum
+ui_do_you_need_root_access_custom_software_or_a_custom_runtime: Root erişimi, özel yazılım veya özel bir çalışma ortamı gerekiyor mu?
+ui_no: Hayır
+ui_yes: Evet
+ui_is_there_an_obvious_site_side_issue_to_fix_first: Önce düzeltilmesi gereken belirgin bir site sorunu var mı?
+ui_not_sure: Emin değilim
+ui_yes_plugin_query_bot_cache_job_issue: Evet — eklenti/sorgu/bot/önbellek/görev sorunu
+ui_no_known_optimize_first_issue: Öncelikle optimizasyon gerektiren bilinen bir sorun yok
+ui_is_the_website_business_critical_or_heavily_dynamic: Web sitesi iş açısından kritik mi veya yoğun dinamik işlem yapıyor mu?
+ui_no_low_risk: Hayır / düşük risk
+ui_who_will_operate_the_vps: VPS'i kim yönetecek?
+ui_nobody_is_assigned_yet: Henüz bir sorumlu atanmadı
+ui_paid_managed_administration_is_available: Ücretli / yönetilen sunucu hizmeti mevcut
+ui_an_internal_operator_can_own_it: Kurum içinden bir sorumlu üstlenebilir
+ui_are_security_backup_and_monitoring_responsibilities_defined: Güvenlik, yedekleme ve izleme sorumlulukları tanımlandı mı?
+? ui_optimize_first_fix_the_known_application_query_bot_cache_or_scheduled_job_problem_before_paying_for_more_infrastructure_re_measure_after_the_fix
+: 'ÖNCE OPTİMİZASYON: daha fazla altyapıya para harcamadan önce bilinen uygulama, sorgu, bot, önbellek veya zamanlanmış görev sorununu giderin. Düzeltmeden sonra yeniden ölçün.'
+? ui_stay_on_shared_hosting_there_is_no_strong_vps_requirement_yet_keep_the_simpler_platform_until_real_limits_or_a_required_server_capability_appear
+: 'PAYLAŞIMLI HOSTİNGDE KALIN: henüz güçlü bir VPS gereksinimi yok. Gerçek kaynak sınırları veya gerekli bir sunucu özelliği ortaya çıkana kadar daha basit platformu kullanın.'
+? ui_move_to_vps_there_is_a_real_infrastructure_capability_reason_and_operations_ownership_exists_size_the_vps_from_the_measured_workload_then_plan_the_migration
+: 'VPS''E GEÇİN: altyapı veya sunucu yetenekleri açısından gerçek bir gerekçe var ve işletim sorumluluğu üstlenilmiş. VPS kaynaklarını ölçülen iş yüküne göre seçin, ardından taşımayı planlayın.'
+? ui_move_with_managed_admin_help_the_vps_case_is_real_but_business_risk_or_missing_operations_ownership_makes_an_unmanaged_move_a_poor_fit_define_administration_security_backups_and_monitoring_before_cutover
+: 'YÖNETİM DESTEĞİYLE GEÇİN: VPS ihtiyacı gerçek; ancak iş riski veya işletim sorumlusunun olmaması, yönetim hizmeti almadan geçişi uygunsuz kılıyor. Geçişten önce yönetim, güvenlik, yedekleme ve izleme sorumluluklarını belirleyin.'
+? ui_insufficient_evidence_the_case_is_mixed_measure_the_current_bottleneck_and_compare_a_better_shared_managed_option_before_accepting_vps_administration_overhead
+: 'YETERSİZ BULGU: durum net değil. VPS yönetiminin ek yükünü üstlenmeden önce mevcut darboğazı ölçün ve daha iyi bir paylaşımlı hosting veya yönetilen hizmet seçeneğiyle karşılaştırın.'
+ui_transfer: Veri aktarımı
+ui_price: Fiyat
+ui_best_fit: Uygun kullanım
+ui_watch: Dikkat edin
+ui_evidence_first: Önce ölçümler
+ui_choose_the_configuration_after_the_checks: Kontrollerden sonra yapılandırmayı seçin
+ui_fit: Uygunluk
+ui_confirm_that_a_vps_solves_the_real_problem: VPS'in gerçek sorunu çözdüğünü doğrulayın
+ui_size: Kaynak seçimi
+ui_cpu_ram_storage_dynamic_workload: CPU · RAM · depolama · dinamik iş yükü
+ui_verify_terms: Koşulları doğrulayın
+ui_location_transfer_panel_backups_support: Konum · veri aktarımı · panel · yedekler · destek
+ui_check_current_configurations: Güncel yapılandırmaları inceleyin
+ui_use_the_provider_s_current_order_page_before_paying: Ödeme yapmadan önce sağlayıcının güncel sipariş sayfasını kontrol edin
+ui_buy_only_measured_headroom: Kapasite payını ölçümlere göre satın alın
+ui_workload_fit: İş yüküne uygunluk
+ui_growth_room: Büyüme payı
+ui_current_terms: Güncel koşullar
+ui_smallest_configuration_that_covers_the_real_workload_with_enough_headroom: Gerçek iş yükünü yeterli kapasite payıyla karşılayan en küçük yapılandırma
+ui_choose_a_vps_configuration: VPS yapılandırması seçin
+ui_call_to_action: yapılandırma seçimine yönlendirme
+ui_select_language: Dil seçin
+publisher_description: Ölçümlere dayalı VPS hosting, kaynak seçimi, web sitesi taşıma, izleme ve işletim kararlarına odaklanan teknik yayın projesi.
+sizing_hero_options: VPS seçeneklerini inceleyin
+sizing_hero_guidance: Kaynak seçimi rehberine bakın
+sizing_hero_aria: Web sitesi kaynak ihtiyacına uygun güncel VPS yapılandırmalarını inceleyin
+sizing_hero_title: Aylık ziyarete değil, iş yüküne göre kaynak seçin
+sizing_hero_subtitle: CPU, RAM, depolama ve eşzamanlı dinamik işlemler birlikte değerlendirilmelidir.
+sizing_hero_cpu: Dinamik işlemler + eşzamanlılık
+sizing_hero_ram: İşçi süreçleri + veritabanı + servisler
+sizing_hero_storage: Depolama
+sizing_hero_storage_detail: Veri artışı + G/Ç
+sizing_hero_headroom: Kapasite payı
+sizing_hero_headroom_detail: Yoğun saatler + görevler + bakım
+sizing_hero_rule: Ölçülen iş yükünü güvenli bir kapasite payıyla karşılayan en küçük VPS'i seçin.
+guide_affiliate_disclosure: 'Açıklama: editörün VDSina ile profesyonel bir ilişkisi vardır. İş ortaklığı bağlantıları komisyon geliri sağlayabilir.'
+guide_editorial_disclosure: Yayıncılık ve ticari ilişkiler hakkında açıklama
+hero_check_vps_options: VPS seçeneklerini inceleyin
+hero_see_quick_comparison: Hızlı karşılaştırmaya bakın
+hero_check_current_vps_configurations_shared_hosting_compared_with_vps: Güncel VPS yapılandırmalarını inceleyin — paylaşımlı hosting ve VPS karşılaştırması
+hero_more_control_means_more_server_responsibility: Daha fazla kontrol, daha fazla sunucu sorumluluğu demektir
+hero_compare_the_operating_model_resource_limits_and_software_freedom_not_site_size_alone: Yalnızca site boyutunu değil; yönetim modelini, kaynak sınırlarını ve yazılım özgürlüğünü karşılaştırın.
+hero_administration: Yönetim
+hero_provider_managed_vs_self_managed: Sağlayıcı yönetimi / kendi yönetiminiz
+hero_software: Yazılım
+hero_restricted_stack_vs_flexible_stack: Sınırlı / esnek yazılım ortamı
+hero_resources: Kaynaklar
+hero_account_limits_vs_vps_allocation: Hesap sınırları / VPS kaynak tahsisi
+hero_operations: İşletim
+hero_simplicity_vs_control_ownership: Kolaylık / kontrol ve sorumluluk
+hero_move_only_when_the_extra_control_solves_a_real_limit_or_capability_need: Ek kontrol, gerçek bir kaynak sınırını veya özellik ihtiyacını çözüyor ise geçiş yapın.
+hero_vps_vs_shared_hosting_decision_outcomes: VPS ve paylaşımlı hosting karar sonuçları
+hero_stay_on_shared_hosting: Paylaşımlı hostingde kalın
+hero_optimize_first: Önce optimizasyon
+hero_move_to_vps: VPS'e geçin
+hero_move_with_managed_admin_help: Yönetim desteğiyle geçin
+hero_check_current_vps_configurations: Güncel VPS yapılandırmalarını inceleyin
+hero_wordpress_vps_guide: WordPress VPS rehberi
+hero_wordpress_vps_factors_beyond_ram: RAM dışında WordPress VPS seçimini etkileyen faktörler
+hero_beyond_cpu_and_ram: CPU ve RAM'in ötesinde
+hero_ssd_nvme_storage: SSD / NVMe depolama
+hero_database_queries_cache_warmups_updates_and_backups_are_sensitive_to_storage_latency: Veritabanı sorguları, önbelleğin doldurulması, güncellemeler ve yedekler depolama gecikmesine duyarlıdır.
+hero_server_location: Sunucu konumu
+hero_choose_a_region_near_the_main_audience_extra_ram_cannot_remove_network_latency: Ana kitlenize yakın bir bölge seçin; RAM artırmak ağ gecikmesini ortadan kaldırmaz.
+hero_check_current_wordpress_vps_options: Güncel WordPress VPS seçeneklerini inceleyin
+hero_wordpress_workload_html: <strong>WordPress iş yükü</strong>
+hero_size_the_dynamic_work_not_visitor_count: Ziyaretçi sayısına değil, dinamik işlemlere göre kaynak seçin.
+hero_php_fpm_workers_html: <strong>PHP-FPM işçi süreçleri</strong>
+hero_page_object_cache_html: <strong>Sayfa / nesne önbelleği</strong>
+hero_php_workers_html: <span>PHP işçi süreçleri</span>
+hero_db_load_html: <span>Veritabanı yükü</span>
+hero_plugins_html: <span>Eklentiler</span>
+hero_cron_jobs_html: <span>Cron / görevler</span>
+hero_vps_size_real_wordpress_workload_operating_headroom: VPS kapasitesi = gerçek WordPress iş yükü + işletim payı
+hero_see_sizing_guidance: Kaynak seçimi rehberine bakın
+hero_check_current_vps_options_for_woocommerce: WooCommerce için güncel VPS seçeneklerini inceleyin
+hero_woocommerce_dynamic_path: WooCommerce dinamik işlem akışı
+hero_three_workloads_dominate_the_uncached_store_path: Mağazanın önbelleksiz işlem akışında üç iş yükü öne çıkar.
+hero_checkout: Ödeme
+hero_php_workers_session_state: PHP işçi süreçleri + oturum durumu
+hero_orders_stock: Siparişler ve stok
+hero_database_writes_inventory_updates: Veritabanı yazmaları + stok güncellemeleri
+hero_async_work: Asenkron işlemler
+hero_webhooks_action_scheduler: Webhook'lar + Action Scheduler
+hero_php_workers: PHP işçi süreçleri
+hero_db_writes: Veritabanı yazmaları
+hero_sale_peaks: Satış yoğunlukları
+hero_size_the_vps_for_peak_dynamic_concurrency_not_monthly_visits: VPS kaynaklarını aylık ziyaretlere değil, yoğun saatlerdeki eşzamanlı dinamik işlemlere göre seçin.
+hero_check_architecture: Mimariyi değerlendirin
+hero_check_current_vps_options_for_multiple_websites: Birden fazla web sitesi için güncel VPS seçeneklerini inceleyin
+hero_multiple_websites_on_one_vps: Tek VPS'te birden fazla web sitesi
+hero_consolidate_only_while_the_shared_resource_pool_and_failure_domain_still_make_sense: Ortak kaynak havuzu ve ortak arıza alanı uygun olduğu sürece siteleri bir arada tutun.
+hero_websites_sharing_the_server: Sunucuyu paylaşan web siteleri
+hero_site_a: Site A
+hero_site_b: Site B
+hero_site_c: Site C
+hero_site_d: Site D
+hero_share_one_server: tek sunucuyu paylaşır
+hero_shared_resource_pool: Ortak kaynak havuzu
+hero_storage: Depolama
+hero_db_jobs: Veritabanı / görevler
+hero_combined_peak_load: Toplam en yüksek yük
+hero_shared_failure_domain: Ortak arıza alanı
+hero_security_baseline: Temel güvenlik önlemleri
+hero_check_current_vps_options_for_a_hardened_server: Güvenliği sıkılaştırılmış bir sunucu için güncel VPS seçeneklerini inceleyin
+hero_harden_in_the_right_order: Güvenliği doğru sırayla sıkılaştırın
+hero_preserve_recovery_first_then_reduce_exposure_and_maintain_the_server: Önce kurtarma yolunu koruyun, ardından dışa açıklığı azaltıp sunucu bakımını sürdürün.
+hero_recovery_path: Kurtarma yolu
+hero_console_rescue_access: Konsol / kurtarma erişimi
+hero_admin_access: Yönetici erişimi
+hero_named_user_ssh_key: Kişisel kullanıcı hesabı + SSH anahtarı
+hero_exposure: Dışa açıklık
+hero_ports_firewall: Portlar + güvenlik duvarı
+hero_maintenance: Bakım
+hero_patches_backups_alerts: Yamalar + yedekler + uyarılar
+hero_do_not_tighten_remote_access_until_a_second_tested_admin_path_works: Test edilmiş ikinci bir yönetici erişim yolu çalışmadan uzaktan erişimi kısıtlamayın.
+hero_access_sequence: Erişim sırası
+hero_console: Konsol
+hero_named_admin: Kişisel yönetici hesabı
+hero_ssh_key: SSH anahtarı
+hero_restrict_old_access: Eski erişimi kısıtlayın
+hero_keep_one_working_session_open_while_testing_the_replacement_path: Yeni erişim yolunu test ederken çalışan bir oturumu açık tutun.
+hero_network_exposure: Ağ erişimi
+hero_public: Herkese açık
+hero_controlled: Kontrollü
+hero_ssh_admin: SSH / yönetim
+hero_private: Özel
+hero_db_redis_app_ports: Veritabanı / Redis / uygulama portları
+hero_expose_only_what_the_architecture_actually_needs: Yalnızca mimarinin gerçekten gerektirdiği servisleri dışarıya açın.
+hero_maintenance_loop: Bakım döngüsü
+hero_patches: Yamalar
+hero_least_privilege: En az yetki
+hero_secrets: Gizli bilgiler
+hero_rate_limits: İstek sınırları
+hero_security_degrades_when_ownership_updates_or_credentials_are_left_unmanaged: Sorumluluklar, güncellemeler veya erişim bilgileri yönetilmediğinde güvenlik zayıflar.
+hero_application_layer: Uygulama katmanı
+hero_panel_admin_ui: Panel / yönetim arayüzü
+hero_cms_plugins_runtime: CMS / eklentiler / çalışma ortamı
+hero_https_transport: HTTPS ile aktarım
+hero_ddos_application_security: DDoS koruması ≠ uygulama güvenliği
+hero_recovery_controls: Kurtarma kontrolleri
+hero_backup_copy: Yedek kopyası
+hero_outside_the_running_vps: Çalışan VPS'in dışında
+hero_restore_test: Geri yükleme testi
+hero_prove_recovery_works: Kurtarmanın çalıştığını doğrulayın
+hero_logs_alerts: Günlükler ve uyarılar
+hero_detect_failed_controls: Çalışmayan kontrolleri tespit edin
+hero_incident_path: Olay müdahalesi
+hero_contain: Etkiyi sınırlayın
+hero_rotate_secrets: Gizli bilgileri yenileyin
+hero_rebuild: Yeniden kurun
+hero_restore: Geri yükleyin
+hero_recover_from_known_good_sources_after_privileged_compromise: Yetkili erişimin ele geçirilmesinden sonra güvenilir olduğu bilinen kaynaklardan kurtarma yapın.
+hero_backup_strategy: Yedekleme stratejisi
+hero_check_current_vps_options_for_a_backup_ready_server: Yedeklemeye hazır bir sunucu için güncel VPS seçeneklerini inceleyin
+hero_recovery_needs_more_than_one_backup: Kurtarma için tek bir yedek yeterli değildir
+hero_fast_rollback_independent_copies_and_tested_restores_solve_different_failure_modes: Hızlı geri dönüş, bağımsız kopyalar ve test edilmiş geri yüklemeler farklı arıza durumlarını çözer.
+hero_provider_image: Sağlayıcı imajı
+hero_fast_server_rollback: Sunucuyu hızla eski haline döndürme
+hero_database_backup: Veritabanı yedeği
+hero_application_state: Uygulama durumu
+hero_offsite_copy: Harici kopya
+hero_separate_failure_domain: Ayrı arıza alanı
+hero_restore_drill: Geri yükleme tatbikatı
+hero_prove_rto_in_practice: RTO'yu uygulamada doğrulayın
+hero_rpo_defines_acceptable_data_loss_rto_defines_acceptable_downtime: RPO kabul edilebilir veri kaybını, RTO kabul edilebilir kesinti süresini tanımlar.
+hero_monitoring_baseline: Temel izleme düzeni
+hero_check_current_vps_options_for_a_monitored_server: İzlenen bir sunucu için güncel VPS seçeneklerini inceleyin
+hero_monitor_the_failure_path_not_only_the_server: Yalnızca sunucuyu değil, arızanın kullanıcıya etkisini de izleyin
+hero_availability_host_pressure_application_health_and_alerts_answer_different_questions: Erişilebilirlik, sunucu yükü, uygulama sağlığı ve uyarılar farklı sorulara yanıt verir.
+hero_external_uptime: Harici erişilebilirlik kontrolü
+hero_can_users_reach_the_site: Kullanıcılar siteye erişebiliyor mu?
+hero_host_metrics: Sunucu metrikleri
+hero_service_health: Servis sağlığı
+hero_web_db_jobs_tls: Web, veritabanı, görevler, TLS
+hero_alerts_owner: Uyarılar ve sorumlu
+hero_detect_notify_respond: Tespit edin, bildirin, müdahale edin
+hero_the_monitor_and_notification_path_must_survive_failure_of_the_vps_being_watched: İzleme sistemi ve bildirim yolu, izlenen VPS arızalandığında da çalışmalıdır.
+hero_see_migration_plan: Taşıma planına bakın
+hero_check_current_vps_options_for_website_migration: Web sitesi taşıma için güncel VPS seçeneklerini inceleyin
+hero_move_the_website_before_you_move_the_traffic: Trafiği taşımadan önce web sitesini taşıyın
+hero_build_and_validate_the_destination_first_dns_should_be_the_final_controlled_step: Önce hedef ortamı kurup doğrulayın. DNS değişikliği kontrollü son adım olmalıdır.
+hero_inventory: Envanter
+hero_stack_data_dns_mail: Yazılımlar, veriler, DNS, e-posta
+hero_build_test: Kurun ve test edin
+hero_prepare_vps_in_parallel: VPS'i mevcut ortamla paralel hazırlayın
+hero_final_sync: Son eşitleme
+hero_control_last_writes: Son yazma işlemlerini kontrol edin
+hero_dns_cutover: DNS geçişi
+hero_monitor_keep_rollback: İzleyin ve geri dönüş yolunu koruyun
+hero_do_not_retire_the_old_host_until_the_new_vps_passes_acceptance_checks: Yeni VPS kabul kontrollerini geçmeden eski hostingi kapatmayın.
+hero_compare_management: Yönetim seçeneklerini karşılaştırın
+hero_check_current_vps_options_for_managed_or_unmanaged_hosting: Yönetilen veya yönetilmeyen hosting için güncel VPS seçeneklerini inceleyin
+hero_the_real_difference_is_operational_ownership: Asıl fark, işletim sorumluluğudur
+hero_cpu_ram_and_storage_can_be_identical_responsibility_after_provisioning_is_what_changes: CPU, RAM ve depolama aynı olabilir. Değişen, sunucu kurulduktan sonraki sorumluluktur.
+hero_patching: Yama yönetimi
+hero_who_owns_os_security_updates: İşletim sistemi ve güvenlik güncellemeleri kimin sorumluluğunda?
+hero_backups: Yedekler
+hero_who_verifies_restore_readiness: Geri yüklemeye hazır olunduğunu kim doğrular?
+hero_monitoring: İzleme
+hero_who_sees_and_acts_on_alerts: Uyarıları kim görür ve müdahale eder?
+hero_incidents: Olaylar
+hero_who_responds_when_production_fails: Canlı ortam arızalandığında kim müdahale eder?
+hero_do_not_buy_the_word_managed_buy_a_written_scope_of_owned_tasks: “Yönetilen” etiketine değil, üstlenilen görevlerin yazılı kapsamına bakın.
+hero_see_fastpanel_sizing: FASTPANEL kaynak seçimine bakın
+hero_check_current_vps_options_for_fastpanel_hosting: FASTPANEL hosting için güncel VPS seçeneklerini inceleyin
+hero_size_the_vps_for_fastpanel_plus_the_workload: VPS kaynaklarını FASTPANEL ve iş yükünün toplamına göre seçin
+hero_the_panel_is_only_one_resource_consumer_websites_database_mail_and_jobs_need_headroom_too: Kaynak tüketen tek bileşen panel değildir. Siteler, veritabanı, e-posta ve görevler de kapasite payı gerektirir.
+hero_panel: Panel
+hero_fastpanel_services: FASTPANEL servisleri
+hero_web_stack: Web yazılımları
+hero_php_workers_web_server: PHP işçi süreçleri + web sunucusu
+hero_database: Veritabanı
+hero_mysql_mariadb_load: MySQL / MariaDB yükü
+hero_extras: Ek bileşenler
+hero_mail_backups_jobs: E-posta + yedekler + görevler
+hero_do_not_treat_the_1_gb_panel_minimum_as_a_default_production_target: Panelin 1 GB asgari gereksinimini, canlı ortam için varsayılan hedef olarak kabul etmeyin.
+hero_see_deployment_sequence: Kurulum sırasına bakın
+hero_check_current_vps_options_for_hosting_a_website: Web sitesi barındırmak için güncel VPS seçeneklerini inceleyin
+hero_fresh_vps_to_live_website: Yeni VPS'ten yayındaki web sitesine
+hero_build_the_stack_in_the_right_order_test_it_then_send_production_traffic: Yazılım ortamını doğru sırayla kurun, test edin, ardından canlı trafiği yönlendirin.
+hero_provision: Hazırlayın
+hero_os_secure_admin_access: İşletim sistemi + güvenli yönetici erişimi
+hero_install_stack: Yazılımları kurun
+hero_only_what_the_app_needs: Yalnızca uygulamanın ihtiyaç duydukları
+hero_connect_domain: Alan adını bağlayın
+hero_dns_https: DNS + HTTPS
+hero_verify: Doğrulayın
+hero_reboot_backups_monitoring: Yeniden başlatma + yedekler + izleme
+hero_install_only_the_services_the_website_actually_needs: Yalnızca web sitesinin gerçekten ihtiyaç duyduğu servisleri kurun.
+hero_see_location_guidance: Konum seçimi rehberine bakın
+hero_check_current_vps_options_by_location: Konuma göre güncel VPS seçeneklerini inceleyin
+hero_choose_the_route_not_the_map: Haritaya değil, ağ rotasına göre seçin
+hero_audience_dynamic_traffic_dependencies_and_real_network_paths_matter_more_than_country_labels: Hedef kitle, dinamik trafik, bağımlılıklar ve gerçek ağ yolları ülke etiketlerinden daha önemlidir.
+hero_audience: Hedef kitle
+hero_important_users_first: Öncelikli kullanıcılar önce gelir
+hero_dependencies: Bağımlılıklar
+hero_db_apis_services: Veritabanı + API'ler + servisler
+hero_route_test: Rota testi
+hero_latency_stability_loss: Gecikme + kararlılık + paket kaybı
+hero_constraints: Kısıtlar
+hero_cdn_data_location: CDN + veri konumu
+hero_geography_gives_you_candidates_real_routing_chooses_the_region: Coğrafya adayları belirler. Bölgeyi gerçek ağ yönlendirmesi seçtirir.
+hero_see_panel_guidance: Panel rehberine bakın
+hero_check_current_vps_options_with_a_control_panel: Kontrol panelli güncel VPS seçeneklerini inceleyin
+hero_choose_the_panel_by_operating_model: Paneli yönetim modeline göre seçin
+hero_websites_users_mail_operating_system_and_licensing_define_the_right_panel_class: Doğru panel türünü siteler, kullanıcılar, e-posta, işletim sistemi ve lisans koşulları belirler.
+hero_sites: Siteler
+hero_one_site_or_many: Tek site mi, birden fazla mı?
+hero_users: Kullanıcılar
+hero_single_admin_or_clients: Tek yönetici mi, müşteriler de var mı?
+hero_services: Servisler
+hero_mail_dns_db_backups: E-posta, DNS, veritabanı, yedekler
+hero_platform: Platform
+hero_linux_windows_license: Linux / Windows + lisans
+hero_use_a_panel_only_when_it_removes_enough_admin_work_to_justify_its_overhead_and_constraints: Paneli, ek kaynak tüketimini ve kısıtlarını haklı çıkaracak kadar yönetim işini azalttığında kullanın.
+hero_how_the_site_works: Site nasıl çalışır?
+hero_check_current_vps_options: Güncel VPS seçeneklerini inceleyin
+hero_research_first_recommendation_second: Önce araştırma, sonra öneri
+hero_provider_facts_stay_separate_from_workload_based_editorial_guidance: Sağlayıcı bilgileri, iş yüküne dayalı editoryal değerlendirmelerden ayrı tutulur.
+hero_provider_facts: Sağlayıcı bilgileri
+hero_cpu_ram_storage_price: CPU, RAM, depolama, fiyat
+hero_workload_fit: İş yüküne uygunluk
+hero_workers_db_cache_jobs: İşçi süreçleri, veritabanı, önbellek, görevler
+hero_management_backups_growth: Yönetim, yedekler, büyüme
+hero_recommendation: Öneri
+hero_smallest_safe_starting_tier: Güvenli en küçük başlangıç paketi
+hero_no_fixed_visitor_count_promises_size_from_the_actual_workload: Sabit ziyaretçi kapasitesi vaat edilmez. Kaynaklar gerçek iş yüküne göre seçilir.
+hero_about_our_process: Çalışma yöntemimiz
+hero_read_how_vpsforwebsite_com_reviews_and_corrects_information: VPSforWebsite.com'un bilgileri nasıl incelediğini ve düzelttiğini okuyun
+hero_corrections_should_be_evidence_based: Düzeltmeler kanıta dayanmalıdır
+hero_useful_feedback_identifies_the_claim_the_source_and_what_needs_to_be_checked: Yararlı geri bildirim; iddiayı, kaynağı ve neyin kontrol edilmesi gerektiğini belirtir.
+hero_identify: Belirleyin
+hero_which_claim_or_page: Hangi iddia veya sayfa?
+hero_source: Kaynak
+hero_provide_current_evidence: Güncel kanıt sunun
+hero_review: İnceleyin
+hero_check_provider_context: Sağlayıcıyı ve bağlamı kontrol edin
+hero_update: Güncelleyin
+hero_correct_the_published_guidance: Yayımlanan rehberliği düzeltin
+hero_the_preview_does_not_collect_form_submissions_yet: Önizlemede henüz form gönderimleri alınmıyor.
+hero_contact: İletişim
+hero_open_the_vpsforwebsite_com_contact_and_correction_page: VPSforWebsite.com iletişim ve düzeltme sayfasını açın
+hero_minimal_collection_clear_disclosure: Asgari veri toplama, açık bilgilendirme
+hero_the_policy_describes_what_the_site_actually_uses_now_not_planned_tracking_or_integrations: Politika, planlanan izleme veya entegrasyonları değil, sitenin şu anda kullandığı hizmetleri açıklar.
+hero_no_account: Hesap yok
+hero_public_informational_site: Herkese açık bilgilendirme sitesi
+hero_analytics: Analitik
+hero_not_enabled_in_preview: Önizlemede etkin değil
+hero_affiliate_links: İş ortaklığı bağlantıları
+hero_sponsored_nofollow_marked: Sponsored / nofollow olarak işaretli
+hero_updates: Güncellemeler
+hero_policy_follows_actual_services: Politika kullanılan hizmetlere göre güncellenir
+hero_data_collection_should_stay_limited_to_what_the_site_actually_needs: Veri toplama, sitenin gerçekten ihtiyaç duyduklarıyla sınırlı kalmalıdır.
+search_no_results: Sonuç bulunamadı
+search_initial_message: Aramak için bir şeyler yazın...

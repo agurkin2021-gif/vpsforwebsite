@@ -34,6 +34,10 @@
   {{ $title = "ページが見つかりません" }}
 {{ end }}
 
+{{ if and (eq .Language.Lang "tr") (eq .Kind "404") }}
+  {{ $title = "Sayfa bulunamadı" }}
+{{ end }}
+
 <!-- checking description -->
 {{ $description := .Summary }}
 {{ if .Params.meta_description }}

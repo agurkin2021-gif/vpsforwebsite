@@ -81,3 +81,15 @@ weight = 8
 [ja.params.metadata]
 description = "Webサイトの処理負荷、CMS、データベース、成長見込みに合わせてVPSのスペックを選ぶための情報サイトです。"
 author = "VPSforWebsite.com 編集部"
+
+[tr]
+label = "TR"
+languageName = "Türkçe"
+languageCode = "tr"
+locale = "tr-TR"
+contentDir = "content/turkish"
+weight = 9
+
+[tr.params.metadata]
+description = "Web siteniz için VPS kaynaklarını iş yüküne, CMS'e, veritabanı ihtiyacına ve büyüme planına göre seçin."
+author = "VPSforWebsite.com Yayın Ekibi"

@@ -1,0 +1,209 @@
+{
+  "language": "tr",
+  "reviewedOn": "2026-10-25",
+  "method": "Individual full-page translation and review against the English source; shared UI separately reviewed",
+  "textHashEncoding": "UTF-8 with LF line endings; font uses original bytes",
+  "sourceFiles": [
+    {
+      "source": "_index.md",
+      "englishSha256": "e1517e66468db266aea69691d8136471125f921e7cbfe671ad3d5e461e999f16",
+      "turkishSha256": "9b198bfeddcd00be3a37e87b9f5d33de88a049a21ff77f5f3edce785e0e08952",
+      "reviewedUnits": 110
+    },
+    {
+      "source": "about/_index.md",
+      "englishSha256": "91d23d56a08dbd9a1f95b30fd7cfb38f2374637e3800e78ac177ced7e8b8e674",
+      "turkishSha256": "33ec07a57e15f2ea1ffae20abdc4f4c16924e09e35eab2bc9d7439d3ded629ac",
+      "reviewedUnits": 33
+    },
+    {
+      "source": "contact/_index.md",
+      "englishSha256": "3f0144e830168bdd12bc4e888fc8d2d7726fa846114b87433e9e0f120550b30b",
+      "turkishSha256": "e578b2a68b93b38c81a9a12b7ea5a7df21523c155e860d9c70f9bd204f91f07b",
+      "reviewedUnits": 4
+    },
+    {
+      "source": "fastpanel-vps-hosting.md",
+      "englishSha256": "2a9173cce21daaaa073058ac6e50e2e2f61d8caca6e41561d0e5b0b807d752d1",
+      "turkishSha256": "fbe70207768bc05090af4735356ea14b0df9cccc47fa4572bb3ca22248a97481",
+      "reviewedUnits": 225
+    },
+    {
+      "source": "how-to-choose-vps-location.md",
+      "englishSha256": "2fa70419a108a359090f0f44a0109feb621fcc761a5072bb53f099a442e703c7",
+      "turkishSha256": "3939bac6a4aa31c8c1265c7670f8bbb694eef39a80c3dee761677c81dcd9e567",
+      "reviewedUnits": 393
+    },
+    {
+      "source": "how-to-host-a-website-on-vps.md",
+      "englishSha256": "8d94536b69d4b054681fee6e10751e87c8084c91813a58a53fdf2ef4b225a336",
+      "turkishSha256": "6348327af033d7293f7cd57c86a260fd859a5ecac4b99a52a2919c688f4708ed",
+      "reviewedUnits": 395
+    },
+    {
+      "source": "managed-vs-unmanaged-vps.md",
+      "englishSha256": "a0d17e4f150538ea632249ea14f27b549b4c5a40bd462d665531d3a855b80c11",
+      "turkishSha256": "0000f21c755f3c5b847e1507f3bde691038fb0ed891dcf9cbd4104e04c3cff4d",
+      "reviewedUnits": 311
+    },
+    {
+      "source": "privacy-policy.md",
+      "englishSha256": "90276abb84faeda8012ab2f8b58129b23511cff3900b13ae0493b1d62a8093b3",
+      "turkishSha256": "c4c8e4f6842f907370dd56c0ca782aea310893cb128983f10ba2b5fded931da2",
+      "reviewedUnits": 23
+    },
+    {
+      "source": "sections/_index.md",
+      "englishSha256": "d3dbb0591691ccc780c664ff6135e7bed22e0f1030385ba23466b3b94f0595b4",
+      "turkishSha256": "084cda5e7838c0b06caea530a4a903f00eb2ff9050691f9c868f7bd046cf86ba",
+      "reviewedUnits": 1
+    },
+    {
+      "source": "sections/call-to-action.md",
+      "englishSha256": "fee26c84cceb25406ee8f26aee8652cb0a3b47a03afdb3b80a3dfd36ff0dc0d6",
+      "turkishSha256": "ed54002e026487219600290a0dfccb15d864461548b81c6fdb9c41e433bcdd3d",
+      "reviewedUnits": 3
+    },
+    {
+      "source": "vps-backup-strategy.md",
+      "englishSha256": "cd0842e8bd0043ea63387bb6a8309d5cd10a1c9347d30534624ec863e0ce73fb",
+      "turkishSha256": "eb14fe390173fa140928439f31afbed955038a08498b53479e05a58303330c4a",
+      "reviewedUnits": 397
+    },
+    {
+      "source": "vps-for-multiple-websites.md",
+      "englishSha256": "0dd6282694c24d9cfa17f7f41f110e3e1d5dc488a2f9a97bd7b3efd1e1bb160a",
+      "turkishSha256": "95e789f06c1e497c05d9402444e5f8335d675e5539fbaf75498dc88388fab746",
+      "reviewedUnits": 294
+    },
+    {
+      "source": "vps-for-woocommerce.md",
+      "englishSha256": "6161a50e862360432e75607c1a2182c9cd6b6b4985e14d98bea599e1ca758b57",
+      "turkishSha256": "26bf6db03584e7f7c50d50110309c4fd6061ecb98b11359012274cf360d65b11",
+      "reviewedUnits": 337
+    },
+    {
+      "source": "vps-for-wordpress.md",
+      "englishSha256": "59658291601e7f924c6caa5e87f11fd916bd3761ed236af13577738c953ad17f",
+      "turkishSha256": "f561885de5c9fb6094a8b8485978753a25a2ef1aa96bae7ba857147d1e1d1294",
+      "reviewedUnits": 292
+    },
+    {
+      "source": "vps-monitoring.md",
+      "englishSha256": "6d8eba598c07a9d0c82feb15111ec7df3984f377f26093e81e9ce8082de7556f",
+      "turkishSha256": "76eb3aeb35f829760241c2619b64c43a59b5ccf3d41a58badfdc3943fb572afd",
+      "reviewedUnits": 404
+    },
+    {
+      "source": "vps-security-checklist.md",
+      "englishSha256": "7392e899785f26c99d25a14b602b6bc6ca6dfe09cb64aa5c4d4a4d223fe11b9f",
+      "turkishSha256": "71a6a4d81a7aa9487661d05b798c28f437a65590af60f330f523c62098b0d35e",
+      "reviewedUnits": 332
+    },
+    {
+      "source": "vps-sizing-for-website.md",
+      "englishSha256": "83e6f5ac5d916c85e4865e8133b4e426d2a4bb778c20cbe6209f24ac3332a5e2",
+      "turkishSha256": "c2c0abeec5f28f862b19c51009ceba597d42606e125b70260140b0abbde766e6",
+      "reviewedUnits": 258
+    },
+    {
+      "source": "vps-vs-shared-hosting.md",
+      "englishSha256": "e00e42f669ecf2fae1f30d5d9a14e13c2bf2f32131975251a2664a7305335a82",
+      "turkishSha256": "591ebd0fbb8125ec8f4adf1a4f0bc30030750bca0c16ee6b984913bd06cf6fc7",
+      "reviewedUnits": 288
+    },
+    {
+      "source": "vps-with-control-panel.md",
+      "englishSha256": "a174afa167acc97f5d8fa0adc412bd3aea8d3f21ff4d680f925396b1793edb55",
+      "turkishSha256": "3010eb7ec033ea86b9e944051d778fd36699b0df53555a672c352cb65ad6c9ba",
+      "reviewedUnits": 307
+    },
+    {
+      "source": "website-migration-to-vps.md",
+      "englishSha256": "324bb8a079319b241f89aa1ada42cacf5f8b528fadd9f116ad693052b84b11a4",
+      "turkishSha256": "f291cdfbc99e2a692947f06a6376a6abc09c510f39c94c558a2c1489be11a27e",
+      "reviewedUnits": 292
+    }
+  ],
+  "sharedUiEntries": 507,
+  "assets": {
+    "i18n/tr.yaml": "91ee003b0fc745823dd7adb3fb99418b380ceaa808aee4f2cff5dc9fe811f0d0",
+    "assets/fonts/inter-turkish.woff2": "8f9704d07b50754d7b164c9c10316635799b59c414a1950e875608f66acb8510",
+    "assets/fonts/fraunces-turkish.woff2": "717f8807250222401200c973b8c405e2ae2b097b948cebe1c53eab31128bd765",
+    "static/images/home/vps-cta-tr.svg": "a9b14aca50a419b70a523dc0185537e4ba7ebcb026574a72f4c33bab8ea40dfc"
+  },
+  "routes": {
+    "_index.md": [
+      "Web sitesi için VPS",
+      ""
+    ],
+    "vps-for-wordpress.md": [
+      "WordPress için VPS",
+      "wordpress-icin-vps"
+    ],
+    "vps-for-woocommerce.md": [
+      "WooCommerce için VPS",
+      "woocommerce-icin-vps"
+    ],
+    "vps-sizing-for-website.md": [
+      "Web sitesi için VPS kaynak seçimi",
+      "web-sitesi-icin-vps-kaynak-secimi"
+    ],
+    "vps-vs-shared-hosting.md": [
+      "VPS ve paylaşımlı hosting karşılaştırması",
+      "vps-ve-paylasimli-hosting-karsilastirmasi"
+    ],
+    "vps-for-multiple-websites.md": [
+      "Birden fazla web sitesi için VPS",
+      "birden-fazla-web-sitesi-icin-vps"
+    ],
+    "vps-with-control-panel.md": [
+      "Kontrol panelli VPS",
+      "kontrol-panelli-vps"
+    ],
+    "managed-vs-unmanaged-vps.md": [
+      "Yönetilen ve yönetilmeyen VPS karşılaştırması",
+      "yonetilen-ve-yonetilmeyen-vps-karsilastirmasi"
+    ],
+    "fastpanel-vps-hosting.md": [
+      "FASTPANEL ile VPS hosting",
+      "fastpanel-ile-vps-hosting"
+    ],
+    "how-to-host-a-website-on-vps.md": [
+      "VPS üzerinde web sitesi yayınlama",
+      "vps-uzerinde-web-sitesi-yayinlama"
+    ],
+    "website-migration-to-vps.md": [
+      "Web sitesini VPS sunucuya taşıma",
+      "web-sitesini-vps-sunucuya-tasima"
+    ],
+    "vps-security-checklist.md": [
+      "VPS güvenlik kontrol listesi",
+      "vps-guvenlik-kontrol-listesi"
+    ],
+    "vps-backup-strategy.md": [
+      "VPS yedekleme stratejisi",
+      "vps-yedekleme-stratejisi"
+    ],
+    "vps-monitoring.md": [
+      "VPS izleme",
+      "vps-izleme"
+    ],
+    "how-to-choose-vps-location.md": [
+      "VPS sunucu konumu seçimi",
+      "vps-sunucu-konumu-secimi"
+    ],
+    "about/_index.md": [
+      "Hakkımızda",
+      "hakkimizda"
+    ],
+    "contact/_index.md": [
+      "İletişim",
+      "iletisim"
+    ],
+    "privacy-policy.md": [
+      "Gizlilik politikası",
+      "gizlilik-politikasi"
+    ]
+  }
+}

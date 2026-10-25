@@ -18,6 +18,7 @@
   (dict "lang" "fa" "label" "فارسی" "url" "/fa/")
   (dict "lang" "ar" "label" "العربية" "url" "/ar/")
   (dict "lang" "ja" "label" "日本語" "url" "/ja/")
+  (dict "lang" "tr" "label" "Türkçe" "url" "/tr/")
 -}}
 <details id="language-picker" class="language-picker" dir="ltr">
   <summary aria-label="{{ $label }}" aria-controls="language-panel">
@@ -30,12 +31,12 @@
     {{- range $targets -}}
       {{- $targetLang := .lang -}}
       {{- $url := .url | relURL -}}
-      {{- if in (slice "de" "it" "fa" "ar" "ja") $currentLang -}}
+      {{- if in (slice "de" "it" "fa" "ar" "ja" "tr") $currentLang -}}
         {{- /* A leading slash bypasses the project path in relURL. Localized
               preview fallbacks must stay below the same BaseURL path. */ -}}
         {{- $url = (strings.TrimPrefix "/" .url) | relURL -}}
       {{- end -}}
-      {{- if and (ne $current.Kind "404") (in (slice "en" "es" "ko" "de" "it" "fa" "ar" "ja") $targetLang) -}}
+      {{- if and (ne $current.Kind "404") (in (slice "en" "es" "ko" "de" "it" "fa" "ar" "ja" "tr") $targetLang) -}}
         {{- range $current.AllTranslations -}}
           {{- if eq .Language.Lang $targetLang -}}
             {{- $url = .RelPermalink -}}

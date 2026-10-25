@@ -1,0 +1,105 @@
+[[main]]
+name = "Ana sayfa"
+url = "/"
+weight = 1
+
+[[main]]
+name = "WordPress"
+url = "/vps-for-wordpress/"
+weight = 2
+
+[[main]]
+name = "WooCommerce"
+url = "/vps-for-woocommerce/"
+weight = 3
+
+[[main]]
+name = "Rehberler"
+weight = 4
+
+[[main]]
+parent = "Rehberler"
+name = "Web sitesi için VPS kaynak seçimi"
+url = "/vps-sizing-for-website/"
+weight = 1
+
+[[main]]
+parent = "Rehberler"
+name = "Web sitesini VPS sunucuya taşıma"
+url = "/website-migration-to-vps/"
+weight = 2
+
+[[main]]
+parent = "Rehberler"
+name = "Yönetilen ve yönetilmeyen VPS karşılaştırması"
+url = "/managed-vs-unmanaged-vps/"
+weight = 3
+
+[[main]]
+parent = "Rehberler"
+name = "FASTPANEL ile VPS hosting"
+url = "/fastpanel-vps-hosting/"
+weight = 4
+
+[[main]]
+parent = "Rehberler"
+name = "VPS üzerinde web sitesi yayınlama"
+url = "/how-to-host-a-website-on-vps/"
+weight = 5
+
+[[main]]
+parent = "Rehberler"
+name = "VPS güvenlik kontrol listesi"
+url = "/vps-security-checklist/"
+weight = 6
+
+[[main]]
+parent = "Rehberler"
+name = "VPS yedekleme stratejisi"
+url = "/vps-backup-strategy/"
+weight = 7
+
+[[main]]
+parent = "Rehberler"
+name = "VPS izleme"
+url = "/vps-monitoring/"
+weight = 8
+
+[[main]]
+parent = "Rehberler"
+name = "VPS sunucu konumu seçimi"
+url = "/how-to-choose-vps-location/"
+weight = 9
+
+[[main]]
+parent = "Rehberler"
+name = "VPS ve paylaşımlı hosting karşılaştırması"
+url = "/vps-vs-shared-hosting/"
+weight = 10
+
+[[main]]
+parent = "Rehberler"
+name = "Birden fazla web sitesi için VPS"
+url = "/vps-for-multiple-websites/"
+weight = 11
+
+[[main]]
+parent = "Rehberler"
+name = "Kontrol panelli VPS"
+url = "/vps-with-control-panel/"
+weight = 12
+
+[[footer]]
+name = "Hakkımızda"
+url = "/about/"
+weight = 1
+
+[[footer]]
+name = "İletişim"
+url = "/contact/"
+weight = 2
+
+[[footer]]
+name = "Gizlilik politikası"
+url = "/privacy-policy/"
+weight = 3
