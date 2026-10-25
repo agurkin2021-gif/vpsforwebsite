@@ -1,18 +1,7 @@
 {
-  "stage": "local-validation-complete",
+  "stage": "production-published-and-verified",
   "date": "2026-10-25",
   "baseline": "beddb96fc3fd406c1122930dfc6e7b2a0e81c65e",
-  "browser": {
-    "status": "completed",
-    "startedAt": "2026-10-25T13:44:35.857Z",
-    "updatedAt": "2026-10-25T13:53:40.043Z",
-    "mode": "local",
-    "pages": 18,
-    "geometryCases": 144,
-    "forms": 16,
-    "formCases": 18736,
-    "findings": []
-  },
   "formReports": [
     {
       "route": "/tr/",
@@ -147,5 +136,483 @@
     "total": 274,
     "turkish": 17
   },
-  "production": "pending"
+  "production": {
+    "sourceCommit": "00b449198b0a78557c618465a5bcfa29d0249bd4",
+    "prepareRun": 40200194028,
+    "prepareConclusion": "success",
+    "generatedCommit": "88e18237a331b0b38b6d5555679695cf88daaf9c",
+    "cloudflareBuild": "8c65f38c-25c5-4c12-a2b0-81dfd10e50fd",
+    "cloudflareVersion": "868d5265-95d9-48ff-9673-39f1f67ee435",
+    "cloudflareConclusion": "success",
+    "sourceChecks": [
+      {
+        "name": "Workers Builds: vpsforwebsite",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "korean-links",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "qa",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "generatedFrenchRun": {
+      "id": 40200578550,
+      "conclusion": "success"
+    },
+    "ciArtifacts": [
+      {
+        "id": 12602002390,
+        "name": "arabic-localization-qa",
+        "digest": "sha256:00241e100bf12c234e0476aeb570f20761a1f97c0cd2c321b165d85cc7407b5f",
+        "expiresAt": "2026-11-01T14:03:25Z"
+      },
+      {
+        "id": 12601947412,
+        "name": "italian-localization-qa",
+        "digest": "sha256:0392a7a8fc006e8a7939c553869851901459dd80b0af660b56eb0a7c5551d139",
+        "expiresAt": "2026-11-01T14:02:34Z"
+      },
+      {
+        "id": 12601757761,
+        "name": "german-localization-qa",
+        "digest": "sha256:72224bc9704ebaa4047f9d2bbe94c204ba0ad77e0eaad750cb05576ed1816cdf",
+        "expiresAt": "2026-11-01T14:02:09Z"
+      },
+      {
+        "id": 12601707939,
+        "name": "persian-localization-qa",
+        "digest": "sha256:b947b9241602a21dacdfbc6b9a0e8ce3593eb55fd391328998d6650ae8c5c2ff",
+        "expiresAt": "2026-11-01T14:03:00Z"
+      },
+      {
+        "id": 12601182466,
+        "name": "japanese-localization-qa",
+        "digest": "sha256:b7fa0fce03840a485e1779f7c2363d1fa5c3c0267739bcf437233574e4edab7c",
+        "expiresAt": "2026-11-01T14:04:19Z"
+      },
+      {
+        "id": 12600838550,
+        "name": "turkish-localization-qa",
+        "digest": "sha256:e61f1714bc346f4b1435ce9cbdf7146dec1c9dac5f8179ccd17264f8385b43ba",
+        "expiresAt": "2026-11-01T14:04:55Z"
+      }
+    ],
+    "http": {
+      "passed": true,
+      "pages": [
+        {
+          "route": "/tr/",
+          "status": 200,
+          "title": "Web sitesi için VPS",
+          "mainTextSha256": "0ce67909c1df296cd87705f24fa6be5c7a618407d8fc087b631b36ff07b86eed",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/hakkimizda/",
+          "status": 200,
+          "title": "Hakkımızda",
+          "mainTextSha256": "e715251ef77d00165a1732ba8838aed5f05672b944886ace589bca24af90d736",
+          "languages": 16,
+          "jsonLdObjects": 0
+        },
+        {
+          "route": "/tr/iletisim/",
+          "status": 200,
+          "title": "İletişim",
+          "mainTextSha256": "0b1be8e57323f77242ba2481ac7f783db62dcc55c1d4f2121b52b10a5c7ad78f",
+          "languages": 16,
+          "jsonLdObjects": 0
+        },
+        {
+          "route": "/tr/fastpanel-ile-vps-hosting/",
+          "status": 200,
+          "title": "FASTPANEL ile VPS hosting",
+          "mainTextSha256": "a0b7c3842eb26c7f081141359c80c520180317610a1e57d48f66a3bca9ab2c70",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-sunucu-konumu-secimi/",
+          "status": 200,
+          "title": "VPS sunucu konumu seçimi",
+          "mainTextSha256": "0d337b53e5445d2a0a50a0c5b4cb0031ddc2e1db121507f09af1c9e7ab1f3f95",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-uzerinde-web-sitesi-yayinlama/",
+          "status": 200,
+          "title": "VPS üzerinde web sitesi yayınlama",
+          "mainTextSha256": "87841341ae036e4c385b30152f4efa393aa8f6a135ed06f7817bcd0747d8b3d6",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/yonetilen-ve-yonetilmeyen-vps-karsilastirmasi/",
+          "status": 200,
+          "title": "Yönetilen ve yönetilmeyen VPS karşılaştırması",
+          "mainTextSha256": "5fc6b81b9fe4bba925451b3d427b50b09728fa513a3c07281fa508d434fc9808",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/gizlilik-politikasi/",
+          "status": 200,
+          "title": "Gizlilik politikası",
+          "mainTextSha256": "e14dd30217e270b0d02336bf9c2df194199c7b735bfb33a7de2ca0fc22737ba6",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-yedekleme-stratejisi/",
+          "status": 200,
+          "title": "VPS yedekleme stratejisi",
+          "mainTextSha256": "7615d32f00a9f9cf661f1dda4519d75e17632bbb7590e4a6827d92c27b15c7f5",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/birden-fazla-web-sitesi-icin-vps/",
+          "status": 200,
+          "title": "Birden fazla web sitesi için VPS",
+          "mainTextSha256": "6a2563979db927bde35f4fdbd3cdd8c6d1870e3ab288fd6a9cf1e013d05cc67b",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/woocommerce-icin-vps/",
+          "status": 200,
+          "title": "WooCommerce için VPS",
+          "mainTextSha256": "910df71ccfcd6afcafc60f8a4ad354edb7b96282934f524696c3dc261133c3dc",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/wordpress-icin-vps/",
+          "status": 200,
+          "title": "WordPress için VPS",
+          "mainTextSha256": "4770e85a76f30f44f61ddb0719f80c34c53a99d171583d5eaaba984968c2b2a0",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-izleme/",
+          "status": 200,
+          "title": "VPS izleme",
+          "mainTextSha256": "b72c89ebe9d880467382b49551d2701d80e00ecda46e6d3fc12c4e224749e437",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-guvenlik-kontrol-listesi/",
+          "status": 200,
+          "title": "VPS güvenlik kontrol listesi",
+          "mainTextSha256": "fef5e198e8beae443d816cb6136005a17926a18bcfbc1966663bf1b0763e5d31",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/web-sitesi-icin-vps-kaynak-secimi/",
+          "status": 200,
+          "title": "Web sitesi için VPS kaynak seçimi",
+          "mainTextSha256": "0de6e38b89782c3efb79fff73d134f993f52a21a50444fbc5846d49c34253e72",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/vps-ve-paylasimli-hosting-karsilastirmasi/",
+          "status": 200,
+          "title": "VPS ve paylaşımlı hosting karşılaştırması",
+          "mainTextSha256": "2411cef81017928705e63c06d00f55e8d8e6cda945ec694d8f47ea0b7324c232",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/kontrol-panelli-vps/",
+          "status": 200,
+          "title": "Kontrol panelli VPS",
+          "mainTextSha256": "d162990e6e2592163a6fddc4a4e7a803d33c61bb3a0c4e8c1f8324ac117f9d65",
+          "languages": 16,
+          "jsonLdObjects": 2
+        },
+        {
+          "route": "/tr/web-sitesini-vps-sunucuya-tasima/",
+          "status": 200,
+          "title": "Web sitesini VPS sunucuya taşıma",
+          "mainTextSha256": "91e2027444d930b26b8cfabebf9a79807b842daeb69de77dc8ffe64f760af790",
+          "languages": 16,
+          "jsonLdObjects": 2
+        }
+      ],
+      "homes": [
+        {
+          "route": "/",
+          "status": 200,
+          "lang": "en-US"
+        },
+        {
+          "route": "/bn/",
+          "status": 200,
+          "lang": "bn"
+        },
+        {
+          "route": "/pt-br/",
+          "status": 200,
+          "lang": "pt-BR"
+        },
+        {
+          "route": "/fr/",
+          "status": 200,
+          "lang": "fr"
+        },
+        {
+          "route": "/hi/",
+          "status": 200,
+          "lang": "hi"
+        },
+        {
+          "route": "/id/",
+          "status": 200,
+          "lang": "id"
+        },
+        {
+          "route": "/ru/",
+          "status": 200,
+          "lang": "ru"
+        },
+        {
+          "route": "/es/",
+          "status": 200,
+          "lang": "es-ES"
+        },
+        {
+          "route": "/vi/",
+          "status": 200,
+          "lang": "vi"
+        },
+        {
+          "route": "/ko/",
+          "status": 200,
+          "lang": "ko-KR"
+        },
+        {
+          "route": "/de/",
+          "status": 200,
+          "lang": "de-DE"
+        },
+        {
+          "route": "/it/",
+          "status": 200,
+          "lang": "it-IT"
+        },
+        {
+          "route": "/fa/",
+          "status": 200,
+          "lang": "fa-IR"
+        },
+        {
+          "route": "/ar/",
+          "status": 200,
+          "lang": "ar"
+        },
+        {
+          "route": "/ja/",
+          "status": 200,
+          "lang": "ja-JP"
+        },
+        {
+          "route": "/tr/",
+          "status": 200,
+          "lang": "tr-TR"
+        }
+      ],
+      "assets": [
+        {
+          "path": "/css/tr-responsive.v1.css",
+          "sha256": "8a37cd1fc2b1806ed12cd108228696078675f2e76cc87ea1d06b9f673ce88ddd",
+          "bytes": 914
+        },
+        {
+          "path": "/images/home/vps-cta-tr.svg",
+          "sha256": "5038f5b05621a80d8fa8729a9c129fa678002fd50894cacedaf38d6c58ec29e8",
+          "bytes": 71223
+        },
+        {
+          "path": "/fonts/inter-turkish.8f9704d07b50754d7b164c9c10316635799b59c414a1950e875608f66acb8510.woff2",
+          "sha256": "8f9704d07b50754d7b164c9c10316635799b59c414a1950e875608f66acb8510",
+          "bytes": 43944
+        },
+        {
+          "path": "/fonts/fraunces-turkish.717f8807250222401200c973b8c405e2ae2b097b948cebe1c53eab31128bd765.woff2",
+          "sha256": "717f8807250222401200c973b8c405e2ae2b097b948cebe1c53eab31128bd765",
+          "bytes": 31380
+        }
+      ],
+      "sitemap": {
+        "total": 274,
+        "turkish": 17
+      },
+      "localized404": {
+        "status": 404,
+        "title": "Sayfa bulunamadı"
+      },
+      "errors": []
+    },
+    "keyboardTableScroll": [
+      {
+        "left": 320,
+        "width": 371,
+        "total": 720,
+        "label": "Kaynak darboğazları ve çözüm seçenekleri",
+        "role": "region",
+        "tabindex": 0
+      },
+      {
+        "left": 320,
+        "width": 371,
+        "total": 720,
+        "label": "VPS yapılandırmalarının karşılaştırması",
+        "role": "region",
+        "tabindex": 0
+      }
+    ]
+  },
+  "localBrowser": {
+    "status": "completed",
+    "startedAt": "2026-10-25T13:44:35.857Z",
+    "updatedAt": "2026-10-25T13:53:40.043Z",
+    "mode": "local",
+    "pages": 18,
+    "geometryCases": 144,
+    "forms": 16,
+    "formCases": 18736,
+    "findings": []
+  },
+  "productionBrowser": {
+    "status": "completed",
+    "startedAt": "2026-10-25T14:06:20.554Z",
+    "updatedAt": "2026-10-25T14:15:29.400Z",
+    "mode": "production",
+    "pages": 18,
+    "geometryCases": 144,
+    "forms": 16,
+    "formCases": 18736,
+    "findings": [],
+    "equivalentLanguageRoundtrips": 18,
+    "formReports": [
+      {
+        "route": "/tr/",
+        "id": "homepage-vps-fit-checker",
+        "cases": 216,
+        "outcomes": 5
+      },
+      {
+        "route": "/tr/fastpanel-ile-vps-hosting/",
+        "id": "fastpanel-fit-checker",
+        "cases": 36,
+        "outcomes": 3
+      },
+      {
+        "route": "/tr/vps-sunucu-konumu-secimi/",
+        "id": "vps-location-checker",
+        "cases": 288,
+        "outcomes": 6
+      },
+      {
+        "route": "/tr/vps-uzerinde-web-sitesi-yayinlama/",
+        "id": "deployment-path-checker-form",
+        "cases": 72,
+        "outcomes": 18
+      },
+      {
+        "route": "/tr/yonetilen-ve-yonetilmeyen-vps-karsilastirmasi/",
+        "id": "management-fit-checker-form",
+        "cases": 576,
+        "outcomes": 4
+      },
+      {
+        "route": "/tr/vps-yedekleme-stratejisi/",
+        "id": "vps-backup-strategy-checker-form",
+        "cases": 2304,
+        "outcomes": 4
+      },
+      {
+        "route": "/tr/birden-fazla-web-sitesi-icin-vps/",
+        "id": "multi-site-architecture-checker",
+        "cases": 576,
+        "outcomes": 12
+      },
+      {
+        "route": "/tr/woocommerce-icin-vps/",
+        "id": "woocommerce-vps-fit-checker-form",
+        "cases": 7776,
+        "outcomes": 6
+      },
+      {
+        "route": "/tr/wordpress-icin-vps/",
+        "id": "wordpress-vps-fit-checker-form",
+        "cases": 1296,
+        "outcomes": 8
+      },
+      {
+        "route": "/tr/vps-izleme/",
+        "id": "vps-monitoring-checker",
+        "cases": 1536,
+        "outcomes": 4
+      },
+      {
+        "route": "/tr/vps-guvenlik-kontrol-listesi/",
+        "id": "vps-security-checker",
+        "cases": 512,
+        "outcomes": 6
+      },
+      {
+        "route": "/tr/web-sitesi-icin-vps-kaynak-secimi/",
+        "id": "ram-budget-estimator-form",
+        "cases": 11,
+        "outcomes": 10
+      },
+      {
+        "route": "/tr/web-sitesi-icin-vps-kaynak-secimi/",
+        "id": "shared-hosting-diagnostic",
+        "cases": 729,
+        "outcomes": 174
+      },
+      {
+        "route": "/tr/vps-ve-paylasimli-hosting-karsilastirmasi/",
+        "id": "shared-vs-vps-checker",
+        "cases": 216,
+        "outcomes": 6
+      },
+      {
+        "route": "/tr/kontrol-panelli-vps/",
+        "id": "panel-fit-checker",
+        "cases": 288,
+        "outcomes": 7
+      },
+      {
+        "route": "/tr/web-sitesini-vps-sunucuya-tasima/",
+        "id": "migration-preflight",
+        "cases": 2304,
+        "outcomes": 1024
+      }
+    ]
+  }
 }
